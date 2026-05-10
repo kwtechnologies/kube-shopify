@@ -2,12 +2,12 @@ Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
 let _shopify_admin_api_client = require("@shopify/admin-api-client");
 //#region src/client.ts
 const ADMIN_API_VERSION = "2025-10";
-async function requestShopifyAdmin({ credentials, query, variables }) {
+async function requestShopifyAdmin({ credentials, query, options }) {
 	const response = await (0, _shopify_admin_api_client.createAdminApiClient)({
 		storeDomain: `${credentials.shop}.myshopify.com`,
 		apiVersion: ADMIN_API_VERSION,
 		accessToken: credentials.accessToken
-	}).request(query, { variables });
+	}).request(query, options);
 	if (response.errors) throw new Error(`Shopify API Error: ${JSON.stringify(response.errors)}`);
 	if (!response.data) throw new Error("Shopify API Error: response data is empty");
 	return response.data;
@@ -186,69 +186,73 @@ const UPDATE_TRACKING_INFO = `#graphql
     }
   }
 `;
+function requirePayload(payload, operationName) {
+	if (!payload) throw new Error(`Shopify API Error: ${operationName} payload is empty`);
+	return payload;
+}
 async function getAssignedFulfillmentOrders({ credentials, status, merchantRequestKind, locationIds }) {
 	return (await requestShopifyAdmin({
 		credentials,
 		query: GET_ASSIGNED_FULFILLMENT_ORDERS,
-		variables: {
+		options: { variables: {
 			status,
 			requestKind: merchantRequestKind,
 			locationIds
-		}
+		} }
 	})).shop.assignedFulfillmentOrders.nodes;
 }
 async function acceptFulfillmentRequest({ credentials, fulfillmentOrderId, message }) {
-	return (await requestShopifyAdmin({
+	return requirePayload((await requestShopifyAdmin({
 		credentials,
 		query: ACCEPT_FULFILLMENT_REQUEST,
-		variables: {
+		options: { variables: {
 			id: fulfillmentOrderId,
 			message
-		}
-	})).fulfillmentOrderAcceptFulfillmentRequest;
+		} }
+	})).fulfillmentOrderAcceptFulfillmentRequest, "fulfillmentOrderAcceptFulfillmentRequest");
 }
 async function rejectFulfillmentRequest({ credentials, fulfillmentOrderId, message }) {
-	return (await requestShopifyAdmin({
+	return requirePayload((await requestShopifyAdmin({
 		credentials,
 		query: REJECT_FULFILLMENT_REQUEST,
-		variables: {
+		options: { variables: {
 			id: fulfillmentOrderId,
 			message
-		}
-	})).fulfillmentOrderRejectFulfillmentRequest;
+		} }
+	})).fulfillmentOrderRejectFulfillmentRequest, "fulfillmentOrderRejectFulfillmentRequest");
 }
 async function acceptCancellationRequest({ credentials, fulfillmentOrderId, message }) {
-	return (await requestShopifyAdmin({
+	return requirePayload((await requestShopifyAdmin({
 		credentials,
 		query: ACCEPT_CANCELLATION_REQUEST,
-		variables: {
+		options: { variables: {
 			id: fulfillmentOrderId,
 			message
-		}
-	})).fulfillmentOrderAcceptCancellationRequest;
+		} }
+	})).fulfillmentOrderAcceptCancellationRequest, "fulfillmentOrderAcceptCancellationRequest");
 }
 async function rejectCancellationRequest({ credentials, fulfillmentOrderId, message }) {
-	return (await requestShopifyAdmin({
+	return requirePayload((await requestShopifyAdmin({
 		credentials,
 		query: REJECT_CANCELLATION_REQUEST,
-		variables: {
+		options: { variables: {
 			id: fulfillmentOrderId,
 			message
-		}
-	})).fulfillmentOrderRejectCancellationRequest;
+		} }
+	})).fulfillmentOrderRejectCancellationRequest, "fulfillmentOrderRejectCancellationRequest");
 }
 async function createFulfillment({ credentials, fulfillmentOrderId }) {
-	return (await requestShopifyAdmin({
+	return requirePayload((await requestShopifyAdmin({
 		credentials,
 		query: CREATE_FULFILLMENT,
-		variables: { fulfillment: { lineItemsByFulfillmentOrder: [{ fulfillmentOrderId }] } }
-	})).fulfillmentCreateV2;
+		options: { variables: { fulfillment: { lineItemsByFulfillmentOrder: [{ fulfillmentOrderId }] } } }
+	})).fulfillmentCreateV2, "fulfillmentCreateV2");
 }
 async function updateTrackingInfo({ credentials, fulfillmentId, trackingInfo, notifyCustomer = true }) {
-	return (await requestShopifyAdmin({
+	return requirePayload((await requestShopifyAdmin({
 		credentials,
 		query: UPDATE_TRACKING_INFO,
-		variables: {
+		options: { variables: {
 			fulfillmentId,
 			trackingInfoInput: {
 				number: trackingInfo.number,
@@ -256,8 +260,8 @@ async function updateTrackingInfo({ credentials, fulfillmentId, trackingInfo, no
 				company: trackingInfo.company
 			},
 			notifyCustomer
-		}
-	})).fulfillmentTrackingInfoUpdateV2;
+		} }
+	})).fulfillmentTrackingInfoUpdateV2, "fulfillmentTrackingInfoUpdateV2");
 }
 //#endregion
 exports.acceptCancellationRequest = acceptCancellationRequest;

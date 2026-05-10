@@ -1,34 +1,30 @@
-import { createAdminApiClient } from "@shopify/admin-api-client";
+import {
+  createAdminApiClient,
+  type AdminOperations,
+  type ApiClientRequestOptions,
+  type ReturnData,
+} from "@shopify/admin-api-client";
 
 import type { ShopifyCredentials } from "./types";
+import type {} from "./generated/admin.generated";
 
 const ADMIN_API_VERSION = "2025-10";
 
-type GraphQLVariables = Record<string, unknown>;
-
-interface ShopifyGraphQLResponse<TData> {
-  readonly data?: TData;
-  readonly errors?: unknown;
-}
-
-export async function requestShopifyAdmin<TData>({
+export async function requestShopifyAdmin<Operation extends keyof AdminOperations>({
   credentials,
   query,
-  variables,
+  options,
 }: {
   readonly credentials: ShopifyCredentials;
-  readonly query: string;
-  readonly variables?: GraphQLVariables;
-}): Promise<TData> {
+  readonly query: Operation;
+  readonly options?: ApiClientRequestOptions<Operation, AdminOperations>;
+}): Promise<ReturnData<Operation, AdminOperations>> {
   const client = createAdminApiClient({
     storeDomain: `${credentials.shop}.myshopify.com`,
     apiVersion: ADMIN_API_VERSION,
     accessToken: credentials.accessToken,
   });
-  const response: ShopifyGraphQLResponse<TData> = await client.request<TData>(
-    query,
-    { variables },
-  );
+  const response = await client.request(query, options);
   if (response.errors) {
     throw new Error(`Shopify API Error: ${JSON.stringify(response.errors)}`);
   }

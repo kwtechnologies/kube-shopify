@@ -1,5 +1,15 @@
 import { requestShopifyAdmin } from "./client";
 import type {
+  AcceptCancellationRequestMutation,
+  AcceptFulfillmentRequestMutation,
+  CreateFulfillmentMutation,
+  GetAssignedFulfillmentOrdersQuery,
+  GetAssignedFulfillmentOrdersQueryVariables,
+  RejectCancellationRequestMutation,
+  RejectFulfillmentRequestMutation,
+  UpdateTrackingInfoMutation,
+} from "./generated/admin.generated";
+import type {
   AssignedFulfillmentOrder,
   FulfillmentCreatePayload,
   FulfillmentOrderActionPayload,
@@ -85,7 +95,7 @@ const GET_ASSIGNED_FULFILLMENT_ORDERS = `#graphql
       }
     }
   }
-`;
+` as const;
 
 const ACCEPT_FULFILLMENT_REQUEST = `#graphql
   mutation AcceptFulfillmentRequest($id: ID!, $message: String) {
@@ -101,7 +111,7 @@ const ACCEPT_FULFILLMENT_REQUEST = `#graphql
       }
     }
   }
-`;
+` as const;
 
 const REJECT_FULFILLMENT_REQUEST = `#graphql
   mutation RejectFulfillmentRequest($id: ID!, $message: String) {
@@ -117,7 +127,7 @@ const REJECT_FULFILLMENT_REQUEST = `#graphql
       }
     }
   }
-`;
+` as const;
 
 const ACCEPT_CANCELLATION_REQUEST = `#graphql
   mutation AcceptCancellationRequest($id: ID!, $message: String) {
@@ -133,7 +143,7 @@ const ACCEPT_CANCELLATION_REQUEST = `#graphql
       }
     }
   }
-`;
+` as const;
 
 const REJECT_CANCELLATION_REQUEST = `#graphql
   mutation RejectCancellationRequest($id: ID!, $message: String) {
@@ -149,7 +159,7 @@ const REJECT_CANCELLATION_REQUEST = `#graphql
       }
     }
   }
-`;
+` as const;
 
 const CREATE_FULFILLMENT = `#graphql
   mutation CreateFulfillment($fulfillment: FulfillmentV2Input!) {
@@ -165,7 +175,7 @@ const CREATE_FULFILLMENT = `#graphql
       }
     }
   }
-`;
+` as const;
 
 const UPDATE_TRACKING_INFO = `#graphql
   mutation UpdateTrackingInfo(
@@ -187,14 +197,16 @@ const UPDATE_TRACKING_INFO = `#graphql
       }
     }
   }
-`;
+` as const;
 
-interface AssignedFulfillmentOrdersData {
-  readonly shop: {
-    readonly assignedFulfillmentOrders: {
-      readonly nodes: readonly AssignedFulfillmentOrder[];
-    };
-  };
+function requirePayload<TPayload>(
+  payload: TPayload | null | undefined,
+  operationName: string,
+): TPayload {
+  if (!payload) {
+    throw new Error(`Shopify API Error: ${operationName} payload is empty`);
+  }
+  return payload;
 }
 
 export async function getAssignedFulfillmentOrders({
@@ -206,12 +218,12 @@ export async function getAssignedFulfillmentOrders({
   readonly credentials: ShopifyCredentials;
   readonly status: FulfillmentOrderAssignmentStatus;
   readonly merchantRequestKind: FulfillmentOrderMerchantRequestKind;
-  readonly locationIds?: readonly string[];
+  readonly locationIds?: GetAssignedFulfillmentOrdersQueryVariables["locationIds"];
 }): Promise<readonly AssignedFulfillmentOrder[]> {
-  const data = await requestShopifyAdmin<AssignedFulfillmentOrdersData>({
+  const data: GetAssignedFulfillmentOrdersQuery = await requestShopifyAdmin({
     credentials,
     query: GET_ASSIGNED_FULFILLMENT_ORDERS,
-    variables: { status, requestKind: merchantRequestKind, locationIds },
+    options: { variables: { status, requestKind: merchantRequestKind, locationIds } },
   });
   return data.shop.assignedFulfillmentOrders.nodes;
 }
@@ -225,14 +237,15 @@ export async function acceptFulfillmentRequest({
   readonly fulfillmentOrderId: string;
   readonly message?: string;
 }): Promise<FulfillmentOrderActionPayload> {
-  const data = await requestShopifyAdmin<{
-    readonly fulfillmentOrderAcceptFulfillmentRequest: FulfillmentOrderActionPayload;
-  }>({
+  const data: AcceptFulfillmentRequestMutation = await requestShopifyAdmin({
     credentials,
     query: ACCEPT_FULFILLMENT_REQUEST,
-    variables: { id: fulfillmentOrderId, message },
+    options: { variables: { id: fulfillmentOrderId, message } },
   });
-  return data.fulfillmentOrderAcceptFulfillmentRequest;
+  return requirePayload(
+    data.fulfillmentOrderAcceptFulfillmentRequest,
+    "fulfillmentOrderAcceptFulfillmentRequest",
+  );
 }
 
 export async function rejectFulfillmentRequest({
@@ -244,14 +257,15 @@ export async function rejectFulfillmentRequest({
   readonly fulfillmentOrderId: string;
   readonly message?: string;
 }): Promise<FulfillmentOrderActionPayload> {
-  const data = await requestShopifyAdmin<{
-    readonly fulfillmentOrderRejectFulfillmentRequest: FulfillmentOrderActionPayload;
-  }>({
+  const data: RejectFulfillmentRequestMutation = await requestShopifyAdmin({
     credentials,
     query: REJECT_FULFILLMENT_REQUEST,
-    variables: { id: fulfillmentOrderId, message },
+    options: { variables: { id: fulfillmentOrderId, message } },
   });
-  return data.fulfillmentOrderRejectFulfillmentRequest;
+  return requirePayload(
+    data.fulfillmentOrderRejectFulfillmentRequest,
+    "fulfillmentOrderRejectFulfillmentRequest",
+  );
 }
 
 export async function acceptCancellationRequest({
@@ -263,14 +277,15 @@ export async function acceptCancellationRequest({
   readonly fulfillmentOrderId: string;
   readonly message?: string;
 }): Promise<FulfillmentOrderActionPayload> {
-  const data = await requestShopifyAdmin<{
-    readonly fulfillmentOrderAcceptCancellationRequest: FulfillmentOrderActionPayload;
-  }>({
+  const data: AcceptCancellationRequestMutation = await requestShopifyAdmin({
     credentials,
     query: ACCEPT_CANCELLATION_REQUEST,
-    variables: { id: fulfillmentOrderId, message },
+    options: { variables: { id: fulfillmentOrderId, message } },
   });
-  return data.fulfillmentOrderAcceptCancellationRequest;
+  return requirePayload(
+    data.fulfillmentOrderAcceptCancellationRequest,
+    "fulfillmentOrderAcceptCancellationRequest",
+  );
 }
 
 export async function rejectCancellationRequest({
@@ -282,14 +297,15 @@ export async function rejectCancellationRequest({
   readonly fulfillmentOrderId: string;
   readonly message?: string;
 }): Promise<FulfillmentOrderActionPayload> {
-  const data = await requestShopifyAdmin<{
-    readonly fulfillmentOrderRejectCancellationRequest: FulfillmentOrderActionPayload;
-  }>({
+  const data: RejectCancellationRequestMutation = await requestShopifyAdmin({
     credentials,
     query: REJECT_CANCELLATION_REQUEST,
-    variables: { id: fulfillmentOrderId, message },
+    options: { variables: { id: fulfillmentOrderId, message } },
   });
-  return data.fulfillmentOrderRejectCancellationRequest;
+  return requirePayload(
+    data.fulfillmentOrderRejectCancellationRequest,
+    "fulfillmentOrderRejectCancellationRequest",
+  );
 }
 
 export async function createFulfillment({
@@ -299,18 +315,18 @@ export async function createFulfillment({
   readonly credentials: ShopifyCredentials;
   readonly fulfillmentOrderId: string;
 }): Promise<FulfillmentCreatePayload> {
-  const data = await requestShopifyAdmin<{
-    readonly fulfillmentCreateV2: FulfillmentCreatePayload;
-  }>({
+  const data: CreateFulfillmentMutation = await requestShopifyAdmin({
     credentials,
     query: CREATE_FULFILLMENT,
-    variables: {
-      fulfillment: {
-        lineItemsByFulfillmentOrder: [{ fulfillmentOrderId }],
+    options: {
+      variables: {
+        fulfillment: {
+          lineItemsByFulfillmentOrder: [{ fulfillmentOrderId }],
+        },
       },
     },
   });
-  return data.fulfillmentCreateV2;
+  return requirePayload(data.fulfillmentCreateV2, "fulfillmentCreateV2");
 }
 
 export async function updateTrackingInfo({
@@ -324,20 +340,23 @@ export async function updateTrackingInfo({
   readonly trackingInfo: FulfillmentTrackingInfo;
   readonly notifyCustomer?: boolean;
 }): Promise<FulfillmentTrackingInfoPayload> {
-  const data = await requestShopifyAdmin<{
-    readonly fulfillmentTrackingInfoUpdateV2: FulfillmentTrackingInfoPayload;
-  }>({
+  const data: UpdateTrackingInfoMutation = await requestShopifyAdmin({
     credentials,
     query: UPDATE_TRACKING_INFO,
-    variables: {
-      fulfillmentId,
-      trackingInfoInput: {
-        number: trackingInfo.number,
-        url: trackingInfo.url,
-        company: trackingInfo.company,
+    options: {
+      variables: {
+        fulfillmentId,
+        trackingInfoInput: {
+          number: trackingInfo.number,
+          url: trackingInfo.url,
+          company: trackingInfo.company,
+        },
+        notifyCustomer,
       },
-      notifyCustomer,
     },
   });
-  return data.fulfillmentTrackingInfoUpdateV2;
+  return requirePayload(
+    data.fulfillmentTrackingInfoUpdateV2,
+    "fulfillmentTrackingInfoUpdateV2",
+  );
 }
