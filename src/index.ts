@@ -1,0 +1,26 @@
+export {
+  acceptCancellationRequest,
+  acceptFulfillmentRequest,
+  createFulfillment,
+  getAssignedFulfillmentOrders,
+  rejectCancellationRequest,
+  rejectFulfillmentRequest,
+  updateTrackingInfo,
+} from "./fulfillment";
+export type {
+  AssignedFulfillmentOrder,
+  FulfillmentCreatePayload,
+  FulfillmentOrderActionPayload,
+  FulfillmentOrderAssignmentStatus,
+  FulfillmentOrderDestination,
+  FulfillmentOrderLineItem,
+  FulfillmentOrderMerchantRequest,
+  FulfillmentOrderMerchantRequestKind,
+  FulfillmentOrderOrder,
+  FulfillmentTrackingInfo,
+  FulfillmentTrackingInfoPayload,
+  OrderLineItem,
+  OrderShippingAddress,
+  ShopifyCredentials,
+  ShopifyUserError,
+} from "./types";
