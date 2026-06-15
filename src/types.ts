@@ -33,8 +33,7 @@ export type FulfillmentOrderMerchantRequest =
 
 export type FulfillmentOrderOrder = AssignedFulfillmentOrder["order"];
 
-export type OrderLineItem =
-  FulfillmentOrderOrder["lineItems"]["nodes"][number];
+export type OrderLineItem = FulfillmentOrderOrder["lineItems"]["nodes"][number];
 
 export type OrderShippingAddress = NonNullable<
   FulfillmentOrderOrder["shippingAddress"]
@@ -47,7 +46,8 @@ export type FulfillmentOrderActionPayload = NonNullable<
   | RejectCancellationRequestMutation["fulfillmentOrderRejectCancellationRequest"]
 >;
 
-export type ShopifyUserError = FulfillmentOrderActionPayload["userErrors"][number];
+export type ShopifyUserError =
+  FulfillmentOrderActionPayload["userErrors"][number];
 
 export type FulfillmentCreatePayload = NonNullable<
   CreateFulfillmentMutation["fulfillmentCreateV2"]
@@ -62,7 +62,7 @@ export type FulfillmentTrackingInfo = Pick<
   "company" | "number" | "url"
 >;
 
-export type {
+export {
   FulfillmentOrderAssignmentStatus,
   FulfillmentOrderMerchantRequestKind,
 };
