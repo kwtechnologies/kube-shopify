@@ -241,24 +241,25 @@ export type AbandonedCheckoutLineItemParentRelationship = {
 };
 
 /** The set of valid sort keys for the AbandonedCheckout query. */
-export enum AbandonedCheckoutSortKeys {
+export const AbandonedCheckoutSortKeys = {
   /** Sort by the `checkout_id` value. */
-  CheckoutId = 'CHECKOUT_ID',
+  CheckoutId: 'CHECKOUT_ID',
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `customer_name` value. */
-  CustomerName = 'CUSTOMER_NAME',
+  CustomerName: 'CUSTOMER_NAME',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /**
    * Sort by relevance to the search terms when the `query` parameter is specified on the connection.
    * Don't use this sort key when no search query is specified.
    */
-  Relevance = 'RELEVANCE',
+  Relevance: 'RELEVANCE',
   /** Sort by the `total_price` value. */
-  TotalPrice = 'TOTAL_PRICE'
-}
+  TotalPrice: 'TOTAL_PRICE'
+} as const;
 
+export type AbandonedCheckoutSortKeys = typeof AbandonedCheckoutSortKeys[keyof typeof AbandonedCheckoutSortKeys];
 /**
  * Tracks a [customer](https://shopify.dev/docs/api/admin-graphql/latest/objects/Customer)'s incomplete shopping journey, whether they abandoned while browsing [products](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product), adding items to cart, or during checkout. Provides data about the customer's behavior and products they interacted with.
  *
@@ -349,35 +350,38 @@ export type AbandonmentProductsViewedArgs = {
 };
 
 /** Specifies the abandonment type. */
-export enum AbandonmentAbandonmentType {
+export const AbandonmentAbandonmentType = {
   /** The abandonment event is an abandoned browse. */
-  Browse = 'BROWSE',
+  Browse: 'BROWSE',
   /** The abandonment event is an abandoned cart. */
-  Cart = 'CART',
+  Cart: 'CART',
   /** The abandonment event is an abandoned checkout. */
-  Checkout = 'CHECKOUT'
-}
+  Checkout: 'CHECKOUT'
+} as const;
 
+export type AbandonmentAbandonmentType = typeof AbandonmentAbandonmentType[keyof typeof AbandonmentAbandonmentType];
 /** Specifies the delivery state of a marketing activity. */
-export enum AbandonmentDeliveryState {
+export const AbandonmentDeliveryState = {
   /** The marketing activity action has not yet been sent. */
-  NotSent = 'NOT_SENT',
+  NotSent: 'NOT_SENT',
   /** The marketing activity action has been scheduled for later delivery. */
-  Scheduled = 'SCHEDULED',
+  Scheduled: 'SCHEDULED',
   /** The marketing activity action has been sent. */
-  Sent = 'SENT'
-}
+  Sent: 'SENT'
+} as const;
 
+export type AbandonmentDeliveryState = typeof AbandonmentDeliveryState[keyof typeof AbandonmentDeliveryState];
 /** Specifies the email state. */
-export enum AbandonmentEmailState {
+export const AbandonmentEmailState = {
   /** The email has not yet been sent. */
-  NotSent = 'NOT_SENT',
+  NotSent: 'NOT_SENT',
   /** The email has been scheduled for later delivery. */
-  Scheduled = 'SCHEDULED',
+  Scheduled: 'SCHEDULED',
   /** The email has been sent. */
-  Sent = 'SENT'
-}
+  Sent: 'SENT'
+} as const;
 
+export type AbandonmentEmailState = typeof AbandonmentEmailState[keyof typeof AbandonmentEmailState];
 /** Return type for `abandonmentEmailStateUpdate` mutation. */
 export type AbandonmentEmailStateUpdatePayload = {
   __typename?: 'AbandonmentEmailStateUpdatePayload';
@@ -399,11 +403,12 @@ export type AbandonmentEmailStateUpdateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `AbandonmentEmailStateUpdateUserError`. */
-export enum AbandonmentEmailStateUpdateUserErrorCode {
+export const AbandonmentEmailStateUpdateUserErrorCode = {
   /** Unable to find an Abandonment for the provided ID. */
-  AbandonmentNotFound = 'ABANDONMENT_NOT_FOUND'
-}
+  AbandonmentNotFound: 'ABANDONMENT_NOT_FOUND'
+} as const;
 
+export type AbandonmentEmailStateUpdateUserErrorCode = typeof AbandonmentEmailStateUpdateUserErrorCode[keyof typeof AbandonmentEmailStateUpdateUserErrorCode];
 /** Return type for `abandonmentUpdateActivitiesDeliveryStatuses` mutation. */
 export type AbandonmentUpdateActivitiesDeliveryStatusesPayload = {
   __typename?: 'AbandonmentUpdateActivitiesDeliveryStatusesPayload';
@@ -425,15 +430,16 @@ export type AbandonmentUpdateActivitiesDeliveryStatusesUserError = DisplayableEr
 };
 
 /** Possible error codes that can be returned by `AbandonmentUpdateActivitiesDeliveryStatusesUserError`. */
-export enum AbandonmentUpdateActivitiesDeliveryStatusesUserErrorCode {
+export const AbandonmentUpdateActivitiesDeliveryStatusesUserErrorCode = {
   /** Unable to find an Abandonment for the provided ID. */
-  AbandonmentNotFound = 'ABANDONMENT_NOT_FOUND',
+  AbandonmentNotFound: 'ABANDONMENT_NOT_FOUND',
   /** Unable to find delivery status info for the provided ID. */
-  DeliveryStatusInfoNotFound = 'DELIVERY_STATUS_INFO_NOT_FOUND',
+  DeliveryStatusInfoNotFound: 'DELIVERY_STATUS_INFO_NOT_FOUND',
   /** Unable to find a marketing activity for the provided ID. */
-  MarketingActivityNotFound = 'MARKETING_ACTIVITY_NOT_FOUND'
-}
+  MarketingActivityNotFound: 'MARKETING_ACTIVITY_NOT_FOUND'
+} as const;
 
+export type AbandonmentUpdateActivitiesDeliveryStatusesUserErrorCode = typeof AbandonmentUpdateActivitiesDeliveryStatusesUserErrorCode[keyof typeof AbandonmentUpdateActivitiesDeliveryStatusesUserErrorCode];
 /**
  * A permission that controls access to [GraphQL Admin API](https://shopify.dev/docs/api/usage/access-scopes#authenticated-access-scopes) or [Storefront API](https://shopify.dev/docs/api/usage/access-scopes#unauthenticated-access-scopes) types. Each scope defines what data an [`App`](https://shopify.dev/docs/api/admin-graphql/latest/objects/App) can read or write, following the format `{action}_{resource}` where action is typically "read" or "write".
  *
@@ -448,25 +454,26 @@ export type AccessScope = {
 };
 
 /** Possible account types that a staff member can have. */
-export enum AccountType {
+export const AccountType = {
   /** The account of a partner who collaborates with the merchant. */
-  Collaborator = 'COLLABORATOR',
+  Collaborator: 'COLLABORATOR',
   /** The account of a partner collaborator team member. */
-  CollaboratorTeamMember = 'COLLABORATOR_TEAM_MEMBER',
+  CollaboratorTeamMember: 'COLLABORATOR_TEAM_MEMBER',
   /** The user has not yet accepted the invitation to create an account. */
-  Invited = 'INVITED',
+  Invited: 'INVITED',
   /** The user has not yet accepted the invitation to become the store owner. */
-  InvitedStoreOwner = 'INVITED_STORE_OWNER',
+  InvitedStoreOwner: 'INVITED_STORE_OWNER',
   /** The account can access the Shopify admin. */
-  Regular = 'REGULAR',
+  Regular: 'REGULAR',
   /** The admin has not yet accepted the request to create a collaborator account. */
-  Requested = 'REQUESTED',
+  Requested: 'REQUESTED',
   /** The account cannot access the Shopify admin. */
-  Restricted = 'RESTRICTED',
+  Restricted: 'RESTRICTED',
   /** The account can be signed into via a SAML provider. */
-  Saml = 'SAML'
-}
+  Saml: 'SAML'
+} as const;
 
+export type AccountType = typeof AccountType[keyof typeof AccountType];
 /** Represents an operation publishing all products to a publication. */
 export type AddAllProductsOperation = Node & ResourceOperation & {
   __typename?: 'AddAllProductsOperation';
@@ -546,13 +553,14 @@ export type AdjustmentSale = Sale & {
 };
 
 /** The set of valid sort keys for the Adjustments query. */
-export enum AdjustmentsSortKeys {
+export const AdjustmentsSortKeys = {
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `time` value. */
-  Time = 'TIME'
-}
+  Time: 'TIME'
+} as const;
 
+export type AdjustmentsSortKeys = typeof AdjustmentsSortKeys[keyof typeof AdjustmentsSortKeys];
 /**
  * Represents a discount configuration that applies to all items in a customer's cart without restriction. This object enables store-wide promotions that affect every product equally.
  *
@@ -779,17 +787,18 @@ export type AppCreditEdge = {
 };
 
 /** Possible types of app developer. */
-export enum AppDeveloperType {
+export const AppDeveloperType = {
   /** Indicates the app developer works directly for a Merchant. */
-  Merchant = 'MERCHANT',
+  Merchant: 'MERCHANT',
   /** Indicates the app developer is a Partner. */
-  Partner = 'PARTNER',
+  Partner: 'PARTNER',
   /** Indicates the app developer is Shopify. */
-  Shopify = 'SHOPIFY',
+  Shopify: 'SHOPIFY',
   /** Indicates the app developer is unknown. It is not categorized as any of the other developer types. */
-  Unknown = 'UNKNOWN'
-}
+  Unknown: 'UNKNOWN'
+} as const;
 
+export type AppDeveloperType = typeof AppDeveloperType[keyof typeof AppDeveloperType];
 /**
  * The details about the app extension that's providing the
  * [discount type](https://help.shopify.com/manual/discounts/discount-types).
@@ -1049,13 +1058,14 @@ export type AppInstallationRevenueAttributionRecordsArgs = {
  * The possible categories of an app installation, based on their purpose
  * or the environment they can run in.
  */
-export enum AppInstallationCategory {
+export const AppInstallationCategory = {
   /** Apps that serve as channels through which sales are made, such as the online store. */
-  Channel = 'CHANNEL',
+  Channel: 'CHANNEL',
   /** Apps that can be used in the POS mobile client. */
-  PosEmbedded = 'POS_EMBEDDED'
-}
+  PosEmbedded: 'POS_EMBEDDED'
+} as const;
 
+export type AppInstallationCategory = typeof AppInstallationCategory[keyof typeof AppInstallationCategory];
 /** An auto-generated type for paginating through multiple AppInstallations. */
 export type AppInstallationConnection = {
   __typename?: 'AppInstallationConnection';
@@ -1077,21 +1087,23 @@ export type AppInstallationEdge = {
 };
 
 /** The levels of privacy of an app installation. */
-export enum AppInstallationPrivacy {
-  Private = 'PRIVATE',
-  Public = 'PUBLIC'
-}
+export const AppInstallationPrivacy = {
+  Private: 'PRIVATE',
+  Public: 'PUBLIC'
+} as const;
 
+export type AppInstallationPrivacy = typeof AppInstallationPrivacy[keyof typeof AppInstallationPrivacy];
 /** The set of valid sort keys for the AppInstallation query. */
-export enum AppInstallationSortKeys {
+export const AppInstallationSortKeys = {
   /** Sort by the `app_title` value. */
-  AppTitle = 'APP_TITLE',
+  AppTitle: 'APP_TITLE',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `installed_at` value. */
-  InstalledAt = 'INSTALLED_AT'
-}
+  InstalledAt: 'INSTALLED_AT'
+} as const;
 
+export type AppInstallationSortKeys = typeof AppInstallationSortKeys[keyof typeof AppInstallationSortKeys];
 /**
  * The pricing model for the app subscription.
  * The pricing model input can be either `appRecurringPricingDetails` or `appUsagePricingDetails`.
@@ -1123,25 +1135,27 @@ export type AppPlanV2 = {
 export type AppPricingDetails = AppRecurringPricing | AppUsagePricing;
 
 /** The frequency at which the shop is billed for an app subscription. */
-export enum AppPricingInterval {
+export const AppPricingInterval = {
   /** The app subscription bills the shop annually. */
-  Annual = 'ANNUAL',
+  Annual: 'ANNUAL',
   /** The app subscription bills the shop every 30 days. */
-  Every_30Days = 'EVERY_30_DAYS'
-}
+  Every_30Days: 'EVERY_30_DAYS'
+} as const;
 
+export type AppPricingInterval = typeof AppPricingInterval[keyof typeof AppPricingInterval];
 /** The public-facing category for an app. */
-export enum AppPublicCategory {
+export const AppPublicCategory = {
   /** The app's public category is [custom](https://shopify.dev/apps/distribution#capabilities-and-requirements). */
-  Custom = 'CUSTOM',
+  Custom: 'CUSTOM',
   /** The app's public category is other. An app is in this category if it's not classified under any of the other app types (private, public, or custom). */
-  Other = 'OTHER',
+  Other: 'OTHER',
   /** The app's public category is [private](https://shopify.dev/apps/distribution#deprecated-app-types). */
-  Private = 'PRIVATE',
+  Private: 'PRIVATE',
   /** The app's public category is [public](https://shopify.dev/apps/distribution#capabilities-and-requirements). */
-  Public = 'PUBLIC'
-}
+  Public: 'PUBLIC'
+} as const;
 
+export type AppPublicCategory = typeof AppPublicCategory[keyof typeof AppPublicCategory];
 /** Services and features purchased once by the store. */
 export type AppPurchase = {
   /** The date and time when the app purchase occurred. */
@@ -1235,22 +1249,20 @@ export type AppPurchaseOneTimeEdge = {
  * Purchases start as `pending` and can change to: `active`, `declined`, `expired`. After a purchase changes, it
  * remains in that final state.
  */
-export enum AppPurchaseStatus {
-  /**
-   * The app purchase has been approved by the merchant and is ready to be activated by the app. App purchases created through the GraphQL Admin API are activated upon approval.
-   * @deprecated When a merchant accepts an app purchase, the status immediately changes from `pending` to `active`.
-   */
-  Accepted = 'ACCEPTED',
+export const AppPurchaseStatus = {
+  /** The app purchase has been approved by the merchant and is ready to be activated by the app. App purchases created through the GraphQL Admin API are activated upon approval. */
+  Accepted: 'ACCEPTED',
   /** The app purchase was approved by the merchant and has been activated by the app. Active app purchases are charged to the merchant and are paid out to the partner. */
-  Active = 'ACTIVE',
+  Active: 'ACTIVE',
   /** The app purchase was declined by the merchant. */
-  Declined = 'DECLINED',
+  Declined: 'DECLINED',
   /** The app purchase was not accepted within two days of being created. */
-  Expired = 'EXPIRED',
+  Expired: 'EXPIRED',
   /** The app purchase is pending approval by the merchant. */
-  Pending = 'PENDING'
-}
+  Pending: 'PENDING'
+} as const;
 
+export type AppPurchaseStatus = typeof AppPurchaseStatus[keyof typeof AppPurchaseStatus];
 /**
  * The pricing information about a subscription app.
  * The object contains an interval (the frequency at which the shop is billed for an app subscription) and
@@ -1340,25 +1352,27 @@ export type AppRevenueAttributionRecordEdge = {
 };
 
 /** The set of valid sort keys for the AppRevenueAttributionRecord query. */
-export enum AppRevenueAttributionRecordSortKeys {
+export const AppRevenueAttributionRecordSortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `id` value. */
-  Id = 'ID'
-}
+  Id: 'ID'
+} as const;
 
+export type AppRevenueAttributionRecordSortKeys = typeof AppRevenueAttributionRecordSortKeys[keyof typeof AppRevenueAttributionRecordSortKeys];
 /** Represents the billing types of revenue attribution. */
-export enum AppRevenueAttributionType {
+export const AppRevenueAttributionType = {
   /** App purchase related revenue collection. */
-  ApplicationPurchase = 'APPLICATION_PURCHASE',
+  ApplicationPurchase: 'APPLICATION_PURCHASE',
   /** App subscription revenue collection. */
-  ApplicationSubscription = 'APPLICATION_SUBSCRIPTION',
+  ApplicationSubscription: 'APPLICATION_SUBSCRIPTION',
   /** App usage-based revenue collection. */
-  ApplicationUsage = 'APPLICATION_USAGE',
+  ApplicationUsage: 'APPLICATION_USAGE',
   /** Other app revenue collection type. */
-  Other = 'OTHER'
-}
+  Other: 'OTHER'
+} as const;
 
+export type AppRevenueAttributionType = typeof AppRevenueAttributionType[keyof typeof AppRevenueAttributionType];
 /** Represents an error that happens while revoking a granted scope. */
 export type AppRevokeAccessScopesAppRevokeScopeError = DisplayableError & {
   __typename?: 'AppRevokeAccessScopesAppRevokeScopeError';
@@ -1371,23 +1385,24 @@ export type AppRevokeAccessScopesAppRevokeScopeError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `AppRevokeAccessScopesAppRevokeScopeError`. */
-export enum AppRevokeAccessScopesAppRevokeScopeErrorCode {
+export const AppRevokeAccessScopesAppRevokeScopeErrorCode = {
   /** The application cannot be found. */
-  ApplicationCannotBeFound = 'APPLICATION_CANNOT_BE_FOUND',
+  ApplicationCannotBeFound: 'APPLICATION_CANNOT_BE_FOUND',
   /** App is not installed on shop. */
-  AppNotInstalled = 'APP_NOT_INSTALLED',
+  AppNotInstalled: 'APP_NOT_INSTALLED',
   /** Already granted implied scopes cannot be revoked. */
-  CannotRevokeImpliedScopes = 'CANNOT_REVOKE_IMPLIED_SCOPES',
+  CannotRevokeImpliedScopes: 'CANNOT_REVOKE_IMPLIED_SCOPES',
   /** Required scopes cannot be revoked. */
-  CannotRevokeRequiredScopes = 'CANNOT_REVOKE_REQUIRED_SCOPES',
+  CannotRevokeRequiredScopes: 'CANNOT_REVOKE_REQUIRED_SCOPES',
   /** Cannot revoke optional scopes that haven't been declared. */
-  CannotRevokeUndeclaredScopes = 'CANNOT_REVOKE_UNDECLARED_SCOPES',
+  CannotRevokeUndeclaredScopes: 'CANNOT_REVOKE_UNDECLARED_SCOPES',
   /** No app found on the access token. */
-  MissingSourceApp = 'MISSING_SOURCE_APP',
+  MissingSourceApp: 'MISSING_SOURCE_APP',
   /** The requested list of scopes to revoke includes invalid handles. */
-  UnknownScopes = 'UNKNOWN_SCOPES'
-}
+  UnknownScopes: 'UNKNOWN_SCOPES'
+} as const;
 
+export type AppRevokeAccessScopesAppRevokeScopeErrorCode = typeof AppRevokeAccessScopesAppRevokeScopeErrorCode[keyof typeof AppRevokeAccessScopesAppRevokeScopeErrorCode];
 /** Return type for `appRevokeAccessScopes` mutation. */
 export type AppRevokeAccessScopesPayload = {
   __typename?: 'AppRevokeAccessScopesPayload';
@@ -1586,11 +1601,11 @@ export type AppSubscriptionLineItemUpdatePayload = {
 };
 
 /** The replacement behavior when creating an app subscription for a merchant with an already existing app subscription. */
-export enum AppSubscriptionReplacementBehavior {
+export const AppSubscriptionReplacementBehavior = {
   /** Cancels the merchant's current app subscription immediately and replaces it with the newly created app subscription. */
-  ApplyImmediately = 'APPLY_IMMEDIATELY',
+  ApplyImmediately: 'APPLY_IMMEDIATELY',
   /** Defers canceling the merchant's current app subscription and applying the newly created app subscription until the start of the next billing cycle. This value is ignored if the new app subscription is using a different currency than the current app subscription, in which case the new app subscription is applied immediately. */
-  ApplyOnNextBillingCycle = 'APPLY_ON_NEXT_BILLING_CYCLE',
+  ApplyOnNextBillingCycle: 'APPLY_ON_NEXT_BILLING_CYCLE',
   /**
    * Cancels the merchant's current app subscription immediately and replaces it with the newly created app subscription, with the exception of
    * the following scenarios where replacing the current app subscription will be deferred until the start of the next billing cycle.
@@ -1598,38 +1613,38 @@ export enum AppSubscriptionReplacementBehavior {
    * 2) The current app subscription is annual and the newly created app subscription is monthly and using the same currency.
    * 3) The current app subscription and the newly created app subscription are identical except for the `discount` value.
    */
-  Standard = 'STANDARD'
-}
+  Standard: 'STANDARD'
+} as const;
 
+export type AppSubscriptionReplacementBehavior = typeof AppSubscriptionReplacementBehavior[keyof typeof AppSubscriptionReplacementBehavior];
 /** The set of valid sort keys for the AppSubscription query. */
-export enum AppSubscriptionSortKeys {
+export const AppSubscriptionSortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `id` value. */
-  Id = 'ID'
-}
+  Id: 'ID'
+} as const;
 
+export type AppSubscriptionSortKeys = typeof AppSubscriptionSortKeys[keyof typeof AppSubscriptionSortKeys];
 /** The status of the app subscription. */
-export enum AppSubscriptionStatus {
-  /**
-   * The app subscription has been approved by the merchant and is ready to be activated by the app.
-   * @deprecated When a merchant approves an app subscription, the status immediately transitions from `pending` to `active`.
-   */
-  Accepted = 'ACCEPTED',
+export const AppSubscriptionStatus = {
+  /** The app subscription has been approved by the merchant and is ready to be activated by the app. */
+  Accepted: 'ACCEPTED',
   /** The app subscription has been approved by the merchant. Active app subscriptions are billed to the shop. After payment, partners receive payouts. */
-  Active = 'ACTIVE',
+  Active: 'ACTIVE',
   /** The app subscription was cancelled by the app. This could be caused by the app being uninstalled, a new app subscription being activated, or a direct cancellation by the app. This is a terminal state. */
-  Cancelled = 'CANCELLED',
+  Cancelled: 'CANCELLED',
   /** The app subscription was declined by the merchant. This is a terminal state. */
-  Declined = 'DECLINED',
+  Declined: 'DECLINED',
   /** The app subscription wasn't approved by the merchant within two days of being created. This is a terminal state. */
-  Expired = 'EXPIRED',
+  Expired: 'EXPIRED',
   /** The app subscription is on hold due to non-payment. The subscription re-activates after payments resume. */
-  Frozen = 'FROZEN',
+  Frozen: 'FROZEN',
   /** The app subscription is pending approval by the merchant. */
-  Pending = 'PENDING'
-}
+  Pending: 'PENDING'
+} as const;
 
+export type AppSubscriptionStatus = typeof AppSubscriptionStatus[keyof typeof AppSubscriptionStatus];
 /** Return type for `appSubscriptionTrialExtend` mutation. */
 export type AppSubscriptionTrialExtendPayload = {
   __typename?: 'AppSubscriptionTrialExtendPayload';
@@ -1651,23 +1666,25 @@ export type AppSubscriptionTrialExtendUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `AppSubscriptionTrialExtendUserError`. */
-export enum AppSubscriptionTrialExtendUserErrorCode {
+export const AppSubscriptionTrialExtendUserErrorCode = {
   /** The app subscription isn't active. */
-  SubscriptionNotActive = 'SUBSCRIPTION_NOT_ACTIVE',
+  SubscriptionNotActive: 'SUBSCRIPTION_NOT_ACTIVE',
   /** The app subscription wasn't found. */
-  SubscriptionNotFound = 'SUBSCRIPTION_NOT_FOUND',
+  SubscriptionNotFound: 'SUBSCRIPTION_NOT_FOUND',
   /** The trial isn't active. */
-  TrialNotActive = 'TRIAL_NOT_ACTIVE'
-}
+  TrialNotActive: 'TRIAL_NOT_ACTIVE'
+} as const;
 
+export type AppSubscriptionTrialExtendUserErrorCode = typeof AppSubscriptionTrialExtendUserErrorCode[keyof typeof AppSubscriptionTrialExtendUserErrorCode];
 /** The set of valid sort keys for the AppTransaction query. */
-export enum AppTransactionSortKeys {
+export const AppTransactionSortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `id` value. */
-  Id = 'ID'
-}
+  Id: 'ID'
+} as const;
 
+export type AppTransactionSortKeys = typeof AppTransactionSortKeys[keyof typeof AppTransactionSortKeys];
 /** Represents an error that happens while uninstalling an app. */
 export type AppUninstallAppUninstallError = DisplayableError & {
   __typename?: 'AppUninstallAppUninstallError';
@@ -1680,17 +1697,18 @@ export type AppUninstallAppUninstallError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `AppUninstallAppUninstallError`. */
-export enum AppUninstallAppUninstallErrorCode {
+export const AppUninstallAppUninstallErrorCode = {
   /** The app cannot be found. */
-  AppNotFound = 'APP_NOT_FOUND',
+  AppNotFound: 'APP_NOT_FOUND',
   /** The app is not installed. */
-  AppNotInstalled = 'APP_NOT_INSTALLED',
+  AppNotInstalled: 'APP_NOT_INSTALLED',
   /** An error occurred while uninstalling the app. */
-  AppUninstallError = 'APP_UNINSTALL_ERROR',
+  AppUninstallError: 'APP_UNINSTALL_ERROR',
   /** User does not have sufficient permissions to uninstall this app. */
-  UserPermissionsInsufficient = 'USER_PERMISSIONS_INSUFFICIENT'
-}
+  UserPermissionsInsufficient: 'USER_PERMISSIONS_INSUFFICIENT'
+} as const;
 
+export type AppUninstallAppUninstallErrorCode = typeof AppUninstallAppUninstallErrorCode[keyof typeof AppUninstallAppUninstallErrorCode];
 /** Return type for `appUninstall` mutation. */
 export type AppUninstallPayload = {
   __typename?: 'AppUninstallPayload';
@@ -1788,13 +1806,14 @@ export type AppUsageRecordEdge = {
 };
 
 /** The set of valid sort keys for the AppUsageRecord query. */
-export enum AppUsageRecordSortKeys {
+export const AppUsageRecordSortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `id` value. */
-  Id = 'ID'
-}
+  Id: 'ID'
+} as const;
 
+export type AppUsageRecordSortKeys = typeof AppUsageRecordSortKeys[keyof typeof AppUsageRecordSortKeys];
 /** The Apple mobile platform application. */
 export type AppleApplication = {
   __typename?: 'AppleApplication';
@@ -2104,37 +2123,38 @@ export type ArticleCreateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `ArticleCreateUserError`. */
-export enum ArticleCreateUserErrorCode {
+export const ArticleCreateUserErrorCode = {
   /** Can't create an article author if both author name and user ID are supplied. */
-  AmbiguousAuthor = 'AMBIGUOUS_AUTHOR',
+  AmbiguousAuthor: 'AMBIGUOUS_AUTHOR',
   /** Can't create a blog from input if a blog ID is supplied. */
-  AmbiguousBlog = 'AMBIGUOUS_BLOG',
+  AmbiguousBlog: 'AMBIGUOUS_BLOG',
   /** Can't create an article if both author name and user ID are blank. */
-  AuthorFieldRequired = 'AUTHOR_FIELD_REQUIRED',
+  AuthorFieldRequired: 'AUTHOR_FIELD_REQUIRED',
   /** User must exist if a user ID is supplied. */
-  AuthorMustExist = 'AUTHOR_MUST_EXIST',
+  AuthorMustExist: 'AUTHOR_MUST_EXIST',
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** Must reference or create a blog when creating an article. */
-  BlogReferenceRequired = 'BLOG_REFERENCE_REQUIRED',
+  BlogReferenceRequired: 'BLOG_REFERENCE_REQUIRED',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** Can’t set isPublished to true and also set a future publish date. */
-  InvalidPublishDate = 'INVALID_PUBLISH_DATE',
+  InvalidPublishDate: 'INVALID_PUBLISH_DATE',
   /** The metafield type is invalid. */
-  InvalidType = 'INVALID_TYPE',
+  InvalidType: 'INVALID_TYPE',
   /** The value is invalid for the metafield type or for the definition options. */
-  InvalidValue = 'INVALID_VALUE',
+  InvalidValue: 'INVALID_VALUE',
   /** The record with the ID used as the input value couldn't be found. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** The input value is already taken. */
-  Taken = 'TAKEN',
+  Taken: 'TAKEN',
   /** The input value is too long. */
-  TooLong = 'TOO_LONG',
+  TooLong: 'TOO_LONG',
   /** Image upload failed. */
-  UploadFailed = 'UPLOAD_FAILED'
-}
+  UploadFailed: 'UPLOAD_FAILED'
+} as const;
 
+export type ArticleCreateUserErrorCode = typeof ArticleCreateUserErrorCode[keyof typeof ArticleCreateUserErrorCode];
 /** Return type for `articleDelete` mutation. */
 export type ArticleDeletePayload = {
   __typename?: 'ArticleDeletePayload';
@@ -2156,11 +2176,12 @@ export type ArticleDeleteUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `ArticleDeleteUserError`. */
-export enum ArticleDeleteUserErrorCode {
+export const ArticleDeleteUserErrorCode = {
   /** The record with the ID used as the input value couldn't be found. */
-  NotFound = 'NOT_FOUND'
-}
+  NotFound: 'NOT_FOUND'
+} as const;
 
+export type ArticleDeleteUserErrorCode = typeof ArticleDeleteUserErrorCode[keyof typeof ArticleDeleteUserErrorCode];
 /** An auto-generated type which holds one Article and a cursor during pagination. */
 export type ArticleEdge = {
   __typename?: 'ArticleEdge';
@@ -2179,29 +2200,31 @@ export type ArticleImageInput = {
 };
 
 /** The set of valid sort keys for the Article query. */
-export enum ArticleSortKeys {
+export const ArticleSortKeys = {
   /** Sort by the `author` value. */
-  Author = 'AUTHOR',
+  Author: 'AUTHOR',
   /** Sort by the `blog_title` value. */
-  BlogTitle = 'BLOG_TITLE',
+  BlogTitle: 'BLOG_TITLE',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `published_at` value. */
-  PublishedAt = 'PUBLISHED_AT',
+  PublishedAt: 'PUBLISHED_AT',
   /** Sort by the `title` value. */
-  Title = 'TITLE',
+  Title: 'TITLE',
   /** Sort by the `updated_at` value. */
-  UpdatedAt = 'UPDATED_AT'
-}
+  UpdatedAt: 'UPDATED_AT'
+} as const;
 
+export type ArticleSortKeys = typeof ArticleSortKeys[keyof typeof ArticleSortKeys];
 /** Possible sort of tags. */
-export enum ArticleTagSort {
+export const ArticleTagSort = {
   /** Sort alphabetically.. */
-  Alphabetical = 'ALPHABETICAL',
+  Alphabetical: 'ALPHABETICAL',
   /** Sort by popularity, starting with the most popular tag. */
-  Popular = 'POPULAR'
-}
+  Popular: 'POPULAR'
+} as const;
 
+export type ArticleTagSort = typeof ArticleTagSort[keyof typeof ArticleTagSort];
 /** The input fields to update an article. */
 export type ArticleUpdateInput = {
   /** The name of the author of the article. */
@@ -2268,33 +2291,34 @@ export type ArticleUpdateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `ArticleUpdateUserError`. */
-export enum ArticleUpdateUserErrorCode {
+export const ArticleUpdateUserErrorCode = {
   /** Can't update an article author if both author name and user ID are supplied. */
-  AmbiguousAuthor = 'AMBIGUOUS_AUTHOR',
+  AmbiguousAuthor: 'AMBIGUOUS_AUTHOR',
   /** Can't create a blog from input if a blog ID is supplied. */
-  AmbiguousBlog = 'AMBIGUOUS_BLOG',
+  AmbiguousBlog: 'AMBIGUOUS_BLOG',
   /** User must exist if a user ID is supplied. */
-  AuthorMustExist = 'AUTHOR_MUST_EXIST',
+  AuthorMustExist: 'AUTHOR_MUST_EXIST',
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** Can’t set isPublished to true and also set a future publish date. */
-  InvalidPublishDate = 'INVALID_PUBLISH_DATE',
+  InvalidPublishDate: 'INVALID_PUBLISH_DATE',
   /** The metafield type is invalid. */
-  InvalidType = 'INVALID_TYPE',
+  InvalidType: 'INVALID_TYPE',
   /** The value is invalid for the metafield type or for the definition options. */
-  InvalidValue = 'INVALID_VALUE',
+  InvalidValue: 'INVALID_VALUE',
   /** The record with the ID used as the input value couldn't be found. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** The input value is already taken. */
-  Taken = 'TAKEN',
+  Taken: 'TAKEN',
   /** The input value is too long. */
-  TooLong = 'TOO_LONG',
+  TooLong: 'TOO_LONG',
   /** Image upload failed. */
-  UploadFailed = 'UPLOAD_FAILED'
-}
+  UploadFailed: 'UPLOAD_FAILED'
+} as const;
 
+export type ArticleUpdateUserErrorCode = typeof ArticleUpdateUserErrorCode[keyof typeof ArticleUpdateUserErrorCode];
 /**
  * A custom property. Attributes are used to store additional information about a Shopify resource, such as
  * products, customers, or orders. Attributes are stored as key-value pairs.
@@ -2321,13 +2345,14 @@ export type AttributeInput = {
 };
 
 /** The intended audience for the order status page. */
-export enum Audience {
+export const Audience = {
   /** Intended for customer notifications. */
-  Customerview = 'CUSTOMERVIEW',
+  Customerview: 'CUSTOMERVIEW',
   /** Intended for merchant wanting to preview the order status page. Should be used immediately after querying. */
-  Merchantview = 'MERCHANTVIEW'
-}
+  Merchantview: 'MERCHANTVIEW'
+} as const;
 
+export type Audience = typeof Audience[keyof typeof Audience];
 /** The input fields for an author. Either the `name` or `user_id` fields can be supplied, but never both. */
 export type AuthorInput = {
   /** The author's full name. */
@@ -2357,13 +2382,14 @@ export type AutomaticDiscountApplication = DiscountApplication & {
 };
 
 /** The set of valid sort keys for the AutomaticDiscount query. */
-export enum AutomaticDiscountSortKeys {
+export const AutomaticDiscountSortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `id` value. */
-  Id = 'ID'
-}
+  Id: 'ID'
+} as const;
 
+export type AutomaticDiscountSortKeys = typeof AutomaticDiscountSortKeys[keyof typeof AutomaticDiscountSortKeys];
 /** Represents an object containing all information for channels available to a shop. */
 export type AvailableChannelDefinitionsByChannel = {
   __typename?: 'AvailableChannelDefinitionsByChannel';
@@ -2389,57 +2415,60 @@ export type BackupRegionUpdatePayload = {
 };
 
 /** The possible types for a badge. */
-export enum BadgeType {
+export const BadgeType = {
   /** This badge has type `attention`. */
-  Attention = 'ATTENTION',
+  Attention: 'ATTENTION',
   /** This badge has type `critical`. */
-  Critical = 'CRITICAL',
+  Critical: 'CRITICAL',
   /** This badge has type `default`. */
-  Default = 'DEFAULT',
+  Default: 'DEFAULT',
   /** This badge has type `info`. */
-  Info = 'INFO',
+  Info: 'INFO',
   /** This badge has type `success`. */
-  Success = 'SUCCESS',
+  Success: 'SUCCESS',
   /** This badge has type `warning`. */
-  Warning = 'WARNING'
-}
+  Warning: 'WARNING'
+} as const;
 
+export type BadgeType = typeof BadgeType[keyof typeof BadgeType];
 /** The set of valid sort keys for the BalanceTransaction query. */
-export enum BalanceTransactionSortKeys {
+export const BalanceTransactionSortKeys = {
   /** Sort by the `amount` value. */
-  Amount = 'AMOUNT',
+  Amount: 'AMOUNT',
   /** Sort by the `fee` value. */
-  Fee = 'FEE',
+  Fee: 'FEE',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `net` value. */
-  Net = 'NET',
+  Net: 'NET',
   /** Sort by the `order_name` value. */
-  OrderName = 'ORDER_NAME',
+  OrderName: 'ORDER_NAME',
   /** Sort by the `payment_method_name` value. */
-  PaymentMethodName = 'PAYMENT_METHOD_NAME',
+  PaymentMethodName: 'PAYMENT_METHOD_NAME',
   /** Sort by the `payout_date` value. */
-  PayoutDate = 'PAYOUT_DATE',
+  PayoutDate: 'PAYOUT_DATE',
   /** Sort by the `payout_status` value. */
-  PayoutStatus = 'PAYOUT_STATUS',
+  PayoutStatus: 'PAYOUT_STATUS',
   /** Sort by the `processed_at` value. */
-  ProcessedAt = 'PROCESSED_AT',
+  ProcessedAt: 'PROCESSED_AT',
   /** Sort by the `transaction_type` value. */
-  TransactionType = 'TRANSACTION_TYPE'
-}
+  TransactionType: 'TRANSACTION_TYPE'
+} as const;
 
+export type BalanceTransactionSortKeys = typeof BalanceTransactionSortKeys[keyof typeof BalanceTransactionSortKeys];
 /** The valid types of actions a user should be able to perform in an financial app. */
-export enum BankingFinanceAppAccess {
+export const BankingFinanceAppAccess = {
   /** Indication that the user has blocked money movement due to MFA disabled. */
-  MoneyMovementBlockedMfa = 'MONEY_MOVEMENT_BLOCKED_MFA',
+  MoneyMovementBlockedMfa: 'MONEY_MOVEMENT_BLOCKED_MFA',
   /** Indication that the user has restricted money movement. */
-  MoneyMovementRestricted = 'MONEY_MOVEMENT_RESTRICTED',
+  MoneyMovementRestricted: 'MONEY_MOVEMENT_RESTRICTED',
   /** Ability to perform actions that moves money. */
-  MoveMoney = 'MOVE_MONEY',
+  MoveMoney: 'MOVE_MONEY',
   /** Read access in the financial app. */
-  ReadAccess = 'READ_ACCESS'
-}
+  ReadAccess: 'READ_ACCESS'
+} as const;
 
+export type BankingFinanceAppAccess = typeof BankingFinanceAppAccess[keyof typeof BankingFinanceAppAccess];
 /** Generic payment details that are related to a transaction. */
 export type BasePaymentDetails = {
   /** The name of payment method used by the buyer. */
@@ -2555,39 +2584,40 @@ export type BillingAttemptUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `BillingAttemptUserError`. */
-export enum BillingAttemptUserErrorCode {
+export const BillingAttemptUserErrorCode = {
   /** Billing cycle charge attempt made more than 24 hours before the billing cycle `billingAttemptExpectedDate`. */
-  BillingCycleChargeBeforeExpectedDate = 'BILLING_CYCLE_CHARGE_BEFORE_EXPECTED_DATE',
+  BillingCycleChargeBeforeExpectedDate: 'BILLING_CYCLE_CHARGE_BEFORE_EXPECTED_DATE',
   /** Billing cycle must not be skipped. */
-  BillingCycleSkipped = 'BILLING_CYCLE_SKIPPED',
+  BillingCycleSkipped: 'BILLING_CYCLE_SKIPPED',
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** Subscription contract does not exist. */
-  ContractNotFound = 'CONTRACT_NOT_FOUND',
+  ContractNotFound: 'CONTRACT_NOT_FOUND',
   /** Subscription contract cannot be billed if paused. */
-  ContractPaused = 'CONTRACT_PAUSED',
+  ContractPaused: 'CONTRACT_PAUSED',
   /** Subscription contract cannot be billed once terminated. */
-  ContractTerminated = 'CONTRACT_TERMINATED',
+  ContractTerminated: 'CONTRACT_TERMINATED',
   /** Subscription contract is under review, origin order is high risk and unfulfilled. */
-  ContractUnderReview = 'CONTRACT_UNDER_REVIEW',
+  ContractUnderReview: 'CONTRACT_UNDER_REVIEW',
   /** Billing cycle selector cannot select billing cycle outside of index range. */
-  CycleIndexOutOfRange = 'CYCLE_INDEX_OUT_OF_RANGE',
+  CycleIndexOutOfRange: 'CYCLE_INDEX_OUT_OF_RANGE',
   /** Billing cycle selector cannot select billing cycle outside of start date range. */
-  CycleStartDateOutOfRange = 'CYCLE_START_DATE_OUT_OF_RANGE',
+  CycleStartDateOutOfRange: 'CYCLE_START_DATE_OUT_OF_RANGE',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** Origin time cannot be before the contract creation time. */
-  OriginTimeBeforeContractCreation = 'ORIGIN_TIME_BEFORE_CONTRACT_CREATION',
+  OriginTimeBeforeContractCreation: 'ORIGIN_TIME_BEFORE_CONTRACT_CREATION',
   /** Origin time needs to be within the selected billing cycle's start and end at date. */
-  OriginTimeOutOfRange = 'ORIGIN_TIME_OUT_OF_RANGE',
+  OriginTimeOutOfRange: 'ORIGIN_TIME_OUT_OF_RANGE',
   /** Failed to process the billing attempt. */
-  ProcessingFailed = 'PROCESSING_FAILED',
+  ProcessingFailed: 'PROCESSING_FAILED',
   /** Billing attempt rate limit exceeded - try later. */
-  Throttled = 'THROTTLED',
+  Throttled: 'THROTTLED',
   /** Billing cycle selector cannot select upcoming billing cycle past limit. */
-  UpcomingCycleLimitExceeded = 'UPCOMING_CYCLE_LIMIT_EXCEEDED'
-}
+  UpcomingCycleLimitExceeded: 'UPCOMING_CYCLE_LIMIT_EXCEEDED'
+} as const;
 
+export type BillingAttemptUserErrorCode = typeof BillingAttemptUserErrorCode[keyof typeof BillingAttemptUserErrorCode];
 /**
  * A blog for publishing articles in the online store. Stores can have multiple blogs to organize content by topic or purpose.
  *
@@ -2793,19 +2823,20 @@ export type BlogCreateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `BlogCreateUserError`. */
-export enum BlogCreateUserErrorCode {
+export const BlogCreateUserErrorCode = {
   /** The input value isn't included in the list. */
-  Inclusion = 'INCLUSION',
+  Inclusion: 'INCLUSION',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The metafield type is invalid. */
-  InvalidType = 'INVALID_TYPE',
+  InvalidType: 'INVALID_TYPE',
   /** The value is invalid for the metafield type or for the definition options. */
-  InvalidValue = 'INVALID_VALUE',
+  InvalidValue: 'INVALID_VALUE',
   /** The input value is too long. */
-  TooLong = 'TOO_LONG'
-}
+  TooLong: 'TOO_LONG'
+} as const;
 
+export type BlogCreateUserErrorCode = typeof BlogCreateUserErrorCode[keyof typeof BlogCreateUserErrorCode];
 /** Return type for `blogDelete` mutation. */
 export type BlogDeletePayload = {
   __typename?: 'BlogDeletePayload';
@@ -2827,11 +2858,12 @@ export type BlogDeleteUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `BlogDeleteUserError`. */
-export enum BlogDeleteUserErrorCode {
+export const BlogDeleteUserErrorCode = {
   /** The record with the ID used as the input value couldn't be found. */
-  NotFound = 'NOT_FOUND'
-}
+  NotFound: 'NOT_FOUND'
+} as const;
 
+export type BlogDeleteUserErrorCode = typeof BlogDeleteUserErrorCode[keyof typeof BlogDeleteUserErrorCode];
 /** An auto-generated type which holds one Blog and a cursor during pagination. */
 export type BlogEdge = {
   __typename?: 'BlogEdge';
@@ -2863,15 +2895,16 @@ export type BlogFeed = {
 };
 
 /** The set of valid sort keys for the Blog query. */
-export enum BlogSortKeys {
+export const BlogSortKeys = {
   /** Sort by the `handle` value. */
-  Handle = 'HANDLE',
+  Handle: 'HANDLE',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `title` value. */
-  Title = 'TITLE'
-}
+  Title: 'TITLE'
+} as const;
 
+export type BlogSortKeys = typeof BlogSortKeys[keyof typeof BlogSortKeys];
 /** The input fields to update a blog. */
 export type BlogUpdateInput = {
   /** Indicates whether readers can post comments to the blog and whether comments are moderated. */
@@ -2920,35 +2953,37 @@ export type BlogUpdateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `BlogUpdateUserError`. */
-export enum BlogUpdateUserErrorCode {
+export const BlogUpdateUserErrorCode = {
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** The input value isn't included in the list. */
-  Inclusion = 'INCLUSION',
+  Inclusion: 'INCLUSION',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The record with the ID used as the input value couldn't be found. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** The input value is too long. */
-  TooLong = 'TOO_LONG'
-}
+  TooLong: 'TOO_LONG'
+} as const;
 
+export type BlogUpdateUserErrorCode = typeof BlogUpdateUserErrorCode[keyof typeof BlogUpdateUserErrorCode];
 /** Possible error codes that can be returned by `BulkMutationUserError`. */
-export enum BulkMutationErrorCode {
+export const BulkMutationErrorCode = {
   /** There was a problem reading the JSONL file. This error might be intermittent, so you can try performing the same query again. */
-  InternalFileServerError = 'INTERNAL_FILE_SERVER_ERROR',
+  InternalFileServerError: 'INTERNAL_FILE_SERVER_ERROR',
   /** The operation did not run because the mutation is invalid. Check your mutation syntax and try again. */
-  InvalidMutation = 'INVALID_MUTATION',
+  InvalidMutation: 'INVALID_MUTATION',
   /** The JSONL file submitted via the `stagedUploadsCreate` mutation is invalid. Update the file and try again. */
-  InvalidStagedUploadFile = 'INVALID_STAGED_UPLOAD_FILE',
+  InvalidStagedUploadFile: 'INVALID_STAGED_UPLOAD_FILE',
   /** Bulk operations limit reached. Please try again later. */
-  LimitReached = 'LIMIT_REACHED',
+  LimitReached: 'LIMIT_REACHED',
   /** The JSONL file could not be found. Try [uploading the file](https://shopify.dev/api/usage/bulk-operations/imports#generate-the-uploaded-url-and-parameters) again, and check that you've entered the URL correctly for the `stagedUploadPath` mutation argument. */
-  NoSuchFile = 'NO_SUCH_FILE',
+  NoSuchFile: 'NO_SUCH_FILE',
   /** The operation did not run because another bulk mutation is already running. [Wait for the operation to finish](https://shopify.dev/api/usage/bulk-operations/imports#wait-for-the-operation-to-finish) before retrying this operation. */
-  OperationInProgress = 'OPERATION_IN_PROGRESS'
-}
+  OperationInProgress: 'OPERATION_IN_PROGRESS'
+} as const;
 
+export type BulkMutationErrorCode = typeof BulkMutationErrorCode[keyof typeof BulkMutationErrorCode];
 /** Represents an error that happens during execution of a bulk mutation. */
 export type BulkMutationUserError = DisplayableError & {
   __typename?: 'BulkMutationUserError';
@@ -3023,25 +3058,26 @@ export type BulkOperationCancelPayload = {
 };
 
 /** Error codes for failed bulk operations. */
-export enum BulkOperationErrorCode {
+export const BulkOperationErrorCode = {
   /**
    * The provided operation `query` returned access denied due to missing
    * [access scopes](https://shopify.dev/api/usage/access-scopes).
    * Review the requested object permissions and execute the query as a normal non-bulk GraphQL request to see more details.
    */
-  AccessDenied = 'ACCESS_DENIED',
+  AccessDenied: 'ACCESS_DENIED',
   /**
    * The operation resulted in partial or incomplete data due to internal server errors during execution.
    * These errors might be intermittent, so you can try performing the same query again.
    */
-  InternalServerError = 'INTERNAL_SERVER_ERROR',
+  InternalServerError: 'INTERNAL_SERVER_ERROR',
   /**
    * The operation resulted in partial or incomplete data due to query timeouts during execution.
    * In some cases, timeouts can be avoided by modifying your `query` to select fewer fields.
    */
-  Timeout = 'TIMEOUT'
-}
+  Timeout: 'TIMEOUT'
+} as const;
 
+export type BulkOperationErrorCode = typeof BulkOperationErrorCode[keyof typeof BulkOperationErrorCode];
 /** Return type for `bulkOperationRunMutation` mutation. */
 export type BulkOperationRunMutationPayload = {
   __typename?: 'BulkOperationRunMutationPayload';
@@ -3061,37 +3097,39 @@ export type BulkOperationRunQueryPayload = {
 };
 
 /** The valid values for the status of a bulk operation. */
-export enum BulkOperationStatus {
+export const BulkOperationStatus = {
   /** The bulk operation has been canceled. */
-  Canceled = 'CANCELED',
+  Canceled: 'CANCELED',
   /**
    * Cancelation has been initiated on the bulk operation. There may be a short delay from when a cancelation
    * starts until the operation is actually canceled.
    */
-  Canceling = 'CANCELING',
+  Canceling: 'CANCELING',
   /** The bulk operation has successfully completed. */
-  Completed = 'COMPLETED',
+  Completed: 'COMPLETED',
   /** The bulk operation has been created. */
-  Created = 'CREATED',
+  Created: 'CREATED',
   /** The bulk operation URL has expired. */
-  Expired = 'EXPIRED',
+  Expired: 'EXPIRED',
   /**
    * The bulk operation has failed. For information on why the operation failed, use
    * [BulkOperation.errorCode](https://shopify.dev/api/admin-graphql/latest/enums/bulkoperationerrorcode).
    */
-  Failed = 'FAILED',
+  Failed: 'FAILED',
   /** The bulk operation is running. */
-  Running = 'RUNNING'
-}
+  Running: 'RUNNING'
+} as const;
 
+export type BulkOperationStatus = typeof BulkOperationStatus[keyof typeof BulkOperationStatus];
 /** The valid values for the bulk operation's type. */
-export enum BulkOperationType {
+export const BulkOperationType = {
   /** The bulk operation is a mutation. */
-  Mutation = 'MUTATION',
+  Mutation: 'MUTATION',
   /** The bulk operation is a query. */
-  Query = 'QUERY'
-}
+  Query: 'QUERY'
+} as const;
 
+export type BulkOperationType = typeof BulkOperationType[keyof typeof BulkOperationType];
 /** An error in the input of a mutation. Mutations return `UserError` objects to indicate validation failures, such as invalid field values or business logic violations, that prevent the operation from completing. */
 export type BulkOperationUserError = DisplayableError & {
   __typename?: 'BulkOperationUserError';
@@ -3104,15 +3142,16 @@ export type BulkOperationUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `BulkOperationUserError`. */
-export enum BulkOperationUserErrorCode {
+export const BulkOperationUserErrorCode = {
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** Bulk operations limit reached. Please try again later. */
-  LimitReached = 'LIMIT_REACHED',
+  LimitReached: 'LIMIT_REACHED',
   /** A bulk operation is already in progress. */
-  OperationInProgress = 'OPERATION_IN_PROGRESS'
-}
+  OperationInProgress: 'OPERATION_IN_PROGRESS'
+} as const;
 
+export type BulkOperationUserErrorCode = typeof BulkOperationUserErrorCode[keyof typeof BulkOperationUserErrorCode];
 /** Return type for `bulkProductResourceFeedbackCreate` mutation. */
 export type BulkProductResourceFeedbackCreatePayload = {
   __typename?: 'BulkProductResourceFeedbackCreatePayload';
@@ -3134,25 +3173,26 @@ export type BulkProductResourceFeedbackCreateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `BulkProductResourceFeedbackCreateUserError`. */
-export enum BulkProductResourceFeedbackCreateUserErrorCode {
+export const BulkProductResourceFeedbackCreateUserErrorCode = {
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The input value should be less than or equal to the maximum value allowed. */
-  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  LessThanOrEqualTo: 'LESS_THAN_OR_EQUAL_TO',
   /** The operation was attempted on too many feedback objects. The maximum number of feedback objects that you can operate on is 50. */
-  MaximumFeedbackLimitExceeded = 'MAXIMUM_FEEDBACK_LIMIT_EXCEEDED',
+  MaximumFeedbackLimitExceeded: 'MAXIMUM_FEEDBACK_LIMIT_EXCEEDED',
   /** The channel was not found or does not belong to this app. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** The feedback for a later version of this resource was already accepted. */
-  OutdatedFeedback = 'OUTDATED_FEEDBACK',
+  OutdatedFeedback: 'OUTDATED_FEEDBACK',
   /** The input value needs to be blank. */
-  Present = 'PRESENT',
+  Present: 'PRESENT',
   /** The product wasn't found or isn't available to the channel. */
-  ProductNotFound = 'PRODUCT_NOT_FOUND'
-}
+  ProductNotFound: 'PRODUCT_NOT_FOUND'
+} as const;
 
+export type BulkProductResourceFeedbackCreateUserErrorCode = typeof BulkProductResourceFeedbackCreateUserErrorCode[keyof typeof BulkProductResourceFeedbackCreateUserErrorCode];
 /** The input fields representing the components of a bundle line item. */
 export type BundlesDraftOrderBundleLineItemComponentInput = {
   /** The quantity of the bundle component. */
@@ -3178,33 +3218,34 @@ export type BundlesFeature = {
 };
 
 /** Possible error codes that can be returned by `BusinessCustomerUserError`. */
-export enum BusinessCustomerErrorCode {
+export const BusinessCustomerErrorCode = {
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** Deleting the resource failed. */
-  FailedToDelete = 'FAILED_TO_DELETE',
+  FailedToDelete: 'FAILED_TO_DELETE',
   /** An internal error occurred. */
-  InternalError = 'INTERNAL_ERROR',
+  InternalError: 'INTERNAL_ERROR',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The input is invalid. */
-  InvalidInput = 'INVALID_INPUT',
+  InvalidInput: 'INVALID_INPUT',
   /** The number of resources exceeded the limit. */
-  LimitReached = 'LIMIT_REACHED',
+  LimitReached: 'LIMIT_REACHED',
   /** The input is empty. */
-  NoInput = 'NO_INPUT',
+  NoInput: 'NO_INPUT',
   /** Missing a required field. */
-  Required = 'REQUIRED',
+  Required: 'REQUIRED',
   /** The resource wasn't found. */
-  ResourceNotFound = 'RESOURCE_NOT_FOUND',
+  ResourceNotFound: 'RESOURCE_NOT_FOUND',
   /** The input value is already taken. */
-  Taken = 'TAKEN',
+  Taken: 'TAKEN',
   /** The field value is too long. */
-  TooLong = 'TOO_LONG',
+  TooLong: 'TOO_LONG',
   /** Unexpected type. */
-  UnexpectedType = 'UNEXPECTED_TYPE'
-}
+  UnexpectedType: 'UNEXPECTED_TYPE'
+} as const;
 
+export type BusinessCustomerErrorCode = typeof BusinessCustomerErrorCode[keyof typeof BusinessCustomerErrorCode];
 /** An error that happens during the execution of a business customer mutation. */
 export type BusinessCustomerUserError = DisplayableError & {
   __typename?: 'BusinessCustomerUserError';
@@ -3948,15 +3989,16 @@ export type CalculatedShippingLine = {
 };
 
 /** Represents the staged status of a CalculatedShippingLine on a CalculatedOrder. */
-export enum CalculatedShippingLineStagedStatus {
+export const CalculatedShippingLineStagedStatus = {
   /** The shipping line was added as part of the current order edit. */
-  Added = 'ADDED',
+  Added: 'ADDED',
   /** The shipping line has no staged changes associated with it. */
-  None = 'NONE',
+  None: 'NONE',
   /** The shipping line was removed as part of the current order edit. */
-  Removed = 'REMOVED'
-}
+  Removed: 'REMOVED'
+} as const;
 
+export type CalculatedShippingLineStagedStatus = typeof CalculatedShippingLineStagedStatus[keyof typeof CalculatedShippingLineStagedStatus];
 /** Credit card payment information captured during a transaction. Includes cardholder details, card metadata, verification response codes, and the [`DigitalWallet`](https://shopify.dev/docs/api/admin-graphql/latest/enums/DigitalWallet#valid-values) when used. */
 export type CardPaymentDetails = BasePaymentDetails & {
   __typename?: 'CardPaymentDetails';
@@ -4003,11 +4045,12 @@ export type CarrierServiceCreateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `CarrierServiceCreateUserError`. */
-export enum CarrierServiceCreateUserErrorCode {
+export const CarrierServiceCreateUserErrorCode = {
   /** Carrier service creation failed. */
-  CarrierServiceCreateFailed = 'CARRIER_SERVICE_CREATE_FAILED'
-}
+  CarrierServiceCreateFailed: 'CARRIER_SERVICE_CREATE_FAILED'
+} as const;
 
+export type CarrierServiceCreateUserErrorCode = typeof CarrierServiceCreateUserErrorCode[keyof typeof CarrierServiceCreateUserErrorCode];
 /** Return type for `carrierServiceDelete` mutation. */
 export type CarrierServiceDeletePayload = {
   __typename?: 'CarrierServiceDeletePayload';
@@ -4029,21 +4072,23 @@ export type CarrierServiceDeleteUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `CarrierServiceDeleteUserError`. */
-export enum CarrierServiceDeleteUserErrorCode {
+export const CarrierServiceDeleteUserErrorCode = {
   /** Carrier service deletion failed. */
-  CarrierServiceDeleteFailed = 'CARRIER_SERVICE_DELETE_FAILED'
-}
+  CarrierServiceDeleteFailed: 'CARRIER_SERVICE_DELETE_FAILED'
+} as const;
 
+export type CarrierServiceDeleteUserErrorCode = typeof CarrierServiceDeleteUserErrorCode[keyof typeof CarrierServiceDeleteUserErrorCode];
 /** The set of valid sort keys for the CarrierService query. */
-export enum CarrierServiceSortKeys {
+export const CarrierServiceSortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `updated_at` value. */
-  UpdatedAt = 'UPDATED_AT'
-}
+  UpdatedAt: 'UPDATED_AT'
+} as const;
 
+export type CarrierServiceSortKeys = typeof CarrierServiceSortKeys[keyof typeof CarrierServiceSortKeys];
 /** Return type for `carrierServiceUpdate` mutation. */
 export type CarrierServiceUpdatePayload = {
   __typename?: 'CarrierServiceUpdatePayload';
@@ -4065,11 +4110,12 @@ export type CarrierServiceUpdateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `CarrierServiceUpdateUserError`. */
-export enum CarrierServiceUpdateUserErrorCode {
+export const CarrierServiceUpdateUserErrorCode = {
   /** Carrier service update failed. */
-  CarrierServiceUpdateFailed = 'CARRIER_SERVICE_UPDATE_FAILED'
-}
+  CarrierServiceUpdateFailed: 'CARRIER_SERVICE_UPDATE_FAILED'
+} as const;
 
+export type CarrierServiceUpdateUserErrorCode = typeof CarrierServiceUpdateUserErrorCode[keyof typeof CarrierServiceUpdateUserErrorCode];
 /**
  * A deployed cart transformation function that actively modifies how products appear and behave in customer carts. Cart transforms enable sophisticated merchandising strategies by programmatically merging, expanding, or updating cart line items based on custom business logic.
  *
@@ -4194,23 +4240,24 @@ export type CartTransformCreateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `CartTransformCreateUserError`. */
-export enum CartTransformCreateUserErrorCode {
+export const CartTransformCreateUserErrorCode = {
   /** A cart transform function already exists for the provided function_id. */
-  FunctionAlreadyRegistered = 'FUNCTION_ALREADY_REGISTERED',
+  FunctionAlreadyRegistered: 'FUNCTION_ALREADY_REGISTERED',
   /** Function does not implement the required interface for this cart_transform function. */
-  FunctionDoesNotImplement = 'FUNCTION_DOES_NOT_IMPLEMENT',
+  FunctionDoesNotImplement: 'FUNCTION_DOES_NOT_IMPLEMENT',
   /** No Shopify Function found for provided function_id. */
-  FunctionNotFound = 'FUNCTION_NOT_FOUND',
+  FunctionNotFound: 'FUNCTION_NOT_FOUND',
   /** Failed to create cart transform due to invalid input. */
-  InputInvalid = 'INPUT_INVALID',
+  InputInvalid: 'INPUT_INVALID',
   /** Could not create or update metafields. */
-  InvalidMetafields = 'INVALID_METAFIELDS',
+  InvalidMetafields: 'INVALID_METAFIELDS',
   /** Either function_id or function_handle must be provided. */
-  MissingFunctionIdentifier = 'MISSING_FUNCTION_IDENTIFIER',
+  MissingFunctionIdentifier: 'MISSING_FUNCTION_IDENTIFIER',
   /** Only one of function_id or function_handle can be provided, not both. */
-  MultipleFunctionIdentifiers = 'MULTIPLE_FUNCTION_IDENTIFIERS'
-}
+  MultipleFunctionIdentifiers: 'MULTIPLE_FUNCTION_IDENTIFIERS'
+} as const;
 
+export type CartTransformCreateUserErrorCode = typeof CartTransformCreateUserErrorCode[keyof typeof CartTransformCreateUserErrorCode];
 /** Return type for `cartTransformDelete` mutation. */
 export type CartTransformDeletePayload = {
   __typename?: 'CartTransformDeletePayload';
@@ -4232,13 +4279,14 @@ export type CartTransformDeleteUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `CartTransformDeleteUserError`. */
-export enum CartTransformDeleteUserErrorCode {
+export const CartTransformDeleteUserErrorCode = {
   /** Could not find cart transform for provided id. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** Unauthorized app scope. */
-  UnauthorizedAppScope = 'UNAUTHORIZED_APP_SCOPE'
-}
+  UnauthorizedAppScope: 'UNAUTHORIZED_APP_SCOPE'
+} as const;
 
+export type CartTransformDeleteUserErrorCode = typeof CartTransformDeleteUserErrorCode[keyof typeof CartTransformDeleteUserErrorCode];
 /** An auto-generated type which holds one CartTransform and a cursor during pagination. */
 export type CartTransformEdge = {
   __typename?: 'CartTransformEdge';
@@ -4417,31 +4465,33 @@ export type CashTrackingSessionEdge = {
 };
 
 /** The set of valid sort keys for the CashTrackingSessionTransactions query. */
-export enum CashTrackingSessionTransactionsSortKeys {
+export const CashTrackingSessionTransactionsSortKeys = {
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `processed_at` value. */
-  ProcessedAt = 'PROCESSED_AT'
-}
+  ProcessedAt: 'PROCESSED_AT'
+} as const;
 
+export type CashTrackingSessionTransactionsSortKeys = typeof CashTrackingSessionTransactionsSortKeys[keyof typeof CashTrackingSessionTransactionsSortKeys];
 /** The set of valid sort keys for the CashTrackingSessions query. */
-export enum CashTrackingSessionsSortKeys {
+export const CashTrackingSessionsSortKeys = {
   /** Sort by the `closing_time_asc` value. */
-  ClosingTimeAsc = 'CLOSING_TIME_ASC',
+  ClosingTimeAsc: 'CLOSING_TIME_ASC',
   /** Sort by the `closing_time_desc` value. */
-  ClosingTimeDesc = 'CLOSING_TIME_DESC',
+  ClosingTimeDesc: 'CLOSING_TIME_DESC',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `opening_time_asc` value. */
-  OpeningTimeAsc = 'OPENING_TIME_ASC',
+  OpeningTimeAsc: 'OPENING_TIME_ASC',
   /** Sort by the `opening_time_desc` value. */
-  OpeningTimeDesc = 'OPENING_TIME_DESC',
+  OpeningTimeDesc: 'OPENING_TIME_DESC',
   /** Sort by the `total_discrepancy_asc` value. */
-  TotalDiscrepancyAsc = 'TOTAL_DISCREPANCY_ASC',
+  TotalDiscrepancyAsc: 'TOTAL_DISCREPANCY_ASC',
   /** Sort by the `total_discrepancy_desc` value. */
-  TotalDiscrepancyDesc = 'TOTAL_DISCREPANCY_DESC'
-}
+  TotalDiscrepancyDesc: 'TOTAL_DISCREPANCY_DESC'
+} as const;
 
+export type CashTrackingSessionsSortKeys = typeof CashTrackingSessionsSortKeys[keyof typeof CashTrackingSessionsSortKeys];
 /**
  * A list of products with publishing and pricing information.
  * A catalog can be associated with a specific context, such as a [`Market`](https://shopify.dev/api/admin-graphql/current/objects/market), [`CompanyLocation`](https://shopify.dev/api/admin-graphql/current/objects/companylocation), or [`App`](https://shopify.dev/api/admin-graphql/current/objects/app).
@@ -4546,42 +4596,45 @@ export type CatalogEdge = {
 };
 
 /** The set of valid sort keys for the Catalog query. */
-export enum CatalogSortKeys {
+export const CatalogSortKeys = {
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /**
    * Sort by relevance to the search terms when the `query` parameter is specified on the connection.
    * Don't use this sort key when no search query is specified.
    */
-  Relevance = 'RELEVANCE',
+  Relevance: 'RELEVANCE',
   /** Sort by the `title` value. */
-  Title = 'TITLE',
+  Title: 'TITLE',
   /** Sort by the `type` value. */
-  Type = 'TYPE'
-}
+  Type: 'TYPE'
+} as const;
 
+export type CatalogSortKeys = typeof CatalogSortKeys[keyof typeof CatalogSortKeys];
 /** The state of a catalog. */
-export enum CatalogStatus {
+export const CatalogStatus = {
   /** The catalog is active. */
-  Active = 'ACTIVE',
+  Active: 'ACTIVE',
   /** The catalog is archived. */
-  Archived = 'ARCHIVED',
+  Archived: 'ARCHIVED',
   /** The catalog is in draft. */
-  Draft = 'DRAFT'
-}
+  Draft: 'DRAFT'
+} as const;
 
+export type CatalogStatus = typeof CatalogStatus[keyof typeof CatalogStatus];
 /** The associated catalog's type. */
-export enum CatalogType {
+export const CatalogType = {
   /** Catalogs belonging to apps. */
-  App = 'APP',
+  App: 'APP',
   /** Catalogs belonging to company locations. */
-  CompanyLocation = 'COMPANY_LOCATION',
+  CompanyLocation: 'COMPANY_LOCATION',
   /** Catalogs belonging to markets. */
-  Market = 'MARKET',
+  Market: 'MARKET',
   /** Not associated to a catalog. */
-  None = 'NONE'
-}
+  None: 'NONE'
+} as const;
 
+export type CatalogType = typeof CatalogType[keyof typeof CatalogType];
 /** The input fields used to update a catalog. */
 export type CatalogUpdateInput = {
   /** The context associated with the catalog. */
@@ -4617,91 +4670,92 @@ export type CatalogUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `CatalogUserError`. */
-export enum CatalogUserErrorCode {
+export const CatalogUserErrorCode = {
   /** An app catalog cannot be assigned to a price list. */
-  AppCatalogPriceListAssignment = 'APP_CATALOG_PRICE_LIST_ASSIGNMENT',
+  AppCatalogPriceListAssignment: 'APP_CATALOG_PRICE_LIST_ASSIGNMENT',
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** The catalog can't be associated with more than one market. */
-  CannotAddMoreThanOneMarket = 'CANNOT_ADD_MORE_THAN_ONE_MARKET',
+  CannotAddMoreThanOneMarket: 'CANNOT_ADD_MORE_THAN_ONE_MARKET',
   /** Cannot create a catalog for an app. */
-  CannotCreateAppCatalog = 'CANNOT_CREATE_APP_CATALOG',
+  CannotCreateAppCatalog: 'CANNOT_CREATE_APP_CATALOG',
   /** Cannot create a catalog for a market. */
-  CannotCreateMarketCatalog = 'CANNOT_CREATE_MARKET_CATALOG',
+  CannotCreateMarketCatalog: 'CANNOT_CREATE_MARKET_CATALOG',
   /** Cannot delete a catalog for an app. */
-  CannotDeleteAppCatalog = 'CANNOT_DELETE_APP_CATALOG',
+  CannotDeleteAppCatalog: 'CANNOT_DELETE_APP_CATALOG',
   /** Cannot delete a catalog for a market. */
-  CannotDeleteMarketCatalog = 'CANNOT_DELETE_MARKET_CATALOG',
+  CannotDeleteMarketCatalog: 'CANNOT_DELETE_MARKET_CATALOG',
   /** Cannot modify a catalog for an app. */
-  CannotModifyAppCatalog = 'CANNOT_MODIFY_APP_CATALOG',
+  CannotModifyAppCatalog: 'CANNOT_MODIFY_APP_CATALOG',
   /** Cannot modify a catalog for a market. */
-  CannotModifyMarketCatalog = 'CANNOT_MODIFY_MARKET_CATALOG',
+  CannotModifyMarketCatalog: 'CANNOT_MODIFY_MARKET_CATALOG',
   /** Quantity price breaks can be associated only with company location catalogs or catalogs associated with compatible markets. */
-  CatalogContextDoesNotSupportQuantityPriceBreaks = 'CATALOG_CONTEXT_DOES_NOT_SUPPORT_QUANTITY_PRICE_BREAKS',
+  CatalogContextDoesNotSupportQuantityPriceBreaks: 'CATALOG_CONTEXT_DOES_NOT_SUPPORT_QUANTITY_PRICE_BREAKS',
   /** Quantity rules can be associated only with company location catalogs or catalogs associated with compatible markets. */
-  CatalogContextDoesNotSupportQuantityRules = 'CATALOG_CONTEXT_DOES_NOT_SUPPORT_QUANTITY_RULES',
+  CatalogContextDoesNotSupportQuantityRules: 'CATALOG_CONTEXT_DOES_NOT_SUPPORT_QUANTITY_RULES',
   /** The catalog context is currently being modified. Please try again later. */
-  CatalogContextLocked = 'CATALOG_CONTEXT_LOCKED',
+  CatalogContextLocked: 'CATALOG_CONTEXT_LOCKED',
   /** Catalog failed to save. */
-  CatalogFailedToSave = 'CATALOG_FAILED_TO_SAVE',
+  CatalogFailedToSave: 'CATALOG_FAILED_TO_SAVE',
   /** The catalog wasn't found. */
-  CatalogNotFound = 'CATALOG_NOT_FOUND',
+  CatalogNotFound: 'CATALOG_NOT_FOUND',
   /** A company location catalog outside of a supported plan can only have an archived status. */
-  CompanyLocationCatalogStatusPlan = 'COMPANY_LOCATION_CATALOG_STATUS_PLAN',
+  CompanyLocationCatalogStatusPlan: 'COMPANY_LOCATION_CATALOG_STATUS_PLAN',
   /** The company location could not be found. */
-  CompanyLocationNotFound = 'COMPANY_LOCATION_NOT_FOUND',
+  CompanyLocationNotFound: 'COMPANY_LOCATION_NOT_FOUND',
   /** Context driver already assigned to this catalog. */
-  ContextAlreadyAssignedToCatalog = 'CONTEXT_ALREADY_ASSIGNED_TO_CATALOG',
+  ContextAlreadyAssignedToCatalog: 'CONTEXT_ALREADY_ASSIGNED_TO_CATALOG',
   /** Cannot save the catalog because the catalog limit for the context was reached. */
-  ContextCatalogLimitReached = 'CONTEXT_CATALOG_LIMIT_REACHED',
+  ContextCatalogLimitReached: 'CONTEXT_CATALOG_LIMIT_REACHED',
   /** The arguments `contextsToAdd` and `contextsToRemove` must match existing catalog context type. */
-  ContextDriverMismatch = 'CONTEXT_DRIVER_MISMATCH',
+  ContextDriverMismatch: 'CONTEXT_DRIVER_MISMATCH',
   /** A country catalog cannot be assigned to a price list. */
-  CountryCatalogPriceListAssignment = 'COUNTRY_CATALOG_PRICE_LIST_ASSIGNMENT',
+  CountryCatalogPriceListAssignment: 'COUNTRY_CATALOG_PRICE_LIST_ASSIGNMENT',
   /** A country price list cannot be assigned to a catalog. */
-  CountryPriceListAssignment = 'COUNTRY_PRICE_LIST_ASSIGNMENT',
+  CountryPriceListAssignment: 'COUNTRY_PRICE_LIST_ASSIGNMENT',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The catalog context type is invalid. */
-  InvalidCatalogContextType = 'INVALID_CATALOG_CONTEXT_TYPE',
+  InvalidCatalogContextType: 'INVALID_CATALOG_CONTEXT_TYPE',
   /** Cannot change context to specified type. */
-  InvalidContextChange = 'INVALID_CONTEXT_CHANGE',
+  InvalidContextChange: 'INVALID_CONTEXT_CHANGE',
   /** The managed country belongs to another catalog. */
-  ManagedCountryBelongsToAnotherCatalog = 'MANAGED_COUNTRY_BELONGS_TO_ANOTHER_CATALOG',
+  ManagedCountryBelongsToAnotherCatalog: 'MANAGED_COUNTRY_BELONGS_TO_ANOTHER_CATALOG',
   /** The catalog's market and price list currencies do not match. */
-  MarketAndPriceListCurrencyMismatch = 'MARKET_AND_PRICE_LIST_CURRENCY_MISMATCH',
+  MarketAndPriceListCurrencyMismatch: 'MARKET_AND_PRICE_LIST_CURRENCY_MISMATCH',
   /** A market catalog must have an active status. */
-  MarketCatalogStatus = 'MARKET_CATALOG_STATUS',
+  MarketCatalogStatus: 'MARKET_CATALOG_STATUS',
   /** Market not found. */
-  MarketNotFound = 'MARKET_NOT_FOUND',
+  MarketNotFound: 'MARKET_NOT_FOUND',
   /** Market already belongs to another catalog. */
-  MarketTaken = 'MARKET_TAKEN',
+  MarketTaken: 'MARKET_TAKEN',
   /** Must provide exactly one context type. */
-  MustProvideExactlyOneContextType = 'MUST_PROVIDE_EXACTLY_ONE_CONTEXT_TYPE',
+  MustProvideExactlyOneContextType: 'MUST_PROVIDE_EXACTLY_ONE_CONTEXT_TYPE',
   /** Price list failed to save. */
-  PriceListFailedToSave = 'PRICE_LIST_FAILED_TO_SAVE',
+  PriceListFailedToSave: 'PRICE_LIST_FAILED_TO_SAVE',
   /** The price list is currently being modified. Please try again later. */
-  PriceListLocked = 'PRICE_LIST_LOCKED',
+  PriceListLocked: 'PRICE_LIST_LOCKED',
   /** A price list cannot be assigned to the primary market. */
-  PriceListNotAllowedForPrimaryMarket = 'PRICE_LIST_NOT_ALLOWED_FOR_PRIMARY_MARKET',
+  PriceListNotAllowedForPrimaryMarket: 'PRICE_LIST_NOT_ALLOWED_FOR_PRIMARY_MARKET',
   /** Price list not found. */
-  PriceListNotFound = 'PRICE_LIST_NOT_FOUND',
+  PriceListNotFound: 'PRICE_LIST_NOT_FOUND',
   /** Publication not found. */
-  PublicationNotFound = 'PUBLICATION_NOT_FOUND',
+  PublicationNotFound: 'PUBLICATION_NOT_FOUND',
   /** Must have `contexts_to_add` or `contexts_to_remove` argument. */
-  RequiresContextsToAddOrRemove = 'REQUIRES_CONTEXTS_TO_ADD_OR_REMOVE',
+  RequiresContextsToAddOrRemove: 'REQUIRES_CONTEXTS_TO_ADD_OR_REMOVE',
   /** The input value is already taken. */
-  Taken = 'TAKEN',
+  Taken: 'TAKEN',
   /** The input value is too long. */
-  TooLong = 'TOO_LONG',
+  TooLong: 'TOO_LONG',
   /** The input value is too short. */
-  TooShort = 'TOO_SHORT',
+  TooShort: 'TOO_SHORT',
   /** Managing this catalog is not supported by your plan. */
-  UnpermittedEntitlementsMarketCatalogs = 'UNPERMITTED_ENTITLEMENTS_MARKET_CATALOGS',
+  UnpermittedEntitlementsMarketCatalogs: 'UNPERMITTED_ENTITLEMENTS_MARKET_CATALOGS',
   /** Can't perform this action on a catalog of this type. */
-  UnsupportedCatalogAction = 'UNSUPPORTED_CATALOG_ACTION'
-}
+  UnsupportedCatalogAction: 'UNSUPPORTED_CATALOG_ACTION'
+} as const;
 
+export type CatalogUserErrorCode = typeof CatalogUserErrorCode[keyof typeof CatalogUserErrorCode];
 /**
  * A connection between a Shopify shop and an external selling platform that supports product syndication and optionally order ingestion. Each channel binds a merchant's account on a specific platform — such as Amazon, eBay, Google, or a point-of-sale system — to the shop, establishing the publishing destination for product feeds.
  *
@@ -4949,55 +5003,60 @@ export type CheckoutBranding = {
 };
 
 /** The container background style. */
-export enum CheckoutBrandingBackground {
+export const CheckoutBrandingBackground = {
   /** The Base background style. */
-  Base = 'BASE',
+  Base: 'BASE',
   /** The Subdued background style. */
-  Subdued = 'SUBDUED',
+  Subdued: 'SUBDUED',
   /** The Transparent background style. */
-  Transparent = 'TRANSPARENT'
-}
+  Transparent: 'TRANSPARENT'
+} as const;
 
+export type CheckoutBrandingBackground = typeof CheckoutBrandingBackground[keyof typeof CheckoutBrandingBackground];
 /** Possible values for the background style. */
-export enum CheckoutBrandingBackgroundStyle {
+export const CheckoutBrandingBackgroundStyle = {
   /** The None background style. */
-  None = 'NONE',
+  None: 'NONE',
   /** The Solid background style. */
-  Solid = 'SOLID'
-}
+  Solid: 'SOLID'
+} as const;
 
+export type CheckoutBrandingBackgroundStyle = typeof CheckoutBrandingBackgroundStyle[keyof typeof CheckoutBrandingBackgroundStyle];
 /** Possible values for the border. */
-export enum CheckoutBrandingBorder {
+export const CheckoutBrandingBorder = {
   /** The Block End border. */
-  BlockEnd = 'BLOCK_END',
+  BlockEnd: 'BLOCK_END',
   /** The Full border. */
-  Full = 'FULL',
+  Full: 'FULL',
   /** The None border. */
-  None = 'NONE'
-}
+  None: 'NONE'
+} as const;
 
+export type CheckoutBrandingBorder = typeof CheckoutBrandingBorder[keyof typeof CheckoutBrandingBorder];
 /** The container border style. */
-export enum CheckoutBrandingBorderStyle {
+export const CheckoutBrandingBorderStyle = {
   /** The Base border style. */
-  Base = 'BASE',
+  Base: 'BASE',
   /** The Dashed border style. */
-  Dashed = 'DASHED',
+  Dashed: 'DASHED',
   /** The Dotted border style. */
-  Dotted = 'DOTTED'
-}
+  Dotted: 'DOTTED'
+} as const;
 
+export type CheckoutBrandingBorderStyle = typeof CheckoutBrandingBorderStyle[keyof typeof CheckoutBrandingBorderStyle];
 /** The container border width. */
-export enum CheckoutBrandingBorderWidth {
+export const CheckoutBrandingBorderWidth = {
   /** The Base border width. */
-  Base = 'BASE',
+  Base: 'BASE',
   /** The Large border width. */
-  Large = 'LARGE',
+  Large: 'LARGE',
   /** The Large 100 border width. */
-  Large_100 = 'LARGE_100',
+  Large_100: 'LARGE_100',
   /** The Large 200 border width. */
-  Large_200 = 'LARGE_200'
-}
+  Large_200: 'LARGE_200'
+} as const;
 
+export type CheckoutBrandingBorderWidth = typeof CheckoutBrandingBorderWidth[keyof typeof CheckoutBrandingBorderWidth];
 /** The buttons customizations. */
 export type CheckoutBrandingButton = {
   __typename?: 'CheckoutBrandingButton';
@@ -5114,15 +5173,16 @@ export type CheckoutBrandingCartLink = {
 };
 
 /** Possible values for the cart link content type for the header. */
-export enum CheckoutBrandingCartLinkContentType {
+export const CheckoutBrandingCartLinkContentType = {
   /** The checkout header content type icon value. */
-  Icon = 'ICON',
+  Icon: 'ICON',
   /** The checkout header content type image value. */
-  Image = 'IMAGE',
+  Image: 'IMAGE',
   /** The checkout header content type text value. */
-  Text = 'TEXT'
-}
+  Text: 'TEXT'
+} as const;
 
+export type CheckoutBrandingCartLinkContentType = typeof CheckoutBrandingCartLinkContentType[keyof typeof CheckoutBrandingCartLinkContentType];
 /** The input fields for updating the cart link customizations at checkout. */
 export type CheckoutBrandingCartLinkInput = {
   /** The input to update the visibility of cart links in checkout. This hides the cart icon on one-page and the cart link in the breadcrumbs/buyer journey on three-page checkout. */
@@ -5304,19 +5364,20 @@ export type CheckoutBrandingColorSchemeInput = {
 };
 
 /** The possible color schemes. */
-export enum CheckoutBrandingColorSchemeSelection {
+export const CheckoutBrandingColorSchemeSelection = {
   /** The COLOR_SCHEME1 color scheme selection. */
-  ColorScheme1 = 'COLOR_SCHEME1',
+  ColorScheme1: 'COLOR_SCHEME1',
   /** The COLOR_SCHEME2 color scheme selection. */
-  ColorScheme2 = 'COLOR_SCHEME2',
+  ColorScheme2: 'COLOR_SCHEME2',
   /** The COLOR_SCHEME3 color scheme selection. */
-  ColorScheme3 = 'COLOR_SCHEME3',
+  ColorScheme3: 'COLOR_SCHEME3',
   /** The COLOR_SCHEME4 color scheme selection. */
-  ColorScheme4 = 'COLOR_SCHEME4',
+  ColorScheme4: 'COLOR_SCHEME4',
   /** The TRANSPARENT color scheme selection. */
-  Transparent = 'TRANSPARENT'
-}
+  Transparent: 'TRANSPARENT'
+} as const;
 
+export type CheckoutBrandingColorSchemeSelection = typeof CheckoutBrandingColorSchemeSelection[keyof typeof CheckoutBrandingColorSchemeSelection];
 /** The color schemes. */
 export type CheckoutBrandingColorSchemes = {
   __typename?: 'CheckoutBrandingColorSchemes';
@@ -5343,11 +5404,12 @@ export type CheckoutBrandingColorSchemesInput = {
 };
 
 /** The possible colors. */
-export enum CheckoutBrandingColorSelection {
+export const CheckoutBrandingColorSelection = {
   /** Transparent color selection. */
-  Transparent = 'TRANSPARENT'
-}
+  Transparent: 'TRANSPARENT'
+} as const;
 
+export type CheckoutBrandingColorSelection = typeof CheckoutBrandingColorSelection[keyof typeof CheckoutBrandingColorSelection];
 /** The color settings for global colors and color schemes. */
 export type CheckoutBrandingColors = {
   __typename?: 'CheckoutBrandingColors';
@@ -5471,17 +5533,18 @@ export type CheckoutBrandingControlInput = {
  * [designSystem.cornerRadius](https://shopify.dev/docs/api/admin-graphql/latest/input-objects/CheckoutBrandingDesignSystemInput#field-checkoutbrandingdesignsysteminput-cornerradius)
  * input fields.
  */
-export enum CheckoutBrandingCornerRadius {
+export const CheckoutBrandingCornerRadius = {
   /** The corner radius with a pixel value defined by designSystem.cornerRadius.base. */
-  Base = 'BASE',
+  Base: 'BASE',
   /** The corner radius with a pixel value defined by designSystem.cornerRadius.large. */
-  Large = 'LARGE',
+  Large: 'LARGE',
   /** The 0px corner radius (square corners). */
-  None = 'NONE',
+  None: 'NONE',
   /** The corner radius with a pixel value defined by designSystem.cornerRadius.small. */
-  Small = 'SMALL'
-}
+  Small: 'SMALL'
+} as const;
 
+export type CheckoutBrandingCornerRadius = typeof CheckoutBrandingCornerRadius[keyof typeof CheckoutBrandingCornerRadius];
 /** Define the pixel size of corner radius options. */
 export type CheckoutBrandingCornerRadiusVariables = {
   __typename?: 'CheckoutBrandingCornerRadiusVariables';
@@ -5741,19 +5804,20 @@ export type CheckoutBrandingFontGroupInput = {
  * The font loading strategy determines how a font face is displayed after it is loaded or failed to load.
  * For more information: https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display.
  */
-export enum CheckoutBrandingFontLoadingStrategy {
+export const CheckoutBrandingFontLoadingStrategy = {
   /** The font display strategy is defined by the browser user agent. */
-  Auto = 'AUTO',
+  Auto: 'AUTO',
   /** Gives the font face a short block period and an infinite swap period. */
-  Block = 'BLOCK',
+  Block: 'BLOCK',
   /** Gives the font face an extremely small block period and a short swap period. */
-  Fallback = 'FALLBACK',
+  Fallback: 'FALLBACK',
   /** Gives the font face an extremely small block period and no swap period. */
-  Optional = 'OPTIONAL',
+  Optional: 'OPTIONAL',
   /** Gives the font face an extremely small block period and an infinite swap period. */
-  Swap = 'SWAP'
-}
+  Swap: 'SWAP'
+} as const;
 
+export type CheckoutBrandingFontLoadingStrategy = typeof CheckoutBrandingFontLoadingStrategy[keyof typeof CheckoutBrandingFontLoadingStrategy];
 /** The font size. */
 export type CheckoutBrandingFontSize = {
   __typename?: 'CheckoutBrandingFontSize';
@@ -5789,15 +5853,16 @@ export type CheckoutBrandingFooter = {
 };
 
 /** Possible values for the footer alignment. */
-export enum CheckoutBrandingFooterAlignment {
+export const CheckoutBrandingFooterAlignment = {
   /** The checkout footer alignment Center value. */
-  Center = 'CENTER',
+  Center: 'CENTER',
   /** The checkout footer alignment End value. */
-  End = 'END',
+  End: 'END',
   /** The checkout footer alignment Start value. */
-  Start = 'START'
-}
+  Start: 'START'
+} as const;
 
+export type CheckoutBrandingFooterAlignment = typeof CheckoutBrandingFooterAlignment[keyof typeof CheckoutBrandingFooterAlignment];
 /** The footer content customizations. */
 export type CheckoutBrandingFooterContent = {
   __typename?: 'CheckoutBrandingFooterContent';
@@ -5828,13 +5893,14 @@ export type CheckoutBrandingFooterInput = {
 };
 
 /** Possible values for the footer position. */
-export enum CheckoutBrandingFooterPosition {
+export const CheckoutBrandingFooterPosition = {
   /** The End footer position. */
-  End = 'END',
+  End: 'END',
   /** The Inline footer position. */
-  Inline = 'INLINE'
-}
+  Inline: 'INLINE'
+} as const;
 
+export type CheckoutBrandingFooterPosition = typeof CheckoutBrandingFooterPosition[keyof typeof CheckoutBrandingFooterPosition];
 /** The global customizations. */
 export type CheckoutBrandingGlobal = {
   __typename?: 'CheckoutBrandingGlobal';
@@ -5854,11 +5920,12 @@ export type CheckoutBrandingGlobal = {
  * For more customizations options, set the [corner radius](https://shopify.dev/docs/api/admin-graphql/latest/enums/CheckoutBrandingCornerRadius)
  * selection on specific objects while leaving the global corner radius unset.
  */
-export enum CheckoutBrandingGlobalCornerRadius {
+export const CheckoutBrandingGlobalCornerRadius = {
   /** Set the global corner radius override to 0px (square corners). */
-  None = 'NONE'
-}
+  None: 'NONE'
+} as const;
 
+export type CheckoutBrandingGlobalCornerRadius = typeof CheckoutBrandingGlobalCornerRadius[keyof typeof CheckoutBrandingGlobalCornerRadius];
 /** The input fields used to update the global customizations. */
 export type CheckoutBrandingGlobalInput = {
   /**
@@ -5892,15 +5959,16 @@ export type CheckoutBrandingHeader = {
 };
 
 /** The possible header alignments. */
-export enum CheckoutBrandingHeaderAlignment {
+export const CheckoutBrandingHeaderAlignment = {
   /** Center alignment. */
-  Center = 'CENTER',
+  Center: 'CENTER',
   /** End alignment. */
-  End = 'END',
+  End: 'END',
   /** Start alignment. */
-  Start = 'START'
-}
+  Start: 'START'
+} as const;
 
+export type CheckoutBrandingHeaderAlignment = typeof CheckoutBrandingHeaderAlignment[keyof typeof CheckoutBrandingHeaderAlignment];
 /** The header cart link customizations. */
 export type CheckoutBrandingHeaderCartLink = {
   __typename?: 'CheckoutBrandingHeaderCartLink';
@@ -5939,15 +6007,16 @@ export type CheckoutBrandingHeaderInput = {
 };
 
 /** The possible header positions. */
-export enum CheckoutBrandingHeaderPosition {
+export const CheckoutBrandingHeaderPosition = {
   /** Inline position. */
-  Inline = 'INLINE',
+  Inline: 'INLINE',
   /** Secondary inline position. */
-  InlineSecondary = 'INLINE_SECONDARY',
+  InlineSecondary: 'INLINE_SECONDARY',
   /** Start position. */
-  Start = 'START'
-}
+  Start: 'START'
+} as const;
 
+export type CheckoutBrandingHeaderPosition = typeof CheckoutBrandingHeaderPosition[keyof typeof CheckoutBrandingHeaderPosition];
 /** The heading level customizations. */
 export type CheckoutBrandingHeadingLevel = {
   __typename?: 'CheckoutBrandingHeadingLevel';
@@ -5987,13 +6056,14 @@ export type CheckoutBrandingInput = {
 };
 
 /** Possible values for the label position. */
-export enum CheckoutBrandingLabelPosition {
+export const CheckoutBrandingLabelPosition = {
   /** The Inside label position. */
-  Inside = 'INSIDE',
+  Inside: 'INSIDE',
   /** The Outside label position. */
-  Outside = 'OUTSIDE'
-}
+  Outside: 'OUTSIDE'
+} as const;
 
+export type CheckoutBrandingLabelPosition = typeof CheckoutBrandingLabelPosition[keyof typeof CheckoutBrandingLabelPosition];
 /** The store logo customizations. */
 export type CheckoutBrandingLogo = {
   __typename?: 'CheckoutBrandingLogo';
@@ -6102,13 +6172,14 @@ export type CheckoutBrandingMerchandiseThumbnailBadge = {
 };
 
 /** The merchandise thumbnail badge background. */
-export enum CheckoutBrandingMerchandiseThumbnailBadgeBackground {
+export const CheckoutBrandingMerchandiseThumbnailBadgeBackground = {
   /** The Accent background. */
-  Accent = 'ACCENT',
+  Accent: 'ACCENT',
   /** The Base background. */
-  Base = 'BASE'
-}
+  Base: 'BASE'
+} as const;
 
+export type CheckoutBrandingMerchandiseThumbnailBadgeBackground = typeof CheckoutBrandingMerchandiseThumbnailBadgeBackground[keyof typeof CheckoutBrandingMerchandiseThumbnailBadgeBackground];
 /** The input fields used to update the merchandise thumbnail badges customizations. */
 export type CheckoutBrandingMerchandiseThumbnailBadgeInput = {
   /** The background used for merchandise thumbnail badges. */
@@ -6128,13 +6199,14 @@ export type CheckoutBrandingMerchandiseThumbnailInput = {
 };
 
 /** Possible values for object fit. */
-export enum CheckoutBrandingObjectFit {
+export const CheckoutBrandingObjectFit = {
   /** The Contain value for fit. The image is scaled to maintain its aspect ratio while fitting within the containing box. The entire image is made to fill the box, while preserving its aspect ratio, so the image will be "letterboxed" if its aspect ratio does not match the aspect ratio of the box. This is the default value. */
-  Contain = 'CONTAIN',
+  Contain: 'CONTAIN',
   /** The Cover value for fit. The image is sized to maintain its aspect ratio while filling the entire containing box. If the image’s aspect ratio does not match the aspect ratio of the containing box, then the object will be clipped to fit. */
-  Cover = 'COVER'
-}
+  Cover: 'COVER'
+} as const;
 
+export type CheckoutBrandingObjectFit = typeof CheckoutBrandingObjectFit[keyof typeof CheckoutBrandingObjectFit];
 /** The order summary customizations. */
 export type CheckoutBrandingOrderSummary = {
   __typename?: 'CheckoutBrandingOrderSummary';
@@ -6219,19 +6291,20 @@ export type CheckoutBrandingSelectInput = {
 };
 
 /** The container shadow. */
-export enum CheckoutBrandingShadow {
+export const CheckoutBrandingShadow = {
   /** The Base shadow. */
-  Base = 'BASE',
+  Base: 'BASE',
   /** The Large 100 shadow. */
-  Large_100 = 'LARGE_100',
+  Large_100: 'LARGE_100',
   /** The Large 200 shadow. */
-  Large_200 = 'LARGE_200',
+  Large_200: 'LARGE_200',
   /** The Small 100 shadow. */
-  Small_100 = 'SMALL_100',
+  Small_100: 'SMALL_100',
   /** The Small 200 shadow. */
-  Small_200 = 'SMALL_200'
-}
+  Small_200: 'SMALL_200'
+} as const;
 
+export type CheckoutBrandingShadow = typeof CheckoutBrandingShadow[keyof typeof CheckoutBrandingShadow];
 /** A Shopify font. */
 export type CheckoutBrandingShopifyFont = CheckoutBrandingFont & {
   __typename?: 'CheckoutBrandingShopifyFont';
@@ -6254,61 +6327,64 @@ export type CheckoutBrandingShopifyFontGroupInput = {
 };
 
 /** Possible values for the simple border. */
-export enum CheckoutBrandingSimpleBorder {
+export const CheckoutBrandingSimpleBorder = {
   /** The Full simple border. */
-  Full = 'FULL',
+  Full: 'FULL',
   /** The None simple border. */
-  None = 'NONE'
-}
+  None: 'NONE'
+} as const;
 
+export type CheckoutBrandingSimpleBorder = typeof CheckoutBrandingSimpleBorder[keyof typeof CheckoutBrandingSimpleBorder];
 /** Possible values for the spacing. */
-export enum CheckoutBrandingSpacing {
+export const CheckoutBrandingSpacing = {
   /** The Base spacing. */
-  Base = 'BASE',
+  Base: 'BASE',
   /** The Extra Loose spacing. */
-  ExtraLoose = 'EXTRA_LOOSE',
+  ExtraLoose: 'EXTRA_LOOSE',
   /** The Extra Tight spacing. */
-  ExtraTight = 'EXTRA_TIGHT',
+  ExtraTight: 'EXTRA_TIGHT',
   /** The Loose spacing. */
-  Loose = 'LOOSE',
+  Loose: 'LOOSE',
   /** The None spacing. */
-  None = 'NONE',
+  None: 'NONE',
   /** The Tight spacing. */
-  Tight = 'TIGHT'
-}
+  Tight: 'TIGHT'
+} as const;
 
+export type CheckoutBrandingSpacing = typeof CheckoutBrandingSpacing[keyof typeof CheckoutBrandingSpacing];
 /** The spacing between UI elements. */
-export enum CheckoutBrandingSpacingKeyword {
+export const CheckoutBrandingSpacingKeyword = {
   /** The Base spacing. */
-  Base = 'BASE',
+  Base: 'BASE',
   /** The Large spacing. */
-  Large = 'LARGE',
+  Large: 'LARGE',
   /** The Large 100 spacing. */
-  Large_100 = 'LARGE_100',
+  Large_100: 'LARGE_100',
   /** The Large 200 spacing. */
-  Large_200 = 'LARGE_200',
+  Large_200: 'LARGE_200',
   /** The Large 300 spacing. */
-  Large_300 = 'LARGE_300',
+  Large_300: 'LARGE_300',
   /** The Large 400 spacing. */
-  Large_400 = 'LARGE_400',
+  Large_400: 'LARGE_400',
   /** The Large 500 spacing. */
-  Large_500 = 'LARGE_500',
+  Large_500: 'LARGE_500',
   /** The None spacing. */
-  None = 'NONE',
+  None: 'NONE',
   /** The Small spacing. */
-  Small = 'SMALL',
+  Small: 'SMALL',
   /** The Small 100 spacing. */
-  Small_100 = 'SMALL_100',
+  Small_100: 'SMALL_100',
   /** The Small 200 spacing. */
-  Small_200 = 'SMALL_200',
+  Small_200: 'SMALL_200',
   /** The Small 300 spacing. */
-  Small_300 = 'SMALL_300',
+  Small_300: 'SMALL_300',
   /** The Small 400 spacing. */
-  Small_400 = 'SMALL_400',
+  Small_400: 'SMALL_400',
   /** The Small 500 spacing. */
-  Small_500 = 'SMALL_500'
-}
+  Small_500: 'SMALL_500'
+} as const;
 
+export type CheckoutBrandingSpacingKeyword = typeof CheckoutBrandingSpacingKeyword[keyof typeof CheckoutBrandingSpacingKeyword];
 /** The text fields customizations. */
 export type CheckoutBrandingTextField = {
   __typename?: 'CheckoutBrandingTextField';
@@ -6344,13 +6420,14 @@ export type CheckoutBrandingTypography = {
 };
 
 /** The font selection. */
-export enum CheckoutBrandingTypographyFont {
+export const CheckoutBrandingTypographyFont = {
   /** The primary font. */
-  Primary = 'PRIMARY',
+  Primary: 'PRIMARY',
   /** The secondary font. */
-  Secondary = 'SECONDARY'
-}
+  Secondary: 'SECONDARY'
+} as const;
 
+export type CheckoutBrandingTypographyFont = typeof CheckoutBrandingTypographyFont[keyof typeof CheckoutBrandingTypographyFont];
 /**
  * The input fields used to update the typography. Refer to the [typography tutorial](https://shopify.dev/docs/apps/checkout/styling/customize-typography)
  * for more information on how to set these fields.
@@ -6365,27 +6442,29 @@ export type CheckoutBrandingTypographyInput = {
 };
 
 /** Possible values for the typography kerning. */
-export enum CheckoutBrandingTypographyKerning {
+export const CheckoutBrandingTypographyKerning = {
   /** Base or default kerning. */
-  Base = 'BASE',
+  Base: 'BASE',
   /** Extra loose kerning, leaving even more space in between characters. */
-  ExtraLoose = 'EXTRA_LOOSE',
+  ExtraLoose: 'EXTRA_LOOSE',
   /** Loose kerning, leaving more space than the default in between characters. */
-  Loose = 'LOOSE'
-}
+  Loose: 'LOOSE'
+} as const;
 
+export type CheckoutBrandingTypographyKerning = typeof CheckoutBrandingTypographyKerning[keyof typeof CheckoutBrandingTypographyKerning];
 /** Possible values for the typography letter case. */
-export enum CheckoutBrandingTypographyLetterCase {
+export const CheckoutBrandingTypographyLetterCase = {
   /** All letters are is lower case. */
-  Lower = 'LOWER',
+  Lower: 'LOWER',
   /** No letter casing applied. */
-  None = 'NONE',
+  None: 'NONE',
   /** Capitalize the first letter of each word. */
-  Title = 'TITLE',
+  Title: 'TITLE',
   /** All letters are uppercase. */
-  Upper = 'UPPER'
-}
+  Upper: 'UPPER'
+} as const;
 
+export type CheckoutBrandingTypographyLetterCase = typeof CheckoutBrandingTypographyLetterCase[keyof typeof CheckoutBrandingTypographyLetterCase];
 /**
  * Possible choices for the font size.
  *
@@ -6394,23 +6473,24 @@ export enum CheckoutBrandingTypographyLetterCase {
  * object. Refer to the [typography tutorial](https://shopify.dev/docs/apps/checkout/styling/customize-typography)
  * for more information.
  */
-export enum CheckoutBrandingTypographySize {
+export const CheckoutBrandingTypographySize = {
   /** The base font size. Example: 14px. */
-  Base = 'BASE',
+  Base: 'BASE',
   /** The extra extra large font size. Example: 24px. */
-  ExtraExtraLarge = 'EXTRA_EXTRA_LARGE',
+  ExtraExtraLarge: 'EXTRA_EXTRA_LARGE',
   /** The extra large font size. Example: 21px. */
-  ExtraLarge = 'EXTRA_LARGE',
+  ExtraLarge: 'EXTRA_LARGE',
   /** The extra small font size. Example: 10px. */
-  ExtraSmall = 'EXTRA_SMALL',
+  ExtraSmall: 'EXTRA_SMALL',
   /** The large font size. Example: 19px. */
-  Large = 'LARGE',
+  Large: 'LARGE',
   /** The medium font size. Example: 16px. */
-  Medium = 'MEDIUM',
+  Medium: 'MEDIUM',
   /** The small font size. Example: 12px. */
-  Small = 'SMALL'
-}
+  Small: 'SMALL'
+} as const;
 
+export type CheckoutBrandingTypographySize = typeof CheckoutBrandingTypographySize[keyof typeof CheckoutBrandingTypographySize];
 /** The typography customizations. */
 export type CheckoutBrandingTypographyStyle = {
   __typename?: 'CheckoutBrandingTypographyStyle';
@@ -6458,13 +6538,14 @@ export type CheckoutBrandingTypographyStyleInput = {
 };
 
 /** Possible values for the font weight. */
-export enum CheckoutBrandingTypographyWeight {
+export const CheckoutBrandingTypographyWeight = {
   /** The base weight. */
-  Base = 'BASE',
+  Base: 'BASE',
   /** The bold weight. */
-  Bold = 'BOLD'
-}
+  Bold: 'BOLD'
+} as const;
 
+export type CheckoutBrandingTypographyWeight = typeof CheckoutBrandingTypographyWeight[keyof typeof CheckoutBrandingTypographyWeight];
 /** Return type for `checkoutBrandingUpsert` mutation. */
 export type CheckoutBrandingUpsertPayload = {
   __typename?: 'CheckoutBrandingUpsertPayload';
@@ -6486,19 +6567,21 @@ export type CheckoutBrandingUpsertUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `CheckoutBrandingUpsertUserError`. */
-export enum CheckoutBrandingUpsertUserErrorCode {
+export const CheckoutBrandingUpsertUserErrorCode = {
   /** Unexpected internal error happened. */
-  InternalError = 'INTERNAL_ERROR'
-}
+  InternalError: 'INTERNAL_ERROR'
+} as const;
 
+export type CheckoutBrandingUpsertUserErrorCode = typeof CheckoutBrandingUpsertUserErrorCode[keyof typeof CheckoutBrandingUpsertUserErrorCode];
 /** Possible visibility states. */
-export enum CheckoutBrandingVisibility {
+export const CheckoutBrandingVisibility = {
   /** The Hidden visibility setting. */
-  Hidden = 'HIDDEN',
+  Hidden: 'HIDDEN',
   /** The Visible visibility setting. */
-  Visible = 'VISIBLE'
-}
+  Visible: 'VISIBLE'
+} as const;
 
+export type CheckoutBrandingVisibility = typeof CheckoutBrandingVisibility[keyof typeof CheckoutBrandingVisibility];
 /** A checkout profile defines the branding settings and the UI extensions for a store's checkout. A checkout profile could be published or draft. A store might have at most one published checkout profile, which is used to render their live checkout. The store could also have multiple draft profiles that were created, previewed, and published using the admin checkout editor. */
 export type CheckoutProfile = Node & {
   __typename?: 'CheckoutProfile';
@@ -6539,19 +6622,20 @@ export type CheckoutProfileEdge = {
 };
 
 /** The set of valid sort keys for the CheckoutProfile query. */
-export enum CheckoutProfileSortKeys {
+export const CheckoutProfileSortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `edited_at` value. */
-  EditedAt = 'EDITED_AT',
+  EditedAt: 'EDITED_AT',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `is_published` value. */
-  IsPublished = 'IS_PUBLISHED',
+  IsPublished: 'IS_PUBLISHED',
   /** Sort by the `updated_at` value. */
-  UpdatedAt = 'UPDATED_AT'
-}
+  UpdatedAt: 'UPDATED_AT'
+} as const;
 
+export type CheckoutProfileSortKeys = typeof CheckoutProfileSortKeys[keyof typeof CheckoutProfileSortKeys];
 /** The input fields for adding products to the Combined Listing. */
 export type ChildProductRelationInput = {
   /** The ID of the child product. */
@@ -6561,26 +6645,27 @@ export type ChildProductRelationInput = {
 };
 
 /** The set of valid sort keys for the CodeDiscount query. */
-export enum CodeDiscountSortKeys {
+export const CodeDiscountSortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `ends_at` value. */
-  EndsAt = 'ENDS_AT',
+  EndsAt: 'ENDS_AT',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /**
    * Sort by relevance to the search terms when the `query` parameter is specified on the connection.
    * Don't use this sort key when no search query is specified.
    */
-  Relevance = 'RELEVANCE',
+  Relevance: 'RELEVANCE',
   /** Sort by the `starts_at` value. */
-  StartsAt = 'STARTS_AT',
+  StartsAt: 'STARTS_AT',
   /** Sort by the `title` value. */
-  Title = 'TITLE',
+  Title: 'TITLE',
   /** Sort by the `updated_at` value. */
-  UpdatedAt = 'UPDATED_AT'
-}
+  UpdatedAt: 'UPDATED_AT'
+} as const;
 
+export type CodeDiscountSortKeys = typeof CodeDiscountSortKeys[keyof typeof CodeDiscountSortKeys];
 /**
  * The `Collection` object represents a group of [products](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product)
  * that merchants can organize to make their stores easier to browse and help customers find related products.
@@ -7463,13 +7548,14 @@ export type CollectionAddProductsV2UserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `CollectionAddProductsV2UserError`. */
-export enum CollectionAddProductsV2UserErrorCode {
+export const CollectionAddProductsV2UserErrorCode = {
   /** Can't manually add products to a smart collection. */
-  CantAddToSmartCollection = 'CANT_ADD_TO_SMART_COLLECTION',
+  CantAddToSmartCollection: 'CANT_ADD_TO_SMART_COLLECTION',
   /** Collection doesn't exist. */
-  CollectionDoesNotExist = 'COLLECTION_DOES_NOT_EXIST'
-}
+  CollectionDoesNotExist: 'COLLECTION_DOES_NOT_EXIST'
+} as const;
 
+export type CollectionAddProductsV2UserErrorCode = typeof CollectionAddProductsV2UserErrorCode[keyof typeof CollectionAddProductsV2UserErrorCode];
 /** An auto-generated type for paginating through multiple Collections. */
 export type CollectionConnection = {
   __typename?: 'CollectionConnection';
@@ -7671,17 +7757,18 @@ export type CollectionReorderProductsUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `CollectionReorderProductsUserError`. */
-export enum CollectionReorderProductsUserErrorCode {
+export const CollectionReorderProductsUserErrorCode = {
   /** The collection was not found. Please check the collection ID and try again. */
-  CollectionNotFound = 'COLLECTION_NOT_FOUND',
+  CollectionNotFound: 'COLLECTION_NOT_FOUND',
   /** The move is invalid. */
-  InvalidMove = 'INVALID_MOVE',
+  InvalidMove: 'INVALID_MOVE',
   /** The collection is not manually sorted. Can't reorder products unless collection is manually sorted. */
-  ManuallySortedCollection = 'MANUALLY_SORTED_COLLECTION',
+  ManuallySortedCollection: 'MANUALLY_SORTED_COLLECTION',
   /** Products are currently being reordered. Please try again later. */
-  TooManyAttemptsToReorderProducts = 'TOO_MANY_ATTEMPTS_TO_REORDER_PRODUCTS'
-}
+  TooManyAttemptsToReorderProducts: 'TOO_MANY_ATTEMPTS_TO_REORDER_PRODUCTS'
+} as const;
 
+export type CollectionReorderProductsUserErrorCode = typeof CollectionReorderProductsUserErrorCode[keyof typeof CollectionReorderProductsUserErrorCode];
 /** Represents at rule that's used to assign products to a collection. */
 export type CollectionRule = {
   __typename?: 'CollectionRule';
@@ -7703,50 +7790,51 @@ export type CollectionRuleCategoryCondition = {
 };
 
 /** Specifies the attribute of a product being used to populate the smart collection. */
-export enum CollectionRuleColumn {
+export const CollectionRuleColumn = {
   /**
    * An attribute evaluated based on the `compare_at_price` attribute of the product's variants.
    * With `is_set` relation, the rule matches products with at least one variant with `compare_at_price` set.
    * With `is_not_set` relation, the rule matches matches products with at least one variant with `compare_at_price` not set.
    */
-  IsPriceReduced = 'IS_PRICE_REDUCED',
+  IsPriceReduced: 'IS_PRICE_REDUCED',
   /**
    * This rule type is designed to dynamically include products in a smart collection based on their category id.
    * When a specific product category is set as a condition, this rule will match products that are directly assigned to the specified category.
    */
-  ProductCategoryId = 'PRODUCT_CATEGORY_ID',
+  ProductCategoryId: 'PRODUCT_CATEGORY_ID',
   /**
    * This rule type is designed to dynamically include products in a smart collection based on their category id.
    * When a specific product category is set as a condition, this rule will not only match products that are
    * directly assigned to the specified category but also include any products categorized under any descendant of that category.
    */
-  ProductCategoryIdWithDescendants = 'PRODUCT_CATEGORY_ID_WITH_DESCENDANTS',
+  ProductCategoryIdWithDescendants: 'PRODUCT_CATEGORY_ID_WITH_DESCENDANTS',
   /** This category includes metafield definitions that have the `useAsCollectionCondition` flag set to true. */
-  ProductMetafieldDefinition = 'PRODUCT_METAFIELD_DEFINITION',
+  ProductMetafieldDefinition: 'PRODUCT_METAFIELD_DEFINITION',
   /** The [`product_taxonomy_node_id`](https://shopify.dev/api/admin-graphql/latest/objects/Product#field-Product.fields.productCategory) attribute. */
-  ProductTaxonomyNodeId = 'PRODUCT_TAXONOMY_NODE_ID',
+  ProductTaxonomyNodeId: 'PRODUCT_TAXONOMY_NODE_ID',
   /** The [`tag`](https://shopify.dev/api/admin-graphql/latest/objects/Product#field-Product.fields.tags) attribute. */
-  Tag = 'TAG',
+  Tag: 'TAG',
   /** The [`title`](https://shopify.dev/api/admin-graphql/latest/objects/Product#field-Product.fields.title) attribute. */
-  Title = 'TITLE',
+  Title: 'TITLE',
   /** The [`type`](https://shopify.dev/api/admin-graphql/latest/objects/Product#field-Product.fields.productType) attribute. */
-  Type = 'TYPE',
+  Type: 'TYPE',
   /** The [`variant_compare_at_price`](https://shopify.dev/api/admin-graphql/latest/objects/ProductVariant#field-ProductVariant.fields.compareAtPrice) attribute. */
-  VariantCompareAtPrice = 'VARIANT_COMPARE_AT_PRICE',
+  VariantCompareAtPrice: 'VARIANT_COMPARE_AT_PRICE',
   /** The [`variant_inventory`](https://shopify.dev/api/admin-graphql/latest/objects/ProductVariant#field-ProductVariant.fields.inventoryQuantity) attribute. */
-  VariantInventory = 'VARIANT_INVENTORY',
+  VariantInventory: 'VARIANT_INVENTORY',
   /** This category includes metafield definitions that have the `useAsCollectionCondition` flag set to true. */
-  VariantMetafieldDefinition = 'VARIANT_METAFIELD_DEFINITION',
+  VariantMetafieldDefinition: 'VARIANT_METAFIELD_DEFINITION',
   /** The [`variant_price`](https://shopify.dev/api/admin-graphql/latest/objects/ProductVariant#field-ProductVariant.fields.price) attribute. */
-  VariantPrice = 'VARIANT_PRICE',
+  VariantPrice: 'VARIANT_PRICE',
   /** The [`variant_title`](https://shopify.dev/api/admin-graphql/latest/objects/ProductVariant#field-ProductVariant.fields.title) attribute. */
-  VariantTitle = 'VARIANT_TITLE',
+  VariantTitle: 'VARIANT_TITLE',
   /** The [`variant_weight`](https://shopify.dev/api/admin-graphql/latest/objects/ProductVariant#field-ProductVariant.fields.inventoryItem.measurement.weight) attribute. */
-  VariantWeight = 'VARIANT_WEIGHT',
+  VariantWeight: 'VARIANT_WEIGHT',
   /** The [`vendor`](https://shopify.dev/api/admin-graphql/latest/objects/Product#field-Product.fields.vendor) attribute. */
-  Vendor = 'VENDOR'
-}
+  Vendor: 'VENDOR'
+} as const;
 
+export type CollectionRuleColumn = typeof CollectionRuleColumn[keyof typeof CollectionRuleColumn];
 /** Specifies object for the condition of the rule. */
 export type CollectionRuleConditionObject = CollectionRuleCategoryCondition | CollectionRuleMetafieldCondition | CollectionRuleProductCategoryCondition | CollectionRuleTextCondition;
 
@@ -7810,29 +7898,30 @@ export type CollectionRuleProductCategoryCondition = {
 };
 
 /** Specifies the relationship between the `column` and the `condition`. */
-export enum CollectionRuleRelation {
+export const CollectionRuleRelation = {
   /** The attribute contains the condition. */
-  Contains = 'CONTAINS',
+  Contains: 'CONTAINS',
   /** The attribute ends with the condition. */
-  EndsWith = 'ENDS_WITH',
+  EndsWith: 'ENDS_WITH',
   /** The attribute is equal to the condition. */
-  Equals = 'EQUALS',
+  Equals: 'EQUALS',
   /** The attribute is greater than the condition. */
-  GreaterThan = 'GREATER_THAN',
+  GreaterThan: 'GREATER_THAN',
   /** The attribute is not set (equal to `null`). */
-  IsNotSet = 'IS_NOT_SET',
+  IsNotSet: 'IS_NOT_SET',
   /** The attribute is set (not equal to `null`). */
-  IsSet = 'IS_SET',
+  IsSet: 'IS_SET',
   /** The attribute is less than the condition. */
-  LessThan = 'LESS_THAN',
+  LessThan: 'LESS_THAN',
   /** The attribute does not contain the condition. */
-  NotContains = 'NOT_CONTAINS',
+  NotContains: 'NOT_CONTAINS',
   /** The attribute does not equal the condition. */
-  NotEquals = 'NOT_EQUALS',
+  NotEquals: 'NOT_EQUALS',
   /** The attribute starts with the condition. */
-  StartsWith = 'STARTS_WITH'
-}
+  StartsWith: 'STARTS_WITH'
+} as const;
 
+export type CollectionRuleRelation = typeof CollectionRuleRelation[keyof typeof CollectionRuleRelation];
 /** The set of rules that are used to determine which products are included in the collection. */
 export type CollectionRuleSet = {
   __typename?: 'CollectionRuleSet';
@@ -7866,40 +7955,42 @@ export type CollectionRuleTextCondition = {
 };
 
 /** The set of valid sort keys for the Collection query. */
-export enum CollectionSortKeys {
+export const CollectionSortKeys = {
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /**
    * Sort by relevance to the search terms when the `query` parameter is specified on the connection.
    * Don't use this sort key when no search query is specified.
    */
-  Relevance = 'RELEVANCE',
+  Relevance: 'RELEVANCE',
   /** Sort by the `title` value. */
-  Title = 'TITLE',
+  Title: 'TITLE',
   /** Sort by the `updated_at` value. */
-  UpdatedAt = 'UPDATED_AT'
-}
+  UpdatedAt: 'UPDATED_AT'
+} as const;
 
+export type CollectionSortKeys = typeof CollectionSortKeys[keyof typeof CollectionSortKeys];
 /** Specifies the sort order for the products in the collection. */
-export enum CollectionSortOrder {
+export const CollectionSortOrder = {
   /** Alphabetically, in ascending order (A - Z). */
-  AlphaAsc = 'ALPHA_ASC',
+  AlphaAsc: 'ALPHA_ASC',
   /** Alphabetically, in descending order (Z - A). */
-  AlphaDesc = 'ALPHA_DESC',
+  AlphaDesc: 'ALPHA_DESC',
   /** By best-selling products. */
-  BestSelling = 'BEST_SELLING',
+  BestSelling: 'BEST_SELLING',
   /** By date created, in ascending order (oldest - newest). */
-  Created = 'CREATED',
+  Created: 'CREATED',
   /** By date created, in descending order (newest - oldest). */
-  CreatedDesc = 'CREATED_DESC',
+  CreatedDesc: 'CREATED_DESC',
   /** In the order set manually by the merchant. */
-  Manual = 'MANUAL',
+  Manual: 'MANUAL',
   /** By price, in ascending order (lowest - highest). */
-  PriceAsc = 'PRICE_ASC',
+  PriceAsc: 'PRICE_ASC',
   /** By price, in descending order (highest - lowest). */
-  PriceDesc = 'PRICE_DESC'
-}
+  PriceDesc: 'PRICE_DESC'
+} as const;
 
+export type CollectionSortOrder = typeof CollectionSortOrder[keyof typeof CollectionSortOrder];
 /** The input fields for specifying the collection to unpublish and the sales channels to remove it from. */
 export type CollectionUnpublishInput = {
   /** The channels where the collection is published. */
@@ -7931,65 +8022,66 @@ export type CollectionUpdatePayload = {
 };
 
 /** The data type of a column. */
-export enum ColumnDataType {
+export const ColumnDataType = {
   /** Represents an array of values. */
-  Array = 'ARRAY',
+  Array: 'ARRAY',
   /** Represents a boolean value. */
-  Boolean = 'BOOLEAN',
+  Boolean: 'BOOLEAN',
   /** Represents a duration in days. */
-  DayDuration = 'DAY_DURATION',
+  DayDuration: 'DAY_DURATION',
   /** Represents a day of week value. */
-  DayOfWeek = 'DAY_OF_WEEK',
+  DayOfWeek: 'DAY_OF_WEEK',
   /** Represents a day-level timestamp value. */
-  DayTimestamp = 'DAY_TIMESTAMP',
+  DayTimestamp: 'DAY_TIMESTAMP',
   /** Represents a decimal value. */
-  Decimal = 'DECIMAL',
+  Decimal: 'DECIMAL',
   /** Represents a floating point value. */
-  Float = 'FLOAT',
+  Float: 'FLOAT',
   /** Represents a duration in hours. */
-  HourDuration = 'HOUR_DURATION',
+  HourDuration: 'HOUR_DURATION',
   /** Represents an hour of day value. */
-  HourOfDay = 'HOUR_OF_DAY',
+  HourOfDay: 'HOUR_OF_DAY',
   /** Represents a hour-level timestamp value. */
-  HourTimestamp = 'HOUR_TIMESTAMP',
+  HourTimestamp: 'HOUR_TIMESTAMP',
   /** Represents an identity value. */
-  Identity = 'IDENTITY',
+  Identity: 'IDENTITY',
   /** Represents an integer value. */
-  Integer = 'INTEGER',
+  Integer: 'INTEGER',
   /** Represents a duration in milliseconds. */
-  MillisecondDuration = 'MILLISECOND_DURATION',
+  MillisecondDuration: 'MILLISECOND_DURATION',
   /** Represents a duration in minutes. */
-  MinuteDuration = 'MINUTE_DURATION',
+  MinuteDuration: 'MINUTE_DURATION',
   /** Represents a minute-level timestamp value. */
-  MinuteTimestamp = 'MINUTE_TIMESTAMP',
+  MinuteTimestamp: 'MINUTE_TIMESTAMP',
   /** Represents a monetary value. */
-  Money = 'MONEY',
+  Money: 'MONEY',
   /** Represents a month of year value. */
-  MonthOfYear = 'MONTH_OF_YEAR',
+  MonthOfYear: 'MONTH_OF_YEAR',
   /** Represents a month-level timestamp value. */
-  MonthTimestamp = 'MONTH_TIMESTAMP',
+  MonthTimestamp: 'MONTH_TIMESTAMP',
   /** Represents a percentage value. */
-  Percent = 'PERCENT',
+  Percent: 'PERCENT',
   /** Represents a quarter-level timestamp value. */
-  QuarterTimestamp = 'QUARTER_TIMESTAMP',
+  QuarterTimestamp: 'QUARTER_TIMESTAMP',
   /** Represents a duration in seconds. */
-  SecondDuration = 'SECOND_DURATION',
+  SecondDuration: 'SECOND_DURATION',
   /** Represents a second-level timestamp value. */
-  SecondTimestamp = 'SECOND_TIMESTAMP',
+  SecondTimestamp: 'SECOND_TIMESTAMP',
   /** Represents a string value. */
-  String = 'STRING',
+  String: 'STRING',
   /** Represents a timestamp value in seconds. */
-  Timestamp = 'TIMESTAMP',
+  Timestamp: 'TIMESTAMP',
   /** Represents an unspecified data type. */
-  Unspecified = 'UNSPECIFIED',
+  Unspecified: 'UNSPECIFIED',
   /** Represents a week of year value. */
-  WeekOfYear = 'WEEK_OF_YEAR',
+  WeekOfYear: 'WEEK_OF_YEAR',
   /** Represents a week-level timestamp value. */
-  WeekTimestamp = 'WEEK_TIMESTAMP',
+  WeekTimestamp: 'WEEK_TIMESTAMP',
   /** Represents a year-level timestamp value. */
-  YearTimestamp = 'YEAR_TIMESTAMP'
-}
+  YearTimestamp: 'YEAR_TIMESTAMP'
+} as const;
 
+export type ColumnDataType = typeof ColumnDataType[keyof typeof ColumnDataType];
 /** A combined listing of products. */
 export type CombinedListing = {
   __typename?: 'CombinedListing';
@@ -8059,85 +8151,87 @@ export type CombinedListingUpdateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `CombinedListingUpdateUserError`. */
-export enum CombinedListingUpdateUserErrorCode {
+export const CombinedListingUpdateUserErrorCode = {
   /** Unable to add duplicated products. */
-  CannotHaveDuplicatedProducts = 'CANNOT_HAVE_DUPLICATED_PRODUCTS',
+  CannotHaveDuplicatedProducts: 'CANNOT_HAVE_DUPLICATED_PRODUCTS',
   /** Unable to add a product that is a parent. */
-  CannotHaveParentAsChild = 'CANNOT_HAVE_PARENT_AS_CHILD',
+  CannotHaveParentAsChild: 'CANNOT_HAVE_PARENT_AS_CHILD',
   /** Unable to add products with repeated options. */
-  CannotHaveRepeatedOptions = 'CANNOT_HAVE_REPEATED_OPTIONS',
+  CannotHaveRepeatedOptions: 'CANNOT_HAVE_REPEATED_OPTIONS',
   /** Option values cannot be repeated. */
-  CannotHaveRepeatedOptionValues = 'CANNOT_HAVE_REPEATED_OPTION_VALUES',
+  CannotHaveRepeatedOptionValues: 'CANNOT_HAVE_REPEATED_OPTION_VALUES',
   /** Unable to add options values that are already in use. */
-  CantAddOptionsValuesIfAlreadyExists = 'CANT_ADD_OPTIONS_VALUES_IF_ALREADY_EXISTS',
+  CantAddOptionsValuesIfAlreadyExists: 'CANT_ADD_OPTIONS_VALUES_IF_ALREADY_EXISTS',
   /** Combined listings feature is not enabled. */
-  CombinedListingsNotEnabled = 'COMBINED_LISTINGS_NOT_ENABLED',
+  CombinedListingsNotEnabled: 'COMBINED_LISTINGS_NOT_ENABLED',
   /** Cannot perform edit and remove on same products. */
-  EditAndRemoveOnSameProducts = 'EDIT_AND_REMOVE_ON_SAME_PRODUCTS',
+  EditAndRemoveOnSameProducts: 'EDIT_AND_REMOVE_ON_SAME_PRODUCTS',
   /** Unable to add products. */
-  FailedToAddProducts = 'FAILED_TO_ADD_PRODUCTS',
+  FailedToAddProducts: 'FAILED_TO_ADD_PRODUCTS',
   /** Unable to remove products. */
-  FailedToRemoveProducts = 'FAILED_TO_REMOVE_PRODUCTS',
+  FailedToRemoveProducts: 'FAILED_TO_REMOVE_PRODUCTS',
   /** Unable to update products. */
-  FailedToUpdateProducts = 'FAILED_TO_UPDATE_PRODUCTS',
+  FailedToUpdateProducts: 'FAILED_TO_UPDATE_PRODUCTS',
   /** The same metafield cannot be linked to multiple options. */
-  LinkedMetafieldsCannotBeRepeated = 'LINKED_METAFIELDS_CANNOT_BE_REPEATED',
+  LinkedMetafieldsCannotBeRepeated: 'LINKED_METAFIELDS_CANNOT_BE_REPEATED',
   /** An option linked to a metafield cannot be linked to a different metafield. */
-  LinkedMetafieldCannotBeChanged = 'LINKED_METAFIELD_CANNOT_BE_CHANGED',
+  LinkedMetafieldCannotBeChanged: 'LINKED_METAFIELD_CANNOT_BE_CHANGED',
   /** Linked metafield value missing from `optionsAndValues` field. */
-  LinkedMetafieldValueMissing = 'LINKED_METAFIELD_VALUE_MISSING',
+  LinkedMetafieldValueMissing: 'LINKED_METAFIELD_VALUE_MISSING',
   /** Linked options are currently not supported for this shop. */
-  LinkedOptionsNotSupportedForShop = 'LINKED_OPTIONS_NOT_SUPPORTED_FOR_SHOP',
+  LinkedOptionsNotSupportedForShop: 'LINKED_OPTIONS_NOT_SUPPORTED_FOR_SHOP',
   /** The optionsAndValues field is required for this operation. */
-  MissingOptionValues = 'MISSING_OPTION_VALUES',
+  MissingOptionValues: 'MISSING_OPTION_VALUES',
   /** Selected option values cannot be empty. */
-  MustHaveSelectedOptionValues = 'MUST_HAVE_SELECTED_OPTION_VALUES',
+  MustHaveSelectedOptionValues: 'MUST_HAVE_SELECTED_OPTION_VALUES',
   /** All child products must include the same options. */
-  OptionsMustBeEqualToTheOtherComponents = 'OPTIONS_MUST_BE_EQUAL_TO_THE_OTHER_COMPONENTS',
+  OptionsMustBeEqualToTheOtherComponents: 'OPTIONS_MUST_BE_EQUAL_TO_THE_OTHER_COMPONENTS',
   /** Unable to add products with blank option names. */
-  OptionNameCannotBeBlank = 'OPTION_NAME_CANNOT_BE_BLANK',
+  OptionNameCannotBeBlank: 'OPTION_NAME_CANNOT_BE_BLANK',
   /** Option name contains invalid characters. */
-  OptionNameContainsInvalidCharacters = 'OPTION_NAME_CONTAINS_INVALID_CHARACTERS',
+  OptionNameContainsInvalidCharacters: 'OPTION_NAME_CONTAINS_INVALID_CHARACTERS',
   /** Option does not exist. */
-  OptionNotFound = 'OPTION_NOT_FOUND',
+  OptionNotFound: 'OPTION_NOT_FOUND',
   /** Unable to update options with blank option values. */
-  OptionValuesCannotBeBlank = 'OPTION_VALUES_CANNOT_BE_BLANK',
+  OptionValuesCannotBeBlank: 'OPTION_VALUES_CANNOT_BE_BLANK',
   /** Unable to update options with no option values. */
-  OptionValuesCannotBeEmpty = 'OPTION_VALUES_CANNOT_BE_EMPTY',
+  OptionValuesCannotBeEmpty: 'OPTION_VALUES_CANNOT_BE_EMPTY',
   /** The options_and_values field must contain all option values used in the combined listing. */
-  OptionValuesMustBeComplete = 'OPTION_VALUES_MUST_BE_COMPLETE',
+  OptionValuesMustBeComplete: 'OPTION_VALUES_MUST_BE_COMPLETE',
   /** Parent product cannot be a combined listing child. */
-  ParentProductCannotBeCombinedListingChild = 'PARENT_PRODUCT_CANNOT_BE_COMBINED_LISTING_CHILD',
+  ParentProductCannotBeCombinedListingChild: 'PARENT_PRODUCT_CANNOT_BE_COMBINED_LISTING_CHILD',
   /** Unable to update components for a product that isn't a combined listing. */
-  ParentProductMustBeACombinedListing = 'PARENT_PRODUCT_MUST_BE_A_COMBINED_LISTING',
+  ParentProductMustBeACombinedListing: 'PARENT_PRODUCT_MUST_BE_A_COMBINED_LISTING',
   /** The combined listing parent product must have a product category to use linked metafield options. */
-  ParentProductMustHaveCategory = 'PARENT_PRODUCT_MUST_HAVE_CATEGORY',
+  ParentProductMustHaveCategory: 'PARENT_PRODUCT_MUST_HAVE_CATEGORY',
   /** Parent product not found. */
-  ParentProductNotFound = 'PARENT_PRODUCT_NOT_FOUND',
+  ParentProductNotFound: 'PARENT_PRODUCT_NOT_FOUND',
   /** Unable to add a product that is already a child. */
-  ProductIsAlreadyAChild = 'PRODUCT_IS_ALREADY_A_CHILD',
+  ProductIsAlreadyAChild: 'PRODUCT_IS_ALREADY_A_CHILD',
   /** Failed to remove mebmership due to invalid input. */
-  ProductMembershipNotFound = 'PRODUCT_MEMBERSHIP_NOT_FOUND',
+  ProductMembershipNotFound: 'PRODUCT_MEMBERSHIP_NOT_FOUND',
   /** Unable to add products that do not exist. */
-  ProductNotFound = 'PRODUCT_NOT_FOUND',
+  ProductNotFound: 'PRODUCT_NOT_FOUND',
   /** The title cannot be longer than 255 characters. */
-  TitleTooLong = 'TITLE_TOO_LONG',
+  TitleTooLong: 'TITLE_TOO_LONG',
   /** You have reached the maximum number of products that can be added to an individual combined listing. */
-  TooManyProducts = 'TOO_MANY_PRODUCTS',
+  TooManyProducts: 'TOO_MANY_PRODUCTS',
   /** You have reached the maximum number of variants across all products for an individual combined listing. */
-  TooManyVariants = 'TOO_MANY_VARIANTS',
+  TooManyVariants: 'TOO_MANY_VARIANTS',
   /** An unexpected error occurred. */
-  UnexpectedError = 'UNEXPECTED_ERROR'
-}
+  UnexpectedError: 'UNEXPECTED_ERROR'
+} as const;
 
+export type CombinedListingUpdateUserErrorCode = typeof CombinedListingUpdateUserErrorCode[keyof typeof CombinedListingUpdateUserErrorCode];
 /** The role of the combined listing. */
-export enum CombinedListingsRole {
+export const CombinedListingsRole = {
   /** The product is the child of a combined listing. */
-  Child = 'CHILD',
+  Child: 'CHILD',
   /** The product is the parent of a combined listing. */
-  Parent = 'PARENT'
-}
+  Parent: 'PARENT'
+} as const;
 
+export type CombinedListingsRole = typeof CombinedListingsRole[keyof typeof CombinedListingsRole];
 /** A comment on an article. */
 export type Comment = HasEvents & Node & {
   __typename?: 'Comment';
@@ -8202,11 +8296,12 @@ export type CommentApproveUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `CommentApproveUserError`. */
-export enum CommentApproveUserErrorCode {
+export const CommentApproveUserErrorCode = {
   /** The record with the ID used as the input value couldn't be found. */
-  NotFound = 'NOT_FOUND'
-}
+  NotFound: 'NOT_FOUND'
+} as const;
 
+export type CommentApproveUserErrorCode = typeof CommentApproveUserErrorCode[keyof typeof CommentApproveUserErrorCode];
 /**
  * The author of a comment on a blog article, containing the commenter's name and email address. This information helps merchants moderate comments and potentially engage with their community.
  *
@@ -8257,11 +8352,12 @@ export type CommentDeleteUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `CommentDeleteUserError`. */
-export enum CommentDeleteUserErrorCode {
+export const CommentDeleteUserErrorCode = {
   /** The record with the ID used as the input value couldn't be found. */
-  NotFound = 'NOT_FOUND'
-}
+  NotFound: 'NOT_FOUND'
+} as const;
 
+export type CommentDeleteUserErrorCode = typeof CommentDeleteUserErrorCode[keyof typeof CommentDeleteUserErrorCode];
 /** An auto-generated type which holds one Comment and a cursor during pagination. */
 export type CommentEdge = {
   __typename?: 'CommentEdge';
@@ -8361,29 +8457,32 @@ export type CommentNotSpamUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `CommentNotSpamUserError`. */
-export enum CommentNotSpamUserErrorCode {
+export const CommentNotSpamUserErrorCode = {
   /** The record with the ID used as the input value couldn't be found. */
-  NotFound = 'NOT_FOUND'
-}
+  NotFound: 'NOT_FOUND'
+} as const;
 
+export type CommentNotSpamUserErrorCode = typeof CommentNotSpamUserErrorCode[keyof typeof CommentNotSpamUserErrorCode];
 /** Possible comment policies for a blog. */
-export enum CommentPolicy {
+export const CommentPolicy = {
   /** Readers can post comments to blog articles without moderation. */
-  AutoPublished = 'AUTO_PUBLISHED',
+  AutoPublished: 'AUTO_PUBLISHED',
   /** Readers cannot post comments to blog articles. */
-  Closed = 'CLOSED',
+  Closed: 'CLOSED',
   /** Readers can post comments to blog articles, but comments must be moderated before they appear. */
-  Moderated = 'MODERATED'
-}
+  Moderated: 'MODERATED'
+} as const;
 
+export type CommentPolicy = typeof CommentPolicy[keyof typeof CommentPolicy];
 /** The set of valid sort keys for the Comment query. */
-export enum CommentSortKeys {
+export const CommentSortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `id` value. */
-  Id = 'ID'
-}
+  Id: 'ID'
+} as const;
 
+export type CommentSortKeys = typeof CommentSortKeys[keyof typeof CommentSortKeys];
 /** Return type for `commentSpam` mutation. */
 export type CommentSpamPayload = {
   __typename?: 'CommentSpamPayload';
@@ -8405,25 +8504,27 @@ export type CommentSpamUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `CommentSpamUserError`. */
-export enum CommentSpamUserErrorCode {
+export const CommentSpamUserErrorCode = {
   /** The record with the ID used as the input value couldn't be found. */
-  NotFound = 'NOT_FOUND'
-}
+  NotFound: 'NOT_FOUND'
+} as const;
 
+export type CommentSpamUserErrorCode = typeof CommentSpamUserErrorCode[keyof typeof CommentSpamUserErrorCode];
 /** The status of a comment. */
-export enum CommentStatus {
+export const CommentStatus = {
   /** The comment is pending approval. */
-  Pending = 'PENDING',
+  Pending: 'PENDING',
   /** The comment is published. */
-  Published = 'PUBLISHED',
+  Published: 'PUBLISHED',
   /** The comment has been removed. */
-  Removed = 'REMOVED',
+  Removed: 'REMOVED',
   /** The comment is marked as spam. */
-  Spam = 'SPAM',
+  Spam: 'SPAM',
   /** The comment is unapproved. */
-  Unapproved = 'UNAPPROVED'
-}
+  Unapproved: 'UNAPPROVED'
+} as const;
 
+export type CommentStatus = typeof CommentStatus[keyof typeof CommentStatus];
 /** Return type for `companiesDelete` mutation. */
 export type CompaniesDeletePayload = {
   __typename?: 'CompaniesDeletePayload';
@@ -8697,13 +8798,14 @@ export type CompanyAddressInput = {
 };
 
 /** The valid values for the address type of a company. */
-export enum CompanyAddressType {
+export const CompanyAddressType = {
   /** The address is a billing address. */
-  Billing = 'BILLING',
+  Billing: 'BILLING',
   /** The address is a shipping address. */
-  Shipping = 'SHIPPING'
-}
+  Shipping: 'SHIPPING'
+} as const;
 
+export type CompanyAddressType = typeof CompanyAddressType[keyof typeof CompanyAddressType];
 /** Return type for `companyAssignCustomerAsContact` mutation. */
 export type CompanyAssignCustomerAsContactPayload = {
   __typename?: 'CompanyAssignCustomerAsContactPayload';
@@ -8974,17 +9076,18 @@ export type CompanyContactRoleAssignmentEdge = {
 };
 
 /** The set of valid sort keys for the CompanyContactRoleAssignment query. */
-export enum CompanyContactRoleAssignmentSortKeys {
+export const CompanyContactRoleAssignmentSortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `location_name` value. */
-  LocationName = 'LOCATION_NAME',
+  LocationName: 'LOCATION_NAME',
   /** Sort by the `updated_at` value. */
-  UpdatedAt = 'UPDATED_AT'
-}
+  UpdatedAt: 'UPDATED_AT'
+} as const;
 
+export type CompanyContactRoleAssignmentSortKeys = typeof CompanyContactRoleAssignmentSortKeys[keyof typeof CompanyContactRoleAssignmentSortKeys];
 /** An auto-generated type for paginating through multiple CompanyContactRoles. */
 export type CompanyContactRoleConnection = {
   __typename?: 'CompanyContactRoleConnection';
@@ -9006,15 +9109,16 @@ export type CompanyContactRoleEdge = {
 };
 
 /** The set of valid sort keys for the CompanyContactRole query. */
-export enum CompanyContactRoleSortKeys {
+export const CompanyContactRoleSortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `updated_at` value. */
-  UpdatedAt = 'UPDATED_AT'
-}
+  UpdatedAt: 'UPDATED_AT'
+} as const;
 
+export type CompanyContactRoleSortKeys = typeof CompanyContactRoleSortKeys[keyof typeof CompanyContactRoleSortKeys];
 /** Return type for `companyContactSendWelcomeEmail` mutation. */
 export type CompanyContactSendWelcomeEmailPayload = {
   __typename?: 'CompanyContactSendWelcomeEmailPayload';
@@ -9025,30 +9129,31 @@ export type CompanyContactSendWelcomeEmailPayload = {
 };
 
 /** The set of valid sort keys for the CompanyContact query. */
-export enum CompanyContactSortKeys {
+export const CompanyContactSortKeys = {
   /** Sort by the `company_id` value. */
-  CompanyId = 'COMPANY_ID',
+  CompanyId: 'COMPANY_ID',
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `email` value. */
-  Email = 'EMAIL',
+  Email: 'EMAIL',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `name` value. */
-  Name = 'NAME',
+  Name: 'NAME',
   /** Sort by the `name_email` value. */
-  NameEmail = 'NAME_EMAIL',
+  NameEmail: 'NAME_EMAIL',
   /**
    * Sort by relevance to the search terms when the `query` parameter is specified on the connection.
    * Don't use this sort key when no search query is specified.
    */
-  Relevance = 'RELEVANCE',
+  Relevance: 'RELEVANCE',
   /** Sort by the `title` value. */
-  Title = 'TITLE',
+  Title: 'TITLE',
   /** Sort by the `updated_at` value. */
-  UpdatedAt = 'UPDATED_AT'
-}
+  UpdatedAt: 'UPDATED_AT'
+} as const;
 
+export type CompanyContactSortKeys = typeof CompanyContactSortKeys[keyof typeof CompanyContactSortKeys];
 /** Return type for `companyContactUpdate` mutation. */
 export type CompanyContactUpdatePayload = {
   __typename?: 'CompanyContactUpdatePayload';
@@ -9590,26 +9695,27 @@ export type CompanyLocationRoleAssign = {
 };
 
 /** The set of valid sort keys for the CompanyLocation query. */
-export enum CompanyLocationSortKeys {
+export const CompanyLocationSortKeys = {
   /** Sort by the `company_and_location_name` value. */
-  CompanyAndLocationName = 'COMPANY_AND_LOCATION_NAME',
+  CompanyAndLocationName: 'COMPANY_AND_LOCATION_NAME',
   /** Sort by the `company_id` value. */
-  CompanyId = 'COMPANY_ID',
+  CompanyId: 'COMPANY_ID',
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `name` value. */
-  Name = 'NAME',
+  Name: 'NAME',
   /**
    * Sort by relevance to the search terms when the `query` parameter is specified on the connection.
    * Don't use this sort key when no search query is specified.
    */
-  Relevance = 'RELEVANCE',
+  Relevance: 'RELEVANCE',
   /** Sort by the `updated_at` value. */
-  UpdatedAt = 'UPDATED_AT'
-}
+  UpdatedAt: 'UPDATED_AT'
+} as const;
 
+export type CompanyLocationSortKeys = typeof CompanyLocationSortKeys[keyof typeof CompanyLocationSortKeys];
 /** A representation of store's staff member who is assigned to a [company location](https://shopify.dev/api/admin-graphql/latest/objects/CompanyLocation) of the shop. The staff member's actions will be limited to objects associated with the assigned company location. */
 export type CompanyLocationStaffMemberAssignment = Node & {
   __typename?: 'CompanyLocationStaffMemberAssignment';
@@ -9642,15 +9748,16 @@ export type CompanyLocationStaffMemberAssignmentEdge = {
 };
 
 /** The set of valid sort keys for the CompanyLocationStaffMemberAssignment query. */
-export enum CompanyLocationStaffMemberAssignmentSortKeys {
+export const CompanyLocationStaffMemberAssignmentSortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `updated_at` value. */
-  UpdatedAt = 'UPDATED_AT'
-}
+  UpdatedAt: 'UPDATED_AT'
+} as const;
 
+export type CompanyLocationStaffMemberAssignmentSortKeys = typeof CompanyLocationStaffMemberAssignmentSortKeys[keyof typeof CompanyLocationStaffMemberAssignmentSortKeys];
 /** Represents the tax settings for a company location. */
 export type CompanyLocationTaxSettings = {
   __typename?: 'CompanyLocationTaxSettings';
@@ -9734,23 +9841,24 @@ export type CompanyRevokeMainContactPayload = {
 };
 
 /** The set of valid sort keys for the Company query. */
-export enum CompanySortKeys {
+export const CompanySortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `name` value. */
-  Name = 'NAME',
+  Name: 'NAME',
   /** Sort by the `order_count` value. */
-  OrderCount = 'ORDER_COUNT',
+  OrderCount: 'ORDER_COUNT',
   /** Sort by the `since_date` value. */
-  SinceDate = 'SINCE_DATE',
+  SinceDate: 'SINCE_DATE',
   /** Sort by the `total_spent` value. */
-  TotalSpent = 'TOTAL_SPENT',
+  TotalSpent: 'TOTAL_SPENT',
   /** Sort by the `updated_at` value. */
-  UpdatedAt = 'UPDATED_AT'
-}
+  UpdatedAt: 'UPDATED_AT'
+} as const;
 
+export type CompanySortKeys = typeof CompanySortKeys[keyof typeof CompanySortKeys];
 /** Return type for `companyUpdate` mutation. */
 export type CompanyUpdatePayload = {
   __typename?: 'CompanyUpdatePayload';
@@ -9792,19 +9900,20 @@ export type ConsentPolicyError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `ConsentPolicyError`. */
-export enum ConsentPolicyErrorCode {
+export const ConsentPolicyErrorCode = {
   /** Country code is required. */
-  CountryCodeRequired = 'COUNTRY_CODE_REQUIRED',
+  CountryCodeRequired: 'COUNTRY_CODE_REQUIRED',
   /** Region code must match the country code. */
-  RegionCodeMustMatchCountryCode = 'REGION_CODE_MUST_MATCH_COUNTRY_CODE',
+  RegionCodeMustMatchCountryCode: 'REGION_CODE_MUST_MATCH_COUNTRY_CODE',
   /** Region code is required for countries with existing regional policies. */
-  RegionCodeRequired = 'REGION_CODE_REQUIRED',
+  RegionCodeRequired: 'REGION_CODE_REQUIRED',
   /** Shopify's cookie banner must be disabled. */
-  ShopifyCookieBannerNotDisabled = 'SHOPIFY_COOKIE_BANNER_NOT_DISABLED',
+  ShopifyCookieBannerNotDisabled: 'SHOPIFY_COOKIE_BANNER_NOT_DISABLED',
   /** Unsupported consent policy. */
-  UnsuportedConsentPolicy = 'UNSUPORTED_CONSENT_POLICY'
-}
+  UnsuportedConsentPolicy: 'UNSUPORTED_CONSENT_POLICY'
+} as const;
 
+export type ConsentPolicyErrorCode = typeof ConsentPolicyErrorCode[keyof typeof ConsentPolicyErrorCode];
 /** The input fields for a consent policy to be updated or created. */
 export type ConsentPolicyInput = {
   /** Whether consent is required for the region. */
@@ -9883,13 +9992,14 @@ export type Count = {
 };
 
 /** The precision of the value returned by a count field. */
-export enum CountPrecision {
+export const CountPrecision = {
   /** The count is at least the value. A limit was imposed and reached. */
-  AtLeast = 'AT_LEAST',
+  AtLeast: 'AT_LEAST',
   /** The count is exactly the value. A write may not be reflected instantaneously. */
-  Exact = 'EXACT'
-}
+  Exact: 'EXACT'
+} as const;
 
+export type CountPrecision = typeof CountPrecision[keyof typeof CountPrecision];
 /** The list of all the countries from the combined shipping zones for the shop. */
 export type CountriesInShippingZones = {
   __typename?: 'CountriesInShippingZones';
@@ -9905,499 +10015,500 @@ export type CountriesInShippingZones = {
  * of another country. For example, the territories associated with Spain are represented by the country code `ES`,
  * and the territories associated with the United States of America are represented by the country code `US`.
  */
-export enum CountryCode {
+export const CountryCode = {
   /** Ascension Island. */
-  Ac = 'AC',
+  Ac: 'AC',
   /** Andorra. */
-  Ad = 'AD',
+  Ad: 'AD',
   /** United Arab Emirates. */
-  Ae = 'AE',
+  Ae: 'AE',
   /** Afghanistan. */
-  Af = 'AF',
+  Af: 'AF',
   /** Antigua & Barbuda. */
-  Ag = 'AG',
+  Ag: 'AG',
   /** Anguilla. */
-  Ai = 'AI',
+  Ai: 'AI',
   /** Albania. */
-  Al = 'AL',
+  Al: 'AL',
   /** Armenia. */
-  Am = 'AM',
+  Am: 'AM',
   /** Netherlands Antilles. */
-  An = 'AN',
+  An: 'AN',
   /** Angola. */
-  Ao = 'AO',
+  Ao: 'AO',
   /** Argentina. */
-  Ar = 'AR',
+  Ar: 'AR',
   /** Austria. */
-  At = 'AT',
+  At: 'AT',
   /** Australia. */
-  Au = 'AU',
+  Au: 'AU',
   /** Aruba. */
-  Aw = 'AW',
+  Aw: 'AW',
   /** Åland Islands. */
-  Ax = 'AX',
+  Ax: 'AX',
   /** Azerbaijan. */
-  Az = 'AZ',
+  Az: 'AZ',
   /** Bosnia & Herzegovina. */
-  Ba = 'BA',
+  Ba: 'BA',
   /** Barbados. */
-  Bb = 'BB',
+  Bb: 'BB',
   /** Bangladesh. */
-  Bd = 'BD',
+  Bd: 'BD',
   /** Belgium. */
-  Be = 'BE',
+  Be: 'BE',
   /** Burkina Faso. */
-  Bf = 'BF',
+  Bf: 'BF',
   /** Bulgaria. */
-  Bg = 'BG',
+  Bg: 'BG',
   /** Bahrain. */
-  Bh = 'BH',
+  Bh: 'BH',
   /** Burundi. */
-  Bi = 'BI',
+  Bi: 'BI',
   /** Benin. */
-  Bj = 'BJ',
+  Bj: 'BJ',
   /** St. Barthélemy. */
-  Bl = 'BL',
+  Bl: 'BL',
   /** Bermuda. */
-  Bm = 'BM',
+  Bm: 'BM',
   /** Brunei. */
-  Bn = 'BN',
+  Bn: 'BN',
   /** Bolivia. */
-  Bo = 'BO',
+  Bo: 'BO',
   /** Caribbean Netherlands. */
-  Bq = 'BQ',
+  Bq: 'BQ',
   /** Brazil. */
-  Br = 'BR',
+  Br: 'BR',
   /** Bahamas. */
-  Bs = 'BS',
+  Bs: 'BS',
   /** Bhutan. */
-  Bt = 'BT',
+  Bt: 'BT',
   /** Bouvet Island. */
-  Bv = 'BV',
+  Bv: 'BV',
   /** Botswana. */
-  Bw = 'BW',
+  Bw: 'BW',
   /** Belarus. */
-  By = 'BY',
+  By: 'BY',
   /** Belize. */
-  Bz = 'BZ',
+  Bz: 'BZ',
   /** Canada. */
-  Ca = 'CA',
+  Ca: 'CA',
   /** Cocos (Keeling) Islands. */
-  Cc = 'CC',
+  Cc: 'CC',
   /** Congo - Kinshasa. */
-  Cd = 'CD',
+  Cd: 'CD',
   /** Central African Republic. */
-  Cf = 'CF',
+  Cf: 'CF',
   /** Congo - Brazzaville. */
-  Cg = 'CG',
+  Cg: 'CG',
   /** Switzerland. */
-  Ch = 'CH',
+  Ch: 'CH',
   /** Côte d’Ivoire. */
-  Ci = 'CI',
+  Ci: 'CI',
   /** Cook Islands. */
-  Ck = 'CK',
+  Ck: 'CK',
   /** Chile. */
-  Cl = 'CL',
+  Cl: 'CL',
   /** Cameroon. */
-  Cm = 'CM',
+  Cm: 'CM',
   /** China. */
-  Cn = 'CN',
+  Cn: 'CN',
   /** Colombia. */
-  Co = 'CO',
+  Co: 'CO',
   /** Costa Rica. */
-  Cr = 'CR',
+  Cr: 'CR',
   /** Cuba. */
-  Cu = 'CU',
+  Cu: 'CU',
   /** Cape Verde. */
-  Cv = 'CV',
+  Cv: 'CV',
   /** Curaçao. */
-  Cw = 'CW',
+  Cw: 'CW',
   /** Christmas Island. */
-  Cx = 'CX',
+  Cx: 'CX',
   /** Cyprus. */
-  Cy = 'CY',
+  Cy: 'CY',
   /** Czechia. */
-  Cz = 'CZ',
+  Cz: 'CZ',
   /** Germany. */
-  De = 'DE',
+  De: 'DE',
   /** Djibouti. */
-  Dj = 'DJ',
+  Dj: 'DJ',
   /** Denmark. */
-  Dk = 'DK',
+  Dk: 'DK',
   /** Dominica. */
-  Dm = 'DM',
+  Dm: 'DM',
   /** Dominican Republic. */
-  Do = 'DO',
+  Do: 'DO',
   /** Algeria. */
-  Dz = 'DZ',
+  Dz: 'DZ',
   /** Ecuador. */
-  Ec = 'EC',
+  Ec: 'EC',
   /** Estonia. */
-  Ee = 'EE',
+  Ee: 'EE',
   /** Egypt. */
-  Eg = 'EG',
+  Eg: 'EG',
   /** Western Sahara. */
-  Eh = 'EH',
+  Eh: 'EH',
   /** Eritrea. */
-  Er = 'ER',
+  Er: 'ER',
   /** Spain. */
-  Es = 'ES',
+  Es: 'ES',
   /** Ethiopia. */
-  Et = 'ET',
+  Et: 'ET',
   /** Finland. */
-  Fi = 'FI',
+  Fi: 'FI',
   /** Fiji. */
-  Fj = 'FJ',
+  Fj: 'FJ',
   /** Falkland Islands. */
-  Fk = 'FK',
+  Fk: 'FK',
   /** Faroe Islands. */
-  Fo = 'FO',
+  Fo: 'FO',
   /** France. */
-  Fr = 'FR',
+  Fr: 'FR',
   /** Gabon. */
-  Ga = 'GA',
+  Ga: 'GA',
   /** United Kingdom. */
-  Gb = 'GB',
+  Gb: 'GB',
   /** Grenada. */
-  Gd = 'GD',
+  Gd: 'GD',
   /** Georgia. */
-  Ge = 'GE',
+  Ge: 'GE',
   /** French Guiana. */
-  Gf = 'GF',
+  Gf: 'GF',
   /** Guernsey. */
-  Gg = 'GG',
+  Gg: 'GG',
   /** Ghana. */
-  Gh = 'GH',
+  Gh: 'GH',
   /** Gibraltar. */
-  Gi = 'GI',
+  Gi: 'GI',
   /** Greenland. */
-  Gl = 'GL',
+  Gl: 'GL',
   /** Gambia. */
-  Gm = 'GM',
+  Gm: 'GM',
   /** Guinea. */
-  Gn = 'GN',
+  Gn: 'GN',
   /** Guadeloupe. */
-  Gp = 'GP',
+  Gp: 'GP',
   /** Equatorial Guinea. */
-  Gq = 'GQ',
+  Gq: 'GQ',
   /** Greece. */
-  Gr = 'GR',
+  Gr: 'GR',
   /** South Georgia & South Sandwich Islands. */
-  Gs = 'GS',
+  Gs: 'GS',
   /** Guatemala. */
-  Gt = 'GT',
+  Gt: 'GT',
   /** Guinea-Bissau. */
-  Gw = 'GW',
+  Gw: 'GW',
   /** Guyana. */
-  Gy = 'GY',
+  Gy: 'GY',
   /** Hong Kong SAR. */
-  Hk = 'HK',
+  Hk: 'HK',
   /** Heard & McDonald Islands. */
-  Hm = 'HM',
+  Hm: 'HM',
   /** Honduras. */
-  Hn = 'HN',
+  Hn: 'HN',
   /** Croatia. */
-  Hr = 'HR',
+  Hr: 'HR',
   /** Haiti. */
-  Ht = 'HT',
+  Ht: 'HT',
   /** Hungary. */
-  Hu = 'HU',
+  Hu: 'HU',
   /** Indonesia. */
-  Id = 'ID',
+  Id: 'ID',
   /** Ireland. */
-  Ie = 'IE',
+  Ie: 'IE',
   /** Israel. */
-  Il = 'IL',
+  Il: 'IL',
   /** Isle of Man. */
-  Im = 'IM',
+  Im: 'IM',
   /** India. */
-  In = 'IN',
+  In: 'IN',
   /** British Indian Ocean Territory. */
-  Io = 'IO',
+  Io: 'IO',
   /** Iraq. */
-  Iq = 'IQ',
+  Iq: 'IQ',
   /** Iran. */
-  Ir = 'IR',
+  Ir: 'IR',
   /** Iceland. */
-  Is = 'IS',
+  Is: 'IS',
   /** Italy. */
-  It = 'IT',
+  It: 'IT',
   /** Jersey. */
-  Je = 'JE',
+  Je: 'JE',
   /** Jamaica. */
-  Jm = 'JM',
+  Jm: 'JM',
   /** Jordan. */
-  Jo = 'JO',
+  Jo: 'JO',
   /** Japan. */
-  Jp = 'JP',
+  Jp: 'JP',
   /** Kenya. */
-  Ke = 'KE',
+  Ke: 'KE',
   /** Kyrgyzstan. */
-  Kg = 'KG',
+  Kg: 'KG',
   /** Cambodia. */
-  Kh = 'KH',
+  Kh: 'KH',
   /** Kiribati. */
-  Ki = 'KI',
+  Ki: 'KI',
   /** Comoros. */
-  Km = 'KM',
+  Km: 'KM',
   /** St. Kitts & Nevis. */
-  Kn = 'KN',
+  Kn: 'KN',
   /** North Korea. */
-  Kp = 'KP',
+  Kp: 'KP',
   /** South Korea. */
-  Kr = 'KR',
+  Kr: 'KR',
   /** Kuwait. */
-  Kw = 'KW',
+  Kw: 'KW',
   /** Cayman Islands. */
-  Ky = 'KY',
+  Ky: 'KY',
   /** Kazakhstan. */
-  Kz = 'KZ',
+  Kz: 'KZ',
   /** Laos. */
-  La = 'LA',
+  La: 'LA',
   /** Lebanon. */
-  Lb = 'LB',
+  Lb: 'LB',
   /** St. Lucia. */
-  Lc = 'LC',
+  Lc: 'LC',
   /** Liechtenstein. */
-  Li = 'LI',
+  Li: 'LI',
   /** Sri Lanka. */
-  Lk = 'LK',
+  Lk: 'LK',
   /** Liberia. */
-  Lr = 'LR',
+  Lr: 'LR',
   /** Lesotho. */
-  Ls = 'LS',
+  Ls: 'LS',
   /** Lithuania. */
-  Lt = 'LT',
+  Lt: 'LT',
   /** Luxembourg. */
-  Lu = 'LU',
+  Lu: 'LU',
   /** Latvia. */
-  Lv = 'LV',
+  Lv: 'LV',
   /** Libya. */
-  Ly = 'LY',
+  Ly: 'LY',
   /** Morocco. */
-  Ma = 'MA',
+  Ma: 'MA',
   /** Monaco. */
-  Mc = 'MC',
+  Mc: 'MC',
   /** Moldova. */
-  Md = 'MD',
+  Md: 'MD',
   /** Montenegro. */
-  Me = 'ME',
+  Me: 'ME',
   /** St. Martin. */
-  Mf = 'MF',
+  Mf: 'MF',
   /** Madagascar. */
-  Mg = 'MG',
+  Mg: 'MG',
   /** North Macedonia. */
-  Mk = 'MK',
+  Mk: 'MK',
   /** Mali. */
-  Ml = 'ML',
+  Ml: 'ML',
   /** Myanmar (Burma). */
-  Mm = 'MM',
+  Mm: 'MM',
   /** Mongolia. */
-  Mn = 'MN',
+  Mn: 'MN',
   /** Macao SAR. */
-  Mo = 'MO',
+  Mo: 'MO',
   /** Martinique. */
-  Mq = 'MQ',
+  Mq: 'MQ',
   /** Mauritania. */
-  Mr = 'MR',
+  Mr: 'MR',
   /** Montserrat. */
-  Ms = 'MS',
+  Ms: 'MS',
   /** Malta. */
-  Mt = 'MT',
+  Mt: 'MT',
   /** Mauritius. */
-  Mu = 'MU',
+  Mu: 'MU',
   /** Maldives. */
-  Mv = 'MV',
+  Mv: 'MV',
   /** Malawi. */
-  Mw = 'MW',
+  Mw: 'MW',
   /** Mexico. */
-  Mx = 'MX',
+  Mx: 'MX',
   /** Malaysia. */
-  My = 'MY',
+  My: 'MY',
   /** Mozambique. */
-  Mz = 'MZ',
+  Mz: 'MZ',
   /** Namibia. */
-  Na = 'NA',
+  Na: 'NA',
   /** New Caledonia. */
-  Nc = 'NC',
+  Nc: 'NC',
   /** Niger. */
-  Ne = 'NE',
+  Ne: 'NE',
   /** Norfolk Island. */
-  Nf = 'NF',
+  Nf: 'NF',
   /** Nigeria. */
-  Ng = 'NG',
+  Ng: 'NG',
   /** Nicaragua. */
-  Ni = 'NI',
+  Ni: 'NI',
   /** Netherlands. */
-  Nl = 'NL',
+  Nl: 'NL',
   /** Norway. */
-  No = 'NO',
+  No: 'NO',
   /** Nepal. */
-  Np = 'NP',
+  Np: 'NP',
   /** Nauru. */
-  Nr = 'NR',
+  Nr: 'NR',
   /** Niue. */
-  Nu = 'NU',
+  Nu: 'NU',
   /** New Zealand. */
-  Nz = 'NZ',
+  Nz: 'NZ',
   /** Oman. */
-  Om = 'OM',
+  Om: 'OM',
   /** Panama. */
-  Pa = 'PA',
+  Pa: 'PA',
   /** Peru. */
-  Pe = 'PE',
+  Pe: 'PE',
   /** French Polynesia. */
-  Pf = 'PF',
+  Pf: 'PF',
   /** Papua New Guinea. */
-  Pg = 'PG',
+  Pg: 'PG',
   /** Philippines. */
-  Ph = 'PH',
+  Ph: 'PH',
   /** Pakistan. */
-  Pk = 'PK',
+  Pk: 'PK',
   /** Poland. */
-  Pl = 'PL',
+  Pl: 'PL',
   /** St. Pierre & Miquelon. */
-  Pm = 'PM',
+  Pm: 'PM',
   /** Pitcairn Islands. */
-  Pn = 'PN',
+  Pn: 'PN',
   /** Palestinian Territories. */
-  Ps = 'PS',
+  Ps: 'PS',
   /** Portugal. */
-  Pt = 'PT',
+  Pt: 'PT',
   /** Paraguay. */
-  Py = 'PY',
+  Py: 'PY',
   /** Qatar. */
-  Qa = 'QA',
+  Qa: 'QA',
   /** Réunion. */
-  Re = 'RE',
+  Re: 'RE',
   /** Romania. */
-  Ro = 'RO',
+  Ro: 'RO',
   /** Serbia. */
-  Rs = 'RS',
+  Rs: 'RS',
   /** Russia. */
-  Ru = 'RU',
+  Ru: 'RU',
   /** Rwanda. */
-  Rw = 'RW',
+  Rw: 'RW',
   /** Saudi Arabia. */
-  Sa = 'SA',
+  Sa: 'SA',
   /** Solomon Islands. */
-  Sb = 'SB',
+  Sb: 'SB',
   /** Seychelles. */
-  Sc = 'SC',
+  Sc: 'SC',
   /** Sudan. */
-  Sd = 'SD',
+  Sd: 'SD',
   /** Sweden. */
-  Se = 'SE',
+  Se: 'SE',
   /** Singapore. */
-  Sg = 'SG',
+  Sg: 'SG',
   /** St. Helena. */
-  Sh = 'SH',
+  Sh: 'SH',
   /** Slovenia. */
-  Si = 'SI',
+  Si: 'SI',
   /** Svalbard & Jan Mayen. */
-  Sj = 'SJ',
+  Sj: 'SJ',
   /** Slovakia. */
-  Sk = 'SK',
+  Sk: 'SK',
   /** Sierra Leone. */
-  Sl = 'SL',
+  Sl: 'SL',
   /** San Marino. */
-  Sm = 'SM',
+  Sm: 'SM',
   /** Senegal. */
-  Sn = 'SN',
+  Sn: 'SN',
   /** Somalia. */
-  So = 'SO',
+  So: 'SO',
   /** Suriname. */
-  Sr = 'SR',
+  Sr: 'SR',
   /** South Sudan. */
-  Ss = 'SS',
+  Ss: 'SS',
   /** São Tomé & Príncipe. */
-  St = 'ST',
+  St: 'ST',
   /** El Salvador. */
-  Sv = 'SV',
+  Sv: 'SV',
   /** Sint Maarten. */
-  Sx = 'SX',
+  Sx: 'SX',
   /** Syria. */
-  Sy = 'SY',
+  Sy: 'SY',
   /** Eswatini. */
-  Sz = 'SZ',
+  Sz: 'SZ',
   /** Tristan da Cunha. */
-  Ta = 'TA',
+  Ta: 'TA',
   /** Turks & Caicos Islands. */
-  Tc = 'TC',
+  Tc: 'TC',
   /** Chad. */
-  Td = 'TD',
+  Td: 'TD',
   /** French Southern Territories. */
-  Tf = 'TF',
+  Tf: 'TF',
   /** Togo. */
-  Tg = 'TG',
+  Tg: 'TG',
   /** Thailand. */
-  Th = 'TH',
+  Th: 'TH',
   /** Tajikistan. */
-  Tj = 'TJ',
+  Tj: 'TJ',
   /** Tokelau. */
-  Tk = 'TK',
+  Tk: 'TK',
   /** Timor-Leste. */
-  Tl = 'TL',
+  Tl: 'TL',
   /** Turkmenistan. */
-  Tm = 'TM',
+  Tm: 'TM',
   /** Tunisia. */
-  Tn = 'TN',
+  Tn: 'TN',
   /** Tonga. */
-  To = 'TO',
+  To: 'TO',
   /** Türkiye. */
-  Tr = 'TR',
+  Tr: 'TR',
   /** Trinidad & Tobago. */
-  Tt = 'TT',
+  Tt: 'TT',
   /** Tuvalu. */
-  Tv = 'TV',
+  Tv: 'TV',
   /** Taiwan. */
-  Tw = 'TW',
+  Tw: 'TW',
   /** Tanzania. */
-  Tz = 'TZ',
+  Tz: 'TZ',
   /** Ukraine. */
-  Ua = 'UA',
+  Ua: 'UA',
   /** Uganda. */
-  Ug = 'UG',
+  Ug: 'UG',
   /** U.S. Outlying Islands. */
-  Um = 'UM',
+  Um: 'UM',
   /** United States. */
-  Us = 'US',
+  Us: 'US',
   /** Uruguay. */
-  Uy = 'UY',
+  Uy: 'UY',
   /** Uzbekistan. */
-  Uz = 'UZ',
+  Uz: 'UZ',
   /** Vatican City. */
-  Va = 'VA',
+  Va: 'VA',
   /** St. Vincent & Grenadines. */
-  Vc = 'VC',
+  Vc: 'VC',
   /** Venezuela. */
-  Ve = 'VE',
+  Ve: 'VE',
   /** British Virgin Islands. */
-  Vg = 'VG',
+  Vg: 'VG',
   /** Vietnam. */
-  Vn = 'VN',
+  Vn: 'VN',
   /** Vanuatu. */
-  Vu = 'VU',
+  Vu: 'VU',
   /** Wallis & Futuna. */
-  Wf = 'WF',
+  Wf: 'WF',
   /** Samoa. */
-  Ws = 'WS',
+  Ws: 'WS',
   /** Kosovo. */
-  Xk = 'XK',
+  Xk: 'XK',
   /** Yemen. */
-  Ye = 'YE',
+  Ye: 'YE',
   /** Mayotte. */
-  Yt = 'YT',
+  Yt: 'YT',
   /** South Africa. */
-  Za = 'ZA',
+  Za: 'ZA',
   /** Zambia. */
-  Zm = 'ZM',
+  Zm: 'ZM',
   /** Zimbabwe. */
-  Zw = 'ZW',
+  Zw: 'ZW',
   /** Unknown Region. */
-  Zz = 'ZZ'
-}
+  Zz: 'ZZ'
+} as const;
 
+export type CountryCode = typeof CountryCode[keyof typeof CountryCode];
 /** The country-specific harmonized system code and ISO country code for an inventory item. */
 export type CountryHarmonizedSystemCode = {
   __typename?: 'CountryHarmonizedSystemCode';
@@ -10446,360 +10557,353 @@ export type CreateMediaInput = {
 };
 
 /** The part of the image that should remain after cropping. */
-export enum CropRegion {
+export const CropRegion = {
   /** Keep the bottom of the image. */
-  Bottom = 'BOTTOM',
+  Bottom: 'BOTTOM',
   /** Keep the center of the image. */
-  Center = 'CENTER',
+  Center: 'CENTER',
   /** Keep the left of the image. */
-  Left = 'LEFT',
+  Left: 'LEFT',
   /** Keep the right of the image. */
-  Right = 'RIGHT',
+  Right: 'RIGHT',
   /** Keep the top of the image. */
-  Top = 'TOP'
-}
+  Top: 'TOP'
+} as const;
 
+export type CropRegion = typeof CropRegion[keyof typeof CropRegion];
 /**
  * The currency codes that represent the world currencies throughout the Admin API. Currency codes include
  * [standard ISO 4217 codes](https://en.wikipedia.org/wiki/ISO_4217), legacy codes, non-standard codes,
  * digital currency codes.
  */
-export enum CurrencyCode {
+export const CurrencyCode = {
   /** United Arab Emirates Dirham (AED). */
-  Aed = 'AED',
+  Aed: 'AED',
   /** Afghan Afghani (AFN). */
-  Afn = 'AFN',
+  Afn: 'AFN',
   /** Albanian Lek (ALL). */
-  All = 'ALL',
+  All: 'ALL',
   /** Armenian Dram (AMD). */
-  Amd = 'AMD',
+  Amd: 'AMD',
   /** Netherlands Antillean Guilder. */
-  Ang = 'ANG',
+  Ang: 'ANG',
   /** Angolan Kwanza (AOA). */
-  Aoa = 'AOA',
+  Aoa: 'AOA',
   /** Argentine Pesos (ARS). */
-  Ars = 'ARS',
+  Ars: 'ARS',
   /** Australian Dollars (AUD). */
-  Aud = 'AUD',
+  Aud: 'AUD',
   /** Aruban Florin (AWG). */
-  Awg = 'AWG',
+  Awg: 'AWG',
   /** Azerbaijani Manat (AZN). */
-  Azn = 'AZN',
+  Azn: 'AZN',
   /** Bosnia and Herzegovina Convertible Mark (BAM). */
-  Bam = 'BAM',
+  Bam: 'BAM',
   /** Barbadian Dollar (BBD). */
-  Bbd = 'BBD',
+  Bbd: 'BBD',
   /** Bangladesh Taka (BDT). */
-  Bdt = 'BDT',
+  Bdt: 'BDT',
   /** Bulgarian Lev (BGN). */
-  Bgn = 'BGN',
+  Bgn: 'BGN',
   /** Bahraini Dinar (BHD). */
-  Bhd = 'BHD',
+  Bhd: 'BHD',
   /** Burundian Franc (BIF). */
-  Bif = 'BIF',
+  Bif: 'BIF',
   /** Bermudian Dollar (BMD). */
-  Bmd = 'BMD',
+  Bmd: 'BMD',
   /** Brunei Dollar (BND). */
-  Bnd = 'BND',
+  Bnd: 'BND',
   /** Bolivian Boliviano (BOB). */
-  Bob = 'BOB',
+  Bob: 'BOB',
   /** Brazilian Real (BRL). */
-  Brl = 'BRL',
+  Brl: 'BRL',
   /** Bahamian Dollar (BSD). */
-  Bsd = 'BSD',
+  Bsd: 'BSD',
   /** Bhutanese Ngultrum (BTN). */
-  Btn = 'BTN',
+  Btn: 'BTN',
   /** Botswana Pula (BWP). */
-  Bwp = 'BWP',
+  Bwp: 'BWP',
   /** Belarusian Ruble (BYN). */
-  Byn = 'BYN',
-  /**
-   * Belarusian Ruble (BYR).
-   * @deprecated Use `BYN` instead.
-   */
-  Byr = 'BYR',
+  Byn: 'BYN',
+  /** Belarusian Ruble (BYR). */
+  Byr: 'BYR',
   /** Belize Dollar (BZD). */
-  Bzd = 'BZD',
+  Bzd: 'BZD',
   /** Canadian Dollars (CAD). */
-  Cad = 'CAD',
+  Cad: 'CAD',
   /** Congolese franc (CDF). */
-  Cdf = 'CDF',
+  Cdf: 'CDF',
   /** Swiss Francs (CHF). */
-  Chf = 'CHF',
+  Chf: 'CHF',
   /** Chilean Peso (CLP). */
-  Clp = 'CLP',
+  Clp: 'CLP',
   /** Chinese Yuan Renminbi (CNY). */
-  Cny = 'CNY',
+  Cny: 'CNY',
   /** Colombian Peso (COP). */
-  Cop = 'COP',
+  Cop: 'COP',
   /** Costa Rican Colones (CRC). */
-  Crc = 'CRC',
+  Crc: 'CRC',
   /** Cape Verdean escudo (CVE). */
-  Cve = 'CVE',
+  Cve: 'CVE',
   /** Czech Koruny (CZK). */
-  Czk = 'CZK',
+  Czk: 'CZK',
   /** Djiboutian Franc (DJF). */
-  Djf = 'DJF',
+  Djf: 'DJF',
   /** Danish Kroner (DKK). */
-  Dkk = 'DKK',
+  Dkk: 'DKK',
   /** Dominican Peso (DOP). */
-  Dop = 'DOP',
+  Dop: 'DOP',
   /** Algerian Dinar (DZD). */
-  Dzd = 'DZD',
+  Dzd: 'DZD',
   /** Egyptian Pound (EGP). */
-  Egp = 'EGP',
+  Egp: 'EGP',
   /** Eritrean Nakfa (ERN). */
-  Ern = 'ERN',
+  Ern: 'ERN',
   /** Ethiopian Birr (ETB). */
-  Etb = 'ETB',
+  Etb: 'ETB',
   /** Euro (EUR). */
-  Eur = 'EUR',
+  Eur: 'EUR',
   /** Fijian Dollars (FJD). */
-  Fjd = 'FJD',
+  Fjd: 'FJD',
   /** Falkland Islands Pounds (FKP). */
-  Fkp = 'FKP',
+  Fkp: 'FKP',
   /** United Kingdom Pounds (GBP). */
-  Gbp = 'GBP',
+  Gbp: 'GBP',
   /** Georgian Lari (GEL). */
-  Gel = 'GEL',
+  Gel: 'GEL',
   /** Ghanaian Cedi (GHS). */
-  Ghs = 'GHS',
+  Ghs: 'GHS',
   /** Gibraltar Pounds (GIP). */
-  Gip = 'GIP',
+  Gip: 'GIP',
   /** Gambian Dalasi (GMD). */
-  Gmd = 'GMD',
+  Gmd: 'GMD',
   /** Guinean Franc (GNF). */
-  Gnf = 'GNF',
+  Gnf: 'GNF',
   /** Guatemalan Quetzal (GTQ). */
-  Gtq = 'GTQ',
+  Gtq: 'GTQ',
   /** Guyanese Dollar (GYD). */
-  Gyd = 'GYD',
+  Gyd: 'GYD',
   /** Hong Kong Dollars (HKD). */
-  Hkd = 'HKD',
+  Hkd: 'HKD',
   /** Honduran Lempira (HNL). */
-  Hnl = 'HNL',
+  Hnl: 'HNL',
   /** Croatian Kuna (HRK). */
-  Hrk = 'HRK',
+  Hrk: 'HRK',
   /** Haitian Gourde (HTG). */
-  Htg = 'HTG',
+  Htg: 'HTG',
   /** Hungarian Forint (HUF). */
-  Huf = 'HUF',
+  Huf: 'HUF',
   /** Indonesian Rupiah (IDR). */
-  Idr = 'IDR',
+  Idr: 'IDR',
   /** Israeli New Shekel (NIS). */
-  Ils = 'ILS',
+  Ils: 'ILS',
   /** Indian Rupees (INR). */
-  Inr = 'INR',
+  Inr: 'INR',
   /** Iraqi Dinar (IQD). */
-  Iqd = 'IQD',
+  Iqd: 'IQD',
   /** Iranian Rial (IRR). */
-  Irr = 'IRR',
+  Irr: 'IRR',
   /** Icelandic Kronur (ISK). */
-  Isk = 'ISK',
+  Isk: 'ISK',
   /** Jersey Pound. */
-  Jep = 'JEP',
+  Jep: 'JEP',
   /** Jamaican Dollars (JMD). */
-  Jmd = 'JMD',
+  Jmd: 'JMD',
   /** Jordanian Dinar (JOD). */
-  Jod = 'JOD',
+  Jod: 'JOD',
   /** Japanese Yen (JPY). */
-  Jpy = 'JPY',
+  Jpy: 'JPY',
   /** Kenyan Shilling (KES). */
-  Kes = 'KES',
+  Kes: 'KES',
   /** Kyrgyzstani Som (KGS). */
-  Kgs = 'KGS',
+  Kgs: 'KGS',
   /** Cambodian Riel. */
-  Khr = 'KHR',
+  Khr: 'KHR',
   /** Kiribati Dollar (KID). */
-  Kid = 'KID',
+  Kid: 'KID',
   /** Comorian Franc (KMF). */
-  Kmf = 'KMF',
+  Kmf: 'KMF',
   /** South Korean Won (KRW). */
-  Krw = 'KRW',
+  Krw: 'KRW',
   /** Kuwaiti Dinar (KWD). */
-  Kwd = 'KWD',
+  Kwd: 'KWD',
   /** Cayman Dollars (KYD). */
-  Kyd = 'KYD',
+  Kyd: 'KYD',
   /** Kazakhstani Tenge (KZT). */
-  Kzt = 'KZT',
+  Kzt: 'KZT',
   /** Laotian Kip (LAK). */
-  Lak = 'LAK',
+  Lak: 'LAK',
   /** Lebanese Pounds (LBP). */
-  Lbp = 'LBP',
+  Lbp: 'LBP',
   /** Sri Lankan Rupees (LKR). */
-  Lkr = 'LKR',
+  Lkr: 'LKR',
   /** Liberian Dollar (LRD). */
-  Lrd = 'LRD',
+  Lrd: 'LRD',
   /** Lesotho Loti (LSL). */
-  Lsl = 'LSL',
+  Lsl: 'LSL',
   /** Lithuanian Litai (LTL). */
-  Ltl = 'LTL',
+  Ltl: 'LTL',
   /** Latvian Lati (LVL). */
-  Lvl = 'LVL',
+  Lvl: 'LVL',
   /** Libyan Dinar (LYD). */
-  Lyd = 'LYD',
+  Lyd: 'LYD',
   /** Moroccan Dirham. */
-  Mad = 'MAD',
+  Mad: 'MAD',
   /** Moldovan Leu (MDL). */
-  Mdl = 'MDL',
+  Mdl: 'MDL',
   /** Malagasy Ariary (MGA). */
-  Mga = 'MGA',
+  Mga: 'MGA',
   /** Macedonia Denar (MKD). */
-  Mkd = 'MKD',
+  Mkd: 'MKD',
   /** Burmese Kyat (MMK). */
-  Mmk = 'MMK',
+  Mmk: 'MMK',
   /** Mongolian Tugrik. */
-  Mnt = 'MNT',
+  Mnt: 'MNT',
   /** Macanese Pataca (MOP). */
-  Mop = 'MOP',
+  Mop: 'MOP',
   /** Mauritanian Ouguiya (MRU). */
-  Mru = 'MRU',
+  Mru: 'MRU',
   /** Mauritian Rupee (MUR). */
-  Mur = 'MUR',
+  Mur: 'MUR',
   /** Maldivian Rufiyaa (MVR). */
-  Mvr = 'MVR',
+  Mvr: 'MVR',
   /** Malawian Kwacha (MWK). */
-  Mwk = 'MWK',
+  Mwk: 'MWK',
   /** Mexican Pesos (MXN). */
-  Mxn = 'MXN',
+  Mxn: 'MXN',
   /** Malaysian Ringgits (MYR). */
-  Myr = 'MYR',
+  Myr: 'MYR',
   /** Mozambican Metical. */
-  Mzn = 'MZN',
+  Mzn: 'MZN',
   /** Namibian Dollar. */
-  Nad = 'NAD',
+  Nad: 'NAD',
   /** Nigerian Naira (NGN). */
-  Ngn = 'NGN',
+  Ngn: 'NGN',
   /** Nicaraguan Córdoba (NIO). */
-  Nio = 'NIO',
+  Nio: 'NIO',
   /** Norwegian Kroner (NOK). */
-  Nok = 'NOK',
+  Nok: 'NOK',
   /** Nepalese Rupee (NPR). */
-  Npr = 'NPR',
+  Npr: 'NPR',
   /** New Zealand Dollars (NZD). */
-  Nzd = 'NZD',
+  Nzd: 'NZD',
   /** Omani Rial (OMR). */
-  Omr = 'OMR',
+  Omr: 'OMR',
   /** Panamian Balboa (PAB). */
-  Pab = 'PAB',
+  Pab: 'PAB',
   /** Peruvian Nuevo Sol (PEN). */
-  Pen = 'PEN',
+  Pen: 'PEN',
   /** Papua New Guinean Kina (PGK). */
-  Pgk = 'PGK',
+  Pgk: 'PGK',
   /** Philippine Peso (PHP). */
-  Php = 'PHP',
+  Php: 'PHP',
   /** Pakistani Rupee (PKR). */
-  Pkr = 'PKR',
+  Pkr: 'PKR',
   /** Polish Zlotych (PLN). */
-  Pln = 'PLN',
+  Pln: 'PLN',
   /** Paraguayan Guarani (PYG). */
-  Pyg = 'PYG',
+  Pyg: 'PYG',
   /** Qatari Rial (QAR). */
-  Qar = 'QAR',
+  Qar: 'QAR',
   /** Romanian Lei (RON). */
-  Ron = 'RON',
+  Ron: 'RON',
   /** Serbian dinar (RSD). */
-  Rsd = 'RSD',
+  Rsd: 'RSD',
   /** Russian Rubles (RUB). */
-  Rub = 'RUB',
+  Rub: 'RUB',
   /** Rwandan Franc (RWF). */
-  Rwf = 'RWF',
+  Rwf: 'RWF',
   /** Saudi Riyal (SAR). */
-  Sar = 'SAR',
+  Sar: 'SAR',
   /** Solomon Islands Dollar (SBD). */
-  Sbd = 'SBD',
+  Sbd: 'SBD',
   /** Seychellois Rupee (SCR). */
-  Scr = 'SCR',
+  Scr: 'SCR',
   /** Sudanese Pound (SDG). */
-  Sdg = 'SDG',
+  Sdg: 'SDG',
   /** Swedish Kronor (SEK). */
-  Sek = 'SEK',
+  Sek: 'SEK',
   /** Singapore Dollars (SGD). */
-  Sgd = 'SGD',
+  Sgd: 'SGD',
   /** Saint Helena Pounds (SHP). */
-  Shp = 'SHP',
+  Shp: 'SHP',
   /** Sierra Leonean Leone (SLL). */
-  Sll = 'SLL',
+  Sll: 'SLL',
   /** Somali Shilling (SOS). */
-  Sos = 'SOS',
+  Sos: 'SOS',
   /** Surinamese Dollar (SRD). */
-  Srd = 'SRD',
+  Srd: 'SRD',
   /** South Sudanese Pound (SSP). */
-  Ssp = 'SSP',
-  /**
-   * Sao Tome And Principe Dobra (STD).
-   * @deprecated Use `STN` instead.
-   */
-  Std = 'STD',
+  Ssp: 'SSP',
+  /** Sao Tome And Principe Dobra (STD). */
+  Std: 'STD',
   /** Sao Tome And Principe Dobra (STN). */
-  Stn = 'STN',
+  Stn: 'STN',
   /** Syrian Pound (SYP). */
-  Syp = 'SYP',
+  Syp: 'SYP',
   /** Swazi Lilangeni (SZL). */
-  Szl = 'SZL',
+  Szl: 'SZL',
   /** Thai baht (THB). */
-  Thb = 'THB',
+  Thb: 'THB',
   /** Tajikistani Somoni (TJS). */
-  Tjs = 'TJS',
+  Tjs: 'TJS',
   /** Turkmenistani Manat (TMT). */
-  Tmt = 'TMT',
+  Tmt: 'TMT',
   /** Tunisian Dinar (TND). */
-  Tnd = 'TND',
+  Tnd: 'TND',
   /** Tongan Pa'anga (TOP). */
-  Top = 'TOP',
+  Top: 'TOP',
   /** Turkish Lira (TRY). */
-  Try = 'TRY',
+  Try: 'TRY',
   /** Trinidad and Tobago Dollars (TTD). */
-  Ttd = 'TTD',
+  Ttd: 'TTD',
   /** Taiwan Dollars (TWD). */
-  Twd = 'TWD',
+  Twd: 'TWD',
   /** Tanzanian Shilling (TZS). */
-  Tzs = 'TZS',
+  Tzs: 'TZS',
   /** Ukrainian Hryvnia (UAH). */
-  Uah = 'UAH',
+  Uah: 'UAH',
   /** Ugandan Shilling (UGX). */
-  Ugx = 'UGX',
+  Ugx: 'UGX',
   /** United States Dollars (USD). */
-  Usd = 'USD',
+  Usd: 'USD',
   /** United States Dollars Coin (USDC). */
-  Usdc = 'USDC',
+  Usdc: 'USDC',
   /** Uruguayan Pesos (UYU). */
-  Uyu = 'UYU',
+  Uyu: 'UYU',
   /** Uzbekistan som (UZS). */
-  Uzs = 'UZS',
+  Uzs: 'UZS',
   /** Venezuelan Bolivares (VED). */
-  Ved = 'VED',
-  /**
-   * Venezuelan Bolivares (VEF).
-   * @deprecated Use `VES` instead.
-   */
-  Vef = 'VEF',
+  Ved: 'VED',
+  /** Venezuelan Bolivares (VEF). */
+  Vef: 'VEF',
   /** Venezuelan Bolivares Soberanos (VES). */
-  Ves = 'VES',
+  Ves: 'VES',
   /** Vietnamese đồng (VND). */
-  Vnd = 'VND',
+  Vnd: 'VND',
   /** Vanuatu Vatu (VUV). */
-  Vuv = 'VUV',
+  Vuv: 'VUV',
   /** Samoan Tala (WST). */
-  Wst = 'WST',
+  Wst: 'WST',
   /** Central African CFA Franc (XAF). */
-  Xaf = 'XAF',
+  Xaf: 'XAF',
   /** East Caribbean Dollar (XCD). */
-  Xcd = 'XCD',
+  Xcd: 'XCD',
   /** West African CFA franc (XOF). */
-  Xof = 'XOF',
+  Xof: 'XOF',
   /** CFP Franc (XPF). */
-  Xpf = 'XPF',
+  Xpf: 'XPF',
   /** Unrecognized currency. */
-  Xxx = 'XXX',
+  Xxx: 'XXX',
   /** Yemeni Rial (YER). */
-  Yer = 'YER',
+  Yer: 'YER',
   /** South African Rand (ZAR). */
-  Zar = 'ZAR',
+  Zar: 'ZAR',
   /** Zambian Kwacha (ZMW). */
-  Zmw = 'ZMW'
-}
+  Zmw: 'ZMW'
+} as const;
 
+export type CurrencyCode = typeof CurrencyCode[keyof typeof CurrencyCode];
 /** Represents a currency exchange adjustment applied to an order transaction. */
 export type CurrencyExchangeAdjustment = Node & {
   __typename?: 'CurrencyExchangeAdjustment';
@@ -11249,17 +11353,18 @@ export type CustomerAccountNativePage = CustomerAccountPage & Navigable & Node &
 };
 
 /** The type of customer account native page. */
-export enum CustomerAccountNativePagePageType {
+export const CustomerAccountNativePagePageType = {
   /** An orders page type. */
-  NativeOrders = 'NATIVE_ORDERS',
+  NativeOrders: 'NATIVE_ORDERS',
   /** A profile page type. */
-  NativeProfile = 'NATIVE_PROFILE',
+  NativeProfile: 'NATIVE_PROFILE',
   /** A settings page type. */
-  NativeSettings = 'NATIVE_SETTINGS',
+  NativeSettings: 'NATIVE_SETTINGS',
   /** An unknown page type. Represents new page types that may be added in future versions. */
-  Unknown = 'UNKNOWN'
-}
+  Unknown: 'UNKNOWN'
+} as const;
 
+export type CustomerAccountNativePagePageType = typeof CustomerAccountNativePagePageType[keyof typeof CustomerAccountNativePagePageType];
 /** A customer account page. */
 export type CustomerAccountPage = {
   /** A default [cursor](https://shopify.dev/api/usage/pagination-graphql) that returns the single next record, sorted ascending by ID. */
@@ -11306,13 +11411,14 @@ export type CustomerAccountsV2 = {
 };
 
 /** The login redirection target for customer accounts. */
-export enum CustomerAccountsVersion {
+export const CustomerAccountsVersion = {
   /** The customer is redirected to the classic customer accounts login page. */
-  Classic = 'CLASSIC',
+  Classic: 'CLASSIC',
   /** The customer is redirected to the new customer accounts login page. */
-  NewCustomerAccounts = 'NEW_CUSTOMER_ACCOUNTS'
-}
+  NewCustomerAccounts: 'NEW_CUSTOMER_ACCOUNTS'
+} as const;
 
+export type CustomerAccountsVersion = typeof CustomerAccountsVersion[keyof typeof CustomerAccountsVersion];
 /** Return type for `customerAddTaxExemptions` mutation. */
 export type CustomerAddTaxExemptionsPayload = {
   __typename?: 'CustomerAddTaxExemptionsPayload';
@@ -11350,17 +11456,18 @@ export type CustomerAddressUpdatePayload = {
 };
 
 /** Possible error codes that can be returned by `CustomerCancelDataErasureUserError`. */
-export enum CustomerCancelDataErasureErrorCode {
+export const CustomerCancelDataErasureErrorCode = {
   /** Customer does not exist. */
-  DoesNotExist = 'DOES_NOT_EXIST',
+  DoesNotExist: 'DOES_NOT_EXIST',
   /** Failed to cancel customer data erasure. */
-  FailedToCancel = 'FAILED_TO_CANCEL',
+  FailedToCancel: 'FAILED_TO_CANCEL',
   /** Customer's data is not scheduled for erasure. */
-  NotBeingErased = 'NOT_BEING_ERASED',
+  NotBeingErased: 'NOT_BEING_ERASED',
   /** Only the original requester can cancel this data erasure. */
-  UnauthorizedCancellation = 'UNAUTHORIZED_CANCELLATION'
-}
+  UnauthorizedCancellation: 'UNAUTHORIZED_CANCELLATION'
+} as const;
 
+export type CustomerCancelDataErasureErrorCode = typeof CustomerCancelDataErasureErrorCode[keyof typeof CustomerCancelDataErasureErrorCode];
 /** Return type for `customerCancelDataErasure` mutation. */
 export type CustomerCancelDataErasurePayload = {
   __typename?: 'CustomerCancelDataErasurePayload';
@@ -11393,13 +11500,14 @@ export type CustomerConnection = {
 };
 
 /** The source that collected the customer's consent to receive marketing materials. */
-export enum CustomerConsentCollectedFrom {
+export const CustomerConsentCollectedFrom = {
   /** The customer consent was collected outside of Shopify. */
-  Other = 'OTHER',
+  Other: 'OTHER',
   /** The customer consent was collected by Shopify. */
-  Shopify = 'SHOPIFY'
-}
+  Shopify: 'SHOPIFY'
+} as const;
 
+export type CustomerConsentCollectedFrom = typeof CustomerConsentCollectedFrom[keyof typeof CustomerConsentCollectedFrom];
 /** Return type for `customerCreate` mutation. */
 export type CustomerCreatePayload = {
   __typename?: 'CustomerCreatePayload';
@@ -11533,29 +11641,31 @@ export type CustomerEmailAddress = {
 };
 
 /** Possible marketing states for the customer’s email address. */
-export enum CustomerEmailAddressMarketingState {
+export const CustomerEmailAddressMarketingState = {
   /** The customer’s email address marketing state is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The customer is not subscribed to email marketing. */
-  NotSubscribed = 'NOT_SUBSCRIBED',
+  NotSubscribed: 'NOT_SUBSCRIBED',
   /** The customer is in the process of subscribing to email marketing. */
-  Pending = 'PENDING',
+  Pending: 'PENDING',
   /** The customer is subscribed to email marketing. */
-  Subscribed = 'SUBSCRIBED',
+  Subscribed: 'SUBSCRIBED',
   /** The customer is not subscribed to email marketing but was previously subscribed. */
-  Unsubscribed = 'UNSUBSCRIBED'
-}
+  Unsubscribed: 'UNSUBSCRIBED'
+} as const;
 
+export type CustomerEmailAddressMarketingState = typeof CustomerEmailAddressMarketingState[keyof typeof CustomerEmailAddressMarketingState];
 /** The different levels related to whether a customer has opted in to having their opened emails tracked. */
-export enum CustomerEmailAddressOpenTrackingLevel {
+export const CustomerEmailAddressOpenTrackingLevel = {
   /** The customer has opted in to having their open emails tracked. */
-  OptedIn = 'OPTED_IN',
+  OptedIn: 'OPTED_IN',
   /** The customer has opted out of having their open emails tracked. */
-  OptedOut = 'OPTED_OUT',
+  OptedOut: 'OPTED_OUT',
   /** The customer has not specified whether they want to opt in or out of having their open emails tracked. */
-  Unknown = 'UNKNOWN'
-}
+  Unknown: 'UNKNOWN'
+} as const;
 
+export type CustomerEmailAddressOpenTrackingLevel = typeof CustomerEmailAddressOpenTrackingLevel[keyof typeof CustomerEmailAddressOpenTrackingLevel];
 /**
  * Information that describes when a customer consented to
  *         receiving marketing material by email.
@@ -11623,37 +11733,39 @@ export type CustomerEmailMarketingConsentUpdateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `CustomerEmailMarketingConsentUpdateUserError`. */
-export enum CustomerEmailMarketingConsentUpdateUserErrorCode {
+export const CustomerEmailMarketingConsentUpdateUserErrorCode = {
   /** The input value isn't included in the list. */
-  Inclusion = 'INCLUSION',
+  Inclusion: 'INCLUSION',
   /** Unexpected internal error happened. */
-  InternalError = 'INTERNAL_ERROR',
+  InternalError: 'INTERNAL_ERROR',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** Missing a required argument. */
-  MissingArgument = 'MISSING_ARGUMENT'
-}
+  MissingArgument: 'MISSING_ARGUMENT'
+} as const;
 
+export type CustomerEmailMarketingConsentUpdateUserErrorCode = typeof CustomerEmailMarketingConsentUpdateUserErrorCode[keyof typeof CustomerEmailMarketingConsentUpdateUserErrorCode];
 /** The possible email marketing states for a customer. */
-export enum CustomerEmailMarketingState {
+export const CustomerEmailMarketingState = {
   /** This value is internally-set and read-only. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /**
    * Default state for customers who have never subscribed to email marketing.
    * This value cannot be set via the mutation; use UNSUBSCRIBED instead to indicate
    * a customer has opted out.
    */
-  NotSubscribed = 'NOT_SUBSCRIBED',
+  NotSubscribed: 'NOT_SUBSCRIBED',
   /** The customer is in the process of subscribing to email marketing. */
-  Pending = 'PENDING',
+  Pending: 'PENDING',
   /** The customer's personal data is erased. This value is internally-set and read-only. */
-  Redacted = 'REDACTED',
+  Redacted: 'REDACTED',
   /** The customer is subscribed to email marketing. */
-  Subscribed = 'SUBSCRIBED',
+  Subscribed: 'SUBSCRIBED',
   /** The customer isn't currently subscribed to email marketing but was previously subscribed. */
-  Unsubscribed = 'UNSUBSCRIBED'
-}
+  Unsubscribed: 'UNSUBSCRIBED'
+} as const;
 
+export type CustomerEmailMarketingState = typeof CustomerEmailMarketingState[keyof typeof CustomerEmailMarketingState];
 /** Return type for `customerGenerateAccountActivationUrl` mutation. */
 export type CustomerGenerateAccountActivationUrlPayload = {
   __typename?: 'CustomerGenerateAccountActivationUrlPayload';
@@ -11779,21 +11891,22 @@ export type CustomerJourneySummaryMomentsArgs = {
  * The levels are defined by [the M3AAWG best practices guideline
  *   document](https://www.m3aawg.org/sites/maawg/files/news/M3AAWG_Senders_BCP_Ver3-2015-02.pdf).
  */
-export enum CustomerMarketingOptInLevel {
+export const CustomerMarketingOptInLevel = {
   /**
    * After providing their information, the customer receives a confirmation and is required to
    * perform a intermediate step before receiving marketing information.
    */
-  ConfirmedOptIn = 'CONFIRMED_OPT_IN',
+  ConfirmedOptIn: 'CONFIRMED_OPT_IN',
   /**
    * After providing their information, the customer receives marketing information without any
    * intermediate steps.
    */
-  SingleOptIn = 'SINGLE_OPT_IN',
+  SingleOptIn: 'SINGLE_OPT_IN',
   /** The customer receives marketing information but how they were opted in is unknown. */
-  Unknown = 'UNKNOWN'
-}
+  Unknown: 'UNKNOWN'
+} as const;
 
+export type CustomerMarketingOptInLevel = typeof CustomerMarketingOptInLevel[keyof typeof CustomerMarketingOptInLevel];
 /** The error blocking a customer merge. */
 export type CustomerMergeError = {
   __typename?: 'CustomerMergeError';
@@ -11804,47 +11917,49 @@ export type CustomerMergeError = {
 };
 
 /** Possible error codes that can be returned by `CustomerMergeUserError`. */
-export enum CustomerMergeErrorCode {
+export const CustomerMergeErrorCode = {
   /** The customer cannot be merged because it has associated gift cards. */
-  CustomerHasGiftCards = 'CUSTOMER_HAS_GIFT_CARDS',
+  CustomerHasGiftCards: 'CUSTOMER_HAS_GIFT_CARDS',
   /** An internal error occurred. */
-  InternalError = 'INTERNAL_ERROR',
+  InternalError: 'INTERNAL_ERROR',
   /** The customer cannot be merged. */
-  InvalidCustomer = 'INVALID_CUSTOMER',
+  InvalidCustomer: 'INVALID_CUSTOMER',
   /** The customer ID is invalid. */
-  InvalidCustomerId = 'INVALID_CUSTOMER_ID',
+  InvalidCustomerId: 'INVALID_CUSTOMER_ID',
   /** The customer is missing the attribute requested for override. */
-  MissingOverrideAttribute = 'MISSING_OVERRIDE_ATTRIBUTE',
+  MissingOverrideAttribute: 'MISSING_OVERRIDE_ATTRIBUTE',
   /** The override attribute is invalid. */
-  OverrideAttributeInvalid = 'OVERRIDE_ATTRIBUTE_INVALID'
-}
+  OverrideAttributeInvalid: 'OVERRIDE_ATTRIBUTE_INVALID'
+} as const;
 
+export type CustomerMergeErrorCode = typeof CustomerMergeErrorCode[keyof typeof CustomerMergeErrorCode];
 /** The types of the hard blockers preventing a customer from being merged to another customer. */
-export enum CustomerMergeErrorFieldType {
+export const CustomerMergeErrorFieldType = {
   /** The customer is a company contact. */
-  CompanyContact = 'COMPANY_CONTACT',
+  CompanyContact: 'COMPANY_CONTACT',
   /** The customer has payment methods. */
-  CustomerPaymentMethods = 'CUSTOMER_PAYMENT_METHODS',
+  CustomerPaymentMethods: 'CUSTOMER_PAYMENT_METHODS',
   /** The customer does not exist. */
-  DeletedAt = 'DELETED_AT',
+  DeletedAt: 'DELETED_AT',
   /** The customer has gift cards. */
-  GiftCards = 'GIFT_CARDS',
+  GiftCards: 'GIFT_CARDS',
   /** The customer has a merge in progress. */
-  MergeInProgress = 'MERGE_IN_PROGRESS',
+  MergeInProgress: 'MERGE_IN_PROGRESS',
   /** The customer has a multipass identifier. */
-  MultipassIdentifier = 'MULTIPASS_IDENTIFIER',
+  MultipassIdentifier: 'MULTIPASS_IDENTIFIER',
   /** The override fields are invalid. */
-  OverrideFields = 'OVERRIDE_FIELDS',
+  OverrideFields: 'OVERRIDE_FIELDS',
   /** The customer has a pending data request. */
-  PendingDataRequest = 'PENDING_DATA_REQUEST',
+  PendingDataRequest: 'PENDING_DATA_REQUEST',
   /** The customer has a pending or completed redaction. */
-  RedactedAt = 'REDACTED_AT',
+  RedactedAt: 'REDACTED_AT',
   /** The customer has store credit. */
-  StoreCredit = 'STORE_CREDIT',
+  StoreCredit: 'STORE_CREDIT',
   /** The customer has a subscription history. */
-  Subscriptions = 'SUBSCRIPTIONS'
-}
+  Subscriptions: 'SUBSCRIPTIONS'
+} as const;
 
+export type CustomerMergeErrorFieldType = typeof CustomerMergeErrorFieldType[keyof typeof CustomerMergeErrorFieldType];
 /** The input fields to override default customer merge rules. */
 export type CustomerMergeOverrideFields = {
   /** The ID of the customer whose default address will be kept. */
@@ -12022,17 +12137,18 @@ export type CustomerMergeRequest = {
 };
 
 /** The status of the customer merge request. */
-export enum CustomerMergeRequestStatus {
+export const CustomerMergeRequestStatus = {
   /** The customer merge request has been completed. */
-  Completed = 'COMPLETED',
+  Completed: 'COMPLETED',
   /** The customer merge request has failed. */
-  Failed = 'FAILED',
+  Failed: 'FAILED',
   /** The customer merge request is currently in progress. */
-  InProgress = 'IN_PROGRESS',
+  InProgress: 'IN_PROGRESS',
   /** The customer merge request has been requested. */
-  Requested = 'REQUESTED'
-}
+  Requested: 'REQUESTED'
+} as const;
 
+export type CustomerMergeRequestStatus = typeof CustomerMergeRequestStatus[keyof typeof CustomerMergeRequestStatus];
 /** An error that occurs while merging two customers. */
 export type CustomerMergeUserError = DisplayableError & {
   __typename?: 'CustomerMergeUserError';
@@ -12196,15 +12312,16 @@ export type CustomerPaymentMethodCreateFromDuplicationDataUserError = Displayabl
 };
 
 /** Possible error codes that can be returned by `CustomerPaymentMethodCreateFromDuplicationDataUserError`. */
-export enum CustomerPaymentMethodCreateFromDuplicationDataUserErrorCode {
+export const CustomerPaymentMethodCreateFromDuplicationDataUserErrorCode = {
   /** Customer doesn't exist. */
-  CustomerDoesNotExist = 'CUSTOMER_DOES_NOT_EXIST',
+  CustomerDoesNotExist: 'CUSTOMER_DOES_NOT_EXIST',
   /** Invalid encrypted duplication data. */
-  InvalidEncryptedDuplicationData = 'INVALID_ENCRYPTED_DUPLICATION_DATA',
+  InvalidEncryptedDuplicationData: 'INVALID_ENCRYPTED_DUPLICATION_DATA',
   /** Too many requests. */
-  TooManyRequests = 'TOO_MANY_REQUESTS'
-}
+  TooManyRequests: 'TOO_MANY_REQUESTS'
+} as const;
 
+export type CustomerPaymentMethodCreateFromDuplicationDataUserErrorCode = typeof CustomerPaymentMethodCreateFromDuplicationDataUserErrorCode[keyof typeof CustomerPaymentMethodCreateFromDuplicationDataUserErrorCode];
 /** Return type for `customerPaymentMethodCreditCardCreate` mutation. */
 export type CustomerPaymentMethodCreditCardCreatePayload = {
   __typename?: 'CustomerPaymentMethodCreditCardCreatePayload';
@@ -12257,21 +12374,22 @@ export type CustomerPaymentMethodGetDuplicationDataUserError = DisplayableError 
 };
 
 /** Possible error codes that can be returned by `CustomerPaymentMethodGetDuplicationDataUserError`. */
-export enum CustomerPaymentMethodGetDuplicationDataUserErrorCode {
+export const CustomerPaymentMethodGetDuplicationDataUserErrorCode = {
   /** Customer doesn't exist. */
-  CustomerDoesNotExist = 'CUSTOMER_DOES_NOT_EXIST',
+  CustomerDoesNotExist: 'CUSTOMER_DOES_NOT_EXIST',
   /** Invalid payment instrument. */
-  InvalidInstrument = 'INVALID_INSTRUMENT',
+  InvalidInstrument: 'INVALID_INSTRUMENT',
   /** Must be targeted to another shop in the same organization. */
-  InvalidOrganizationShop = 'INVALID_ORGANIZATION_SHOP',
+  InvalidOrganizationShop: 'INVALID_ORGANIZATION_SHOP',
   /** Payment method doesn't exist. */
-  PaymentMethodDoesNotExist = 'PAYMENT_METHOD_DOES_NOT_EXIST',
+  PaymentMethodDoesNotExist: 'PAYMENT_METHOD_DOES_NOT_EXIST',
   /** Target shop cannot be the same as the source. */
-  SameShop = 'SAME_SHOP',
+  SameShop: 'SAME_SHOP',
   /** Too many requests. */
-  TooManyRequests = 'TOO_MANY_REQUESTS'
-}
+  TooManyRequests: 'TOO_MANY_REQUESTS'
+} as const;
 
+export type CustomerPaymentMethodGetDuplicationDataUserErrorCode = typeof CustomerPaymentMethodGetDuplicationDataUserErrorCode[keyof typeof CustomerPaymentMethodGetDuplicationDataUserErrorCode];
 /** Return type for `customerPaymentMethodGetUpdateUrl` mutation. */
 export type CustomerPaymentMethodGetUpdateUrlPayload = {
   __typename?: 'CustomerPaymentMethodGetUpdateUrlPayload';
@@ -12293,17 +12411,18 @@ export type CustomerPaymentMethodGetUpdateUrlUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `CustomerPaymentMethodGetUpdateUrlUserError`. */
-export enum CustomerPaymentMethodGetUpdateUrlUserErrorCode {
+export const CustomerPaymentMethodGetUpdateUrlUserErrorCode = {
   /** Customer doesn't exist. */
-  CustomerDoesNotExist = 'CUSTOMER_DOES_NOT_EXIST',
+  CustomerDoesNotExist: 'CUSTOMER_DOES_NOT_EXIST',
   /** Invalid payment instrument. */
-  InvalidInstrument = 'INVALID_INSTRUMENT',
+  InvalidInstrument: 'INVALID_INSTRUMENT',
   /** Payment method doesn't exist. */
-  PaymentMethodDoesNotExist = 'PAYMENT_METHOD_DOES_NOT_EXIST',
+  PaymentMethodDoesNotExist: 'PAYMENT_METHOD_DOES_NOT_EXIST',
   /** Too many requests. */
-  TooManyRequests = 'TOO_MANY_REQUESTS'
-}
+  TooManyRequests: 'TOO_MANY_REQUESTS'
+} as const;
 
+export type CustomerPaymentMethodGetUpdateUrlUserErrorCode = typeof CustomerPaymentMethodGetUpdateUrlUserErrorCode[keyof typeof CustomerPaymentMethodGetUpdateUrlUserErrorCode];
 /** Return type for `customerPaymentMethodPaypalBillingAgreementCreate` mutation. */
 export type CustomerPaymentMethodPaypalBillingAgreementCreatePayload = {
   __typename?: 'CustomerPaymentMethodPaypalBillingAgreementCreatePayload';
@@ -12353,65 +12472,67 @@ export type CustomerPaymentMethodRemoteUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `CustomerPaymentMethodRemoteUserError`. */
-export enum CustomerPaymentMethodRemoteUserErrorCode {
+export const CustomerPaymentMethodRemoteUserErrorCode = {
   /** Authorize.net is not enabled for subscriptions. */
-  AuthorizeNetNotEnabledForSubscriptions = 'AUTHORIZE_NET_NOT_ENABLED_FOR_SUBSCRIPTIONS',
+  AuthorizeNetNotEnabledForSubscriptions: 'AUTHORIZE_NET_NOT_ENABLED_FOR_SUBSCRIPTIONS',
   /** Braintree is not enabled for subscriptions. */
-  BraintreeNotEnabledForSubscriptions = 'BRAINTREE_NOT_ENABLED_FOR_SUBSCRIPTIONS',
+  BraintreeNotEnabledForSubscriptions: 'BRAINTREE_NOT_ENABLED_FOR_SUBSCRIPTIONS',
   /** Exactly one remote reference is required. */
-  ExactlyOneRemoteReferenceRequired = 'EXACTLY_ONE_REMOTE_REFERENCE_REQUIRED',
+  ExactlyOneRemoteReferenceRequired: 'EXACTLY_ONE_REMOTE_REFERENCE_REQUIRED',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The input value needs to be blank. */
-  Present = 'PRESENT',
+  Present: 'PRESENT',
   /** The input value is already taken. */
-  Taken = 'TAKEN'
-}
+  Taken: 'TAKEN'
+} as const;
 
+export type CustomerPaymentMethodRemoteUserErrorCode = typeof CustomerPaymentMethodRemoteUserErrorCode[keyof typeof CustomerPaymentMethodRemoteUserErrorCode];
 /** The revocation reason types for a customer payment method. */
-export enum CustomerPaymentMethodRevocationReason {
+export const CustomerPaymentMethodRevocationReason = {
   /** The Authorize.net payment gateway is not enabled. */
-  AuthorizeNetGatewayNotEnabled = 'AUTHORIZE_NET_GATEWAY_NOT_ENABLED',
+  AuthorizeNetGatewayNotEnabled: 'AUTHORIZE_NET_GATEWAY_NOT_ENABLED',
   /** Authorize.net did not return any payment methods. Make sure that the correct Authorize.net account is linked. */
-  AuthorizeNetReturnedNoPaymentMethod = 'AUTHORIZE_NET_RETURNED_NO_PAYMENT_METHOD',
+  AuthorizeNetReturnedNoPaymentMethod: 'AUTHORIZE_NET_RETURNED_NO_PAYMENT_METHOD',
   /** Failed to contact Braintree API. */
-  BraintreeApiAuthenticationError = 'BRAINTREE_API_AUTHENTICATION_ERROR',
+  BraintreeApiAuthenticationError: 'BRAINTREE_API_AUTHENTICATION_ERROR',
   /** The Braintree payment gateway is not enabled. */
-  BraintreeGatewayNotEnabled = 'BRAINTREE_GATEWAY_NOT_ENABLED',
+  BraintreeGatewayNotEnabled: 'BRAINTREE_GATEWAY_NOT_ENABLED',
   /** The Braintree payment method type should be a credit card or Apple Pay card. */
-  BraintreePaymentMethodNotCard = 'BRAINTREE_PAYMENT_METHOD_NOT_CARD',
+  BraintreePaymentMethodNotCard: 'BRAINTREE_PAYMENT_METHOD_NOT_CARD',
   /** Braintree returned no payment methods. Make sure the correct Braintree account is linked. */
-  BraintreeReturnedNoPaymentMethod = 'BRAINTREE_RETURNED_NO_PAYMENT_METHOD',
+  BraintreeReturnedNoPaymentMethod: 'BRAINTREE_RETURNED_NO_PAYMENT_METHOD',
   /** The customer redacted their payment method. */
-  CustomerRedacted = 'CUSTOMER_REDACTED',
+  CustomerRedacted: 'CUSTOMER_REDACTED',
   /** CVV attempts limit exceeded. */
-  CvvAttemptsLimitExceeded = 'CVV_ATTEMPTS_LIMIT_EXCEEDED',
+  CvvAttemptsLimitExceeded: 'CVV_ATTEMPTS_LIMIT_EXCEEDED',
   /** The billing address failed to retrieve. */
-  FailedToRetrieveBillingAddress = 'FAILED_TO_RETRIEVE_BILLING_ADDRESS',
+  FailedToRetrieveBillingAddress: 'FAILED_TO_RETRIEVE_BILLING_ADDRESS',
   /** The credit card failed to update. */
-  FailedToUpdateCreditCard = 'FAILED_TO_UPDATE_CREDIT_CARD',
+  FailedToUpdateCreditCard: 'FAILED_TO_UPDATE_CREDIT_CARD',
   /** The payment method was manually revoked. */
-  ManuallyRevoked = 'MANUALLY_REVOKED',
+  ManuallyRevoked: 'MANUALLY_REVOKED',
   /** The payment method was replaced with an existing payment method. The associated contracts have been migrated to the other payment method. */
-  Merged = 'MERGED',
+  Merged: 'MERGED',
   /** Verification of payment method failed. */
-  PaymentMethodVerificationFailed = 'PAYMENT_METHOD_VERIFICATION_FAILED',
+  PaymentMethodVerificationFailed: 'PAYMENT_METHOD_VERIFICATION_FAILED',
   /** Failed to contact the Stripe API. */
-  StripeApiAuthenticationError = 'STRIPE_API_AUTHENTICATION_ERROR',
+  StripeApiAuthenticationError: 'STRIPE_API_AUTHENTICATION_ERROR',
   /** Invalid request. Failed to retrieve payment method from Stripe. */
-  StripeApiInvalidRequestError = 'STRIPE_API_INVALID_REQUEST_ERROR',
+  StripeApiInvalidRequestError: 'STRIPE_API_INVALID_REQUEST_ERROR',
   /** The Stripe payment gateway is not enabled. */
-  StripeGatewayNotEnabled = 'STRIPE_GATEWAY_NOT_ENABLED',
+  StripeGatewayNotEnabled: 'STRIPE_GATEWAY_NOT_ENABLED',
   /** The Stripe payment method type should be card. */
-  StripePaymentMethodNotCard = 'STRIPE_PAYMENT_METHOD_NOT_CARD',
+  StripePaymentMethodNotCard: 'STRIPE_PAYMENT_METHOD_NOT_CARD',
   /** Stripe did not return any payment methods. Make sure that the correct Stripe account is linked. */
-  StripeReturnedNoPaymentMethod = 'STRIPE_RETURNED_NO_PAYMENT_METHOD',
+  StripeReturnedNoPaymentMethod: 'STRIPE_RETURNED_NO_PAYMENT_METHOD',
   /** Verification of the payment method failed due to 3DS not being supported. */
-  ThreeDSecureFlowInVerificationNotImplemented = 'THREE_D_SECURE_FLOW_IN_VERIFICATION_NOT_IMPLEMENTED',
+  ThreeDSecureFlowInVerificationNotImplemented: 'THREE_D_SECURE_FLOW_IN_VERIFICATION_NOT_IMPLEMENTED',
   /** Too many consecutive failed attempts. */
-  TooManyConsecutiveFailures = 'TOO_MANY_CONSECUTIVE_FAILURES'
-}
+  TooManyConsecutiveFailures: 'TOO_MANY_CONSECUTIVE_FAILURES'
+} as const;
 
+export type CustomerPaymentMethodRevocationReason = typeof CustomerPaymentMethodRevocationReason[keyof typeof CustomerPaymentMethodRevocationReason];
 /** Return type for `customerPaymentMethodRevoke` mutation. */
 export type CustomerPaymentMethodRevokePayload = {
   __typename?: 'CustomerPaymentMethodRevokePayload';
@@ -12442,15 +12563,16 @@ export type CustomerPaymentMethodUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `CustomerPaymentMethodUserError`. */
-export enum CustomerPaymentMethodUserErrorCode {
+export const CustomerPaymentMethodUserErrorCode = {
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The input value needs to be blank. */
-  Present = 'PRESENT',
+  Present: 'PRESENT',
   /** The input value is already taken. */
-  Taken = 'TAKEN'
-}
+  Taken: 'TAKEN'
+} as const;
 
+export type CustomerPaymentMethodUserErrorCode = typeof CustomerPaymentMethodUserErrorCode[keyof typeof CustomerPaymentMethodUserErrorCode];
 /** Represents a PayPal instrument for customer payment method. */
 export type CustomerPaypalBillingAgreement = {
   __typename?: 'CustomerPaypalBillingAgreement';
@@ -12489,43 +12611,45 @@ export type CustomerPhoneNumber = {
 };
 
 /** The valid tiers for the predicted spend of a customer with a shop. */
-export enum CustomerPredictedSpendTier {
+export const CustomerPredictedSpendTier = {
   /** The customer's spending is predicted to be in the top spending range for the shop in the following year. */
-  High = 'HIGH',
+  High: 'HIGH',
   /** The customer's spending is predicted to be zero, or in the lowest spending range for the shop in the following year. */
-  Low = 'LOW',
+  Low: 'LOW',
   /** The customer's spending is predicted to be in the normal spending range for the shop in the following year. */
-  Medium = 'MEDIUM'
-}
+  Medium: 'MEDIUM'
+} as const;
 
+export type CustomerPredictedSpendTier = typeof CustomerPredictedSpendTier[keyof typeof CustomerPredictedSpendTier];
 /** The possible product subscription states for a customer, as defined by the customer's subscription contracts. */
-export enum CustomerProductSubscriberStatus {
+export const CustomerProductSubscriberStatus = {
   /** The customer has at least one active subscription contract. */
-  Active = 'ACTIVE',
+  Active: 'ACTIVE',
   /**
    * The customer's last subscription contract was cancelled and there are no other active or paused
    * subscription contracts.
    */
-  Cancelled = 'CANCELLED',
+  Cancelled: 'CANCELLED',
   /**
    * The customer's last subscription contract expired and there are no other active or paused
    * subscription contracts.
    */
-  Expired = 'EXPIRED',
+  Expired: 'EXPIRED',
   /**
    * The customer's last subscription contract failed and there are no other active or paused
    * subscription contracts.
    */
-  Failed = 'FAILED',
+  Failed: 'FAILED',
   /** The customer has never had a subscription contract. */
-  NeverSubscribed = 'NEVER_SUBSCRIBED',
+  NeverSubscribed: 'NEVER_SUBSCRIBED',
   /**
    * The customer has at least one paused subscription contract and there are no other active
    * subscription contracts.
    */
-  Paused = 'PAUSED'
-}
+  Paused: 'PAUSED'
+} as const;
 
+export type CustomerProductSubscriberStatus = typeof CustomerProductSubscriberStatus[keyof typeof CustomerProductSubscriberStatus];
 /** Return type for `customerRemoveTaxExemptions` mutation. */
 export type CustomerRemoveTaxExemptionsPayload = {
   __typename?: 'CustomerRemoveTaxExemptionsPayload';
@@ -12545,13 +12669,14 @@ export type CustomerReplaceTaxExemptionsPayload = {
 };
 
 /** Possible error codes that can be returned by `CustomerRequestDataErasureUserError`. */
-export enum CustomerRequestDataErasureErrorCode {
+export const CustomerRequestDataErasureErrorCode = {
   /** Customer does not exist. */
-  DoesNotExist = 'DOES_NOT_EXIST',
+  DoesNotExist: 'DOES_NOT_EXIST',
   /** Failed to request customer data erasure. */
-  FailedToRequest = 'FAILED_TO_REQUEST'
-}
+  FailedToRequest: 'FAILED_TO_REQUEST'
+} as const;
 
+export type CustomerRequestDataErasureErrorCode = typeof CustomerRequestDataErasureErrorCode[keyof typeof CustomerRequestDataErasureErrorCode];
 /** Return type for `customerRequestDataErasure` mutation. */
 export type CustomerRequestDataErasurePayload = {
   __typename?: 'CustomerRequestDataErasurePayload';
@@ -12573,39 +12698,41 @@ export type CustomerRequestDataErasureUserError = DisplayableError & {
 };
 
 /** The RFM (Recency, Frequency, Monetary) group for a customer. */
-export enum CustomerRfmGroup {
+export const CustomerRfmGroup = {
   /** Customers with recent purchases, some orders, and moderate spend. */
-  Active = 'ACTIVE',
+  Active: 'ACTIVE',
   /** Customers without recent purchases, fewer orders, and with lower spend. */
-  AlmostLost = 'ALMOST_LOST',
+  AlmostLost: 'ALMOST_LOST',
   /** Customers without recent purchases, but with a strong history of orders and spend. */
-  AtRisk = 'AT_RISK',
+  AtRisk: 'AT_RISK',
   /** Customers with very recent purchases, many orders, and the most spend. */
-  Champions = 'CHAMPIONS',
+  Champions: 'CHAMPIONS',
   /** Customers without recent orders, with infrequent orders, and with low spend. */
-  Dormant = 'DORMANT',
+  Dormant: 'DORMANT',
   /** Customers with recent purchases, many orders, and the most spend. */
-  Loyal = 'LOYAL',
+  Loyal: 'LOYAL',
   /** Customers with recent purchases, some orders, and moderate spend. */
-  NeedsAttention = 'NEEDS_ATTENTION',
+  NeedsAttention: 'NEEDS_ATTENTION',
   /** Customers with very recent purchases, few orders, and low spend. */
-  New = 'NEW',
+  New: 'NEW',
   /** Customers without recent purchases, but with a very strong history of orders and spend. */
-  PreviouslyLoyal = 'PREVIOUSLY_LOYAL',
+  PreviouslyLoyal: 'PREVIOUSLY_LOYAL',
   /** Customers with recent purchases, few orders, and low spend. */
-  Promising = 'PROMISING',
+  Promising: 'PROMISING',
   /** Customers with no orders yet. */
-  Prospects = 'PROSPECTS'
-}
+  Prospects: 'PROSPECTS'
+} as const;
 
+export type CustomerRfmGroup = typeof CustomerRfmGroup[keyof typeof CustomerRfmGroup];
 /** The set of valid sort keys for the CustomerSavedSearch query. */
-export enum CustomerSavedSearchSortKeys {
+export const CustomerSavedSearchSortKeys = {
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `name` value. */
-  Name = 'NAME'
-}
+  Name: 'NAME'
+} as const;
 
+export type CustomerSavedSearchSortKeys = typeof CustomerSavedSearchSortKeys[keyof typeof CustomerSavedSearchSortKeys];
 /** The member of a segment. */
 export type CustomerSegmentMember = HasMetafields & {
   __typename?: 'CustomerSegmentMember';
@@ -12731,11 +12858,12 @@ export type CustomerSegmentMembersQueryUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `CustomerSegmentMembersQueryUserError`. */
-export enum CustomerSegmentMembersQueryUserErrorCode {
+export const CustomerSegmentMembersQueryUserErrorCode = {
   /** The input value is invalid. */
-  Invalid = 'INVALID'
-}
+  Invalid: 'INVALID'
+} as const;
 
+export type CustomerSegmentMembersQueryUserErrorCode = typeof CustomerSegmentMembersQueryUserErrorCode[keyof typeof CustomerSegmentMembersQueryUserErrorCode];
 /** Return type for `customerSendAccountInviteEmail` mutation. */
 export type CustomerSendAccountInviteEmailPayload = {
   __typename?: 'CustomerSendAccountInviteEmailPayload';
@@ -12757,11 +12885,12 @@ export type CustomerSendAccountInviteEmailUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `CustomerSendAccountInviteEmailUserError`. */
-export enum CustomerSendAccountInviteEmailUserErrorCode {
+export const CustomerSendAccountInviteEmailUserErrorCode = {
   /** The input value is invalid. */
-  Invalid = 'INVALID'
-}
+  Invalid: 'INVALID'
+} as const;
 
+export type CustomerSendAccountInviteEmailUserErrorCode = typeof CustomerSendAccountInviteEmailUserErrorCode[keyof typeof CustomerSendAccountInviteEmailUserErrorCode];
 /** The input fields required to identify a customer. */
 export type CustomerSetIdentifiers = {
   /** Custom ID of customer to upsert. */
@@ -12825,33 +12954,34 @@ export type CustomerSetUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `CustomerSetUserError`. */
-export enum CustomerSetUserErrorCode {
+export const CustomerSetUserErrorCode = {
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** The id field is not allowed if identifier is provided. */
-  IdNotAllowed = 'ID_NOT_ALLOWED',
+  IdNotAllowed: 'ID_NOT_ALLOWED',
   /** The input value isn't included in the list. */
-  Inclusion = 'INCLUSION',
+  Inclusion: 'INCLUSION',
   /** The identifier value does not match the value of the corresponding field in the input. */
-  InputMismatch = 'INPUT_MISMATCH',
+  InputMismatch: 'INPUT_MISMATCH',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The input argument `metafields` (if present) must contain the `customId` value. */
-  MetafieldMismatch = 'METAFIELD_MISMATCH',
+  MetafieldMismatch: 'METAFIELD_MISMATCH',
   /** The input field corresponding to the identifier is required. */
-  MissingFieldRequired = 'MISSING_FIELD_REQUIRED',
+  MissingFieldRequired: 'MISSING_FIELD_REQUIRED',
   /** Resource matching the identifier was not found. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** The input value needs to be blank. */
-  Present = 'PRESENT',
+  Present: 'PRESENT',
   /** The input value is already taken. */
-  Taken = 'TAKEN',
+  Taken: 'TAKEN',
   /** The input value is too long. */
-  TooLong = 'TOO_LONG',
+  TooLong: 'TOO_LONG',
   /** The input value is too short. */
-  TooShort = 'TOO_SHORT'
-}
+  TooShort: 'TOO_SHORT'
+} as const;
 
+export type CustomerSetUserErrorCode = typeof CustomerSetUserErrorCode[keyof typeof CustomerSetUserErrorCode];
 /** Represents a Shop Pay card instrument for customer payment method. */
 export type CustomerShopPayAgreement = {
   __typename?: 'CustomerShopPayAgreement';
@@ -12887,17 +13017,18 @@ export type CustomerSmsMarketingConsentError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `CustomerSmsMarketingConsentError`. */
-export enum CustomerSmsMarketingConsentErrorCode {
+export const CustomerSmsMarketingConsentErrorCode = {
   /** The input value isn't included in the list. */
-  Inclusion = 'INCLUSION',
+  Inclusion: 'INCLUSION',
   /** Unexpected internal error happened. */
-  InternalError = 'INTERNAL_ERROR',
+  InternalError: 'INTERNAL_ERROR',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** Missing a required argument. */
-  MissingArgument = 'MISSING_ARGUMENT'
-}
+  MissingArgument: 'MISSING_ARGUMENT'
+} as const;
 
+export type CustomerSmsMarketingConsentErrorCode = typeof CustomerSmsMarketingConsentErrorCode[keyof typeof CustomerSmsMarketingConsentErrorCode];
 /**
  * The marketing consent information when the customer consented to
  *         receiving marketing material by SMS.
@@ -12956,50 +13087,53 @@ export type CustomerSmsMarketingConsentUpdatePayload = {
 };
 
 /** The valid SMS marketing states for a customer’s phone number. */
-export enum CustomerSmsMarketingState {
+export const CustomerSmsMarketingState = {
   /** The customer hasn't subscribed to SMS marketing. */
-  NotSubscribed = 'NOT_SUBSCRIBED',
+  NotSubscribed: 'NOT_SUBSCRIBED',
   /** The customer is in the process of subscribing to SMS marketing. */
-  Pending = 'PENDING',
+  Pending: 'PENDING',
   /** The customer's personal data is erased. This value is internally-set and read-only. */
-  Redacted = 'REDACTED',
+  Redacted: 'REDACTED',
   /** The customer is subscribed to SMS marketing. */
-  Subscribed = 'SUBSCRIBED',
+  Subscribed: 'SUBSCRIBED',
   /** The customer isn't currently subscribed to SMS marketing but was previously subscribed. */
-  Unsubscribed = 'UNSUBSCRIBED'
-}
+  Unsubscribed: 'UNSUBSCRIBED'
+} as const;
 
+export type CustomerSmsMarketingState = typeof CustomerSmsMarketingState[keyof typeof CustomerSmsMarketingState];
 /** The set of valid sort keys for the Customer query. */
-export enum CustomerSortKeys {
+export const CustomerSortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `location` value. */
-  Location = 'LOCATION',
+  Location: 'LOCATION',
   /** Sort by the `name` value. */
-  Name = 'NAME',
+  Name: 'NAME',
   /**
    * Sort by relevance to the search terms when the `query` parameter is specified on the connection.
    * Don't use this sort key when no search query is specified.
    */
-  Relevance = 'RELEVANCE',
+  Relevance: 'RELEVANCE',
   /** Sort by the `updated_at` value. */
-  UpdatedAt = 'UPDATED_AT'
-}
+  UpdatedAt: 'UPDATED_AT'
+} as const;
 
+export type CustomerSortKeys = typeof CustomerSortKeys[keyof typeof CustomerSortKeys];
 /** The valid values for the state of a customer's account with a shop. */
-export enum CustomerState {
+export const CustomerState = {
   /** The customer declined the email invite to create an account. */
-  Declined = 'DECLINED',
+  Declined: 'DECLINED',
   /** The customer doesn't have an active account. Customer accounts can be disabled from the Shopify admin at any time. */
-  Disabled = 'DISABLED',
+  Disabled: 'DISABLED',
   /** The customer has created an account. */
-  Enabled = 'ENABLED',
+  Enabled: 'ENABLED',
   /** The customer has received an email invite to create an account. */
-  Invited = 'INVITED'
-}
+  Invited: 'INVITED'
+} as const;
 
+export type CustomerState = typeof CustomerState[keyof typeof CustomerState];
 /** A customer's computed statistics. */
 export type CustomerStatistics = {
   __typename?: 'CustomerStatistics';
@@ -13132,29 +13266,31 @@ export type DataSaleOptOutUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `DataSaleOptOutUserError`. */
-export enum DataSaleOptOutUserErrorCode {
+export const DataSaleOptOutUserErrorCode = {
   /** Data sale opt out failed. */
-  Failed = 'FAILED'
-}
+  Failed: 'FAILED'
+} as const;
 
+export type DataSaleOptOutUserErrorCode = typeof DataSaleOptOutUserErrorCode[keyof typeof DataSaleOptOutUserErrorCode];
 /** Days of the week from Monday to Sunday. */
-export enum DayOfTheWeek {
+export const DayOfTheWeek = {
   /** Friday. */
-  Friday = 'FRIDAY',
+  Friday: 'FRIDAY',
   /** Monday. */
-  Monday = 'MONDAY',
+  Monday: 'MONDAY',
   /** Saturday. */
-  Saturday = 'SATURDAY',
+  Saturday: 'SATURDAY',
   /** Sunday. */
-  Sunday = 'SUNDAY',
+  Sunday: 'SUNDAY',
   /** Thursday. */
-  Thursday = 'THURSDAY',
+  Thursday: 'THURSDAY',
   /** Tuesday. */
-  Tuesday = 'TUESDAY',
+  Tuesday: 'TUESDAY',
   /** Wednesday. */
-  Wednesday = 'WEDNESDAY'
-}
+  Wednesday: 'WEDNESDAY'
+} as const;
 
+export type DayOfTheWeek = typeof DayOfTheWeek[keyof typeof DayOfTheWeek];
 /**
  * A token that delegates a set of scopes from the original permission.
  *
@@ -13194,23 +13330,24 @@ export type DelegateAccessTokenCreateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `DelegateAccessTokenCreateUserError`. */
-export enum DelegateAccessTokenCreateUserErrorCode {
+export const DelegateAccessTokenCreateUserErrorCode = {
   /** The parent access token can't be a delegate token. */
-  DelegateAccessToken = 'DELEGATE_ACCESS_TOKEN',
+  DelegateAccessToken: 'DELEGATE_ACCESS_TOKEN',
   /** The access scope can't be empty. */
-  EmptyAccessScope = 'EMPTY_ACCESS_SCOPE',
+  EmptyAccessScope: 'EMPTY_ACCESS_SCOPE',
   /** The delegate token can't expire after the parent token. */
-  ExpiresAfterParent = 'EXPIRES_AFTER_PARENT',
+  ExpiresAfterParent: 'EXPIRES_AFTER_PARENT',
   /** The expires_in value must be greater than 0. */
-  NegativeExpiresIn = 'NEGATIVE_EXPIRES_IN',
+  NegativeExpiresIn: 'NEGATIVE_EXPIRES_IN',
   /** Persistence failed. */
-  PersistenceFailed = 'PERSISTENCE_FAILED',
+  PersistenceFailed: 'PERSISTENCE_FAILED',
   /** The parent access token can't have a refresh token. */
-  RefreshToken = 'REFRESH_TOKEN',
+  RefreshToken: 'REFRESH_TOKEN',
   /** Unknown scopes. */
-  UnknownScopes = 'UNKNOWN_SCOPES'
-}
+  UnknownScopes: 'UNKNOWN_SCOPES'
+} as const;
 
+export type DelegateAccessTokenCreateUserErrorCode = typeof DelegateAccessTokenCreateUserErrorCode[keyof typeof DelegateAccessTokenCreateUserErrorCode];
 /** Return type for `delegateAccessTokenDestroy` mutation. */
 export type DelegateAccessTokenDestroyPayload = {
   __typename?: 'DelegateAccessTokenDestroyPayload';
@@ -13234,17 +13371,18 @@ export type DelegateAccessTokenDestroyUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `DelegateAccessTokenDestroyUserError`. */
-export enum DelegateAccessTokenDestroyUserErrorCode {
+export const DelegateAccessTokenDestroyUserErrorCode = {
   /** Access denied. */
-  AccessDenied = 'ACCESS_DENIED',
+  AccessDenied: 'ACCESS_DENIED',
   /** Access token not found. */
-  AccessTokenNotFound = 'ACCESS_TOKEN_NOT_FOUND',
+  AccessTokenNotFound: 'ACCESS_TOKEN_NOT_FOUND',
   /** Cannot delete parent access token. */
-  CanOnlyDeleteDelegateTokens = 'CAN_ONLY_DELETE_DELEGATE_TOKENS',
+  CanOnlyDeleteDelegateTokens: 'CAN_ONLY_DELETE_DELEGATE_TOKENS',
   /** Persistence failed. */
-  PersistenceFailed = 'PERSISTENCE_FAILED'
-}
+  PersistenceFailed: 'PERSISTENCE_FAILED'
+} as const;
 
+export type DelegateAccessTokenDestroyUserErrorCode = typeof DelegateAccessTokenDestroyUserErrorCode[keyof typeof DelegateAccessTokenDestroyUserErrorCode];
 /** The input fields for a delegate access token. */
 export type DelegateAccessTokenInput = {
   /** The list of scopes that will be delegated to the new access token. */
@@ -13289,19 +13427,21 @@ export type DeletionEventEdge = {
 };
 
 /** The set of valid sort keys for the DeletionEvent query. */
-export enum DeletionEventSortKeys {
+export const DeletionEventSortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `id` value. */
-  Id = 'ID'
-}
+  Id: 'ID'
+} as const;
 
+export type DeletionEventSortKeys = typeof DeletionEventSortKeys[keyof typeof DeletionEventSortKeys];
 /** The supported subject types of deletion events. */
-export enum DeletionEventSubjectType {
-  Collection = 'COLLECTION',
-  Product = 'PRODUCT'
-}
+export const DeletionEventSubjectType = {
+  Collection: 'COLLECTION',
+  Product: 'PRODUCT'
+} as const;
 
+export type DeletionEventSubjectType = typeof DeletionEventSubjectType[keyof typeof DeletionEventSubjectType];
 /** A shipping service and a list of countries that the service is available for. */
 export type DeliveryAvailableService = {
   __typename?: 'DeliveryAvailableService';
@@ -13789,21 +13929,23 @@ export type DeliveryCondition = Node & {
 export type DeliveryConditionCriteria = MoneyV2 | Weight;
 
 /** The field type that the condition will be applied to. */
-export enum DeliveryConditionField {
+export const DeliveryConditionField = {
   /** The condition will check against the total price of the order. */
-  TotalPrice = 'TOTAL_PRICE',
+  TotalPrice: 'TOTAL_PRICE',
   /** The condition will check against the total weight of the order. */
-  TotalWeight = 'TOTAL_WEIGHT'
-}
+  TotalWeight: 'TOTAL_WEIGHT'
+} as const;
 
+export type DeliveryConditionField = typeof DeliveryConditionField[keyof typeof DeliveryConditionField];
 /** The operator to use to determine if the condition passes. */
-export enum DeliveryConditionOperator {
+export const DeliveryConditionOperator = {
   /** The condition will check whether the field is greater than or equal to the criterion. */
-  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  GreaterThanOrEqualTo: 'GREATER_THAN_OR_EQUAL_TO',
   /** The condition will check if the field is less than or equal to the criterion. */
-  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO'
-}
+  LessThanOrEqualTo: 'LESS_THAN_OR_EQUAL_TO'
+} as const;
 
+export type DeliveryConditionOperator = typeof DeliveryConditionOperator[keyof typeof DeliveryConditionOperator];
 /** A country that is used to define a shipping zone. */
 export type DeliveryCountry = Node & {
   __typename?: 'DeliveryCountry';
@@ -13990,37 +14132,38 @@ export type DeliveryCustomizationError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `DeliveryCustomizationError`. */
-export enum DeliveryCustomizationErrorCode {
+export const DeliveryCustomizationErrorCode = {
   /** Shop must be on a Shopify Plus plan to activate functions from a custom app. */
-  CustomAppFunctionNotEligible = 'CUSTOM_APP_FUNCTION_NOT_ELIGIBLE',
+  CustomAppFunctionNotEligible: 'CUSTOM_APP_FUNCTION_NOT_ELIGIBLE',
   /** Shop must be on a Shopify Plus plan to activate delivery customizations from a custom app. */
-  DeliveryCustomizationFunctionNotEligible = 'DELIVERY_CUSTOMIZATION_FUNCTION_NOT_ELIGIBLE',
+  DeliveryCustomizationFunctionNotEligible: 'DELIVERY_CUSTOMIZATION_FUNCTION_NOT_ELIGIBLE',
   /** Delivery customization not found. */
-  DeliveryCustomizationNotFound = 'DELIVERY_CUSTOMIZATION_NOT_FOUND',
+  DeliveryCustomizationNotFound: 'DELIVERY_CUSTOMIZATION_NOT_FOUND',
   /** Function does not implement the required interface for this delivery customization. */
-  FunctionDoesNotImplement = 'FUNCTION_DOES_NOT_IMPLEMENT',
+  FunctionDoesNotImplement: 'FUNCTION_DOES_NOT_IMPLEMENT',
   /** Function ID cannot be changed. */
-  FunctionIdCannotBeChanged = 'FUNCTION_ID_CANNOT_BE_CHANGED',
+  FunctionIdCannotBeChanged: 'FUNCTION_ID_CANNOT_BE_CHANGED',
   /** Function not found. */
-  FunctionNotFound = 'FUNCTION_NOT_FOUND',
+  FunctionNotFound: 'FUNCTION_NOT_FOUND',
   /** Function is pending deletion. */
-  FunctionPendingDeletion = 'FUNCTION_PENDING_DELETION',
+  FunctionPendingDeletion: 'FUNCTION_PENDING_DELETION',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** Could not create or update metafields. */
-  InvalidMetafields = 'INVALID_METAFIELDS',
+  InvalidMetafields: 'INVALID_METAFIELDS',
   /** Maximum delivery customizations are already enabled. */
-  MaximumActiveDeliveryCustomizations = 'MAXIMUM_ACTIVE_DELIVERY_CUSTOMIZATIONS',
+  MaximumActiveDeliveryCustomizations: 'MAXIMUM_ACTIVE_DELIVERY_CUSTOMIZATIONS',
   /** Either function_id or function_handle must be provided. */
-  MissingFunctionIdentifier = 'MISSING_FUNCTION_IDENTIFIER',
+  MissingFunctionIdentifier: 'MISSING_FUNCTION_IDENTIFIER',
   /** Only one of function_id or function_handle can be provided, not both. */
-  MultipleFunctionIdentifiers = 'MULTIPLE_FUNCTION_IDENTIFIERS',
+  MultipleFunctionIdentifiers: 'MULTIPLE_FUNCTION_IDENTIFIERS',
   /** Required input field must be present. */
-  RequiredInputField = 'REQUIRED_INPUT_FIELD',
+  RequiredInputField: 'REQUIRED_INPUT_FIELD',
   /** Unauthorized app scope. */
-  UnauthorizedAppScope = 'UNAUTHORIZED_APP_SCOPE'
-}
+  UnauthorizedAppScope: 'UNAUTHORIZED_APP_SCOPE'
+} as const;
 
+export type DeliveryCustomizationErrorCode = typeof DeliveryCustomizationErrorCode[keyof typeof DeliveryCustomizationErrorCode];
 /** The input fields to create and update a delivery customization. */
 export type DeliveryCustomizationInput = {
   /** The enabled status of the delivery customization. */
@@ -14052,16 +14195,14 @@ export type DeliveryLegacyModeBlocked = {
 };
 
 /** Reasons the shop is blocked from converting to full multi-location delivery profiles mode. */
-export enum DeliveryLegacyModeBlockedReason {
-  /**
-   * Multi-Location mode is disabled. The shop can't convert to full multi-location delivery profiles mode.
-   * @deprecated All shops are now using multi-location mode.
-   */
-  MultiLocationDisabled = 'MULTI_LOCATION_DISABLED',
+export const DeliveryLegacyModeBlockedReason = {
+  /** Multi-Location mode is disabled. The shop can't convert to full multi-location delivery profiles mode. */
+  MultiLocationDisabled: 'MULTI_LOCATION_DISABLED',
   /** There are no locations for this store that can fulfill online orders. */
-  NoLocationsFulfillingOnlineOrders = 'NO_LOCATIONS_FULFILLING_ONLINE_ORDERS'
-}
+  NoLocationsFulfillingOnlineOrders: 'NO_LOCATIONS_FULFILLING_ONLINE_ORDERS'
+} as const;
 
+export type DeliveryLegacyModeBlockedReason = typeof DeliveryLegacyModeBlockedReason[keyof typeof DeliveryLegacyModeBlockedReason];
 /** Local pickup settings associated with a location. */
 export type DeliveryLocalPickupSettings = {
   __typename?: 'DeliveryLocalPickupSettings';
@@ -14072,26 +14213,24 @@ export type DeliveryLocalPickupSettings = {
 };
 
 /** Possible pickup time values that a location enabled for local pickup can have. */
-export enum DeliveryLocalPickupTime {
-  /**
-   * Custom pickup time. Unrecognized pickup time enum value.
-   * @deprecated Custom pickup time is no longer supported.
-   */
-  Custom = 'CUSTOM',
+export const DeliveryLocalPickupTime = {
+  /** Custom pickup time. Unrecognized pickup time enum value. */
+  Custom: 'CUSTOM',
   /** Usually ready in 5+ days. */
-  FiveOrMoreDays = 'FIVE_OR_MORE_DAYS',
+  FiveOrMoreDays: 'FIVE_OR_MORE_DAYS',
   /** Usually ready in 4 hours. */
-  FourHours = 'FOUR_HOURS',
+  FourHours: 'FOUR_HOURS',
   /** Usually ready in 1 hour. */
-  OneHour = 'ONE_HOUR',
+  OneHour: 'ONE_HOUR',
   /** Usually ready in 24 hours. */
-  TwentyFourHours = 'TWENTY_FOUR_HOURS',
+  TwentyFourHours: 'TWENTY_FOUR_HOURS',
   /** Usually ready in 2 hours. */
-  TwoHours = 'TWO_HOURS',
+  TwoHours: 'TWO_HOURS',
   /** Usually ready in 2-4 days. */
-  TwoToFourDays = 'TWO_TO_FOUR_DAYS'
-}
+  TwoToFourDays: 'TWO_TO_FOUR_DAYS'
+} as const;
 
+export type DeliveryLocalPickupTime = typeof DeliveryLocalPickupTime[keyof typeof DeliveryLocalPickupTime];
 /**
  * A location group is a collection of locations. They share zones and delivery methods across delivery
  * profiles.
@@ -14203,15 +14342,16 @@ export type DeliveryLocationLocalPickupSettingsError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `DeliveryLocationLocalPickupSettingsError`. */
-export enum DeliveryLocationLocalPickupSettingsErrorCode {
+export const DeliveryLocationLocalPickupSettingsErrorCode = {
   /** Provided locationId is not for an active location belonging to this store. */
-  ActiveLocationNotFound = 'ACTIVE_LOCATION_NOT_FOUND',
+  ActiveLocationNotFound: 'ACTIVE_LOCATION_NOT_FOUND',
   /** Custom pickup time is not allowed for local pickup settings. */
-  CustomPickupTimeNotAllowed = 'CUSTOM_PICKUP_TIME_NOT_ALLOWED',
+  CustomPickupTimeNotAllowed: 'CUSTOM_PICKUP_TIME_NOT_ALLOWED',
   /** An error occurred while changing the local pickup settings. */
-  GenericError = 'GENERIC_ERROR'
-}
+  GenericError: 'GENERIC_ERROR'
+} as const;
 
+export type DeliveryLocationLocalPickupSettingsErrorCode = typeof DeliveryLocationLocalPickupSettingsErrorCode[keyof typeof DeliveryLocationLocalPickupSettingsErrorCode];
 /**
  * Information about the delivery method selected for a [`FulfillmentOrder`](https://shopify.dev/docs/api/admin-graphql/latest/objects/FulfillmentOrder). Includes the method type, expected delivery timeframe, and any additional information needed for delivery.
  *
@@ -14320,29 +14460,31 @@ export type DeliveryMethodDefinitionInput = {
 };
 
 /** The different types of method definitions to filter by. */
-export enum DeliveryMethodDefinitionType {
+export const DeliveryMethodDefinitionType = {
   /** A static merchant-defined rate. */
-  Merchant = 'MERCHANT',
+  Merchant: 'MERCHANT',
   /** A dynamic participant rate. */
-  Participant = 'PARTICIPANT'
-}
+  Participant: 'PARTICIPANT'
+} as const;
 
+export type DeliveryMethodDefinitionType = typeof DeliveryMethodDefinitionType[keyof typeof DeliveryMethodDefinitionType];
 /** Possible method types that a delivery method can have. */
-export enum DeliveryMethodType {
+export const DeliveryMethodType = {
   /** The order is delivered using a local delivery service. */
-  Local = 'LOCAL',
+  Local: 'LOCAL',
   /** Non-physical items, no delivery needed. */
-  None = 'NONE',
+  None: 'NONE',
   /** The order is delivered to a pickup point. */
-  PickupPoint = 'PICKUP_POINT',
+  PickupPoint: 'PICKUP_POINT',
   /** The order is picked up by the customer. */
-  PickUp = 'PICK_UP',
+  PickUp: 'PICK_UP',
   /** In-store sale, no delivery needed. */
-  Retail = 'RETAIL',
+  Retail: 'RETAIL',
   /** The order is shipped. */
-  Shipping = 'SHIPPING'
-}
+  Shipping: 'SHIPPING'
+} as const;
 
+export type DeliveryMethodType = typeof DeliveryMethodType[keyof typeof DeliveryMethodType];
 /**
  * A participant defines carrier-calculated rates for shipping services
  * with a possible merchant-defined fixed fee or a percentage-of-rate fee.
@@ -14737,11 +14879,12 @@ export type DeliveryPromiseParticipantEdge = {
 export type DeliveryPromiseParticipantOwner = ProductVariant;
 
 /** The type of object that the participant is attached to. */
-export enum DeliveryPromiseParticipantOwnerType {
+export const DeliveryPromiseParticipantOwnerType = {
   /** A product variant. */
-  Productvariant = 'PRODUCTVARIANT'
-}
+  Productvariant: 'PRODUCTVARIANT'
+} as const;
 
+export type DeliveryPromiseParticipantOwnerType = typeof DeliveryPromiseParticipantOwnerType[keyof typeof DeliveryPromiseParticipantOwnerType];
 /** Return type for `deliveryPromiseParticipantsUpdate` mutation. */
 export type DeliveryPromiseParticipantsUpdatePayload = {
   __typename?: 'DeliveryPromiseParticipantsUpdatePayload';
@@ -14787,17 +14930,18 @@ export type DeliveryPromiseProviderUpsertUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `DeliveryPromiseProviderUpsertUserError`. */
-export enum DeliveryPromiseProviderUpsertUserErrorCode {
+export const DeliveryPromiseProviderUpsertUserErrorCode = {
   /** The time zone is invalid. */
-  InvalidTimeZone = 'INVALID_TIME_ZONE',
+  InvalidTimeZone: 'INVALID_TIME_ZONE',
   /** The location doesn't belong to the app. */
-  MustBelongToApp = 'MUST_BELONG_TO_APP',
+  MustBelongToApp: 'MUST_BELONG_TO_APP',
   /** The record with the ID used as the input value couldn't be found. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** The input value is too long. */
-  TooLong = 'TOO_LONG'
-}
+  TooLong: 'TOO_LONG'
+} as const;
 
+export type DeliveryPromiseProviderUpsertUserErrorCode = typeof DeliveryPromiseProviderUpsertUserErrorCode[keyof typeof DeliveryPromiseProviderUpsertUserErrorCode];
 /** The delivery promise settings. */
 export type DeliveryPromiseSetting = {
   __typename?: 'DeliveryPromiseSetting';
@@ -14927,21 +15071,22 @@ export type DepositPercentage = {
 };
 
 /** Digital wallet, such as Apple Pay, which can be used for accelerated checkouts. */
-export enum DigitalWallet {
+export const DigitalWallet = {
   /** Amazon Pay. */
-  AmazonPay = 'AMAZON_PAY',
+  AmazonPay: 'AMAZON_PAY',
   /** Android Pay. */
-  AndroidPay = 'ANDROID_PAY',
+  AndroidPay: 'ANDROID_PAY',
   /** Apple Pay. */
-  ApplePay = 'APPLE_PAY',
+  ApplePay: 'APPLE_PAY',
   /** Facebook Pay. */
-  FacebookPay = 'FACEBOOK_PAY',
+  FacebookPay: 'FACEBOOK_PAY',
   /** Google Pay. */
-  GooglePay = 'GOOGLE_PAY',
+  GooglePay: 'GOOGLE_PAY',
   /** Shopify Pay. */
-  ShopifyPay = 'SHOPIFY_PAY'
-}
+  ShopifyPay: 'SHOPIFY_PAY'
+} as const;
 
+export type DigitalWallet = typeof DigitalWallet[keyof typeof DigitalWallet];
 /** A discount offers promotional value and can be applied by entering a code or automatically when conditions are met. Discounts can provide fixed amounts, percentage reductions, free shipping, or Buy X Get Y (BXGY) benefits on specific products or the entire order. For more complex scenarios, developers can use Function-backed discounts to create custom discount configurations. */
 export type Discount = DiscountAutomaticApp | DiscountAutomaticBasic | DiscountAutomaticBxgy | DiscountAutomaticFreeShipping | DiscountCodeApp | DiscountCodeBasic | DiscountCodeBxgy | DiscountCodeFreeShipping;
 
@@ -15023,18 +15168,16 @@ export type DiscountApplication = {
 };
 
 /** The method by which the discount's value is allocated onto its entitled lines. */
-export enum DiscountApplicationAllocationMethod {
+export const DiscountApplicationAllocationMethod = {
   /** The value is spread across all entitled lines. */
-  Across = 'ACROSS',
+  Across: 'ACROSS',
   /** The value is applied onto every entitled line. */
-  Each = 'EACH',
-  /**
-   * The value is specifically applied onto a particular line.
-   * @deprecated Use ACROSS instead.
-   */
-  One = 'ONE'
-}
+  Each: 'EACH',
+  /** The value is specifically applied onto a particular line. */
+  One: 'ONE'
+} as const;
 
+export type DiscountApplicationAllocationMethod = typeof DiscountApplicationAllocationMethod[keyof typeof DiscountApplicationAllocationMethod];
 /** An auto-generated type for paginating through multiple DiscountApplications. */
 export type DiscountApplicationConnection = {
   __typename?: 'DiscountApplicationConnection';
@@ -15056,42 +15199,45 @@ export type DiscountApplicationEdge = {
 };
 
 /** The level at which the discount's value is applied. */
-export enum DiscountApplicationLevel {
+export const DiscountApplicationLevel = {
   /**
    * The discount is applied at the line level.
    * Line level discounts are factored into the discountedUnitPriceSet on line items.
    */
-  Line = 'LINE',
+  Line: 'LINE',
   /**
    * The discount is applied at the order level.
    * Order level discounts are not factored into the discountedUnitPriceSet on line items.
    */
-  Order = 'ORDER'
-}
+  Order: 'ORDER'
+} as const;
 
+export type DiscountApplicationLevel = typeof DiscountApplicationLevel[keyof typeof DiscountApplicationLevel];
 /**
  * The lines on the order to which the discount is applied, of the type defined by
  * the discount application's `targetType`. For example, the value `ENTITLED`, combined with a `targetType` of
  * `LINE_ITEM`, applies the discount on all line items that are entitled to the discount.
  * The value `ALL`, combined with a `targetType` of `SHIPPING_LINE`, applies the discount on all shipping lines.
  */
-export enum DiscountApplicationTargetSelection {
+export const DiscountApplicationTargetSelection = {
   /** The discount is allocated onto all the lines. */
-  All = 'ALL',
+  All: 'ALL',
   /** The discount is allocated onto only the lines that it's entitled for. */
-  Entitled = 'ENTITLED',
+  Entitled: 'ENTITLED',
   /** The discount is allocated onto explicitly chosen lines. */
-  Explicit = 'EXPLICIT'
-}
+  Explicit: 'EXPLICIT'
+} as const;
 
+export type DiscountApplicationTargetSelection = typeof DiscountApplicationTargetSelection[keyof typeof DiscountApplicationTargetSelection];
 /** The type of line (i.e. line item or shipping line) on an order that the discount is applicable towards. */
-export enum DiscountApplicationTargetType {
+export const DiscountApplicationTargetType = {
   /** The discount applies onto line items. */
-  LineItem = 'LINE_ITEM',
+  LineItem: 'LINE_ITEM',
   /** The discount applies onto shipping lines. */
-  ShippingLine = 'SHIPPING_LINE'
-}
+  ShippingLine: 'SHIPPING_LINE'
+} as const;
 
+export type DiscountApplicationTargetType = typeof DiscountApplicationTargetType[keyof typeof DiscountApplicationTargetType];
 /**
  * The types of automatic discounts applied in the cart and at checkout when an order meets specific criteria.
  *
@@ -16001,11 +16147,12 @@ export type DiscountAutomaticNodeEdge = {
 };
 
 /** All buyers are eligible for the discount. */
-export enum DiscountBuyerSelection {
+export const DiscountBuyerSelection = {
   /** All buyers are eligible for the discount. */
-  All = 'ALL'
-}
+  All: 'ALL'
+} as const;
 
+export type DiscountBuyerSelection = typeof DiscountBuyerSelection[keyof typeof DiscountBuyerSelection];
 /**
  * Indicates that a discount applies to all buyers without restrictions, enabling universal promotions that reach every customer. This selection removes buyer-specific limitations from discount eligibility.
  *
@@ -16023,27 +16170,28 @@ export type DiscountBuyerSelectionAll = {
  * The [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
  * that's used to control how discounts can be combined.
  */
-export enum DiscountClass {
+export const DiscountClass = {
   /**
    * The discount is combined with an
    * [order discount](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
    * class.
    */
-  Order = 'ORDER',
+  Order: 'ORDER',
   /**
    * The discount is combined with a
    * [product discount](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
    * class.
    */
-  Product = 'PRODUCT',
+  Product: 'PRODUCT',
   /**
    * The discount is combined with a
    * [shipping discount](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
    * class.
    */
-  Shipping = 'SHIPPING'
-}
+  Shipping: 'SHIPPING'
+} as const;
 
+export type DiscountClass = typeof DiscountClass[keyof typeof DiscountClass];
 /** The type of discount associated with the discount code. For example, the discount code might offer a basic discount of a fixed percentage, or a fixed amount, on specific products or the order. Alternatively, the discount might offer the customer free shipping on their order. A third option is a Buy X, Get Y (BXGY) discount, which offers a customer discounts on select products if they add a specific product to their order. */
 export type DiscountCode = DiscountCodeApp | DiscountCodeBasic | DiscountCodeBxgy | DiscountCodeFreeShipping;
 
@@ -17148,20 +17296,21 @@ export type DiscountCodeRedeemCodeBulkDeletePayload = {
 };
 
 /** The set of valid sort keys for the DiscountCode query. */
-export enum DiscountCodeSortKeys {
+export const DiscountCodeSortKeys = {
   /** Sort by the `code` value. */
-  Code = 'CODE',
+  Code: 'CODE',
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /**
    * Sort by relevance to the search terms when the `query` parameter is specified on the connection.
    * Don't use this sort key when no search query is specified.
    */
-  Relevance = 'RELEVANCE'
-}
+  Relevance: 'RELEVANCE'
+} as const;
 
+export type DiscountCodeSortKeys = typeof DiscountCodeSortKeys[keyof typeof DiscountCodeSortKeys];
 /** A list of collections that the discount can have as a prerequisite or a list of collections to which the discount can be applied. */
 export type DiscountCollections = {
   __typename?: 'DiscountCollections';
@@ -17468,71 +17617,72 @@ export type DiscountEffectInput = {
 };
 
 /** Possible error codes that can be returned by `DiscountUserError`. */
-export enum DiscountErrorCode {
+export const DiscountErrorCode = {
   /** The active period overlaps with other automatic discounts. At any given time, only 25 automatic discounts can be active. */
-  ActivePeriodOverlap = 'ACTIVE_PERIOD_OVERLAP',
+  ActivePeriodOverlap: 'ACTIVE_PERIOD_OVERLAP',
   /** A discount cannot have both appliesOnOneTimePurchase and appliesOnSubscription set to false. */
-  AppliesOnNothing = 'APPLIES_ON_NOTHING',
+  AppliesOnNothing: 'APPLIES_ON_NOTHING',
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** The attribute selection contains conflicting settings. */
-  Conflict = 'CONFLICT',
+  Conflict: 'CONFLICT',
   /** The input value is already present. */
-  Duplicate = 'DUPLICATE',
+  Duplicate: 'DUPLICATE',
   /** The end date should be after the start date. */
-  EndDateBeforeStartDate = 'END_DATE_BEFORE_START_DATE',
+  EndDateBeforeStartDate: 'END_DATE_BEFORE_START_DATE',
   /** The input value should be equal to the value allowed. */
-  EqualTo = 'EQUAL_TO',
+  EqualTo: 'EQUAL_TO',
   /** The value exceeded the maximum allowed value. */
-  ExceededMax = 'EXCEEDED_MAX',
+  ExceededMax: 'EXCEEDED_MAX',
   /** The input value should be greater than the minimum allowed value. */
-  GreaterThan = 'GREATER_THAN',
+  GreaterThan: 'GREATER_THAN',
   /** The input value should be greater than or equal to the minimum value allowed. */
-  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  GreaterThanOrEqualTo: 'GREATER_THAN_OR_EQUAL_TO',
   /** The value is already present through another selection. */
-  ImplicitDuplicate = 'IMPLICIT_DUPLICATE',
+  ImplicitDuplicate: 'IMPLICIT_DUPLICATE',
   /** The input value isn't included in the list. */
-  Inclusion = 'INCLUSION',
+  Inclusion: 'INCLUSION',
   /** Unexpected internal error happened. */
-  InternalError = 'INTERNAL_ERROR',
+  InternalError: 'INTERNAL_ERROR',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The `combinesWith` settings are invalid for the discount class. */
-  InvalidCombinesWithForDiscountClass = 'INVALID_COMBINES_WITH_FOR_DISCOUNT_CLASS',
+  InvalidCombinesWithForDiscountClass: 'INVALID_COMBINES_WITH_FOR_DISCOUNT_CLASS',
   /** The discountClass is invalid for the price rule. */
-  InvalidDiscountClassForPriceRule = 'INVALID_DISCOUNT_CLASS_FOR_PRICE_RULE',
+  InvalidDiscountClassForPriceRule: 'INVALID_DISCOUNT_CLASS_FOR_PRICE_RULE',
   /** The input value should be less than the maximum value allowed. */
-  LessThan = 'LESS_THAN',
+  LessThan: 'LESS_THAN',
   /** The input value should be less than or equal to the maximum value allowed. */
-  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  LessThanOrEqualTo: 'LESS_THAN_OR_EQUAL_TO',
   /** The active period overlaps with too many other app-provided discounts. There's a limit on the number of app discounts that can be active at any given time. */
-  MaxAppDiscounts = 'MAX_APP_DISCOUNTS',
+  MaxAppDiscounts: 'MAX_APP_DISCOUNTS',
   /** Specify a minimum subtotal or a quantity, but not both. */
-  MinimumSubtotalAndQuantityRangeBothPresent = 'MINIMUM_SUBTOTAL_AND_QUANTITY_RANGE_BOTH_PRESENT',
+  MinimumSubtotalAndQuantityRangeBothPresent: 'MINIMUM_SUBTOTAL_AND_QUANTITY_RANGE_BOTH_PRESENT',
   /** Missing a required argument. */
-  MissingArgument = 'MISSING_ARGUMENT',
+  MissingArgument: 'MISSING_ARGUMENT',
   /** Either function ID or function handle must be provided. */
-  MissingFunctionIdentifier = 'MISSING_FUNCTION_IDENTIFIER',
+  MissingFunctionIdentifier: 'MISSING_FUNCTION_IDENTIFIER',
   /** Only one of function ID or function handle is allowed. */
-  MultipleFunctionIdentifiers = 'MULTIPLE_FUNCTION_IDENTIFIERS',
+  MultipleFunctionIdentifiers: 'MULTIPLE_FUNCTION_IDENTIFIERS',
   /** Recurring cycle limit must be 1 when discount does not apply to subscription items. */
-  MultipleRecurringCycleLimitForNonSubscriptionItems = 'MULTIPLE_RECURRING_CYCLE_LIMIT_FOR_NON_SUBSCRIPTION_ITEMS',
+  MultipleRecurringCycleLimitForNonSubscriptionItems: 'MULTIPLE_RECURRING_CYCLE_LIMIT_FOR_NON_SUBSCRIPTION_ITEMS',
   /** The input value needs to be blank. */
-  Present = 'PRESENT',
+  Present: 'PRESENT',
   /** Recurring cycle limit must be a valid integer greater than or equal to 0. */
-  RecurringCycleLimitNotAValidInteger = 'RECURRING_CYCLE_LIMIT_NOT_A_VALID_INTEGER',
+  RecurringCycleLimitNotAValidInteger: 'RECURRING_CYCLE_LIMIT_NOT_A_VALID_INTEGER',
   /** The input value is already taken. */
-  Taken = 'TAKEN',
+  Taken: 'TAKEN',
   /** The input value is too long. */
-  TooLong = 'TOO_LONG',
+  TooLong: 'TOO_LONG',
   /** Too many arguments provided. */
-  TooManyArguments = 'TOO_MANY_ARGUMENTS',
+  TooManyArguments: 'TOO_MANY_ARGUMENTS',
   /** The input value is too short. */
-  TooShort = 'TOO_SHORT',
+  TooShort: 'TOO_SHORT',
   /** The value is outside of the allowed range. */
-  ValueOutsideRange = 'VALUE_OUTSIDE_RANGE'
-}
+  ValueOutsideRange: 'VALUE_OUTSIDE_RANGE'
+} as const;
 
+export type DiscountErrorCode = typeof DiscountErrorCode[keyof typeof DiscountErrorCode];
 /** The type used to target the items required for discount eligibility, or the items to which the application of a discount might apply. For example, for a customer to be eligible for a discount, they're required to add an item from a specified collection to their order. Alternatively, a customer might be required to add a specific product or product variant. When using this type to target which items the discount will apply to, the discount might apply to all items on the order, or to specific products and product variants, or items in a given collection. */
 export type DiscountItems = AllDiscountItems | DiscountCollections | DiscountProducts;
 
@@ -17966,15 +18116,16 @@ export type DiscountShareableUrl = {
 };
 
 /** The type of page where a shareable discount URL lands. */
-export enum DiscountShareableUrlTargetType {
+export const DiscountShareableUrlTargetType = {
   /** The URL lands on a collection page. */
-  Collection = 'COLLECTION',
+  Collection: 'COLLECTION',
   /** The URL lands on a home page. */
-  Home = 'HOME',
+  Home: 'HOME',
   /** The URL lands on a product page. */
-  Product = 'PRODUCT'
-}
+  Product: 'PRODUCT'
+} as const;
 
+export type DiscountShareableUrlTargetType = typeof DiscountShareableUrlTargetType[keyof typeof DiscountShareableUrlTargetType];
 /** The type used to target the eligible countries of an order's shipping destination for which the discount applies. For example, the discount might be applicable when shipping to all countries, or only to a set of countries. */
 export type DiscountShippingDestinationSelection = DiscountCountries | DiscountCountryAll;
 
@@ -17987,57 +18138,61 @@ export type DiscountShippingDestinationSelectionInput = {
 };
 
 /** The set of valid sort keys for the Discount query. */
-export enum DiscountSortKeys {
+export const DiscountSortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `ends_at` value. */
-  EndsAt = 'ENDS_AT',
+  EndsAt: 'ENDS_AT',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /**
    * Sort by relevance to the search terms when the `query` parameter is specified on the connection.
    * Don't use this sort key when no search query is specified.
    */
-  Relevance = 'RELEVANCE',
+  Relevance: 'RELEVANCE',
   /** Sort by the `starts_at` value. */
-  StartsAt = 'STARTS_AT',
+  StartsAt: 'STARTS_AT',
   /** Sort by the `title` value. */
-  Title = 'TITLE',
+  Title: 'TITLE',
   /** Sort by the `updated_at` value. */
-  UpdatedAt = 'UPDATED_AT'
-}
+  UpdatedAt: 'UPDATED_AT'
+} as const;
 
+export type DiscountSortKeys = typeof DiscountSortKeys[keyof typeof DiscountSortKeys];
 /**
  * The status of the discount that describes its availability,
  * expiration, or pending activation.
  */
-export enum DiscountStatus {
+export const DiscountStatus = {
   /** The discount is currently available for use. */
-  Active = 'ACTIVE',
+  Active: 'ACTIVE',
   /** The discount has reached its end date and is no longer valid. */
-  Expired = 'EXPIRED',
+  Expired: 'EXPIRED',
   /** The discount is set to become active at a future date. */
-  Scheduled = 'SCHEDULED'
-}
+  Scheduled: 'SCHEDULED'
+} as const;
 
+export type DiscountStatus = typeof DiscountStatus[keyof typeof DiscountStatus];
 /** The type of line (line item or shipping line) on an order that the subscription discount is applicable towards. */
-export enum DiscountTargetType {
+export const DiscountTargetType = {
   /** The discount applies onto line items. */
-  LineItem = 'LINE_ITEM',
+  LineItem: 'LINE_ITEM',
   /** The discount applies onto shipping lines. */
-  ShippingLine = 'SHIPPING_LINE'
-}
+  ShippingLine: 'SHIPPING_LINE'
+} as const;
 
+export type DiscountTargetType = typeof DiscountTargetType[keyof typeof DiscountTargetType];
 /** The type of the subscription discount. */
-export enum DiscountType {
+export const DiscountType = {
   /** Automatic discount type. */
-  AutomaticDiscount = 'AUTOMATIC_DISCOUNT',
+  AutomaticDiscount: 'AUTOMATIC_DISCOUNT',
   /** Code discount type. */
-  CodeDiscount = 'CODE_DISCOUNT',
+  CodeDiscount: 'CODE_DISCOUNT',
   /** Manual discount type. */
-  Manual = 'MANUAL'
-}
+  Manual: 'MANUAL'
+} as const;
 
+export type DiscountType = typeof DiscountType[keyof typeof DiscountType];
 /** An error that occurs during the execution of a discount mutation. */
 export type DiscountUserError = DisplayableError & {
   __typename?: 'DiscountUserError';
@@ -18080,45 +18235,45 @@ export type DisputeEvidenceUpdateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `DisputeEvidenceUpdateUserError`. */
-export enum DisputeEvidenceUpdateUserErrorCode {
+export const DisputeEvidenceUpdateUserErrorCode = {
   /** Dispute evidence could not be found. */
-  DisputeEvidenceNotFound = 'DISPUTE_EVIDENCE_NOT_FOUND',
+  DisputeEvidenceNotFound: 'DISPUTE_EVIDENCE_NOT_FOUND',
   /** Evidence already accepted. */
-  EvidenceAlreadyAccepted = 'EVIDENCE_ALREADY_ACCEPTED',
+  EvidenceAlreadyAccepted: 'EVIDENCE_ALREADY_ACCEPTED',
   /** Evidence past due date. */
-  EvidencePastDueDate = 'EVIDENCE_PAST_DUE_DATE',
+  EvidencePastDueDate: 'EVIDENCE_PAST_DUE_DATE',
   /** Combined files size is too large. */
-  FilesSizeExceededLimit = 'FILES_SIZE_EXCEEDED_LIMIT',
+  FilesSizeExceededLimit: 'FILES_SIZE_EXCEEDED_LIMIT',
   /** File upload failed. Please try again. */
-  FileNotFound = 'FILE_NOT_FOUND',
+  FileNotFound: 'FILE_NOT_FOUND',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** Individual file size is too large. */
-  TooLarge = 'TOO_LARGE'
-}
+  TooLarge: 'TOO_LARGE'
+} as const;
 
+export type DisputeEvidenceUpdateUserErrorCode = typeof DisputeEvidenceUpdateUserErrorCode[keyof typeof DisputeEvidenceUpdateUserErrorCode];
 /** The possible statuses of a dispute. */
-export enum DisputeStatus {
-  Accepted = 'ACCEPTED',
-  /**
-   * Status previously used by Stripe to indicate that a dispute led to a refund.
-   * @deprecated CHARGE_REFUNDED is no longer supported.
-   */
-  ChargeRefunded = 'CHARGE_REFUNDED',
-  Lost = 'LOST',
-  NeedsResponse = 'NEEDS_RESPONSE',
-  UnderReview = 'UNDER_REVIEW',
-  Won = 'WON'
-}
+export const DisputeStatus = {
+  Accepted: 'ACCEPTED',
+  /** Status previously used by Stripe to indicate that a dispute led to a refund. */
+  ChargeRefunded: 'CHARGE_REFUNDED',
+  Lost: 'LOST',
+  NeedsResponse: 'NEEDS_RESPONSE',
+  UnderReview: 'UNDER_REVIEW',
+  Won: 'WON'
+} as const;
 
+export type DisputeStatus = typeof DisputeStatus[keyof typeof DisputeStatus];
 /** The possible types for a dispute. */
-export enum DisputeType {
+export const DisputeType = {
   /** The dispute has turned into a chargeback. */
-  Chargeback = 'CHARGEBACK',
+  Chargeback: 'CHARGEBACK',
   /** The dispute is in the inquiry phase. */
-  Inquiry = 'INQUIRY'
-}
+  Inquiry: 'INQUIRY'
+} as const;
 
+export type DisputeType = typeof DisputeType[keyof typeof DisputeType];
 /** A distance, which includes a numeric value and a unit of measurement. */
 export type Distance = {
   __typename?: 'Distance';
@@ -18129,13 +18284,14 @@ export type Distance = {
 };
 
 /** Units of measurement for distance. */
-export enum DistanceUnit {
+export const DistanceUnit = {
   /** Metric system unit of distance. */
-  Kilometers = 'KILOMETERS',
+  Kilometers: 'KILOMETERS',
   /** Imperial system unit of distance. */
-  Miles = 'MILES'
-}
+  Miles: 'MILES'
+} as const;
 
+export type DistanceUnit = typeof DistanceUnit[keyof typeof DistanceUnit];
 /** A unique string that represents the address of a Shopify store on the Internet. */
 export type Domain = Node & {
   __typename?: 'Domain';
@@ -18569,13 +18725,14 @@ export type DraftOrderAppliedDiscountInput = {
 };
 
 /** The valid discount types that can be applied to a draft order. */
-export enum DraftOrderAppliedDiscountType {
+export const DraftOrderAppliedDiscountType = {
   /** A fixed amount in the store's currency. */
-  FixedAmount = 'FIXED_AMOUNT',
+  FixedAmount: 'FIXED_AMOUNT',
   /** A percentage of the order subtotal. */
-  Percentage = 'PERCENTAGE'
-}
+  Percentage: 'PERCENTAGE'
+} as const;
 
+export type DraftOrderAppliedDiscountType = typeof DraftOrderAppliedDiscountType[keyof typeof DraftOrderAppliedDiscountType];
 /** The available delivery options for a draft order. */
 export type DraftOrderAvailableDeliveryOptions = {
   __typename?: 'DraftOrderAvailableDeliveryOptions';
@@ -19156,36 +19313,38 @@ export type DraftOrderShippingRate = {
 };
 
 /** The set of valid sort keys for the DraftOrder query. */
-export enum DraftOrderSortKeys {
+export const DraftOrderSortKeys = {
   /** Sort by the `customer_name` value. */
-  CustomerName = 'CUSTOMER_NAME',
+  CustomerName: 'CUSTOMER_NAME',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `number` value. */
-  Number = 'NUMBER',
+  Number: 'NUMBER',
   /**
    * Sort by relevance to the search terms when the `query` parameter is specified on the connection.
    * Don't use this sort key when no search query is specified.
    */
-  Relevance = 'RELEVANCE',
+  Relevance: 'RELEVANCE',
   /** Sort by the `status` value. */
-  Status = 'STATUS',
+  Status: 'STATUS',
   /** Sort by the `total_price` value. */
-  TotalPrice = 'TOTAL_PRICE',
+  TotalPrice: 'TOTAL_PRICE',
   /** Sort by the `updated_at` value. */
-  UpdatedAt = 'UPDATED_AT'
-}
+  UpdatedAt: 'UPDATED_AT'
+} as const;
 
+export type DraftOrderSortKeys = typeof DraftOrderSortKeys[keyof typeof DraftOrderSortKeys];
 /** The valid statuses for a draft order. */
-export enum DraftOrderStatus {
+export const DraftOrderStatus = {
   /** The draft order has been paid. */
-  Completed = 'COMPLETED',
+  Completed: 'COMPLETED',
   /** An invoice for the draft order has been sent to the customer. */
-  InvoiceSent = 'INVOICE_SENT',
+  InvoiceSent: 'INVOICE_SENT',
   /** The draft order is open. It has not been paid, and an invoice hasn't been sent. */
-  Open = 'OPEN'
-}
+  Open: 'OPEN'
+} as const;
 
+export type DraftOrderStatus = typeof DraftOrderStatus[keyof typeof DraftOrderStatus];
 /** Represents a draft order tag. */
 export type DraftOrderTag = Node & {
   __typename?: 'DraftOrderTag';
@@ -19300,17 +19459,18 @@ export type ErrorsServerPixelUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `ErrorsServerPixelUserError`. */
-export enum ErrorsServerPixelUserErrorCode {
+export const ErrorsServerPixelUserErrorCode = {
   /** A server pixel already exists for this app and shop. Only one server pixel can exist for any app and shop combination. */
-  AlreadyExists = 'ALREADY_EXISTS',
+  AlreadyExists: 'ALREADY_EXISTS',
   /** Server Pixel must be configured with a valid AWS Event Bridge or GCP pub/sub endpoint address to be connected. */
-  NeedsConfigurationToConnect = 'NEEDS_CONFIGURATION_TO_CONNECT',
+  NeedsConfigurationToConnect: 'NEEDS_CONFIGURATION_TO_CONNECT',
   /** A server pixel doesn't exist for this app and shop. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** PubSubProject and PubSubTopic values resulted in an address that is not a valid GCP pub/sub format.Address format should be pubsub://project:topic. */
-  PubSubError = 'PUB_SUB_ERROR'
-}
+  PubSubError: 'PUB_SUB_ERROR'
+} as const;
 
+export type ErrorsServerPixelUserErrorCode = typeof ErrorsServerPixelUserErrorCode[keyof typeof ErrorsServerPixelUserErrorCode];
 /** An error that occurs during the execution of a web pixel mutation. */
 export type ErrorsWebPixelUserError = DisplayableError & {
   __typename?: 'ErrorsWebPixelUserError';
@@ -19323,32 +19483,30 @@ export type ErrorsWebPixelUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `ErrorsWebPixelUserError`. */
-export enum ErrorsWebPixelUserErrorCode {
+export const ErrorsWebPixelUserErrorCode = {
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** The provided settings is not a valid JSON. */
-  InvalidConfigurationJson = 'INVALID_CONFIGURATION_JSON',
+  InvalidConfigurationJson: 'INVALID_CONFIGURATION_JSON',
   /** The provided runtime context is invalid. */
-  InvalidRuntimeContext = 'INVALID_RUNTIME_CONTEXT',
+  InvalidRuntimeContext: 'INVALID_RUNTIME_CONTEXT',
   /** The provided settings does not match the expected settings definition on the app. */
-  InvalidSettings = 'INVALID_SETTINGS',
+  InvalidSettings: 'INVALID_SETTINGS',
   /** The settings definition of the web pixel extension is in an invalid state on the app. */
-  InvalidSettingsDefinition = 'INVALID_SETTINGS_DEFINITION',
+  InvalidSettingsDefinition: 'INVALID_SETTINGS_DEFINITION',
   /** The record with the ID used as the input value couldn't be found. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** No extension found. */
-  NoExtension = 'NO_EXTENSION',
+  NoExtension: 'NO_EXTENSION',
   /** The input value is already taken. */
-  Taken = 'TAKEN',
-  /**
-   * An error occurred and the web pixel couldnt be deleted.
-   * @deprecated `UNABLE_TO_DELETE` is deprecated. Use `UNEXPECTED_ERROR` instead.
-   */
-  UnableToDelete = 'UNABLE_TO_DELETE',
+  Taken: 'TAKEN',
+  /** An error occurred and the web pixel couldnt be deleted. */
+  UnableToDelete: 'UNABLE_TO_DELETE',
   /** An unexpected error occurred. */
-  UnexpectedError = 'UNEXPECTED_ERROR'
-}
+  UnexpectedError: 'UNEXPECTED_ERROR'
+} as const;
 
+export type ErrorsWebPixelUserErrorCode = typeof ErrorsWebPixelUserErrorCode[keyof typeof ErrorsWebPixelUserErrorCode];
 /**
  * Events chronicle resource activities such as the creation of an article, the fulfillment of an order, or the
  * addition of a product.
@@ -19436,58 +19594,60 @@ export type EventEdge = {
 };
 
 /** The set of valid sort keys for the Event query. */
-export enum EventSortKeys {
+export const EventSortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `id` value. */
-  Id = 'ID'
-}
+  Id: 'ID'
+} as const;
 
+export type EventSortKeys = typeof EventSortKeys[keyof typeof EventSortKeys];
 /** The type of the resource that generated the event. */
-export enum EventSubjectType {
+export const EventSubjectType = {
   /** A Article resource generated the event. */
-  Article = 'ARTICLE',
+  Article: 'ARTICLE',
   /** A Blog resource generated the event. */
-  Blog = 'BLOG',
+  Blog: 'BLOG',
   /** A Collection resource generated the event. */
-  Collection = 'COLLECTION',
+  Collection: 'COLLECTION',
   /** A Comment resource generated the event. */
-  Comment = 'COMMENT',
+  Comment: 'COMMENT',
   /** A Company resource generated the event. */
-  Company = 'COMPANY',
+  Company: 'COMPANY',
   /** A CompanyLocation resource generated the event. */
-  CompanyLocation = 'COMPANY_LOCATION',
+  CompanyLocation: 'COMPANY_LOCATION',
   /** A Customer resource generated the event. */
-  Customer = 'CUSTOMER',
+  Customer: 'CUSTOMER',
   /** A DiscountAutomaticBxgy resource generated the event. */
-  DiscountAutomaticBxgy = 'DISCOUNT_AUTOMATIC_BXGY',
+  DiscountAutomaticBxgy: 'DISCOUNT_AUTOMATIC_BXGY',
   /** A DiscountAutomaticNode resource generated the event. */
-  DiscountAutomaticNode = 'DISCOUNT_AUTOMATIC_NODE',
+  DiscountAutomaticNode: 'DISCOUNT_AUTOMATIC_NODE',
   /** A DiscountCodeNode resource generated the event. */
-  DiscountCodeNode = 'DISCOUNT_CODE_NODE',
+  DiscountCodeNode: 'DISCOUNT_CODE_NODE',
   /** A DiscountNode resource generated the event. */
-  DiscountNode = 'DISCOUNT_NODE',
+  DiscountNode: 'DISCOUNT_NODE',
   /** A DraftOrder resource generated the event. */
-  DraftOrder = 'DRAFT_ORDER',
+  DraftOrder: 'DRAFT_ORDER',
   /** A InventoryTransfer resource generated the event. */
-  InventoryTransfer = 'INVENTORY_TRANSFER',
+  InventoryTransfer: 'INVENTORY_TRANSFER',
   /** A Order resource generated the event. */
-  Order = 'ORDER',
+  Order: 'ORDER',
   /** A Page resource generated the event. */
-  Page = 'PAGE',
+  Page: 'PAGE',
   /** A PriceRule resource generated the event. */
-  PriceRule = 'PRICE_RULE',
+  PriceRule: 'PRICE_RULE',
   /** A Product resource generated the event. */
-  Product = 'PRODUCT',
+  Product: 'PRODUCT',
   /** A ProductVariant resource generated the event. */
-  ProductVariant = 'PRODUCT_VARIANT',
+  ProductVariant: 'PRODUCT_VARIANT',
   /**
    * Subject type is not available. This usually means that the subject isn't available in the current
    *         version of the API, using a newer API version may resolve this.
    */
-  Unknown = 'UNKNOWN'
-}
+  Unknown: 'UNKNOWN'
+} as const;
 
+export type EventSubjectType = typeof EventSubjectType[keyof typeof EventSubjectType];
 /** An item for exchange. */
 export type ExchangeLineItem = Node & {
   __typename?: 'ExchangeLineItem';
@@ -19832,19 +19992,20 @@ export type FileConnection = {
 };
 
 /** The possible content types for a file object. */
-export enum FileContentType {
+export const FileContentType = {
   /** An externally hosted video. */
-  ExternalVideo = 'EXTERNAL_VIDEO',
+  ExternalVideo: 'EXTERNAL_VIDEO',
   /** A Shopify-hosted generic file. */
-  File = 'FILE',
+  File: 'FILE',
   /** A Shopify-hosted image. */
-  Image = 'IMAGE',
+  Image: 'IMAGE',
   /** A Shopify-hosted 3D model. */
-  Model_3D = 'MODEL_3D',
+  Model_3D: 'MODEL_3D',
   /** A Shopify-hosted video file. It's recommended to use this type for all video files. */
-  Video = 'VIDEO'
-}
+  Video: 'VIDEO'
+} as const;
 
+export type FileContentType = typeof FileContentType[keyof typeof FileContentType];
 /** The input fields that are required to create a file object. */
 export type FileCreateInput = {
   /** The alt text description of the file for screen readers and accessibility. */
@@ -19866,15 +20027,16 @@ export type FileCreateInput = {
 };
 
 /** The input fields for handling if filename is already in use. */
-export enum FileCreateInputDuplicateResolutionMode {
+export const FileCreateInputDuplicateResolutionMode = {
   /** Append a UUID if filename is already in use. */
-  AppendUuid = 'APPEND_UUID',
+  AppendUuid: 'APPEND_UUID',
   /** Raise an error if filename is already in use. */
-  RaiseError = 'RAISE_ERROR',
+  RaiseError: 'RAISE_ERROR',
   /** Replace the existing file if filename is already in use. */
-  Replace = 'REPLACE'
-}
+  Replace: 'REPLACE'
+} as const;
 
+export type FileCreateInputDuplicateResolutionMode = typeof FileCreateInputDuplicateResolutionMode[keyof typeof FileCreateInputDuplicateResolutionMode];
 /** Return type for `fileCreate` mutation. */
 export type FileCreatePayload = {
   __typename?: 'FileCreatePayload';
@@ -19917,75 +20079,76 @@ export type FileError = {
 };
 
 /** The error types for a file. */
-export enum FileErrorCode {
+export const FileErrorCode = {
   /** File could not be created because a file with the same name already exists. */
-  DuplicateFilenameError = 'DUPLICATE_FILENAME_ERROR',
+  DuplicateFilenameError: 'DUPLICATE_FILENAME_ERROR',
   /** File could not be created because embed permissions are disabled for this video. */
-  ExternalVideoEmbedDisabled = 'EXTERNAL_VIDEO_EMBED_DISABLED',
+  ExternalVideoEmbedDisabled: 'EXTERNAL_VIDEO_EMBED_DISABLED',
   /** File could not be created because video is either not found or still transcoding. */
-  ExternalVideoEmbedNotFoundOrTranscoding = 'EXTERNAL_VIDEO_EMBED_NOT_FOUND_OR_TRANSCODING',
+  ExternalVideoEmbedNotFoundOrTranscoding: 'EXTERNAL_VIDEO_EMBED_NOT_FOUND_OR_TRANSCODING',
   /** File could not be created because the external video has an invalid aspect ratio. */
-  ExternalVideoInvalidAspectRatio = 'EXTERNAL_VIDEO_INVALID_ASPECT_RATIO',
+  ExternalVideoInvalidAspectRatio: 'EXTERNAL_VIDEO_INVALID_ASPECT_RATIO',
   /** File could not be created because the external video could not be found. */
-  ExternalVideoNotFound = 'EXTERNAL_VIDEO_NOT_FOUND',
+  ExternalVideoNotFound: 'EXTERNAL_VIDEO_NOT_FOUND',
   /** File could not be created because the external video is not listed or is private. */
-  ExternalVideoUnlisted = 'EXTERNAL_VIDEO_UNLISTED',
+  ExternalVideoUnlisted: 'EXTERNAL_VIDEO_UNLISTED',
   /** File could not be created because the cumulative file storage limit would be exceeded. */
-  FileStorageLimitExceeded = 'FILE_STORAGE_LIMIT_EXCEEDED',
+  FileStorageLimitExceeded: 'FILE_STORAGE_LIMIT_EXCEEDED',
   /** File could not be processed because the source could not be downloaded. */
-  GenericFileDownloadFailure = 'GENERIC_FILE_DOWNLOAD_FAILURE',
+  GenericFileDownloadFailure: 'GENERIC_FILE_DOWNLOAD_FAILURE',
   /** File could not be created because the size is too large. */
-  GenericFileInvalidSize = 'GENERIC_FILE_INVALID_SIZE',
+  GenericFileInvalidSize: 'GENERIC_FILE_INVALID_SIZE',
   /** File could not be processed because the image could not be downloaded. */
-  ImageDownloadFailure = 'IMAGE_DOWNLOAD_FAILURE',
+  ImageDownloadFailure: 'IMAGE_DOWNLOAD_FAILURE',
   /** File could not be processed because the image could not be processed. */
-  ImageProcessingFailure = 'IMAGE_PROCESSING_FAILURE',
+  ImageProcessingFailure: 'IMAGE_PROCESSING_FAILURE',
   /** File could not be created because the image has an invalid aspect ratio. */
-  InvalidImageAspectRatio = 'INVALID_IMAGE_ASPECT_RATIO',
+  InvalidImageAspectRatio: 'INVALID_IMAGE_ASPECT_RATIO',
   /** File could not be created because the image size is too large. */
-  InvalidImageFileSize = 'INVALID_IMAGE_FILE_SIZE',
+  InvalidImageFileSize: 'INVALID_IMAGE_FILE_SIZE',
   /** File could not be created because the image's resolution exceeds the max limit. */
-  InvalidImageResolution = 'INVALID_IMAGE_RESOLUTION',
+  InvalidImageResolution: 'INVALID_IMAGE_RESOLUTION',
   /** File could not be processed because the signed URL was invalid. */
-  InvalidSignedUrl = 'INVALID_SIGNED_URL',
+  InvalidSignedUrl: 'INVALID_SIGNED_URL',
   /** File timed out because it is currently being modified by another operation. */
-  MediaTimeoutError = 'MEDIA_TIMEOUT_ERROR',
+  MediaTimeoutError: 'MEDIA_TIMEOUT_ERROR',
   /** File could not be created because the model file failed processing. */
-  Model3DGlbOutputCreationError = 'MODEL3D_GLB_OUTPUT_CREATION_ERROR',
+  Model3DGlbOutputCreationError: 'MODEL3D_GLB_OUTPUT_CREATION_ERROR',
   /** File could not be created because the model can't be converted to USDZ format. */
-  Model3DGlbToUsdzConversionError = 'MODEL3D_GLB_TO_USDZ_CONVERSION_ERROR',
+  Model3DGlbToUsdzConversionError: 'MODEL3D_GLB_TO_USDZ_CONVERSION_ERROR',
   /** File could not be created because the model file failed processing. */
-  Model3DProcessingFailure = 'MODEL3D_PROCESSING_FAILURE',
+  Model3DProcessingFailure: 'MODEL3D_PROCESSING_FAILURE',
   /** File could not be created because the model's thumbnail generation failed. */
-  Model3DThumbnailGenerationError = 'MODEL3D_THUMBNAIL_GENERATION_ERROR',
+  Model3DThumbnailGenerationError: 'MODEL3D_THUMBNAIL_GENERATION_ERROR',
   /** There was an issue while trying to generate a new thumbnail. */
-  Model3DThumbnailRegenerationError = 'MODEL3D_THUMBNAIL_REGENERATION_ERROR',
+  Model3DThumbnailRegenerationError: 'MODEL3D_THUMBNAIL_REGENERATION_ERROR',
   /** Model failed validation. */
-  Model3DValidationError = 'MODEL3D_VALIDATION_ERROR',
+  Model3DValidationError: 'MODEL3D_VALIDATION_ERROR',
   /** File error has occurred for an unknown reason. */
-  Unknown = 'UNKNOWN',
+  Unknown: 'UNKNOWN',
   /** File could not be created because the image is an unsupported file type. */
-  UnsupportedImageFileType = 'UNSUPPORTED_IMAGE_FILE_TYPE',
+  UnsupportedImageFileType: 'UNSUPPORTED_IMAGE_FILE_TYPE',
   /** File could not be created because it has an invalid file type. */
-  VideoInvalidFiletypeError = 'VIDEO_INVALID_FILETYPE_ERROR',
+  VideoInvalidFiletypeError: 'VIDEO_INVALID_FILETYPE_ERROR',
   /** File could not be created because it does not meet the maximum duration requirement. */
-  VideoMaxDurationError = 'VIDEO_MAX_DURATION_ERROR',
+  VideoMaxDurationError: 'VIDEO_MAX_DURATION_ERROR',
   /** File could not be created because it does not meet the maximum height requirement. */
-  VideoMaxHeightError = 'VIDEO_MAX_HEIGHT_ERROR',
+  VideoMaxHeightError: 'VIDEO_MAX_HEIGHT_ERROR',
   /** File could not be created because it does not meet the maximum width requirement. */
-  VideoMaxWidthError = 'VIDEO_MAX_WIDTH_ERROR',
+  VideoMaxWidthError: 'VIDEO_MAX_WIDTH_ERROR',
   /** File could not be created because the metadata could not be read. */
-  VideoMetadataReadError = 'VIDEO_METADATA_READ_ERROR',
+  VideoMetadataReadError: 'VIDEO_METADATA_READ_ERROR',
   /** File could not be created because it does not meet the minimum duration requirement. */
-  VideoMinDurationError = 'VIDEO_MIN_DURATION_ERROR',
+  VideoMinDurationError: 'VIDEO_MIN_DURATION_ERROR',
   /** File could not be created because it does not meet the minimum height requirement. */
-  VideoMinHeightError = 'VIDEO_MIN_HEIGHT_ERROR',
+  VideoMinHeightError: 'VIDEO_MIN_HEIGHT_ERROR',
   /** File could not be created because it does not meet the minimum width requirement. */
-  VideoMinWidthError = 'VIDEO_MIN_WIDTH_ERROR',
+  VideoMinWidthError: 'VIDEO_MIN_WIDTH_ERROR',
   /** Video failed validation. */
-  VideoValidationError = 'VIDEO_VALIDATION_ERROR'
-}
+  VideoValidationError: 'VIDEO_VALIDATION_ERROR'
+} as const;
 
+export type FileErrorCode = typeof FileErrorCode[keyof typeof FileErrorCode];
 /** The input fields required to create or update a file object. */
 export type FileSetInput = {
   /** The alt text description of the file for screen readers and accessibility. */
@@ -20009,36 +20172,38 @@ export type FileSetInput = {
 };
 
 /** The set of valid sort keys for the File query. */
-export enum FileSortKeys {
+export const FileSortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `filename` value. */
-  Filename = 'FILENAME',
+  Filename: 'FILENAME',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `original_upload_size` value. */
-  OriginalUploadSize = 'ORIGINAL_UPLOAD_SIZE',
+  OriginalUploadSize: 'ORIGINAL_UPLOAD_SIZE',
   /**
    * Sort by relevance to the search terms when the `query` parameter is specified on the connection.
    * Don't use this sort key when no search query is specified.
    */
-  Relevance = 'RELEVANCE',
+  Relevance: 'RELEVANCE',
   /** Sort by the `updated_at` value. */
-  UpdatedAt = 'UPDATED_AT'
-}
+  UpdatedAt: 'UPDATED_AT'
+} as const;
 
+export type FileSortKeys = typeof FileSortKeys[keyof typeof FileSortKeys];
 /** The possible statuses for a file object. */
-export enum FileStatus {
+export const FileStatus = {
   /** File processing has failed. */
-  Failed = 'FAILED',
+  Failed: 'FAILED',
   /** File is being processed. */
-  Processing = 'PROCESSING',
+  Processing: 'PROCESSING',
   /** File is ready to be displayed. */
-  Ready = 'READY',
+  Ready: 'READY',
   /** File has been uploaded but hasn't been processed. */
-  Uploaded = 'UPLOADED'
-}
+  Uploaded: 'UPLOADED'
+} as const;
 
+export type FileStatus = typeof FileStatus[keyof typeof FileStatus];
 /** The input fields that are required to update a file object. */
 export type FileUpdateInput = {
   /** The alt text description of the file for screen readers and accessibility. */
@@ -20075,67 +20240,68 @@ export type FileUpdatePayload = {
 };
 
 /** Possible error codes that can be returned by `FilesUserError`. */
-export enum FilesErrorCode {
+export const FilesErrorCode = {
   /** The alt value exceeds the maximum limit of 512 characters. */
-  AltValueLimitExceeded = 'ALT_VALUE_LIMIT_EXCEEDED',
+  AltValueLimitExceeded: 'ALT_VALUE_LIMIT_EXCEEDED',
   /** The search term must not be blank. */
-  BlankSearch = 'BLANK_SEARCH',
+  BlankSearch: 'BLANK_SEARCH',
   /** The provided filename already exists. */
-  FilenameAlreadyExists = 'FILENAME_ALREADY_EXISTS',
+  FilenameAlreadyExists: 'FILENAME_ALREADY_EXISTS',
   /** File does not exist. */
-  FileDoesNotExist = 'FILE_DOES_NOT_EXIST',
+  FileDoesNotExist: 'FILE_DOES_NOT_EXIST',
   /** File has a pending operation. */
-  FileLocked = 'FILE_LOCKED',
+  FileLocked: 'FILE_LOCKED',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** Duplicate resolution mode is not supported for this file type. */
-  InvalidDuplicateModeForType = 'INVALID_DUPLICATE_MODE_FOR_TYPE',
+  InvalidDuplicateModeForType: 'INVALID_DUPLICATE_MODE_FOR_TYPE',
   /** Invalid duplicate resolution mode provided. */
-  InvalidDuplicateResolutionMode = 'INVALID_DUPLICATE_RESOLUTION_MODE',
+  InvalidDuplicateResolutionMode: 'INVALID_DUPLICATE_RESOLUTION_MODE',
   /** File cannot be updated in a failed state. */
-  InvalidFailedMediaState = 'INVALID_FAILED_MEDIA_STATE',
+  InvalidFailedMediaState: 'INVALID_FAILED_MEDIA_STATE',
   /** The provided filename is invalid. */
-  InvalidFilename = 'INVALID_FILENAME',
+  InvalidFilename: 'INVALID_FILENAME',
   /** Invalid filename extension. */
-  InvalidFilenameExtension = 'INVALID_FILENAME_EXTENSION',
+  InvalidFilenameExtension: 'INVALID_FILENAME_EXTENSION',
   /** Invalid image source url value provided. */
-  InvalidImageSourceUrl = 'INVALID_IMAGE_SOURCE_URL',
+  InvalidImageSourceUrl: 'INVALID_IMAGE_SOURCE_URL',
   /** Search query isn't supported. */
-  InvalidQuery = 'INVALID_QUERY',
+  InvalidQuery: 'INVALID_QUERY',
   /** Media cannot be modified. It is currently being modified by another operation. */
-  MediaCannotBeModified = 'MEDIA_CANNOT_BE_MODIFIED',
+  MediaCannotBeModified: 'MEDIA_CANNOT_BE_MODIFIED',
   /** Cannot create file with custom filename which does not match original source extension. */
-  MismatchedFilenameAndOriginalSource = 'MISMATCHED_FILENAME_AND_ORIGINAL_SOURCE',
+  MismatchedFilenameAndOriginalSource: 'MISMATCHED_FILENAME_AND_ORIGINAL_SOURCE',
   /** At least one argument is required. */
-  MissingArguments = 'MISSING_ARGUMENTS',
+  MissingArguments: 'MISSING_ARGUMENTS',
   /** Duplicate resolution mode REPLACE cannot be used without specifying filename. */
-  MissingFilenameForDuplicateModeReplace = 'MISSING_FILENAME_FOR_DUPLICATE_MODE_REPLACE',
+  MissingFilenameForDuplicateModeReplace: 'MISSING_FILENAME_FOR_DUPLICATE_MODE_REPLACE',
   /** Exceeded the limit of non-image media per shop. */
-  NonImageMediaPerShopLimitExceeded = 'NON_IMAGE_MEDIA_PER_SHOP_LIMIT_EXCEEDED',
+  NonImageMediaPerShopLimitExceeded: 'NON_IMAGE_MEDIA_PER_SHOP_LIMIT_EXCEEDED',
   /** The file is not in the READY state. */
-  NonReadyState = 'NON_READY_STATE',
+  NonReadyState: 'NON_READY_STATE',
   /** Exceeded the limit of media per product. */
-  ProductMediaLimitExceeded = 'PRODUCT_MEDIA_LIMIT_EXCEEDED',
+  ProductMediaLimitExceeded: 'PRODUCT_MEDIA_LIMIT_EXCEEDED',
   /** One or more associated products are suspended. */
-  ProductSuspended = 'PRODUCT_SUSPENDED',
+  ProductSuspended: 'PRODUCT_SUSPENDED',
   /** The target resource does not exist. */
-  ReferenceTargetDoesNotExist = 'REFERENCE_TARGET_DOES_NOT_EXIST',
+  ReferenceTargetDoesNotExist: 'REFERENCE_TARGET_DOES_NOT_EXIST',
   /** Specify one argument: search, IDs, or deleteAll. */
-  TooManyArguments = 'TOO_MANY_ARGUMENTS',
+  TooManyArguments: 'TOO_MANY_ARGUMENTS',
   /** Cannot add more than 10000 references to a file. */
-  TooManyFileReference = 'TOO_MANY_FILE_REFERENCE',
+  TooManyFileReference: 'TOO_MANY_FILE_REFERENCE',
   /** The file type is not supported. */
-  UnacceptableAsset = 'UNACCEPTABLE_ASSET',
+  UnacceptableAsset: 'UNACCEPTABLE_ASSET',
   /** The file is not supported on trial accounts. Select a plan to upload this file. */
-  UnacceptableTrialAsset = 'UNACCEPTABLE_TRIAL_ASSET',
+  UnacceptableTrialAsset: 'UNACCEPTABLE_TRIAL_ASSET',
   /** The file is not supported on trial accounts that have not validated their email. Either select a plan or verify the shop owner email to upload this file. */
-  UnacceptableUnverifiedTrialAsset = 'UNACCEPTABLE_UNVERIFIED_TRIAL_ASSET',
+  UnacceptableUnverifiedTrialAsset: 'UNACCEPTABLE_UNVERIFIED_TRIAL_ASSET',
   /** The file type is not supported for referencing. */
-  UnsupportedFileReference = 'UNSUPPORTED_FILE_REFERENCE',
+  UnsupportedFileReference: 'UNSUPPORTED_FILE_REFERENCE',
   /** Filename update is only supported on Image and GenericFile. */
-  UnsupportedMediaTypeForFilenameUpdate = 'UNSUPPORTED_MEDIA_TYPE_FOR_FILENAME_UPDATE'
-}
+  UnsupportedMediaTypeForFilenameUpdate: 'UNSUPPORTED_MEDIA_TYPE_FOR_FILENAME_UPDATE'
+} as const;
 
+export type FilesErrorCode = typeof FilesErrorCode[keyof typeof FilesErrorCode];
 /** An error that happens during the execution of a Files API query or mutation. */
 export type FilesUserError = DisplayableError & {
   __typename?: 'FilesUserError';
@@ -20433,27 +20599,28 @@ export type FulfillmentConstraintRuleCreateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `FulfillmentConstraintRuleCreateUserError`. */
-export enum FulfillmentConstraintRuleCreateUserErrorCode {
+export const FulfillmentConstraintRuleCreateUserErrorCode = {
   /** Shop must be on a Shopify Plus plan to activate functions from a custom app. */
-  CustomAppFunctionNotEligible = 'CUSTOM_APP_FUNCTION_NOT_ELIGIBLE',
+  CustomAppFunctionNotEligible: 'CUSTOM_APP_FUNCTION_NOT_ELIGIBLE',
   /** A fulfillment constraint rule already exists for the provided function_id. */
-  FunctionAlreadyRegistered = 'FUNCTION_ALREADY_REGISTERED',
+  FunctionAlreadyRegistered: 'FUNCTION_ALREADY_REGISTERED',
   /** Function does not implement the required interface for this fulfillment constraint rule. */
-  FunctionDoesNotImplement = 'FUNCTION_DOES_NOT_IMPLEMENT',
+  FunctionDoesNotImplement: 'FUNCTION_DOES_NOT_IMPLEMENT',
   /** No Shopify Function found for provided function_id. */
-  FunctionNotFound = 'FUNCTION_NOT_FOUND',
+  FunctionNotFound: 'FUNCTION_NOT_FOUND',
   /** Function is pending deletion and cannot have new rules created against it. */
-  FunctionPendingDeletion = 'FUNCTION_PENDING_DELETION',
+  FunctionPendingDeletion: 'FUNCTION_PENDING_DELETION',
   /** Failed to create fulfillment constraint rule due to invalid input. */
-  InputInvalid = 'INPUT_INVALID',
+  InputInvalid: 'INPUT_INVALID',
   /** Maximum number of fulfillment constraint rules reached. Limit is 10. */
-  MaximumFulfillmentConstraintRulesReached = 'MAXIMUM_FULFILLMENT_CONSTRAINT_RULES_REACHED',
+  MaximumFulfillmentConstraintRulesReached: 'MAXIMUM_FULFILLMENT_CONSTRAINT_RULES_REACHED',
   /** Either function_id or function_handle must be provided. */
-  MissingFunctionIdentifier = 'MISSING_FUNCTION_IDENTIFIER',
+  MissingFunctionIdentifier: 'MISSING_FUNCTION_IDENTIFIER',
   /** Only one of function_id or function_handle can be provided, not both. */
-  MultipleFunctionIdentifiers = 'MULTIPLE_FUNCTION_IDENTIFIERS'
-}
+  MultipleFunctionIdentifiers: 'MULTIPLE_FUNCTION_IDENTIFIERS'
+} as const;
 
+export type FulfillmentConstraintRuleCreateUserErrorCode = typeof FulfillmentConstraintRuleCreateUserErrorCode[keyof typeof FulfillmentConstraintRuleCreateUserErrorCode];
 /** Return type for `fulfillmentConstraintRuleDelete` mutation. */
 export type FulfillmentConstraintRuleDeletePayload = {
   __typename?: 'FulfillmentConstraintRuleDeletePayload';
@@ -20475,13 +20642,14 @@ export type FulfillmentConstraintRuleDeleteUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `FulfillmentConstraintRuleDeleteUserError`. */
-export enum FulfillmentConstraintRuleDeleteUserErrorCode {
+export const FulfillmentConstraintRuleDeleteUserErrorCode = {
   /** Could not find fulfillment constraint rule for provided id. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** Unauthorized app scope. */
-  UnauthorizedAppScope = 'UNAUTHORIZED_APP_SCOPE'
-}
+  UnauthorizedAppScope: 'UNAUTHORIZED_APP_SCOPE'
+} as const;
 
+export type FulfillmentConstraintRuleDeleteUserErrorCode = typeof FulfillmentConstraintRuleDeleteUserErrorCode[keyof typeof FulfillmentConstraintRuleDeleteUserErrorCode];
 /** Return type for `fulfillmentConstraintRuleUpdate` mutation. */
 export type FulfillmentConstraintRuleUpdatePayload = {
   __typename?: 'FulfillmentConstraintRuleUpdatePayload';
@@ -20503,13 +20671,14 @@ export type FulfillmentConstraintRuleUpdateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `FulfillmentConstraintRuleUpdateUserError`. */
-export enum FulfillmentConstraintRuleUpdateUserErrorCode {
+export const FulfillmentConstraintRuleUpdateUserErrorCode = {
   /** Could not find fulfillment constraint rule for provided id. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** Unauthorized app scope. */
-  UnauthorizedAppScope = 'UNAUTHORIZED_APP_SCOPE'
-}
+  UnauthorizedAppScope: 'UNAUTHORIZED_APP_SCOPE'
+} as const;
 
+export type FulfillmentConstraintRuleUpdateUserErrorCode = typeof FulfillmentConstraintRuleUpdateUserErrorCode[keyof typeof FulfillmentConstraintRuleUpdateUserErrorCode];
 /** Return type for `fulfillmentCreate` mutation. */
 export type FulfillmentCreatePayload = {
   __typename?: 'FulfillmentCreatePayload';
@@ -20529,45 +20698,46 @@ export type FulfillmentCreateV2Payload = {
 };
 
 /** The display status of a fulfillment. */
-export enum FulfillmentDisplayStatus {
+export const FulfillmentDisplayStatus = {
   /** Displayed as **Attempted delivery**. */
-  AttemptedDelivery = 'ATTEMPTED_DELIVERY',
+  AttemptedDelivery: 'ATTEMPTED_DELIVERY',
   /** Displayed as **Canceled**. */
-  Canceled = 'CANCELED',
+  Canceled: 'CANCELED',
   /** Displayed as **Picked up by carrier**. */
-  CarrierPickedUp = 'CARRIER_PICKED_UP',
+  CarrierPickedUp: 'CARRIER_PICKED_UP',
   /** Displayed as **Confirmed**. */
-  Confirmed = 'CONFIRMED',
+  Confirmed: 'CONFIRMED',
   /** Displayed as **Delayed**. */
-  Delayed = 'DELAYED',
+  Delayed: 'DELAYED',
   /** Displayed as **Delivered**. */
-  Delivered = 'DELIVERED',
+  Delivered: 'DELIVERED',
   /** Displayed as **Failure**. */
-  Failure = 'FAILURE',
+  Failure: 'FAILURE',
   /** Displayed as **Fulfilled**. */
-  Fulfilled = 'FULFILLED',
+  Fulfilled: 'FULFILLED',
   /** Displayed as **In transit**. */
-  InTransit = 'IN_TRANSIT',
+  InTransit: 'IN_TRANSIT',
   /** Displayed as **Label printed**. */
-  LabelPrinted = 'LABEL_PRINTED',
+  LabelPrinted: 'LABEL_PRINTED',
   /** Displayed as **Label purchased**. */
-  LabelPurchased = 'LABEL_PURCHASED',
+  LabelPurchased: 'LABEL_PURCHASED',
   /** Displayed as **Label voided**. */
-  LabelVoided = 'LABEL_VOIDED',
+  LabelVoided: 'LABEL_VOIDED',
   /** Displayed as **Marked as fulfilled**. */
-  MarkedAsFulfilled = 'MARKED_AS_FULFILLED',
+  MarkedAsFulfilled: 'MARKED_AS_FULFILLED',
   /** Displayed as **Not delivered**. */
-  NotDelivered = 'NOT_DELIVERED',
+  NotDelivered: 'NOT_DELIVERED',
   /** Displayed as **Out for delivery**. */
-  OutForDelivery = 'OUT_FOR_DELIVERY',
+  OutForDelivery: 'OUT_FOR_DELIVERY',
   /** Displayed as **Picked up**. */
-  PickedUp = 'PICKED_UP',
+  PickedUp: 'PICKED_UP',
   /** Displayed as **Ready for pickup**. */
-  ReadyForPickup = 'READY_FOR_PICKUP',
+  ReadyForPickup: 'READY_FOR_PICKUP',
   /** Displayed as **Submitted**. */
-  Submitted = 'SUBMITTED'
-}
+  Submitted: 'SUBMITTED'
+} as const;
 
+export type FulfillmentDisplayStatus = typeof FulfillmentDisplayStatus[keyof typeof FulfillmentDisplayStatus];
 /** An auto-generated type which holds one Fulfillment and a cursor during pagination. */
 export type FulfillmentEdge = {
   __typename?: 'FulfillmentEdge';
@@ -20670,39 +20840,41 @@ export type FulfillmentEventInput = {
 };
 
 /** The set of valid sort keys for the FulfillmentEvent query. */
-export enum FulfillmentEventSortKeys {
+export const FulfillmentEventSortKeys = {
   /** Sort by the `happened_at` value. */
-  HappenedAt = 'HAPPENED_AT',
+  HappenedAt: 'HAPPENED_AT',
   /** Sort by the `id` value. */
-  Id = 'ID'
-}
+  Id: 'ID'
+} as const;
 
+export type FulfillmentEventSortKeys = typeof FulfillmentEventSortKeys[keyof typeof FulfillmentEventSortKeys];
 /** The status that describes a fulfillment or delivery event. */
-export enum FulfillmentEventStatus {
+export const FulfillmentEventStatus = {
   /** A delivery was attempted. */
-  AttemptedDelivery = 'ATTEMPTED_DELIVERY',
+  AttemptedDelivery: 'ATTEMPTED_DELIVERY',
   /** The fulfillment has been picked up by the carrier. */
-  CarrierPickedUp = 'CARRIER_PICKED_UP',
+  CarrierPickedUp: 'CARRIER_PICKED_UP',
   /** The fulfillment is confirmed. This is the default value when no other information is available. */
-  Confirmed = 'CONFIRMED',
+  Confirmed: 'CONFIRMED',
   /** The fulfillment is delayed. */
-  Delayed = 'DELAYED',
+  Delayed: 'DELAYED',
   /** The fulfillment was successfully delivered. */
-  Delivered = 'DELIVERED',
+  Delivered: 'DELIVERED',
   /** The fulfillment request failed. */
-  Failure = 'FAILURE',
+  Failure: 'FAILURE',
   /** The fulfillment is in transit. */
-  InTransit = 'IN_TRANSIT',
+  InTransit: 'IN_TRANSIT',
   /** A purchased shipping label has been printed. */
-  LabelPrinted = 'LABEL_PRINTED',
+  LabelPrinted: 'LABEL_PRINTED',
   /** A shipping label has been purchased. */
-  LabelPurchased = 'LABEL_PURCHASED',
+  LabelPurchased: 'LABEL_PURCHASED',
   /** The fulfillment is out for delivery. */
-  OutForDelivery = 'OUT_FOR_DELIVERY',
+  OutForDelivery: 'OUT_FOR_DELIVERY',
   /** The fulfillment is ready to be picked up. */
-  ReadyForPickup = 'READY_FOR_PICKUP'
-}
+  ReadyForPickup: 'READY_FOR_PICKUP'
+} as const;
 
+export type FulfillmentEventStatus = typeof FulfillmentEventStatus[keyof typeof FulfillmentEventStatus];
 /** A fulfillment hold currently applied on a fulfillment order. */
 export type FulfillmentHold = Node & {
   __typename?: 'FulfillmentHold';
@@ -20726,25 +20898,26 @@ export type FulfillmentHold = Node & {
 };
 
 /** The reason for a fulfillment hold. */
-export enum FulfillmentHoldReason {
+export const FulfillmentHoldReason = {
   /** The fulfillment hold is applied because payment is pending. */
-  AwaitingPayment = 'AWAITING_PAYMENT',
+  AwaitingPayment: 'AWAITING_PAYMENT',
   /** The fulfillment hold is applied because of return items not yet received during an exchange. */
-  AwaitingReturnItems = 'AWAITING_RETURN_ITEMS',
+  AwaitingReturnItems: 'AWAITING_RETURN_ITEMS',
   /** The fulfillment hold is applied because of a high risk of fraud. */
-  HighRiskOfFraud = 'HIGH_RISK_OF_FRAUD',
+  HighRiskOfFraud: 'HIGH_RISK_OF_FRAUD',
   /** The fulfillment hold is applied because of an incorrect address. */
-  IncorrectAddress = 'INCORRECT_ADDRESS',
+  IncorrectAddress: 'INCORRECT_ADDRESS',
   /** The fulfillment hold is applied because inventory is out of stock. */
-  InventoryOutOfStock = 'INVENTORY_OUT_OF_STOCK',
+  InventoryOutOfStock: 'INVENTORY_OUT_OF_STOCK',
   /** The fulfillment hold is applied because of a post purchase upsell offer. */
-  OnlineStorePostPurchaseCrossSell = 'ONLINE_STORE_POST_PURCHASE_CROSS_SELL',
+  OnlineStorePostPurchaseCrossSell: 'ONLINE_STORE_POST_PURCHASE_CROSS_SELL',
   /** The fulfillment hold is applied for another reason. */
-  Other = 'OTHER',
+  Other: 'OTHER',
   /** The fulfillment hold is applied because of an unknown delivery date. */
-  UnknownDeliveryDate = 'UNKNOWN_DELIVERY_DATE'
-}
+  UnknownDeliveryDate: 'UNKNOWN_DELIVERY_DATE'
+} as const;
 
+export type FulfillmentHoldReason = typeof FulfillmentHoldReason[keyof typeof FulfillmentHoldReason];
 /** The input fields used to create a fulfillment from fulfillment orders. */
 export type FulfillmentInput = {
   /**
@@ -21935,31 +22108,32 @@ export type FulfillmentOrderAcceptFulfillmentRequestPayload = {
 };
 
 /** The actions that can be taken on a fulfillment order. */
-export enum FulfillmentOrderAction {
+export const FulfillmentOrderAction = {
   /** Cancels a fulfillment order. The corresponding mutation for this action is `fulfillmentOrderCancel`. */
-  CancelFulfillmentOrder = 'CANCEL_FULFILLMENT_ORDER',
+  CancelFulfillmentOrder: 'CANCEL_FULFILLMENT_ORDER',
   /** Creates a fulfillment for selected line items in the fulfillment order. The corresponding mutation for this action is `fulfillmentCreateV2`. */
-  CreateFulfillment = 'CREATE_FULFILLMENT',
+  CreateFulfillment: 'CREATE_FULFILLMENT',
   /** Opens an external URL to initiate the fulfillment process outside Shopify. This action should be paired with `FulfillmentOrderSupportedAction.externalUrl`. */
-  External = 'EXTERNAL',
+  External: 'EXTERNAL',
   /** Applies a fulfillment hold on the fulfillment order. The corresponding mutation for this action is `fulfillmentOrderHold`. */
-  Hold = 'HOLD',
+  Hold: 'HOLD',
   /** Marks the fulfillment order as open. The corresponding mutation for this action is `fulfillmentOrderOpen`. */
-  MarkAsOpen = 'MARK_AS_OPEN',
+  MarkAsOpen: 'MARK_AS_OPEN',
   /** Merges a fulfillment order. The corresponding mutation for this action is `fulfillmentOrderMerge`. */
-  Merge = 'MERGE',
+  Merge: 'MERGE',
   /** Moves a fulfillment order. The corresponding mutation for this action is `fulfillmentOrderMove`. */
-  Move = 'MOVE',
+  Move: 'MOVE',
   /** Releases the fulfillment hold on the fulfillment order. The corresponding mutation for this action is `fulfillmentOrderReleaseHold`. */
-  ReleaseHold = 'RELEASE_HOLD',
+  ReleaseHold: 'RELEASE_HOLD',
   /** Sends a cancellation request to the fulfillment service of a fulfillment order. The corresponding mutation for this action is `fulfillmentOrderSubmitCancellationRequest`. */
-  RequestCancellation = 'REQUEST_CANCELLATION',
+  RequestCancellation: 'REQUEST_CANCELLATION',
   /** Sends a request for fulfilling selected line items in a fulfillment order to a fulfillment service. The corresponding mutation for this action is `fulfillmentOrderSubmitFulfillmentRequest`. */
-  RequestFulfillment = 'REQUEST_FULFILLMENT',
+  RequestFulfillment: 'REQUEST_FULFILLMENT',
   /** Splits a fulfillment order. The corresponding mutation for this action is `fulfillmentOrderSplit`. */
-  Split = 'SPLIT'
-}
+  Split: 'SPLIT'
+} as const;
 
+export type FulfillmentOrderAction = typeof FulfillmentOrderAction[keyof typeof FulfillmentOrderAction];
 /**
  * The fulfillment order's assigned location. This is the location where the fulfillment is expected to happen.
  *
@@ -22023,24 +22197,25 @@ export type FulfillmentOrderAssignedLocation = {
 };
 
 /** The assigment status to be used to filter fulfillment orders. */
-export enum FulfillmentOrderAssignmentStatus {
+export const FulfillmentOrderAssignmentStatus = {
   /**
    * Fulfillment orders for which the merchant has requested cancellation of
    * the previously accepted fulfillment request.
    */
-  CancellationRequested = 'CANCELLATION_REQUESTED',
+  CancellationRequested: 'CANCELLATION_REQUESTED',
   /**
    * Fulfillment orders for which the merchant's fulfillment request has been accepted.
    * Any number of fulfillments can be created on these fulfillment orders
    * to completely fulfill the requested items.
    */
-  FulfillmentAccepted = 'FULFILLMENT_ACCEPTED',
+  FulfillmentAccepted: 'FULFILLMENT_ACCEPTED',
   /** Fulfillment orders for which the merchant has requested fulfillment. */
-  FulfillmentRequested = 'FULFILLMENT_REQUESTED',
+  FulfillmentRequested: 'FULFILLMENT_REQUESTED',
   /** Fulfillment orders for which the merchant hasn't yet requested fulfillment. */
-  FulfillmentUnsubmitted = 'FULFILLMENT_UNSUBMITTED'
-}
+  FulfillmentUnsubmitted: 'FULFILLMENT_UNSUBMITTED'
+} as const;
 
+export type FulfillmentOrderAssignmentStatus = typeof FulfillmentOrderAssignmentStatus[keyof typeof FulfillmentOrderAssignmentStatus];
 /** Return type for `fulfillmentOrderCancel` mutation. */
 export type FulfillmentOrderCancelPayload = {
   __typename?: 'FulfillmentOrderCancelPayload';
@@ -22179,25 +22354,26 @@ export type FulfillmentOrderHoldUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `FulfillmentOrderHoldUserError`. */
-export enum FulfillmentOrderHoldUserErrorCode {
+export const FulfillmentOrderHoldUserErrorCode = {
   /** The fulfillment order line items are not unique. */
-  DuplicatedFulfillmentOrderLineItems = 'DUPLICATED_FULFILLMENT_ORDER_LINE_ITEMS',
+  DuplicatedFulfillmentOrderLineItems: 'DUPLICATED_FULFILLMENT_ORDER_LINE_ITEMS',
   /** The handle provided for the fulfillment hold is already in use by this app for another hold on this fulfillment order. */
-  DuplicateFulfillmentHoldHandle = 'DUPLICATE_FULFILLMENT_HOLD_HANDLE',
+  DuplicateFulfillmentHoldHandle: 'DUPLICATE_FULFILLMENT_HOLD_HANDLE',
   /** The maximum number of fulfillment holds for this fulfillment order has been reached for this app. An app can only have up to 10 holds on a single fulfillment order at any one time. */
-  FulfillmentOrderHoldLimitReached = 'FULFILLMENT_ORDER_HOLD_LIMIT_REACHED',
+  FulfillmentOrderHoldLimitReached: 'FULFILLMENT_ORDER_HOLD_LIMIT_REACHED',
   /** The fulfillment order could not be found. */
-  FulfillmentOrderNotFound = 'FULFILLMENT_ORDER_NOT_FOUND',
+  FulfillmentOrderNotFound: 'FULFILLMENT_ORDER_NOT_FOUND',
   /** The fulfillment order is not in a splittable state. */
-  FulfillmentOrderNotSplittable = 'FULFILLMENT_ORDER_NOT_SPLITTABLE',
+  FulfillmentOrderNotSplittable: 'FULFILLMENT_ORDER_NOT_SPLITTABLE',
   /** The fulfillment order line item quantity must be greater than 0. */
-  GreaterThanZero = 'GREATER_THAN_ZERO',
+  GreaterThanZero: 'GREATER_THAN_ZERO',
   /** The fulfillment order line item quantity is invalid. */
-  InvalidLineItemQuantity = 'INVALID_LINE_ITEM_QUANTITY',
+  InvalidLineItemQuantity: 'INVALID_LINE_ITEM_QUANTITY',
   /** The input value is already taken. */
-  Taken = 'TAKEN'
-}
+  Taken: 'TAKEN'
+} as const;
 
+export type FulfillmentOrderHoldUserErrorCode = typeof FulfillmentOrderHoldUserErrorCode[keyof typeof FulfillmentOrderHoldUserErrorCode];
 /** The international duties relevant to a fulfillment order. */
 export type FulfillmentOrderInternationalDuties = {
   __typename?: 'FulfillmentOrderInternationalDuties';
@@ -22336,15 +22512,16 @@ export type FulfillmentOrderLineItemsPreparedForPickupUserError = DisplayableErr
 };
 
 /** Possible error codes that can be returned by `FulfillmentOrderLineItemsPreparedForPickupUserError`. */
-export enum FulfillmentOrderLineItemsPreparedForPickupUserErrorCode {
+export const FulfillmentOrderLineItemsPreparedForPickupUserErrorCode = {
   /** Invalid fulfillment order ID provided. */
-  FulfillmentOrderInvalid = 'FULFILLMENT_ORDER_INVALID',
+  FulfillmentOrderInvalid: 'FULFILLMENT_ORDER_INVALID',
   /** The fulfillment order does not have any line items that can be prepared. */
-  NoLineItemsToPrepareForFulfillmentOrder = 'NO_LINE_ITEMS_TO_PREPARE_FOR_FULFILLMENT_ORDER',
+  NoLineItemsToPrepareForFulfillmentOrder: 'NO_LINE_ITEMS_TO_PREPARE_FOR_FULFILLMENT_ORDER',
   /** Unable to prepare quantity. */
-  UnableToPrepareQuantity = 'UNABLE_TO_PREPARE_QUANTITY'
-}
+  UnableToPrepareQuantity: 'UNABLE_TO_PREPARE_QUANTITY'
+} as const;
 
+export type FulfillmentOrderLineItemsPreparedForPickupUserErrorCode = typeof FulfillmentOrderLineItemsPreparedForPickupUserErrorCode[keyof typeof FulfillmentOrderLineItemsPreparedForPickupUserErrorCode];
 /** A location that a fulfillment order can potentially move to. */
 export type FulfillmentOrderLocationForMove = {
   __typename?: 'FulfillmentOrderLocationForMove';
@@ -22461,13 +22638,14 @@ export type FulfillmentOrderMerchantRequestEdge = {
 };
 
 /** The kinds of request merchants can make to a fulfillment service. */
-export enum FulfillmentOrderMerchantRequestKind {
+export const FulfillmentOrderMerchantRequestKind = {
   /** The merchant requests cancellation of an `IN_PROGRESS` fulfillment order. */
-  CancellationRequest = 'CANCELLATION_REQUEST',
+  CancellationRequest: 'CANCELLATION_REQUEST',
   /** The merchant requests fulfillment for an `OPEN` fulfillment order. */
-  FulfillmentRequest = 'FULFILLMENT_REQUEST'
-}
+  FulfillmentRequest: 'FULFILLMENT_REQUEST'
+} as const;
 
+export type FulfillmentOrderMerchantRequestKind = typeof FulfillmentOrderMerchantRequestKind[keyof typeof FulfillmentOrderMerchantRequestKind];
 /** The input fields for merging fulfillment orders. */
 export type FulfillmentOrderMergeInput = {
   /** The details of the fulfillment orders to be merged. */
@@ -22510,15 +22688,16 @@ export type FulfillmentOrderMergeUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `FulfillmentOrderMergeUserError`. */
-export enum FulfillmentOrderMergeUserErrorCode {
+export const FulfillmentOrderMergeUserErrorCode = {
   /** The fulfillment order could not be found. */
-  FulfillmentOrderNotFound = 'FULFILLMENT_ORDER_NOT_FOUND',
+  FulfillmentOrderNotFound: 'FULFILLMENT_ORDER_NOT_FOUND',
   /** The fulfillment order line item quantity must be greater than 0. */
-  GreaterThan = 'GREATER_THAN',
+  GreaterThan: 'GREATER_THAN',
   /** The fulfillment order line item quantity is invalid. */
-  InvalidLineItemQuantity = 'INVALID_LINE_ITEM_QUANTITY'
-}
+  InvalidLineItemQuantity: 'INVALID_LINE_ITEM_QUANTITY'
+} as const;
 
+export type FulfillmentOrderMergeUserErrorCode = typeof FulfillmentOrderMergeUserErrorCode[keyof typeof FulfillmentOrderMergeUserErrorCode];
 /** Return type for `fulfillmentOrderMove` mutation. */
 export type FulfillmentOrderMovePayload = {
   __typename?: 'FulfillmentOrderMovePayload';
@@ -22570,37 +22749,38 @@ export type FulfillmentOrderRejectFulfillmentRequestPayload = {
 };
 
 /** The reason for a fulfillment order rejection. */
-export enum FulfillmentOrderRejectionReason {
+export const FulfillmentOrderRejectionReason = {
   /** The fulfillment order was rejected because of an incorrect address. */
-  IncorrectAddress = 'INCORRECT_ADDRESS',
+  IncorrectAddress: 'INCORRECT_ADDRESS',
   /** The fulfillment order was rejected because product information is incorrect to be able to ship. */
-  IncorrectProductInfo = 'INCORRECT_PRODUCT_INFO',
+  IncorrectProductInfo: 'INCORRECT_PRODUCT_INFO',
   /** The fulfillment order was rejected because of an ineligible product. */
-  IneligibleProduct = 'INELIGIBLE_PRODUCT',
+  IneligibleProduct: 'INELIGIBLE_PRODUCT',
   /** The fulfillment order was rejected because international address shipping hasn't been enabled. */
-  InternationalShippingUnavailable = 'INTERNATIONAL_SHIPPING_UNAVAILABLE',
+  InternationalShippingUnavailable: 'INTERNATIONAL_SHIPPING_UNAVAILABLE',
   /** The fulfillment order was rejected because of invalid customer contact information. */
-  InvalidContactInformation = 'INVALID_CONTACT_INFORMATION',
+  InvalidContactInformation: 'INVALID_CONTACT_INFORMATION',
   /** The fulfillment order was rejected because of an invalid SKU. */
-  InvalidSku = 'INVALID_SKU',
+  InvalidSku: 'INVALID_SKU',
   /** The fulfillment order was rejected because inventory is out of stock. */
-  InventoryOutOfStock = 'INVENTORY_OUT_OF_STOCK',
+  InventoryOutOfStock: 'INVENTORY_OUT_OF_STOCK',
   /** The fulfillment order was rejected because the merchant is blocked or suspended. */
-  MerchantBlockedOrSuspended = 'MERCHANT_BLOCKED_OR_SUSPENDED',
+  MerchantBlockedOrSuspended: 'MERCHANT_BLOCKED_OR_SUSPENDED',
   /** The fulfillment order was rejected because customs information was missing for international shipping. */
-  MissingCustomsInfo = 'MISSING_CUSTOMS_INFO',
+  MissingCustomsInfo: 'MISSING_CUSTOMS_INFO',
   /** The fulfillment order was rejected because the order is too large. */
-  OrderTooLarge = 'ORDER_TOO_LARGE',
+  OrderTooLarge: 'ORDER_TOO_LARGE',
   /** The fulfillment order was rejected for another reason. */
-  Other = 'OTHER',
+  Other: 'OTHER',
   /** The fulfillment order was rejected because the package preference was not set. */
-  PackagePreferenceNotSet = 'PACKAGE_PREFERENCE_NOT_SET',
+  PackagePreferenceNotSet: 'PACKAGE_PREFERENCE_NOT_SET',
   /** The fulfillment order was rejected because the payment method was declined. */
-  PaymentDeclined = 'PAYMENT_DECLINED',
+  PaymentDeclined: 'PAYMENT_DECLINED',
   /** The fulfillment order was rejected because of an undeliverable destination. */
-  UndeliverableDestination = 'UNDELIVERABLE_DESTINATION'
-}
+  UndeliverableDestination: 'UNDELIVERABLE_DESTINATION'
+} as const;
 
+export type FulfillmentOrderRejectionReason = typeof FulfillmentOrderRejectionReason[keyof typeof FulfillmentOrderRejectionReason];
 /** Return type for `fulfillmentOrderReleaseHold` mutation. */
 export type FulfillmentOrderReleaseHoldPayload = {
   __typename?: 'FulfillmentOrderReleaseHoldPayload';
@@ -22622,36 +22802,38 @@ export type FulfillmentOrderReleaseHoldUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `FulfillmentOrderReleaseHoldUserError`. */
-export enum FulfillmentOrderReleaseHoldUserErrorCode {
+export const FulfillmentOrderReleaseHoldUserErrorCode = {
   /** The fulfillment order wasn't found. */
-  FulfillmentOrderNotFound = 'FULFILLMENT_ORDER_NOT_FOUND',
+  FulfillmentOrderNotFound: 'FULFILLMENT_ORDER_NOT_FOUND',
   /** The app doesn't have access to release the fulfillment hold. */
-  InvalidAccess = 'INVALID_ACCESS'
-}
+  InvalidAccess: 'INVALID_ACCESS'
+} as const;
 
+export type FulfillmentOrderReleaseHoldUserErrorCode = typeof FulfillmentOrderReleaseHoldUserErrorCode[keyof typeof FulfillmentOrderReleaseHoldUserErrorCode];
 /** The request status of a fulfillment order. */
-export enum FulfillmentOrderRequestStatus {
+export const FulfillmentOrderRequestStatus = {
   /** The fulfillment service accepted the merchant's fulfillment request. */
-  Accepted = 'ACCEPTED',
+  Accepted: 'ACCEPTED',
   /** The fulfillment service accepted the merchant's fulfillment cancellation request. */
-  CancellationAccepted = 'CANCELLATION_ACCEPTED',
+  CancellationAccepted: 'CANCELLATION_ACCEPTED',
   /** The fulfillment service rejected the merchant's fulfillment cancellation request. */
-  CancellationRejected = 'CANCELLATION_REJECTED',
+  CancellationRejected: 'CANCELLATION_REJECTED',
   /** The merchant requested a cancellation of the fulfillment request for this fulfillment order. */
-  CancellationRequested = 'CANCELLATION_REQUESTED',
+  CancellationRequested: 'CANCELLATION_REQUESTED',
   /** The fulfillment service closed the fulfillment order without completing it. */
-  Closed = 'CLOSED',
+  Closed: 'CLOSED',
   /** The fulfillment service rejected the merchant's fulfillment request. */
-  Rejected = 'REJECTED',
+  Rejected: 'REJECTED',
   /** The merchant requested fulfillment for this fulfillment order. */
-  Submitted = 'SUBMITTED',
+  Submitted: 'SUBMITTED',
   /**
    * The initial request status for the newly-created fulfillment orders. This is the only valid
    * request status for fulfillment orders that aren't assigned to a fulfillment service.
    */
-  Unsubmitted = 'UNSUBMITTED'
-}
+  Unsubmitted: 'UNSUBMITTED'
+} as const;
 
+export type FulfillmentOrderRequestStatus = typeof FulfillmentOrderRequestStatus[keyof typeof FulfillmentOrderRequestStatus];
 /** Return type for `fulfillmentOrderReschedule` mutation. */
 export type FulfillmentOrderReschedulePayload = {
   __typename?: 'FulfillmentOrderReschedulePayload';
@@ -22680,19 +22862,21 @@ export type FulfillmentOrderRescheduleUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `FulfillmentOrderRescheduleUserError`. */
-export enum FulfillmentOrderRescheduleUserErrorCode {
+export const FulfillmentOrderRescheduleUserErrorCode = {
   /** Fulfillment order could not be found. */
-  FulfillmentOrderNotFound = 'FULFILLMENT_ORDER_NOT_FOUND'
-}
+  FulfillmentOrderNotFound: 'FULFILLMENT_ORDER_NOT_FOUND'
+} as const;
 
+export type FulfillmentOrderRescheduleUserErrorCode = typeof FulfillmentOrderRescheduleUserErrorCode[keyof typeof FulfillmentOrderRescheduleUserErrorCode];
 /** The set of valid sort keys for the FulfillmentOrder query. */
-export enum FulfillmentOrderSortKeys {
+export const FulfillmentOrderSortKeys = {
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `updated_at` value. */
-  UpdatedAt = 'UPDATED_AT'
-}
+  UpdatedAt: 'UPDATED_AT'
+} as const;
 
+export type FulfillmentOrderSortKeys = typeof FulfillmentOrderSortKeys[keyof typeof FulfillmentOrderSortKeys];
 /** The input fields for the split applied to the fulfillment order. */
 export type FulfillmentOrderSplitInput = {
   /** The ID of the fulfillment order to be split. */
@@ -22733,35 +22917,37 @@ export type FulfillmentOrderSplitUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `FulfillmentOrderSplitUserError`. */
-export enum FulfillmentOrderSplitUserErrorCode {
+export const FulfillmentOrderSplitUserErrorCode = {
   /** The fulfillment order could not be found. */
-  FulfillmentOrderNotFound = 'FULFILLMENT_ORDER_NOT_FOUND',
+  FulfillmentOrderNotFound: 'FULFILLMENT_ORDER_NOT_FOUND',
   /** The fulfillment order line item quantity must be greater than 0. */
-  GreaterThan = 'GREATER_THAN',
+  GreaterThan: 'GREATER_THAN',
   /** The fulfillment order line item quantity is invalid. */
-  InvalidLineItemQuantity = 'INVALID_LINE_ITEM_QUANTITY',
+  InvalidLineItemQuantity: 'INVALID_LINE_ITEM_QUANTITY',
   /** The fulfillment order must have at least one line item input to split. */
-  NoLineItemsProvidedToSplit = 'NO_LINE_ITEMS_PROVIDED_TO_SPLIT'
-}
+  NoLineItemsProvidedToSplit: 'NO_LINE_ITEMS_PROVIDED_TO_SPLIT'
+} as const;
 
+export type FulfillmentOrderSplitUserErrorCode = typeof FulfillmentOrderSplitUserErrorCode[keyof typeof FulfillmentOrderSplitUserErrorCode];
 /** The status of a fulfillment order. */
-export enum FulfillmentOrderStatus {
+export const FulfillmentOrderStatus = {
   /** The fulfillment order has been cancelled by the merchant. */
-  Cancelled = 'CANCELLED',
+  Cancelled: 'CANCELLED',
   /** The fulfillment order has been completed and closed. */
-  Closed = 'CLOSED',
+  Closed: 'CLOSED',
   /** The fulfillment order cannot be completed as requested. */
-  Incomplete = 'INCOMPLETE',
+  Incomplete: 'INCOMPLETE',
   /** The fulfillment order is being processed. */
-  InProgress = 'IN_PROGRESS',
+  InProgress: 'IN_PROGRESS',
   /** The fulfillment order is on hold. The fulfillment process can't be initiated until the hold on the fulfillment order is released. */
-  OnHold = 'ON_HOLD',
+  OnHold: 'ON_HOLD',
   /** The fulfillment order is ready for fulfillment. */
-  Open = 'OPEN',
+  Open: 'OPEN',
   /** The fulfillment order is deferred and will be ready for fulfillment after the date and time specified in `fulfill_at`. */
-  Scheduled = 'SCHEDULED'
-}
+  Scheduled: 'SCHEDULED'
+} as const;
 
+export type FulfillmentOrderStatus = typeof FulfillmentOrderStatus[keyof typeof FulfillmentOrderStatus];
 /** Return type for `fulfillmentOrderSubmitCancellationRequest` mutation. */
 export type FulfillmentOrderSubmitCancellationRequestPayload = {
   __typename?: 'FulfillmentOrderSubmitCancellationRequestPayload';
@@ -22824,27 +23010,28 @@ export type FulfillmentOrdersRerouteUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `FulfillmentOrdersRerouteUserError`. */
-export enum FulfillmentOrdersRerouteUserErrorCode {
+export const FulfillmentOrdersRerouteUserErrorCode = {
   /** Cannot move a fulfillment order that has progress reported. */
-  CannotMoveFulfillmentOrderWithReportedProgress = 'CANNOT_MOVE_FULFILLMENT_ORDER_WITH_REPORTED_PROGRESS',
+  CannotMoveFulfillmentOrderWithReportedProgress: 'CANNOT_MOVE_FULFILLMENT_ORDER_WITH_REPORTED_PROGRESS',
   /** Cannot reassign location for fulfillment orders. */
-  CannotReassignLocationForFulfillmentOrders = 'CANNOT_REASSIGN_LOCATION_FOR_FULFILLMENT_ORDERS',
+  CannotReassignLocationForFulfillmentOrders: 'CANNOT_REASSIGN_LOCATION_FOR_FULFILLMENT_ORDERS',
   /** The delivery method type is not supported. */
-  DeliveryMethodTypeNotSupported = 'DELIVERY_METHOD_TYPE_NOT_SUPPORTED',
+  DeliveryMethodTypeNotSupported: 'DELIVERY_METHOD_TYPE_NOT_SUPPORTED',
   /** Fulfillment orders must belong to the same location. */
-  FulfillmentOrdersMustBelongToSameLocation = 'FULFILLMENT_ORDERS_MUST_BELONG_TO_SAME_LOCATION',
+  FulfillmentOrdersMustBelongToSameLocation: 'FULFILLMENT_ORDERS_MUST_BELONG_TO_SAME_LOCATION',
   /** Fulfillment orders are not from the same order. */
-  FulfillmentOrdersNotFromTheSameOrder = 'FULFILLMENT_ORDERS_NOT_FROM_THE_SAME_ORDER',
+  FulfillmentOrdersNotFromTheSameOrder: 'FULFILLMENT_ORDERS_NOT_FROM_THE_SAME_ORDER',
   /** All fulfillment orders must have status and request status compatible with reroutable states. */
-  FulfillmentOrdersStateNotSupported = 'FULFILLMENT_ORDERS_STATE_NOT_SUPPORTED',
+  FulfillmentOrdersStateNotSupported: 'FULFILLMENT_ORDERS_STATE_NOT_SUPPORTED',
   /** Fulfillment order could not be found. */
-  FulfillmentOrderNotFound = 'FULFILLMENT_ORDER_NOT_FOUND',
+  FulfillmentOrderNotFound: 'FULFILLMENT_ORDER_NOT_FOUND',
   /** No fulfillment order IDs were provided. */
-  NoFulfillmentOrderIds = 'NO_FULFILLMENT_ORDER_IDS',
+  NoFulfillmentOrderIds: 'NO_FULFILLMENT_ORDER_IDS',
   /** This feature is only supported for multi-location shops. */
-  SingleLocationShopNotSupported = 'SINGLE_LOCATION_SHOP_NOT_SUPPORTED'
-}
+  SingleLocationShopNotSupported: 'SINGLE_LOCATION_SHOP_NOT_SUPPORTED'
+} as const;
 
+export type FulfillmentOrdersRerouteUserErrorCode = typeof FulfillmentOrdersRerouteUserErrorCode[keyof typeof FulfillmentOrdersRerouteUserErrorCode];
 /** Return type for `fulfillmentOrdersSetFulfillmentDeadline` mutation. */
 export type FulfillmentOrdersSetFulfillmentDeadlinePayload = {
   __typename?: 'FulfillmentOrdersSetFulfillmentDeadlinePayload';
@@ -22866,11 +23053,12 @@ export type FulfillmentOrdersSetFulfillmentDeadlineUserError = DisplayableError 
 };
 
 /** Possible error codes that can be returned by `FulfillmentOrdersSetFulfillmentDeadlineUserError`. */
-export enum FulfillmentOrdersSetFulfillmentDeadlineUserErrorCode {
+export const FulfillmentOrdersSetFulfillmentDeadlineUserErrorCode = {
   /** The fulfillment orders could not be found. */
-  FulfillmentOrdersNotFound = 'FULFILLMENT_ORDERS_NOT_FOUND'
-}
+  FulfillmentOrdersNotFound: 'FULFILLMENT_ORDERS_NOT_FOUND'
+} as const;
 
+export type FulfillmentOrdersSetFulfillmentDeadlineUserErrorCode = typeof FulfillmentOrdersSetFulfillmentDeadlineUserErrorCode[keyof typeof FulfillmentOrdersSetFulfillmentDeadlineUserErrorCode];
 /** The address at which the fulfillment occurred. This object is intended for tax purposes, as a full address is required for tax providers to accurately calculate taxes. Typically this is the address of the warehouse or fulfillment center. To retrieve a fulfillment location's address, use the `assignedLocation` field on the [`FulfillmentOrder`](/docs/api/admin-graphql/latest/objects/FulfillmentOrder) object instead. */
 export type FulfillmentOriginAddress = {
   __typename?: 'FulfillmentOriginAddress';
@@ -23026,15 +23214,16 @@ export type FulfillmentServiceCreatePayload = {
 };
 
 /** Actions that can be taken at the location when a client requests the deletion of the fulfillment service. */
-export enum FulfillmentServiceDeleteInventoryAction {
+export const FulfillmentServiceDeleteInventoryAction = {
   /** Deactivate and delete the inventory and location. */
-  Delete = 'DELETE',
+  Delete: 'DELETE',
   /** Keep the inventory in place and convert the Fulfillment Service's location to be merchant managed. */
-  Keep = 'KEEP',
+  Keep: 'KEEP',
   /** Transfer the inventory and other dependencies to the provided location. */
-  Transfer = 'TRANSFER'
-}
+  Transfer: 'TRANSFER'
+} as const;
 
+export type FulfillmentServiceDeleteInventoryAction = typeof FulfillmentServiceDeleteInventoryAction[keyof typeof FulfillmentServiceDeleteInventoryAction];
 /** Return type for `fulfillmentServiceDelete` mutation. */
 export type FulfillmentServiceDeletePayload = {
   __typename?: 'FulfillmentServiceDeletePayload';
@@ -23045,15 +23234,16 @@ export type FulfillmentServiceDeletePayload = {
 };
 
 /** The type of a fulfillment service. */
-export enum FulfillmentServiceType {
+export const FulfillmentServiceType = {
   /** Fulfillment by gift card. */
-  GiftCard = 'GIFT_CARD',
+  GiftCard: 'GIFT_CARD',
   /** Manual fulfillment by the merchant. */
-  Manual = 'MANUAL',
+  Manual: 'MANUAL',
   /** Fullfillment by a third-party fulfillment service. */
-  ThirdParty = 'THIRD_PARTY'
-}
+  ThirdParty: 'THIRD_PARTY'
+} as const;
 
+export type FulfillmentServiceType = typeof FulfillmentServiceType[keyof typeof FulfillmentServiceType];
 /** Return type for `fulfillmentServiceUpdate` mutation. */
 export type FulfillmentServiceUpdatePayload = {
   __typename?: 'FulfillmentServiceUpdatePayload';
@@ -23064,27 +23254,22 @@ export type FulfillmentServiceUpdatePayload = {
 };
 
 /** The status of a fulfillment. */
-export enum FulfillmentStatus {
+export const FulfillmentStatus = {
   /** The fulfillment was canceled. */
-  Cancelled = 'CANCELLED',
+  Cancelled: 'CANCELLED',
   /** There was an error with the fulfillment request. */
-  Error = 'ERROR',
+  Error: 'ERROR',
   /** The fulfillment request failed. */
-  Failure = 'FAILURE',
-  /**
-   * The third-party fulfillment service has acknowledged the fulfillment and is processing it.
-   * @deprecated This is a legacy status and is due to be deprecated.
-   */
-  Open = 'OPEN',
-  /**
-   * Shopify has created the fulfillment and is waiting for the third-party fulfillment service to transition it to `open` or `success`.
-   * @deprecated This is a legacy status and is due to be deprecated.
-   */
-  Pending = 'PENDING',
+  Failure: 'FAILURE',
+  /** The third-party fulfillment service has acknowledged the fulfillment and is processing it. */
+  Open: 'OPEN',
+  /** Shopify has created the fulfillment and is waiting for the third-party fulfillment service to transition it to `open` or `success`. */
+  Pending: 'PENDING',
   /** The fulfillment was completed successfully. */
-  Success = 'SUCCESS'
-}
+  Success: 'SUCCESS'
+} as const;
 
+export type FulfillmentStatus = typeof FulfillmentStatus[keyof typeof FulfillmentStatus];
 /** Represents the tracking information for a fulfillment. */
 export type FulfillmentTrackingInfo = {
   __typename?: 'FulfillmentTrackingInfo';
@@ -23662,11 +23847,12 @@ export type GiftCardDeactivateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `GiftCardDeactivateUserError`. */
-export enum GiftCardDeactivateUserErrorCode {
+export const GiftCardDeactivateUserErrorCode = {
   /** The gift card could not be found. */
-  GiftCardNotFound = 'GIFT_CARD_NOT_FOUND'
-}
+  GiftCardNotFound: 'GIFT_CARD_NOT_FOUND'
+} as const;
 
+export type GiftCardDeactivateUserErrorCode = typeof GiftCardDeactivateUserErrorCode[keyof typeof GiftCardDeactivateUserErrorCode];
 /** The input fields for a gift card debit transaction. */
 export type GiftCardDebitInput = {
   /** The amount to debit the gift card. */
@@ -23741,29 +23927,30 @@ export type GiftCardEdge = {
 };
 
 /** Possible error codes that can be returned by `GiftCardUserError`. */
-export enum GiftCardErrorCode {
+export const GiftCardErrorCode = {
   /** The customer could not be found. */
-  CustomerNotFound = 'CUSTOMER_NOT_FOUND',
+  CustomerNotFound: 'CUSTOMER_NOT_FOUND',
   /** The gift card's value exceeds the allowed limits. */
-  GiftCardLimitExceeded = 'GIFT_CARD_LIMIT_EXCEEDED',
+  GiftCardLimitExceeded: 'GIFT_CARD_LIMIT_EXCEEDED',
   /** The input value should be greater than the minimum allowed value. */
-  GreaterThan = 'GREATER_THAN',
+  GreaterThan: 'GREATER_THAN',
   /** Unexpected internal error happened. */
-  InternalError = 'INTERNAL_ERROR',
+  InternalError: 'INTERNAL_ERROR',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** Missing a required argument. */
-  MissingArgument = 'MISSING_ARGUMENT',
+  MissingArgument: 'MISSING_ARGUMENT',
   /** The recipient could not be found. */
-  RecipientNotFound = 'RECIPIENT_NOT_FOUND',
+  RecipientNotFound: 'RECIPIENT_NOT_FOUND',
   /** The input value is already taken. */
-  Taken = 'TAKEN',
+  Taken: 'TAKEN',
   /** The input value is too long. */
-  TooLong = 'TOO_LONG',
+  TooLong: 'TOO_LONG',
   /** The input value is too short. */
-  TooShort = 'TOO_SHORT'
-}
+  TooShort: 'TOO_SHORT'
+} as const;
 
+export type GiftCardErrorCode = typeof GiftCardErrorCode[keyof typeof GiftCardErrorCode];
 /** Represents a recipient who will receive the issued gift card. */
 export type GiftCardRecipient = {
   __typename?: 'GiftCardRecipient';
@@ -23835,15 +24022,16 @@ export type GiftCardSendNotificationToCustomerUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `GiftCardSendNotificationToCustomerUserError`. */
-export enum GiftCardSendNotificationToCustomerUserErrorCode {
+export const GiftCardSendNotificationToCustomerUserErrorCode = {
   /** The customer could not be found. */
-  CustomerNotFound = 'CUSTOMER_NOT_FOUND',
+  CustomerNotFound: 'CUSTOMER_NOT_FOUND',
   /** The gift card could not be found. */
-  GiftCardNotFound = 'GIFT_CARD_NOT_FOUND',
+  GiftCardNotFound: 'GIFT_CARD_NOT_FOUND',
   /** The input value is invalid. */
-  Invalid = 'INVALID'
-}
+  Invalid: 'INVALID'
+} as const;
 
+export type GiftCardSendNotificationToCustomerUserErrorCode = typeof GiftCardSendNotificationToCustomerUserErrorCode[keyof typeof GiftCardSendNotificationToCustomerUserErrorCode];
 /** Return type for `giftCardSendNotificationToRecipient` mutation. */
 export type GiftCardSendNotificationToRecipientPayload = {
   __typename?: 'GiftCardSendNotificationToRecipientPayload';
@@ -23865,39 +24053,41 @@ export type GiftCardSendNotificationToRecipientUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `GiftCardSendNotificationToRecipientUserError`. */
-export enum GiftCardSendNotificationToRecipientUserErrorCode {
+export const GiftCardSendNotificationToRecipientUserErrorCode = {
   /** The gift card could not be found. */
-  GiftCardNotFound = 'GIFT_CARD_NOT_FOUND',
+  GiftCardNotFound: 'GIFT_CARD_NOT_FOUND',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The recipient could not be found. */
-  RecipientNotFound = 'RECIPIENT_NOT_FOUND'
-}
+  RecipientNotFound: 'RECIPIENT_NOT_FOUND'
+} as const;
 
+export type GiftCardSendNotificationToRecipientUserErrorCode = typeof GiftCardSendNotificationToRecipientUserErrorCode[keyof typeof GiftCardSendNotificationToRecipientUserErrorCode];
 /** The set of valid sort keys for the GiftCard query. */
-export enum GiftCardSortKeys {
+export const GiftCardSortKeys = {
   /** Sort by the `amount_spent` value. */
-  AmountSpent = 'AMOUNT_SPENT',
+  AmountSpent: 'AMOUNT_SPENT',
   /** Sort by the `balance` value. */
-  Balance = 'BALANCE',
+  Balance: 'BALANCE',
   /** Sort by the `code` value. */
-  Code = 'CODE',
+  Code: 'CODE',
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `customer_name` value. */
-  CustomerName = 'CUSTOMER_NAME',
+  CustomerName: 'CUSTOMER_NAME',
   /** Sort by the `disabled_at` value. */
-  DisabledAt = 'DISABLED_AT',
+  DisabledAt: 'DISABLED_AT',
   /** Sort by the `expires_on` value. */
-  ExpiresOn = 'EXPIRES_ON',
+  ExpiresOn: 'EXPIRES_ON',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `initial_value` value. */
-  InitialValue = 'INITIAL_VALUE',
+  InitialValue: 'INITIAL_VALUE',
   /** Sort by the `updated_at` value. */
-  UpdatedAt = 'UPDATED_AT'
-}
+  UpdatedAt: 'UPDATED_AT'
+} as const;
 
+export type GiftCardSortKeys = typeof GiftCardSortKeys[keyof typeof GiftCardSortKeys];
 /** Interface for a gift card transaction. */
 export type GiftCardTransaction = {
   /** The amount of the transaction. */
@@ -23974,23 +24164,24 @@ export type GiftCardTransactionUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `GiftCardTransactionUserError`. */
-export enum GiftCardTransactionUserErrorCode {
+export const GiftCardTransactionUserErrorCode = {
   /** The gift card's value exceeds the allowed limits. */
-  GiftCardLimitExceeded = 'GIFT_CARD_LIMIT_EXCEEDED',
+  GiftCardLimitExceeded: 'GIFT_CARD_LIMIT_EXCEEDED',
   /** The gift card could not be found. */
-  GiftCardNotFound = 'GIFT_CARD_NOT_FOUND',
+  GiftCardNotFound: 'GIFT_CARD_NOT_FOUND',
   /** The gift card does not have sufficient funds to satisfy the request. */
-  InsufficientFunds = 'INSUFFICIENT_FUNDS',
+  InsufficientFunds: 'INSUFFICIENT_FUNDS',
   /** Unexpected internal error happened. */
-  InternalError = 'INTERNAL_ERROR',
+  InternalError: 'INTERNAL_ERROR',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The currency provided does not match the currency of the gift card. */
-  MismatchingCurrency = 'MISMATCHING_CURRENCY',
+  MismatchingCurrency: 'MISMATCHING_CURRENCY',
   /** A positive amount must be used. */
-  NegativeOrZeroAmount = 'NEGATIVE_OR_ZERO_AMOUNT'
-}
+  NegativeOrZeroAmount: 'NEGATIVE_OR_ZERO_AMOUNT'
+} as const;
 
+export type GiftCardTransactionUserErrorCode = typeof GiftCardTransactionUserErrorCode[keyof typeof GiftCardTransactionUserErrorCode];
 /** The input fields to update a gift card. */
 export type GiftCardUpdateInput = {
   /** The ID of the customer who will receive the gift card. The ID can't be changed if the gift card already has an assigned customer ID. */
@@ -24311,15 +24502,16 @@ export type ImageConnection = {
 };
 
 /** List of supported image content types. */
-export enum ImageContentType {
+export const ImageContentType = {
   /** A JPG image. */
-  Jpg = 'JPG',
+  Jpg: 'JPG',
   /** A PNG image. */
-  Png = 'PNG',
+  Png: 'PNG',
   /** A WEBP image. */
-  Webp = 'WEBP'
-}
+  Webp: 'WEBP'
+} as const;
 
+export type ImageContentType = typeof ImageContentType[keyof typeof ImageContentType];
 /** An auto-generated type which holds one Image and a cursor during pagination. */
 export type ImageEdge = {
   __typename?: 'ImageEdge';
@@ -24385,23 +24577,25 @@ export type ImageUploadParameter = {
 };
 
 /** Answers the question if prices include duties and / or taxes. */
-export enum InclusiveDutiesPricingStrategy {
+export const InclusiveDutiesPricingStrategy = {
   /** Add duties at checkout when configured to collect. */
-  AddDutiesAtCheckout = 'ADD_DUTIES_AT_CHECKOUT',
+  AddDutiesAtCheckout: 'ADD_DUTIES_AT_CHECKOUT',
   /** Include duties in price when configured to collect. */
-  IncludeDutiesInPrice = 'INCLUDE_DUTIES_IN_PRICE'
-}
+  IncludeDutiesInPrice: 'INCLUDE_DUTIES_IN_PRICE'
+} as const;
 
+export type InclusiveDutiesPricingStrategy = typeof InclusiveDutiesPricingStrategy[keyof typeof InclusiveDutiesPricingStrategy];
 /** Answers the question if prices include duties and / or taxes. */
-export enum InclusiveTaxPricingStrategy {
+export const InclusiveTaxPricingStrategy = {
   /** Add taxes at checkout when configured to collect. */
-  AddTaxesAtCheckout = 'ADD_TAXES_AT_CHECKOUT',
+  AddTaxesAtCheckout: 'ADD_TAXES_AT_CHECKOUT',
   /** Include taxes in price when configured to collect. */
-  IncludesTaxesInPrice = 'INCLUDES_TAXES_IN_PRICE',
+  IncludesTaxesInPrice: 'INCLUDES_TAXES_IN_PRICE',
   /** Include taxes in price based on country when configured to collect. */
-  IncludesTaxesInPriceBasedOnCountry = 'INCLUDES_TAXES_IN_PRICE_BASED_ON_COUNTRY'
-}
+  IncludesTaxesInPriceBasedOnCountry: 'INCLUDES_TAXES_IN_PRICE_BASED_ON_COUNTRY'
+} as const;
 
+export type InclusiveTaxPricingStrategy = typeof InclusiveTaxPricingStrategy[keyof typeof InclusiveTaxPricingStrategy];
 /** The input fields for the incoming line item. */
 export type IncomingRequestLineItemInput = {
   /** The ID of the rejected line item. */
@@ -24475,39 +24669,40 @@ export type InventoryAdjustQuantitiesUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `InventoryAdjustQuantitiesUserError`. */
-export enum InventoryAdjustQuantitiesUserErrorCode {
+export const InventoryAdjustQuantitiesUserErrorCode = {
   /** The quantities couldn't be adjusted. Try again. */
-  AdjustQuantitiesFailed = 'ADJUST_QUANTITIES_FAILED',
+  AdjustQuantitiesFailed: 'ADJUST_QUANTITIES_FAILED',
   /** Internal (gid://shopify/) ledger documents are not allowed to be adjusted via API. */
-  InternalLedgerDocument = 'INTERNAL_LEDGER_DOCUMENT',
+  InternalLedgerDocument: 'INTERNAL_LEDGER_DOCUMENT',
   /** A ledger document URI is not allowed when adjusting available. */
-  InvalidAvailableDocument = 'INVALID_AVAILABLE_DOCUMENT',
+  InvalidAvailableDocument: 'INVALID_AVAILABLE_DOCUMENT',
   /** The specified inventory item could not be found. */
-  InvalidInventoryItem = 'INVALID_INVENTORY_ITEM',
+  InvalidInventoryItem: 'INVALID_INVENTORY_ITEM',
   /** The specified ledger document is invalid. */
-  InvalidLedgerDocument = 'INVALID_LEDGER_DOCUMENT',
+  InvalidLedgerDocument: 'INVALID_LEDGER_DOCUMENT',
   /** The specified location could not be found. */
-  InvalidLocation = 'INVALID_LOCATION',
+  InvalidLocation: 'INVALID_LOCATION',
   /** A ledger document URI is required except when adjusting available. */
-  InvalidQuantityDocument = 'INVALID_QUANTITY_DOCUMENT',
+  InvalidQuantityDocument: 'INVALID_QUANTITY_DOCUMENT',
   /** The specified quantity name is invalid. */
-  InvalidQuantityName = 'INVALID_QUANTITY_NAME',
+  InvalidQuantityName: 'INVALID_QUANTITY_NAME',
   /** The quantity can't be higher than 2,000,000,000. */
-  InvalidQuantityTooHigh = 'INVALID_QUANTITY_TOO_HIGH',
+  InvalidQuantityTooHigh: 'INVALID_QUANTITY_TOO_HIGH',
   /** The quantity can't be lower than -2,000,000,000. */
-  InvalidQuantityTooLow = 'INVALID_QUANTITY_TOO_LOW',
+  InvalidQuantityTooLow: 'INVALID_QUANTITY_TOO_LOW',
   /** The specified reason is invalid. */
-  InvalidReason = 'INVALID_REASON',
+  InvalidReason: 'INVALID_REASON',
   /** The specified reference document is invalid. */
-  InvalidReferenceDocument = 'INVALID_REFERENCE_DOCUMENT',
+  InvalidReferenceDocument: 'INVALID_REFERENCE_DOCUMENT',
   /** The inventory item is not stocked at the location. */
-  ItemNotStockedAtLocation = 'ITEM_NOT_STOCKED_AT_LOCATION',
+  ItemNotStockedAtLocation: 'ITEM_NOT_STOCKED_AT_LOCATION',
   /** All changes must have the same ledger document URI or, in the case of adjusting available, no ledger document URI. */
-  MaxOneLedgerDocument = 'MAX_ONE_LEDGER_DOCUMENT',
+  MaxOneLedgerDocument: 'MAX_ONE_LEDGER_DOCUMENT',
   /** The specified inventory item is not allowed to be adjusted via API. Example: if the inventory item is a parent bundle. */
-  NonMutableInventoryItem = 'NON_MUTABLE_INVENTORY_ITEM'
-}
+  NonMutableInventoryItem: 'NON_MUTABLE_INVENTORY_ITEM'
+} as const;
 
+export type InventoryAdjustQuantitiesUserErrorCode = typeof InventoryAdjustQuantitiesUserErrorCode[keyof typeof InventoryAdjustQuantitiesUserErrorCode];
 /**
  * Records a batch of inventory changes made together in a single operation. Tracks which [`App`](https://shopify.dev/docs/api/admin-graphql/latest/objects/App) or [`StaffMember`](https://shopify.dev/docs/api/admin-graphql/latest/objects/StaffMember) initiated the changes, when they occurred, and why they were made.
  *
@@ -24579,38 +24774,36 @@ export type InventoryBulkToggleActivationUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `InventoryBulkToggleActivationUserError`. */
-export enum InventoryBulkToggleActivationUserErrorCode {
+export const InventoryBulkToggleActivationUserErrorCode = {
   /** Cannot unstock an inventory item from the only location at which it is stocked. */
-  CannotDeactivateFromOnlyLocation = 'CANNOT_DEACTIVATE_FROM_ONLY_LOCATION',
-  /**
-   * Cannot unstock this inventory item from this location because it has committed and incoming quantities.
-   * @deprecated This error code is deprecated. Both INCOMING_INVENTORY_AT_LOCATION and COMMITTED_INVENTORY_AT_LOCATION codes will be returned as individual errors instead.
-   */
-  CommittedAndIncomingInventoryAtLocation = 'COMMITTED_AND_INCOMING_INVENTORY_AT_LOCATION',
+  CannotDeactivateFromOnlyLocation: 'CANNOT_DEACTIVATE_FROM_ONLY_LOCATION',
+  /** Cannot unstock this inventory item from this location because it has committed and incoming quantities. */
+  CommittedAndIncomingInventoryAtLocation: 'COMMITTED_AND_INCOMING_INVENTORY_AT_LOCATION',
   /** Cannot unstock this inventory item from this location because it has committed quantities. */
-  CommittedInventoryAtLocation = 'COMMITTED_INVENTORY_AT_LOCATION',
+  CommittedInventoryAtLocation: 'COMMITTED_INVENTORY_AT_LOCATION',
   /** Failed to stock this inventory item at this location. */
-  FailedToStockAtLocation = 'FAILED_TO_STOCK_AT_LOCATION',
+  FailedToStockAtLocation: 'FAILED_TO_STOCK_AT_LOCATION',
   /** Failed to unstock this inventory item from this location. */
-  FailedToUnstockFromLocation = 'FAILED_TO_UNSTOCK_FROM_LOCATION',
+  FailedToUnstockFromLocation: 'FAILED_TO_UNSTOCK_FROM_LOCATION',
   /** An error occurred while setting the activation status. */
-  GenericError = 'GENERIC_ERROR',
+  GenericError: 'GENERIC_ERROR',
   /** Cannot unstock this inventory item from this location because it has incoming quantities. */
-  IncomingInventoryAtLocation = 'INCOMING_INVENTORY_AT_LOCATION',
+  IncomingInventoryAtLocation: 'INCOMING_INVENTORY_AT_LOCATION',
   /** The inventory item was not found. */
-  InventoryItemNotFound = 'INVENTORY_ITEM_NOT_FOUND',
+  InventoryItemNotFound: 'INVENTORY_ITEM_NOT_FOUND',
   /** Cannot stock this inventory item at this location because it is managed by a third-party fulfillment service. */
-  InventoryManagedBy_3RdParty = 'INVENTORY_MANAGED_BY_3RD_PARTY',
+  InventoryManagedBy_3RdParty: 'INVENTORY_MANAGED_BY_3RD_PARTY',
   /** Cannot stock this inventory item at this location because it is managed by Shopify. */
-  InventoryManagedByShopify = 'INVENTORY_MANAGED_BY_SHOPIFY',
+  InventoryManagedByShopify: 'INVENTORY_MANAGED_BY_SHOPIFY',
   /** The location was not found. */
-  LocationNotFound = 'LOCATION_NOT_FOUND',
+  LocationNotFound: 'LOCATION_NOT_FOUND',
   /** Cannot stock this inventory item at this location because the variant is missing a SKU. */
-  MissingSku = 'MISSING_SKU',
+  MissingSku: 'MISSING_SKU',
   /** Cannot unstock this inventory item from this location because it has unavailable quantities. */
-  ReservedInventoryAtLocation = 'RESERVED_INVENTORY_AT_LOCATION'
-}
+  ReservedInventoryAtLocation: 'RESERVED_INVENTORY_AT_LOCATION'
+} as const;
 
+export type InventoryBulkToggleActivationUserErrorCode = typeof InventoryBulkToggleActivationUserErrorCode[keyof typeof InventoryBulkToggleActivationUserErrorCode];
 /**
  * A change in an inventory quantity of an inventory item at a location. Each change tracks how inventory moves between different states like available, committed, reserved, or damaged.
  *
@@ -24962,43 +25155,44 @@ export type InventoryMoveQuantitiesUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `InventoryMoveQuantitiesUserError`. */
-export enum InventoryMoveQuantitiesUserErrorCode {
+export const InventoryMoveQuantitiesUserErrorCode = {
   /** The quantities can't be moved between different locations. */
-  DifferentLocations = 'DIFFERENT_LOCATIONS',
+  DifferentLocations: 'DIFFERENT_LOCATIONS',
   /** Internal (gid://shopify/) ledger documents are not allowed to be adjusted via API. */
-  InternalLedgerDocument = 'INTERNAL_LEDGER_DOCUMENT',
+  InternalLedgerDocument: 'INTERNAL_LEDGER_DOCUMENT',
   /** A ledger document URI is not allowed when adjusting available. */
-  InvalidAvailableDocument = 'INVALID_AVAILABLE_DOCUMENT',
+  InvalidAvailableDocument: 'INVALID_AVAILABLE_DOCUMENT',
   /** The specified inventory item could not be found. */
-  InvalidInventoryItem = 'INVALID_INVENTORY_ITEM',
+  InvalidInventoryItem: 'INVALID_INVENTORY_ITEM',
   /** The specified ledger document is invalid. */
-  InvalidLedgerDocument = 'INVALID_LEDGER_DOCUMENT',
+  InvalidLedgerDocument: 'INVALID_LEDGER_DOCUMENT',
   /** The specified location could not be found. */
-  InvalidLocation = 'INVALID_LOCATION',
+  InvalidLocation: 'INVALID_LOCATION',
   /** A ledger document URI is required except when adjusting available. */
-  InvalidQuantityDocument = 'INVALID_QUANTITY_DOCUMENT',
+  InvalidQuantityDocument: 'INVALID_QUANTITY_DOCUMENT',
   /** The specified quantity name is invalid. */
-  InvalidQuantityName = 'INVALID_QUANTITY_NAME',
+  InvalidQuantityName: 'INVALID_QUANTITY_NAME',
   /** The quantity can't be negative. */
-  InvalidQuantityNegative = 'INVALID_QUANTITY_NEGATIVE',
+  InvalidQuantityNegative: 'INVALID_QUANTITY_NEGATIVE',
   /** The quantity can't be higher than 2,000,000,000. */
-  InvalidQuantityTooHigh = 'INVALID_QUANTITY_TOO_HIGH',
+  InvalidQuantityTooHigh: 'INVALID_QUANTITY_TOO_HIGH',
   /** The specified reason is invalid. */
-  InvalidReason = 'INVALID_REASON',
+  InvalidReason: 'INVALID_REASON',
   /** The specified reference document is invalid. */
-  InvalidReferenceDocument = 'INVALID_REFERENCE_DOCUMENT',
+  InvalidReferenceDocument: 'INVALID_REFERENCE_DOCUMENT',
   /** The inventory item is not stocked at the location. */
-  ItemNotStockedAtLocation = 'ITEM_NOT_STOCKED_AT_LOCATION',
+  ItemNotStockedAtLocation: 'ITEM_NOT_STOCKED_AT_LOCATION',
   /** Only a maximum of 2 ledger document URIs across all changes is allowed. */
-  MaximumLedgerDocumentUris = 'MAXIMUM_LEDGER_DOCUMENT_URIS',
+  MaximumLedgerDocumentUris: 'MAXIMUM_LEDGER_DOCUMENT_URIS',
   /** The quantities couldn't be moved. Try again. */
-  MoveQuantitiesFailed = 'MOVE_QUANTITIES_FAILED',
+  MoveQuantitiesFailed: 'MOVE_QUANTITIES_FAILED',
   /** The specified inventory item is not allowed to be adjusted via API. Example: if the inventory item is a parent bundle. */
-  NonMutableInventoryItem = 'NON_MUTABLE_INVENTORY_ITEM',
+  NonMutableInventoryItem: 'NON_MUTABLE_INVENTORY_ITEM',
   /** The quantity names for each change can't be the same. */
-  SameQuantityName = 'SAME_QUANTITY_NAME'
-}
+  SameQuantityName: 'SAME_QUANTITY_NAME'
+} as const;
 
+export type InventoryMoveQuantitiesUserErrorCode = typeof InventoryMoveQuantitiesUserErrorCode[keyof typeof InventoryMoveQuantitiesUserErrorCode];
 /**
  * Represents the change to be made to an inventory item at a location.
  * The change can either involve the same quantity name between different locations,
@@ -25242,29 +25436,30 @@ export type InventorySetOnHandQuantitiesUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `InventorySetOnHandQuantitiesUserError`. */
-export enum InventorySetOnHandQuantitiesUserErrorCode {
+export const InventorySetOnHandQuantitiesUserErrorCode = {
   /** The compareQuantity value does not match persisted value. */
-  CompareQuantityStale = 'COMPARE_QUANTITY_STALE',
+  CompareQuantityStale: 'COMPARE_QUANTITY_STALE',
   /** The specified inventory item could not be found. */
-  InvalidInventoryItem = 'INVALID_INVENTORY_ITEM',
+  InvalidInventoryItem: 'INVALID_INVENTORY_ITEM',
   /** The specified location could not be found. */
-  InvalidLocation = 'INVALID_LOCATION',
+  InvalidLocation: 'INVALID_LOCATION',
   /** The quantity can't be negative. */
-  InvalidQuantityNegative = 'INVALID_QUANTITY_NEGATIVE',
+  InvalidQuantityNegative: 'INVALID_QUANTITY_NEGATIVE',
   /** The total quantity can't be higher than 1,000,000,000. */
-  InvalidQuantityTooHigh = 'INVALID_QUANTITY_TOO_HIGH',
+  InvalidQuantityTooHigh: 'INVALID_QUANTITY_TOO_HIGH',
   /** The specified reason is invalid. */
-  InvalidReason = 'INVALID_REASON',
+  InvalidReason: 'INVALID_REASON',
   /** The specified reference document is invalid. */
-  InvalidReferenceDocument = 'INVALID_REFERENCE_DOCUMENT',
+  InvalidReferenceDocument: 'INVALID_REFERENCE_DOCUMENT',
   /** The inventory item is not stocked at the location. */
-  ItemNotStockedAtLocation = 'ITEM_NOT_STOCKED_AT_LOCATION',
+  ItemNotStockedAtLocation: 'ITEM_NOT_STOCKED_AT_LOCATION',
   /** The specified inventory item is not allowed to be adjusted via API. Example: if the inventory item is a parent bundle. */
-  NonMutableInventoryItem = 'NON_MUTABLE_INVENTORY_ITEM',
+  NonMutableInventoryItem: 'NON_MUTABLE_INVENTORY_ITEM',
   /** The on-hand quantities couldn't be set. Try again. */
-  SetOnHandQuantitiesFailed = 'SET_ON_HAND_QUANTITIES_FAILED'
-}
+  SetOnHandQuantitiesFailed: 'SET_ON_HAND_QUANTITIES_FAILED'
+} as const;
 
+export type InventorySetOnHandQuantitiesUserErrorCode = typeof InventorySetOnHandQuantitiesUserErrorCode[keyof typeof InventorySetOnHandQuantitiesUserErrorCode];
 /** The input fields required to set inventory quantities. */
 export type InventorySetQuantitiesInput = {
   /** The name of quantities to be changed. The only accepted values are: `available` or `on_hand`. */
@@ -25318,35 +25513,36 @@ export type InventorySetQuantitiesUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `InventorySetQuantitiesUserError`. */
-export enum InventorySetQuantitiesUserErrorCode {
+export const InventorySetQuantitiesUserErrorCode = {
   /** The compareQuantity argument must be given to each quantity or ignored using ignoreCompareQuantity. */
-  CompareQuantityRequired = 'COMPARE_QUANTITY_REQUIRED',
+  CompareQuantityRequired: 'COMPARE_QUANTITY_REQUIRED',
   /** The compareQuantity value does not match persisted value. */
-  CompareQuantityStale = 'COMPARE_QUANTITY_STALE',
+  CompareQuantityStale: 'COMPARE_QUANTITY_STALE',
   /** The specified inventory item could not be found. */
-  InvalidInventoryItem = 'INVALID_INVENTORY_ITEM',
+  InvalidInventoryItem: 'INVALID_INVENTORY_ITEM',
   /** The specified location could not be found. */
-  InvalidLocation = 'INVALID_LOCATION',
+  InvalidLocation: 'INVALID_LOCATION',
   /** The quantity name must be either 'available' or 'on_hand'. */
-  InvalidName = 'INVALID_NAME',
+  InvalidName: 'INVALID_NAME',
   /** The quantity can't be negative. */
-  InvalidQuantityNegative = 'INVALID_QUANTITY_NEGATIVE',
+  InvalidQuantityNegative: 'INVALID_QUANTITY_NEGATIVE',
   /** The total quantity can't be higher than 1,000,000,000. */
-  InvalidQuantityTooHigh = 'INVALID_QUANTITY_TOO_HIGH',
+  InvalidQuantityTooHigh: 'INVALID_QUANTITY_TOO_HIGH',
   /** The total quantity can't be lower than -1,000,000,000. */
-  InvalidQuantityTooLow = 'INVALID_QUANTITY_TOO_LOW',
+  InvalidQuantityTooLow: 'INVALID_QUANTITY_TOO_LOW',
   /** The specified reason is invalid. */
-  InvalidReason = 'INVALID_REASON',
+  InvalidReason: 'INVALID_REASON',
   /** The specified reference document is invalid. */
-  InvalidReferenceDocument = 'INVALID_REFERENCE_DOCUMENT',
+  InvalidReferenceDocument: 'INVALID_REFERENCE_DOCUMENT',
   /** The specified inventory item is not stocked at the location. */
-  ItemNotStockedAtLocation = 'ITEM_NOT_STOCKED_AT_LOCATION',
+  ItemNotStockedAtLocation: 'ITEM_NOT_STOCKED_AT_LOCATION',
   /** The specified inventory item is not allowed to be adjusted via API. Example: if the inventory item is a parent bundle. */
-  NonMutableInventoryItem = 'NON_MUTABLE_INVENTORY_ITEM',
+  NonMutableInventoryItem: 'NON_MUTABLE_INVENTORY_ITEM',
   /** The combination of inventoryItemId and locationId must be unique. */
-  NoDuplicateInventoryItemIdGroupIdPair = 'NO_DUPLICATE_INVENTORY_ITEM_ID_GROUP_ID_PAIR'
-}
+  NoDuplicateInventoryItemIdGroupIdPair: 'NO_DUPLICATE_INVENTORY_ITEM_ID_GROUP_ID_PAIR'
+} as const;
 
+export type InventorySetQuantitiesUserErrorCode = typeof InventorySetQuantitiesUserErrorCode[keyof typeof InventorySetQuantitiesUserErrorCode];
 /** The input fields for the quantity to be set for an inventory item at a location. */
 export type InventorySetQuantityInput = {
   /** Specifies the inventory item to which the quantity will be set. */
@@ -25405,35 +25601,36 @@ export type InventorySetScheduledChangesUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `InventorySetScheduledChangesUserError`. */
-export enum InventorySetScheduledChangesUserErrorCode {
+export const InventorySetScheduledChangesUserErrorCode = {
   /** The item can only have one scheduled change for quantity name as the fromName. */
-  DuplicateFromName = 'DUPLICATE_FROM_NAME',
+  DuplicateFromName: 'DUPLICATE_FROM_NAME',
   /** The item can only have one scheduled change for quantity name as the toName. */
-  DuplicateToName = 'DUPLICATE_TO_NAME',
+  DuplicateToName: 'DUPLICATE_TO_NAME',
   /** There was an error updating the scheduled changes. */
-  ErrorUpdatingScheduled = 'ERROR_UPDATING_SCHEDULED',
+  ErrorUpdatingScheduled: 'ERROR_UPDATING_SCHEDULED',
   /** The specified field is invalid. */
-  Inclusion = 'INCLUSION',
+  Inclusion: 'INCLUSION',
   /** The specified fromName is invalid. */
-  InvalidFromName = 'INVALID_FROM_NAME',
+  InvalidFromName: 'INVALID_FROM_NAME',
   /** The specified reason is invalid. */
-  InvalidReason = 'INVALID_REASON',
+  InvalidReason: 'INVALID_REASON',
   /** The specified toName is invalid. */
-  InvalidToName = 'INVALID_TO_NAME',
+  InvalidToName: 'INVALID_TO_NAME',
   /** The inventory item was not found. */
-  InventoryItemNotFound = 'INVENTORY_ITEM_NOT_FOUND',
+  InventoryItemNotFound: 'INVENTORY_ITEM_NOT_FOUND',
   /** The inventory item was not found at the location specified. */
-  InventoryStateNotFound = 'INVENTORY_STATE_NOT_FOUND',
+  InventoryStateNotFound: 'INVENTORY_STATE_NOT_FOUND',
   /** At least 1 item must be provided. */
-  ItemsEmpty = 'ITEMS_EMPTY',
+  ItemsEmpty: 'ITEMS_EMPTY',
   /** The ledger document URI is invalid. */
-  LedgerDocumentInvalid = 'LEDGER_DOCUMENT_INVALID',
+  LedgerDocumentInvalid: 'LEDGER_DOCUMENT_INVALID',
   /** The location couldn't be found. */
-  LocationNotFound = 'LOCATION_NOT_FOUND',
+  LocationNotFound: 'LOCATION_NOT_FOUND',
   /** The from_name and to_name can't be the same. */
-  SameFromToNames = 'SAME_FROM_TO_NAMES'
-}
+  SameFromToNames: 'SAME_FROM_TO_NAMES'
+} as const;
 
+export type InventorySetScheduledChangesUserErrorCode = typeof InventorySetScheduledChangesUserErrorCode[keyof typeof InventorySetScheduledChangesUserErrorCode];
 /** Represents an inventory shipment. */
 export type InventoryShipment = Node & {
   __typename?: 'InventoryShipment';
@@ -25507,29 +25704,30 @@ export type InventoryShipmentAddItemsUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `InventoryShipmentAddItemsUserError`. */
-export enum InventoryShipmentAddItemsUserErrorCode {
+export const InventoryShipmentAddItemsUserErrorCode = {
   /** Failed to activate inventory at location. */
-  ActivationFailed = 'ACTIVATION_FAILED',
+  ActivationFailed: 'ACTIVATION_FAILED',
   /** A single item can't be listed twice. */
-  DuplicateItem = 'DUPLICATE_ITEM',
+  DuplicateItem: 'DUPLICATE_ITEM',
   /** The quantity is invalid. */
-  InvalidQuantity = 'INVALID_QUANTITY',
+  InvalidQuantity: 'INVALID_QUANTITY',
   /** Current shipment status does not support this operation. */
-  InvalidShipmentStatus = 'INVALID_SHIPMENT_STATUS',
+  InvalidShipmentStatus: 'INVALID_SHIPMENT_STATUS',
   /** The item is not stocked at the intended location. */
-  InventoryStateNotActive = 'INVENTORY_STATE_NOT_ACTIVE',
+  InventoryStateNotActive: 'INVENTORY_STATE_NOT_ACTIVE',
   /** The item was not found. */
-  ItemNotFound = 'ITEM_NOT_FOUND',
+  ItemNotFound: 'ITEM_NOT_FOUND',
   /** The location selected is not active. */
-  LocationNotActive = 'LOCATION_NOT_ACTIVE',
+  LocationNotActive: 'LOCATION_NOT_ACTIVE',
   /** The location selected can't be found. */
-  LocationNotFound = 'LOCATION_NOT_FOUND',
+  LocationNotFound: 'LOCATION_NOT_FOUND',
   /** The shipment was not found. */
-  ShipmentNotFound = 'SHIPMENT_NOT_FOUND',
+  ShipmentNotFound: 'SHIPMENT_NOT_FOUND',
   /** The item does not track inventory. */
-  UntrackedItem = 'UNTRACKED_ITEM'
-}
+  UntrackedItem: 'UNTRACKED_ITEM'
+} as const;
 
+export type InventoryShipmentAddItemsUserErrorCode = typeof InventoryShipmentAddItemsUserErrorCode[keyof typeof InventoryShipmentAddItemsUserErrorCode];
 /** An auto-generated type for paginating through multiple InventoryShipments. */
 export type InventoryShipmentConnection = {
   __typename?: 'InventoryShipmentConnection';
@@ -25562,37 +25760,38 @@ export type InventoryShipmentCreateInTransitUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `InventoryShipmentCreateInTransitUserError`. */
-export enum InventoryShipmentCreateInTransitUserErrorCode {
+export const InventoryShipmentCreateInTransitUserErrorCode = {
   /** A single item can't be listed twice. */
-  DuplicateItem = 'DUPLICATE_ITEM',
+  DuplicateItem: 'DUPLICATE_ITEM',
   /** The shipment input cannot be empty. */
-  EmptyShipmentInput = 'EMPTY_SHIPMENT_INPUT',
+  EmptyShipmentInput: 'EMPTY_SHIPMENT_INPUT',
   /** One or more items are not valid. */
-  InvalidItem = 'INVALID_ITEM',
+  InvalidItem: 'INVALID_ITEM',
   /** The quantity is invalid. */
-  InvalidQuantity = 'INVALID_QUANTITY',
+  InvalidQuantity: 'INVALID_QUANTITY',
   /** The shipment input is invalid. */
-  InvalidShipmentInput = 'INVALID_SHIPMENT_INPUT',
+  InvalidShipmentInput: 'INVALID_SHIPMENT_INPUT',
   /** Current transfer status does not support this operation. */
-  InvalidTransferStatus = 'INVALID_TRANSFER_STATUS',
+  InvalidTransferStatus: 'INVALID_TRANSFER_STATUS',
   /** The URL is invalid. */
-  InvalidUrl = 'INVALID_URL',
+  InvalidUrl: 'INVALID_URL',
   /** The item is not stocked at the intended location. */
-  InventoryStateNotActive = 'INVENTORY_STATE_NOT_ACTIVE',
+  InventoryStateNotActive: 'INVENTORY_STATE_NOT_ACTIVE',
   /** The list of line items is empty. */
-  ItemsEmpty = 'ITEMS_EMPTY',
+  ItemsEmpty: 'ITEMS_EMPTY',
   /** The item was not found. */
-  ItemNotFound = 'ITEM_NOT_FOUND',
+  ItemNotFound: 'ITEM_NOT_FOUND',
   /** The location selected is not active. */
-  LocationNotActive = 'LOCATION_NOT_ACTIVE',
+  LocationNotActive: 'LOCATION_NOT_ACTIVE',
   /** The shipment was not found. */
-  ShipmentNotFound = 'SHIPMENT_NOT_FOUND',
+  ShipmentNotFound: 'SHIPMENT_NOT_FOUND',
   /** The transfer was not found. */
-  TransferNotFound = 'TRANSFER_NOT_FOUND',
+  TransferNotFound: 'TRANSFER_NOT_FOUND',
   /** The item does not track inventory. */
-  UntrackedItem = 'UNTRACKED_ITEM'
-}
+  UntrackedItem: 'UNTRACKED_ITEM'
+} as const;
 
+export type InventoryShipmentCreateInTransitUserErrorCode = typeof InventoryShipmentCreateInTransitUserErrorCode[keyof typeof InventoryShipmentCreateInTransitUserErrorCode];
 /** The input fields to add a shipment. */
 export type InventoryShipmentCreateInput = {
   /** The date the shipment was created. */
@@ -25626,37 +25825,38 @@ export type InventoryShipmentCreateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `InventoryShipmentCreateUserError`. */
-export enum InventoryShipmentCreateUserErrorCode {
+export const InventoryShipmentCreateUserErrorCode = {
   /** This barcode is already assigned to another shipment. */
-  BarcodeDuplicate = 'BARCODE_DUPLICATE',
+  BarcodeDuplicate: 'BARCODE_DUPLICATE',
   /** Barcode must be 255 characters or less. */
-  BarcodeTooLong = 'BARCODE_TOO_LONG',
+  BarcodeTooLong: 'BARCODE_TOO_LONG',
   /** Bundled items cannot be used for this operation. */
-  BundledItem = 'BUNDLED_ITEM',
+  BundledItem: 'BUNDLED_ITEM',
   /** A single item can't be listed twice. */
-  DuplicateItem = 'DUPLICATE_ITEM',
+  DuplicateItem: 'DUPLICATE_ITEM',
   /** The shipment input cannot be empty. */
-  EmptyShipmentInput = 'EMPTY_SHIPMENT_INPUT',
+  EmptyShipmentInput: 'EMPTY_SHIPMENT_INPUT',
   /** One or more items are not valid. */
-  InvalidItem = 'INVALID_ITEM',
+  InvalidItem: 'INVALID_ITEM',
   /** The quantity is invalid. */
-  InvalidQuantity = 'INVALID_QUANTITY',
+  InvalidQuantity: 'INVALID_QUANTITY',
   /** The shipment input is invalid. */
-  InvalidShipmentInput = 'INVALID_SHIPMENT_INPUT',
+  InvalidShipmentInput: 'INVALID_SHIPMENT_INPUT',
   /** Current transfer status does not support this operation. */
-  InvalidTransferStatus = 'INVALID_TRANSFER_STATUS',
+  InvalidTransferStatus: 'INVALID_TRANSFER_STATUS',
   /** The URL is invalid. */
-  InvalidUrl = 'INVALID_URL',
+  InvalidUrl: 'INVALID_URL',
   /** The item was not found. */
-  ItemNotFound = 'ITEM_NOT_FOUND',
+  ItemNotFound: 'ITEM_NOT_FOUND',
   /** The location selected is not active. */
-  LocationNotActive = 'LOCATION_NOT_ACTIVE',
+  LocationNotActive: 'LOCATION_NOT_ACTIVE',
   /** The transfer was not found. */
-  TransferNotFound = 'TRANSFER_NOT_FOUND',
+  TransferNotFound: 'TRANSFER_NOT_FOUND',
   /** The item does not track inventory. */
-  UntrackedItem = 'UNTRACKED_ITEM'
-}
+  UntrackedItem: 'UNTRACKED_ITEM'
+} as const;
 
+export type InventoryShipmentCreateUserErrorCode = typeof InventoryShipmentCreateUserErrorCode[keyof typeof InventoryShipmentCreateUserErrorCode];
 /** Return type for `inventoryShipmentDelete` mutation. */
 export type InventoryShipmentDeletePayload = {
   __typename?: 'InventoryShipmentDeletePayload';
@@ -25678,13 +25878,14 @@ export type InventoryShipmentDeleteUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `InventoryShipmentDeleteUserError`. */
-export enum InventoryShipmentDeleteUserErrorCode {
+export const InventoryShipmentDeleteUserErrorCode = {
   /** Current shipment status does not support this operation. */
-  InvalidShipmentStatus = 'INVALID_SHIPMENT_STATUS',
+  InvalidShipmentStatus: 'INVALID_SHIPMENT_STATUS',
   /** The shipment was not found. */
-  ShipmentNotFound = 'SHIPMENT_NOT_FOUND'
-}
+  ShipmentNotFound: 'SHIPMENT_NOT_FOUND'
+} as const;
 
+export type InventoryShipmentDeleteUserErrorCode = typeof InventoryShipmentDeleteUserErrorCode[keyof typeof InventoryShipmentDeleteUserErrorCode];
 /** An auto-generated type which holds one InventoryShipment and a cursor during pagination. */
 export type InventoryShipmentEdge = {
   __typename?: 'InventoryShipmentEdge';
@@ -25760,27 +25961,28 @@ export type InventoryShipmentMarkInTransitUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `InventoryShipmentMarkInTransitUserError`. */
-export enum InventoryShipmentMarkInTransitUserErrorCode {
+export const InventoryShipmentMarkInTransitUserErrorCode = {
   /** Failed to activate inventory at location. */
-  ActivationFailed = 'ACTIVATION_FAILED',
+  ActivationFailed: 'ACTIVATION_FAILED',
   /** The quantity is invalid. */
-  InvalidQuantity = 'INVALID_QUANTITY',
+  InvalidQuantity: 'INVALID_QUANTITY',
   /** Current shipment status does not support this operation. */
-  InvalidShipmentStatus = 'INVALID_SHIPMENT_STATUS',
+  InvalidShipmentStatus: 'INVALID_SHIPMENT_STATUS',
   /** The item is not stocked at the intended location. */
-  InventoryStateNotActive = 'INVENTORY_STATE_NOT_ACTIVE',
+  InventoryStateNotActive: 'INVENTORY_STATE_NOT_ACTIVE',
   /** The list of line items is empty. */
-  ItemsEmpty = 'ITEMS_EMPTY',
+  ItemsEmpty: 'ITEMS_EMPTY',
   /** The item was not found. */
-  ItemNotFound = 'ITEM_NOT_FOUND',
+  ItemNotFound: 'ITEM_NOT_FOUND',
   /** The location selected is not active. */
-  LocationNotActive = 'LOCATION_NOT_ACTIVE',
+  LocationNotActive: 'LOCATION_NOT_ACTIVE',
   /** The shipment was not found. */
-  ShipmentNotFound = 'SHIPMENT_NOT_FOUND',
+  ShipmentNotFound: 'SHIPMENT_NOT_FOUND',
   /** The item does not track inventory. */
-  UntrackedItem = 'UNTRACKED_ITEM'
-}
+  UntrackedItem: 'UNTRACKED_ITEM'
+} as const;
 
+export type InventoryShipmentMarkInTransitUserErrorCode = typeof InventoryShipmentMarkInTransitUserErrorCode[keyof typeof InventoryShipmentMarkInTransitUserErrorCode];
 /** The input fields to receive an item on an inventory shipment. */
 export type InventoryShipmentReceiveItemInput = {
   /** The quantity for the item to be received. */
@@ -25792,13 +25994,14 @@ export type InventoryShipmentReceiveItemInput = {
 };
 
 /** The reason for receiving a line item on an inventory shipment. */
-export enum InventoryShipmentReceiveLineItemReason {
+export const InventoryShipmentReceiveLineItemReason = {
   /** The line item was accepted. */
-  Accepted = 'ACCEPTED',
+  Accepted: 'ACCEPTED',
   /** The line item was rejected. */
-  Rejected = 'REJECTED'
-}
+  Rejected: 'REJECTED'
+} as const;
 
+export type InventoryShipmentReceiveLineItemReason = typeof InventoryShipmentReceiveLineItemReason[keyof typeof InventoryShipmentReceiveLineItemReason];
 /** Return type for `inventoryShipmentReceive` mutation. */
 export type InventoryShipmentReceivePayload = {
   __typename?: 'InventoryShipmentReceivePayload';
@@ -25820,25 +26023,26 @@ export type InventoryShipmentReceiveUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `InventoryShipmentReceiveUserError`. */
-export enum InventoryShipmentReceiveUserErrorCode {
+export const InventoryShipmentReceiveUserErrorCode = {
   /** Unexpected internal error happened. */
-  InternalError = 'INTERNAL_ERROR',
+  InternalError: 'INTERNAL_ERROR',
   /** The quantity is invalid. */
-  InvalidQuantity = 'INVALID_QUANTITY',
+  InvalidQuantity: 'INVALID_QUANTITY',
   /** Current shipment status does not support this operation. */
-  InvalidShipmentStatus = 'INVALID_SHIPMENT_STATUS',
+  InvalidShipmentStatus: 'INVALID_SHIPMENT_STATUS',
   /** The item is not stocked at the intended location. */
-  InventoryStateNotActive = 'INVENTORY_STATE_NOT_ACTIVE',
+  InventoryStateNotActive: 'INVENTORY_STATE_NOT_ACTIVE',
   /** The item was not found. */
-  ItemNotFound = 'ITEM_NOT_FOUND',
+  ItemNotFound: 'ITEM_NOT_FOUND',
   /** The location selected is not active. */
-  LocationNotActive = 'LOCATION_NOT_ACTIVE',
+  LocationNotActive: 'LOCATION_NOT_ACTIVE',
   /** The location selected can't be found. */
-  LocationNotFound = 'LOCATION_NOT_FOUND',
+  LocationNotFound: 'LOCATION_NOT_FOUND',
   /** The shipment was not found. */
-  ShipmentNotFound = 'SHIPMENT_NOT_FOUND'
-}
+  ShipmentNotFound: 'SHIPMENT_NOT_FOUND'
+} as const;
 
+export type InventoryShipmentReceiveUserErrorCode = typeof InventoryShipmentReceiveUserErrorCode[keyof typeof InventoryShipmentReceiveUserErrorCode];
 /** Return type for `inventoryShipmentRemoveItems` mutation. */
 export type InventoryShipmentRemoveItemsPayload = {
   __typename?: 'InventoryShipmentRemoveItemsPayload';
@@ -25860,21 +26064,22 @@ export type InventoryShipmentRemoveItemsUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `InventoryShipmentRemoveItemsUserError`. */
-export enum InventoryShipmentRemoveItemsUserErrorCode {
+export const InventoryShipmentRemoveItemsUserErrorCode = {
   /** Unexpected internal error happened. */
-  InternalError = 'INTERNAL_ERROR',
+  InternalError: 'INTERNAL_ERROR',
   /** Current shipment status does not support this operation. */
-  InvalidShipmentStatus = 'INVALID_SHIPMENT_STATUS',
+  InvalidShipmentStatus: 'INVALID_SHIPMENT_STATUS',
   /** The item was not found. */
-  ItemNotFound = 'ITEM_NOT_FOUND',
+  ItemNotFound: 'ITEM_NOT_FOUND',
   /** The location selected is not active. */
-  LocationNotActive = 'LOCATION_NOT_ACTIVE',
+  LocationNotActive: 'LOCATION_NOT_ACTIVE',
   /** The location selected can't be found. */
-  LocationNotFound = 'LOCATION_NOT_FOUND',
+  LocationNotFound: 'LOCATION_NOT_FOUND',
   /** The shipment was not found. */
-  ShipmentNotFound = 'SHIPMENT_NOT_FOUND'
-}
+  ShipmentNotFound: 'SHIPMENT_NOT_FOUND'
+} as const;
 
+export type InventoryShipmentRemoveItemsUserErrorCode = typeof InventoryShipmentRemoveItemsUserErrorCode[keyof typeof InventoryShipmentRemoveItemsUserErrorCode];
 /** Return type for `inventoryShipmentSetTracking` mutation. */
 export type InventoryShipmentSetTrackingPayload = {
   __typename?: 'InventoryShipmentSetTrackingPayload';
@@ -25896,27 +26101,29 @@ export type InventoryShipmentSetTrackingUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `InventoryShipmentSetTrackingUserError`. */
-export enum InventoryShipmentSetTrackingUserErrorCode {
+export const InventoryShipmentSetTrackingUserErrorCode = {
   /** The URL is invalid. */
-  InvalidUrl = 'INVALID_URL',
+  InvalidUrl: 'INVALID_URL',
   /** The shipment was not found. */
-  ShipmentNotFound = 'SHIPMENT_NOT_FOUND'
-}
+  ShipmentNotFound: 'SHIPMENT_NOT_FOUND'
+} as const;
 
+export type InventoryShipmentSetTrackingUserErrorCode = typeof InventoryShipmentSetTrackingUserErrorCode[keyof typeof InventoryShipmentSetTrackingUserErrorCode];
 /** The status of an inventory shipment. */
-export enum InventoryShipmentStatus {
+export const InventoryShipmentStatus = {
   /** The inventory shipment has been created but not yet shipped. */
-  Draft = 'DRAFT',
+  Draft: 'DRAFT',
   /** The inventory shipment is currently in transit. */
-  InTransit = 'IN_TRANSIT',
+  InTransit: 'IN_TRANSIT',
   /** Status not included in the current enumeration set. */
-  Other = 'OTHER',
+  Other: 'OTHER',
   /** The inventory shipment has been partially received at the destination. */
-  PartiallyReceived = 'PARTIALLY_RECEIVED',
+  PartiallyReceived: 'PARTIALLY_RECEIVED',
   /** The inventory shipment has been completely received at the destination. */
-  Received = 'RECEIVED'
-}
+  Received: 'RECEIVED'
+} as const;
 
+export type InventoryShipmentStatus = typeof InventoryShipmentStatus[keyof typeof InventoryShipmentStatus];
 /** Represents the tracking information for an inventory shipment. */
 export type InventoryShipmentTracking = {
   __typename?: 'InventoryShipmentTracking';
@@ -25991,21 +26198,22 @@ export type InventoryShipmentUpdateItemQuantitiesUserError = DisplayableError & 
 };
 
 /** Possible error codes that can be returned by `InventoryShipmentUpdateItemQuantitiesUserError`. */
-export enum InventoryShipmentUpdateItemQuantitiesUserErrorCode {
+export const InventoryShipmentUpdateItemQuantitiesUserErrorCode = {
   /** The quantity is invalid. */
-  InvalidQuantity = 'INVALID_QUANTITY',
+  InvalidQuantity: 'INVALID_QUANTITY',
   /** Current shipment status does not support this operation. */
-  InvalidShipmentStatus = 'INVALID_SHIPMENT_STATUS',
+  InvalidShipmentStatus: 'INVALID_SHIPMENT_STATUS',
   /** The item was not found. */
-  ItemNotFound = 'ITEM_NOT_FOUND',
+  ItemNotFound: 'ITEM_NOT_FOUND',
   /** The location selected is not active. */
-  LocationNotActive = 'LOCATION_NOT_ACTIVE',
+  LocationNotActive: 'LOCATION_NOT_ACTIVE',
   /** The location selected can't be found. */
-  LocationNotFound = 'LOCATION_NOT_FOUND',
+  LocationNotFound: 'LOCATION_NOT_FOUND',
   /** The shipment was not found. */
-  ShipmentNotFound = 'SHIPMENT_NOT_FOUND'
-}
+  ShipmentNotFound: 'SHIPMENT_NOT_FOUND'
+} as const;
 
+export type InventoryShipmentUpdateItemQuantitiesUserErrorCode = typeof InventoryShipmentUpdateItemQuantitiesUserErrorCode[keyof typeof InventoryShipmentUpdateItemQuantitiesUserErrorCode];
 /**
  * Tracks the movement of [`InventoryItem`](https://shopify.dev/docs/api/admin-graphql/latest/objects/InventoryItem) objects between [`Location`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Location) objects. A transfer includes origin and destination information, [`InventoryTransferLineItem`](https://shopify.dev/docs/api/admin-graphql/latest/objects/InventoryTransferLineItem) objects with quantities, and shipment details.
  *
@@ -26185,15 +26393,16 @@ export type InventoryTransferCancelUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `InventoryTransferCancelUserError`. */
-export enum InventoryTransferCancelUserErrorCode {
+export const InventoryTransferCancelUserErrorCode = {
   /** Current transfer status does not support this operation. */
-  InvalidTransferStatus = 'INVALID_TRANSFER_STATUS',
+  InvalidTransferStatus: 'INVALID_TRANSFER_STATUS',
   /** Shipment already exists for the transfer. */
-  ShipmentExists = 'SHIPMENT_EXISTS',
+  ShipmentExists: 'SHIPMENT_EXISTS',
   /** The transfer was not found. */
-  TransferNotFound = 'TRANSFER_NOT_FOUND'
-}
+  TransferNotFound: 'TRANSFER_NOT_FOUND'
+} as const;
 
+export type InventoryTransferCancelUserErrorCode = typeof InventoryTransferCancelUserErrorCode[keyof typeof InventoryTransferCancelUserErrorCode];
 /** An auto-generated type for paginating through multiple InventoryTransfers. */
 export type InventoryTransferConnection = {
   __typename?: 'InventoryTransferConnection';
@@ -26244,37 +26453,38 @@ export type InventoryTransferCreateAsReadyToShipUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `InventoryTransferCreateAsReadyToShipUserError`. */
-export enum InventoryTransferCreateAsReadyToShipUserErrorCode {
+export const InventoryTransferCreateAsReadyToShipUserErrorCode = {
   /** Bundled items cannot be used for this operation. */
-  BundledItem = 'BUNDLED_ITEM',
+  BundledItem: 'BUNDLED_ITEM',
   /** A single item can't be listed twice. */
-  DuplicateItem = 'DUPLICATE_ITEM',
+  DuplicateItem: 'DUPLICATE_ITEM',
   /** The quantity is invalid. */
-  InvalidQuantity = 'INVALID_QUANTITY',
+  InvalidQuantity: 'INVALID_QUANTITY',
   /** Current transfer status does not support this operation. */
-  InvalidTransferStatus = 'INVALID_TRANSFER_STATUS',
+  InvalidTransferStatus: 'INVALID_TRANSFER_STATUS',
   /** The item is not stocked at the intended location. */
-  InventoryStateNotActive = 'INVENTORY_STATE_NOT_ACTIVE',
+  InventoryStateNotActive: 'INVENTORY_STATE_NOT_ACTIVE',
   /** The list of line items is empty. */
-  ItemsEmpty = 'ITEMS_EMPTY',
+  ItemsEmpty: 'ITEMS_EMPTY',
   /** The item was not found. */
-  ItemNotFound = 'ITEM_NOT_FOUND',
+  ItemNotFound: 'ITEM_NOT_FOUND',
   /** The location selected is not active. */
-  LocationNotActive = 'LOCATION_NOT_ACTIVE',
+  LocationNotActive: 'LOCATION_NOT_ACTIVE',
   /** The location selected can't be found. */
-  LocationNotFound = 'LOCATION_NOT_FOUND',
+  LocationNotFound: 'LOCATION_NOT_FOUND',
   /** A location is required for this operation. */
-  LocationRequired = 'LOCATION_REQUIRED',
+  LocationRequired: 'LOCATION_REQUIRED',
   /** The tag exceeds the maximum length. */
-  TagExceedsMaxLength = 'TAG_EXCEEDS_MAX_LENGTH',
+  TagExceedsMaxLength: 'TAG_EXCEEDS_MAX_LENGTH',
   /** The transfer was not found. */
-  TransferNotFound = 'TRANSFER_NOT_FOUND',
+  TransferNotFound: 'TRANSFER_NOT_FOUND',
   /** The origin location cannot be the same as the destination location. */
-  TransferOriginCannotBeTheSameAsDestination = 'TRANSFER_ORIGIN_CANNOT_BE_THE_SAME_AS_DESTINATION',
+  TransferOriginCannotBeTheSameAsDestination: 'TRANSFER_ORIGIN_CANNOT_BE_THE_SAME_AS_DESTINATION',
   /** The item does not track inventory. */
-  UntrackedItem = 'UNTRACKED_ITEM'
-}
+  UntrackedItem: 'UNTRACKED_ITEM'
+} as const;
 
+export type InventoryTransferCreateAsReadyToShipUserErrorCode = typeof InventoryTransferCreateAsReadyToShipUserErrorCode[keyof typeof InventoryTransferCreateAsReadyToShipUserErrorCode];
 /** The input fields to create an inventory transfer. */
 export type InventoryTransferCreateInput = {
   /** The date and time the inventory transfer was created. If left blank, defaults to the current date and time in UTC format. */
@@ -26314,31 +26524,32 @@ export type InventoryTransferCreateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `InventoryTransferCreateUserError`. */
-export enum InventoryTransferCreateUserErrorCode {
+export const InventoryTransferCreateUserErrorCode = {
   /** Bundled items cannot be used for this operation. */
-  BundledItem = 'BUNDLED_ITEM',
+  BundledItem: 'BUNDLED_ITEM',
   /** A single item can't be listed twice. */
-  DuplicateItem = 'DUPLICATE_ITEM',
+  DuplicateItem: 'DUPLICATE_ITEM',
   /** The quantity is invalid. */
-  InvalidQuantity = 'INVALID_QUANTITY',
+  InvalidQuantity: 'INVALID_QUANTITY',
   /** The item is not stocked at the intended location. */
-  InventoryStateNotActive = 'INVENTORY_STATE_NOT_ACTIVE',
+  InventoryStateNotActive: 'INVENTORY_STATE_NOT_ACTIVE',
   /** The item was not found. */
-  ItemNotFound = 'ITEM_NOT_FOUND',
+  ItemNotFound: 'ITEM_NOT_FOUND',
   /** The location selected is not active. */
-  LocationNotActive = 'LOCATION_NOT_ACTIVE',
+  LocationNotActive: 'LOCATION_NOT_ACTIVE',
   /** The location selected can't be found. */
-  LocationNotFound = 'LOCATION_NOT_FOUND',
+  LocationNotFound: 'LOCATION_NOT_FOUND',
   /** The tag exceeds the maximum length. */
-  TagExceedsMaxLength = 'TAG_EXCEEDS_MAX_LENGTH',
+  TagExceedsMaxLength: 'TAG_EXCEEDS_MAX_LENGTH',
   /** The transfer was not found. */
-  TransferNotFound = 'TRANSFER_NOT_FOUND',
+  TransferNotFound: 'TRANSFER_NOT_FOUND',
   /** The origin location cannot be the same as the destination location. */
-  TransferOriginCannotBeTheSameAsDestination = 'TRANSFER_ORIGIN_CANNOT_BE_THE_SAME_AS_DESTINATION',
+  TransferOriginCannotBeTheSameAsDestination: 'TRANSFER_ORIGIN_CANNOT_BE_THE_SAME_AS_DESTINATION',
   /** The item does not track inventory. */
-  UntrackedItem = 'UNTRACKED_ITEM'
-}
+  UntrackedItem: 'UNTRACKED_ITEM'
+} as const;
 
+export type InventoryTransferCreateUserErrorCode = typeof InventoryTransferCreateUserErrorCode[keyof typeof InventoryTransferCreateUserErrorCode];
 /** Return type for `inventoryTransferDelete` mutation. */
 export type InventoryTransferDeletePayload = {
   __typename?: 'InventoryTransferDeletePayload';
@@ -26360,13 +26571,14 @@ export type InventoryTransferDeleteUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `InventoryTransferDeleteUserError`. */
-export enum InventoryTransferDeleteUserErrorCode {
+export const InventoryTransferDeleteUserErrorCode = {
   /** Current transfer status does not support this operation. */
-  InvalidTransferStatus = 'INVALID_TRANSFER_STATUS',
+  InvalidTransferStatus: 'INVALID_TRANSFER_STATUS',
   /** The transfer was not found. */
-  TransferNotFound = 'TRANSFER_NOT_FOUND'
-}
+  TransferNotFound: 'TRANSFER_NOT_FOUND'
+} as const;
 
+export type InventoryTransferDeleteUserErrorCode = typeof InventoryTransferDeleteUserErrorCode[keyof typeof InventoryTransferDeleteUserErrorCode];
 /** Return type for `inventoryTransferDuplicate` mutation. */
 export type InventoryTransferDuplicatePayload = {
   __typename?: 'InventoryTransferDuplicatePayload';
@@ -26388,11 +26600,12 @@ export type InventoryTransferDuplicateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `InventoryTransferDuplicateUserError`. */
-export enum InventoryTransferDuplicateUserErrorCode {
+export const InventoryTransferDuplicateUserErrorCode = {
   /** The transfer was not found. */
-  TransferNotFound = 'TRANSFER_NOT_FOUND'
-}
+  TransferNotFound: 'TRANSFER_NOT_FOUND'
+} as const;
 
+export type InventoryTransferDuplicateUserErrorCode = typeof InventoryTransferDuplicateUserErrorCode[keyof typeof InventoryTransferDuplicateUserErrorCode];
 /** An auto-generated type which holds one InventoryTransfer and a cursor during pagination. */
 export type InventoryTransferEdge = {
   __typename?: 'InventoryTransferEdge';
@@ -26445,25 +26658,26 @@ export type InventoryTransferEditUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `InventoryTransferEditUserError`. */
-export enum InventoryTransferEditUserErrorCode {
+export const InventoryTransferEditUserErrorCode = {
   /** Unexpected internal error happened. */
-  InternalError = 'INTERNAL_ERROR',
+  InternalError: 'INTERNAL_ERROR',
   /** The item is not stocked at the intended location. */
-  InventoryStateNotActive = 'INVENTORY_STATE_NOT_ACTIVE',
+  InventoryStateNotActive: 'INVENTORY_STATE_NOT_ACTIVE',
   /** The location selected is not active. */
-  LocationNotActive = 'LOCATION_NOT_ACTIVE',
+  LocationNotActive: 'LOCATION_NOT_ACTIVE',
   /** The location selected can't be found. */
-  LocationNotFound = 'LOCATION_NOT_FOUND',
+  LocationNotFound: 'LOCATION_NOT_FOUND',
   /** The tag exceeds the maximum length. */
-  TagExceedsMaxLength = 'TAG_EXCEEDS_MAX_LENGTH',
+  TagExceedsMaxLength: 'TAG_EXCEEDS_MAX_LENGTH',
   /** The location of a transfer cannot be updated. Only Draft Transfers can mutate their locations. */
-  TransferLocationImmutable = 'TRANSFER_LOCATION_IMMUTABLE',
+  TransferLocationImmutable: 'TRANSFER_LOCATION_IMMUTABLE',
   /** The transfer was not found. */
-  TransferNotFound = 'TRANSFER_NOT_FOUND',
+  TransferNotFound: 'TRANSFER_NOT_FOUND',
   /** The origin location cannot be the same as the destination location. */
-  TransferOriginCannotBeTheSameAsDestination = 'TRANSFER_ORIGIN_CANNOT_BE_THE_SAME_AS_DESTINATION'
-}
+  TransferOriginCannotBeTheSameAsDestination: 'TRANSFER_ORIGIN_CANNOT_BE_THE_SAME_AS_DESTINATION'
+} as const;
 
+export type InventoryTransferEditUserErrorCode = typeof InventoryTransferEditUserErrorCode[keyof typeof InventoryTransferEditUserErrorCode];
 /** Represents a line item belonging to an inventory transfer. */
 export type InventoryTransferLineItem = Node & {
   __typename?: 'InventoryTransferLineItem';
@@ -26545,23 +26759,24 @@ export type InventoryTransferMarkAsReadyToShipUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `InventoryTransferMarkAsReadyToShipUserError`. */
-export enum InventoryTransferMarkAsReadyToShipUserErrorCode {
+export const InventoryTransferMarkAsReadyToShipUserErrorCode = {
   /** One or more items are not valid. */
-  InvalidItem = 'INVALID_ITEM',
+  InvalidItem: 'INVALID_ITEM',
   /** Current transfer status does not support this operation. */
-  InvalidTransferStatus = 'INVALID_TRANSFER_STATUS',
+  InvalidTransferStatus: 'INVALID_TRANSFER_STATUS',
   /** The list of line items is empty. */
-  ItemsEmpty = 'ITEMS_EMPTY',
+  ItemsEmpty: 'ITEMS_EMPTY',
   /** The location selected is not active. */
-  LocationNotActive = 'LOCATION_NOT_ACTIVE',
+  LocationNotActive: 'LOCATION_NOT_ACTIVE',
   /** The location selected can't be found. */
-  LocationNotFound = 'LOCATION_NOT_FOUND',
+  LocationNotFound: 'LOCATION_NOT_FOUND',
   /** A location is required for this operation. */
-  LocationRequired = 'LOCATION_REQUIRED',
+  LocationRequired: 'LOCATION_REQUIRED',
   /** The transfer was not found. */
-  TransferNotFound = 'TRANSFER_NOT_FOUND'
-}
+  TransferNotFound: 'TRANSFER_NOT_FOUND'
+} as const;
 
+export type InventoryTransferMarkAsReadyToShipUserErrorCode = typeof InventoryTransferMarkAsReadyToShipUserErrorCode[keyof typeof InventoryTransferMarkAsReadyToShipUserErrorCode];
 /** The input fields to remove inventory items from a transfer. */
 export type InventoryTransferRemoveItemsInput = {
   /** The ID of the inventory transfer where the items will be removed. */
@@ -26597,23 +26812,24 @@ export type InventoryTransferRemoveItemsUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `InventoryTransferRemoveItemsUserError`. */
-export enum InventoryTransferRemoveItemsUserErrorCode {
+export const InventoryTransferRemoveItemsUserErrorCode = {
   /** The item cannot be removed because all of its quantity is fully allocated to one or more shipments (including draft shipments where the item has been picked). The error name refers to the underlying allocation check; it triggers regardless of whether the shipments have actually shipped. */
-  AllQuantityShipped = 'ALL_QUANTITY_SHIPPED',
+  AllQuantityShipped: 'ALL_QUANTITY_SHIPPED',
   /** A `READY_TO_SHIP` transfer must have at least one line item; you cannot remove every line item from one. To empty a `READY_TO_SHIP` transfer, cancel it instead. */
-  CantRemoveAllItemsFromReadyToShipTransfer = 'CANT_REMOVE_ALL_ITEMS_FROM_READY_TO_SHIP_TRANSFER',
+  CantRemoveAllItemsFromReadyToShipTransfer: 'CANT_REMOVE_ALL_ITEMS_FROM_READY_TO_SHIP_TRANSFER',
   /** Current transfer status does not support this operation. */
-  InvalidTransferStatus = 'INVALID_TRANSFER_STATUS',
+  InvalidTransferStatus: 'INVALID_TRANSFER_STATUS',
   /** The item was not found. */
-  ItemNotFound = 'ITEM_NOT_FOUND',
+  ItemNotFound: 'ITEM_NOT_FOUND',
   /** The line item cannot be removed because it appears on a draft shipment with quantity `0`. */
-  ItemPresentOnDraftShipmentWithZeroQuantity = 'ITEM_PRESENT_ON_DRAFT_SHIPMENT_WITH_ZERO_QUANTITY',
+  ItemPresentOnDraftShipmentWithZeroQuantity: 'ITEM_PRESENT_ON_DRAFT_SHIPMENT_WITH_ZERO_QUANTITY',
   /** The location selected can't be found. */
-  LocationNotFound = 'LOCATION_NOT_FOUND',
+  LocationNotFound: 'LOCATION_NOT_FOUND',
   /** The transfer was not found. */
-  TransferNotFound = 'TRANSFER_NOT_FOUND'
-}
+  TransferNotFound: 'TRANSFER_NOT_FOUND'
+} as const;
 
+export type InventoryTransferRemoveItemsUserErrorCode = typeof InventoryTransferRemoveItemsUserErrorCode[keyof typeof InventoryTransferRemoveItemsUserErrorCode];
 /** The input fields to the InventoryTransferSetItems mutation. */
 export type InventoryTransferSetItemsInput = {
   /** The ID of the inventory transfer where the items will be set. */
@@ -26645,45 +26861,47 @@ export type InventoryTransferSetItemsUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `InventoryTransferSetItemsUserError`. */
-export enum InventoryTransferSetItemsUserErrorCode {
+export const InventoryTransferSetItemsUserErrorCode = {
   /** Bundled items cannot be used for this operation. */
-  BundledItem = 'BUNDLED_ITEM',
+  BundledItem: 'BUNDLED_ITEM',
   /** A single item can't be listed twice. */
-  DuplicateItem = 'DUPLICATE_ITEM',
+  DuplicateItem: 'DUPLICATE_ITEM',
   /** The quantity is invalid. */
-  InvalidQuantity = 'INVALID_QUANTITY',
+  InvalidQuantity: 'INVALID_QUANTITY',
   /** Current transfer status does not support this operation. */
-  InvalidTransferStatus = 'INVALID_TRANSFER_STATUS',
+  InvalidTransferStatus: 'INVALID_TRANSFER_STATUS',
   /** The item is not stocked at the intended location. */
-  InventoryStateNotActive = 'INVENTORY_STATE_NOT_ACTIVE',
+  InventoryStateNotActive: 'INVENTORY_STATE_NOT_ACTIVE',
   /** The item was not found. */
-  ItemNotFound = 'ITEM_NOT_FOUND',
+  ItemNotFound: 'ITEM_NOT_FOUND',
   /** The location selected is not active. */
-  LocationNotActive = 'LOCATION_NOT_ACTIVE',
+  LocationNotActive: 'LOCATION_NOT_ACTIVE',
   /** The location selected can't be found. */
-  LocationNotFound = 'LOCATION_NOT_FOUND',
+  LocationNotFound: 'LOCATION_NOT_FOUND',
   /** The transfer was not found. */
-  TransferNotFound = 'TRANSFER_NOT_FOUND',
+  TransferNotFound: 'TRANSFER_NOT_FOUND',
   /** The item does not track inventory. */
-  UntrackedItem = 'UNTRACKED_ITEM'
-}
+  UntrackedItem: 'UNTRACKED_ITEM'
+} as const;
 
+export type InventoryTransferSetItemsUserErrorCode = typeof InventoryTransferSetItemsUserErrorCode[keyof typeof InventoryTransferSetItemsUserErrorCode];
 /** The status of a transfer. */
-export enum InventoryTransferStatus {
+export const InventoryTransferStatus = {
   /** The inventory transfer has been canceled. */
-  Canceled = 'CANCELED',
+  Canceled: 'CANCELED',
   /** The inventory transfer has been created but not yet finalized. */
-  Draft = 'DRAFT',
+  Draft: 'DRAFT',
   /** The inventory transfer is in progress, with a shipment currently underway or received. */
-  InProgress = 'IN_PROGRESS',
+  InProgress: 'IN_PROGRESS',
   /** Status not included in the current enumeration set. */
-  Other = 'OTHER',
+  Other: 'OTHER',
   /** The inventory transfer has been created, but not yet shipped. */
-  ReadyToShip = 'READY_TO_SHIP',
+  ReadyToShip: 'READY_TO_SHIP',
   /** The inventory transfer has been completely received at the destination. */
-  Transferred = 'TRANSFERRED'
-}
+  Transferred: 'TRANSFERRED'
+} as const;
 
+export type InventoryTransferStatus = typeof InventoryTransferStatus[keyof typeof InventoryTransferStatus];
 /** The financial transfer details for a return outcome that results in an invoice. */
 export type InvoiceReturnOutcome = {
   __typename?: 'InvoiceReturnOutcome';
@@ -26711,291 +26929,292 @@ export type JobResult = {
 };
 
 /** Language codes supported by Shopify. */
-export enum LanguageCode {
+export const LanguageCode = {
   /** Afrikaans. */
-  Af = 'AF',
+  Af: 'AF',
   /** Akan. */
-  Ak = 'AK',
+  Ak: 'AK',
   /** Amharic. */
-  Am = 'AM',
+  Am: 'AM',
   /** Arabic. */
-  Ar = 'AR',
+  Ar: 'AR',
   /** Assamese. */
-  As = 'AS',
+  As: 'AS',
   /** Azerbaijani. */
-  Az = 'AZ',
+  Az: 'AZ',
   /** Belarusian. */
-  Be = 'BE',
+  Be: 'BE',
   /** Bulgarian. */
-  Bg = 'BG',
+  Bg: 'BG',
   /** Bambara. */
-  Bm = 'BM',
+  Bm: 'BM',
   /** Bangla. */
-  Bn = 'BN',
+  Bn: 'BN',
   /** Tibetan. */
-  Bo = 'BO',
+  Bo: 'BO',
   /** Breton. */
-  Br = 'BR',
+  Br: 'BR',
   /** Bosnian. */
-  Bs = 'BS',
+  Bs: 'BS',
   /** Catalan. */
-  Ca = 'CA',
+  Ca: 'CA',
   /** Chechen. */
-  Ce = 'CE',
+  Ce: 'CE',
   /** Central Kurdish. */
-  Ckb = 'CKB',
+  Ckb: 'CKB',
   /** Czech. */
-  Cs = 'CS',
+  Cs: 'CS',
   /** Church Slavic. */
-  Cu = 'CU',
+  Cu: 'CU',
   /** Welsh. */
-  Cy = 'CY',
+  Cy: 'CY',
   /** Danish. */
-  Da = 'DA',
+  Da: 'DA',
   /** German. */
-  De = 'DE',
+  De: 'DE',
   /** Dzongkha. */
-  Dz = 'DZ',
+  Dz: 'DZ',
   /** Ewe. */
-  Ee = 'EE',
+  Ee: 'EE',
   /** Greek. */
-  El = 'EL',
+  El: 'EL',
   /** English. */
-  En = 'EN',
+  En: 'EN',
   /** Esperanto. */
-  Eo = 'EO',
+  Eo: 'EO',
   /** Spanish. */
-  Es = 'ES',
+  Es: 'ES',
   /** Estonian. */
-  Et = 'ET',
+  Et: 'ET',
   /** Basque. */
-  Eu = 'EU',
+  Eu: 'EU',
   /** Persian. */
-  Fa = 'FA',
+  Fa: 'FA',
   /** Fulah. */
-  Ff = 'FF',
+  Ff: 'FF',
   /** Finnish. */
-  Fi = 'FI',
+  Fi: 'FI',
   /** Filipino. */
-  Fil = 'FIL',
+  Fil: 'FIL',
   /** Faroese. */
-  Fo = 'FO',
+  Fo: 'FO',
   /** French. */
-  Fr = 'FR',
+  Fr: 'FR',
   /** Western Frisian. */
-  Fy = 'FY',
+  Fy: 'FY',
   /** Irish. */
-  Ga = 'GA',
+  Ga: 'GA',
   /** Scottish Gaelic. */
-  Gd = 'GD',
+  Gd: 'GD',
   /** Galician. */
-  Gl = 'GL',
+  Gl: 'GL',
   /** Gujarati. */
-  Gu = 'GU',
+  Gu: 'GU',
   /** Manx. */
-  Gv = 'GV',
+  Gv: 'GV',
   /** Hausa. */
-  Ha = 'HA',
+  Ha: 'HA',
   /** Hebrew. */
-  He = 'HE',
+  He: 'HE',
   /** Hindi. */
-  Hi = 'HI',
+  Hi: 'HI',
   /** Croatian. */
-  Hr = 'HR',
+  Hr: 'HR',
   /** Hungarian. */
-  Hu = 'HU',
+  Hu: 'HU',
   /** Armenian. */
-  Hy = 'HY',
+  Hy: 'HY',
   /** Interlingua. */
-  Ia = 'IA',
+  Ia: 'IA',
   /** Indonesian. */
-  Id = 'ID',
+  Id: 'ID',
   /** Igbo. */
-  Ig = 'IG',
+  Ig: 'IG',
   /** Sichuan Yi. */
-  Ii = 'II',
+  Ii: 'II',
   /** Icelandic. */
-  Is = 'IS',
+  Is: 'IS',
   /** Italian. */
-  It = 'IT',
+  It: 'IT',
   /** Japanese. */
-  Ja = 'JA',
+  Ja: 'JA',
   /** Javanese. */
-  Jv = 'JV',
+  Jv: 'JV',
   /** Georgian. */
-  Ka = 'KA',
+  Ka: 'KA',
   /** Kikuyu. */
-  Ki = 'KI',
+  Ki: 'KI',
   /** Kazakh. */
-  Kk = 'KK',
+  Kk: 'KK',
   /** Kalaallisut. */
-  Kl = 'KL',
+  Kl: 'KL',
   /** Khmer. */
-  Km = 'KM',
+  Km: 'KM',
   /** Kannada. */
-  Kn = 'KN',
+  Kn: 'KN',
   /** Korean. */
-  Ko = 'KO',
+  Ko: 'KO',
   /** Kashmiri. */
-  Ks = 'KS',
+  Ks: 'KS',
   /** Kurdish. */
-  Ku = 'KU',
+  Ku: 'KU',
   /** Cornish. */
-  Kw = 'KW',
+  Kw: 'KW',
   /** Kyrgyz. */
-  Ky = 'KY',
+  Ky: 'KY',
   /** Luxembourgish. */
-  Lb = 'LB',
+  Lb: 'LB',
   /** Ganda. */
-  Lg = 'LG',
+  Lg: 'LG',
   /** Lingala. */
-  Ln = 'LN',
+  Ln: 'LN',
   /** Lao. */
-  Lo = 'LO',
+  Lo: 'LO',
   /** Lithuanian. */
-  Lt = 'LT',
+  Lt: 'LT',
   /** Luba-Katanga. */
-  Lu = 'LU',
+  Lu: 'LU',
   /** Latvian. */
-  Lv = 'LV',
+  Lv: 'LV',
   /** Malagasy. */
-  Mg = 'MG',
+  Mg: 'MG',
   /** Māori. */
-  Mi = 'MI',
+  Mi: 'MI',
   /** Macedonian. */
-  Mk = 'MK',
+  Mk: 'MK',
   /** Malayalam. */
-  Ml = 'ML',
+  Ml: 'ML',
   /** Mongolian. */
-  Mn = 'MN',
+  Mn: 'MN',
   /** Marathi. */
-  Mr = 'MR',
+  Mr: 'MR',
   /** Malay. */
-  Ms = 'MS',
+  Ms: 'MS',
   /** Maltese. */
-  Mt = 'MT',
+  Mt: 'MT',
   /** Burmese. */
-  My = 'MY',
+  My: 'MY',
   /** Norwegian (Bokmål). */
-  Nb = 'NB',
+  Nb: 'NB',
   /** North Ndebele. */
-  Nd = 'ND',
+  Nd: 'ND',
   /** Nepali. */
-  Ne = 'NE',
+  Ne: 'NE',
   /** Dutch. */
-  Nl = 'NL',
+  Nl: 'NL',
   /** Norwegian Nynorsk. */
-  Nn = 'NN',
+  Nn: 'NN',
   /** Norwegian. */
-  No = 'NO',
+  No: 'NO',
   /** Oromo. */
-  Om = 'OM',
+  Om: 'OM',
   /** Odia. */
-  Or = 'OR',
+  Or: 'OR',
   /** Ossetic. */
-  Os = 'OS',
+  Os: 'OS',
   /** Punjabi. */
-  Pa = 'PA',
+  Pa: 'PA',
   /** Polish. */
-  Pl = 'PL',
+  Pl: 'PL',
   /** Pashto. */
-  Ps = 'PS',
+  Ps: 'PS',
   /** Portuguese. */
-  Pt = 'PT',
+  Pt: 'PT',
   /** Portuguese (Brazil). */
-  PtBr = 'PT_BR',
+  PtBr: 'PT_BR',
   /** Portuguese (Portugal). */
-  PtPt = 'PT_PT',
+  PtPt: 'PT_PT',
   /** Quechua. */
-  Qu = 'QU',
+  Qu: 'QU',
   /** Romansh. */
-  Rm = 'RM',
+  Rm: 'RM',
   /** Rundi. */
-  Rn = 'RN',
+  Rn: 'RN',
   /** Romanian. */
-  Ro = 'RO',
+  Ro: 'RO',
   /** Russian. */
-  Ru = 'RU',
+  Ru: 'RU',
   /** Kinyarwanda. */
-  Rw = 'RW',
+  Rw: 'RW',
   /** Sanskrit. */
-  Sa = 'SA',
+  Sa: 'SA',
   /** Sardinian. */
-  Sc = 'SC',
+  Sc: 'SC',
   /** Sindhi. */
-  Sd = 'SD',
+  Sd: 'SD',
   /** Northern Sami. */
-  Se = 'SE',
+  Se: 'SE',
   /** Sango. */
-  Sg = 'SG',
+  Sg: 'SG',
   /** Sinhala. */
-  Si = 'SI',
+  Si: 'SI',
   /** Slovak. */
-  Sk = 'SK',
+  Sk: 'SK',
   /** Slovenian. */
-  Sl = 'SL',
+  Sl: 'SL',
   /** Shona. */
-  Sn = 'SN',
+  Sn: 'SN',
   /** Somali. */
-  So = 'SO',
+  So: 'SO',
   /** Albanian. */
-  Sq = 'SQ',
+  Sq: 'SQ',
   /** Serbian. */
-  Sr = 'SR',
+  Sr: 'SR',
   /** Sundanese. */
-  Su = 'SU',
+  Su: 'SU',
   /** Swedish. */
-  Sv = 'SV',
+  Sv: 'SV',
   /** Swahili. */
-  Sw = 'SW',
+  Sw: 'SW',
   /** Tamil. */
-  Ta = 'TA',
+  Ta: 'TA',
   /** Telugu. */
-  Te = 'TE',
+  Te: 'TE',
   /** Tajik. */
-  Tg = 'TG',
+  Tg: 'TG',
   /** Thai. */
-  Th = 'TH',
+  Th: 'TH',
   /** Tigrinya. */
-  Ti = 'TI',
+  Ti: 'TI',
   /** Turkmen. */
-  Tk = 'TK',
+  Tk: 'TK',
   /** Tongan. */
-  To = 'TO',
+  To: 'TO',
   /** Turkish. */
-  Tr = 'TR',
+  Tr: 'TR',
   /** Tatar. */
-  Tt = 'TT',
+  Tt: 'TT',
   /** Uyghur. */
-  Ug = 'UG',
+  Ug: 'UG',
   /** Ukrainian. */
-  Uk = 'UK',
+  Uk: 'UK',
   /** Urdu. */
-  Ur = 'UR',
+  Ur: 'UR',
   /** Uzbek. */
-  Uz = 'UZ',
+  Uz: 'UZ',
   /** Vietnamese. */
-  Vi = 'VI',
+  Vi: 'VI',
   /** Volapük. */
-  Vo = 'VO',
+  Vo: 'VO',
   /** Wolof. */
-  Wo = 'WO',
+  Wo: 'WO',
   /** Xhosa. */
-  Xh = 'XH',
+  Xh: 'XH',
   /** Yiddish. */
-  Yi = 'YI',
+  Yi: 'YI',
   /** Yoruba. */
-  Yo = 'YO',
+  Yo: 'YO',
   /** Chinese. */
-  Zh = 'ZH',
+  Zh: 'ZH',
   /** Chinese (Simplified). */
-  ZhCn = 'ZH_CN',
+  ZhCn: 'ZH_CN',
   /** Chinese (Traditional). */
-  ZhTw = 'ZH_TW',
+  ZhTw: 'ZH_TW',
   /** Zulu. */
-  Zu = 'ZU'
-}
+  Zu: 'ZU'
+} as const;
 
+export type LanguageCode = typeof LanguageCode[keyof typeof LanguageCode];
 /**
  * Interoperability metadata for types that directly correspond to a REST Admin API resource.
  * For example, on the Product type, LegacyInteroperability returns metadata for the corresponding [Product object](https://shopify.dev/api/admin-graphql/latest/objects/product) in the REST Admin API.
@@ -27006,21 +27225,22 @@ export type LegacyInteroperability = {
 };
 
 /** Units of measurement for length. */
-export enum LengthUnit {
+export const LengthUnit = {
   /** 100 centimeters equals 1 meter. */
-  Centimeters = 'CENTIMETERS',
+  Centimeters: 'CENTIMETERS',
   /** Imperial system unit of length. */
-  Feet = 'FEET',
+  Feet: 'FEET',
   /** 12 inches equals 1 foot. */
-  Inches = 'INCHES',
+  Inches: 'INCHES',
   /** Metric system unit of length. */
-  Meters = 'METERS',
+  Meters: 'METERS',
   /** 1000 millimeters equals 1 meter. */
-  Millimeters = 'MILLIMETERS',
+  Millimeters: 'MILLIMETERS',
   /** 1 yard equals 3 feet. */
-  Yards = 'YARDS'
-}
+  Yards: 'YARDS'
+} as const;
 
+export type LengthUnit = typeof LengthUnit[keyof typeof LengthUnit];
 /**
  * The total number of pending orders on a shop if less then a maximum, or that maximum.
  * The atMax field indicates when this maximum has been reached.
@@ -27399,43 +27619,44 @@ export type Locale = {
 };
 
 /** Specifies the type of the underlying localizable content. This can be used to conditionally render different UI elements such as input fields. */
-export enum LocalizableContentType {
+export const LocalizableContentType = {
   /** A file reference. */
-  FileReference = 'FILE_REFERENCE',
+  FileReference: 'FILE_REFERENCE',
   /** An HTML. */
-  Html = 'HTML',
+  Html: 'HTML',
   /** An inline rich text. */
-  InlineRichText = 'INLINE_RICH_TEXT',
+  InlineRichText: 'INLINE_RICH_TEXT',
   /** A JSON. */
-  Json = 'JSON',
+  Json: 'JSON',
   /** A JSON string. */
-  JsonString = 'JSON_STRING',
+  JsonString: 'JSON_STRING',
   /** A link. */
-  Link = 'LINK',
+  Link: 'LINK',
   /** A list of file references. */
-  ListFileReference = 'LIST_FILE_REFERENCE',
+  ListFileReference: 'LIST_FILE_REFERENCE',
   /** A list of links. */
-  ListLink = 'LIST_LINK',
+  ListLink: 'LIST_LINK',
   /** A list of multi-line texts. */
-  ListMultiLineTextField = 'LIST_MULTI_LINE_TEXT_FIELD',
+  ListMultiLineTextField: 'LIST_MULTI_LINE_TEXT_FIELD',
   /** A list of single-line texts. */
-  ListSingleLineTextField = 'LIST_SINGLE_LINE_TEXT_FIELD',
+  ListSingleLineTextField: 'LIST_SINGLE_LINE_TEXT_FIELD',
   /** A list of URLs. */
-  ListUrl = 'LIST_URL',
+  ListUrl: 'LIST_URL',
   /** A multi-line text. */
-  MultiLineTextField = 'MULTI_LINE_TEXT_FIELD',
+  MultiLineTextField: 'MULTI_LINE_TEXT_FIELD',
   /** A rich text. */
-  RichTextField = 'RICH_TEXT_FIELD',
+  RichTextField: 'RICH_TEXT_FIELD',
   /** A single-line text. */
-  SingleLineTextField = 'SINGLE_LINE_TEXT_FIELD',
+  SingleLineTextField: 'SINGLE_LINE_TEXT_FIELD',
   /** A string. */
-  String = 'STRING',
+  String: 'STRING',
   /** A URI. */
-  Uri = 'URI',
+  Uri: 'URI',
   /** A URL. */
-  Url = 'URL'
-}
+  Url: 'URL'
+} as const;
 
+export type LocalizableContentType = typeof LocalizableContentType[keyof typeof LocalizableContentType];
 /** Represents the value captured by a localization extension. Localization extensions are additional fields required by certain countries on international orders. For example, some countries require additional fields for customs information or tax identification numbers. */
 export type LocalizationExtension = {
   __typename?: 'LocalizationExtension';
@@ -27480,91 +27701,93 @@ export type LocalizationExtensionInput = {
 };
 
 /** The key of a localization extension. */
-export enum LocalizationExtensionKey {
+export const LocalizationExtensionKey = {
   /** Extension key 'shipping_credential_br' for country BR. */
-  ShippingCredentialBr = 'SHIPPING_CREDENTIAL_BR',
+  ShippingCredentialBr: 'SHIPPING_CREDENTIAL_BR',
   /** Extension key 'shipping_credential_cl' for country CL. */
-  ShippingCredentialCl = 'SHIPPING_CREDENTIAL_CL',
+  ShippingCredentialCl: 'SHIPPING_CREDENTIAL_CL',
   /** Extension key 'shipping_credential_cn' for country CN. */
-  ShippingCredentialCn = 'SHIPPING_CREDENTIAL_CN',
+  ShippingCredentialCn: 'SHIPPING_CREDENTIAL_CN',
   /** Extension key 'shipping_credential_co' for country CO. */
-  ShippingCredentialCo = 'SHIPPING_CREDENTIAL_CO',
+  ShippingCredentialCo: 'SHIPPING_CREDENTIAL_CO',
   /** Extension key 'shipping_credential_cr' for country CR. */
-  ShippingCredentialCr = 'SHIPPING_CREDENTIAL_CR',
+  ShippingCredentialCr: 'SHIPPING_CREDENTIAL_CR',
   /** Extension key 'shipping_credential_ec' for country EC. */
-  ShippingCredentialEc = 'SHIPPING_CREDENTIAL_EC',
+  ShippingCredentialEc: 'SHIPPING_CREDENTIAL_EC',
   /** Extension key 'shipping_credential_es' for country ES. */
-  ShippingCredentialEs = 'SHIPPING_CREDENTIAL_ES',
+  ShippingCredentialEs: 'SHIPPING_CREDENTIAL_ES',
   /** Extension key 'shipping_credential_gt' for country GT. */
-  ShippingCredentialGt = 'SHIPPING_CREDENTIAL_GT',
+  ShippingCredentialGt: 'SHIPPING_CREDENTIAL_GT',
   /** Extension key 'shipping_credential_id' for country ID. */
-  ShippingCredentialId = 'SHIPPING_CREDENTIAL_ID',
+  ShippingCredentialId: 'SHIPPING_CREDENTIAL_ID',
   /** Extension key 'shipping_credential_kr' for country KR. */
-  ShippingCredentialKr = 'SHIPPING_CREDENTIAL_KR',
+  ShippingCredentialKr: 'SHIPPING_CREDENTIAL_KR',
   /** Extension key 'shipping_credential_mx' for country MX. */
-  ShippingCredentialMx = 'SHIPPING_CREDENTIAL_MX',
+  ShippingCredentialMx: 'SHIPPING_CREDENTIAL_MX',
   /** Extension key 'shipping_credential_my' for country MY. */
-  ShippingCredentialMy = 'SHIPPING_CREDENTIAL_MY',
+  ShippingCredentialMy: 'SHIPPING_CREDENTIAL_MY',
   /** Extension key 'shipping_credential_pe' for country PE. */
-  ShippingCredentialPe = 'SHIPPING_CREDENTIAL_PE',
+  ShippingCredentialPe: 'SHIPPING_CREDENTIAL_PE',
   /** Extension key 'shipping_credential_pt' for country PT. */
-  ShippingCredentialPt = 'SHIPPING_CREDENTIAL_PT',
+  ShippingCredentialPt: 'SHIPPING_CREDENTIAL_PT',
   /** Extension key 'shipping_credential_py' for country PY. */
-  ShippingCredentialPy = 'SHIPPING_CREDENTIAL_PY',
+  ShippingCredentialPy: 'SHIPPING_CREDENTIAL_PY',
   /** Extension key 'shipping_credential_tr' for country TR. */
-  ShippingCredentialTr = 'SHIPPING_CREDENTIAL_TR',
+  ShippingCredentialTr: 'SHIPPING_CREDENTIAL_TR',
   /** Extension key 'shipping_credential_tw' for country TW. */
-  ShippingCredentialTw = 'SHIPPING_CREDENTIAL_TW',
+  ShippingCredentialTw: 'SHIPPING_CREDENTIAL_TW',
   /** Extension key 'shipping_credential_type_co' for country CO. */
-  ShippingCredentialTypeCo = 'SHIPPING_CREDENTIAL_TYPE_CO',
+  ShippingCredentialTypeCo: 'SHIPPING_CREDENTIAL_TYPE_CO',
   /** Extension key 'tax_credential_br' for country BR. */
-  TaxCredentialBr = 'TAX_CREDENTIAL_BR',
+  TaxCredentialBr: 'TAX_CREDENTIAL_BR',
   /** Extension key 'tax_credential_cl' for country CL. */
-  TaxCredentialCl = 'TAX_CREDENTIAL_CL',
+  TaxCredentialCl: 'TAX_CREDENTIAL_CL',
   /** Extension key 'tax_credential_co' for country CO. */
-  TaxCredentialCo = 'TAX_CREDENTIAL_CO',
+  TaxCredentialCo: 'TAX_CREDENTIAL_CO',
   /** Extension key 'tax_credential_cr' for country CR. */
-  TaxCredentialCr = 'TAX_CREDENTIAL_CR',
+  TaxCredentialCr: 'TAX_CREDENTIAL_CR',
   /** Extension key 'tax_credential_ec' for country EC. */
-  TaxCredentialEc = 'TAX_CREDENTIAL_EC',
+  TaxCredentialEc: 'TAX_CREDENTIAL_EC',
   /** Extension key 'tax_credential_es' for country ES. */
-  TaxCredentialEs = 'TAX_CREDENTIAL_ES',
+  TaxCredentialEs: 'TAX_CREDENTIAL_ES',
   /** Extension key 'tax_credential_gt' for country GT. */
-  TaxCredentialGt = 'TAX_CREDENTIAL_GT',
+  TaxCredentialGt: 'TAX_CREDENTIAL_GT',
   /** Extension key 'tax_credential_id' for country ID. */
-  TaxCredentialId = 'TAX_CREDENTIAL_ID',
+  TaxCredentialId: 'TAX_CREDENTIAL_ID',
   /** Extension key 'tax_credential_it' for country IT. */
-  TaxCredentialIt = 'TAX_CREDENTIAL_IT',
+  TaxCredentialIt: 'TAX_CREDENTIAL_IT',
   /** Extension key 'tax_credential_mx' for country MX. */
-  TaxCredentialMx = 'TAX_CREDENTIAL_MX',
+  TaxCredentialMx: 'TAX_CREDENTIAL_MX',
   /** Extension key 'tax_credential_my' for country MY. */
-  TaxCredentialMy = 'TAX_CREDENTIAL_MY',
+  TaxCredentialMy: 'TAX_CREDENTIAL_MY',
   /** Extension key 'tax_credential_pe' for country PE. */
-  TaxCredentialPe = 'TAX_CREDENTIAL_PE',
+  TaxCredentialPe: 'TAX_CREDENTIAL_PE',
   /** Extension key 'tax_credential_pt' for country PT. */
-  TaxCredentialPt = 'TAX_CREDENTIAL_PT',
+  TaxCredentialPt: 'TAX_CREDENTIAL_PT',
   /** Extension key 'tax_credential_py' for country PY. */
-  TaxCredentialPy = 'TAX_CREDENTIAL_PY',
+  TaxCredentialPy: 'TAX_CREDENTIAL_PY',
   /** Extension key 'tax_credential_tr' for country TR. */
-  TaxCredentialTr = 'TAX_CREDENTIAL_TR',
+  TaxCredentialTr: 'TAX_CREDENTIAL_TR',
   /** Extension key 'tax_credential_type_co' for country CO. */
-  TaxCredentialTypeCo = 'TAX_CREDENTIAL_TYPE_CO',
+  TaxCredentialTypeCo: 'TAX_CREDENTIAL_TYPE_CO',
   /** Extension key 'tax_credential_type_mx' for country MX. */
-  TaxCredentialTypeMx = 'TAX_CREDENTIAL_TYPE_MX',
+  TaxCredentialTypeMx: 'TAX_CREDENTIAL_TYPE_MX',
   /** Extension key 'tax_credential_use_mx' for country MX. */
-  TaxCredentialUseMx = 'TAX_CREDENTIAL_USE_MX',
+  TaxCredentialUseMx: 'TAX_CREDENTIAL_USE_MX',
   /** Extension key 'tax_email_it' for country IT. */
-  TaxEmailIt = 'TAX_EMAIL_IT'
-}
+  TaxEmailIt: 'TAX_EMAIL_IT'
+} as const;
 
+export type LocalizationExtensionKey = typeof LocalizationExtensionKey[keyof typeof LocalizationExtensionKey];
 /** The purpose of a localization extension. */
-export enum LocalizationExtensionPurpose {
+export const LocalizationExtensionPurpose = {
   /** Extensions that are used for shipping purposes, for example, customs clearance. */
-  Shipping = 'SHIPPING',
+  Shipping: 'SHIPPING',
   /** Extensions that are used for taxes purposes, for example, invoicing. */
-  Tax = 'TAX'
-}
+  Tax: 'TAX'
+} as const;
 
+export type LocalizationExtensionPurpose = typeof LocalizationExtensionPurpose[keyof typeof LocalizationExtensionPurpose];
 /** Represents the value captured by a localized field. Localized fields are additional fields required by certain countries on international orders. For example, some countries require additional fields for customs information or tax identification numbers. */
 export type LocalizedField = {
   __typename?: 'LocalizedField';
@@ -27609,91 +27832,93 @@ export type LocalizedFieldInput = {
 };
 
 /** The key of a localized field. */
-export enum LocalizedFieldKey {
+export const LocalizedFieldKey = {
   /** Localized field key 'shipping_credential_br' for country Brazil. */
-  ShippingCredentialBr = 'SHIPPING_CREDENTIAL_BR',
+  ShippingCredentialBr: 'SHIPPING_CREDENTIAL_BR',
   /** Localized field key 'shipping_credential_cl' for country Chile. */
-  ShippingCredentialCl = 'SHIPPING_CREDENTIAL_CL',
+  ShippingCredentialCl: 'SHIPPING_CREDENTIAL_CL',
   /** Localized field key 'shipping_credential_cn' for country China. */
-  ShippingCredentialCn = 'SHIPPING_CREDENTIAL_CN',
+  ShippingCredentialCn: 'SHIPPING_CREDENTIAL_CN',
   /** Localized field key 'shipping_credential_co' for country Colombia. */
-  ShippingCredentialCo = 'SHIPPING_CREDENTIAL_CO',
+  ShippingCredentialCo: 'SHIPPING_CREDENTIAL_CO',
   /** Localized field key 'shipping_credential_cr' for country Costa Rica. */
-  ShippingCredentialCr = 'SHIPPING_CREDENTIAL_CR',
+  ShippingCredentialCr: 'SHIPPING_CREDENTIAL_CR',
   /** Localized field key 'shipping_credential_ec' for country Ecuador. */
-  ShippingCredentialEc = 'SHIPPING_CREDENTIAL_EC',
+  ShippingCredentialEc: 'SHIPPING_CREDENTIAL_EC',
   /** Localized field key 'shipping_credential_es' for country Spain. */
-  ShippingCredentialEs = 'SHIPPING_CREDENTIAL_ES',
+  ShippingCredentialEs: 'SHIPPING_CREDENTIAL_ES',
   /** Localized field key 'shipping_credential_gt' for country Guatemala. */
-  ShippingCredentialGt = 'SHIPPING_CREDENTIAL_GT',
+  ShippingCredentialGt: 'SHIPPING_CREDENTIAL_GT',
   /** Localized field key 'shipping_credential_id' for country Indonesia. */
-  ShippingCredentialId = 'SHIPPING_CREDENTIAL_ID',
+  ShippingCredentialId: 'SHIPPING_CREDENTIAL_ID',
   /** Localized field key 'shipping_credential_kr' for country South Korea. */
-  ShippingCredentialKr = 'SHIPPING_CREDENTIAL_KR',
+  ShippingCredentialKr: 'SHIPPING_CREDENTIAL_KR',
   /** Localized field key 'shipping_credential_mx' for country Mexico. */
-  ShippingCredentialMx = 'SHIPPING_CREDENTIAL_MX',
+  ShippingCredentialMx: 'SHIPPING_CREDENTIAL_MX',
   /** Localized field key 'shipping_credential_my' for country Malaysia. */
-  ShippingCredentialMy = 'SHIPPING_CREDENTIAL_MY',
+  ShippingCredentialMy: 'SHIPPING_CREDENTIAL_MY',
   /** Localized field key 'shipping_credential_pe' for country Peru. */
-  ShippingCredentialPe = 'SHIPPING_CREDENTIAL_PE',
+  ShippingCredentialPe: 'SHIPPING_CREDENTIAL_PE',
   /** Localized field key 'shipping_credential_pt' for country Portugal. */
-  ShippingCredentialPt = 'SHIPPING_CREDENTIAL_PT',
+  ShippingCredentialPt: 'SHIPPING_CREDENTIAL_PT',
   /** Localized field key 'shipping_credential_py' for country Paraguay. */
-  ShippingCredentialPy = 'SHIPPING_CREDENTIAL_PY',
+  ShippingCredentialPy: 'SHIPPING_CREDENTIAL_PY',
   /** Localized field key 'shipping_credential_tr' for country Turkey. */
-  ShippingCredentialTr = 'SHIPPING_CREDENTIAL_TR',
+  ShippingCredentialTr: 'SHIPPING_CREDENTIAL_TR',
   /** Localized field key 'shipping_credential_tw' for country Taiwan. */
-  ShippingCredentialTw = 'SHIPPING_CREDENTIAL_TW',
+  ShippingCredentialTw: 'SHIPPING_CREDENTIAL_TW',
   /** Localized field key 'shipping_credential_type_co' for country Colombia. */
-  ShippingCredentialTypeCo = 'SHIPPING_CREDENTIAL_TYPE_CO',
+  ShippingCredentialTypeCo: 'SHIPPING_CREDENTIAL_TYPE_CO',
   /** Localized field key 'tax_credential_br' for country Brazil. */
-  TaxCredentialBr = 'TAX_CREDENTIAL_BR',
+  TaxCredentialBr: 'TAX_CREDENTIAL_BR',
   /** Localized field key 'tax_credential_cl' for country Chile. */
-  TaxCredentialCl = 'TAX_CREDENTIAL_CL',
+  TaxCredentialCl: 'TAX_CREDENTIAL_CL',
   /** Localized field key 'tax_credential_co' for country Colombia. */
-  TaxCredentialCo = 'TAX_CREDENTIAL_CO',
+  TaxCredentialCo: 'TAX_CREDENTIAL_CO',
   /** Localized field key 'tax_credential_cr' for country Costa Rica. */
-  TaxCredentialCr = 'TAX_CREDENTIAL_CR',
+  TaxCredentialCr: 'TAX_CREDENTIAL_CR',
   /** Localized field key 'tax_credential_ec' for country Ecuador. */
-  TaxCredentialEc = 'TAX_CREDENTIAL_EC',
+  TaxCredentialEc: 'TAX_CREDENTIAL_EC',
   /** Localized field key 'tax_credential_es' for country Spain. */
-  TaxCredentialEs = 'TAX_CREDENTIAL_ES',
+  TaxCredentialEs: 'TAX_CREDENTIAL_ES',
   /** Localized field key 'tax_credential_gt' for country Guatemala. */
-  TaxCredentialGt = 'TAX_CREDENTIAL_GT',
+  TaxCredentialGt: 'TAX_CREDENTIAL_GT',
   /** Localized field key 'tax_credential_id' for country Indonesia. */
-  TaxCredentialId = 'TAX_CREDENTIAL_ID',
+  TaxCredentialId: 'TAX_CREDENTIAL_ID',
   /** Localized field key 'tax_credential_it' for country Italy. */
-  TaxCredentialIt = 'TAX_CREDENTIAL_IT',
+  TaxCredentialIt: 'TAX_CREDENTIAL_IT',
   /** Localized field key 'tax_credential_mx' for country Mexico. */
-  TaxCredentialMx = 'TAX_CREDENTIAL_MX',
+  TaxCredentialMx: 'TAX_CREDENTIAL_MX',
   /** Localized field key 'tax_credential_my' for country Malaysia. */
-  TaxCredentialMy = 'TAX_CREDENTIAL_MY',
+  TaxCredentialMy: 'TAX_CREDENTIAL_MY',
   /** Localized field key 'tax_credential_pe' for country Peru. */
-  TaxCredentialPe = 'TAX_CREDENTIAL_PE',
+  TaxCredentialPe: 'TAX_CREDENTIAL_PE',
   /** Localized field key 'tax_credential_pt' for country Portugal. */
-  TaxCredentialPt = 'TAX_CREDENTIAL_PT',
+  TaxCredentialPt: 'TAX_CREDENTIAL_PT',
   /** Localized field key 'tax_credential_py' for country Paraguay. */
-  TaxCredentialPy = 'TAX_CREDENTIAL_PY',
+  TaxCredentialPy: 'TAX_CREDENTIAL_PY',
   /** Localized field key 'tax_credential_tr' for country Turkey. */
-  TaxCredentialTr = 'TAX_CREDENTIAL_TR',
+  TaxCredentialTr: 'TAX_CREDENTIAL_TR',
   /** Localized field key 'tax_credential_type_co' for country Colombia. */
-  TaxCredentialTypeCo = 'TAX_CREDENTIAL_TYPE_CO',
+  TaxCredentialTypeCo: 'TAX_CREDENTIAL_TYPE_CO',
   /** Localized field key 'tax_credential_type_mx' for country Mexico. */
-  TaxCredentialTypeMx = 'TAX_CREDENTIAL_TYPE_MX',
+  TaxCredentialTypeMx: 'TAX_CREDENTIAL_TYPE_MX',
   /** Localized field key 'tax_credential_use_mx' for country Mexico. */
-  TaxCredentialUseMx = 'TAX_CREDENTIAL_USE_MX',
+  TaxCredentialUseMx: 'TAX_CREDENTIAL_USE_MX',
   /** Localized field key 'tax_email_it' for country Italy. */
-  TaxEmailIt = 'TAX_EMAIL_IT'
-}
+  TaxEmailIt: 'TAX_EMAIL_IT'
+} as const;
 
+export type LocalizedFieldKey = typeof LocalizedFieldKey[keyof typeof LocalizedFieldKey];
 /** The purpose of a localized field. */
-export enum LocalizedFieldPurpose {
+export const LocalizedFieldPurpose = {
   /** Fields that are used for shipping purposes, for example, customs clearance. */
-  Shipping = 'SHIPPING',
+  Shipping: 'SHIPPING',
   /** Fields that are used for taxes purposes, for example, invoicing. */
-  Tax = 'TAX'
-}
+  Tax: 'TAX'
+} as const;
 
+export type LocalizedFieldPurpose = typeof LocalizedFieldPurpose[keyof typeof LocalizedFieldPurpose];
 /**
  * A physical location where merchants store and fulfill inventory. Locations include retail stores, warehouses, popups, dropshippers, or other places where inventory is managed or stocked.
  *
@@ -27873,19 +28098,20 @@ export type LocationActivateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `LocationActivateUserError`. */
-export enum LocationActivateUserErrorCode {
+export const LocationActivateUserErrorCode = {
   /** An error occurred while activating the location. */
-  GenericError = 'GENERIC_ERROR',
+  GenericError: 'GENERIC_ERROR',
   /** There is already an active location with this name. */
-  HasNonUniqueName = 'HAS_NON_UNIQUE_NAME',
+  HasNonUniqueName: 'HAS_NON_UNIQUE_NAME',
   /** This location currently cannot be activated as inventory, pending orders or transfers are being relocated from this location. */
-  HasOngoingRelocation = 'HAS_ONGOING_RELOCATION',
+  HasOngoingRelocation: 'HAS_ONGOING_RELOCATION',
   /** Shop has reached its location limit. */
-  LocationLimit = 'LOCATION_LIMIT',
+  LocationLimit: 'LOCATION_LIMIT',
   /** Location not found. */
-  LocationNotFound = 'LOCATION_NOT_FOUND'
-}
+  LocationNotFound: 'LOCATION_NOT_FOUND'
+} as const;
 
+export type LocationActivateUserErrorCode = typeof LocationActivateUserErrorCode[keyof typeof LocationActivateUserErrorCode];
 /** The input fields to use to specify the address while adding a location. */
 export type LocationAddAddressInput = {
   /** The first line of the address. */
@@ -27940,41 +28166,42 @@ export type LocationAddUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `LocationAddUserError`. */
-export enum LocationAddUserErrorCode {
+export const LocationAddUserErrorCode = {
   /** ApiPermission metafields can only be created or updated by the app owner. */
-  AppNotAuthorized = 'APP_NOT_AUTHORIZED',
+  AppNotAuthorized: 'APP_NOT_AUTHORIZED',
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** The metafield violates a capability restriction. */
-  CapabilityViolation = 'CAPABILITY_VIOLATION',
+  CapabilityViolation: 'CAPABILITY_VIOLATION',
   /** Owner type can't be used in this mutation. */
-  DisallowedOwnerType = 'DISALLOWED_OWNER_TYPE',
+  DisallowedOwnerType: 'DISALLOWED_OWNER_TYPE',
   /** An error occurred while adding the location. */
-  GenericError = 'GENERIC_ERROR',
+  GenericError: 'GENERIC_ERROR',
   /** The input value isn't included in the list. */
-  Inclusion = 'INCLUSION',
+  Inclusion: 'INCLUSION',
   /** An internal error occurred. */
-  InternalError = 'INTERNAL_ERROR',
+  InternalError: 'INTERNAL_ERROR',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The type is invalid. */
-  InvalidType = 'INVALID_TYPE',
+  InvalidType: 'INVALID_TYPE',
   /** The ZIP code is not a valid US ZIP code. */
-  InvalidUsZipcode = 'INVALID_US_ZIPCODE',
+  InvalidUsZipcode: 'INVALID_US_ZIPCODE',
   /** The value is invalid for the metafield type or for the definition options. */
-  InvalidValue = 'INVALID_VALUE',
+  InvalidValue: 'INVALID_VALUE',
   /** The input value needs to be blank. */
-  Present = 'PRESENT',
+  Present: 'PRESENT',
   /** The input value is already taken. */
-  Taken = 'TAKEN',
+  Taken: 'TAKEN',
   /** The input value is too long. */
-  TooLong = 'TOO_LONG',
+  TooLong: 'TOO_LONG',
   /** The input value is too short. */
-  TooShort = 'TOO_SHORT',
+  TooShort: 'TOO_SHORT',
   /** Unstructured reserved namespace. */
-  UnstructuredReservedNamespace = 'UNSTRUCTURED_RESERVED_NAMESPACE'
-}
+  UnstructuredReservedNamespace: 'UNSTRUCTURED_RESERVED_NAMESPACE'
+} as const;
 
+export type LocationAddUserErrorCode = typeof LocationAddUserErrorCode[keyof typeof LocationAddUserErrorCode];
 /** Represents the address of a location. */
 export type LocationAddress = {
   __typename?: 'LocationAddress';
@@ -28036,44 +28263,45 @@ export type LocationDeactivateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `LocationDeactivateUserError`. */
-export enum LocationDeactivateUserErrorCode {
+export const LocationDeactivateUserErrorCode = {
   /** At least one location must fulfill online orders. */
-  CannotDisableOnlineOrderFulfillment = 'CANNOT_DISABLE_ONLINE_ORDER_FULFILLMENT',
+  CannotDisableOnlineOrderFulfillment: 'CANNOT_DISABLE_ONLINE_ORDER_FULFILLMENT',
   /** Destination location is the same as the location to be deactivated. */
-  DestinationLocationIsTheSameLocation = 'DESTINATION_LOCATION_IS_THE_SAME_LOCATION',
+  DestinationLocationIsTheSameLocation: 'DESTINATION_LOCATION_IS_THE_SAME_LOCATION',
   /** Destination location is not found or inactive. */
-  DestinationLocationNotFoundOrInactive = 'DESTINATION_LOCATION_NOT_FOUND_OR_INACTIVE',
+  DestinationLocationNotFoundOrInactive: 'DESTINATION_LOCATION_NOT_FOUND_OR_INACTIVE',
   /** Destination location is not Shopify managed. */
-  DestinationLocationNotShopifyManaged = 'DESTINATION_LOCATION_NOT_SHOPIFY_MANAGED',
+  DestinationLocationNotShopifyManaged: 'DESTINATION_LOCATION_NOT_SHOPIFY_MANAGED',
   /** Failed to relocate active inventories to the destination location. */
-  FailedToRelocateActiveInventories = 'FAILED_TO_RELOCATE_ACTIVE_INVENTORIES',
+  FailedToRelocateActiveInventories: 'FAILED_TO_RELOCATE_ACTIVE_INVENTORIES',
   /** Failed to relocate incoming movements to the destination location. */
-  FailedToRelocateIncomingMovements = 'FAILED_TO_RELOCATE_INCOMING_MOVEMENTS',
+  FailedToRelocateIncomingMovements: 'FAILED_TO_RELOCATE_INCOMING_MOVEMENTS',
   /** Failed to relocate open purchase orders to the destination location. */
-  FailedToRelocateOpenPurchaseOrders = 'FAILED_TO_RELOCATE_OPEN_PURCHASE_ORDERS',
+  FailedToRelocateOpenPurchaseOrders: 'FAILED_TO_RELOCATE_OPEN_PURCHASE_ORDERS',
   /** Location could not be deactivated without specifying where to relocate inventory at the location. */
-  HasActiveInventoryError = 'HAS_ACTIVE_INVENTORY_ERROR',
+  HasActiveInventoryError: 'HAS_ACTIVE_INVENTORY_ERROR',
   /** Location needs to be removed from Shopify POS for Retail subscription in Point of Sale channel. */
-  HasActiveRetailSubscriptions = 'HAS_ACTIVE_RETAIL_SUBSCRIPTIONS',
+  HasActiveRetailSubscriptions: 'HAS_ACTIVE_RETAIL_SUBSCRIPTIONS',
   /** Location could not be deactivated because it has pending orders. */
-  HasFulfillmentOrdersError = 'HAS_FULFILLMENT_ORDERS_ERROR',
+  HasFulfillmentOrdersError: 'HAS_FULFILLMENT_ORDERS_ERROR',
   /**
    * Location could not be deactivated because it has incoming inventory quantities from third party
    *         applications.
    */
-  HasIncomingFromExternalDocumentSources = 'HAS_INCOMING_FROM_EXTERNAL_DOCUMENT_SOURCES',
+  HasIncomingFromExternalDocumentSources: 'HAS_INCOMING_FROM_EXTERNAL_DOCUMENT_SOURCES',
   /** Location could not be deactivated because it has open Shopify Fulfillment Network transfers. */
-  HasIncomingMovementsError = 'HAS_INCOMING_MOVEMENTS_ERROR',
+  HasIncomingMovementsError: 'HAS_INCOMING_MOVEMENTS_ERROR',
   /** Location could not be deactivated because it has open purchase orders. */
-  HasOpenPurchaseOrdersError = 'HAS_OPEN_PURCHASE_ORDERS_ERROR',
+  HasOpenPurchaseOrdersError: 'HAS_OPEN_PURCHASE_ORDERS_ERROR',
   /** Location not found. */
-  LocationNotFound = 'LOCATION_NOT_FOUND',
+  LocationNotFound: 'LOCATION_NOT_FOUND',
   /** Location either has a fulfillment service or is the only location with a shipping address. */
-  PermanentlyBlockedFromDeactivationError = 'PERMANENTLY_BLOCKED_FROM_DEACTIVATION_ERROR',
+  PermanentlyBlockedFromDeactivationError: 'PERMANENTLY_BLOCKED_FROM_DEACTIVATION_ERROR',
   /** Location has incoming inventory. The location can be deactivated after the inventory has been received. */
-  TemporarilyBlockedFromDeactivationError = 'TEMPORARILY_BLOCKED_FROM_DEACTIVATION_ERROR'
-}
+  TemporarilyBlockedFromDeactivationError: 'TEMPORARILY_BLOCKED_FROM_DEACTIVATION_ERROR'
+} as const;
 
+export type LocationDeactivateUserErrorCode = typeof LocationDeactivateUserErrorCode[keyof typeof LocationDeactivateUserErrorCode];
 /** Return type for `locationDelete` mutation. */
 export type LocationDeletePayload = {
   __typename?: 'LocationDeletePayload';
@@ -28095,21 +28323,22 @@ export type LocationDeleteUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `LocationDeleteUserError`. */
-export enum LocationDeleteUserErrorCode {
+export const LocationDeleteUserErrorCode = {
   /** An error occurred while deleting the location. */
-  GenericError = 'GENERIC_ERROR',
+  GenericError: 'GENERIC_ERROR',
   /** The location cannot be deleted while it has any active Retail subscriptions in the Point of Sale channel. */
-  LocationHasActiveRetailSubscription = 'LOCATION_HAS_ACTIVE_RETAIL_SUBSCRIPTION',
+  LocationHasActiveRetailSubscription: 'LOCATION_HAS_ACTIVE_RETAIL_SUBSCRIPTION',
   /** The location cannot be deleted while it has inventory. */
-  LocationHasInventory = 'LOCATION_HAS_INVENTORY',
+  LocationHasInventory: 'LOCATION_HAS_INVENTORY',
   /** The location cannot be deleted while it has pending orders. */
-  LocationHasPendingOrders = 'LOCATION_HAS_PENDING_ORDERS',
+  LocationHasPendingOrders: 'LOCATION_HAS_PENDING_ORDERS',
   /** The location cannot be deleted while it is active. */
-  LocationIsActive = 'LOCATION_IS_ACTIVE',
+  LocationIsActive: 'LOCATION_IS_ACTIVE',
   /** Location not found. */
-  LocationNotFound = 'LOCATION_NOT_FOUND'
-}
+  LocationNotFound: 'LOCATION_NOT_FOUND'
+} as const;
 
+export type LocationDeleteUserErrorCode = typeof LocationDeleteUserErrorCode[keyof typeof LocationDeleteUserErrorCode];
 /** An auto-generated type which holds one Location and a cursor during pagination. */
 export type LocationEdge = {
   __typename?: 'LocationEdge';
@@ -28177,47 +28406,48 @@ export type LocationEditUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `LocationEditUserError`. */
-export enum LocationEditUserErrorCode {
+export const LocationEditUserErrorCode = {
   /** ApiPermission metafields can only be created or updated by the app owner. */
-  AppNotAuthorized = 'APP_NOT_AUTHORIZED',
+  AppNotAuthorized: 'APP_NOT_AUTHORIZED',
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** At least one location must fulfill online orders. */
-  CannotDisableOnlineOrderFulfillment = 'CANNOT_DISABLE_ONLINE_ORDER_FULFILLMENT',
+  CannotDisableOnlineOrderFulfillment: 'CANNOT_DISABLE_ONLINE_ORDER_FULFILLMENT',
   /** Cannot modify the online order fulfillment preference for fulfillment service locations. */
-  CannotModifyOnlineOrderFulfillmentForFsLocation = 'CANNOT_MODIFY_ONLINE_ORDER_FULFILLMENT_FOR_FS_LOCATION',
+  CannotModifyOnlineOrderFulfillmentForFsLocation: 'CANNOT_MODIFY_ONLINE_ORDER_FULFILLMENT_FOR_FS_LOCATION',
   /** The metafield violates a capability restriction. */
-  CapabilityViolation = 'CAPABILITY_VIOLATION',
+  CapabilityViolation: 'CAPABILITY_VIOLATION',
   /** Owner type can't be used in this mutation. */
-  DisallowedOwnerType = 'DISALLOWED_OWNER_TYPE',
+  DisallowedOwnerType: 'DISALLOWED_OWNER_TYPE',
   /** An error occurred while editing the location. */
-  GenericError = 'GENERIC_ERROR',
+  GenericError: 'GENERIC_ERROR',
   /** The input value isn't included in the list. */
-  Inclusion = 'INCLUSION',
+  Inclusion: 'INCLUSION',
   /** An internal error occurred. */
-  InternalError = 'INTERNAL_ERROR',
+  InternalError: 'INTERNAL_ERROR',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The type is invalid. */
-  InvalidType = 'INVALID_TYPE',
+  InvalidType: 'INVALID_TYPE',
   /** The ZIP code is not a valid US ZIP code. */
-  InvalidUsZipcode = 'INVALID_US_ZIPCODE',
+  InvalidUsZipcode: 'INVALID_US_ZIPCODE',
   /** The value is invalid for the metafield type or for the definition options. */
-  InvalidValue = 'INVALID_VALUE',
+  InvalidValue: 'INVALID_VALUE',
   /** The record with the ID used as the input value couldn't be found. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** The input value needs to be blank. */
-  Present = 'PRESENT',
+  Present: 'PRESENT',
   /** The input value is already taken. */
-  Taken = 'TAKEN',
+  Taken: 'TAKEN',
   /** The input value is too long. */
-  TooLong = 'TOO_LONG',
+  TooLong: 'TOO_LONG',
   /** The input value is too short. */
-  TooShort = 'TOO_SHORT',
+  TooShort: 'TOO_SHORT',
   /** Unstructured reserved namespace. */
-  UnstructuredReservedNamespace = 'UNSTRUCTURED_RESERVED_NAMESPACE'
-}
+  UnstructuredReservedNamespace: 'UNSTRUCTURED_RESERVED_NAMESPACE'
+} as const;
 
+export type LocationEditUserErrorCode = typeof LocationEditUserErrorCode[keyof typeof LocationEditUserErrorCode];
 /** The input fields for identifying a location. */
 export type LocationIdentifierInput = {
   /** The [custom ID](https://shopify.dev/docs/apps/build/custom-data/metafields/working-with-custom-ids) of the location. */
@@ -28258,18 +28488,19 @@ export type LocationSnapshot = {
 };
 
 /** The set of valid sort keys for the Location query. */
-export enum LocationSortKeys {
+export const LocationSortKeys = {
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `name` value. */
-  Name = 'NAME',
+  Name: 'NAME',
   /**
    * Sort by relevance to the search terms when the `query` parameter is specified on the connection.
    * Don't use this sort key when no search query is specified.
    */
-  Relevance = 'RELEVANCE'
-}
+  Relevance: 'RELEVANCE'
+} as const;
 
+export type LocationSortKeys = typeof LocationSortKeys[keyof typeof LocationSortKeys];
 /** Represents a suggested address for a location. */
 export type LocationSuggestedAddress = {
   __typename?: 'LocationSuggestedAddress';
@@ -28444,29 +28675,31 @@ export type MailingAddressInput = {
 };
 
 /** Highest level of validation concerns identified for the address. */
-export enum MailingAddressValidationResult {
+export const MailingAddressValidationResult = {
   /** Indicates that the address has been validated and is very likely to contain invalid information. */
-  Error = 'ERROR',
+  Error: 'ERROR',
   /** Indicates that the address has been validated and no issues were found. */
-  NoIssues = 'NO_ISSUES',
+  NoIssues: 'NO_ISSUES',
   /** Indicates that the address has been validated and might contain invalid information. */
-  Warning = 'WARNING'
-}
+  Warning: 'WARNING'
+} as const;
 
+export type MailingAddressValidationResult = typeof MailingAddressValidationResult[keyof typeof MailingAddressValidationResult];
 /** The type of resource a payment mandate can be used for. */
-export enum MandateResourceType {
+export const MandateResourceType = {
   /** A credential stored on file for checkout. */
-  Checkout = 'CHECKOUT',
+  Checkout: 'CHECKOUT',
   /** A credential stored on file for merchant and customer initiated transactions. */
-  CredentialOnFile = 'CREDENTIAL_ON_FILE',
+  CredentialOnFile: 'CREDENTIAL_ON_FILE',
   /** A credential stored on file for a Draft Order. */
-  DraftOrder = 'DRAFT_ORDER',
+  DraftOrder: 'DRAFT_ORDER',
   /** A credential stored on file for an Order. */
-  Order = 'ORDER',
+  Order: 'ORDER',
   /** A credential stored for subscription billing attempts. */
-  Subscriptions = 'SUBSCRIPTIONS'
-}
+  Subscriptions: 'SUBSCRIPTIONS'
+} as const;
 
+export type MandateResourceType = typeof MandateResourceType[keyof typeof MandateResourceType];
 /**
  * Manual discount applications capture the intentions of a discount that was manually created for an order.
  *
@@ -28785,23 +29018,25 @@ export type MarketCatalogEdge = {
 };
 
 /** The application level for a market condition. */
-export enum MarketConditionApplicationType {
+export const MarketConditionApplicationType = {
   /** The condition matches all records of a given type. */
-  All = 'ALL',
+  All: 'ALL',
   /** The condition matches specified records of a given type. */
-  Specified = 'SPECIFIED'
-}
+  Specified: 'SPECIFIED'
+} as const;
 
+export type MarketConditionApplicationType = typeof MarketConditionApplicationType[keyof typeof MarketConditionApplicationType];
 /** The condition types for the condition set. */
-export enum MarketConditionType {
+export const MarketConditionType = {
   /** The condition checks the company location that the visitor is purchasing for. */
-  CompanyLocation = 'COMPANY_LOCATION',
+  CompanyLocation: 'COMPANY_LOCATION',
   /** The condition checks the location that the visitor is shopping from. */
-  Location = 'LOCATION',
+  Location: 'LOCATION',
   /** The condition checks the visitor's region. */
-  Region = 'REGION'
-}
+  Region: 'REGION'
+} as const;
 
+export type MarketConditionType = typeof MarketConditionType[keyof typeof MarketConditionType];
 /** The conditions that determine whether a visitor is in a market. */
 export type MarketConditions = {
   __typename?: 'MarketConditions';
@@ -28967,23 +29202,24 @@ export type MarketCurrencySettingsUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `MarketCurrencySettingsUserError`. */
-export enum MarketCurrencySettingsUserErrorCode {
+export const MarketCurrencySettingsUserErrorCode = {
   /** The currency settings of the given market cannot be changed because the market manager has exclusive control of pricing. */
-  ManagedMarket = 'MANAGED_MARKET',
+  ManagedMarket: 'MANAGED_MARKET',
   /** The specified market wasn't found. */
-  MarketNotFound = 'MARKET_NOT_FOUND',
+  MarketNotFound: 'MARKET_NOT_FOUND',
   /** The shop's payment gateway does not support enabling more than one currency. */
-  MultipleCurrenciesNotSupported = 'MULTIPLE_CURRENCIES_NOT_SUPPORTED',
+  MultipleCurrenciesNotSupported: 'MULTIPLE_CURRENCIES_NOT_SUPPORTED',
   /** Can't enable or disable local currencies on a single country market. */
-  NoLocalCurrenciesOnSingleCountryMarket = 'NO_LOCAL_CURRENCIES_ON_SINGLE_COUNTRY_MARKET',
+  NoLocalCurrenciesOnSingleCountryMarket: 'NO_LOCAL_CURRENCIES_ON_SINGLE_COUNTRY_MARKET',
   /** The primary market must use the shop currency. */
-  PrimaryMarketUsesShopCurrency = 'PRIMARY_MARKET_USES_SHOP_CURRENCY',
+  PrimaryMarketUsesShopCurrency: 'PRIMARY_MARKET_USES_SHOP_CURRENCY',
   /** This action is restricted if unified markets is enabled. */
-  UnifiedMarketsEnabled = 'UNIFIED_MARKETS_ENABLED',
+  UnifiedMarketsEnabled: 'UNIFIED_MARKETS_ENABLED',
   /** The specified currency is not supported. */
-  UnsupportedCurrency = 'UNSUPPORTED_CURRENCY'
-}
+  UnsupportedCurrency: 'UNSUPPORTED_CURRENCY'
+} as const;
 
+export type MarketCurrencySettingsUserErrorCode = typeof MarketCurrencySettingsUserErrorCode[keyof typeof MarketCurrencySettingsUserErrorCode];
 /** Return type for `marketDelete` mutation. */
 export type MarketDeletePayload = {
   __typename?: 'MarketDeletePayload';
@@ -29051,13 +29287,14 @@ export type MarketLocalizableResourceEdge = {
 };
 
 /** The type of resources that are market localizable. */
-export enum MarketLocalizableResourceType {
+export const MarketLocalizableResourceType = {
   /** A metafield. Market localizable fields: `value`. */
-  Metafield = 'METAFIELD',
+  Metafield: 'METAFIELD',
   /** A Metaobject. Market Localizable fields are determined by the Metaobject type. */
-  Metaobject = 'METAOBJECT'
-}
+  Metaobject: 'METAOBJECT'
+} as const;
 
+export type MarketLocalizableResourceType = typeof MarketLocalizableResourceType[keyof typeof MarketLocalizableResourceType];
 /** The market localization of a field within a resource, which is determined by the market ID. */
 export type MarketLocalization = {
   __typename?: 'MarketLocalization';
@@ -29197,25 +29434,27 @@ export type MarketRegionsDeletePayload = {
 };
 
 /** The possible market statuses. */
-export enum MarketStatus {
+export const MarketStatus = {
   /** The market is active. */
-  Active = 'ACTIVE',
+  Active: 'ACTIVE',
   /** The market is in draft. */
-  Draft = 'DRAFT'
-}
+  Draft: 'DRAFT'
+} as const;
 
+export type MarketStatus = typeof MarketStatus[keyof typeof MarketStatus];
 /** The market types. */
-export enum MarketType {
+export const MarketType = {
   /** The market applies to the visitor based on the company location. */
-  CompanyLocation = 'COMPANY_LOCATION',
+  CompanyLocation: 'COMPANY_LOCATION',
   /** The market applies to the visitor based on the location. */
-  Location = 'LOCATION',
+  Location: 'LOCATION',
   /** The market does not apply to any visitor. */
-  None = 'NONE',
+  None: 'NONE',
   /** The market applies to the visitor based on region. */
-  Region = 'REGION'
-}
+  Region: 'REGION'
+} as const;
 
+export type MarketType = typeof MarketType[keyof typeof MarketType];
 /** The input fields used to update a market. */
 export type MarketUpdateInput = {
   /** Catalog IDs to include in the market. */
@@ -29267,208 +29506,170 @@ export type MarketUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `MarketUserError`. */
-export enum MarketUserErrorCode {
+export const MarketUserErrorCode = {
   /** B2B markets must be merchant managed. */
-  B2BMarketMustBeMerchantManaged = 'B2B_MARKET_MUST_BE_MERCHANT_MANAGED',
+  B2BMarketMustBeMerchantManaged: 'B2B_MARKET_MUST_BE_MERCHANT_MANAGED',
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** Can't add customer account domain to a market. */
-  CannotAddCustomerDomain = 'CANNOT_ADD_CUSTOMER_DOMAIN',
-  /**
-   * Can't add regions to the primary market.
-   * @deprecated This will no longer be used after legacy markets are removed in April 2026
-   */
-  CannotAddRegionsToPrimaryMarket = 'CANNOT_ADD_REGIONS_TO_PRIMARY_MARKET',
-  /**
-   * Can't add the web presence to the primary market.
-   * @deprecated No longer used
-   */
-  CannotAddWebPresenceToPrimaryMarket = 'CANNOT_ADD_WEB_PRESENCE_TO_PRIMARY_MARKET',
+  CannotAddCustomerDomain: 'CANNOT_ADD_CUSTOMER_DOMAIN',
+  /** Can't add regions to the primary market. */
+  CannotAddRegionsToPrimaryMarket: 'CANNOT_ADD_REGIONS_TO_PRIMARY_MARKET',
+  /** Can't add the web presence to the primary market. */
+  CannotAddWebPresenceToPrimaryMarket: 'CANNOT_ADD_WEB_PRESENCE_TO_PRIMARY_MARKET',
   /** Can't delete the only region in a market. */
-  CannotDeleteOnlyRegion = 'CANNOT_DELETE_ONLY_REGION',
+  CannotDeleteOnlyRegion: 'CANNOT_DELETE_ONLY_REGION',
   /** Can't delete the primary market. */
-  CannotDeletePrimaryMarket = 'CANNOT_DELETE_PRIMARY_MARKET',
-  /**
-   * Can't delete the primary market's web presence.
-   * @deprecated No longer used
-   */
-  CannotDeletePrimaryMarketWebPresence = 'CANNOT_DELETE_PRIMARY_MARKET_WEB_PRESENCE',
+  CannotDeletePrimaryMarket: 'CANNOT_DELETE_PRIMARY_MARKET',
+  /** Can't delete the primary market's web presence. */
+  CannotDeletePrimaryMarketWebPresence: 'CANNOT_DELETE_PRIMARY_MARKET_WEB_PRESENCE',
   /** Can't disable the primary market. */
-  CannotDisablePrimaryMarket = 'CANNOT_DISABLE_PRIMARY_MARKET',
+  CannotDisablePrimaryMarket: 'CANNOT_DISABLE_PRIMARY_MARKET',
   /** Can't have both subfolder and domain web presences. */
-  CannotHaveBothSubfolderAndDomainWebPresences = 'CANNOT_HAVE_BOTH_SUBFOLDER_AND_DOMAIN_WEB_PRESENCES',
+  CannotHaveBothSubfolderAndDomainWebPresences: 'CANNOT_HAVE_BOTH_SUBFOLDER_AND_DOMAIN_WEB_PRESENCES',
   /** Can't have multiple subfolder web presences per market. */
-  CannotHaveMultipleSubfoldersPerMarket = 'CANNOT_HAVE_MULTIPLE_SUBFOLDERS_PER_MARKET',
+  CannotHaveMultipleSubfoldersPerMarket: 'CANNOT_HAVE_MULTIPLE_SUBFOLDERS_PER_MARKET',
   /** Can't pass both `subfolderSuffix` and `domainId`. */
-  CannotHaveSubfolderAndDomain = 'CANNOT_HAVE_SUBFOLDER_AND_DOMAIN',
+  CannotHaveSubfolderAndDomain: 'CANNOT_HAVE_SUBFOLDER_AND_DOMAIN',
   /** Can't set default locale to null. */
-  CannotSetDefaultLocaleToNull = 'CANNOT_SET_DEFAULT_LOCALE_TO_NULL',
+  CannotSetDefaultLocaleToNull: 'CANNOT_SET_DEFAULT_LOCALE_TO_NULL',
   /** Catalogs with volume pricing or quantity rules are not supported for the specified condition types. */
-  CatalogsWithVolumePricingOrQuantityRulesNotSupported = 'CATALOGS_WITH_VOLUME_PRICING_OR_QUANTITY_RULES_NOT_SUPPORTED',
+  CatalogsWithVolumePricingOrQuantityRulesNotSupported: 'CATALOGS_WITH_VOLUME_PRICING_OR_QUANTITY_RULES_NOT_SUPPORTED',
   /** Catalog condition types must be the same for all conditions on a catalog. */
-  CatalogConditionTypesMustBeTheSame = 'CATALOG_CONDITION_TYPES_MUST_BE_THE_SAME',
+  CatalogConditionTypesMustBeTheSame: 'CATALOG_CONDITION_TYPES_MUST_BE_THE_SAME',
   /** Catalogs and condition types are not compatible with each other. */
-  CatalogNotCompatibleWithConditionTypes = 'CATALOG_NOT_COMPATIBLE_WITH_CONDITION_TYPES',
+  CatalogNotCompatibleWithConditionTypes: 'CATALOG_NOT_COMPATIBLE_WITH_CONDITION_TYPES',
   /** A market can only have market catalogs. */
-  CatalogTypeNotSupported = 'CATALOG_TYPE_NOT_SUPPORTED',
+  CatalogTypeNotSupported: 'CATALOG_TYPE_NOT_SUPPORTED',
   /** One or more condition IDs were not found. */
-  ConditionsNotFound = 'CONDITIONS_NOT_FOUND',
+  ConditionsNotFound: 'CONDITIONS_NOT_FOUND',
   /** Contains regions that cannot be managed. */
-  ContainsRegionsThatCannotBeManaged = 'CONTAINS_REGIONS_THAT_CANNOT_BE_MANAGED',
+  ContainsRegionsThatCannotBeManaged: 'CONTAINS_REGIONS_THAT_CANNOT_BE_MANAGED',
   /** One or more customizations were not found. */
-  CustomizationsNotFound = 'CUSTOMIZATIONS_NOT_FOUND',
+  CustomizationsNotFound: 'CUSTOMIZATIONS_NOT_FOUND',
   /** The language isn't enabled on the store. */
-  DisabledLanguage = 'DISABLED_LANGUAGE',
+  DisabledLanguage: 'DISABLED_LANGUAGE',
   /** Domain was not found. */
-  DomainNotFound = 'DOMAIN_NOT_FOUND',
+  DomainNotFound: 'DOMAIN_NOT_FOUND',
   /** Duplicates found in languages. */
-  DuplicateLanguages = 'DUPLICATE_LANGUAGES',
+  DuplicateLanguages: 'DUPLICATE_LANGUAGES',
   /** Duplicate region market. */
-  DuplicateRegionMarket = 'DUPLICATE_REGION_MARKET',
+  DuplicateRegionMarket: 'DUPLICATE_REGION_MARKET',
   /** Duplicate unique market. */
-  DuplicateUniqueMarket = 'DUPLICATE_UNIQUE_MARKET',
+  DuplicateUniqueMarket: 'DUPLICATE_UNIQUE_MARKET',
   /** Exceeds max multi-context markets. */
-  ExceedsMaxMultiContextMarkets = 'EXCEEDS_MAX_MULTI_CONTEXT_MARKETS',
+  ExceedsMaxMultiContextMarkets: 'EXCEEDS_MAX_MULTI_CONTEXT_MARKETS',
   /** An error occurred. See the message for details. */
-  GenericError = 'GENERIC_ERROR',
+  GenericError: 'GENERIC_ERROR',
   /** The input value isn't included in the list. */
-  Inclusion = 'INCLUSION',
+  Inclusion: 'INCLUSION',
   /** Inclusive pricing cannot be added to a market with the specified condition types. */
-  InclusivePricingNotCompatibleWithConditionTypes = 'INCLUSIVE_PRICING_NOT_COMPATIBLE_WITH_CONDITION_TYPES',
+  InclusivePricingNotCompatibleWithConditionTypes: 'INCLUSIVE_PRICING_NOT_COMPATIBLE_WITH_CONDITION_TYPES',
   /** The specified conditions are not compatible with each other. */
-  IncompatibleConditions = 'INCOMPATIBLE_CONDITIONS',
+  IncompatibleConditions: 'INCOMPATIBLE_CONDITIONS',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The province format is invalid. */
-  InvalidProvinceFormat = 'INVALID_PROVINCE_FORMAT',
-  /**
-   * Can't add selected responders to a province driven market.
-   * @deprecated No longer used
-   */
-  InvalidResponderForProvinceDrivenMarket = 'INVALID_RESPONDER_FOR_PROVINCE_DRIVEN_MARKET',
+  InvalidProvinceFormat: 'INVALID_PROVINCE_FORMAT',
+  /** Can't add selected responders to a province driven market. */
+  InvalidResponderForProvinceDrivenMarket: 'INVALID_RESPONDER_FOR_PROVINCE_DRIVEN_MARKET',
   /** Invalid combination of status and enabled. */
-  InvalidStatusAndEnabledCombination = 'INVALID_STATUS_AND_ENABLED_COMBINATION',
+  InvalidStatusAndEnabledCombination: 'INVALID_STATUS_AND_ENABLED_COMBINATION',
   /** Location match all is only valid with one non-match all region. */
-  LocationMatchAllRequiresOneSpecificRegion = 'LOCATION_MATCH_ALL_REQUIRES_ONE_SPECIFIC_REGION',
+  LocationMatchAllRequiresOneSpecificRegion: 'LOCATION_MATCH_ALL_REQUIRES_ONE_SPECIFIC_REGION',
   /** A location's country does not match the region's country. */
-  LocationRegionCountryMismatch = 'LOCATION_REGION_COUNTRY_MISMATCH',
+  LocationRegionCountryMismatch: 'LOCATION_REGION_COUNTRY_MISMATCH',
   /** The currency settings of the given market cannot be changed because the market manager has exclusive control of pricing. */
-  ManagedMarket = 'MANAGED_MARKET',
+  ManagedMarket: 'MANAGED_MARKET',
   /** Catalogs created by Managed Markets cannot be added to a market. */
-  ManagedMarketsCatalogNotAllowed = 'MANAGED_MARKETS_CATALOG_NOT_ALLOWED',
+  ManagedMarketsCatalogNotAllowed: 'MANAGED_MARKETS_CATALOG_NOT_ALLOWED',
   /** A direct connection catalog can't be attached to a market. */
-  MarketCantHaveDirectConnectionCatalog = 'MARKET_CANT_HAVE_DIRECT_CONNECTION_CATALOG',
-  /**
-   * Market and condition types are not compatible with each other.
-   * @deprecated This will no longer be used after legacy markets are removed in April 2026
-   */
-  MarketNotCompatibleWithConditionTypes = 'MARKET_NOT_COMPATIBLE_WITH_CONDITION_TYPES',
+  MarketCantHaveDirectConnectionCatalog: 'MARKET_CANT_HAVE_DIRECT_CONNECTION_CATALOG',
+  /** Market and condition types are not compatible with each other. */
+  MarketNotCompatibleWithConditionTypes: 'MARKET_NOT_COMPATIBLE_WITH_CONDITION_TYPES',
   /** The market wasn't found. */
-  MarketNotFound = 'MARKET_NOT_FOUND',
+  MarketNotFound: 'MARKET_NOT_FOUND',
   /** Can't add another web presence to the market. */
-  MarketReachedWebPresenceLimit = 'MARKET_REACHED_WEB_PRESENCE_LIMIT',
+  MarketReachedWebPresenceLimit: 'MARKET_REACHED_WEB_PRESENCE_LIMIT',
   /** The country code is missing. */
-  MissingCountryCode = 'MISSING_COUNTRY_CODE',
+  MissingCountryCode: 'MISSING_COUNTRY_CODE',
   /** The province code is missing. */
-  MissingProvinceCode = 'MISSING_PROVINCE_CODE',
+  MissingProvinceCode: 'MISSING_PROVINCE_CODE',
   /** All retail locations in a market must be in the same country. */
-  MixedCountryLocationsNotAllowed = 'MIXED_COUNTRY_LOCATIONS_NOT_ALLOWED',
+  MixedCountryLocationsNotAllowed: 'MIXED_COUNTRY_LOCATIONS_NOT_ALLOWED',
   /** The shop's payment gateway does not support enabling more than one currency. */
-  MultipleCurrenciesNotSupported = 'MULTIPLE_CURRENCIES_NOT_SUPPORTED',
+  MultipleCurrenciesNotSupported: 'MULTIPLE_CURRENCIES_NOT_SUPPORTED',
   /** Can’t delete, disable, or change the type of the last region market. */
-  MustHaveAtLeastOneActiveRegionMarket = 'MUST_HAVE_AT_LEAST_ONE_ACTIVE_REGION_MARKET',
+  MustHaveAtLeastOneActiveRegionMarket: 'MUST_HAVE_AT_LEAST_ONE_ACTIVE_REGION_MARKET',
   /** Your shop is not entitled to activate markets of this type. */
-  NotEntitledToActivateMarket = 'NOT_ENTITLED_TO_ACTIVATE_MARKET',
+  NotEntitledToActivateMarket: 'NOT_ENTITLED_TO_ACTIVATE_MARKET',
   /** No languages selected. */
-  NoLanguages = 'NO_LANGUAGES',
-  /**
-   * Can't enable or disable local currencies on a single country market.
-   * @deprecated This will no longer be used after legacy markets are removed in April 2026
-   */
-  NoLocalCurrenciesOnSingleCountryMarket = 'NO_LOCAL_CURRENCIES_ON_SINGLE_COUNTRY_MARKET',
-  /**
-   * Rounding is not supported if unified markets are not enabled.
-   * @deprecated This will no longer be used after legacy markets are removed in April 2026
-   */
-  NoRoundingOnLegacyMarket = 'NO_ROUNDING_ON_LEGACY_MARKET',
+  NoLanguages: 'NO_LANGUAGES',
+  /** Can't enable or disable local currencies on a single country market. */
+  NoLocalCurrenciesOnSingleCountryMarket: 'NO_LOCAL_CURRENCIES_ON_SINGLE_COUNTRY_MARKET',
+  /** Rounding is not supported if unified markets are not enabled. */
+  NoRoundingOnLegacyMarket: 'NO_ROUNDING_ON_LEGACY_MARKET',
   /** POS location markets must be merchant managed. */
-  PosLocationMarketMustBeMerchantManaged = 'POS_LOCATION_MARKET_MUST_BE_MERCHANT_MANAGED',
-  /**
-   * The primary market must use the primary domain.
-   * @deprecated This will no longer be used after legacy markets are removed in April 2026
-   */
-  PrimaryMarketMustUsePrimaryDomain = 'PRIMARY_MARKET_MUST_USE_PRIMARY_DOMAIN',
+  PosLocationMarketMustBeMerchantManaged: 'POS_LOCATION_MARKET_MUST_BE_MERCHANT_MANAGED',
+  /** The primary market must use the primary domain. */
+  PrimaryMarketMustUsePrimaryDomain: 'PRIMARY_MARKET_MUST_USE_PRIMARY_DOMAIN',
   /** The province doesn't exist. */
-  ProvinceDoesNotExist = 'PROVINCE_DOES_NOT_EXIST',
+  ProvinceDoesNotExist: 'PROVINCE_DOES_NOT_EXIST',
   /** The market region wasn't found. */
-  RegionNotFound = 'REGION_NOT_FOUND',
+  RegionNotFound: 'REGION_NOT_FOUND',
   /** Cannot add region-specific language. */
-  RegionSpecificLanguage = 'REGION_SPECIFIC_LANGUAGE',
+  RegionSpecificLanguage: 'REGION_SPECIFIC_LANGUAGE',
   /** One of `subfolderSuffix` or `domainId` is required. */
-  RequiresDomainOrSubfolder = 'REQUIRES_DOMAIN_OR_SUBFOLDER',
-  /**
-   * Exactly one input option is required.
-   * @deprecated No longer used
-   */
-  RequiresExactlyOneOption = 'REQUIRES_EXACTLY_ONE_OPTION',
+  RequiresDomainOrSubfolder: 'REQUIRES_DOMAIN_OR_SUBFOLDER',
+  /** Exactly one input option is required. */
+  RequiresExactlyOneOption: 'REQUIRES_EXACTLY_ONE_OPTION',
   /** Retail location currency must be local. */
-  RetailLocationCurrencyMustBeLocal = 'RETAIL_LOCATION_CURRENCY_MUST_BE_LOCAL',
+  RetailLocationCurrencyMustBeLocal: 'RETAIL_LOCATION_CURRENCY_MUST_BE_LOCAL',
   /** The shop must have a web presence that uses the primary domain. */
-  ShopMustHavePrimaryDomainWebPresence = 'SHOP_MUST_HAVE_PRIMARY_DOMAIN_WEB_PRESENCE',
-  /**
-   * Can't have more than 50 markets.
-   * @deprecated No longer used
-   */
-  ShopReachedMarketsLimit = 'SHOP_REACHED_MARKETS_LIMIT',
+  ShopMustHavePrimaryDomainWebPresence: 'SHOP_MUST_HAVE_PRIMARY_DOMAIN_WEB_PRESENCE',
+  /** Can't have more than 50 markets. */
+  ShopReachedMarketsLimit: 'SHOP_REACHED_MARKETS_LIMIT',
   /** Specified conditions cannot be empty. */
-  SpecifiedConditionsCannotBeEmpty = 'SPECIFIED_CONDITIONS_CANNOT_BE_EMPTY',
+  SpecifiedConditionsCannotBeEmpty: 'SPECIFIED_CONDITIONS_CANNOT_BE_EMPTY',
   /** With an ID list in input, SPECIFIED is not needed. */
-  SpecifiedNotValidForInput = 'SPECIFIED_NOT_VALID_FOR_INPUT',
+  SpecifiedNotValidForInput: 'SPECIFIED_NOT_VALID_FOR_INPUT',
   /** The subfolder suffix is invalid, please provide a different value. */
-  SubfolderSuffixCannotBeScriptCode = 'SUBFOLDER_SUFFIX_CANNOT_BE_SCRIPT_CODE',
+  SubfolderSuffixCannotBeScriptCode: 'SUBFOLDER_SUFFIX_CANNOT_BE_SCRIPT_CODE',
   /** The subfolder suffix must be at least 2 letters. */
-  SubfolderSuffixMustBeAtLeast_2Letters = 'SUBFOLDER_SUFFIX_MUST_BE_AT_LEAST_2_LETTERS',
-  /**
-   * The subfolder suffix must contain only letters.
-   * @deprecated No longer used
-   */
-  SubfolderSuffixMustContainOnlyLetters = 'SUBFOLDER_SUFFIX_MUST_CONTAIN_ONLY_LETTERS',
+  SubfolderSuffixMustBeAtLeast_2Letters: 'SUBFOLDER_SUFFIX_MUST_BE_AT_LEAST_2_LETTERS',
+  /** The subfolder suffix must contain only letters. */
+  SubfolderSuffixMustContainOnlyLetters: 'SUBFOLDER_SUFFIX_MUST_CONTAIN_ONLY_LETTERS',
   /** The input value is already taken. */
-  Taken = 'TAKEN',
+  Taken: 'TAKEN',
   /** The input value is too long. */
-  TooLong = 'TOO_LONG',
+  TooLong: 'TOO_LONG',
   /** The input value is too short. */
-  TooShort = 'TOO_SHORT',
-  /**
-   * Unified markets are not enabled.
-   * @deprecated This will no longer be used after legacy markets are removed in April 2026
-   */
-  UnifiedMarketsNotEnabled = 'UNIFIED_MARKETS_NOT_ENABLED',
+  TooShort: 'TOO_SHORT',
+  /** Unified markets are not enabled. */
+  UnifiedMarketsNotEnabled: 'UNIFIED_MARKETS_NOT_ENABLED',
   /** Managing this catalog is not supported by your plan. */
-  UnpermittedEntitlementsMarketCatalogs = 'UNPERMITTED_ENTITLEMENTS_MARKET_CATALOGS',
+  UnpermittedEntitlementsMarketCatalogs: 'UNPERMITTED_ENTITLEMENTS_MARKET_CATALOGS',
   /** The language isn't published to the store. */
-  UnpublishedLanguage = 'UNPUBLISHED_LANGUAGE',
+  UnpublishedLanguage: 'UNPUBLISHED_LANGUAGE',
   /** Can't add unsupported country or region. */
-  UnsupportedCountryRegion = 'UNSUPPORTED_COUNTRY_REGION',
+  UnsupportedCountryRegion: 'UNSUPPORTED_COUNTRY_REGION',
   /** The specified currency is not supported. */
-  UnsupportedCurrency = 'UNSUPPORTED_CURRENCY',
+  UnsupportedCurrency: 'UNSUPPORTED_CURRENCY',
   /** The user doesn't have permission access to create or edit markets. */
-  UserLacksPermission = 'USER_LACKS_PERMISSION',
+  UserLacksPermission: 'USER_LACKS_PERMISSION',
   /** Web presences and condition types are not compatible with each other. */
-  WebPresenceNotCompatibleWithConditionTypes = 'WEB_PRESENCE_NOT_COMPATIBLE_WITH_CONDITION_TYPES',
+  WebPresenceNotCompatibleWithConditionTypes: 'WEB_PRESENCE_NOT_COMPATIBLE_WITH_CONDITION_TYPES',
   /** The market web presence wasn't found. */
-  WebPresenceNotFound = 'WEB_PRESENCE_NOT_FOUND',
+  WebPresenceNotFound: 'WEB_PRESENCE_NOT_FOUND',
   /** Can't add web presence to the another market. */
-  WebPresenceReachedMarketsLimit = 'WEB_PRESENCE_REACHED_MARKETS_LIMIT',
-  /**
-   * A web presence cannot be added to a market with type retail location.
-   * @deprecated No longer used
-   */
-  WebPresenceRetailLocation = 'WEB_PRESENCE_RETAIL_LOCATION',
+  WebPresenceReachedMarketsLimit: 'WEB_PRESENCE_REACHED_MARKETS_LIMIT',
+  /** A web presence cannot be added to a market with type retail location. */
+  WebPresenceRetailLocation: 'WEB_PRESENCE_RETAIL_LOCATION',
   /** Matching ALL or NONE isn't supported for this driver type. */
-  WildcardNotSupported = 'WILDCARD_NOT_SUPPORTED'
-}
+  WildcardNotSupported: 'WILDCARD_NOT_SUPPORTED'
+} as const;
 
+export type MarketUserErrorCode = typeof MarketUserErrorCode[keyof typeof MarketUserErrorCode];
 /**
  * The market’s web presence, which defines its SEO strategy. This can be a different domain
  * (e.g. `example.ca`), subdomain (e.g. `ca.example.com`), or subfolders of the primary
@@ -29837,19 +30038,20 @@ export type MarketingActivityEdge = {
 };
 
 /** The error code resulted from the marketing activity extension integration. */
-export enum MarketingActivityExtensionAppErrorCode {
+export const MarketingActivityExtensionAppErrorCode = {
   /** The app is either not responding or returning unexpected data. */
-  ApiError = 'API_ERROR',
+  ApiError: 'API_ERROR',
   /** The app needs to be installed. */
-  InstallRequiredError = 'INSTALL_REQUIRED_ERROR',
+  InstallRequiredError: 'INSTALL_REQUIRED_ERROR',
   /** The shop/user must be onboarded to use the app. */
-  NotOnboardedError = 'NOT_ONBOARDED_ERROR',
+  NotOnboardedError: 'NOT_ONBOARDED_ERROR',
   /** The app has returned an error when invoking the platform. */
-  PlatformError = 'PLATFORM_ERROR',
+  PlatformError: 'PLATFORM_ERROR',
   /** The app has returned validation errors. */
-  ValidationError = 'VALIDATION_ERROR'
-}
+  ValidationError: 'VALIDATION_ERROR'
+} as const;
 
+export type MarketingActivityExtensionAppErrorCode = typeof MarketingActivityExtensionAppErrorCode[keyof typeof MarketingActivityExtensionAppErrorCode];
 /** Represents errors returned from apps when using the marketing activity extension. */
 export type MarketingActivityExtensionAppErrors = {
   __typename?: 'MarketingActivityExtensionAppErrors';
@@ -29860,83 +30062,88 @@ export type MarketingActivityExtensionAppErrors = {
 };
 
 /** Set of possible statuses for an external marketing activity. */
-export enum MarketingActivityExternalStatus {
+export const MarketingActivityExternalStatus = {
   /** This marketing activity is currently running. */
-  Active = 'ACTIVE',
+  Active: 'ACTIVE',
   /** This marketing activity was deleted and it was triggered from outside of Shopify. */
-  DeletedExternally = 'DELETED_EXTERNALLY',
+  DeletedExternally: 'DELETED_EXTERNALLY',
   /** This marketing activity has completed running. */
-  Inactive = 'INACTIVE',
+  Inactive: 'INACTIVE',
   /** This marketing activity is currently not running. */
-  Paused = 'PAUSED',
+  Paused: 'PAUSED',
   /** This marketing activity is scheduled to run. */
-  Scheduled = 'SCHEDULED',
+  Scheduled: 'SCHEDULED',
   /** The marketing activity's status is unknown. */
-  Undefined = 'UNDEFINED'
-}
+  Undefined: 'UNDEFINED'
+} as const;
 
+export type MarketingActivityExternalStatus = typeof MarketingActivityExternalStatus[keyof typeof MarketingActivityExternalStatus];
 /** Hierarchy levels for external marketing activities. */
-export enum MarketingActivityHierarchyLevel {
+export const MarketingActivityHierarchyLevel = {
   /** An advertisement activity. Must be parented by an ad group or a campaign activity, and must be assigned tracking parameters (URL or UTM). */
-  Ad = 'AD',
+  Ad: 'AD',
   /** A group of advertisement activities. Must be parented by a campaign activity. */
-  AdGroup = 'AD_GROUP',
+  AdGroup: 'AD_GROUP',
   /** A campaign activity. May contain either ad groups or ads as child activities. If childless, then the campaign activity should have tracking parameters assigned (URL or UTM) otherwise it won't appear in marketing reports. */
-  Campaign = 'CAMPAIGN'
-}
+  Campaign: 'CAMPAIGN'
+} as const;
 
+export type MarketingActivityHierarchyLevel = typeof MarketingActivityHierarchyLevel[keyof typeof MarketingActivityHierarchyLevel];
 /** The set of valid sort keys for the MarketingActivity query. */
-export enum MarketingActivitySortKeys {
+export const MarketingActivitySortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `title` value. */
-  Title = 'TITLE'
-}
+  Title: 'TITLE'
+} as const;
 
+export type MarketingActivitySortKeys = typeof MarketingActivitySortKeys[keyof typeof MarketingActivitySortKeys];
 /** Status helps to identify if this marketing activity has been completed, queued, failed etc. */
-export enum MarketingActivityStatus {
+export const MarketingActivityStatus = {
   /** This marketing activity is currently running. */
-  Active = 'ACTIVE',
+  Active: 'ACTIVE',
   /** This marketing activity is permanently unavailable. */
-  Deleted = 'DELETED',
+  Deleted: 'DELETED',
   /** This marketing activity was deleted and it was triggered from outside of Shopify. */
-  DeletedExternally = 'DELETED_EXTERNALLY',
+  DeletedExternally: 'DELETED_EXTERNALLY',
   /** This marketing activity is disconnected and no longer editable. */
-  Disconnected = 'DISCONNECTED',
+  Disconnected: 'DISCONNECTED',
   /** This marketing activity has been edited, but it is not yet created. */
-  Draft = 'DRAFT',
+  Draft: 'DRAFT',
   /** This marketing activity is unable to run. */
-  Failed = 'FAILED',
+  Failed: 'FAILED',
   /** This marketing activity has completed running. */
-  Inactive = 'INACTIVE',
+  Inactive: 'INACTIVE',
   /** This marketing activity is currently not running. */
-  Paused = 'PAUSED',
+  Paused: 'PAUSED',
   /** This marketing activity is pending creation on the app's marketing platform. */
-  Pending = 'PENDING',
+  Pending: 'PENDING',
   /** This marketing activity is scheduled to run. */
-  Scheduled = 'SCHEDULED',
+  Scheduled: 'SCHEDULED',
   /** The marketing activity's status is unknown. */
-  Undefined = 'UNDEFINED'
-}
+  Undefined: 'UNDEFINED'
+} as const;
 
+export type MarketingActivityStatus = typeof MarketingActivityStatus[keyof typeof MarketingActivityStatus];
 /** StatusBadgeType helps to identify the color of the status badge. */
-export enum MarketingActivityStatusBadgeType {
+export const MarketingActivityStatusBadgeType = {
   /** This status badge has type attention. */
-  Attention = 'ATTENTION',
+  Attention: 'ATTENTION',
   /** This status badge has type critical. */
-  Critical = 'CRITICAL',
+  Critical: 'CRITICAL',
   /** This status badge has type default. */
-  Default = 'DEFAULT',
+  Default: 'DEFAULT',
   /** This status badge has type info. */
-  Info = 'INFO',
+  Info: 'INFO',
   /** This status badge has type success. */
-  Success = 'SUCCESS',
+  Success: 'SUCCESS',
   /** This status badge has type warning. */
-  Warning = 'WARNING'
-}
+  Warning: 'WARNING'
+} as const;
 
+export type MarketingActivityStatusBadgeType = typeof MarketingActivityStatusBadgeType[keyof typeof MarketingActivityStatusBadgeType];
 /** The input fields required to update an externally managed marketing activity. */
 export type MarketingActivityUpdateExternalInput = {
   /** The amount spent on the marketing activity. */
@@ -30056,65 +30263,66 @@ export type MarketingActivityUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `MarketingActivityUserError`. */
-export enum MarketingActivityUserErrorCode {
+export const MarketingActivityUserErrorCode = {
   /** The marketing activity must be an external activity. */
-  ActivityNotExternal = 'ACTIVITY_NOT_EXTERNAL',
+  ActivityNotExternal: 'ACTIVITY_NOT_EXTERNAL',
   /** This activity has child activities and thus cannot be deleted. Child activities must be deleted before a parent activity. */
-  CannotDeleteActivityWithChildEvents = 'CANNOT_DELETE_ACTIVITY_WITH_CHILD_EVENTS',
+  CannotDeleteActivityWithChildEvents: 'CANNOT_DELETE_ACTIVITY_WITH_CHILD_EVENTS',
   /** The activity's tactic can not be updated from STOREFRONT_APP. */
-  CannotUpdateTacticIfOriginallyStorefrontApp = 'CANNOT_UPDATE_TACTIC_IF_ORIGINALLY_STOREFRONT_APP',
+  CannotUpdateTacticIfOriginallyStorefrontApp: 'CANNOT_UPDATE_TACTIC_IF_ORIGINALLY_STOREFRONT_APP',
   /** The activity's tactic can not be updated to STOREFRONT_APP. This type of tactic can only be specified when creating a new activity. */
-  CannotUpdateTacticToStorefrontApp = 'CANNOT_UPDATE_TACTIC_TO_STOREFRONT_APP',
+  CannotUpdateTacticToStorefrontApp: 'CANNOT_UPDATE_TACTIC_TO_STOREFRONT_APP',
   /** All currency codes provided in the input need to match. */
-  CurrencyCodeMismatchInput = 'CURRENCY_CODE_MISMATCH_INPUT',
+  CurrencyCodeMismatchInput: 'CURRENCY_CODE_MISMATCH_INPUT',
   /** A mutation can not be ran because a job to delete all external activities has been enqueued, which happens either from calling the marketingActivitiesDeleteAllExternal mutation or as a result of an app uninstall. */
-  DeleteJobEnqueued = 'DELETE_JOB_ENQUEUED',
+  DeleteJobEnqueued: 'DELETE_JOB_ENQUEUED',
   /** The job to delete all external activities failed to enqueue. */
-  DeleteJobFailedToEnqueue = 'DELETE_JOB_FAILED_TO_ENQUEUE',
+  DeleteJobFailedToEnqueue: 'DELETE_JOB_FAILED_TO_ENQUEUE',
   /** The channel handle value cannot be modified. */
-  ImmutableChannelHandle = 'IMMUTABLE_CHANNEL_HANDLE',
+  ImmutableChannelHandle: 'IMMUTABLE_CHANNEL_HANDLE',
   /** The hierarchy level cannot be modified. */
-  ImmutableHierarchyLevel = 'IMMUTABLE_HIERARCHY_LEVEL',
+  ImmutableHierarchyLevel: 'IMMUTABLE_HIERARCHY_LEVEL',
   /** The parent activity cannot be modified. */
-  ImmutableParentId = 'IMMUTABLE_PARENT_ID',
+  ImmutableParentId: 'IMMUTABLE_PARENT_ID',
   /** The URL parameter value cannot be modified. */
-  ImmutableUrlParameter = 'IMMUTABLE_URL_PARAMETER',
+  ImmutableUrlParameter: 'IMMUTABLE_URL_PARAMETER',
   /** The UTM parameters cannot be modified. */
-  ImmutableUtmParameters = 'IMMUTABLE_UTM_PARAMETERS',
+  ImmutableUtmParameters: 'IMMUTABLE_UTM_PARAMETERS',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The channel handle is not recognized. */
-  InvalidChannelHandle = 'INVALID_CHANNEL_HANDLE',
+  InvalidChannelHandle: 'INVALID_CHANNEL_HANDLE',
   /** Either the marketing activity ID or remote ID must be provided for the activity to be deleted. */
-  InvalidDeleteActivityExternalArguments = 'INVALID_DELETE_ACTIVITY_EXTERNAL_ARGUMENTS',
+  InvalidDeleteActivityExternalArguments: 'INVALID_DELETE_ACTIVITY_EXTERNAL_ARGUMENTS',
   /** Either the channel_handle or delete_engagements_for_all_channels must be provided when deleting a marketing engagement. */
-  InvalidDeleteEngagementsArguments = 'INVALID_DELETE_ENGAGEMENTS_ARGUMENTS',
+  InvalidDeleteEngagementsArguments: 'INVALID_DELETE_ENGAGEMENTS_ARGUMENTS',
   /** Either the marketing activity ID, remote ID, or UTM must be provided. */
-  InvalidMarketingActivityExternalArguments = 'INVALID_MARKETING_ACTIVITY_EXTERNAL_ARGUMENTS',
+  InvalidMarketingActivityExternalArguments: 'INVALID_MARKETING_ACTIVITY_EXTERNAL_ARGUMENTS',
   /** For activity level engagement, either the marketing activity ID or remote ID must be provided. For channel level engagement, the channel handle must be provided. */
-  InvalidMarketingEngagementArguments = 'INVALID_MARKETING_ENGAGEMENT_ARGUMENTS',
+  InvalidMarketingEngagementArguments: 'INVALID_MARKETING_ENGAGEMENT_ARGUMENTS',
   /** No identifier found. For activity level engagement, either the marketing activity ID or remote ID must be provided. For channel level engagement, the channel handle must be provided. */
-  InvalidMarketingEngagementArgumentMissing = 'INVALID_MARKETING_ENGAGEMENT_ARGUMENT_MISSING',
+  InvalidMarketingEngagementArgumentMissing: 'INVALID_MARKETING_ENGAGEMENT_ARGUMENT_MISSING',
   /** The remote ID does not correspond to an existing activity. */
-  InvalidRemoteId = 'INVALID_REMOTE_ID',
+  InvalidRemoteId: 'INVALID_REMOTE_ID',
   /** The currency codes provided need to match the referenced marketing activity's currency code. */
-  MarketingActivityCurrencyCodeMismatch = 'MARKETING_ACTIVITY_CURRENCY_CODE_MISMATCH',
+  MarketingActivityCurrencyCodeMismatch: 'MARKETING_ACTIVITY_CURRENCY_CODE_MISMATCH',
   /** Marketing activity does not exist. */
-  MarketingActivityDoesNotExist = 'MARKETING_ACTIVITY_DOES_NOT_EXIST',
+  MarketingActivityDoesNotExist: 'MARKETING_ACTIVITY_DOES_NOT_EXIST',
   /** A marketing activity with the same remote ID already exists. */
-  MarketingActivityWithRemoteIdAlreadyExists = 'MARKETING_ACTIVITY_WITH_REMOTE_ID_ALREADY_EXISTS',
+  MarketingActivityWithRemoteIdAlreadyExists: 'MARKETING_ACTIVITY_WITH_REMOTE_ID_ALREADY_EXISTS',
   /** A marketing activity with the same URL parameter value already exists. */
-  MarketingActivityWithUrlParameterValueAlreadyExists = 'MARKETING_ACTIVITY_WITH_URL_PARAMETER_VALUE_ALREADY_EXISTS',
+  MarketingActivityWithUrlParameterValueAlreadyExists: 'MARKETING_ACTIVITY_WITH_URL_PARAMETER_VALUE_ALREADY_EXISTS',
   /** A marketing activity with the same UTM campaign, medium, and source already exists. */
-  MarketingActivityWithUtmCampaignAlreadyExists = 'MARKETING_ACTIVITY_WITH_UTM_CAMPAIGN_ALREADY_EXISTS',
+  MarketingActivityWithUtmCampaignAlreadyExists: 'MARKETING_ACTIVITY_WITH_UTM_CAMPAIGN_ALREADY_EXISTS',
   /** Marketing activity is not valid, the associated marketing event does not exist. */
-  MarketingEventDoesNotExist = 'MARKETING_EVENT_DOES_NOT_EXIST',
+  MarketingEventDoesNotExist: 'MARKETING_EVENT_DOES_NOT_EXIST',
   /** Non-hierarchical marketing activities must have UTM parameters or a URL parameter value. */
-  NonHierarchialRequiresUtmUrlParameter = 'NON_HIERARCHIAL_REQUIRES_UTM_URL_PARAMETER',
+  NonHierarchialRequiresUtmUrlParameter: 'NON_HIERARCHIAL_REQUIRES_UTM_URL_PARAMETER',
   /** The input value is already taken. */
-  Taken = 'TAKEN'
-}
+  Taken: 'TAKEN'
+} as const;
 
+export type MarketingActivityUserErrorCode = typeof MarketingActivityUserErrorCode[keyof typeof MarketingActivityUserErrorCode];
 /** This type combines budget amount and its marketing budget type. */
 export type MarketingBudget = {
   __typename?: 'MarketingBudget';
@@ -30125,27 +30333,29 @@ export type MarketingBudget = {
 };
 
 /** The budget type for a marketing activity. */
-export enum MarketingBudgetBudgetType {
+export const MarketingBudgetBudgetType = {
   /** A daily budget. */
-  Daily = 'DAILY',
+  Daily: 'DAILY',
   /** A budget for the lifetime of a marketing activity. */
-  Lifetime = 'LIFETIME'
-}
+  Lifetime: 'LIFETIME'
+} as const;
 
+export type MarketingBudgetBudgetType = typeof MarketingBudgetBudgetType[keyof typeof MarketingBudgetBudgetType];
 /** The medium through which the marketing activity and event reached consumers. This is used for reporting aggregation. */
-export enum MarketingChannel {
+export const MarketingChannel = {
   /** Displayed ads. */
-  Display = 'DISPLAY',
+  Display: 'DISPLAY',
   /** Email. */
-  Email = 'EMAIL',
+  Email: 'EMAIL',
   /** Referral links. */
-  Referral = 'REFERRAL',
+  Referral: 'REFERRAL',
   /** Paid search. */
-  Search = 'SEARCH',
+  Search: 'SEARCH',
   /** Social media. */
-  Social = 'SOCIAL'
-}
+  Social: 'SOCIAL'
+} as const;
 
+export type MarketingChannel = typeof MarketingChannel[keyof typeof MarketingChannel];
 /** Marketing engagement represents customer activity taken on a marketing activity or a marketing channel. */
 export type MarketingEngagement = {
   __typename?: 'MarketingEngagement';
@@ -30337,43 +30547,45 @@ export type MarketingEventEdge = {
 };
 
 /** The set of valid sort keys for the MarketingEvent query. */
-export enum MarketingEventSortKeys {
+export const MarketingEventSortKeys = {
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `started_at` value. */
-  StartedAt = 'STARTED_AT'
-}
+  StartedAt: 'STARTED_AT'
+} as const;
 
+export type MarketingEventSortKeys = typeof MarketingEventSortKeys[keyof typeof MarketingEventSortKeys];
 /** The available types of tactics for a marketing activity. */
-export enum MarketingTactic {
+export const MarketingTactic = {
   /** An abandoned cart recovery email. */
-  AbandonedCart = 'ABANDONED_CART',
+  AbandonedCart: 'ABANDONED_CART',
   /** An ad, such as a Facebook ad. */
-  Ad = 'AD',
+  Ad: 'AD',
   /** An affiliate link. */
-  Affiliate = 'AFFILIATE',
+  Affiliate: 'AFFILIATE',
   /** A link. */
-  Link = 'LINK',
+  Link: 'LINK',
   /** A loyalty program. */
-  Loyalty = 'LOYALTY',
+  Loyalty: 'LOYALTY',
   /** A messaging app, such as Facebook Messenger. */
-  Message = 'MESSAGE',
+  Message: 'MESSAGE',
   /** A newsletter. */
-  Newsletter = 'NEWSLETTER',
+  Newsletter: 'NEWSLETTER',
   /** A notification in the Shopify admin. */
-  Notification = 'NOTIFICATION',
+  Notification: 'NOTIFICATION',
   /** A blog post. */
-  Post = 'POST',
+  Post: 'POST',
   /** A retargeting ad. */
-  Retargeting = 'RETARGETING',
+  Retargeting: 'RETARGETING',
   /** Search engine optimization. */
-  Seo = 'SEO',
+  Seo: 'SEO',
   /** A popup on the online store. */
-  StorefrontApp = 'STOREFRONT_APP',
+  StorefrontApp: 'STOREFRONT_APP',
   /** A transactional email. */
-  Transactional = 'TRANSACTIONAL'
-}
+  Transactional: 'TRANSACTIONAL'
+} as const;
 
+export type MarketingTactic = typeof MarketingTactic[keyof typeof MarketingTactic];
 /** The entitlements for B2B markets. */
 export type MarketsB2BEntitlement = {
   __typename?: 'MarketsB2BEntitlement';
@@ -30442,23 +30654,24 @@ export type MarketsRetailEntitlement = {
 };
 
 /** The set of valid sort keys for the Markets query. */
-export enum MarketsSortKeys {
+export const MarketsSortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `market_condition_types` value. */
-  MarketConditionTypes = 'MARKET_CONDITION_TYPES',
+  MarketConditionTypes: 'MARKET_CONDITION_TYPES',
   /** Sort by the `market_type` value. */
-  MarketType = 'MARKET_TYPE',
+  MarketType: 'MARKET_TYPE',
   /** Sort by the `name` value. */
-  Name = 'NAME',
+  Name: 'NAME',
   /** Sort by the `status` value. */
-  Status = 'STATUS',
+  Status: 'STATUS',
   /** Sort by the `updated_at` value. */
-  UpdatedAt = 'UPDATED_AT'
-}
+  UpdatedAt: 'UPDATED_AT'
+} as const;
 
+export type MarketsSortKeys = typeof MarketsSortKeys[keyof typeof MarketsSortKeys];
 /** The entitlements for themes. */
 export type MarketsThemesEntitlement = {
   __typename?: 'MarketsThemesEntitlement';
@@ -30509,17 +30722,18 @@ export type MediaConnection = {
 };
 
 /** The possible content types for a media object. */
-export enum MediaContentType {
+export const MediaContentType = {
   /** An externally hosted video. */
-  ExternalVideo = 'EXTERNAL_VIDEO',
+  ExternalVideo: 'EXTERNAL_VIDEO',
   /** A Shopify-hosted image. */
-  Image = 'IMAGE',
+  Image: 'IMAGE',
   /** A 3d model. */
-  Model_3D = 'MODEL_3D',
+  Model_3D: 'MODEL_3D',
   /** A Shopify-hosted video. */
-  Video = 'VIDEO'
-}
+  Video: 'VIDEO'
+} as const;
 
+export type MediaContentType = typeof MediaContentType[keyof typeof MediaContentType];
 /** An auto-generated type which holds one Media and a cursor during pagination. */
 export type MediaEdge = {
   __typename?: 'MediaEdge';
@@ -30544,83 +30758,85 @@ export type MediaError = {
 };
 
 /** Error types for media. */
-export enum MediaErrorCode {
+export const MediaErrorCode = {
   /** Media could not be created because a file with the same name already exists. */
-  DuplicateFilenameError = 'DUPLICATE_FILENAME_ERROR',
+  DuplicateFilenameError: 'DUPLICATE_FILENAME_ERROR',
   /** Media could not be created because embed permissions are disabled for this video. */
-  ExternalVideoEmbedDisabled = 'EXTERNAL_VIDEO_EMBED_DISABLED',
+  ExternalVideoEmbedDisabled: 'EXTERNAL_VIDEO_EMBED_DISABLED',
   /** Media could not be created because video is either not found or still transcoding. */
-  ExternalVideoEmbedNotFoundOrTranscoding = 'EXTERNAL_VIDEO_EMBED_NOT_FOUND_OR_TRANSCODING',
+  ExternalVideoEmbedNotFoundOrTranscoding: 'EXTERNAL_VIDEO_EMBED_NOT_FOUND_OR_TRANSCODING',
   /** Media could not be created because the external video has an invalid aspect ratio. */
-  ExternalVideoInvalidAspectRatio = 'EXTERNAL_VIDEO_INVALID_ASPECT_RATIO',
+  ExternalVideoInvalidAspectRatio: 'EXTERNAL_VIDEO_INVALID_ASPECT_RATIO',
   /** Media could not be created because the external video could not be found. */
-  ExternalVideoNotFound = 'EXTERNAL_VIDEO_NOT_FOUND',
+  ExternalVideoNotFound: 'EXTERNAL_VIDEO_NOT_FOUND',
   /** Media could not be created because the external video is not listed or is private. */
-  ExternalVideoUnlisted = 'EXTERNAL_VIDEO_UNLISTED',
+  ExternalVideoUnlisted: 'EXTERNAL_VIDEO_UNLISTED',
   /** Media could not be created because the cumulative file storage limit would be exceeded. */
-  FileStorageLimitExceeded = 'FILE_STORAGE_LIMIT_EXCEEDED',
+  FileStorageLimitExceeded: 'FILE_STORAGE_LIMIT_EXCEEDED',
   /** File could not be processed because the source could not be downloaded. */
-  GenericFileDownloadFailure = 'GENERIC_FILE_DOWNLOAD_FAILURE',
+  GenericFileDownloadFailure: 'GENERIC_FILE_DOWNLOAD_FAILURE',
   /** File could not be created because the size is too large. */
-  GenericFileInvalidSize = 'GENERIC_FILE_INVALID_SIZE',
+  GenericFileInvalidSize: 'GENERIC_FILE_INVALID_SIZE',
   /** Media could not be processed because the image could not be downloaded. */
-  ImageDownloadFailure = 'IMAGE_DOWNLOAD_FAILURE',
+  ImageDownloadFailure: 'IMAGE_DOWNLOAD_FAILURE',
   /** Media could not be processed because the image could not be processed. */
-  ImageProcessingFailure = 'IMAGE_PROCESSING_FAILURE',
+  ImageProcessingFailure: 'IMAGE_PROCESSING_FAILURE',
   /** Media could not be created because the image has an invalid aspect ratio. */
-  InvalidImageAspectRatio = 'INVALID_IMAGE_ASPECT_RATIO',
+  InvalidImageAspectRatio: 'INVALID_IMAGE_ASPECT_RATIO',
   /** Media could not be created because the image size is too large. */
-  InvalidImageFileSize = 'INVALID_IMAGE_FILE_SIZE',
+  InvalidImageFileSize: 'INVALID_IMAGE_FILE_SIZE',
   /** Media could not be created because the image's resolution exceeds the max limit. */
-  InvalidImageResolution = 'INVALID_IMAGE_RESOLUTION',
+  InvalidImageResolution: 'INVALID_IMAGE_RESOLUTION',
   /** Media could not be processed because the signed URL was invalid. */
-  InvalidSignedUrl = 'INVALID_SIGNED_URL',
+  InvalidSignedUrl: 'INVALID_SIGNED_URL',
   /** Media timed out because it is currently being modified by another operation. */
-  MediaTimeoutError = 'MEDIA_TIMEOUT_ERROR',
+  MediaTimeoutError: 'MEDIA_TIMEOUT_ERROR',
   /** Media could not be created because the model file failed processing. */
-  Model3DGlbOutputCreationError = 'MODEL3D_GLB_OUTPUT_CREATION_ERROR',
+  Model3DGlbOutputCreationError: 'MODEL3D_GLB_OUTPUT_CREATION_ERROR',
   /** Media could not be created because the model can't be converted to USDZ format. */
-  Model3DGlbToUsdzConversionError = 'MODEL3D_GLB_TO_USDZ_CONVERSION_ERROR',
+  Model3DGlbToUsdzConversionError: 'MODEL3D_GLB_TO_USDZ_CONVERSION_ERROR',
   /** Media could not be created because the model file failed processing. */
-  Model3DProcessingFailure = 'MODEL3D_PROCESSING_FAILURE',
+  Model3DProcessingFailure: 'MODEL3D_PROCESSING_FAILURE',
   /** Media could not be created because the model's thumbnail generation failed. */
-  Model3DThumbnailGenerationError = 'MODEL3D_THUMBNAIL_GENERATION_ERROR',
+  Model3DThumbnailGenerationError: 'MODEL3D_THUMBNAIL_GENERATION_ERROR',
   /** There was an issue while trying to generate a new thumbnail. */
-  Model3DThumbnailRegenerationError = 'MODEL3D_THUMBNAIL_REGENERATION_ERROR',
+  Model3DThumbnailRegenerationError: 'MODEL3D_THUMBNAIL_REGENERATION_ERROR',
   /** Model failed validation. */
-  Model3DValidationError = 'MODEL3D_VALIDATION_ERROR',
+  Model3DValidationError: 'MODEL3D_VALIDATION_ERROR',
   /** Media error has occured for unknown reason. */
-  Unknown = 'UNKNOWN',
+  Unknown: 'UNKNOWN',
   /** Media could not be created because the image is an unsupported file type. */
-  UnsupportedImageFileType = 'UNSUPPORTED_IMAGE_FILE_TYPE',
+  UnsupportedImageFileType: 'UNSUPPORTED_IMAGE_FILE_TYPE',
   /** Media could not be created because it has an invalid file type. */
-  VideoInvalidFiletypeError = 'VIDEO_INVALID_FILETYPE_ERROR',
+  VideoInvalidFiletypeError: 'VIDEO_INVALID_FILETYPE_ERROR',
   /** Media could not be created because it does not meet the maximum duration requirement. */
-  VideoMaxDurationError = 'VIDEO_MAX_DURATION_ERROR',
+  VideoMaxDurationError: 'VIDEO_MAX_DURATION_ERROR',
   /** Media could not be created because it does not meet the maximum height requirement. */
-  VideoMaxHeightError = 'VIDEO_MAX_HEIGHT_ERROR',
+  VideoMaxHeightError: 'VIDEO_MAX_HEIGHT_ERROR',
   /** Media could not be created because it does not meet the maximum width requirement. */
-  VideoMaxWidthError = 'VIDEO_MAX_WIDTH_ERROR',
+  VideoMaxWidthError: 'VIDEO_MAX_WIDTH_ERROR',
   /** Media could not be created because the metadata could not be read. */
-  VideoMetadataReadError = 'VIDEO_METADATA_READ_ERROR',
+  VideoMetadataReadError: 'VIDEO_METADATA_READ_ERROR',
   /** Media could not be created because it does not meet the minimum duration requirement. */
-  VideoMinDurationError = 'VIDEO_MIN_DURATION_ERROR',
+  VideoMinDurationError: 'VIDEO_MIN_DURATION_ERROR',
   /** Media could not be created because it does not meet the minimum height requirement. */
-  VideoMinHeightError = 'VIDEO_MIN_HEIGHT_ERROR',
+  VideoMinHeightError: 'VIDEO_MIN_HEIGHT_ERROR',
   /** Media could not be created because it does not meet the minimum width requirement. */
-  VideoMinWidthError = 'VIDEO_MIN_WIDTH_ERROR',
+  VideoMinWidthError: 'VIDEO_MIN_WIDTH_ERROR',
   /** Video failed validation. */
-  VideoValidationError = 'VIDEO_VALIDATION_ERROR'
-}
+  VideoValidationError: 'VIDEO_VALIDATION_ERROR'
+} as const;
 
+export type MediaErrorCode = typeof MediaErrorCode[keyof typeof MediaErrorCode];
 /** Host for a Media Resource. */
-export enum MediaHost {
+export const MediaHost = {
   /** Host for Vimeo embedded videos. */
-  Vimeo = 'VIMEO',
+  Vimeo: 'VIMEO',
   /** Host for YouTube embedded videos. */
-  Youtube = 'YOUTUBE'
-}
+  Youtube: 'YOUTUBE'
+} as const;
 
+export type MediaHost = typeof MediaHost[keyof typeof MediaHost];
 /**
  * The `MediaImage` object represents an image hosted on Shopify's
  * [content delivery network (CDN)](https://shopify.dev/docs/storefronts/themes/best-practices/performance/platform#shopify-cdn).
@@ -30814,29 +31030,31 @@ export type MediaPreviewImage = {
 };
 
 /** The possible statuses for a media preview image. */
-export enum MediaPreviewImageStatus {
+export const MediaPreviewImageStatus = {
   /** Preview image processing has failed. */
-  Failed = 'FAILED',
+  Failed: 'FAILED',
   /** Preview image is being processed. */
-  Processing = 'PROCESSING',
+  Processing: 'PROCESSING',
   /** Preview image is ready to be displayed. */
-  Ready = 'READY',
+  Ready: 'READY',
   /** Preview image is uploaded but not yet processed. */
-  Uploaded = 'UPLOADED'
-}
+  Uploaded: 'UPLOADED'
+} as const;
 
+export type MediaPreviewImageStatus = typeof MediaPreviewImageStatus[keyof typeof MediaPreviewImageStatus];
 /** The possible statuses for a media object. */
-export enum MediaStatus {
+export const MediaStatus = {
   /** Media processing has failed. */
-  Failed = 'FAILED',
+  Failed: 'FAILED',
   /** Media is being processed. */
-  Processing = 'PROCESSING',
+  Processing: 'PROCESSING',
   /** Media is ready to be displayed. */
-  Ready = 'READY',
+  Ready: 'READY',
   /** Media has been uploaded but not yet processed. */
-  Uploaded = 'UPLOADED'
-}
+  Uploaded: 'UPLOADED'
+} as const;
 
+export type MediaStatus = typeof MediaStatus[keyof typeof MediaStatus];
 /** Represents an error that happens during execution of a Media query or mutation. */
 export type MediaUserError = DisplayableError & {
   __typename?: 'MediaUserError';
@@ -30849,53 +31067,54 @@ export type MediaUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `MediaUserError`. */
-export enum MediaUserErrorCode {
+export const MediaUserErrorCode = {
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** Invalid media type. */
-  InvalidMediaType = 'INVALID_MEDIA_TYPE',
+  InvalidMediaType: 'INVALID_MEDIA_TYPE',
   /** Exceeded the maximum number of 100 variant-media pairs per mutation call. */
-  MaximumVariantMediaPairsExceeded = 'MAXIMUM_VARIANT_MEDIA_PAIRS_EXCEEDED',
+  MaximumVariantMediaPairsExceeded: 'MAXIMUM_VARIANT_MEDIA_PAIRS_EXCEEDED',
   /** Media cannot be modified. It is currently being modified by another operation. */
-  MediaCannotBeModified = 'MEDIA_CANNOT_BE_MODIFIED',
+  MediaCannotBeModified: 'MEDIA_CANNOT_BE_MODIFIED',
   /** Media does not exist. */
-  MediaDoesNotExist = 'MEDIA_DOES_NOT_EXIST',
+  MediaDoesNotExist: 'MEDIA_DOES_NOT_EXIST',
   /** Media does not exist on the given product. */
-  MediaDoesNotExistOnProduct = 'MEDIA_DOES_NOT_EXIST_ON_PRODUCT',
+  MediaDoesNotExistOnProduct: 'MEDIA_DOES_NOT_EXIST_ON_PRODUCT',
   /** The specified media is not attached to the specified variant. */
-  MediaIsNotAttachedToVariant = 'MEDIA_IS_NOT_ATTACHED_TO_VARIANT',
+  MediaIsNotAttachedToVariant: 'MEDIA_IS_NOT_ATTACHED_TO_VARIANT',
   /** Missing arguments. */
-  MissingArguments = 'MISSING_ARGUMENTS',
+  MissingArguments: 'MISSING_ARGUMENTS',
   /** Model3d creation throttle was exceeded. */
-  Model3DThrottleExceeded = 'MODEL3D_THROTTLE_EXCEEDED',
+  Model3DThrottleExceeded: 'MODEL3D_THROTTLE_EXCEEDED',
   /** Model validation failed. */
-  Model3DValidationError = 'MODEL3D_VALIDATION_ERROR',
+  Model3DValidationError: 'MODEL3D_VALIDATION_ERROR',
   /** Non-ready media are not supported. */
-  NonReadyMedia = 'NON_READY_MEDIA',
+  NonReadyMedia: 'NON_READY_MEDIA',
   /** Product does not exist. */
-  ProductDoesNotExist = 'PRODUCT_DOES_NOT_EXIST',
+  ProductDoesNotExist: 'PRODUCT_DOES_NOT_EXIST',
   /** Exceeded the limit of media per product. */
-  ProductMediaLimitExceeded = 'PRODUCT_MEDIA_LIMIT_EXCEEDED',
+  ProductMediaLimitExceeded: 'PRODUCT_MEDIA_LIMIT_EXCEEDED',
   /** Product is suspended. */
-  ProductSuspended = 'PRODUCT_SUSPENDED',
+  ProductSuspended: 'PRODUCT_SUSPENDED',
   /** Product variant already has attached media. */
-  ProductVariantAlreadyHasMedia = 'PRODUCT_VARIANT_ALREADY_HAS_MEDIA',
+  ProductVariantAlreadyHasMedia: 'PRODUCT_VARIANT_ALREADY_HAS_MEDIA',
   /** Variant does not exist on the given product. */
-  ProductVariantDoesNotExistOnProduct = 'PRODUCT_VARIANT_DOES_NOT_EXIST_ON_PRODUCT',
+  ProductVariantDoesNotExistOnProduct: 'PRODUCT_VARIANT_DOES_NOT_EXIST_ON_PRODUCT',
   /** Variant specified in more than one pair. */
-  ProductVariantSpecifiedMultipleTimes = 'PRODUCT_VARIANT_SPECIFIED_MULTIPLE_TIMES',
+  ProductVariantSpecifiedMultipleTimes: 'PRODUCT_VARIANT_SPECIFIED_MULTIPLE_TIMES',
   /** Exceeded the limit of media per shop. */
-  ShopMediaLimitExceeded = 'SHOP_MEDIA_LIMIT_EXCEEDED',
+  ShopMediaLimitExceeded: 'SHOP_MEDIA_LIMIT_EXCEEDED',
   /** Only one mediaId is allowed per variant-media input pair. */
-  TooManyMediaPerInputPair = 'TOO_MANY_MEDIA_PER_INPUT_PAIR',
+  TooManyMediaPerInputPair: 'TOO_MANY_MEDIA_PER_INPUT_PAIR',
   /** Video creation throttle was exceeded. */
-  VideoThrottleExceeded = 'VIDEO_THROTTLE_EXCEEDED',
+  VideoThrottleExceeded: 'VIDEO_THROTTLE_EXCEEDED',
   /** Video validation failed. */
-  VideoValidationError = 'VIDEO_VALIDATION_ERROR'
-}
+  VideoValidationError: 'VIDEO_VALIDATION_ERROR'
+} as const;
 
+export type MediaUserErrorCode = typeof MediaUserErrorCode[keyof typeof MediaUserErrorCode];
 /**
  * Represents a media warning. This occurs when there is a non-blocking concern regarding your media.
  * Consider reviewing your media to ensure it is correct and its parameters are as expected.
@@ -30909,15 +31128,16 @@ export type MediaWarning = {
 };
 
 /** Warning types for media. */
-export enum MediaWarningCode {
+export const MediaWarningCode = {
   /** 3D model physical size might be invalid. The dimensions of your model are very large. Consider reviewing your model to ensure they are correct. */
-  ModelLargePhysicalSize = 'MODEL_LARGE_PHYSICAL_SIZE',
+  ModelLargePhysicalSize: 'MODEL_LARGE_PHYSICAL_SIZE',
   /** The thumbnail failed to regenerate.Try applying the changes again to regenerate the thumbnail. */
-  ModelPreviewImageFail = 'MODEL_PREVIEW_IMAGE_FAIL',
+  ModelPreviewImageFail: 'MODEL_PREVIEW_IMAGE_FAIL',
   /** 3D model physical size might be invalid. The dimensions of your model are very small. Consider reviewing your model to ensure they are correct. */
-  ModelSmallPhysicalSize = 'MODEL_SMALL_PHYSICAL_SIZE'
-}
+  ModelSmallPhysicalSize: 'MODEL_SMALL_PHYSICAL_SIZE'
+} as const;
 
+export type MediaWarningCode = typeof MediaWarningCode[keyof typeof MediaWarningCode];
 /**
  * Navigation menus that organize links into logical structures to guide customers through a store. Menus serve as the backbone of store navigation, making it easy for customers to find products, pages, and other content through organized hierarchical links.
  *
@@ -31022,13 +31242,14 @@ export type MenuCreateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `MenuCreateUserError`. */
-export enum MenuCreateUserErrorCode {
+export const MenuCreateUserErrorCode = {
   /** The menu cannot be nested more than 3 level deep. */
-  NestingTooDeep = 'NESTING_TOO_DEEP',
+  NestingTooDeep: 'NESTING_TOO_DEEP',
   /** The record with the ID used as the input value couldn't be found. */
-  NotFound = 'NOT_FOUND'
-}
+  NotFound: 'NOT_FOUND'
+} as const;
 
+export type MenuCreateUserErrorCode = typeof MenuCreateUserErrorCode[keyof typeof MenuCreateUserErrorCode];
 /** Return type for `menuDelete` mutation. */
 export type MenuDeletePayload = {
   __typename?: 'MenuDeletePayload';
@@ -31050,13 +31271,14 @@ export type MenuDeleteUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `MenuDeleteUserError`. */
-export enum MenuDeleteUserErrorCode {
+export const MenuDeleteUserErrorCode = {
   /** Menu does not exist. */
-  MenuDoesNotExist = 'MENU_DOES_NOT_EXIST',
+  MenuDoesNotExist: 'MENU_DOES_NOT_EXIST',
   /** Default menu cannot be deleted. */
-  UnableToDeleteDefaultMenu = 'UNABLE_TO_DELETE_DEFAULT_MENU'
-}
+  UnableToDeleteDefaultMenu: 'UNABLE_TO_DELETE_DEFAULT_MENU'
+} as const;
 
+export type MenuDeleteUserErrorCode = typeof MenuDeleteUserErrorCode[keyof typeof MenuDeleteUserErrorCode];
 /** An auto-generated type which holds one Menu and a cursor during pagination. */
 export type MenuEdge = {
   __typename?: 'MenuEdge';
@@ -31114,35 +31336,36 @@ export type MenuItemCreateInput = {
 };
 
 /** A menu item type. */
-export enum MenuItemType {
+export const MenuItemType = {
   /** The article menu item type. */
-  Article = 'ARTICLE',
+  Article: 'ARTICLE',
   /** The blog menu item type. */
-  Blog = 'BLOG',
+  Blog: 'BLOG',
   /** The catalog menu item type. */
-  Catalog = 'CATALOG',
+  Catalog: 'CATALOG',
   /** The collection menu item type. */
-  Collection = 'COLLECTION',
+  Collection: 'COLLECTION',
   /** The collections menu item type. */
-  Collections = 'COLLECTIONS',
+  Collections: 'COLLECTIONS',
   /** The customer_account_page menu item type. */
-  CustomerAccountPage = 'CUSTOMER_ACCOUNT_PAGE',
+  CustomerAccountPage: 'CUSTOMER_ACCOUNT_PAGE',
   /** The frontpage menu item type. */
-  Frontpage = 'FRONTPAGE',
+  Frontpage: 'FRONTPAGE',
   /** The http menu item type. */
-  Http = 'HTTP',
+  Http: 'HTTP',
   /** The metaobject menu item type. */
-  Metaobject = 'METAOBJECT',
+  Metaobject: 'METAOBJECT',
   /** The page menu item type. */
-  Page = 'PAGE',
+  Page: 'PAGE',
   /** The product menu item type. */
-  Product = 'PRODUCT',
+  Product: 'PRODUCT',
   /** The search menu item type. */
-  Search = 'SEARCH',
+  Search: 'SEARCH',
   /** The shop_policy menu item type. */
-  ShopPolicy = 'SHOP_POLICY'
-}
+  ShopPolicy: 'SHOP_POLICY'
+} as const;
 
+export type MenuItemType = typeof MenuItemType[keyof typeof MenuItemType];
 /** The input fields required to update a valid menu item. */
 export type MenuItemUpdateInput = {
   /** A globally-unique ID of the online store navigation menu item. */
@@ -31162,15 +31385,16 @@ export type MenuItemUpdateInput = {
 };
 
 /** The set of valid sort keys for the Menu query. */
-export enum MenuSortKeys {
+export const MenuSortKeys = {
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `title` value. */
-  Title = 'TITLE',
+  Title: 'TITLE',
   /** Sort by the `updated_at` value. */
-  UpdatedAt = 'UPDATED_AT'
-}
+  UpdatedAt: 'UPDATED_AT'
+} as const;
 
+export type MenuSortKeys = typeof MenuSortKeys[keyof typeof MenuSortKeys];
 /** Return type for `menuUpdate` mutation. */
 export type MenuUpdatePayload = {
   __typename?: 'MenuUpdatePayload';
@@ -31192,32 +31416,34 @@ export type MenuUpdateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `MenuUpdateUserError`. */
-export enum MenuUpdateUserErrorCode {
+export const MenuUpdateUserErrorCode = {
   /** The menu cannot be nested more than 3 level deep. */
-  NestingTooDeep = 'NESTING_TOO_DEEP',
+  NestingTooDeep: 'NESTING_TOO_DEEP',
   /** The record with the ID used as the input value couldn't be found. */
-  NotFound = 'NOT_FOUND'
-}
+  NotFound: 'NOT_FOUND'
+} as const;
 
+export type MenuUpdateUserErrorCode = typeof MenuUpdateUserErrorCode[keyof typeof MenuUpdateUserErrorCode];
 /**
  * The [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
  * that's used to control how discounts can be combined.
  */
-export enum MerchandiseDiscountClass {
+export const MerchandiseDiscountClass = {
   /**
    * The discount is combined with an
    * [order discount](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
    * class.
    */
-  Order = 'ORDER',
+  Order: 'ORDER',
   /**
    * The discount is combined with a
    * [product discount](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
    * class.
    */
-  Product = 'PRODUCT'
-}
+  Product: 'PRODUCT'
+} as const;
 
+export type MerchandiseDiscountClass = typeof MerchandiseDiscountClass[keyof typeof MerchandiseDiscountClass];
 /** Merchant approval for accelerated onboarding to channel integration apps. */
 export type MerchantApprovalSignals = {
   __typename?: 'MerchantApprovalSignals';
@@ -31324,27 +31550,29 @@ export type MetafieldAccessUpdateInput = {
 };
 
 /** Metafield access permissions for the Admin API. */
-export enum MetafieldAdminAccess {
+export const MetafieldAdminAccess = {
   /** The merchant has read-only access. No other apps have access. */
-  MerchantRead = 'MERCHANT_READ',
+  MerchantRead: 'MERCHANT_READ',
   /** The merchant has read and write access. No other apps have access. */
-  MerchantReadWrite = 'MERCHANT_READ_WRITE',
+  MerchantReadWrite: 'MERCHANT_READ_WRITE',
   /** The merchant and other apps have no access. */
-  Private = 'PRIVATE',
+  Private: 'PRIVATE',
   /** The merchant and other apps have read-only access. */
-  PublicRead = 'PUBLIC_READ',
+  PublicRead: 'PUBLIC_READ',
   /** The merchant and other apps have read and write access. */
-  PublicReadWrite = 'PUBLIC_READ_WRITE'
-}
+  PublicReadWrite: 'PUBLIC_READ_WRITE'
+} as const;
 
+export type MetafieldAdminAccess = typeof MetafieldAdminAccess[keyof typeof MetafieldAdminAccess];
 /** Metafield access permissions for the Admin API. */
-export enum MetafieldAdminAccessInput {
+export const MetafieldAdminAccessInput = {
   /** The merchant has read-only access. No other apps have access. */
-  MerchantRead = 'MERCHANT_READ',
+  MerchantRead: 'MERCHANT_READ',
   /** The merchant has read and write access. No other apps have access. */
-  MerchantReadWrite = 'MERCHANT_READ_WRITE'
-}
+  MerchantReadWrite: 'MERCHANT_READ_WRITE'
+} as const;
 
+export type MetafieldAdminAccessInput = typeof MetafieldAdminAccessInput[keyof typeof MetafieldAdminAccessInput];
 /** Provides the capabilities of a metafield definition. */
 export type MetafieldCapabilities = {
   __typename?: 'MetafieldCapabilities';
@@ -31435,25 +31663,27 @@ export type MetafieldConnection = {
 };
 
 /** Metafield access permissions for the Customer Account API. */
-export enum MetafieldCustomerAccountAccess {
+export const MetafieldCustomerAccountAccess = {
   /** No access. */
-  None = 'NONE',
+  None: 'NONE',
   /** Read-only access. */
-  Read = 'READ',
+  Read: 'READ',
   /** Read and write access. */
-  ReadWrite = 'READ_WRITE'
-}
+  ReadWrite: 'READ_WRITE'
+} as const;
 
+export type MetafieldCustomerAccountAccess = typeof MetafieldCustomerAccountAccess[keyof typeof MetafieldCustomerAccountAccess];
 /** Metafield access permissions for the Customer Account API. */
-export enum MetafieldCustomerAccountAccessInput {
+export const MetafieldCustomerAccountAccessInput = {
   /** No access. */
-  None = 'NONE',
+  None: 'NONE',
   /** Read-only access. */
-  Read = 'READ',
+  Read: 'READ',
   /** Read and write access. */
-  ReadWrite = 'READ_WRITE'
-}
+  ReadWrite: 'READ_WRITE'
+} as const;
 
+export type MetafieldCustomerAccountAccessInput = typeof MetafieldCustomerAccountAccessInput[keyof typeof MetafieldCustomerAccountAccessInput];
 /**
  * Defines the structure, validation rules, and permissions for [`Metafield`](https://shopify.dev/docs/api/admin-graphql/current/objects/Metafield) objects attached to a specific owner type. Each definition establishes a schema that metafields must follow, including the data type and validation constraints.
  *
@@ -31534,17 +31764,18 @@ export type MetafieldDefinitionMetafieldsCountArgs = {
 };
 
 /** Possible filter statuses associated with a metafield definition for use in admin filtering. */
-export enum MetafieldDefinitionAdminFilterStatus {
+export const MetafieldDefinitionAdminFilterStatus = {
   /** The metafield definition has failed to be enabled for admin filtering. */
-  Failed = 'FAILED',
+  Failed: 'FAILED',
   /** The metafield definition allows admin filtering by matching metafield values. */
-  Filterable = 'FILTERABLE',
+  Filterable: 'FILTERABLE',
   /** The metafield definition's metafields are currently being processed for admin filtering. */
-  InProgress = 'IN_PROGRESS',
+  InProgress: 'IN_PROGRESS',
   /** The metafield definition cannot be used for admin filtering. */
-  NotFilterable = 'NOT_FILTERABLE'
-}
+  NotFilterable: 'NOT_FILTERABLE'
+} as const;
 
+export type MetafieldDefinitionAdminFilterStatus = typeof MetafieldDefinitionAdminFilterStatus[keyof typeof MetafieldDefinitionAdminFilterStatus];
 /** An auto-generated type for paginating through multiple MetafieldDefinitions. */
 export type MetafieldDefinitionConnection = {
   __typename?: 'MetafieldDefinitionConnection';
@@ -31557,15 +31788,16 @@ export type MetafieldDefinitionConnection = {
 };
 
 /** Metafield definition constraint criteria to filter metafield definitions by. */
-export enum MetafieldDefinitionConstraintStatus {
+export const MetafieldDefinitionConstraintStatus = {
   /** Returns both constrained and unconstrained metafield definitions. */
-  ConstrainedAndUnconstrained = 'CONSTRAINED_AND_UNCONSTRAINED',
+  ConstrainedAndUnconstrained: 'CONSTRAINED_AND_UNCONSTRAINED',
   /** Only returns metafield definitions that are constrained to a resource subtype. */
-  ConstrainedOnly = 'CONSTRAINED_ONLY',
+  ConstrainedOnly: 'CONSTRAINED_ONLY',
   /** Only returns metafield definitions that are not constrained to a resource subtype. */
-  UnconstrainedOnly = 'UNCONSTRAINED_ONLY'
-}
+  UnconstrainedOnly: 'UNCONSTRAINED_ONLY'
+} as const;
 
+export type MetafieldDefinitionConstraintStatus = typeof MetafieldDefinitionConstraintStatus[keyof typeof MetafieldDefinitionConstraintStatus];
 /** The input fields used to identify a subtype of a resource for the purposes of metafield definition constraints. */
 export type MetafieldDefinitionConstraintSubtypeIdentifier = {
   /** The category of the resource subtype. */
@@ -31686,59 +31918,60 @@ export type MetafieldDefinitionCreateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `MetafieldDefinitionCreateUserError`. */
-export enum MetafieldDefinitionCreateUserErrorCode {
+export const MetafieldDefinitionCreateUserErrorCode = {
   /** Admin access can only be specified for app-owned metafield definitions. */
-  AdminAccessInputNotAllowed = 'ADMIN_ACCESS_INPUT_NOT_ALLOWED',
+  AdminAccessInputNotAllowed: 'ADMIN_ACCESS_INPUT_NOT_ALLOWED',
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** A capability is required for the definition type but is disabled. */
-  CapabilityRequiredButDisabled = 'CAPABILITY_REQUIRED_BUT_DISABLED',
+  CapabilityRequiredButDisabled: 'CAPABILITY_REQUIRED_BUT_DISABLED',
   /** A duplicate option. */
-  DuplicateOption = 'DUPLICATE_OPTION',
+  DuplicateOption: 'DUPLICATE_OPTION',
   /** The input value isn't included in the list. */
-  Inclusion = 'INCLUSION',
+  Inclusion: 'INCLUSION',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The metafield definition capability is invalid. */
-  InvalidCapability = 'INVALID_CAPABILITY',
+  InvalidCapability: 'INVALID_CAPABILITY',
   /** A field contains an invalid character. */
-  InvalidCharacter = 'INVALID_CHARACTER',
+  InvalidCharacter: 'INVALID_CHARACTER',
   /** The metafield definition constraints are invalid. */
-  InvalidConstraints = 'INVALID_CONSTRAINTS',
+  InvalidConstraints: 'INVALID_CONSTRAINTS',
   /** The input combination is invalid. */
-  InvalidInputCombination = 'INVALID_INPUT_COMBINATION',
+  InvalidInputCombination: 'INVALID_INPUT_COMBINATION',
   /** An invalid option. */
-  InvalidOption = 'INVALID_OPTION',
+  InvalidOption: 'INVALID_OPTION',
   /** The maximum limit of definitions per owner type has exceeded. */
-  LimitExceeded = 'LIMIT_EXCEEDED',
+  LimitExceeded: 'LIMIT_EXCEEDED',
   /** You have reached the maximum allowed definitions for automated collections. */
-  OwnerTypeLimitExceededForAutomatedCollections = 'OWNER_TYPE_LIMIT_EXCEEDED_FOR_AUTOMATED_COLLECTIONS',
+  OwnerTypeLimitExceededForAutomatedCollections: 'OWNER_TYPE_LIMIT_EXCEEDED_FOR_AUTOMATED_COLLECTIONS',
   /** You have reached the maximum allowed definitions to be used as admin filters. */
-  OwnerTypeLimitExceededForUseAsAdminFilters = 'OWNER_TYPE_LIMIT_EXCEEDED_FOR_USE_AS_ADMIN_FILTERS',
+  OwnerTypeLimitExceededForUseAsAdminFilters: 'OWNER_TYPE_LIMIT_EXCEEDED_FOR_USE_AS_ADMIN_FILTERS',
   /** The pinned limit has been reached for the owner type. */
-  PinnedLimitReached = 'PINNED_LIMIT_REACHED',
+  PinnedLimitReached: 'PINNED_LIMIT_REACHED',
   /** The input value needs to be blank. */
-  Present = 'PRESENT',
+  Present: 'PRESENT',
   /** This namespace and key combination is reserved for standard definitions. */
-  ReservedNamespaceKey = 'RESERVED_NAMESPACE_KEY',
+  ReservedNamespaceKey: 'RESERVED_NAMESPACE_KEY',
   /** The definition limit per owner type has exceeded. */
-  ResourceTypeLimitExceeded = 'RESOURCE_TYPE_LIMIT_EXCEEDED',
+  ResourceTypeLimitExceeded: 'RESOURCE_TYPE_LIMIT_EXCEEDED',
   /** The definition limit per owner type for the app has exceeded. */
-  ResourceTypeLimitExceededByApp = 'RESOURCE_TYPE_LIMIT_EXCEEDED_BY_APP',
+  ResourceTypeLimitExceededByApp: 'RESOURCE_TYPE_LIMIT_EXCEEDED_BY_APP',
   /** The input value is already taken. */
-  Taken = 'TAKEN',
+  Taken: 'TAKEN',
   /** The input value is too long. */
-  TooLong = 'TOO_LONG',
+  TooLong: 'TOO_LONG',
   /** The input value is too short. */
-  TooShort = 'TOO_SHORT',
+  TooShort: 'TOO_SHORT',
   /** The definition type is not eligible to be used as collection condition. */
-  TypeNotAllowedForConditions = 'TYPE_NOT_ALLOWED_FOR_CONDITIONS',
+  TypeNotAllowedForConditions: 'TYPE_NOT_ALLOWED_FOR_CONDITIONS',
   /** This namespace and key combination is already in use for a set of your metafields. */
-  UnstructuredAlreadyExists = 'UNSTRUCTURED_ALREADY_EXISTS',
+  UnstructuredAlreadyExists: 'UNSTRUCTURED_ALREADY_EXISTS',
   /** The metafield definition does not support pinning. */
-  UnsupportedPinning = 'UNSUPPORTED_PINNING'
-}
+  UnsupportedPinning: 'UNSUPPORTED_PINNING'
+} as const;
 
+export type MetafieldDefinitionCreateUserErrorCode = typeof MetafieldDefinitionCreateUserErrorCode[keyof typeof MetafieldDefinitionCreateUserErrorCode];
 /** Return type for `metafieldDefinitionDelete` mutation. */
 export type MetafieldDefinitionDeletePayload = {
   __typename?: 'MetafieldDefinitionDeletePayload';
@@ -31762,29 +31995,30 @@ export type MetafieldDefinitionDeleteUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `MetafieldDefinitionDeleteUserError`. */
-export enum MetafieldDefinitionDeleteUserErrorCode {
+export const MetafieldDefinitionDeleteUserErrorCode = {
   /** Definition is managed by app configuration and cannot be modified through the API. */
-  AppConfigManaged = 'APP_CONFIG_MANAGED',
+  AppConfigManaged: 'APP_CONFIG_MANAGED',
   /** Owner type can't be used in this mutation. */
-  DisallowedOwnerType = 'DISALLOWED_OWNER_TYPE',
+  DisallowedOwnerType: 'DISALLOWED_OWNER_TYPE',
   /** Deleting an id type metafield definition requires deletion of its associated metafields. */
-  IdTypeDeletionError = 'ID_TYPE_DELETION_ERROR',
+  IdTypeDeletionError: 'ID_TYPE_DELETION_ERROR',
   /** An internal error occurred. */
-  InternalError = 'INTERNAL_ERROR',
+  InternalError: 'INTERNAL_ERROR',
   /** Action cannot proceed. Definition is currently in use. */
-  MetafieldDefinitionInUse = 'METAFIELD_DEFINITION_IN_USE',
+  MetafieldDefinitionInUse: 'METAFIELD_DEFINITION_IN_USE',
   /** Definition not found. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** The input value needs to be blank. */
-  Present = 'PRESENT',
+  Present: 'PRESENT',
   /** Deleting a reference type metafield definition requires deletion of its associated metafields. */
-  ReferenceTypeDeletionError = 'REFERENCE_TYPE_DELETION_ERROR',
+  ReferenceTypeDeletionError: 'REFERENCE_TYPE_DELETION_ERROR',
   /** Deleting a definition in a reserved namespace requires deletion of its associated metafields. */
-  ReservedNamespaceOrphanedMetafields = 'RESERVED_NAMESPACE_ORPHANED_METAFIELDS',
+  ReservedNamespaceOrphanedMetafields: 'RESERVED_NAMESPACE_ORPHANED_METAFIELDS',
   /** Definition is required by an installed app and cannot be deleted. */
-  StandardMetafieldDefinitionDependentOnApp = 'STANDARD_METAFIELD_DEFINITION_DEPENDENT_ON_APP'
-}
+  StandardMetafieldDefinitionDependentOnApp: 'STANDARD_METAFIELD_DEFINITION_DEPENDENT_ON_APP'
+} as const;
 
+export type MetafieldDefinitionDeleteUserErrorCode = typeof MetafieldDefinitionDeleteUserErrorCode[keyof typeof MetafieldDefinitionDeleteUserErrorCode];
 /** An auto-generated type which holds one MetafieldDefinition and a cursor during pagination. */
 export type MetafieldDefinitionEdge = {
   __typename?: 'MetafieldDefinitionEdge';
@@ -31888,46 +32122,49 @@ export type MetafieldDefinitionPinUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `MetafieldDefinitionPinUserError`. */
-export enum MetafieldDefinitionPinUserErrorCode {
+export const MetafieldDefinitionPinUserErrorCode = {
   /** The metafield definition is already pinned. */
-  AlreadyPinned = 'ALREADY_PINNED',
+  AlreadyPinned: 'ALREADY_PINNED',
   /** Owner type can't be used in this mutation. */
-  DisallowedOwnerType = 'DISALLOWED_OWNER_TYPE',
+  DisallowedOwnerType: 'DISALLOWED_OWNER_TYPE',
   /** An internal error occurred. */
-  InternalError = 'INTERNAL_ERROR',
+  InternalError: 'INTERNAL_ERROR',
   /** The metafield definition was not found. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** The pinned limit has been reached for owner type. */
-  PinnedLimitReached = 'PINNED_LIMIT_REACHED',
+  PinnedLimitReached: 'PINNED_LIMIT_REACHED',
   /** The metafield definition does not support pinning. */
-  UnsupportedPinning = 'UNSUPPORTED_PINNING'
-}
+  UnsupportedPinning: 'UNSUPPORTED_PINNING'
+} as const;
 
+export type MetafieldDefinitionPinUserErrorCode = typeof MetafieldDefinitionPinUserErrorCode[keyof typeof MetafieldDefinitionPinUserErrorCode];
 /** Possible metafield definition pinned statuses. */
-export enum MetafieldDefinitionPinnedStatus {
+export const MetafieldDefinitionPinnedStatus = {
   /** All metafield definitions. */
-  Any = 'ANY',
+  Any: 'ANY',
   /** Only metafield definitions that are pinned. */
-  Pinned = 'PINNED',
+  Pinned: 'PINNED',
   /** Only metafield definitions that are not pinned. */
-  Unpinned = 'UNPINNED'
-}
+  Unpinned: 'UNPINNED'
+} as const;
 
+export type MetafieldDefinitionPinnedStatus = typeof MetafieldDefinitionPinnedStatus[keyof typeof MetafieldDefinitionPinnedStatus];
 /** The set of valid sort keys for the MetafieldDefinition query. */
-export enum MetafieldDefinitionSortKeys {
+export const MetafieldDefinitionSortKeys = {
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `name` value. */
-  Name = 'NAME',
+  Name: 'NAME',
   /** Sort by the `pinned_position` value. */
-  PinnedPosition = 'PINNED_POSITION',
+  PinnedPosition: 'PINNED_POSITION',
   /**
    * Sort by relevance to the search terms when the `query` parameter is specified on the connection.
    * Don't use this sort key when no search query is specified.
    */
-  Relevance = 'RELEVANCE'
-}
+  Relevance: 'RELEVANCE'
+} as const;
 
+export type MetafieldDefinitionSortKeys = typeof MetafieldDefinitionSortKeys[keyof typeof MetafieldDefinitionSortKeys];
 /**
  * The type and name for the optional validation configuration of a metafield.
  *
@@ -31984,19 +32221,20 @@ export type MetafieldDefinitionUnpinUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `MetafieldDefinitionUnpinUserError`. */
-export enum MetafieldDefinitionUnpinUserErrorCode {
+export const MetafieldDefinitionUnpinUserErrorCode = {
   /** Definition is managed by app configuration and cannot be modified through the API. */
-  AppConfigManaged = 'APP_CONFIG_MANAGED',
+  AppConfigManaged: 'APP_CONFIG_MANAGED',
   /** Owner type can't be used in this mutation. */
-  DisallowedOwnerType = 'DISALLOWED_OWNER_TYPE',
+  DisallowedOwnerType: 'DISALLOWED_OWNER_TYPE',
   /** An internal error occurred. */
-  InternalError = 'INTERNAL_ERROR',
+  InternalError: 'INTERNAL_ERROR',
   /** The metafield definition was not found. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** The metafield definition isn't pinned. */
-  NotPinned = 'NOT_PINNED'
-}
+  NotPinned: 'NOT_PINNED'
+} as const;
 
+export type MetafieldDefinitionUnpinUserErrorCode = typeof MetafieldDefinitionUnpinUserErrorCode[keyof typeof MetafieldDefinitionUnpinUserErrorCode];
 /** The input fields required to update a metafield definition. */
 export type MetafieldDefinitionUpdateInput = {
   /** The access settings that apply to each of the metafields that belong to the metafield definition. */
@@ -32063,57 +32301,58 @@ export type MetafieldDefinitionUpdateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `MetafieldDefinitionUpdateUserError`. */
-export enum MetafieldDefinitionUpdateUserErrorCode {
+export const MetafieldDefinitionUpdateUserErrorCode = {
   /** Admin access can only be specified for app-owned metafield definitions. */
-  AdminAccessInputNotAllowed = 'ADMIN_ACCESS_INPUT_NOT_ALLOWED',
+  AdminAccessInputNotAllowed: 'ADMIN_ACCESS_INPUT_NOT_ALLOWED',
   /** Definition is managed by app configuration and cannot be modified through the API. */
-  AppConfigManaged = 'APP_CONFIG_MANAGED',
+  AppConfigManaged: 'APP_CONFIG_MANAGED',
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** The metafield definition capability cannot be disabled. */
-  CapabilityCannotBeDisabled = 'CAPABILITY_CANNOT_BE_DISABLED',
+  CapabilityCannotBeDisabled: 'CAPABILITY_CANNOT_BE_DISABLED',
   /** A capability is required for the definition type but is disabled. */
-  CapabilityRequiredButDisabled = 'CAPABILITY_REQUIRED_BUT_DISABLED',
+  CapabilityRequiredButDisabled: 'CAPABILITY_REQUIRED_BUT_DISABLED',
   /** Owner type can't be used in this mutation. */
-  DisallowedOwnerType = 'DISALLOWED_OWNER_TYPE',
+  DisallowedOwnerType: 'DISALLOWED_OWNER_TYPE',
   /** A duplicate option. */
-  DuplicateOption = 'DUPLICATE_OPTION',
+  DuplicateOption: 'DUPLICATE_OPTION',
   /** An internal error occurred. */
-  InternalError = 'INTERNAL_ERROR',
+  InternalError: 'INTERNAL_ERROR',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The metafield definition capability is invalid. */
-  InvalidCapability = 'INVALID_CAPABILITY',
+  InvalidCapability: 'INVALID_CAPABILITY',
   /** The metafield definition constraints are invalid. */
-  InvalidConstraints = 'INVALID_CONSTRAINTS',
+  InvalidConstraints: 'INVALID_CONSTRAINTS',
   /** An invalid input. */
-  InvalidInput = 'INVALID_INPUT',
+  InvalidInput: 'INVALID_INPUT',
   /** The input combination is invalid. */
-  InvalidInputCombination = 'INVALID_INPUT_COMBINATION',
+  InvalidInputCombination: 'INVALID_INPUT_COMBINATION',
   /** An invalid option. */
-  InvalidOption = 'INVALID_OPTION',
+  InvalidOption: 'INVALID_OPTION',
   /** Action cannot proceed. Definition is currently in use. */
-  MetafieldDefinitionInUse = 'METAFIELD_DEFINITION_IN_USE',
+  MetafieldDefinitionInUse: 'METAFIELD_DEFINITION_IN_USE',
   /** You cannot change the metaobject definition pointed to by a metaobject reference metafield definition. */
-  MetaobjectDefinitionChanged = 'METAOBJECT_DEFINITION_CHANGED',
+  MetaobjectDefinitionChanged: 'METAOBJECT_DEFINITION_CHANGED',
   /** The metafield definition wasn't found. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** You have reached the maximum allowed definitions for automated collections. */
-  OwnerTypeLimitExceededForAutomatedCollections = 'OWNER_TYPE_LIMIT_EXCEEDED_FOR_AUTOMATED_COLLECTIONS',
+  OwnerTypeLimitExceededForAutomatedCollections: 'OWNER_TYPE_LIMIT_EXCEEDED_FOR_AUTOMATED_COLLECTIONS',
   /** You have reached the maximum allowed definitions to be used as admin filters. */
-  OwnerTypeLimitExceededForUseAsAdminFilters = 'OWNER_TYPE_LIMIT_EXCEEDED_FOR_USE_AS_ADMIN_FILTERS',
+  OwnerTypeLimitExceededForUseAsAdminFilters: 'OWNER_TYPE_LIMIT_EXCEEDED_FOR_USE_AS_ADMIN_FILTERS',
   /** The pinned limit has been reached for the owner type. */
-  PinnedLimitReached = 'PINNED_LIMIT_REACHED',
+  PinnedLimitReached: 'PINNED_LIMIT_REACHED',
   /** The input value needs to be blank. */
-  Present = 'PRESENT',
+  Present: 'PRESENT',
   /** The input value is too long. */
-  TooLong = 'TOO_LONG',
+  TooLong: 'TOO_LONG',
   /** The definition type is not eligible to be used as collection condition. */
-  TypeNotAllowedForConditions = 'TYPE_NOT_ALLOWED_FOR_CONDITIONS',
+  TypeNotAllowedForConditions: 'TYPE_NOT_ALLOWED_FOR_CONDITIONS',
   /** The metafield definition does not support pinning. */
-  UnsupportedPinning = 'UNSUPPORTED_PINNING'
-}
+  UnsupportedPinning: 'UNSUPPORTED_PINNING'
+} as const;
 
+export type MetafieldDefinitionUpdateUserErrorCode = typeof MetafieldDefinitionUpdateUserErrorCode[keyof typeof MetafieldDefinitionUpdateUserErrorCode];
 /**
  * A configured metafield definition validation.
  *
@@ -32148,15 +32387,16 @@ export type MetafieldDefinitionValidationInput = {
 };
 
 /** Possible metafield definition validation statuses. */
-export enum MetafieldDefinitionValidationStatus {
+export const MetafieldDefinitionValidationStatus = {
   /** All of this definition's metafields are valid. */
-  AllValid = 'ALL_VALID',
+  AllValid: 'ALL_VALID',
   /** Asynchronous validation of this definition's metafields is in progress. */
-  InProgress = 'IN_PROGRESS',
+  InProgress: 'IN_PROGRESS',
   /** Some of this definition's metafields are invalid. */
-  SomeInvalid = 'SOME_INVALID'
-}
+  SomeInvalid: 'SOME_INVALID'
+} as const;
 
+export type MetafieldDefinitionValidationStatus = typeof MetafieldDefinitionValidationStatus[keyof typeof MetafieldDefinitionValidationStatus];
 /** An auto-generated type which holds one Metafield and a cursor during pagination. */
 export type MetafieldEdge = {
   __typename?: 'MetafieldEdge';
@@ -32226,62 +32466,60 @@ export type MetafieldInput = {
 };
 
 /** Possible types of a metafield's owner resource. */
-export enum MetafieldOwnerType {
+export const MetafieldOwnerType = {
   /** The Api Permission metafield owner type. */
-  ApiPermission = 'API_PERMISSION',
+  ApiPermission: 'API_PERMISSION',
   /** The Article metafield owner type. */
-  Article = 'ARTICLE',
+  Article: 'ARTICLE',
   /** The Blog metafield owner type. */
-  Blog = 'BLOG',
+  Blog: 'BLOG',
   /** The Cart Transform metafield owner type. */
-  Carttransform = 'CARTTRANSFORM',
+  Carttransform: 'CARTTRANSFORM',
   /** The Collection metafield owner type. */
-  Collection = 'COLLECTION',
+  Collection: 'COLLECTION',
   /** The Company metafield owner type. */
-  Company = 'COMPANY',
+  Company: 'COMPANY',
   /** The Company Location metafield owner type. */
-  CompanyLocation = 'COMPANY_LOCATION',
+  CompanyLocation: 'COMPANY_LOCATION',
   /** The Customer metafield owner type. */
-  Customer = 'CUSTOMER',
+  Customer: 'CUSTOMER',
   /** The Delivery Customization metafield owner type. */
-  DeliveryCustomization = 'DELIVERY_CUSTOMIZATION',
+  DeliveryCustomization: 'DELIVERY_CUSTOMIZATION',
   /** The Discount metafield owner type. */
-  Discount = 'DISCOUNT',
+  Discount: 'DISCOUNT',
   /** The draft order metafield owner type. */
-  Draftorder = 'DRAFTORDER',
+  Draftorder: 'DRAFTORDER',
   /** The Fulfillment Constraint Rule metafield owner type. */
-  FulfillmentConstraintRule = 'FULFILLMENT_CONSTRAINT_RULE',
+  FulfillmentConstraintRule: 'FULFILLMENT_CONSTRAINT_RULE',
   /** The GiftCardTransaction metafield owner type. */
-  GiftCardTransaction = 'GIFT_CARD_TRANSACTION',
+  GiftCardTransaction: 'GIFT_CARD_TRANSACTION',
   /** The Location metafield owner type. */
-  Location = 'LOCATION',
+  Location: 'LOCATION',
   /** The Market metafield owner type. */
-  Market = 'MARKET',
-  /**
-   * The Media Image metafield owner type.
-   * @deprecated `MEDIA_IMAGE` is deprecated.
-   */
-  MediaImage = 'MEDIA_IMAGE',
+  Market: 'MARKET',
+  /** The Media Image metafield owner type. */
+  MediaImage: 'MEDIA_IMAGE',
   /** The Order metafield owner type. */
-  Order = 'ORDER',
+  Order: 'ORDER',
   /** The Order Routing Location Rule metafield owner type. */
-  OrderRoutingLocationRule = 'ORDER_ROUTING_LOCATION_RULE',
+  OrderRoutingLocationRule: 'ORDER_ROUTING_LOCATION_RULE',
   /** The Page metafield owner type. */
-  Page = 'PAGE',
+  Page: 'PAGE',
   /** The Payment Customization metafield owner type. */
-  PaymentCustomization = 'PAYMENT_CUSTOMIZATION',
+  PaymentCustomization: 'PAYMENT_CUSTOMIZATION',
   /** The Product metafield owner type. */
-  Product = 'PRODUCT',
+  Product: 'PRODUCT',
   /** The Product Variant metafield owner type. */
-  Productvariant = 'PRODUCTVARIANT',
+  Productvariant: 'PRODUCTVARIANT',
   /** The Selling Plan metafield owner type. */
-  SellingPlan = 'SELLING_PLAN',
+  SellingPlan: 'SELLING_PLAN',
   /** The Shop metafield owner type. */
-  Shop = 'SHOP',
+  Shop: 'SHOP',
   /** The Validation metafield owner type. */
-  Validation = 'VALIDATION'
-}
+  Validation: 'VALIDATION'
+} as const;
 
+export type MetafieldOwnerType = typeof MetafieldOwnerType[keyof typeof MetafieldOwnerType];
 /** The resource referenced by the metafield value. */
 export type MetafieldReference = Article | Collection | Company | Customer | GenericFile | MediaImage | Metaobject | Model3d | Order | Page | Product | ProductVariant | TaxonomyValue | Video;
 
@@ -32351,46 +32589,50 @@ export type MetafieldRelationEdge = {
 };
 
 /** Metafield access permissions for the Storefront API. */
-export enum MetafieldStorefrontAccess {
+export const MetafieldStorefrontAccess = {
   /** No access. */
-  None = 'NONE',
+  None: 'NONE',
   /** Read-only access. */
-  PublicRead = 'PUBLIC_READ'
-}
+  PublicRead: 'PUBLIC_READ'
+} as const;
 
+export type MetafieldStorefrontAccess = typeof MetafieldStorefrontAccess[keyof typeof MetafieldStorefrontAccess];
 /** Metafield access permissions for the Storefront API. */
-export enum MetafieldStorefrontAccessInput {
+export const MetafieldStorefrontAccessInput = {
   /** No access. */
-  None = 'NONE',
+  None: 'NONE',
   /** Read-only access. */
-  PublicRead = 'PUBLIC_READ'
-}
+  PublicRead: 'PUBLIC_READ'
+} as const;
 
+export type MetafieldStorefrontAccessInput = typeof MetafieldStorefrontAccessInput[keyof typeof MetafieldStorefrontAccessInput];
 /** Possible metafield validation statuses. */
-export enum MetafieldValidationStatus {
+export const MetafieldValidationStatus = {
   /** Any validation status (valid or invalid). */
-  Any = 'ANY',
+  Any: 'ANY',
   /** Invalid (according to definition). */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** Valid (according to definition). */
-  Valid = 'VALID'
-}
+  Valid: 'VALID'
+} as const;
 
+export type MetafieldValidationStatus = typeof MetafieldValidationStatus[keyof typeof MetafieldValidationStatus];
 /**
  * Legacy type information for the stored value.
  * Replaced by `type`.
  */
-export enum MetafieldValueType {
+export const MetafieldValueType = {
   /** A `true` or `false` value. */
-  Boolean = 'BOOLEAN',
+  Boolean: 'BOOLEAN',
   /** A whole number. */
-  Integer = 'INTEGER',
+  Integer: 'INTEGER',
   /** A JSON string. */
-  JsonString = 'JSON_STRING',
+  JsonString: 'JSON_STRING',
   /** A text field. */
-  String = 'STRING'
-}
+  String: 'STRING'
+} as const;
 
+export type MetafieldValueType = typeof MetafieldValueType[keyof typeof MetafieldValueType];
 /** Return type for `metafieldsDelete` mutation. */
 export type MetafieldsDeletePayload = {
   __typename?: 'MetafieldsDeletePayload';
@@ -32455,39 +32697,40 @@ export type MetafieldsSetUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `MetafieldsSetUserError`. */
-export enum MetafieldsSetUserErrorCode {
+export const MetafieldsSetUserErrorCode = {
   /** ApiPermission metafields can only be created or updated by the app owner. */
-  AppNotAuthorized = 'APP_NOT_AUTHORIZED',
+  AppNotAuthorized: 'APP_NOT_AUTHORIZED',
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** The metafield violates a capability restriction. */
-  CapabilityViolation = 'CAPABILITY_VIOLATION',
+  CapabilityViolation: 'CAPABILITY_VIOLATION',
   /** The input value isn't included in the list. */
-  Inclusion = 'INCLUSION',
+  Inclusion: 'INCLUSION',
   /** An internal error occurred. */
-  InternalError = 'INTERNAL_ERROR',
+  InternalError: 'INTERNAL_ERROR',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The compareDigest is invalid. */
-  InvalidCompareDigest = 'INVALID_COMPARE_DIGEST',
+  InvalidCompareDigest: 'INVALID_COMPARE_DIGEST',
   /** The type is invalid. */
-  InvalidType = 'INVALID_TYPE',
+  InvalidType: 'INVALID_TYPE',
   /** The value is invalid for the metafield type or for the definition options. */
-  InvalidValue = 'INVALID_VALUE',
+  InvalidValue: 'INVALID_VALUE',
   /** The input value should be less than or equal to the maximum value allowed. */
-  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  LessThanOrEqualTo: 'LESS_THAN_OR_EQUAL_TO',
   /** The input value needs to be blank. */
-  Present = 'PRESENT',
+  Present: 'PRESENT',
   /** The metafield has been modified since it was loaded. */
-  StaleObject = 'STALE_OBJECT',
+  StaleObject: 'STALE_OBJECT',
   /** The input value is already taken. */
-  Taken = 'TAKEN',
+  Taken: 'TAKEN',
   /** The input value is too long. */
-  TooLong = 'TOO_LONG',
+  TooLong: 'TOO_LONG',
   /** The input value is too short. */
-  TooShort = 'TOO_SHORT'
-}
+  TooShort: 'TOO_SHORT'
+} as const;
 
+export type MetafieldsSetUserErrorCode = typeof MetafieldsSetUserErrorCode[keyof typeof MetafieldsSetUserErrorCode];
 /**
  * An instance of custom structured data defined by a [`MetaobjectDefinition`](https://shopify.dev/docs/api/admin-graphql/latest/objects/MetaobjectDefinition). [Metaobjects](https://shopify.dev/docs/apps/build/custom-data#what-are-metaobjects) store reusable data that extends beyond Shopify's standard resources, such as product highlights, size charts, or custom content sections.
  *
@@ -32575,30 +32818,32 @@ export type MetaobjectAccessInput = {
  * Metaobject access permissions for the Admin API. When the metaobject is app-owned, the owning app always has
  * full access.
  */
-export enum MetaobjectAdminAccess {
+export const MetaobjectAdminAccess = {
   /** The merchant has read-only access. No other apps have access. */
-  MerchantRead = 'MERCHANT_READ',
+  MerchantRead: 'MERCHANT_READ',
   /** The merchant has read and write access. No other apps have access. */
-  MerchantReadWrite = 'MERCHANT_READ_WRITE',
+  MerchantReadWrite: 'MERCHANT_READ_WRITE',
   /** The merchant and other apps have no access. */
-  Private = 'PRIVATE',
+  Private: 'PRIVATE',
   /** The merchant and other apps have read-only access. */
-  PublicRead = 'PUBLIC_READ',
+  PublicRead: 'PUBLIC_READ',
   /** The merchant and other apps have read and write access. */
-  PublicReadWrite = 'PUBLIC_READ_WRITE'
-}
+  PublicReadWrite: 'PUBLIC_READ_WRITE'
+} as const;
 
+export type MetaobjectAdminAccess = typeof MetaobjectAdminAccess[keyof typeof MetaobjectAdminAccess];
 /**
  * Metaobject access permissions for the Admin API. When the metaobject is app-owned, the owning app always has
  * full access.
  */
-export enum MetaobjectAdminAccessInput {
+export const MetaobjectAdminAccessInput = {
   /** The merchant has read-only access. No other apps have access. */
-  MerchantRead = 'MERCHANT_READ',
+  MerchantRead: 'MERCHANT_READ',
   /** The merchant has read and write access. No other apps have access. */
-  MerchantReadWrite = 'MERCHANT_READ_WRITE'
-}
+  MerchantReadWrite: 'MERCHANT_READ_WRITE'
+} as const;
 
+export type MetaobjectAdminAccessInput = typeof MetaobjectAdminAccessInput[keyof typeof MetaobjectAdminAccessInput];
 /** Return type for `metaobjectBulkDelete` mutation. */
 export type MetaobjectBulkDeletePayload = {
   __typename?: 'MetaobjectBulkDeletePayload';
@@ -32782,17 +33027,18 @@ export type MetaobjectCapabilityTranslatableInput = {
 };
 
 /** Metaobject Capabilities types which can be enabled. */
-export enum MetaobjectCapabilityType {
+export const MetaobjectCapabilityType = {
   /** Allows for a Metaobject to be rendered as an Online Store page. */
-  OnlineStore = 'ONLINE_STORE',
+  OnlineStore: 'ONLINE_STORE',
   /** Allows for a Metaobject to be conditionally publishable. */
-  Publishable = 'PUBLISHABLE',
+  Publishable: 'PUBLISHABLE',
   /** Allows for a Metaobject to have attributes of a renderable page such as SEO. */
-  Renderable = 'RENDERABLE',
+  Renderable: 'RENDERABLE',
   /** Allows for a Metaobject to be translated using the translation api. */
-  Translatable = 'TRANSLATABLE'
-}
+  Translatable: 'TRANSLATABLE'
+} as const;
 
+export type MetaobjectCapabilityType = typeof MetaobjectCapabilityType[keyof typeof MetaobjectCapabilityType];
 /** The input fields for updating a metaobject capability. */
 export type MetaobjectCapabilityUpdateInput = {
   /** The input for enabling the Online Store capability. */
@@ -33151,21 +33397,23 @@ export type MetaobjectHandleInput = {
 };
 
 /** Defines visibility status for metaobjects. */
-export enum MetaobjectStatus {
+export const MetaobjectStatus = {
   /** The metaobjects is active for public use. */
-  Active = 'ACTIVE',
+  Active: 'ACTIVE',
   /** The metaobjects is an internal record. */
-  Draft = 'DRAFT'
-}
+  Draft: 'DRAFT'
+} as const;
 
+export type MetaobjectStatus = typeof MetaobjectStatus[keyof typeof MetaobjectStatus];
 /** Metaobject access permissions for the Storefront API. */
-export enum MetaobjectStorefrontAccess {
+export const MetaobjectStorefrontAccess = {
   /** No access. */
-  None = 'NONE',
+  None: 'NONE',
   /** Read-only access. */
-  PublicRead = 'PUBLIC_READ'
-}
+  PublicRead: 'PUBLIC_READ'
+} as const;
 
+export type MetaobjectStorefrontAccess = typeof MetaobjectStorefrontAccess[keyof typeof MetaobjectStorefrontAccess];
 /** Provides attributes for visual representation. */
 export type MetaobjectThumbnail = {
   __typename?: 'MetaobjectThumbnail';
@@ -33231,85 +33479,87 @@ export type MetaobjectUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `MetaobjectUserError`. */
-export enum MetaobjectUserErrorCode {
+export const MetaobjectUserErrorCode = {
   /** Admin access can only be specified on metaobject definitions that have an app-reserved type. */
-  AdminAccessInputNotAllowed = 'ADMIN_ACCESS_INPUT_NOT_ALLOWED',
+  AdminAccessInputNotAllowed: 'ADMIN_ACCESS_INPUT_NOT_ALLOWED',
   /** Definition is managed by app configuration and cannot be modified through the API. */
-  AppConfigManaged = 'APP_CONFIG_MANAGED',
+  AppConfigManaged: 'APP_CONFIG_MANAGED',
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** The capability you are using is not enabled. */
-  CapabilityNotEnabled = 'CAPABILITY_NOT_ENABLED',
+  CapabilityNotEnabled: 'CAPABILITY_NOT_ENABLED',
   /** The display name cannot be the same when using the metaobject as a product option. */
-  DisplayNameConflict = 'DISPLAY_NAME_CONFLICT',
+  DisplayNameConflict: 'DISPLAY_NAME_CONFLICT',
   /** Duplicate inputs were provided for this field key. */
-  DuplicateFieldInput = 'DUPLICATE_FIELD_INPUT',
+  DuplicateFieldInput: 'DUPLICATE_FIELD_INPUT',
   /** Renderable data input is referencing an invalid field. */
-  FieldTypeInvalid = 'FIELD_TYPE_INVALID',
+  FieldTypeInvalid: 'FIELD_TYPE_INVALID',
   /** The targeted object cannot be modified. */
-  Immutable = 'IMMUTABLE',
+  Immutable: 'IMMUTABLE',
   /** The input value isn't included in the list. */
-  Inclusion = 'INCLUSION',
+  Inclusion: 'INCLUSION',
   /** The maximum number of input metaobjects has been exceeded. */
-  InputLimitExceeded = 'INPUT_LIMIT_EXCEEDED',
+  InputLimitExceeded: 'INPUT_LIMIT_EXCEEDED',
   /** An unexpected error occurred. */
-  InternalError = 'INTERNAL_ERROR',
+  InternalError: 'INTERNAL_ERROR',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The value for the metafield definition option was invalid. */
-  InvalidOption = 'INVALID_OPTION',
+  InvalidOption: 'INVALID_OPTION',
   /** The metafield type is invalid. */
-  InvalidType = 'INVALID_TYPE',
+  InvalidType: 'INVALID_TYPE',
   /** The value is invalid for the metafield type or the definition options. */
-  InvalidValue = 'INVALID_VALUE',
+  InvalidValue: 'INVALID_VALUE',
   /** The maximum number of metaobjects definitions has been exceeded. */
-  MaxDefinitionsExceeded = 'MAX_DEFINITIONS_EXCEEDED',
+  MaxDefinitionsExceeded: 'MAX_DEFINITIONS_EXCEEDED',
   /** The maximum number of metaobjects per shop has been exceeded. */
-  MaxObjectsExceeded = 'MAX_OBJECTS_EXCEEDED',
+  MaxObjectsExceeded: 'MAX_OBJECTS_EXCEEDED',
   /** The input is missing required keys. */
-  MissingRequiredKeys = 'MISSING_REQUIRED_KEYS',
+  MissingRequiredKeys: 'MISSING_REQUIRED_KEYS',
   /** Not authorized. */
-  NotAuthorized = 'NOT_AUTHORIZED',
+  NotAuthorized: 'NOT_AUTHORIZED',
   /** Missing required fields were found for this object. */
-  ObjectFieldRequired = 'OBJECT_FIELD_REQUIRED',
+  ObjectFieldRequired: 'OBJECT_FIELD_REQUIRED',
   /** The specified field key is already in use. */
-  ObjectFieldTaken = 'OBJECT_FIELD_TAKEN',
+  ObjectFieldTaken: 'OBJECT_FIELD_TAKEN',
   /** The input value needs to be blank. */
-  Present = 'PRESENT',
+  Present: 'PRESENT',
   /** The requested record couldn't be found. */
-  RecordNotFound = 'RECORD_NOT_FOUND',
+  RecordNotFound: 'RECORD_NOT_FOUND',
   /** The action cannot be completed because associated metaobjects are referenced by another resource. */
-  ReferenceExistsError = 'REFERENCE_EXISTS_ERROR',
+  ReferenceExistsError: 'REFERENCE_EXISTS_ERROR',
   /** The provided name is reserved for system use. */
-  ReservedName = 'RESERVED_NAME',
+  ReservedName: 'RESERVED_NAME',
   /** Definition is required by an installed app and cannot be deleted. */
-  StandardMetaobjectDefinitionDependentOnApp = 'STANDARD_METAOBJECT_DEFINITION_DEPENDENT_ON_APP',
+  StandardMetaobjectDefinitionDependentOnApp: 'STANDARD_METAOBJECT_DEFINITION_DEPENDENT_ON_APP',
   /** The input value is already taken. */
-  Taken = 'TAKEN',
+  Taken: 'TAKEN',
   /** The input value is too long. */
-  TooLong = 'TOO_LONG',
+  TooLong: 'TOO_LONG',
   /** The input value is too short. */
-  TooShort = 'TOO_SHORT',
+  TooShort: 'TOO_SHORT',
   /** No field definition found for this key. */
-  UndefinedObjectField = 'UNDEFINED_OBJECT_FIELD',
+  UndefinedObjectField: 'UNDEFINED_OBJECT_FIELD',
   /** No metaobject definition found for this type. */
-  UndefinedObjectType = 'UNDEFINED_OBJECT_TYPE',
+  UndefinedObjectType: 'UNDEFINED_OBJECT_TYPE',
   /** The Online Store URL handle cannot be blank. */
-  UrlHandleBlank = 'URL_HANDLE_BLANK',
+  UrlHandleBlank: 'URL_HANDLE_BLANK',
   /** The Online Store URL handle is invalid. */
-  UrlHandleInvalid = 'URL_HANDLE_INVALID',
+  UrlHandleInvalid: 'URL_HANDLE_INVALID',
   /** The Online Store URL handle is already taken. */
-  UrlHandleTaken = 'URL_HANDLE_TAKEN'
-}
+  UrlHandleTaken: 'URL_HANDLE_TAKEN'
+} as const;
 
+export type MetaobjectUserErrorCode = typeof MetaobjectUserErrorCode[keyof typeof MetaobjectUserErrorCode];
 /** The set of valid sort keys for the MethodDefinition query. */
-export enum MethodDefinitionSortKeys {
+export const MethodDefinitionSortKeys = {
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `rate_provider_type` value. */
-  RateProviderType = 'RATE_PROVIDER_TYPE'
-}
+  RateProviderType: 'RATE_PROVIDER_TYPE'
+} as const;
 
+export type MethodDefinitionSortKeys = typeof MethodDefinitionSortKeys[keyof typeof MethodDefinitionSortKeys];
 /**
  * You can use the `MobilePlatformApplication` resource to enable
  * [shared web credentials](https://developer.apple.com/documentation/security/shared_web_credentials) for Shopify iOS apps,
@@ -33453,15 +33703,16 @@ export type MobilePlatformApplicationUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `MobilePlatformApplicationUserError`. */
-export enum MobilePlatformApplicationUserErrorCode {
+export const MobilePlatformApplicationUserErrorCode = {
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The record with the ID used as the input value couldn't be found. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** The input value is too long. */
-  TooLong = 'TOO_LONG'
-}
+  TooLong: 'TOO_LONG'
+} as const;
 
+export type MobilePlatformApplicationUserErrorCode = typeof MobilePlatformApplicationUserErrorCode[keyof typeof MobilePlatformApplicationUserErrorCode];
 /** Represents a Shopify hosted 3D model. */
 export type Model3d = File & Media & Node & {
   __typename?: 'Model3d';
@@ -40576,13 +40827,14 @@ export type Node = {
 };
 
 /** The valid values for the notification usage, specifying the intended notification environment usage for certain operations. */
-export enum NotificationUsage {
+export const NotificationUsage = {
   /** The notification environment is sms. */
-  Sms = 'SMS',
+  Sms: 'SMS',
   /** The notification environment is web. */
-  Web = 'WEB'
-}
+  Web: 'WEB'
+} as const;
 
+export type NotificationUsage = typeof NotificationUsage[keyof typeof NotificationUsage];
 /** The input fields for dimensions of an object. */
 export type ObjectDimensionsInput = {
   /** The height in `unit`s. */
@@ -40727,15 +40979,16 @@ export type OnlineStoreThemeFileBodyInput = {
 };
 
 /** The input type for a theme file body. */
-export enum OnlineStoreThemeFileBodyInputType {
+export const OnlineStoreThemeFileBodyInputType = {
   /** The base64 encoded body of a theme file. */
-  Base64 = 'BASE64',
+  Base64: 'BASE64',
   /** The text body of the theme file. */
-  Text = 'TEXT',
+  Text: 'TEXT',
   /** The url of the body of a theme file. */
-  Url = 'URL'
-}
+  Url: 'URL'
+} as const;
 
+export type OnlineStoreThemeFileBodyInputType = typeof OnlineStoreThemeFileBodyInputType[keyof typeof OnlineStoreThemeFileBodyInputType];
 /** Represents the body of a theme file. */
 export type OnlineStoreThemeFileBodyText = {
   __typename?: 'OnlineStoreThemeFileBodyText';
@@ -40797,23 +41050,24 @@ export type OnlineStoreThemeFileReadResult = {
 };
 
 /** Type of a theme file operation result. */
-export enum OnlineStoreThemeFileResultType {
+export const OnlineStoreThemeFileResultType = {
   /** Operation was malformed or invalid. */
-  BadRequest = 'BAD_REQUEST',
+  BadRequest: 'BAD_REQUEST',
   /** Operation faced a conflict with the current state of the file. */
-  Conflict = 'CONFLICT',
+  Conflict: 'CONFLICT',
   /** Operation encountered an error. */
-  Error = 'ERROR',
+  Error: 'ERROR',
   /** Operation file could not be found. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** Operation was successful. */
-  Success = 'SUCCESS',
+  Success: 'SUCCESS',
   /** Operation timed out. */
-  Timeout = 'TIMEOUT',
+  Timeout: 'TIMEOUT',
   /** Operation could not be processed due to issues with input data. */
-  UnprocessableEntity = 'UNPROCESSABLE_ENTITY'
-}
+  UnprocessableEntity: 'UNPROCESSABLE_ENTITY'
+} as const;
 
+export type OnlineStoreThemeFileResultType = typeof OnlineStoreThemeFileResultType[keyof typeof OnlineStoreThemeFileResultType];
 /** The input fields for the file to create or update. */
 export type OnlineStoreThemeFilesUpsertFileInput = {
   /** The body of the theme file. */
@@ -40836,27 +41090,28 @@ export type OnlineStoreThemeFilesUserErrors = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `OnlineStoreThemeFilesUserErrors`. */
-export enum OnlineStoreThemeFilesUserErrorsCode {
+export const OnlineStoreThemeFilesUserErrorsCode = {
   /** Access denied. */
-  AccessDenied = 'ACCESS_DENIED',
+  AccessDenied: 'ACCESS_DENIED',
   /** There are files with the same filename. */
-  DuplicateFileInput = 'DUPLICATE_FILE_INPUT',
+  DuplicateFileInput: 'DUPLICATE_FILE_INPUT',
   /** Error. */
-  Error = 'ERROR',
+  Error: 'ERROR',
   /** The file is invalid. */
-  FileValidationError = 'FILE_VALIDATION_ERROR',
+  FileValidationError: 'FILE_VALIDATION_ERROR',
   /** The input value should be less than or equal to the maximum value allowed. */
-  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  LessThanOrEqualTo: 'LESS_THAN_OR_EQUAL_TO',
   /** The record with the ID used as the input value couldn't be found. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** There are theme files with conflicts. */
-  ThemeFilesConflict = 'THEME_FILES_CONFLICT',
+  ThemeFilesConflict: 'THEME_FILES_CONFLICT',
   /** This action is not available on your current plan. Please upgrade to access theme editing features. */
-  ThemeLimitedPlan = 'THEME_LIMITED_PLAN',
+  ThemeLimitedPlan: 'THEME_LIMITED_PLAN',
   /** Too many updates in a short period. Please try again later. */
-  Throttled = 'THROTTLED'
-}
+  Throttled: 'THROTTLED'
+} as const;
 
+export type OnlineStoreThemeFilesUserErrorsCode = typeof OnlineStoreThemeFilesUserErrorsCode[keyof typeof OnlineStoreThemeFilesUserErrorsCode];
 /** The input fields for Theme attributes to update. */
 export type OnlineStoreThemeInput = {
   /** The new name of the theme. */
@@ -42234,19 +42489,20 @@ export type OrderTransactionsArgs = {
  * The possible order action types for a
  * [sales agreement](https://shopify.dev/api/admin-graphql/latest/interfaces/salesagreement).
  */
-export enum OrderActionType {
+export const OrderActionType = {
   /** An order with a purchase or charge. */
-  Order = 'ORDER',
+  Order: 'ORDER',
   /** An edit to the order. */
-  OrderEdit = 'ORDER_EDIT',
+  OrderEdit: 'ORDER_EDIT',
   /** A refund on the order. */
-  Refund = 'REFUND',
+  Refund: 'REFUND',
   /** A return on the order. */
-  Return = 'RETURN',
+  Return: 'RETURN',
   /** An unknown agreement action. Represents new actions that may be added in future versions. */
-  Unknown = 'UNKNOWN'
-}
+  Unknown: 'UNKNOWN'
+} as const;
 
+export type OrderActionType = typeof OrderActionType[keyof typeof OrderActionType];
 /** An order adjustment accounts for the difference between a calculated and actual refund amount. */
 export type OrderAdjustment = Node & {
   __typename?: 'OrderAdjustment';
@@ -42272,21 +42528,22 @@ export type OrderAdjustmentConnection = {
 };
 
 /** Discrepancy reasons for order adjustments. */
-export enum OrderAdjustmentDiscrepancyReason {
+export const OrderAdjustmentDiscrepancyReason = {
   /** The discrepancy reason is customer. */
-  Customer = 'CUSTOMER',
+  Customer: 'CUSTOMER',
   /** The discrepancy reason is damage. */
-  Damage = 'DAMAGE',
+  Damage: 'DAMAGE',
   /** The discrepancy reason is balance adjustment. */
-  FullReturnBalancingAdjustment = 'FULL_RETURN_BALANCING_ADJUSTMENT',
+  FullReturnBalancingAdjustment: 'FULL_RETURN_BALANCING_ADJUSTMENT',
   /** The discrepancy reason is pending refund. */
-  PendingRefundDiscrepancy = 'PENDING_REFUND_DISCREPANCY',
+  PendingRefundDiscrepancy: 'PENDING_REFUND_DISCREPANCY',
   /** The discrepancy reason is not one of the predefined reasons. */
-  RefundDiscrepancy = 'REFUND_DISCREPANCY',
+  RefundDiscrepancy: 'REFUND_DISCREPANCY',
   /** The discrepancy reason is restocking. */
-  Restock = 'RESTOCK'
-}
+  Restock: 'RESTOCK'
+} as const;
 
+export type OrderAdjustmentDiscrepancyReason = typeof OrderAdjustmentDiscrepancyReason[keyof typeof OrderAdjustmentDiscrepancyReason];
 /** An auto-generated type which holds one OrderAdjustment and a cursor during pagination. */
 export type OrderAdjustmentEdge = {
   __typename?: 'OrderAdjustmentEdge';
@@ -42297,17 +42554,18 @@ export type OrderAdjustmentEdge = {
 };
 
 /** Discrepancy reasons for order adjustments. */
-export enum OrderAdjustmentInputDiscrepancyReason {
+export const OrderAdjustmentInputDiscrepancyReason = {
   /** The discrepancy reason is customer. */
-  Customer = 'CUSTOMER',
+  Customer: 'CUSTOMER',
   /** The discrepancy reason is damage. */
-  Damage = 'DAMAGE',
+  Damage: 'DAMAGE',
   /** The discrepancy reason is not one of the predefined reasons. */
-  Other = 'OTHER',
+  Other: 'OTHER',
   /** The discrepancy reason is restocking. */
-  Restock = 'RESTOCK'
-}
+  Restock: 'RESTOCK'
+} as const;
 
+export type OrderAdjustmentInputDiscrepancyReason = typeof OrderAdjustmentInputDiscrepancyReason[keyof typeof OrderAdjustmentInputDiscrepancyReason];
 /** An agreement associated with an order placement. */
 export type OrderAgreement = SalesAgreement & {
   __typename?: 'OrderAgreement';
@@ -42367,21 +42625,22 @@ export type OrderCancelPayload = {
 };
 
 /** Represents the reason for the order's cancellation. */
-export enum OrderCancelReason {
+export const OrderCancelReason = {
   /** The customer wanted to cancel the order. */
-  Customer = 'CUSTOMER',
+  Customer: 'CUSTOMER',
   /** Payment was declined. */
-  Declined = 'DECLINED',
+  Declined: 'DECLINED',
   /** The order was fraudulent. */
-  Fraud = 'FRAUD',
+  Fraud: 'FRAUD',
   /** There was insufficient inventory. */
-  Inventory = 'INVENTORY',
+  Inventory: 'INVENTORY',
   /** The order was canceled for an unlisted reason. */
-  Other = 'OTHER',
+  Other: 'OTHER',
   /** Staff made an error. */
-  Staff = 'STAFF'
-}
+  Staff: 'STAFF'
+} as const;
 
+export type OrderCancelReason = typeof OrderCancelReason[keyof typeof OrderCancelReason];
 /** The input fields used to specify the refund method for an order cancellation. */
 export type OrderCancelRefundMethodInput = {
   /** Whether to refund to the original payment method. */
@@ -42408,25 +42667,26 @@ export type OrderCancelUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `OrderCancelUserError`. */
-export enum OrderCancelUserErrorCode {
+export const OrderCancelUserErrorCode = {
   /** Unexpected internal error happened. */
-  InternalError = 'INTERNAL_ERROR',
+  InternalError: 'INTERNAL_ERROR',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The record with the ID used as the input value couldn't be found. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** An order refund was requested but the user does not have the refund_orders permission. */
-  NoRefundPermission = 'NO_REFUND_PERMISSION',
+  NoRefundPermission: 'NO_REFUND_PERMISSION',
   /** An order refund was requested but the user does not have the refund_to_store_credit permission. */
-  NoRefundToStoreCreditPermission = 'NO_REFUND_TO_STORE_CREDIT_PERMISSION',
+  NoRefundToStoreCreditPermission: 'NO_REFUND_TO_STORE_CREDIT_PERMISSION',
   /** A store credit order refund was requested but the order is a B2B order. */
-  StoreCreditRefundB2BNotSupported = 'STORE_CREDIT_REFUND_B2B_NOT_SUPPORTED',
+  StoreCreditRefundB2BNotSupported: 'STORE_CREDIT_REFUND_B2B_NOT_SUPPORTED',
   /** A store credit order refund was requested but the expiration date is in the past. */
-  StoreCreditRefundExpirationInPast = 'STORE_CREDIT_REFUND_EXPIRATION_IN_PAST',
+  StoreCreditRefundExpirationInPast: 'STORE_CREDIT_REFUND_EXPIRATION_IN_PAST',
   /** A store credit order refund was requested but the order has no customer. */
-  StoreCreditRefundMissingCustomer = 'STORE_CREDIT_REFUND_MISSING_CUSTOMER'
-}
+  StoreCreditRefundMissingCustomer: 'STORE_CREDIT_REFUND_MISSING_CUSTOMER'
+} as const;
 
+export type OrderCancelUserErrorCode = typeof OrderCancelUserErrorCode[keyof typeof OrderCancelUserErrorCode];
 /** Details about the order cancellation. */
 export type OrderCancellation = {
   __typename?: 'OrderCancellation';
@@ -42557,25 +42817,26 @@ export type OrderCreateDiscountCodeInput = {
 };
 
 /** The status of payments associated with the order. Can only be set when the order is created. */
-export enum OrderCreateFinancialStatus {
+export const OrderCreateFinancialStatus = {
   /** The payments have been authorized. */
-  Authorized = 'AUTHORIZED',
+  Authorized: 'AUTHORIZED',
   /** The payments have been expired. */
-  Expired = 'EXPIRED',
+  Expired: 'EXPIRED',
   /** The payments have been paid. */
-  Paid = 'PAID',
+  Paid: 'PAID',
   /** The order has been partially paid. */
-  PartiallyPaid = 'PARTIALLY_PAID',
+  PartiallyPaid: 'PARTIALLY_PAID',
   /** The payments have been partially refunded. */
-  PartiallyRefunded = 'PARTIALLY_REFUNDED',
+  PartiallyRefunded: 'PARTIALLY_REFUNDED',
   /** The payments are pending. Payment might fail in this state. Check again to confirm whether the payments have been paid successfully. */
-  Pending = 'PENDING',
+  Pending: 'PENDING',
   /** The payments have been refunded. */
-  Refunded = 'REFUNDED',
+  Refunded: 'REFUNDED',
   /** The payments have been voided. */
-  Voided = 'VOIDED'
-}
+  Voided: 'VOIDED'
+} as const;
 
+export type OrderCreateFinancialStatus = typeof OrderCreateFinancialStatus[keyof typeof OrderCreateFinancialStatus];
 /** The input fields for a fixed amount discount code to apply to an order. */
 export type OrderCreateFixedDiscountCodeAttributesInput = {
   /** The amount that's deducted from the order total. When you create an order, this value is the monetary amount to deduct. */
@@ -42637,25 +42898,27 @@ export type OrderCreateFulfillmentInput = {
 };
 
 /** The order's status in terms of fulfilled line items. */
-export enum OrderCreateFulfillmentStatus {
+export const OrderCreateFulfillmentStatus = {
   /** Every line item in the order has been fulfilled. */
-  Fulfilled = 'FULFILLED',
+  Fulfilled: 'FULFILLED',
   /** At least one line item in the order has been fulfilled. */
-  Partial = 'PARTIAL',
+  Partial: 'PARTIAL',
   /** Every line item in the order has been restocked and the order canceled. */
-  Restocked = 'RESTOCKED'
-}
+  Restocked: 'RESTOCKED'
+} as const;
 
+export type OrderCreateFulfillmentStatus = typeof OrderCreateFulfillmentStatus[keyof typeof OrderCreateFulfillmentStatus];
 /** The types of behavior to use when updating inventory. */
-export enum OrderCreateInputsInventoryBehavior {
+export const OrderCreateInputsInventoryBehavior = {
   /** Do not claim inventory. */
-  Bypass = 'BYPASS',
+  Bypass: 'BYPASS',
   /** Ignore the product's inventory policy and claim inventory. */
-  DecrementIgnoringPolicy = 'DECREMENT_IGNORING_POLICY',
+  DecrementIgnoringPolicy: 'DECREMENT_IGNORING_POLICY',
   /** Follow the product's inventory policy and claim inventory, if possible. */
-  DecrementObeyingPolicy = 'DECREMENT_OBEYING_POLICY'
-}
+  DecrementObeyingPolicy: 'DECREMENT_OBEYING_POLICY'
+} as const;
 
+export type OrderCreateInputsInventoryBehavior = typeof OrderCreateInputsInventoryBehavior[keyof typeof OrderCreateInputsInventoryBehavior];
 /** The input fields for a line item to create for an order. */
 export type OrderCreateLineItemInput = {
   /**
@@ -42735,11 +42998,12 @@ export type OrderCreateMandatePaymentUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `OrderCreateMandatePaymentUserError`. */
-export enum OrderCreateMandatePaymentUserErrorCode {
+export const OrderCreateMandatePaymentUserErrorCode = {
   /** Errors for mandate payment on order. */
-  OrderMandatePaymentErrorCode = 'ORDER_MANDATE_PAYMENT_ERROR_CODE'
-}
+  OrderMandatePaymentErrorCode: 'ORDER_MANDATE_PAYMENT_ERROR_CODE'
+} as const;
 
+export type OrderCreateMandatePaymentUserErrorCode = typeof OrderCreateMandatePaymentUserErrorCode[keyof typeof OrderCreateMandatePaymentUserErrorCode];
 /** An error that occurs during the execution of a order create manual payment mutation. */
 export type OrderCreateManualPaymentOrderCreateManualPaymentError = DisplayableError & {
   __typename?: 'OrderCreateManualPaymentOrderCreateManualPaymentError';
@@ -42752,23 +43016,24 @@ export type OrderCreateManualPaymentOrderCreateManualPaymentError = DisplayableE
 };
 
 /** Possible error codes that can be returned by `OrderCreateManualPaymentOrderCreateManualPaymentError`. */
-export enum OrderCreateManualPaymentOrderCreateManualPaymentErrorCode {
+export const OrderCreateManualPaymentOrderCreateManualPaymentErrorCode = {
   /** Amount exceeds the remaining balance. */
-  AmountExceedsBalance = 'AMOUNT_EXCEEDS_BALANCE',
+  AmountExceedsBalance: 'AMOUNT_EXCEEDS_BALANCE',
   /** Amount must be positive. */
-  AmountNotPositive = 'AMOUNT_NOT_POSITIVE',
+  AmountNotPositive: 'AMOUNT_NOT_POSITIVE',
   /** The currency of the amount doesn't match the presentment currency of the order. */
-  CurrencyMismatch = 'CURRENCY_MISMATCH',
+  CurrencyMismatch: 'CURRENCY_MISMATCH',
   /** Payment gateway is not found. */
-  GatewayNotFound = 'GATEWAY_NOT_FOUND',
+  GatewayNotFound: 'GATEWAY_NOT_FOUND',
   /** Order is temporarily unavailable. */
-  OrderIsTemporarilyUnavailable = 'ORDER_IS_TEMPORARILY_UNAVAILABLE',
+  OrderIsTemporarilyUnavailable: 'ORDER_IS_TEMPORARILY_UNAVAILABLE',
   /** Order is not found. */
-  OrderNotFound = 'ORDER_NOT_FOUND',
+  OrderNotFound: 'ORDER_NOT_FOUND',
   /** Indicates that the processedAt field is invalid, such as when it references a future date. */
-  ProcessedAtInvalid = 'PROCESSED_AT_INVALID'
-}
+  ProcessedAtInvalid: 'PROCESSED_AT_INVALID'
+} as const;
 
+export type OrderCreateManualPaymentOrderCreateManualPaymentErrorCode = typeof OrderCreateManualPaymentOrderCreateManualPaymentErrorCode[keyof typeof OrderCreateManualPaymentOrderCreateManualPaymentErrorCode];
 /** Return type for `orderCreateManualPayment` mutation. */
 export type OrderCreateManualPaymentPayload = {
   __typename?: 'OrderCreateManualPaymentPayload';
@@ -43008,23 +43273,24 @@ export type OrderCreateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `OrderCreateUserError`. */
-export enum OrderCreateUserErrorCode {
+export const OrderCreateUserErrorCode = {
   /** Indicates that the line item fulfillment service handle is invalid. */
-  FulfillmentServiceInvalid = 'FULFILLMENT_SERVICE_INVALID',
+  FulfillmentServiceInvalid: 'FULFILLMENT_SERVICE_INVALID',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** Indicates that the inventory claim failed during order creation. */
-  InventoryClaimFailed = 'INVENTORY_CLAIM_FAILED',
+  InventoryClaimFailed: 'INVENTORY_CLAIM_FAILED',
   /** Indicates that the processed_at field is invalid, such as when it references a future date. */
-  ProcessedAtInvalid = 'PROCESSED_AT_INVALID',
+  ProcessedAtInvalid: 'PROCESSED_AT_INVALID',
   /** Indicates that both customer_id and customer were provided - only one is permitted. */
-  RedundantCustomerFields = 'REDUNDANT_CUSTOMER_FIELDS',
+  RedundantCustomerFields: 'REDUNDANT_CUSTOMER_FIELDS',
   /** Indicates that the shop is dormant and cannot create orders. */
-  ShopDormant = 'SHOP_DORMANT',
+  ShopDormant: 'SHOP_DORMANT',
   /** Indicates that the tax line rate is missing - only enforced for LineItem or ShippingLine-level tax lines. */
-  TaxLineRateMissing = 'TAX_LINE_RATE_MISSING'
-}
+  TaxLineRateMissing: 'TAX_LINE_RATE_MISSING'
+} as const;
 
+export type OrderCreateUserErrorCode = typeof OrderCreateUserErrorCode[keyof typeof OrderCreateUserErrorCode];
 /** Return type for `orderCustomerRemove` mutation. */
 export type OrderCustomerRemovePayload = {
   __typename?: 'OrderCustomerRemovePayload';
@@ -43046,15 +43312,16 @@ export type OrderCustomerRemoveUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `OrderCustomerRemoveUserError`. */
-export enum OrderCustomerRemoveUserErrorCode {
+export const OrderCustomerRemoveUserErrorCode = {
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The record with the ID used as the input value couldn't be found. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** An error ocurred while saving the order. */
-  NotSaved = 'NOT_SAVED'
-}
+  NotSaved: 'NOT_SAVED'
+} as const;
 
+export type OrderCustomerRemoveUserErrorCode = typeof OrderCustomerRemoveUserErrorCode[keyof typeof OrderCustomerRemoveUserErrorCode];
 /** Return type for `orderCustomerSet` mutation. */
 export type OrderCustomerSetPayload = {
   __typename?: 'OrderCustomerSetPayload';
@@ -43076,17 +43343,18 @@ export type OrderCustomerSetUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `OrderCustomerSetUserError`. */
-export enum OrderCustomerSetUserErrorCode {
+export const OrderCustomerSetUserErrorCode = {
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The record with the ID used as the input value couldn't be found. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** The customer does not have the permissions to place this order. */
-  NotPermitted = 'NOT_PERMITTED',
+  NotPermitted: 'NOT_PERMITTED',
   /** An error ocurred while saving the order. */
-  NotSaved = 'NOT_SAVED'
-}
+  NotSaved: 'NOT_SAVED'
+} as const;
 
+export type OrderCustomerSetUserErrorCode = typeof OrderCustomerSetUserErrorCode[keyof typeof OrderCustomerSetUserErrorCode];
 /** Return type for `orderDelete` mutation. */
 export type OrderDeletePayload = {
   __typename?: 'OrderDeletePayload';
@@ -43108,60 +43376,63 @@ export type OrderDeleteUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `OrderDeleteUserError`. */
-export enum OrderDeleteUserErrorCode {
+export const OrderDeleteUserErrorCode = {
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The record with the ID used as the input value couldn't be found. */
-  NotFound = 'NOT_FOUND'
-}
+  NotFound: 'NOT_FOUND'
+} as const;
 
+export type OrderDeleteUserErrorCode = typeof OrderDeleteUserErrorCode[keyof typeof OrderDeleteUserErrorCode];
 /** Represents the order's current financial status. */
-export enum OrderDisplayFinancialStatus {
+export const OrderDisplayFinancialStatus = {
   /** Displayed as **Authorized**. The payment provider has validated the customer's payment information. This status appears only for manual payment capture and indicates payments should be captured before the authorization period expires. */
-  Authorized = 'AUTHORIZED',
+  Authorized: 'AUTHORIZED',
   /** Displayed as **Expired**. Payment wasn't captured before the payment provider's deadline on an authorized order. Some payment providers use this status to indicate failed payment processing. */
-  Expired = 'EXPIRED',
+  Expired: 'EXPIRED',
   /** Displayed as **Paid**. Payment was automatically or manually captured, or the order was marked as paid. */
-  Paid = 'PAID',
+  Paid: 'PAID',
   /** Displayed as **Partially paid**. A payment was manually captured for the order with an amount less than the full order value. */
-  PartiallyPaid = 'PARTIALLY_PAID',
+  PartiallyPaid: 'PARTIALLY_PAID',
   /** Displayed as **Partially refunded**. The amount refunded to a customer is less than the full amount paid for an order. */
-  PartiallyRefunded = 'PARTIALLY_REFUNDED',
+  PartiallyRefunded: 'PARTIALLY_REFUNDED',
   /** Displayed as **Pending**. Orders have this status when the payment provider needs time to complete the payment, or when manual payment methods are being used. */
-  Pending = 'PENDING',
+  Pending: 'PENDING',
   /** Displayed as **Refunded**. The full amount paid for an order was refunded to the customer. */
-  Refunded = 'REFUNDED',
+  Refunded: 'REFUNDED',
   /**
    * Displayed as **Voided**. An unpaid (payment authorized but not captured) order was manually
    *          canceled.
    */
-  Voided = 'VOIDED'
-}
+  Voided: 'VOIDED'
+} as const;
 
+export type OrderDisplayFinancialStatus = typeof OrderDisplayFinancialStatus[keyof typeof OrderDisplayFinancialStatus];
 /** Represents the order's aggregated fulfillment status for display purposes. */
-export enum OrderDisplayFulfillmentStatus {
+export const OrderDisplayFulfillmentStatus = {
   /** Displayed as **Fulfilled**. All the items in the order have been fulfilled. */
-  Fulfilled = 'FULFILLED',
+  Fulfilled: 'FULFILLED',
   /** Displayed as **In progress**. All of the items in the order have had a request for fulfillment sent to the fulfillment service or all of the items have been marked as in progress. */
-  InProgress = 'IN_PROGRESS',
+  InProgress: 'IN_PROGRESS',
   /** Displayed as **On hold**. All of the unfulfilled items in this order are on hold. */
-  OnHold = 'ON_HOLD',
+  OnHold: 'ON_HOLD',
   /** Displayed as **Open**. None of the items in the order have been fulfilled. Replaced by "UNFULFILLED" status. */
-  Open = 'OPEN',
+  Open: 'OPEN',
   /** Displayed as **Partially fulfilled**. Some of the items in the order have been fulfilled. */
-  PartiallyFulfilled = 'PARTIALLY_FULFILLED',
+  PartiallyFulfilled: 'PARTIALLY_FULFILLED',
   /** Displayed as **Pending fulfillment**. A request for fulfillment of some items awaits a response from the fulfillment service. Replaced by the "IN_PROGRESS" status. */
-  PendingFulfillment = 'PENDING_FULFILLMENT',
+  PendingFulfillment: 'PENDING_FULFILLMENT',
   /** Displayed as **Request declined**. Some of the items in the order have been rejected for fulfillment by the fulfillment service. */
-  RequestDeclined = 'REQUEST_DECLINED',
+  RequestDeclined: 'REQUEST_DECLINED',
   /** Displayed as **Restocked**. All the items in the order have been restocked. Replaced by the "UNFULFILLED" status. */
-  Restocked = 'RESTOCKED',
+  Restocked: 'RESTOCKED',
   /** Displayed as **Scheduled**. All of the unfulfilled items in this order are scheduled for fulfillment at later time. */
-  Scheduled = 'SCHEDULED',
+  Scheduled: 'SCHEDULED',
   /** Displayed as **Unfulfilled**. None of the items in the order have been fulfilled. */
-  Unfulfilled = 'UNFULFILLED'
-}
+  Unfulfilled: 'UNFULFILLED'
+} as const;
 
+export type OrderDisplayFulfillmentStatus = typeof OrderDisplayFulfillmentStatus[keyof typeof OrderDisplayFulfillmentStatus];
 /** A summary of the important details for a dispute on an order. */
 export type OrderDisputeSummary = Node & {
   __typename?: 'OrderDisputeSummary';
@@ -43249,11 +43520,12 @@ export type OrderEditAddShippingLineUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `OrderEditAddShippingLineUserError`. */
-export enum OrderEditAddShippingLineUserErrorCode {
+export const OrderEditAddShippingLineUserErrorCode = {
   /** The input value is invalid. */
-  Invalid = 'INVALID'
-}
+  Invalid: 'INVALID'
+} as const;
 
+export type OrderEditAddShippingLineUserErrorCode = typeof OrderEditAddShippingLineUserErrorCode[keyof typeof OrderEditAddShippingLineUserErrorCode];
 /** Return type for `orderEditAddVariant` mutation. */
 export type OrderEditAddVariantPayload = {
   __typename?: 'OrderEditAddVariantPayload';
@@ -43355,11 +43627,12 @@ export type OrderEditRemoveDiscountUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `OrderEditRemoveDiscountUserError`. */
-export enum OrderEditRemoveDiscountUserErrorCode {
+export const OrderEditRemoveDiscountUserErrorCode = {
   /** The input value is invalid. */
-  Invalid = 'INVALID'
-}
+  Invalid: 'INVALID'
+} as const;
 
+export type OrderEditRemoveDiscountUserErrorCode = typeof OrderEditRemoveDiscountUserErrorCode[keyof typeof OrderEditRemoveDiscountUserErrorCode];
 /** Return type for `orderEditRemoveLineItemDiscount` mutation. */
 export type OrderEditRemoveLineItemDiscountPayload = {
   __typename?: 'OrderEditRemoveLineItemDiscountPayload';
@@ -43399,11 +43672,12 @@ export type OrderEditRemoveShippingLineUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `OrderEditRemoveShippingLineUserError`. */
-export enum OrderEditRemoveShippingLineUserErrorCode {
+export const OrderEditRemoveShippingLineUserErrorCode = {
   /** The input value is invalid. */
-  Invalid = 'INVALID'
-}
+  Invalid: 'INVALID'
+} as const;
 
+export type OrderEditRemoveShippingLineUserErrorCode = typeof OrderEditRemoveShippingLineUserErrorCode[keyof typeof OrderEditRemoveShippingLineUserErrorCode];
 /** An edit session for an order. */
 export type OrderEditSession = Node & {
   __typename?: 'OrderEditSession';
@@ -43447,11 +43721,12 @@ export type OrderEditUpdateDiscountUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `OrderEditUpdateDiscountUserError`. */
-export enum OrderEditUpdateDiscountUserErrorCode {
+export const OrderEditUpdateDiscountUserErrorCode = {
   /** The input value is invalid. */
-  Invalid = 'INVALID'
-}
+  Invalid: 'INVALID'
+} as const;
 
+export type OrderEditUpdateDiscountUserErrorCode = typeof OrderEditUpdateDiscountUserErrorCode[keyof typeof OrderEditUpdateDiscountUserErrorCode];
 /** The input fields used to update a shipping line. */
 export type OrderEditUpdateShippingLineInput = {
   /** The price of the shipping line. */
@@ -43483,11 +43758,12 @@ export type OrderEditUpdateShippingLineUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `OrderEditUpdateShippingLineUserError`. */
-export enum OrderEditUpdateShippingLineUserErrorCode {
+export const OrderEditUpdateShippingLineUserErrorCode = {
   /** The input value is invalid. */
-  Invalid = 'INVALID'
-}
+  Invalid: 'INVALID'
+} as const;
 
+export type OrderEditUpdateShippingLineUserErrorCode = typeof OrderEditUpdateShippingLineUserErrorCode[keyof typeof OrderEditUpdateShippingLineUserErrorCode];
 /** The input fields for identifying a order. */
 export type OrderIdentifierInput = {
   /** The [custom ID](https://shopify.dev/docs/apps/build/custom-data/metafields/working-with-custom-ids) of the order. */
@@ -43539,11 +43815,12 @@ export type OrderInvoiceSendUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `OrderInvoiceSendUserError`. */
-export enum OrderInvoiceSendUserErrorCode {
+export const OrderInvoiceSendUserErrorCode = {
   /** An error occurred while sending the invoice. */
-  OrderInvoiceSendUnsuccessful = 'ORDER_INVOICE_SEND_UNSUCCESSFUL'
-}
+  OrderInvoiceSendUnsuccessful: 'ORDER_INVOICE_SEND_UNSUCCESSFUL'
+} as const;
 
+export type OrderInvoiceSendUserErrorCode = typeof OrderInvoiceSendUserErrorCode[keyof typeof OrderInvoiceSendUserErrorCode];
 /** The input fields for specifying the order to mark as paid. */
 export type OrderMarkAsPaidInput = {
   /** The ID of the order to mark as paid. */
@@ -43599,55 +43876,57 @@ export type OrderPaymentStatus = {
 };
 
 /** The type of a payment status. */
-export enum OrderPaymentStatusResult {
+export const OrderPaymentStatusResult = {
   /** The payment is authorized. */
-  Authorized = 'AUTHORIZED',
+  Authorized: 'AUTHORIZED',
   /** The payment is captured. */
-  Captured = 'CAPTURED',
+  Captured: 'CAPTURED',
   /** There was an error initiating the payment. */
-  Error = 'ERROR',
+  Error: 'ERROR',
   /** The payment is awaiting processing. */
-  Initiated = 'INITIATED',
+  Initiated: 'INITIATED',
   /** The payment is pending with the provider, and may take a while. */
-  Pending = 'PENDING',
+  Pending: 'PENDING',
   /** The payment is still being processed. */
-  Processing = 'PROCESSING',
+  Processing: 'PROCESSING',
   /** The payment is in purchased status. */
-  Purchased = 'PURCHASED',
+  Purchased: 'PURCHASED',
   /** Redirect required. */
-  RedirectRequired = 'REDIRECT_REQUIRED',
+  RedirectRequired: 'REDIRECT_REQUIRED',
   /** The payment is refunded. */
-  Refunded = 'REFUNDED',
+  Refunded: 'REFUNDED',
   /** Payment can be retried. */
-  Retryable = 'RETRYABLE',
+  Retryable: 'RETRYABLE',
   /** The payment succeeded. */
-  Success = 'SUCCESS',
+  Success: 'SUCCESS',
   /** Status is unknown. */
-  Unknown = 'UNKNOWN',
+  Unknown: 'UNKNOWN',
   /** The payment is voided. */
-  Voided = 'VOIDED'
-}
+  Voided: 'VOIDED'
+} as const;
 
+export type OrderPaymentStatusResult = typeof OrderPaymentStatusResult[keyof typeof OrderPaymentStatusResult];
 /**
  * The order's aggregated return status that's used for display purposes.
  * An order might have multiple returns, so this field communicates the prioritized return status.
  * The `OrderReturnStatus` enum is a supported filter parameter in the [`orders` query](https://shopify.dev/api/admin-graphql/latest/queries/orders#:~:text=reference_location_id-,return_status,-risk_level).
  */
-export enum OrderReturnStatus {
+export const OrderReturnStatus = {
   /** All return shipments from a return in this order were inspected. */
-  InspectionComplete = 'INSPECTION_COMPLETE',
+  InspectionComplete: 'INSPECTION_COMPLETE',
   /** Some items in the order are being returned. */
-  InProgress = 'IN_PROGRESS',
+  InProgress: 'IN_PROGRESS',
   /** No items in the order were returned. */
-  NoReturn = 'NO_RETURN',
+  NoReturn: 'NO_RETURN',
   /** Some items in the order were returned. */
-  Returned = 'RETURNED',
+  Returned: 'RETURNED',
   /** Some returns in the order were not completed successfully. */
-  ReturnFailed = 'RETURN_FAILED',
+  ReturnFailed: 'RETURN_FAILED',
   /** A return was requested for some items in the order. */
-  ReturnRequested = 'RETURN_REQUESTED'
-}
+  ReturnRequested: 'RETURN_REQUESTED'
+} as const;
 
+export type OrderReturnStatus = typeof OrderReturnStatus[keyof typeof OrderReturnStatus];
 /** Represents a fraud check on an order. This object is deprecated in favor of [OrderRiskAssessment](https://shopify.dev/api/admin-graphql/latest/objects/OrderRiskAssessment) and its enhanced capabilities. */
 export type OrderRisk = {
   __typename?: 'OrderRisk';
@@ -43717,17 +43996,18 @@ export type OrderRiskAssessmentCreateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `OrderRiskAssessmentCreateUserError`. */
-export enum OrderRiskAssessmentCreateUserErrorCode {
+export const OrderRiskAssessmentCreateUserErrorCode = {
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The record with the ID used as the input value couldn't be found. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** The order is marked as fulfilled and can no longer accept new risk assessments. */
-  OrderAlreadyFulfilled = 'ORDER_ALREADY_FULFILLED',
+  OrderAlreadyFulfilled: 'ORDER_ALREADY_FULFILLED',
   /** Too many facts were provided for the risk assessment. */
-  TooManyFacts = 'TOO_MANY_FACTS'
-}
+  TooManyFacts: 'TOO_MANY_FACTS'
+} as const;
 
+export type OrderRiskAssessmentCreateUserErrorCode = typeof OrderRiskAssessmentCreateUserErrorCode[keyof typeof OrderRiskAssessmentCreateUserErrorCode];
 /** The input fields to create a fact on an order risk assessment. */
 export type OrderRiskAssessmentFactInput = {
   /** A description of the fact. Large values are truncated to 256 characters. */
@@ -43742,27 +44022,29 @@ export type OrderRiskAssessmentFactInput = {
  * [RiskAssessmentResult](https://shopify.dev/api/admin-graphql/latest/enums/RiskAssessmentResult)
  * which allows for more granular risk levels, including PENDING and NONE.
  */
-export enum OrderRiskLevel {
+export const OrderRiskLevel = {
   /** There is a high level of risk that this order is fraudulent. */
-  High = 'HIGH',
+  High: 'HIGH',
   /** There is a low level of risk that this order is fraudulent. */
-  Low = 'LOW',
+  Low: 'LOW',
   /** There is a medium level of risk that this order is fraudulent. */
-  Medium = 'MEDIUM'
-}
+  Medium: 'MEDIUM'
+} as const;
 
+export type OrderRiskLevel = typeof OrderRiskLevel[keyof typeof OrderRiskLevel];
 /** List of possible values for an OrderRiskRecommendation recommendation. */
-export enum OrderRiskRecommendationResult {
+export const OrderRiskRecommendationResult = {
   /** Recommends fulfilling the order. */
-  Accept = 'ACCEPT',
+  Accept: 'ACCEPT',
   /** Recommends cancelling the order. */
-  Cancel = 'CANCEL',
+  Cancel: 'CANCEL',
   /** Recommends investigating the order by contacting buyers. */
-  Investigate = 'INVESTIGATE',
+  Investigate: 'INVESTIGATE',
   /** There is no recommended action for the order. */
-  None = 'NONE'
-}
+  None: 'NONE'
+} as const;
 
+export type OrderRiskRecommendationResult = typeof OrderRiskRecommendationResult[keyof typeof OrderRiskRecommendationResult];
 /**
  * Summary of risk characteristics for an order.
  *
@@ -43777,40 +44059,41 @@ export type OrderRiskSummary = {
 };
 
 /** The set of valid sort keys for the Order query. */
-export enum OrderSortKeys {
+export const OrderSortKeys = {
   /** Sorts by the date and time the order was created. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sorts by the current total price of an order in the shop currency, including any returns/refunds/removals. */
-  CurrentTotalPrice = 'CURRENT_TOTAL_PRICE',
+  CurrentTotalPrice: 'CURRENT_TOTAL_PRICE',
   /** Sorts by the customer's name. */
-  CustomerName = 'CUSTOMER_NAME',
+  CustomerName: 'CUSTOMER_NAME',
   /** Sort by shipping address to analyze regional sales patterns or plan logistics. */
-  Destination = 'DESTINATION',
+  Destination: 'DESTINATION',
   /** Sorts by the financial status of the order. */
-  FinancialStatus = 'FINANCIAL_STATUS',
+  FinancialStatus: 'FINANCIAL_STATUS',
   /** Sorts by the order's fulfillment status. */
-  FulfillmentStatus = 'FULFILLMENT_STATUS',
+  FulfillmentStatus: 'FULFILLMENT_STATUS',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sorts by the order number. */
-  OrderNumber = 'ORDER_NUMBER',
+  OrderNumber: 'ORDER_NUMBER',
   /** Sort by the purchase order number to match external procurement systems or track recent orders. */
-  PoNumber = 'PO_NUMBER',
+  PoNumber: 'PO_NUMBER',
   /** Sorts by the date and time the order was processed. */
-  ProcessedAt = 'PROCESSED_AT',
+  ProcessedAt: 'PROCESSED_AT',
   /**
    * Sort by relevance to the search terms when the `query` parameter is specified on the connection.
    * Don't use this sort key when no search query is specified.
    */
-  Relevance = 'RELEVANCE',
+  Relevance: 'RELEVANCE',
   /** Sort by the total quantity of all line items to identify large purchases or analyze inventory demand patterns. */
-  TotalItemsQuantity = 'TOTAL_ITEMS_QUANTITY',
+  TotalItemsQuantity: 'TOTAL_ITEMS_QUANTITY',
   /** Sorts by the total sold price of an order in the shop currency, excluding any returns/refunds/removals. */
-  TotalPrice = 'TOTAL_PRICE',
+  TotalPrice: 'TOTAL_PRICE',
   /** Sorts by the date and time the order was last updated. */
-  UpdatedAt = 'UPDATED_AT'
-}
+  UpdatedAt: 'UPDATED_AT'
+} as const;
 
+export type OrderSortKeys = typeof OrderSortKeys[keyof typeof OrderSortKeys];
 /** A change that has been applied to an order. */
 export type OrderStagedChange = OrderStagedChangeAddCustomItem | OrderStagedChangeAddLineItemDiscount | OrderStagedChangeAddShippingLine | OrderStagedChangeAddVariant | OrderStagedChangeDecrementItem | OrderStagedChangeIncrementItem | OrderStagedChangeRemoveDiscount | OrderStagedChangeRemoveShippingLine;
 
@@ -44087,63 +44370,64 @@ export type OrderTransactionEdge = {
 };
 
 /** A standardized error code, independent of the payment provider. */
-export enum OrderTransactionErrorCode {
+export const OrderTransactionErrorCode = {
   /** The payment method was invalid. */
-  AmazonPaymentsInvalidPaymentMethod = 'AMAZON_PAYMENTS_INVALID_PAYMENT_METHOD',
+  AmazonPaymentsInvalidPaymentMethod: 'AMAZON_PAYMENTS_INVALID_PAYMENT_METHOD',
   /** The maximum amount has been captured. */
-  AmazonPaymentsMaxAmountCharged = 'AMAZON_PAYMENTS_MAX_AMOUNT_CHARGED',
+  AmazonPaymentsMaxAmountCharged: 'AMAZON_PAYMENTS_MAX_AMOUNT_CHARGED',
   /** The maximum amount has been refunded. */
-  AmazonPaymentsMaxAmountRefunded = 'AMAZON_PAYMENTS_MAX_AMOUNT_REFUNDED',
+  AmazonPaymentsMaxAmountRefunded: 'AMAZON_PAYMENTS_MAX_AMOUNT_REFUNDED',
   /** The maximum of 10 authorizations has been captured for an order. */
-  AmazonPaymentsMaxAuthorizationsCaptured = 'AMAZON_PAYMENTS_MAX_AUTHORIZATIONS_CAPTURED',
+  AmazonPaymentsMaxAuthorizationsCaptured: 'AMAZON_PAYMENTS_MAX_AUTHORIZATIONS_CAPTURED',
   /** The maximum of 10 refunds has been processed for an order. */
-  AmazonPaymentsMaxRefundsProcessed = 'AMAZON_PAYMENTS_MAX_REFUNDS_PROCESSED',
+  AmazonPaymentsMaxRefundsProcessed: 'AMAZON_PAYMENTS_MAX_REFUNDS_PROCESSED',
   /** The order was canceled, which canceled all open authorizations. */
-  AmazonPaymentsOrderReferenceCanceled = 'AMAZON_PAYMENTS_ORDER_REFERENCE_CANCELED',
+  AmazonPaymentsOrderReferenceCanceled: 'AMAZON_PAYMENTS_ORDER_REFERENCE_CANCELED',
   /** The order was not confirmed within three hours. */
-  AmazonPaymentsStale = 'AMAZON_PAYMENTS_STALE',
+  AmazonPaymentsStale: 'AMAZON_PAYMENTS_STALE',
   /** The issuer declined the transaction, the customer should contact their issuer for more details. */
-  CallIssuer = 'CALL_ISSUER',
+  CallIssuer: 'CALL_ISSUER',
   /** The card was declined. */
-  CardDeclined = 'CARD_DECLINED',
+  CardDeclined: 'CARD_DECLINED',
   /** There is an error in the gateway or merchant configuration. */
-  ConfigError = 'CONFIG_ERROR',
+  ConfigError: 'CONFIG_ERROR',
   /** The card is expired. */
-  ExpiredCard = 'EXPIRED_CARD',
+  ExpiredCard: 'EXPIRED_CARD',
   /** There was an unknown error with processing the payment. */
-  GenericError = 'GENERIC_ERROR',
+  GenericError: 'GENERIC_ERROR',
   /** The address is incorrect. */
-  IncorrectAddress = 'INCORRECT_ADDRESS',
+  IncorrectAddress: 'INCORRECT_ADDRESS',
   /** The card security code (CVC/CVV) is incorrect. */
-  IncorrectCvc = 'INCORRECT_CVC',
+  IncorrectCvc: 'INCORRECT_CVC',
   /** The card number is incorrect. */
-  IncorrectNumber = 'INCORRECT_NUMBER',
+  IncorrectNumber: 'INCORRECT_NUMBER',
   /** The PIN entered is incorrect. */
-  IncorrectPin = 'INCORRECT_PIN',
+  IncorrectPin: 'INCORRECT_PIN',
   /** The ZIP or postal code doesn't match the one on file. */
-  IncorrectZip = 'INCORRECT_ZIP',
+  IncorrectZip: 'INCORRECT_ZIP',
   /** The amount is invalid. */
-  InvalidAmount = 'INVALID_AMOUNT',
+  InvalidAmount: 'INVALID_AMOUNT',
   /** The payment method is not available in the customer's country. */
-  InvalidCountry = 'INVALID_COUNTRY',
+  InvalidCountry: 'INVALID_COUNTRY',
   /** The format of the CVC is incorrect. */
-  InvalidCvc = 'INVALID_CVC',
+  InvalidCvc: 'INVALID_CVC',
   /** The format of the expiry date is incorrect. */
-  InvalidExpiryDate = 'INVALID_EXPIRY_DATE',
+  InvalidExpiryDate: 'INVALID_EXPIRY_DATE',
   /** The format of the card number is incorrect. */
-  InvalidNumber = 'INVALID_NUMBER',
+  InvalidNumber: 'INVALID_NUMBER',
   /** The payment method is momentarily unavailable. */
-  PaymentMethodUnavailable = 'PAYMENT_METHOD_UNAVAILABLE',
+  PaymentMethodUnavailable: 'PAYMENT_METHOD_UNAVAILABLE',
   /** The card has been reported as lost or stolen, and the card issuer has requested that the merchant keep the card and call the number on the back. */
-  PickUpCard = 'PICK_UP_CARD',
+  PickUpCard: 'PICK_UP_CARD',
   /** There was an error while processing the payment. */
-  ProcessingError = 'PROCESSING_ERROR',
+  ProcessingError: 'PROCESSING_ERROR',
   /** A real card was used but the gateway was in test mode. */
-  TestModeLiveCard = 'TEST_MODE_LIVE_CARD',
+  TestModeLiveCard: 'TEST_MODE_LIVE_CARD',
   /** The gateway or merchant configuration doesn't support a feature, such as network tokenization. */
-  UnsupportedFeature = 'UNSUPPORTED_FEATURE'
-}
+  UnsupportedFeature: 'UNSUPPORTED_FEATURE'
+} as const;
 
+export type OrderTransactionErrorCode = typeof OrderTransactionErrorCode[keyof typeof OrderTransactionErrorCode];
 /** The input fields for the information needed to create an order transaction. */
 export type OrderTransactionInput = {
   /** The amount of money for this transaction. */
@@ -44159,47 +44443,49 @@ export type OrderTransactionInput = {
 };
 
 /** The different kinds of order transactions. */
-export enum OrderTransactionKind {
+export const OrderTransactionKind = {
   /**
    * An amount reserved against the cardholder's funding source.
    * Money does not change hands until the authorization is captured.
    */
-  Authorization = 'AUTHORIZATION',
+  Authorization: 'AUTHORIZATION',
   /** A transfer of the money that was reserved by an authorization. */
-  Capture = 'CAPTURE',
+  Capture: 'CAPTURE',
   /** The money returned to the customer when they've paid too much during a cash transaction. */
-  Change = 'CHANGE',
+  Change: 'CHANGE',
   /** An authorization for a payment taken with an EMV credit card reader. */
-  EmvAuthorization = 'EMV_AUTHORIZATION',
+  EmvAuthorization: 'EMV_AUTHORIZATION',
   /**
    * A partial or full return of captured funds to the cardholder.
    * A refund can happen only after a capture is processed.
    */
-  Refund = 'REFUND',
+  Refund: 'REFUND',
   /** An authorization and capture performed together in a single step. */
-  Sale = 'SALE',
+  Sale: 'SALE',
   /** A suggested refund transaction that can be used to create a refund. */
-  SuggestedRefund = 'SUGGESTED_REFUND',
+  SuggestedRefund: 'SUGGESTED_REFUND',
   /** A cancelation of an authorization transaction. */
-  Void = 'VOID'
-}
+  Void: 'VOID'
+} as const;
 
+export type OrderTransactionKind = typeof OrderTransactionKind[keyof typeof OrderTransactionKind];
 /** The different states that an `OrderTransaction` can have. */
-export enum OrderTransactionStatus {
+export const OrderTransactionStatus = {
   /** Awaiting a response. */
-  AwaitingResponse = 'AWAITING_RESPONSE',
+  AwaitingResponse: 'AWAITING_RESPONSE',
   /** There was an error while processing the transaction. */
-  Error = 'ERROR',
+  Error: 'ERROR',
   /** The transaction failed. */
-  Failure = 'FAILURE',
+  Failure: 'FAILURE',
   /** The transaction is pending. */
-  Pending = 'PENDING',
+  Pending: 'PENDING',
   /** The transaction succeeded. */
-  Success = 'SUCCESS',
+  Success: 'SUCCESS',
   /** The transaction status is unknown. */
-  Unknown = 'UNKNOWN'
-}
+  Unknown: 'UNKNOWN'
+} as const;
 
+export type OrderTransactionStatus = typeof OrderTransactionStatus[keyof typeof OrderTransactionStatus];
 /** Return type for `orderUpdate` mutation. */
 export type OrderUpdatePayload = {
   __typename?: 'OrderUpdatePayload';
@@ -44394,25 +44680,26 @@ export type PageCreateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `PageCreateUserError`. */
-export enum PageCreateUserErrorCode {
+export const PageCreateUserErrorCode = {
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** Can’t set isPublished to true and also set a future publish date. */
-  InvalidPublishDate = 'INVALID_PUBLISH_DATE',
+  InvalidPublishDate: 'INVALID_PUBLISH_DATE',
   /** The metafield type is invalid. */
-  InvalidType = 'INVALID_TYPE',
+  InvalidType: 'INVALID_TYPE',
   /** The value is invalid for the metafield type or for the definition options. */
-  InvalidValue = 'INVALID_VALUE',
+  InvalidValue: 'INVALID_VALUE',
   /** The input value is already taken. */
-  Taken = 'TAKEN',
+  Taken: 'TAKEN',
   /** The input value is too big. */
-  TooBig = 'TOO_BIG',
+  TooBig: 'TOO_BIG',
   /** The input value is too long. */
-  TooLong = 'TOO_LONG'
-}
+  TooLong: 'TOO_LONG'
+} as const;
 
+export type PageCreateUserErrorCode = typeof PageCreateUserErrorCode[keyof typeof PageCreateUserErrorCode];
 /** Return type for `pageDelete` mutation. */
 export type PageDeletePayload = {
   __typename?: 'PageDeletePayload';
@@ -44434,11 +44721,12 @@ export type PageDeleteUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `PageDeleteUserError`. */
-export enum PageDeleteUserErrorCode {
+export const PageDeleteUserErrorCode = {
   /** The record with the ID used as the input value couldn't be found. */
-  NotFound = 'NOT_FOUND'
-}
+  NotFound: 'NOT_FOUND'
+} as const;
 
+export type PageDeleteUserErrorCode = typeof PageDeleteUserErrorCode[keyof typeof PageDeleteUserErrorCode];
 /** An auto-generated type which holds one Page and a cursor during pagination. */
 export type PageEdge = {
   __typename?: 'PageEdge';
@@ -44466,17 +44754,18 @@ export type PageInfo = {
 };
 
 /** The set of valid sort keys for the Page query. */
-export enum PageSortKeys {
+export const PageSortKeys = {
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `published_at` value. */
-  PublishedAt = 'PUBLISHED_AT',
+  PublishedAt: 'PUBLISHED_AT',
   /** Sort by the `title` value. */
-  Title = 'TITLE',
+  Title: 'TITLE',
   /** Sort by the `updated_at` value. */
-  UpdatedAt = 'UPDATED_AT'
-}
+  UpdatedAt: 'UPDATED_AT'
+} as const;
 
+export type PageSortKeys = typeof PageSortKeys[keyof typeof PageSortKeys];
 /** The input fields to update a page. */
 export type PageUpdateInput = {
   /** The text content of the page, complete with HTML markup. */
@@ -44527,27 +44816,28 @@ export type PageUpdateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `PageUpdateUserError`. */
-export enum PageUpdateUserErrorCode {
+export const PageUpdateUserErrorCode = {
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** Can’t set isPublished to true and also set a future publish date. */
-  InvalidPublishDate = 'INVALID_PUBLISH_DATE',
+  InvalidPublishDate: 'INVALID_PUBLISH_DATE',
   /** The metafield type is invalid. */
-  InvalidType = 'INVALID_TYPE',
+  InvalidType: 'INVALID_TYPE',
   /** The value is invalid for the metafield type or for the definition options. */
-  InvalidValue = 'INVALID_VALUE',
+  InvalidValue: 'INVALID_VALUE',
   /** The record with the ID used as the input value couldn't be found. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** The input value is already taken. */
-  Taken = 'TAKEN',
+  Taken: 'TAKEN',
   /** The input value is too big. */
-  TooBig = 'TOO_BIG',
+  TooBig: 'TOO_BIG',
   /** The input value is too long. */
-  TooLong = 'TOO_LONG'
-}
+  TooLong: 'TOO_LONG'
+} as const;
 
+export type PageUpdateUserErrorCode = typeof PageUpdateUserErrorCode[keyof typeof PageUpdateUserErrorCode];
 /** A payment customization. */
 export type PaymentCustomization = HasMetafieldDefinitions & HasMetafields & Node & {
   __typename?: 'PaymentCustomization';
@@ -44673,35 +44963,36 @@ export type PaymentCustomizationError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `PaymentCustomizationError`. */
-export enum PaymentCustomizationErrorCode {
+export const PaymentCustomizationErrorCode = {
   /** Shop plan not eligible to use Functions from a custom app. */
-  CustomAppFunctionNotEligible = 'CUSTOM_APP_FUNCTION_NOT_ELIGIBLE',
+  CustomAppFunctionNotEligible: 'CUSTOM_APP_FUNCTION_NOT_ELIGIBLE',
   /** Function does not implement the required interface. */
-  FunctionDoesNotImplement = 'FUNCTION_DOES_NOT_IMPLEMENT',
+  FunctionDoesNotImplement: 'FUNCTION_DOES_NOT_IMPLEMENT',
   /** Function ID cannot be changed. */
-  FunctionIdCannotBeChanged = 'FUNCTION_ID_CANNOT_BE_CHANGED',
+  FunctionIdCannotBeChanged: 'FUNCTION_ID_CANNOT_BE_CHANGED',
   /** Function not found. */
-  FunctionNotFound = 'FUNCTION_NOT_FOUND',
+  FunctionNotFound: 'FUNCTION_NOT_FOUND',
   /** Function is pending deletion. */
-  FunctionPendingDeletion = 'FUNCTION_PENDING_DELETION',
+  FunctionPendingDeletion: 'FUNCTION_PENDING_DELETION',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** Could not create or update metafields. */
-  InvalidMetafields = 'INVALID_METAFIELDS',
+  InvalidMetafields: 'INVALID_METAFIELDS',
   /** Maximum payment customizations are already enabled. */
-  MaximumActivePaymentCustomizations = 'MAXIMUM_ACTIVE_PAYMENT_CUSTOMIZATIONS',
+  MaximumActivePaymentCustomizations: 'MAXIMUM_ACTIVE_PAYMENT_CUSTOMIZATIONS',
   /** Either function_id or function_handle must be provided. */
-  MissingFunctionIdentifier = 'MISSING_FUNCTION_IDENTIFIER',
+  MissingFunctionIdentifier: 'MISSING_FUNCTION_IDENTIFIER',
   /** Only one of function_id or function_handle can be provided, not both. */
-  MultipleFunctionIdentifiers = 'MULTIPLE_FUNCTION_IDENTIFIERS',
+  MultipleFunctionIdentifiers: 'MULTIPLE_FUNCTION_IDENTIFIERS',
   /** Shop must be on a Shopify Plus plan to activate payment customizations from a custom app. */
-  PaymentCustomizationFunctionNotEligible = 'PAYMENT_CUSTOMIZATION_FUNCTION_NOT_ELIGIBLE',
+  PaymentCustomizationFunctionNotEligible: 'PAYMENT_CUSTOMIZATION_FUNCTION_NOT_ELIGIBLE',
   /** Payment customization not found. */
-  PaymentCustomizationNotFound = 'PAYMENT_CUSTOMIZATION_NOT_FOUND',
+  PaymentCustomizationNotFound: 'PAYMENT_CUSTOMIZATION_NOT_FOUND',
   /** Required input field must be present. */
-  RequiredInputField = 'REQUIRED_INPUT_FIELD'
-}
+  RequiredInputField: 'REQUIRED_INPUT_FIELD'
+} as const;
 
+export type PaymentCustomizationErrorCode = typeof PaymentCustomizationErrorCode[keyof typeof PaymentCustomizationErrorCode];
 /** The input fields to create and update a payment customization. */
 export type PaymentCustomizationInput = {
   /** The enabled status of the payment customization. */
@@ -44775,35 +45066,36 @@ export type PaymentMandateResourceEdge = {
 };
 
 /** Some of the payment methods used in Shopify. */
-export enum PaymentMethods {
-  AmericanExpress = 'AMERICAN_EXPRESS',
+export const PaymentMethods = {
+  AmericanExpress: 'AMERICAN_EXPRESS',
   /** The payment method for Bancontact payment. */
-  Bancontact = 'BANCONTACT',
-  Bitcoin = 'BITCOIN',
-  Bogus = 'BOGUS',
+  Bancontact: 'BANCONTACT',
+  Bitcoin: 'BITCOIN',
+  Bogus: 'BOGUS',
   /** The payment method for Cartes Bancaires payment. */
-  CartesBancaires = 'CARTES_BANCAIRES',
-  Dankort = 'DANKORT',
-  DinersClub = 'DINERS_CLUB',
-  Discover = 'DISCOVER',
-  Dogecoin = 'DOGECOIN',
+  CartesBancaires: 'CARTES_BANCAIRES',
+  Dankort: 'DANKORT',
+  DinersClub: 'DINERS_CLUB',
+  Discover: 'DISCOVER',
+  Dogecoin: 'DOGECOIN',
   /** The payment method for eftpos_au payment. */
-  Eftpos = 'EFTPOS',
+  Eftpos: 'EFTPOS',
   /** The payment method for Elo payment. */
-  Elo = 'ELO',
-  Forbrugsforeningen = 'FORBRUGSFORENINGEN',
+  Elo: 'ELO',
+  Forbrugsforeningen: 'FORBRUGSFORENINGEN',
   /** The payment method for Interac payment. */
-  Interac = 'INTERAC',
-  Jcb = 'JCB',
-  Litecoin = 'LITECOIN',
-  Maestro = 'MAESTRO',
-  Mastercard = 'MASTERCARD',
-  Paypal = 'PAYPAL',
+  Interac: 'INTERAC',
+  Jcb: 'JCB',
+  Litecoin: 'LITECOIN',
+  Maestro: 'MAESTRO',
+  Mastercard: 'MASTERCARD',
+  Paypal: 'PAYPAL',
   /** The payment method for UnionPay payment. */
-  Unionpay = 'UNIONPAY',
-  Visa = 'VISA'
-}
+  Unionpay: 'UNIONPAY',
+  Visa: 'VISA'
+} as const;
 
+export type PaymentMethods = typeof PaymentMethods[keyof typeof PaymentMethods];
 /** Return type for `paymentReminderSend` mutation. */
 export type PaymentReminderSendPayload = {
   __typename?: 'PaymentReminderSendPayload';
@@ -44825,11 +45117,12 @@ export type PaymentReminderSendUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `PaymentReminderSendUserError`. */
-export enum PaymentReminderSendUserErrorCode {
+export const PaymentReminderSendUserErrorCode = {
   /** An error occurred while sending the payment reminder. */
-  PaymentReminderSendUnsuccessful = 'PAYMENT_REMINDER_SEND_UNSUCCESSFUL'
-}
+  PaymentReminderSendUnsuccessful: 'PAYMENT_REMINDER_SEND_UNSUCCESSFUL'
+} as const;
 
+export type PaymentReminderSendUserErrorCode = typeof PaymentReminderSendUserErrorCode[keyof typeof PaymentReminderSendUserErrorCode];
 /** Represents the payment schedule for a single payment defined in the payment terms. */
 export type PaymentSchedule = Node & {
   __typename?: 'PaymentSchedule';
@@ -44967,11 +45260,12 @@ export type PaymentTermsCreateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `PaymentTermsCreateUserError`. */
-export enum PaymentTermsCreateUserErrorCode {
+export const PaymentTermsCreateUserErrorCode = {
   /** An error occurred while creating payment terms. */
-  PaymentTermsCreationUnsuccessful = 'PAYMENT_TERMS_CREATION_UNSUCCESSFUL'
-}
+  PaymentTermsCreationUnsuccessful: 'PAYMENT_TERMS_CREATION_UNSUCCESSFUL'
+} as const;
 
+export type PaymentTermsCreateUserErrorCode = typeof PaymentTermsCreateUserErrorCode[keyof typeof PaymentTermsCreateUserErrorCode];
 /** The input fields used to delete the payment terms. */
 export type PaymentTermsDeleteInput = {
   /** The ID of the payment terms being deleted. */
@@ -44999,11 +45293,12 @@ export type PaymentTermsDeleteUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `PaymentTermsDeleteUserError`. */
-export enum PaymentTermsDeleteUserErrorCode {
+export const PaymentTermsDeleteUserErrorCode = {
   /** An error occurred while deleting payment terms. */
-  PaymentTermsDeleteUnsuccessful = 'PAYMENT_TERMS_DELETE_UNSUCCESSFUL'
-}
+  PaymentTermsDeleteUnsuccessful: 'PAYMENT_TERMS_DELETE_UNSUCCESSFUL'
+} as const;
 
+export type PaymentTermsDeleteUserErrorCode = typeof PaymentTermsDeleteUserErrorCode[keyof typeof PaymentTermsDeleteUserErrorCode];
 /** The input fields to create payment terms. Payment terms set the date that payment is due. */
 export type PaymentTermsInput = {
   /** Specifies the payment schedules for the payment terms. */
@@ -45036,19 +45331,20 @@ export type PaymentTermsTemplate = Node & {
 };
 
 /** The type of a payment terms or a payment terms template. */
-export enum PaymentTermsType {
+export const PaymentTermsType = {
   /** The payment terms or payment terms template is a fixed type. It's due on a specified date. */
-  Fixed = 'FIXED',
+  Fixed: 'FIXED',
   /** The payment terms or payment terms template is due on fulfillment. */
-  Fulfillment = 'FULFILLMENT',
+  Fulfillment: 'FULFILLMENT',
   /** The payment terms or payment terms template is a net type. It's due a number of days after issue. */
-  Net = 'NET',
+  Net: 'NET',
   /** The payment terms or payment terms template is due on receipt. */
-  Receipt = 'RECEIPT',
+  Receipt: 'RECEIPT',
   /** The type of the payment terms or payment terms template is unknown. */
-  Unknown = 'UNKNOWN'
-}
+  Unknown: 'UNKNOWN'
+} as const;
 
+export type PaymentTermsType = typeof PaymentTermsType[keyof typeof PaymentTermsType];
 /** The input fields used to update the payment terms. */
 export type PaymentTermsUpdateInput = {
   /** The attributes used to update the payment terms. */
@@ -45078,47 +45374,50 @@ export type PaymentTermsUpdateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `PaymentTermsUpdateUserError`. */
-export enum PaymentTermsUpdateUserErrorCode {
+export const PaymentTermsUpdateUserErrorCode = {
   /** An error occurred while updating payment terms. */
-  PaymentTermsUpdateUnsuccessful = 'PAYMENT_TERMS_UPDATE_UNSUCCESSFUL'
-}
+  PaymentTermsUpdateUnsuccessful: 'PAYMENT_TERMS_UPDATE_UNSUCCESSFUL'
+} as const;
 
+export type PaymentTermsUpdateUserErrorCode = typeof PaymentTermsUpdateUserErrorCode[keyof typeof PaymentTermsUpdateUserErrorCode];
 /** The set of valid sort keys for the Payout query. */
-export enum PayoutSortKeys {
+export const PayoutSortKeys = {
   /** Sort by the `adjustment_gross` value. */
-  AdjustmentGross = 'ADJUSTMENT_GROSS',
+  AdjustmentGross: 'ADJUSTMENT_GROSS',
   /** Sort by the `advance_gross` value. */
-  AdvanceGross = 'ADVANCE_GROSS',
+  AdvanceGross: 'ADVANCE_GROSS',
   /** Sort by the `amount` value. */
-  Amount = 'AMOUNT',
+  Amount: 'AMOUNT',
   /** Sort by the `charge_gross` value. */
-  ChargeGross = 'CHARGE_GROSS',
+  ChargeGross: 'CHARGE_GROSS',
   /** Sort by the `duties_gross` value. */
-  DutiesGross = 'DUTIES_GROSS',
+  DutiesGross: 'DUTIES_GROSS',
   /** Sort by the `fee_amount` value. */
-  FeeAmount = 'FEE_AMOUNT',
+  FeeAmount: 'FEE_AMOUNT',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `issued_at` value. */
-  IssuedAt = 'ISSUED_AT',
+  IssuedAt: 'ISSUED_AT',
   /** Sort by the `refund_gross` value. */
-  RefundGross = 'REFUND_GROSS',
+  RefundGross: 'REFUND_GROSS',
   /** Sort by the `shipping_label_gross` value. */
-  ShippingLabelGross = 'SHIPPING_LABEL_GROSS',
+  ShippingLabelGross: 'SHIPPING_LABEL_GROSS',
   /** Sort by the `status` value. */
-  Status = 'STATUS'
-}
+  Status: 'STATUS'
+} as const;
 
+export type PayoutSortKeys = typeof PayoutSortKeys[keyof typeof PayoutSortKeys];
 /** Represents a valid PayPal Express subscriptions gateway status. */
-export enum PaypalExpressSubscriptionsGatewayStatus {
+export const PaypalExpressSubscriptionsGatewayStatus = {
   /** The status is disabled. */
-  Disabled = 'DISABLED',
+  Disabled: 'DISABLED',
   /** The status is enabled. */
-  Enabled = 'ENABLED',
+  Enabled: 'ENABLED',
   /** The status is pending. */
-  Pending = 'PENDING'
-}
+  Pending: 'PENDING'
+} as const;
 
+export type PaypalExpressSubscriptionsGatewayStatus = typeof PaypalExpressSubscriptionsGatewayStatus[keyof typeof PaypalExpressSubscriptionsGatewayStatus];
 /** PayPal Wallet payment details related to a transaction. */
 export type PaypalWalletPaymentDetails = BasePaymentDetails & {
   __typename?: 'PaypalWalletPaymentDetails';
@@ -45159,15 +45458,16 @@ export type PreparedFulfillmentOrderLineItemsInput = {
 };
 
 /** How to calculate the parent product variant's price while bulk updating variant relationships. */
-export enum PriceCalculationType {
+export const PriceCalculationType = {
   /** The price of the parent will be the sum of the components price times their quantity. */
-  ComponentsSum = 'COMPONENTS_SUM',
+  ComponentsSum: 'COMPONENTS_SUM',
   /** The price of the parent will be set to the price provided. */
-  Fixed = 'FIXED',
+  Fixed: 'FIXED',
   /** The price of the parent will not be adjusted. */
-  None = 'NONE'
-}
+  None: 'NONE'
+} as const;
 
+export type PriceCalculationType = typeof PriceCalculationType[keyof typeof PriceCalculationType];
 /** The input fields for updating the price of a parent product variant. */
 export type PriceInput = {
   /**
@@ -45280,21 +45580,23 @@ export type PriceListAdjustmentSettingsInput = {
 };
 
 /** Represents a percentage price adjustment type. */
-export enum PriceListAdjustmentType {
+export const PriceListAdjustmentType = {
   /** Percentage decrease type. Prices will have a lower value. */
-  PercentageDecrease = 'PERCENTAGE_DECREASE',
+  PercentageDecrease: 'PERCENTAGE_DECREASE',
   /** Percentage increase type. Prices will have a higher value. */
-  PercentageIncrease = 'PERCENTAGE_INCREASE'
-}
+  PercentageIncrease: 'PERCENTAGE_INCREASE'
+} as const;
 
+export type PriceListAdjustmentType = typeof PriceListAdjustmentType[keyof typeof PriceListAdjustmentType];
 /** Represents how the compare at price will be determined for a price list. */
-export enum PriceListCompareAtMode {
+export const PriceListCompareAtMode = {
   /** The compare at price is adjusted based on percentage specified in price list. */
-  Adjusted = 'ADJUSTED',
+  Adjusted: 'ADJUSTED',
   /** The compare at prices are set to `null` unless explicitly defined by a fixed price value. */
-  Nullify = 'NULLIFY'
-}
+  Nullify: 'NULLIFY'
+} as const;
 
+export type PriceListCompareAtMode = typeof PriceListCompareAtMode[keyof typeof PriceListCompareAtMode];
 /** An auto-generated type for paginating through multiple PriceLists. */
 export type PriceListConnection = {
   __typename?: 'PriceListConnection';
@@ -45366,27 +45668,28 @@ export type PriceListFixedPricesByProductBulkUpdateUserError = DisplayableError 
 };
 
 /** Possible error codes that can be returned by `PriceListFixedPricesByProductBulkUpdateUserError`. */
-export enum PriceListFixedPricesByProductBulkUpdateUserErrorCode {
+export const PriceListFixedPricesByProductBulkUpdateUserErrorCode = {
   /** Duplicate ID in input. */
-  DuplicateIdInInput = 'DUPLICATE_ID_IN_INPUT',
+  DuplicateIdInInput: 'DUPLICATE_ID_IN_INPUT',
   /** IDs must be mutually exclusive across add or delete operations. */
-  IdMustBeMutuallyExclusive = 'ID_MUST_BE_MUTUALLY_EXCLUSIVE',
+  IdMustBeMutuallyExclusive: 'ID_MUST_BE_MUTUALLY_EXCLUSIVE',
   /** The issuance currency of a local currency gift card must match the price list currency. */
-  LocalCurrencyGiftCardIssuanceCurrencyMismatch = 'LOCAL_CURRENCY_GIFT_CARD_ISSUANCE_CURRENCY_MISMATCH',
+  LocalCurrencyGiftCardIssuanceCurrencyMismatch: 'LOCAL_CURRENCY_GIFT_CARD_ISSUANCE_CURRENCY_MISMATCH',
   /** The price of a local currency gift card cannot exceed the maximum gift card purchase limit. */
-  LocalCurrencyGiftCardLimitExceeded = 'LOCAL_CURRENCY_GIFT_CARD_LIMIT_EXCEEDED',
+  LocalCurrencyGiftCardLimitExceeded: 'LOCAL_CURRENCY_GIFT_CARD_LIMIT_EXCEEDED',
   /** No update operations specified. */
-  NoUpdateOperationsSpecified = 'NO_UPDATE_OPERATIONS_SPECIFIED',
+  NoUpdateOperationsSpecified: 'NO_UPDATE_OPERATIONS_SPECIFIED',
   /** The currency specified does not match the price list's currency. */
-  PricesToAddCurrencyMismatch = 'PRICES_TO_ADD_CURRENCY_MISMATCH',
+  PricesToAddCurrencyMismatch: 'PRICES_TO_ADD_CURRENCY_MISMATCH',
   /** Exceeded the 10000 prices to add limit. */
-  PriceLimitExceeded = 'PRICE_LIMIT_EXCEEDED',
+  PriceLimitExceeded: 'PRICE_LIMIT_EXCEEDED',
   /** Price list does not exist. */
-  PriceListDoesNotExist = 'PRICE_LIST_DOES_NOT_EXIST',
+  PriceListDoesNotExist: 'PRICE_LIST_DOES_NOT_EXIST',
   /** Product does not exist. */
-  ProductDoesNotExist = 'PRODUCT_DOES_NOT_EXIST'
-}
+  ProductDoesNotExist: 'PRODUCT_DOES_NOT_EXIST'
+} as const;
 
+export type PriceListFixedPricesByProductBulkUpdateUserErrorCode = typeof PriceListFixedPricesByProductBulkUpdateUserErrorCode[keyof typeof PriceListFixedPricesByProductBulkUpdateUserErrorCode];
 /** Return type for `priceListFixedPricesByProductUpdate` mutation. */
 export type PriceListFixedPricesByProductUpdatePayload = {
   __typename?: 'PriceListFixedPricesByProductUpdatePayload';
@@ -45519,13 +45822,14 @@ export type PriceListPriceInput = {
 };
 
 /** Represents the origin of a price, either fixed (defined on the price list) or relative (calculated using a price list adjustment configuration). For examples, refer to [PriceList](https://shopify.dev/api/admin-graphql/latest/queries/priceList#section-examples). */
-export enum PriceListPriceOriginType {
+export const PriceListPriceOriginType = {
   /** The price is defined on the price list. */
-  Fixed = 'FIXED',
+  Fixed: 'FIXED',
   /** The price is relative to the adjustment type and value. */
-  Relative = 'RELATIVE'
-}
+  Relative: 'RELATIVE'
+} as const;
 
+export type PriceListPriceOriginType = typeof PriceListPriceOriginType[keyof typeof PriceListPriceOriginType];
 /** An error for a failed price list price operation. */
 export type PriceListPriceUserError = DisplayableError & {
   __typename?: 'PriceListPriceUserError';
@@ -45538,23 +45842,24 @@ export type PriceListPriceUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `PriceListPriceUserError`. */
-export enum PriceListPriceUserErrorCode {
+export const PriceListPriceUserErrorCode = {
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** The issuance currency of a local currency gift card must match the price list currency. */
-  LocalCurrencyGiftCardIssuanceCurrencyMismatch = 'LOCAL_CURRENCY_GIFT_CARD_ISSUANCE_CURRENCY_MISMATCH',
+  LocalCurrencyGiftCardIssuanceCurrencyMismatch: 'LOCAL_CURRENCY_GIFT_CARD_ISSUANCE_CURRENCY_MISMATCH',
   /** The price of a local currency gift card cannot exceed the maximum gift card purchase limit. */
-  LocalCurrencyGiftCardLimitExceeded = 'LOCAL_CURRENCY_GIFT_CARD_LIMIT_EXCEEDED',
+  LocalCurrencyGiftCardLimitExceeded: 'LOCAL_CURRENCY_GIFT_CARD_LIMIT_EXCEEDED',
   /** The specified currency doesn't match the price list's currency. */
-  PriceListCurrencyMismatch = 'PRICE_LIST_CURRENCY_MISMATCH',
+  PriceListCurrencyMismatch: 'PRICE_LIST_CURRENCY_MISMATCH',
   /** The price list doesn't exist. */
-  PriceListNotFound = 'PRICE_LIST_NOT_FOUND',
+  PriceListNotFound: 'PRICE_LIST_NOT_FOUND',
   /** Only fixed prices can be deleted. */
-  PriceNotFixed = 'PRICE_NOT_FIXED',
+  PriceNotFixed: 'PRICE_NOT_FIXED',
   /** A fixed price for the specified product variant doesn't exist. */
-  VariantNotFound = 'VARIANT_NOT_FOUND'
-}
+  VariantNotFound: 'VARIANT_NOT_FOUND'
+} as const;
 
+export type PriceListPriceUserErrorCode = typeof PriceListPriceUserErrorCode[keyof typeof PriceListPriceUserErrorCode];
 /** The input fields representing the price for all variants of a product. */
 export type PriceListProductPriceInput = {
   /** Specifies the price and currency to apply to the product's variants on the price list. */
@@ -45564,13 +45869,14 @@ export type PriceListProductPriceInput = {
 };
 
 /** The set of valid sort keys for the PriceList query. */
-export enum PriceListSortKeys {
+export const PriceListSortKeys = {
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `name` value. */
-  Name = 'NAME'
-}
+  Name: 'NAME'
+} as const;
 
+export type PriceListSortKeys = typeof PriceListSortKeys[keyof typeof PriceListSortKeys];
 /** The input fields used to update a price list. */
 export type PriceListUpdateInput = {
   /** The ID of the catalog to associate with this price list. */
@@ -45604,49 +45910,50 @@ export type PriceListUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `PriceListUserError`. */
-export enum PriceListUserErrorCode {
+export const PriceListUserErrorCode = {
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** Quantity price breaks can be associated only with company location catalogs or catalogs associated with compatible markets. */
-  CatalogContextDoesNotSupportQuantityPriceBreaks = 'CATALOG_CONTEXT_DOES_NOT_SUPPORT_QUANTITY_PRICE_BREAKS',
+  CatalogContextDoesNotSupportQuantityPriceBreaks: 'CATALOG_CONTEXT_DOES_NOT_SUPPORT_QUANTITY_PRICE_BREAKS',
   /** Quantity rules can be associated only with company location catalogs or catalogs associated with compatible markets. */
-  CatalogContextDoesNotSupportQuantityRules = 'CATALOG_CONTEXT_DOES_NOT_SUPPORT_QUANTITY_RULES',
+  CatalogContextDoesNotSupportQuantityRules: 'CATALOG_CONTEXT_DOES_NOT_SUPPORT_QUANTITY_RULES',
   /** The specified catalog does not exist. */
-  CatalogDoesNotExist = 'CATALOG_DOES_NOT_EXIST',
+  CatalogDoesNotExist: 'CATALOG_DOES_NOT_EXIST',
   /** The price list currency must match the market catalog currency. */
-  CatalogMarketAndPriceListCurrencyMismatch = 'CATALOG_MARKET_AND_PRICE_LIST_CURRENCY_MISMATCH',
+  CatalogMarketAndPriceListCurrencyMismatch: 'CATALOG_MARKET_AND_PRICE_LIST_CURRENCY_MISMATCH',
   /** Catalog has a price list already assigned. */
-  CatalogTaken = 'CATALOG_TAKEN',
+  CatalogTaken: 'CATALOG_TAKEN',
   /** Only one context rule option may be specified. */
-  ContextRuleLimitOneOption = 'CONTEXT_RULE_LIMIT_ONE_OPTION',
+  ContextRuleLimitOneOption: 'CONTEXT_RULE_LIMIT_ONE_OPTION',
   /** A country catalog cannot be assigned to a price list. */
-  CountryPriceListAssignment = 'COUNTRY_PRICE_LIST_ASSIGNMENT',
+  CountryPriceListAssignment: 'COUNTRY_PRICE_LIST_ASSIGNMENT',
   /** A price list’s currency must be the market currency. */
-  CurrencyMarketMismatch = 'CURRENCY_MARKET_MISMATCH',
+  CurrencyMarketMismatch: 'CURRENCY_MARKET_MISMATCH',
   /** The price list currency is not supported by the shop's payment gateway. */
-  CurrencyNotSupported = 'CURRENCY_NOT_SUPPORTED',
+  CurrencyNotSupported: 'CURRENCY_NOT_SUPPORTED',
   /** Something went wrong when trying to save the price list. Please try again. */
-  GenericError = 'GENERIC_ERROR',
+  GenericError: 'GENERIC_ERROR',
   /** The input value isn't included in the list. */
-  Inclusion = 'INCLUSION',
+  Inclusion: 'INCLUSION',
   /** The adjustment value must not be greater than 1000% for `type` `PERCENTAGE_INCREASE`. */
-  InvalidAdjustmentMaxValue = 'INVALID_ADJUSTMENT_MAX_VALUE',
+  InvalidAdjustmentMaxValue: 'INVALID_ADJUSTMENT_MAX_VALUE',
   /** The adjustment value must not be greater than 100% for `type` `PERCENTAGE_DECREASE`. */
-  InvalidAdjustmentMinValue = 'INVALID_ADJUSTMENT_MIN_VALUE',
+  InvalidAdjustmentMinValue: 'INVALID_ADJUSTMENT_MIN_VALUE',
   /** The adjustment value must be a positive value and not be greater than 100% for `type` `PERCENTAGE_DECREASE` and not be greater than 1000% for `type` `PERCENTAGE_INCREASE`. */
-  InvalidAdjustmentValue = 'INVALID_ADJUSTMENT_VALUE',
+  InvalidAdjustmentValue: 'INVALID_ADJUSTMENT_VALUE',
   /** The price list is currently being modified. Please try again later. */
-  PriceListLocked = 'PRICE_LIST_LOCKED',
+  PriceListLocked: 'PRICE_LIST_LOCKED',
   /** Cannot create price list for a primary market. */
-  PriceListNotAllowedForPrimaryMarket = 'PRICE_LIST_NOT_ALLOWED_FOR_PRIMARY_MARKET',
+  PriceListNotAllowedForPrimaryMarket: 'PRICE_LIST_NOT_ALLOWED_FOR_PRIMARY_MARKET',
   /** The specified price list doesn't exist. */
-  PriceListNotFound = 'PRICE_LIST_NOT_FOUND',
+  PriceListNotFound: 'PRICE_LIST_NOT_FOUND',
   /** The input value is already taken. */
-  Taken = 'TAKEN',
+  Taken: 'TAKEN',
   /** The input value is too long. */
-  TooLong = 'TOO_LONG'
-}
+  TooLong: 'TOO_LONG'
+} as const;
 
+export type PriceListUserErrorCode = typeof PriceListUserErrorCode[keyof typeof PriceListUserErrorCode];
 /**
  * A set of conditions, including entitlements and prerequisites, that must be met for a discount code to apply.
  *
@@ -45788,13 +46095,14 @@ export type PriceRuleEventsArgs = {
 };
 
 /** The method by which the price rule's value is allocated to its entitled items. */
-export enum PriceRuleAllocationMethod {
+export const PriceRuleAllocationMethod = {
   /** The value will be applied once across the entitled items. */
-  Across = 'ACROSS',
+  Across: 'ACROSS',
   /** The value will be applied to each of the entitled items. */
-  Each = 'EACH'
-}
+  Each: 'EACH'
+} as const;
 
+export type PriceRuleAllocationMethod = typeof PriceRuleAllocationMethod[keyof typeof PriceRuleAllocationMethod];
 /** A selection of customers for whom the price rule applies. */
 export type PriceRuleCustomerSelection = {
   __typename?: 'PriceRuleCustomerSelection';
@@ -45862,19 +46170,20 @@ export type PriceRuleEntitlementToPrerequisiteQuantityRatio = {
 };
 
 /** The list of features that can be supported by a price rule. */
-export enum PriceRuleFeature {
+export const PriceRuleFeature = {
   /** The price rule supports bulk discounts. */
-  Bulk = 'BULK',
+  Bulk: 'BULK',
   /** The price rule supports Buy X, Get Y (BXGY) discounts. */
-  BuyOneGetOne = 'BUY_ONE_GET_ONE',
+  BuyOneGetOne: 'BUY_ONE_GET_ONE',
   /** The price rule supports Buy X, Get Y (BXGY) discounts that specify a custom allocation limit. */
-  BuyOneGetOneWithAllocationLimit = 'BUY_ONE_GET_ONE_WITH_ALLOCATION_LIMIT',
+  BuyOneGetOneWithAllocationLimit: 'BUY_ONE_GET_ONE_WITH_ALLOCATION_LIMIT',
   /** The price rule supports discounts that require a quantity. */
-  QuantityDiscounts = 'QUANTITY_DISCOUNTS',
+  QuantityDiscounts: 'QUANTITY_DISCOUNTS',
   /** The price rule targets specific customers. */
-  SpecificCustomers = 'SPECIFIC_CUSTOMERS'
-}
+  SpecificCustomers: 'SPECIFIC_CUSTOMERS'
+} as const;
 
+export type PriceRuleFeature = typeof PriceRuleFeature[keyof typeof PriceRuleFeature];
 /** The value of a fixed amount price rule. */
 export type PriceRuleFixedAmountValue = {
   __typename?: 'PriceRuleFixedAmountValue';
@@ -46022,15 +46331,16 @@ export type PriceRuleShareableUrl = {
 };
 
 /** The type of page where a shareable price rule URL lands. */
-export enum PriceRuleShareableUrlTargetType {
+export const PriceRuleShareableUrlTargetType = {
   /** The URL lands on a collection page. */
-  Collection = 'COLLECTION',
+  Collection: 'COLLECTION',
   /** The URL lands on a home page. */
-  Home = 'HOME',
+  Home: 'HOME',
   /** The URL lands on a product page. */
-  Product = 'PRODUCT'
-}
+  Product: 'PRODUCT'
+} as const;
 
+export type PriceRuleShareableUrlTargetType = typeof PriceRuleShareableUrlTargetType[keyof typeof PriceRuleShareableUrlTargetType];
 /** The shipping lines to which the price rule applies to. */
 export type PriceRuleShippingLineEntitlements = {
   __typename?: 'PriceRuleShippingLineEntitlements';
@@ -46043,37 +46353,40 @@ export type PriceRuleShippingLineEntitlements = {
 };
 
 /** The status of the price rule. */
-export enum PriceRuleStatus {
+export const PriceRuleStatus = {
   /** The price rule is active. */
-  Active = 'ACTIVE',
+  Active: 'ACTIVE',
   /** The price rule is expired. */
-  Expired = 'EXPIRED',
+  Expired: 'EXPIRED',
   /** The price rule is scheduled. */
-  Scheduled = 'SCHEDULED'
-}
+  Scheduled: 'SCHEDULED'
+} as const;
 
+export type PriceRuleStatus = typeof PriceRuleStatus[keyof typeof PriceRuleStatus];
 /** The type of lines (line_item or shipping_line) to which the price rule applies. */
-export enum PriceRuleTarget {
+export const PriceRuleTarget = {
   /** The price rule applies to line items. */
-  LineItem = 'LINE_ITEM',
+  LineItem: 'LINE_ITEM',
   /** The price rule applies to shipping lines. */
-  ShippingLine = 'SHIPPING_LINE'
-}
+  ShippingLine: 'SHIPPING_LINE'
+} as const;
 
+export type PriceRuleTarget = typeof PriceRuleTarget[keyof typeof PriceRuleTarget];
 /** The list of features that can be supported by a price rule. */
-export enum PriceRuleTrait {
+export const PriceRuleTrait = {
   /** The price rule supports bulk discounts. */
-  Bulk = 'BULK',
+  Bulk: 'BULK',
   /** The price rule supports Buy X, Get Y (BXGY) discounts. */
-  BuyOneGetOne = 'BUY_ONE_GET_ONE',
+  BuyOneGetOne: 'BUY_ONE_GET_ONE',
   /** The price rule supports Buy X, Get Y (BXGY) discounts that specify a custom allocation limit. */
-  BuyOneGetOneWithAllocationLimit = 'BUY_ONE_GET_ONE_WITH_ALLOCATION_LIMIT',
+  BuyOneGetOneWithAllocationLimit: 'BUY_ONE_GET_ONE_WITH_ALLOCATION_LIMIT',
   /** The price rule supports discounts that require a quantity. */
-  QuantityDiscounts = 'QUANTITY_DISCOUNTS',
+  QuantityDiscounts: 'QUANTITY_DISCOUNTS',
   /** The price rule targets specific customers. */
-  SpecificCustomers = 'SPECIFIC_CUSTOMERS'
-}
+  SpecificCustomers: 'SPECIFIC_CUSTOMERS'
+} as const;
 
+export type PriceRuleTrait = typeof PriceRuleTrait[keyof typeof PriceRuleTrait];
 /** A time period during which a price rule is applicable. */
 export type PriceRuleValidityPeriod = {
   __typename?: 'PriceRuleValidityPeriod';
@@ -46100,519 +46413,520 @@ export type PricingPercentageValue = {
 export type PricingValue = MoneyV2 | PricingPercentageValue;
 
 /** A country code from the `ISO 3166` standard. e.g. `CA` for Canada. */
-export enum PrivacyCountryCode {
+export const PrivacyCountryCode = {
   /** The `ISO 3166` country code of `AC`. */
-  Ac = 'AC',
+  Ac: 'AC',
   /** The `ISO 3166` country code of `AD`. */
-  Ad = 'AD',
+  Ad: 'AD',
   /** The `ISO 3166` country code of `AE`. */
-  Ae = 'AE',
+  Ae: 'AE',
   /** The `ISO 3166` country code of `AF`. */
-  Af = 'AF',
+  Af: 'AF',
   /** The `ISO 3166` country code of `AG`. */
-  Ag = 'AG',
+  Ag: 'AG',
   /** The `ISO 3166` country code of `AI`. */
-  Ai = 'AI',
+  Ai: 'AI',
   /** The `ISO 3166` country code of `AL`. */
-  Al = 'AL',
+  Al: 'AL',
   /** The `ISO 3166` country code of `AM`. */
-  Am = 'AM',
+  Am: 'AM',
   /** The `ISO 3166` country code of `AN`. */
-  An = 'AN',
+  An: 'AN',
   /** The `ISO 3166` country code of `AO`. */
-  Ao = 'AO',
+  Ao: 'AO',
   /** The `ISO 3166` country code of `AQ`. */
-  Aq = 'AQ',
+  Aq: 'AQ',
   /** The `ISO 3166` country code of `AR`. */
-  Ar = 'AR',
+  Ar: 'AR',
   /** The `ISO 3166` country code of `AS`. */
-  As = 'AS',
+  As: 'AS',
   /** The `ISO 3166` country code of `AT`. */
-  At = 'AT',
+  At: 'AT',
   /** The `ISO 3166` country code of `AU`. */
-  Au = 'AU',
+  Au: 'AU',
   /** The `ISO 3166` country code of `AW`. */
-  Aw = 'AW',
+  Aw: 'AW',
   /** The `ISO 3166` country code of `AX`. */
-  Ax = 'AX',
+  Ax: 'AX',
   /** The `ISO 3166` country code of `AZ`. */
-  Az = 'AZ',
+  Az: 'AZ',
   /** The `ISO 3166` country code of `BA`. */
-  Ba = 'BA',
+  Ba: 'BA',
   /** The `ISO 3166` country code of `BB`. */
-  Bb = 'BB',
+  Bb: 'BB',
   /** The `ISO 3166` country code of `BD`. */
-  Bd = 'BD',
+  Bd: 'BD',
   /** The `ISO 3166` country code of `BE`. */
-  Be = 'BE',
+  Be: 'BE',
   /** The `ISO 3166` country code of `BF`. */
-  Bf = 'BF',
+  Bf: 'BF',
   /** The `ISO 3166` country code of `BG`. */
-  Bg = 'BG',
+  Bg: 'BG',
   /** The `ISO 3166` country code of `BH`. */
-  Bh = 'BH',
+  Bh: 'BH',
   /** The `ISO 3166` country code of `BI`. */
-  Bi = 'BI',
+  Bi: 'BI',
   /** The `ISO 3166` country code of `BJ`. */
-  Bj = 'BJ',
+  Bj: 'BJ',
   /** The `ISO 3166` country code of `BL`. */
-  Bl = 'BL',
+  Bl: 'BL',
   /** The `ISO 3166` country code of `BM`. */
-  Bm = 'BM',
+  Bm: 'BM',
   /** The `ISO 3166` country code of `BN`. */
-  Bn = 'BN',
+  Bn: 'BN',
   /** The `ISO 3166` country code of `BO`. */
-  Bo = 'BO',
+  Bo: 'BO',
   /** The `ISO 3166` country code of `BQ`. */
-  Bq = 'BQ',
+  Bq: 'BQ',
   /** The `ISO 3166` country code of `BR`. */
-  Br = 'BR',
+  Br: 'BR',
   /** The `ISO 3166` country code of `BS`. */
-  Bs = 'BS',
+  Bs: 'BS',
   /** The `ISO 3166` country code of `BT`. */
-  Bt = 'BT',
+  Bt: 'BT',
   /** The `ISO 3166` country code of `BV`. */
-  Bv = 'BV',
+  Bv: 'BV',
   /** The `ISO 3166` country code of `BW`. */
-  Bw = 'BW',
+  Bw: 'BW',
   /** The `ISO 3166` country code of `BY`. */
-  By = 'BY',
+  By: 'BY',
   /** The `ISO 3166` country code of `BZ`. */
-  Bz = 'BZ',
+  Bz: 'BZ',
   /** The `ISO 3166` country code of `CA`. */
-  Ca = 'CA',
+  Ca: 'CA',
   /** The `ISO 3166` country code of `CC`. */
-  Cc = 'CC',
+  Cc: 'CC',
   /** The `ISO 3166` country code of `CD`. */
-  Cd = 'CD',
+  Cd: 'CD',
   /** The `ISO 3166` country code of `CF`. */
-  Cf = 'CF',
+  Cf: 'CF',
   /** The `ISO 3166` country code of `CG`. */
-  Cg = 'CG',
+  Cg: 'CG',
   /** The `ISO 3166` country code of `CH`. */
-  Ch = 'CH',
+  Ch: 'CH',
   /** The `ISO 3166` country code of `CI`. */
-  Ci = 'CI',
+  Ci: 'CI',
   /** The `ISO 3166` country code of `CK`. */
-  Ck = 'CK',
+  Ck: 'CK',
   /** The `ISO 3166` country code of `CL`. */
-  Cl = 'CL',
+  Cl: 'CL',
   /** The `ISO 3166` country code of `CM`. */
-  Cm = 'CM',
+  Cm: 'CM',
   /** The `ISO 3166` country code of `CN`. */
-  Cn = 'CN',
+  Cn: 'CN',
   /** The `ISO 3166` country code of `CO`. */
-  Co = 'CO',
+  Co: 'CO',
   /** The `ISO 3166` country code of `CR`. */
-  Cr = 'CR',
+  Cr: 'CR',
   /** The `ISO 3166` country code of `CU`. */
-  Cu = 'CU',
+  Cu: 'CU',
   /** The `ISO 3166` country code of `CV`. */
-  Cv = 'CV',
+  Cv: 'CV',
   /** The `ISO 3166` country code of `CW`. */
-  Cw = 'CW',
+  Cw: 'CW',
   /** The `ISO 3166` country code of `CX`. */
-  Cx = 'CX',
+  Cx: 'CX',
   /** The `ISO 3166` country code of `CY`. */
-  Cy = 'CY',
+  Cy: 'CY',
   /** The `ISO 3166` country code of `CZ`. */
-  Cz = 'CZ',
+  Cz: 'CZ',
   /** The `ISO 3166` country code of `DE`. */
-  De = 'DE',
+  De: 'DE',
   /** The `ISO 3166` country code of `DJ`. */
-  Dj = 'DJ',
+  Dj: 'DJ',
   /** The `ISO 3166` country code of `DK`. */
-  Dk = 'DK',
+  Dk: 'DK',
   /** The `ISO 3166` country code of `DM`. */
-  Dm = 'DM',
+  Dm: 'DM',
   /** The `ISO 3166` country code of `DO`. */
-  Do = 'DO',
+  Do: 'DO',
   /** The `ISO 3166` country code of `DZ`. */
-  Dz = 'DZ',
+  Dz: 'DZ',
   /** The `ISO 3166` country code of `EC`. */
-  Ec = 'EC',
+  Ec: 'EC',
   /** The `ISO 3166` country code of `EE`. */
-  Ee = 'EE',
+  Ee: 'EE',
   /** The `ISO 3166` country code of `EG`. */
-  Eg = 'EG',
+  Eg: 'EG',
   /** The `ISO 3166` country code of `EH`. */
-  Eh = 'EH',
+  Eh: 'EH',
   /** The `ISO 3166` country code of `ER`. */
-  Er = 'ER',
+  Er: 'ER',
   /** The `ISO 3166` country code of `ES`. */
-  Es = 'ES',
+  Es: 'ES',
   /** The `ISO 3166` country code of `ET`. */
-  Et = 'ET',
+  Et: 'ET',
   /** The `ISO 3166` country code of `FI`. */
-  Fi = 'FI',
+  Fi: 'FI',
   /** The `ISO 3166` country code of `FJ`. */
-  Fj = 'FJ',
+  Fj: 'FJ',
   /** The `ISO 3166` country code of `FK`. */
-  Fk = 'FK',
+  Fk: 'FK',
   /** The `ISO 3166` country code of `FM`. */
-  Fm = 'FM',
+  Fm: 'FM',
   /** The `ISO 3166` country code of `FO`. */
-  Fo = 'FO',
+  Fo: 'FO',
   /** The `ISO 3166` country code of `FR`. */
-  Fr = 'FR',
+  Fr: 'FR',
   /** The `ISO 3166` country code of `GA`. */
-  Ga = 'GA',
+  Ga: 'GA',
   /** The `ISO 3166` country code of `GB`. */
-  Gb = 'GB',
+  Gb: 'GB',
   /** The `ISO 3166` country code of `GD`. */
-  Gd = 'GD',
+  Gd: 'GD',
   /** The `ISO 3166` country code of `GE`. */
-  Ge = 'GE',
+  Ge: 'GE',
   /** The `ISO 3166` country code of `GF`. */
-  Gf = 'GF',
+  Gf: 'GF',
   /** The `ISO 3166` country code of `GG`. */
-  Gg = 'GG',
+  Gg: 'GG',
   /** The `ISO 3166` country code of `GH`. */
-  Gh = 'GH',
+  Gh: 'GH',
   /** The `ISO 3166` country code of `GI`. */
-  Gi = 'GI',
+  Gi: 'GI',
   /** The `ISO 3166` country code of `GL`. */
-  Gl = 'GL',
+  Gl: 'GL',
   /** The `ISO 3166` country code of `GM`. */
-  Gm = 'GM',
+  Gm: 'GM',
   /** The `ISO 3166` country code of `GN`. */
-  Gn = 'GN',
+  Gn: 'GN',
   /** The `ISO 3166` country code of `GP`. */
-  Gp = 'GP',
+  Gp: 'GP',
   /** The `ISO 3166` country code of `GQ`. */
-  Gq = 'GQ',
+  Gq: 'GQ',
   /** The `ISO 3166` country code of `GR`. */
-  Gr = 'GR',
+  Gr: 'GR',
   /** The `ISO 3166` country code of `GS`. */
-  Gs = 'GS',
+  Gs: 'GS',
   /** The `ISO 3166` country code of `GT`. */
-  Gt = 'GT',
+  Gt: 'GT',
   /** The `ISO 3166` country code of `GU`. */
-  Gu = 'GU',
+  Gu: 'GU',
   /** The `ISO 3166` country code of `GW`. */
-  Gw = 'GW',
+  Gw: 'GW',
   /** The `ISO 3166` country code of `GY`. */
-  Gy = 'GY',
+  Gy: 'GY',
   /** The `ISO 3166` country code of `HK`. */
-  Hk = 'HK',
+  Hk: 'HK',
   /** The `ISO 3166` country code of `HM`. */
-  Hm = 'HM',
+  Hm: 'HM',
   /** The `ISO 3166` country code of `HN`. */
-  Hn = 'HN',
+  Hn: 'HN',
   /** The `ISO 3166` country code of `HR`. */
-  Hr = 'HR',
+  Hr: 'HR',
   /** The `ISO 3166` country code of `HT`. */
-  Ht = 'HT',
+  Ht: 'HT',
   /** The `ISO 3166` country code of `HU`. */
-  Hu = 'HU',
+  Hu: 'HU',
   /** The `ISO 3166` country code of `ID`. */
-  Id = 'ID',
+  Id: 'ID',
   /** The `ISO 3166` country code of `IE`. */
-  Ie = 'IE',
+  Ie: 'IE',
   /** The `ISO 3166` country code of `IL`. */
-  Il = 'IL',
+  Il: 'IL',
   /** The `ISO 3166` country code of `IM`. */
-  Im = 'IM',
+  Im: 'IM',
   /** The `ISO 3166` country code of `IN`. */
-  In = 'IN',
+  In: 'IN',
   /** The `ISO 3166` country code of `IO`. */
-  Io = 'IO',
+  Io: 'IO',
   /** The `ISO 3166` country code of `IQ`. */
-  Iq = 'IQ',
+  Iq: 'IQ',
   /** The `ISO 3166` country code of `IR`. */
-  Ir = 'IR',
+  Ir: 'IR',
   /** The `ISO 3166` country code of `IS`. */
-  Is = 'IS',
+  Is: 'IS',
   /** The `ISO 3166` country code of `IT`. */
-  It = 'IT',
+  It: 'IT',
   /** The `ISO 3166` country code of `JE`. */
-  Je = 'JE',
+  Je: 'JE',
   /** The `ISO 3166` country code of `JM`. */
-  Jm = 'JM',
+  Jm: 'JM',
   /** The `ISO 3166` country code of `JO`. */
-  Jo = 'JO',
+  Jo: 'JO',
   /** The `ISO 3166` country code of `JP`. */
-  Jp = 'JP',
+  Jp: 'JP',
   /** The `ISO 3166` country code of `KE`. */
-  Ke = 'KE',
+  Ke: 'KE',
   /** The `ISO 3166` country code of `KG`. */
-  Kg = 'KG',
+  Kg: 'KG',
   /** The `ISO 3166` country code of `KH`. */
-  Kh = 'KH',
+  Kh: 'KH',
   /** The `ISO 3166` country code of `KI`. */
-  Ki = 'KI',
+  Ki: 'KI',
   /** The `ISO 3166` country code of `KM`. */
-  Km = 'KM',
+  Km: 'KM',
   /** The `ISO 3166` country code of `KN`. */
-  Kn = 'KN',
+  Kn: 'KN',
   /** The `ISO 3166` country code of `KP`. */
-  Kp = 'KP',
+  Kp: 'KP',
   /** The `ISO 3166` country code of `KR`. */
-  Kr = 'KR',
+  Kr: 'KR',
   /** The `ISO 3166` country code of `KW`. */
-  Kw = 'KW',
+  Kw: 'KW',
   /** The `ISO 3166` country code of `KY`. */
-  Ky = 'KY',
+  Ky: 'KY',
   /** The `ISO 3166` country code of `KZ`. */
-  Kz = 'KZ',
+  Kz: 'KZ',
   /** The `ISO 3166` country code of `LA`. */
-  La = 'LA',
+  La: 'LA',
   /** The `ISO 3166` country code of `LB`. */
-  Lb = 'LB',
+  Lb: 'LB',
   /** The `ISO 3166` country code of `LC`. */
-  Lc = 'LC',
+  Lc: 'LC',
   /** The `ISO 3166` country code of `LI`. */
-  Li = 'LI',
+  Li: 'LI',
   /** The `ISO 3166` country code of `LK`. */
-  Lk = 'LK',
+  Lk: 'LK',
   /** The `ISO 3166` country code of `LR`. */
-  Lr = 'LR',
+  Lr: 'LR',
   /** The `ISO 3166` country code of `LS`. */
-  Ls = 'LS',
+  Ls: 'LS',
   /** The `ISO 3166` country code of `LT`. */
-  Lt = 'LT',
+  Lt: 'LT',
   /** The `ISO 3166` country code of `LU`. */
-  Lu = 'LU',
+  Lu: 'LU',
   /** The `ISO 3166` country code of `LV`. */
-  Lv = 'LV',
+  Lv: 'LV',
   /** The `ISO 3166` country code of `LY`. */
-  Ly = 'LY',
+  Ly: 'LY',
   /** The `ISO 3166` country code of `MA`. */
-  Ma = 'MA',
+  Ma: 'MA',
   /** The `ISO 3166` country code of `MC`. */
-  Mc = 'MC',
+  Mc: 'MC',
   /** The `ISO 3166` country code of `MD`. */
-  Md = 'MD',
+  Md: 'MD',
   /** The `ISO 3166` country code of `ME`. */
-  Me = 'ME',
+  Me: 'ME',
   /** The `ISO 3166` country code of `MF`. */
-  Mf = 'MF',
+  Mf: 'MF',
   /** The `ISO 3166` country code of `MG`. */
-  Mg = 'MG',
+  Mg: 'MG',
   /** The `ISO 3166` country code of `MH`. */
-  Mh = 'MH',
+  Mh: 'MH',
   /** The `ISO 3166` country code of `MK`. */
-  Mk = 'MK',
+  Mk: 'MK',
   /** The `ISO 3166` country code of `ML`. */
-  Ml = 'ML',
+  Ml: 'ML',
   /** The `ISO 3166` country code of `MM`. */
-  Mm = 'MM',
+  Mm: 'MM',
   /** The `ISO 3166` country code of `MN`. */
-  Mn = 'MN',
+  Mn: 'MN',
   /** The `ISO 3166` country code of `MO`. */
-  Mo = 'MO',
+  Mo: 'MO',
   /** The `ISO 3166` country code of `MP`. */
-  Mp = 'MP',
+  Mp: 'MP',
   /** The `ISO 3166` country code of `MQ`. */
-  Mq = 'MQ',
+  Mq: 'MQ',
   /** The `ISO 3166` country code of `MR`. */
-  Mr = 'MR',
+  Mr: 'MR',
   /** The `ISO 3166` country code of `MS`. */
-  Ms = 'MS',
+  Ms: 'MS',
   /** The `ISO 3166` country code of `MT`. */
-  Mt = 'MT',
+  Mt: 'MT',
   /** The `ISO 3166` country code of `MU`. */
-  Mu = 'MU',
+  Mu: 'MU',
   /** The `ISO 3166` country code of `MV`. */
-  Mv = 'MV',
+  Mv: 'MV',
   /** The `ISO 3166` country code of `MW`. */
-  Mw = 'MW',
+  Mw: 'MW',
   /** The `ISO 3166` country code of `MX`. */
-  Mx = 'MX',
+  Mx: 'MX',
   /** The `ISO 3166` country code of `MY`. */
-  My = 'MY',
+  My: 'MY',
   /** The `ISO 3166` country code of `MZ`. */
-  Mz = 'MZ',
+  Mz: 'MZ',
   /** The `ISO 3166` country code of `NA`. */
-  Na = 'NA',
+  Na: 'NA',
   /** The `ISO 3166` country code of `NC`. */
-  Nc = 'NC',
+  Nc: 'NC',
   /** The `ISO 3166` country code of `NE`. */
-  Ne = 'NE',
+  Ne: 'NE',
   /** The `ISO 3166` country code of `NF`. */
-  Nf = 'NF',
+  Nf: 'NF',
   /** The `ISO 3166` country code of `NG`. */
-  Ng = 'NG',
+  Ng: 'NG',
   /** The `ISO 3166` country code of `NI`. */
-  Ni = 'NI',
+  Ni: 'NI',
   /** The `ISO 3166` country code of `NL`. */
-  Nl = 'NL',
+  Nl: 'NL',
   /** The `ISO 3166` country code of `NO`. */
-  No = 'NO',
+  No: 'NO',
   /** The `ISO 3166` country code of `NP`. */
-  Np = 'NP',
+  Np: 'NP',
   /** The `ISO 3166` country code of `NR`. */
-  Nr = 'NR',
+  Nr: 'NR',
   /** The `ISO 3166` country code of `NS`. */
-  Ns = 'NS',
+  Ns: 'NS',
   /** The `ISO 3166` country code of `NU`. */
-  Nu = 'NU',
+  Nu: 'NU',
   /** The `ISO 3166` country code of `NZ`. */
-  Nz = 'NZ',
+  Nz: 'NZ',
   /** The `ISO 3166` country code of `OM`. */
-  Om = 'OM',
+  Om: 'OM',
   /** The `ISO 3166` country code of `PA`. */
-  Pa = 'PA',
+  Pa: 'PA',
   /** The `ISO 3166` country code of `PE`. */
-  Pe = 'PE',
+  Pe: 'PE',
   /** The `ISO 3166` country code of `PF`. */
-  Pf = 'PF',
+  Pf: 'PF',
   /** The `ISO 3166` country code of `PG`. */
-  Pg = 'PG',
+  Pg: 'PG',
   /** The `ISO 3166` country code of `PH`. */
-  Ph = 'PH',
+  Ph: 'PH',
   /** The `ISO 3166` country code of `PK`. */
-  Pk = 'PK',
+  Pk: 'PK',
   /** The `ISO 3166` country code of `PL`. */
-  Pl = 'PL',
+  Pl: 'PL',
   /** The `ISO 3166` country code of `PM`. */
-  Pm = 'PM',
+  Pm: 'PM',
   /** The `ISO 3166` country code of `PN`. */
-  Pn = 'PN',
+  Pn: 'PN',
   /** The `ISO 3166` country code of `PR`. */
-  Pr = 'PR',
+  Pr: 'PR',
   /** The `ISO 3166` country code of `PS`. */
-  Ps = 'PS',
+  Ps: 'PS',
   /** The `ISO 3166` country code of `PT`. */
-  Pt = 'PT',
+  Pt: 'PT',
   /** The `ISO 3166` country code of `PW`. */
-  Pw = 'PW',
+  Pw: 'PW',
   /** The `ISO 3166` country code of `PY`. */
-  Py = 'PY',
+  Py: 'PY',
   /** The `ISO 3166` country code of `QA`. */
-  Qa = 'QA',
+  Qa: 'QA',
   /** The `ISO 3166` country code of `RE`. */
-  Re = 'RE',
+  Re: 'RE',
   /** The `ISO 3166` country code of `RO`. */
-  Ro = 'RO',
+  Ro: 'RO',
   /** The `ISO 3166` country code of `RS`. */
-  Rs = 'RS',
+  Rs: 'RS',
   /** The `ISO 3166` country code of `RU`. */
-  Ru = 'RU',
+  Ru: 'RU',
   /** The `ISO 3166` country code of `RW`. */
-  Rw = 'RW',
+  Rw: 'RW',
   /** The `ISO 3166` country code of `SA`. */
-  Sa = 'SA',
+  Sa: 'SA',
   /** The `ISO 3166` country code of `SB`. */
-  Sb = 'SB',
+  Sb: 'SB',
   /** The `ISO 3166` country code of `SC`. */
-  Sc = 'SC',
+  Sc: 'SC',
   /** The `ISO 3166` country code of `SD`. */
-  Sd = 'SD',
+  Sd: 'SD',
   /** The `ISO 3166` country code of `SE`. */
-  Se = 'SE',
+  Se: 'SE',
   /** The `ISO 3166` country code of `SG`. */
-  Sg = 'SG',
+  Sg: 'SG',
   /** The `ISO 3166` country code of `SH`. */
-  Sh = 'SH',
+  Sh: 'SH',
   /** The `ISO 3166` country code of `SI`. */
-  Si = 'SI',
+  Si: 'SI',
   /** The `ISO 3166` country code of `SJ`. */
-  Sj = 'SJ',
+  Sj: 'SJ',
   /** The `ISO 3166` country code of `SK`. */
-  Sk = 'SK',
+  Sk: 'SK',
   /** The `ISO 3166` country code of `SL`. */
-  Sl = 'SL',
+  Sl: 'SL',
   /** The `ISO 3166` country code of `SM`. */
-  Sm = 'SM',
+  Sm: 'SM',
   /** The `ISO 3166` country code of `SN`. */
-  Sn = 'SN',
+  Sn: 'SN',
   /** The `ISO 3166` country code of `SO`. */
-  So = 'SO',
+  So: 'SO',
   /** The `ISO 3166` country code of `SR`. */
-  Sr = 'SR',
+  Sr: 'SR',
   /** The `ISO 3166` country code of `SS`. */
-  Ss = 'SS',
+  Ss: 'SS',
   /** The `ISO 3166` country code of `ST`. */
-  St = 'ST',
+  St: 'ST',
   /** The `ISO 3166` country code of `SV`. */
-  Sv = 'SV',
+  Sv: 'SV',
   /** The `ISO 3166` country code of `SX`. */
-  Sx = 'SX',
+  Sx: 'SX',
   /** The `ISO 3166` country code of `SY`. */
-  Sy = 'SY',
+  Sy: 'SY',
   /** The `ISO 3166` country code of `SZ`. */
-  Sz = 'SZ',
+  Sz: 'SZ',
   /** The `ISO 3166` country code of `TA`. */
-  Ta = 'TA',
+  Ta: 'TA',
   /** The `ISO 3166` country code of `TC`. */
-  Tc = 'TC',
+  Tc: 'TC',
   /** The `ISO 3166` country code of `TD`. */
-  Td = 'TD',
+  Td: 'TD',
   /** The `ISO 3166` country code of `TF`. */
-  Tf = 'TF',
+  Tf: 'TF',
   /** The `ISO 3166` country code of `TG`. */
-  Tg = 'TG',
+  Tg: 'TG',
   /** The `ISO 3166` country code of `TH`. */
-  Th = 'TH',
+  Th: 'TH',
   /** The `ISO 3166` country code of `TJ`. */
-  Tj = 'TJ',
+  Tj: 'TJ',
   /** The `ISO 3166` country code of `TK`. */
-  Tk = 'TK',
+  Tk: 'TK',
   /** The `ISO 3166` country code of `TL`. */
-  Tl = 'TL',
+  Tl: 'TL',
   /** The `ISO 3166` country code of `TM`. */
-  Tm = 'TM',
+  Tm: 'TM',
   /** The `ISO 3166` country code of `TN`. */
-  Tn = 'TN',
+  Tn: 'TN',
   /** The `ISO 3166` country code of `TO`. */
-  To = 'TO',
+  To: 'TO',
   /** The `ISO 3166` country code of `TR`. */
-  Tr = 'TR',
+  Tr: 'TR',
   /** The `ISO 3166` country code of `TT`. */
-  Tt = 'TT',
+  Tt: 'TT',
   /** The `ISO 3166` country code of `TV`. */
-  Tv = 'TV',
+  Tv: 'TV',
   /** The `ISO 3166` country code of `TW`. */
-  Tw = 'TW',
+  Tw: 'TW',
   /** The `ISO 3166` country code of `TZ`. */
-  Tz = 'TZ',
+  Tz: 'TZ',
   /** The `ISO 3166` country code of `UA`. */
-  Ua = 'UA',
+  Ua: 'UA',
   /** The `ISO 3166` country code of `UG`. */
-  Ug = 'UG',
+  Ug: 'UG',
   /** The `ISO 3166` country code of `UM`. */
-  Um = 'UM',
+  Um: 'UM',
   /** The `ISO 3166` country code of `US`. */
-  Us = 'US',
+  Us: 'US',
   /** The `ISO 3166` country code of `UY`. */
-  Uy = 'UY',
+  Uy: 'UY',
   /** The `ISO 3166` country code of `UZ`. */
-  Uz = 'UZ',
+  Uz: 'UZ',
   /** The `ISO 3166` country code of `VA`. */
-  Va = 'VA',
+  Va: 'VA',
   /** The `ISO 3166` country code of `VC`. */
-  Vc = 'VC',
+  Vc: 'VC',
   /** The `ISO 3166` country code of `VE`. */
-  Ve = 'VE',
+  Ve: 'VE',
   /** The `ISO 3166` country code of `VG`. */
-  Vg = 'VG',
+  Vg: 'VG',
   /** The `ISO 3166` country code of `VI`. */
-  Vi = 'VI',
+  Vi: 'VI',
   /** The `ISO 3166` country code of `VN`. */
-  Vn = 'VN',
+  Vn: 'VN',
   /** The `ISO 3166` country code of `VU`. */
-  Vu = 'VU',
+  Vu: 'VU',
   /** The `ISO 3166` country code of `WF`. */
-  Wf = 'WF',
+  Wf: 'WF',
   /** The `ISO 3166` country code of `WS`. */
-  Ws = 'WS',
+  Ws: 'WS',
   /** The `ISO 3166` country code of `XK`. */
-  Xk = 'XK',
+  Xk: 'XK',
   /** The `ISO 3166` country code of `XX`. */
-  Xx = 'XX',
+  Xx: 'XX',
   /** The `ISO 3166` country code of `YE`. */
-  Ye = 'YE',
+  Ye: 'YE',
   /** The `ISO 3166` country code of `YT`. */
-  Yt = 'YT',
+  Yt: 'YT',
   /** The `ISO 3166` country code of `ZA`. */
-  Za = 'ZA',
+  Za: 'ZA',
   /** The `ISO 3166` country code of `ZM`. */
-  Zm = 'ZM',
+  Zm: 'ZM',
   /** The `ISO 3166` country code of `ZW`. */
-  Zw = 'ZW'
-}
+  Zw: 'ZW'
+} as const;
 
+export type PrivacyCountryCode = typeof PrivacyCountryCode[keyof typeof PrivacyCountryCode];
 /** Return type for `privacyFeaturesDisable` mutation. */
 export type PrivacyFeaturesDisablePayload = {
   __typename?: 'PrivacyFeaturesDisablePayload';
@@ -46634,21 +46948,23 @@ export type PrivacyFeaturesDisableUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `PrivacyFeaturesDisableUserError`. */
-export enum PrivacyFeaturesDisableUserErrorCode {
+export const PrivacyFeaturesDisableUserErrorCode = {
   /** Failed to disable privacy features. */
-  Failed = 'FAILED'
-}
+  Failed: 'FAILED'
+} as const;
 
+export type PrivacyFeaturesDisableUserErrorCode = typeof PrivacyFeaturesDisableUserErrorCode[keyof typeof PrivacyFeaturesDisableUserErrorCode];
 /** The input fields for a shop's privacy settings. */
-export enum PrivacyFeaturesEnum {
+export const PrivacyFeaturesEnum = {
   /** The cookie banner feature. */
-  CookieBanner = 'COOKIE_BANNER',
+  CookieBanner: 'COOKIE_BANNER',
   /** The data sale opt out page feature. */
-  DataSaleOptOutPage = 'DATA_SALE_OPT_OUT_PAGE',
+  DataSaleOptOutPage: 'DATA_SALE_OPT_OUT_PAGE',
   /** The privacy policy feature. */
-  PrivacyPolicy = 'PRIVACY_POLICY'
-}
+  PrivacyPolicy: 'PRIVACY_POLICY'
+} as const;
 
+export type PrivacyFeaturesEnum = typeof PrivacyFeaturesEnum[keyof typeof PrivacyFeaturesEnum];
 /** A shop's privacy policy settings. */
 export type PrivacyPolicy = {
   __typename?: 'PrivacyPolicy';
@@ -47710,17 +48026,18 @@ export type ProductBundleComponentOptionSelectionInput = {
 };
 
 /** The status of a component option value related to a bundle. */
-export enum ProductBundleComponentOptionSelectionStatus {
+export const ProductBundleComponentOptionSelectionStatus = {
   /** The component option value is not selected as sellable in the bundle. */
-  Deselected = 'DESELECTED',
+  Deselected: 'DESELECTED',
   /** The component option value was not initially selected, but is now available for the bundle. */
-  New = 'NEW',
+  New: 'NEW',
   /** The component option value is selected as sellable in the bundle. */
-  Selected = 'SELECTED',
+  Selected: 'SELECTED',
   /** The component option value was selected, is no longer available for the bundle. */
-  Unavailable = 'UNAVAILABLE'
-}
+  Unavailable: 'UNAVAILABLE'
+} as const;
 
+export type ProductBundleComponentOptionSelectionStatus = typeof ProductBundleComponentOptionSelectionStatus[keyof typeof ProductBundleComponentOptionSelectionStatus];
 /** A component option value related to a bundle line. */
 export type ProductBundleComponentOptionSelectionValue = {
   __typename?: 'ProductBundleComponentOptionSelectionValue';
@@ -47795,17 +48112,18 @@ export type ProductBundleMutationUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `ProductBundleMutationUserError`. */
-export enum ProductBundleMutationUserErrorCode {
+export const ProductBundleMutationUserErrorCode = {
   /** Something went wrong, please try again. */
-  GenericError = 'GENERIC_ERROR',
+  GenericError: 'GENERIC_ERROR',
   /** Input is not valid. */
-  InvalidInput = 'INVALID_INPUT',
+  InvalidInput: 'INVALID_INPUT',
   /** Error processing request in the background job. */
-  JobError = 'JOB_ERROR',
+  JobError: 'JOB_ERROR',
   /** Product does not exist. */
-  ProductDoesNotExist = 'PRODUCT_DOES_NOT_EXIST'
-}
+  ProductDoesNotExist: 'PRODUCT_DOES_NOT_EXIST'
+} as const;
 
+export type ProductBundleMutationUserErrorCode = typeof ProductBundleMutationUserErrorCode[keyof typeof ProductBundleMutationUserErrorCode];
 /**
  * An entity that represents details of an asynchronous
  * [ProductBundleCreate](https://shopify.dev/api/admin-graphql/current/mutations/productBundleCreate) or
@@ -47880,13 +48198,14 @@ export type ProductChangeStatusUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `ProductChangeStatusUserError`. */
-export enum ProductChangeStatusUserErrorCode {
+export const ProductChangeStatusUserErrorCode = {
   /** Cannot be unarchived because combined listings are not compatible with this store. */
-  CombinedListingsNotCompatibleWithShop = 'COMBINED_LISTINGS_NOT_COMPATIBLE_WITH_SHOP',
+  CombinedListingsNotCompatibleWithShop: 'COMBINED_LISTINGS_NOT_COMPATIBLE_WITH_SHOP',
   /** Product could not be found. */
-  ProductNotFound = 'PRODUCT_NOT_FOUND'
-}
+  ProductNotFound: 'PRODUCT_NOT_FOUND'
+} as const;
 
+export type ProductChangeStatusUserErrorCode = typeof ProductChangeStatusUserErrorCode[keyof typeof ProductChangeStatusUserErrorCode];
 /** The input fields to claim ownership for Product features such as Bundles. */
 export type ProductClaimOwnershipInput = {
   /**
@@ -47902,25 +48221,26 @@ export type ProductClaimOwnershipInput = {
 };
 
 /** The set of valid sort keys for products belonging to a collection. */
-export enum ProductCollectionSortKeys {
+export const ProductCollectionSortKeys = {
   /** Sort by best selling. */
-  BestSelling = 'BEST_SELLING',
+  BestSelling: 'BEST_SELLING',
   /** Sort by collection default order. */
-  CollectionDefault = 'COLLECTION_DEFAULT',
+  CollectionDefault: 'COLLECTION_DEFAULT',
   /** Sort by creation time. */
-  Created = 'CREATED',
+  Created: 'CREATED',
   /** Sort by id. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by manual order. */
-  Manual = 'MANUAL',
+  Manual: 'MANUAL',
   /** Sort by price. */
-  Price = 'PRICE',
+  Price: 'PRICE',
   /** Sort by relevance. */
-  Relevance = 'RELEVANCE',
+  Relevance: 'RELEVANCE',
   /** Sort by title. */
-  Title = 'TITLE'
-}
+  Title: 'TITLE'
+} as const;
 
+export type ProductCollectionSortKeys = typeof ProductCollectionSortKeys[keyof typeof ProductCollectionSortKeys];
 /** The compare-at price range of the product. */
 export type ProductCompareAtPriceRange = {
   __typename?: 'ProductCompareAtPriceRange';
@@ -48301,13 +48621,14 @@ export type ProductFeedCreateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `ProductFeedCreateUserError`. */
-export enum ProductFeedCreateUserErrorCode {
+export const ProductFeedCreateUserErrorCode = {
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The input value is already taken. */
-  Taken = 'TAKEN'
-}
+  Taken: 'TAKEN'
+} as const;
 
+export type ProductFeedCreateUserErrorCode = typeof ProductFeedCreateUserErrorCode[keyof typeof ProductFeedCreateUserErrorCode];
 /** Return type for `productFeedDelete` mutation. */
 export type ProductFeedDeletePayload = {
   __typename?: 'ProductFeedDeletePayload';
@@ -48329,11 +48650,12 @@ export type ProductFeedDeleteUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `ProductFeedDeleteUserError`. */
-export enum ProductFeedDeleteUserErrorCode {
+export const ProductFeedDeleteUserErrorCode = {
   /** The input value is invalid. */
-  Invalid = 'INVALID'
-}
+  Invalid: 'INVALID'
+} as const;
 
+export type ProductFeedDeleteUserErrorCode = typeof ProductFeedDeleteUserErrorCode[keyof typeof ProductFeedDeleteUserErrorCode];
 /** An auto-generated type which holds one ProductFeed and a cursor during pagination. */
 export type ProductFeedEdge = {
   __typename?: 'ProductFeedEdge';
@@ -48352,13 +48674,14 @@ export type ProductFeedInput = {
 };
 
 /** The valid values for the status of product feed. */
-export enum ProductFeedStatus {
+export const ProductFeedStatus = {
   /** The product feed is active. */
-  Active = 'ACTIVE',
+  Active: 'ACTIVE',
   /** The product feed is inactive. */
-  Inactive = 'INACTIVE'
-}
+  Inactive: 'INACTIVE'
+} as const;
 
+export type ProductFeedStatus = typeof ProductFeedStatus[keyof typeof ProductFeedStatus];
 /** Return type for `productFullSync` mutation. */
 export type ProductFullSyncPayload = {
   __typename?: 'ProductFullSyncPayload';
@@ -48380,11 +48703,12 @@ export type ProductFullSyncUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `ProductFullSyncUserError`. */
-export enum ProductFullSyncUserErrorCode {
+export const ProductFullSyncUserErrorCode = {
   /** The input value is invalid. */
-  Invalid = 'INVALID'
-}
+  Invalid: 'INVALID'
+} as const;
 
+export type ProductFullSyncUserErrorCode = typeof ProductFullSyncUserErrorCode[keyof typeof ProductFullSyncUserErrorCode];
 /** The input fields for identifying a product. */
 export type ProductIdentifierInput = {
   /** The [custom ID](https://shopify.dev/docs/apps/build/custom-data/metafields/working-with-custom-ids) of the product. */
@@ -48396,15 +48720,16 @@ export type ProductIdentifierInput = {
 };
 
 /** The set of valid sort keys for the ProductImage query. */
-export enum ProductImageSortKeys {
+export const ProductImageSortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `position` value. */
-  Position = 'POSITION'
-}
+  Position: 'POSITION'
+} as const;
 
+export type ProductImageSortKeys = typeof ProductImageSortKeys[keyof typeof ProductImageSortKeys];
 /** The input fields for creating or updating a product. */
 export type ProductInput = {
   /**
@@ -48534,13 +48859,14 @@ export type ProductLeaveSellingPlanGroupsPayload = {
 };
 
 /** The set of valid sort keys for the ProductMedia query. */
-export enum ProductMediaSortKeys {
+export const ProductMediaSortKeys = {
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `position` value. */
-  Position = 'POSITION'
-}
+  Position: 'POSITION'
+} as const;
 
+export type ProductMediaSortKeys = typeof ProductMediaSortKeys[keyof typeof ProductMediaSortKeys];
 /** An interface representing asynchronous operations on products. Tracks the status and details of background product mutations like `productSet`, `productDelete`, `productDuplicate`, and `productBundle` operations. Provides status field (CREATED, ACTIVE, COMPLETE) and product field to monitor long-running product operations. */
 export type ProductOperation = {
   /** The product on which the operation is being performed. */
@@ -48550,15 +48876,16 @@ export type ProductOperation = {
 };
 
 /** Represents the state of this product operation. */
-export enum ProductOperationStatus {
+export const ProductOperationStatus = {
   /** Operation is currently running. */
-  Active = 'ACTIVE',
+  Active: 'ACTIVE',
   /** Operation is complete. */
-  Complete = 'COMPLETE',
+  Complete: 'COMPLETE',
   /** Operation has been created. */
-  Created = 'CREATED'
-}
+  Created: 'CREATED'
+} as const;
 
+export type ProductOperationStatus = typeof ProductOperationStatus[keyof typeof ProductOperationStatus];
 /**
  * A product attribute that customers can choose from, such as "Size", "Color", or "Material". [`Product`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product) objects use options to define the different variations available for purchase. Each option has a name and a set of possible values that combine to create [`ProductVariant`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductVariant) objects.
  *
@@ -48594,29 +48921,31 @@ export type ProductOptionTranslationsArgs = {
 };
 
 /** The set of variant strategies available for use in the `productOptionsCreate` mutation. */
-export enum ProductOptionCreateVariantStrategy {
+export const ProductOptionCreateVariantStrategy = {
   /**
    * Existing variants are updated with the first option value of each added option. New variants are
    * created for each combination of existing variant option values and new option values.
    */
-  Create = 'CREATE',
+  Create: 'CREATE',
   /**
    * No additional variants are created in response to the added options. Existing variants are updated with the
    * first option value of each option added.
    */
-  LeaveAsIs = 'LEAVE_AS_IS'
-}
+  LeaveAsIs: 'LEAVE_AS_IS'
+} as const;
 
+export type ProductOptionCreateVariantStrategy = typeof ProductOptionCreateVariantStrategy[keyof typeof ProductOptionCreateVariantStrategy];
 /** The set of strategies available for use on the `productOptionDelete` mutation. */
-export enum ProductOptionDeleteStrategy {
+export const ProductOptionDeleteStrategy = {
   /** The default strategy, the specified `Option` may only have one corresponding `value`. */
-  Default = 'DEFAULT',
+  Default: 'DEFAULT',
   /** An `Option` with multiple `values` can be deleted, but the operation only succeeds if no product variants get deleted. */
-  NonDestructive = 'NON_DESTRUCTIVE',
+  NonDestructive: 'NON_DESTRUCTIVE',
   /** An `Option` with multiple `values` can be deleted. Remaining variants will be deleted, highest `position` first, in the event of duplicates being detected. */
-  Position = 'POSITION'
-}
+  Position: 'POSITION'
+} as const;
 
+export type ProductOptionDeleteStrategy = typeof ProductOptionDeleteStrategy[keyof typeof ProductOptionDeleteStrategy];
 /** Return type for `productOptionUpdate` mutation. */
 export type ProductOptionUpdatePayload = {
   __typename?: 'ProductOptionUpdatePayload';
@@ -48638,76 +48967,77 @@ export type ProductOptionUpdateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `ProductOptionUpdateUserError`. */
-export enum ProductOptionUpdateUserErrorCode {
+export const ProductOptionUpdateUserErrorCode = {
   /** An option cannot have both metafield linked and nonlinked option values. */
-  CannotCombineLinkedAndNonlinkedOptionValues = 'CANNOT_COMBINE_LINKED_AND_NONLINKED_OPTION_VALUES',
+  CannotCombineLinkedAndNonlinkedOptionValues: 'CANNOT_COMBINE_LINKED_AND_NONLINKED_OPTION_VALUES',
   /** The number of variants will be above the limit after this operation. */
-  CannotCreateVariantsAboveLimit = 'CANNOT_CREATE_VARIANTS_ABOVE_LIMIT',
+  CannotCreateVariantsAboveLimit: 'CANNOT_CREATE_VARIANTS_ABOVE_LIMIT',
   /** Deleting all option values of an option is not allowed. */
-  CannotDeleteAllOptionValuesInOption = 'CANNOT_DELETE_ALL_OPTION_VALUES_IN_OPTION',
+  CannotDeleteAllOptionValuesInOption: 'CANNOT_DELETE_ALL_OPTION_VALUES_IN_OPTION',
   /** Cannot update the option because it would result in deleting variants, and you don't have the required permissions. */
-  CannotDeleteVariantWithoutPermission = 'CANNOT_DELETE_VARIANT_WITHOUT_PERMISSION',
+  CannotDeleteVariantWithoutPermission: 'CANNOT_DELETE_VARIANT_WITHOUT_PERMISSION',
   /** An option cannot be left only with option values that are not linked to any variant. */
-  CannotLeaveOptionsWithoutVariants = 'CANNOT_LEAVE_OPTIONS_WITHOUT_VARIANTS',
+  CannotLeaveOptionsWithoutVariants: 'CANNOT_LEAVE_OPTIONS_WITHOUT_VARIANTS',
   /** At least one of the product variants has invalid SKUs. */
-  CannotMakeChangesIfVariantIsMissingRequiredSku = 'CANNOT_MAKE_CHANGES_IF_VARIANT_IS_MISSING_REQUIRED_SKU',
+  CannotMakeChangesIfVariantIsMissingRequiredSku: 'CANNOT_MAKE_CHANGES_IF_VARIANT_IS_MISSING_REQUIRED_SKU',
   /** Duplicated option value. */
-  DuplicatedOptionValue = 'DUPLICATED_OPTION_VALUE',
+  DuplicatedOptionValue: 'DUPLICATED_OPTION_VALUE',
   /** Cannot link multiple options to the same metafield. */
-  DuplicateLinkedOption = 'DUPLICATE_LINKED_OPTION',
+  DuplicateLinkedOption: 'DUPLICATE_LINKED_OPTION',
   /** Invalid metafield value for linked option. */
-  InvalidMetafieldValueForLinkedOption = 'INVALID_METAFIELD_VALUE_FOR_LINKED_OPTION',
+  InvalidMetafieldValueForLinkedOption: 'INVALID_METAFIELD_VALUE_FOR_LINKED_OPTION',
   /** The name provided is not valid. */
-  InvalidName = 'INVALID_NAME',
+  InvalidName: 'INVALID_NAME',
   /** The option position provided is not valid. */
-  InvalidPosition = 'INVALID_POSITION',
+  InvalidPosition: 'INVALID_POSITION',
   /** A key is missing in the input. */
-  KeyMissingInInput = 'KEY_MISSING_IN_INPUT',
+  KeyMissingInInput: 'KEY_MISSING_IN_INPUT',
   /** No valid metafield definition found for linked option. */
-  LinkedMetafieldDefinitionNotFound = 'LINKED_METAFIELD_DEFINITION_NOT_FOUND',
+  LinkedMetafieldDefinitionNotFound: 'LINKED_METAFIELD_DEFINITION_NOT_FOUND',
   /** Linked options are currently not supported for this shop. */
-  LinkedOptionsNotSupportedForShop = 'LINKED_OPTIONS_NOT_SUPPORTED_FOR_SHOP',
+  LinkedOptionsNotSupportedForShop: 'LINKED_OPTIONS_NOT_SUPPORTED_FOR_SHOP',
   /** Updating the linked_metafield of an option requires a linked_metafield_value for each option value. */
-  LinkedOptionUpdateMissingValues = 'LINKED_OPTION_UPDATE_MISSING_VALUES',
+  LinkedOptionUpdateMissingValues: 'LINKED_OPTION_UPDATE_MISSING_VALUES',
   /** On create, this key cannot be used. */
-  NoKeyOnCreate = 'NO_KEY_ON_CREATE',
+  NoKeyOnCreate: 'NO_KEY_ON_CREATE',
   /** Option already exists. */
-  OptionAlreadyExists = 'OPTION_ALREADY_EXISTS',
+  OptionAlreadyExists: 'OPTION_ALREADY_EXISTS',
   /** Option does not exist. */
-  OptionDoesNotExist = 'OPTION_DOES_NOT_EXIST',
+  OptionDoesNotExist: 'OPTION_DOES_NOT_EXIST',
   /** An option linked to the provided metafield already exists. */
-  OptionLinkedMetafieldAlreadyTaken = 'OPTION_LINKED_METAFIELD_ALREADY_TAKEN',
+  OptionLinkedMetafieldAlreadyTaken: 'OPTION_LINKED_METAFIELD_ALREADY_TAKEN',
   /** Option name is too long. */
-  OptionNameTooLong = 'OPTION_NAME_TOO_LONG',
+  OptionNameTooLong: 'OPTION_NAME_TOO_LONG',
   /** Option values count is over the allowed limit. */
-  OptionValuesOverLimit = 'OPTION_VALUES_OVER_LIMIT',
+  OptionValuesOverLimit: 'OPTION_VALUES_OVER_LIMIT',
   /** Option value already exists. */
-  OptionValueAlreadyExists = 'OPTION_VALUE_ALREADY_EXISTS',
+  OptionValueAlreadyExists: 'OPTION_VALUE_ALREADY_EXISTS',
   /** Performing conflicting actions on an option value. */
-  OptionValueConflictingOperation = 'OPTION_VALUE_CONFLICTING_OPERATION',
+  OptionValueConflictingOperation: 'OPTION_VALUE_CONFLICTING_OPERATION',
   /** Option value does not exist. */
-  OptionValueDoesNotExist = 'OPTION_VALUE_DOES_NOT_EXIST',
+  OptionValueDoesNotExist: 'OPTION_VALUE_DOES_NOT_EXIST',
   /** Option value with variants linked cannot be deleted. */
-  OptionValueHasVariants = 'OPTION_VALUE_HAS_VARIANTS',
+  OptionValueHasVariants: 'OPTION_VALUE_HAS_VARIANTS',
   /** Option value name is too long. */
-  OptionValueNameTooLong = 'OPTION_VALUE_NAME_TOO_LONG',
+  OptionValueNameTooLong: 'OPTION_VALUE_NAME_TOO_LONG',
   /** Product does not exist. */
-  ProductDoesNotExist = 'PRODUCT_DOES_NOT_EXIST',
+  ProductDoesNotExist: 'PRODUCT_DOES_NOT_EXIST',
   /** Product is suspended. */
-  ProductSuspended = 'PRODUCT_SUSPENDED',
+  ProductSuspended: 'PRODUCT_SUSPENDED',
   /** The number of option values created with the MANAGE strategy would exceed the variant limit. */
-  TooManyVariantsCreated = 'TOO_MANY_VARIANTS_CREATED',
+  TooManyVariantsCreated: 'TOO_MANY_VARIANTS_CREATED',
   /** Operation is not supported for a combined listing parent product. */
-  UnsupportedCombinedListingParentOperation = 'UNSUPPORTED_COMBINED_LISTING_PARENT_OPERATION'
-}
+  UnsupportedCombinedListingParentOperation: 'UNSUPPORTED_COMBINED_LISTING_PARENT_OPERATION'
+} as const;
 
+export type ProductOptionUpdateUserErrorCode = typeof ProductOptionUpdateUserErrorCode[keyof typeof ProductOptionUpdateUserErrorCode];
 /** The set of variant strategies available for use in the `productOptionUpdate` mutation. */
-export enum ProductOptionUpdateVariantStrategy {
+export const ProductOptionUpdateVariantStrategy = {
   /**
    * Variants are not created nor deleted in response to option values to add or delete.
    * In cases where deleting a variant would be necessary to complete the operation, an error will be returned.
    */
-  LeaveAsIs = 'LEAVE_AS_IS',
+  LeaveAsIs: 'LEAVE_AS_IS',
   /**
    * Variants are created and deleted according to the option values to add and to delete.
    *
@@ -48718,9 +49048,10 @@ export enum ProductOptionUpdateVariantStrategy {
    *
    * If an option value is deleted, all variants referencing that option value will be deleted.
    */
-  Manage = 'MANAGE'
-}
+  Manage: 'MANAGE'
+} as const;
 
+export type ProductOptionUpdateVariantStrategy = typeof ProductOptionUpdateVariantStrategy[keyof typeof ProductOptionUpdateVariantStrategy];
 /**
  * A specific value for a [`ProductOption`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductOption), such as "Red" or "Blue" for a "Color" option. Each value can be assigned to [`ProductVariant`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductVariant) objects to create different versions of a [`Product`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product).
  *
@@ -48783,61 +49114,62 @@ export type ProductOptionsCreateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `ProductOptionsCreateUserError`. */
-export enum ProductOptionsCreateUserErrorCode {
+export const ProductOptionsCreateUserErrorCode = {
   /** Cannot combine linked metafield and option values. */
-  CannotCombineLinkedMetafieldAndOptionValues = 'CANNOT_COMBINE_LINKED_METAFIELD_AND_OPTION_VALUES',
+  CannotCombineLinkedMetafieldAndOptionValues: 'CANNOT_COMBINE_LINKED_METAFIELD_AND_OPTION_VALUES',
   /** At least one of the product variants has invalid SKUs. */
-  CannotMakeChangesIfVariantIsMissingRequiredSku = 'CANNOT_MAKE_CHANGES_IF_VARIANT_IS_MISSING_REQUIRED_SKU',
+  CannotMakeChangesIfVariantIsMissingRequiredSku: 'CANNOT_MAKE_CHANGES_IF_VARIANT_IS_MISSING_REQUIRED_SKU',
   /** Duplicated option name. */
-  DuplicatedOptionName = 'DUPLICATED_OPTION_NAME',
+  DuplicatedOptionName: 'DUPLICATED_OPTION_NAME',
   /** Duplicated option value. */
-  DuplicatedOptionValue = 'DUPLICATED_OPTION_VALUE',
+  DuplicatedOptionValue: 'DUPLICATED_OPTION_VALUE',
   /** Cannot link multiple options to the same metafield. */
-  DuplicateLinkedOption = 'DUPLICATE_LINKED_OPTION',
+  DuplicateLinkedOption: 'DUPLICATE_LINKED_OPTION',
   /** Invalid metafield value for linked option. */
-  InvalidMetafieldValueForLinkedOption = 'INVALID_METAFIELD_VALUE_FOR_LINKED_OPTION',
+  InvalidMetafieldValueForLinkedOption: 'INVALID_METAFIELD_VALUE_FOR_LINKED_OPTION',
   /** The name provided is not valid. */
-  InvalidName = 'INVALID_NAME',
+  InvalidName: 'INVALID_NAME',
   /** No valid metafield definition found for linked option. */
-  LinkedMetafieldDefinitionNotFound = 'LINKED_METAFIELD_DEFINITION_NOT_FOUND',
+  LinkedMetafieldDefinitionNotFound: 'LINKED_METAFIELD_DEFINITION_NOT_FOUND',
   /** Cannot specify 'linkedMetafieldValue' for an option that is not linked to a metafield. */
-  LinkedMetafieldValueWithoutLinkedOption = 'LINKED_METAFIELD_VALUE_WITHOUT_LINKED_OPTION',
+  LinkedMetafieldValueWithoutLinkedOption: 'LINKED_METAFIELD_VALUE_WITHOUT_LINKED_OPTION',
   /** Linked options are currently not supported for this shop. */
-  LinkedOptionsNotSupportedForShop = 'LINKED_OPTIONS_NOT_SUPPORTED_FOR_SHOP',
+  LinkedOptionsNotSupportedForShop: 'LINKED_OPTIONS_NOT_SUPPORTED_FOR_SHOP',
   /** Missing metafield values for linked option. */
-  MissingMetafieldValuesForLinkedOption = 'MISSING_METAFIELD_VALUES_FOR_LINKED_OPTION',
+  MissingMetafieldValuesForLinkedOption: 'MISSING_METAFIELD_VALUES_FOR_LINKED_OPTION',
   /** Cannot create new options without values for all existing variants. */
-  NewOptionWithoutValueForExistingVariants = 'NEW_OPTION_WITHOUT_VALUE_FOR_EXISTING_VARIANTS',
+  NewOptionWithoutValueForExistingVariants: 'NEW_OPTION_WITHOUT_VALUE_FOR_EXISTING_VARIANTS',
   /** Options count is over the allowed limit. */
-  OptionsOverLimit = 'OPTIONS_OVER_LIMIT',
+  OptionsOverLimit: 'OPTIONS_OVER_LIMIT',
   /** Option already exists. */
-  OptionAlreadyExists = 'OPTION_ALREADY_EXISTS',
+  OptionAlreadyExists: 'OPTION_ALREADY_EXISTS',
   /** An option linked to the provided metafield already exists. */
-  OptionLinkedMetafieldAlreadyTaken = 'OPTION_LINKED_METAFIELD_ALREADY_TAKEN',
+  OptionLinkedMetafieldAlreadyTaken: 'OPTION_LINKED_METAFIELD_ALREADY_TAKEN',
   /** Each option must have a name specified. */
-  OptionNameMissing = 'OPTION_NAME_MISSING',
+  OptionNameMissing: 'OPTION_NAME_MISSING',
   /** Option name is too long. */
-  OptionNameTooLong = 'OPTION_NAME_TOO_LONG',
+  OptionNameTooLong: 'OPTION_NAME_TOO_LONG',
   /** If specified, position field must be present in all option inputs. */
-  OptionPositionMissing = 'OPTION_POSITION_MISSING',
+  OptionPositionMissing: 'OPTION_POSITION_MISSING',
   /** Each option must have at least one option value specified. */
-  OptionValuesMissing = 'OPTION_VALUES_MISSING',
+  OptionValuesMissing: 'OPTION_VALUES_MISSING',
   /** Option values count is over the allowed limit. */
-  OptionValuesOverLimit = 'OPTION_VALUES_OVER_LIMIT',
+  OptionValuesOverLimit: 'OPTION_VALUES_OVER_LIMIT',
   /** Option value name is too long. */
-  OptionValueNameTooLong = 'OPTION_VALUE_NAME_TOO_LONG',
+  OptionValueNameTooLong: 'OPTION_VALUE_NAME_TOO_LONG',
   /** Position must be between 1 and the maximum number of options per product. */
-  PositionOutOfBounds = 'POSITION_OUT_OF_BOUNDS',
+  PositionOutOfBounds: 'POSITION_OUT_OF_BOUNDS',
   /** Product does not exist. */
-  ProductDoesNotExist = 'PRODUCT_DOES_NOT_EXIST',
+  ProductDoesNotExist: 'PRODUCT_DOES_NOT_EXIST',
   /** Product is suspended. */
-  ProductSuspended = 'PRODUCT_SUSPENDED',
+  ProductSuspended: 'PRODUCT_SUSPENDED',
   /** The number of option values created with the CREATE strategy would exceed the variant limit. */
-  TooManyVariantsCreated = 'TOO_MANY_VARIANTS_CREATED',
+  TooManyVariantsCreated: 'TOO_MANY_VARIANTS_CREATED',
   /** Operation is not supported for a combined listing parent product. */
-  UnsupportedCombinedListingParentOperation = 'UNSUPPORTED_COMBINED_LISTING_PARENT_OPERATION'
-}
+  UnsupportedCombinedListingParentOperation: 'UNSUPPORTED_COMBINED_LISTING_PARENT_OPERATION'
+} as const;
 
+export type ProductOptionsCreateUserErrorCode = typeof ProductOptionsCreateUserErrorCode[keyof typeof ProductOptionsCreateUserErrorCode];
 /** Return type for `productOptionsDelete` mutation. */
 export type ProductOptionsDeletePayload = {
   __typename?: 'ProductOptionsDeletePayload';
@@ -48861,27 +49193,28 @@ export type ProductOptionsDeleteUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `ProductOptionsDeleteUserError`. */
-export enum ProductOptionsDeleteUserErrorCode {
+export const ProductOptionsDeleteUserErrorCode = {
   /** Can't delete option with multiple values. */
-  CannotDeleteOptionWithMultipleValues = 'CANNOT_DELETE_OPTION_WITH_MULTIPLE_VALUES',
+  CannotDeleteOptionWithMultipleValues: 'CANNOT_DELETE_OPTION_WITH_MULTIPLE_VALUES',
   /** Cannot perform option deletion because it would result in deleting variants, and you don't have the required permissions. */
-  CannotDeleteVariantWithoutPermission = 'CANNOT_DELETE_VARIANT_WITHOUT_PERMISSION',
+  CannotDeleteVariantWithoutPermission: 'CANNOT_DELETE_VARIANT_WITHOUT_PERMISSION',
   /** At least one of the product variants has invalid SKUs. */
-  CannotMakeChangesIfVariantIsMissingRequiredSku = 'CANNOT_MAKE_CHANGES_IF_VARIANT_IS_MISSING_REQUIRED_SKU',
+  CannotMakeChangesIfVariantIsMissingRequiredSku: 'CANNOT_MAKE_CHANGES_IF_VARIANT_IS_MISSING_REQUIRED_SKU',
   /** Cannot delete options without deleting variants. */
-  CannotUseNonDestructiveStrategy = 'CANNOT_USE_NON_DESTRUCTIVE_STRATEGY',
+  CannotUseNonDestructiveStrategy: 'CANNOT_USE_NON_DESTRUCTIVE_STRATEGY',
   /** Options do not belong to the same product. */
-  OptionsDoNotBelongToTheSameProduct = 'OPTIONS_DO_NOT_BELONG_TO_THE_SAME_PRODUCT',
+  OptionsDoNotBelongToTheSameProduct: 'OPTIONS_DO_NOT_BELONG_TO_THE_SAME_PRODUCT',
   /** Option does not exist. */
-  OptionDoesNotExist = 'OPTION_DOES_NOT_EXIST',
+  OptionDoesNotExist: 'OPTION_DOES_NOT_EXIST',
   /** Product does not exist. */
-  ProductDoesNotExist = 'PRODUCT_DOES_NOT_EXIST',
+  ProductDoesNotExist: 'PRODUCT_DOES_NOT_EXIST',
   /** Product is suspended. */
-  ProductSuspended = 'PRODUCT_SUSPENDED',
+  ProductSuspended: 'PRODUCT_SUSPENDED',
   /** Operation is not supported for a combined listing parent product. */
-  UnsupportedCombinedListingParentOperation = 'UNSUPPORTED_COMBINED_LISTING_PARENT_OPERATION'
-}
+  UnsupportedCombinedListingParentOperation: 'UNSUPPORTED_COMBINED_LISTING_PARENT_OPERATION'
+} as const;
 
+export type ProductOptionsDeleteUserErrorCode = typeof ProductOptionsDeleteUserErrorCode[keyof typeof ProductOptionsDeleteUserErrorCode];
 /** Return type for `productOptionsReorder` mutation. */
 export type ProductOptionsReorderPayload = {
   __typename?: 'ProductOptionsReorderPayload';
@@ -48903,35 +49236,36 @@ export type ProductOptionsReorderUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `ProductOptionsReorderUserError`. */
-export enum ProductOptionsReorderUserErrorCode {
+export const ProductOptionsReorderUserErrorCode = {
   /** At least one of the product variants has invalid SKUs. */
-  CannotMakeChangesIfVariantIsMissingRequiredSku = 'CANNOT_MAKE_CHANGES_IF_VARIANT_IS_MISSING_REQUIRED_SKU',
+  CannotMakeChangesIfVariantIsMissingRequiredSku: 'CANNOT_MAKE_CHANGES_IF_VARIANT_IS_MISSING_REQUIRED_SKU',
   /** Duplicated option name. */
-  DuplicatedOptionName = 'DUPLICATED_OPTION_NAME',
+  DuplicatedOptionName: 'DUPLICATED_OPTION_NAME',
   /** Duplicated option value. */
-  DuplicatedOptionValue = 'DUPLICATED_OPTION_VALUE',
+  DuplicatedOptionValue: 'DUPLICATED_OPTION_VALUE',
   /** Missing option name. */
-  MissingOptionName = 'MISSING_OPTION_NAME',
+  MissingOptionName: 'MISSING_OPTION_NAME',
   /** Missing option value. */
-  MissingOptionValue = 'MISSING_OPTION_VALUE',
+  MissingOptionValue: 'MISSING_OPTION_VALUE',
   /** Cannot specify different options or option values using mixed id and name reference key. */
-  MixingIdAndNameKeysIsNotAllowed = 'MIXING_ID_AND_NAME_KEYS_IS_NOT_ALLOWED',
+  MixingIdAndNameKeysIsNotAllowed: 'MIXING_ID_AND_NAME_KEYS_IS_NOT_ALLOWED',
   /** On reorder, this key cannot be used. */
-  NoKeyOnReorder = 'NO_KEY_ON_REORDER',
+  NoKeyOnReorder: 'NO_KEY_ON_REORDER',
   /** Option id does not exist. */
-  OptionIdDoesNotExist = 'OPTION_ID_DOES_NOT_EXIST',
+  OptionIdDoesNotExist: 'OPTION_ID_DOES_NOT_EXIST',
   /** Option name does not exist. */
-  OptionNameDoesNotExist = 'OPTION_NAME_DOES_NOT_EXIST',
+  OptionNameDoesNotExist: 'OPTION_NAME_DOES_NOT_EXIST',
   /** Option value does not exist. */
-  OptionValueDoesNotExist = 'OPTION_VALUE_DOES_NOT_EXIST',
+  OptionValueDoesNotExist: 'OPTION_VALUE_DOES_NOT_EXIST',
   /** Option value id does not exist. */
-  OptionValueIdDoesNotExist = 'OPTION_VALUE_ID_DOES_NOT_EXIST',
+  OptionValueIdDoesNotExist: 'OPTION_VALUE_ID_DOES_NOT_EXIST',
   /** Product does not exist. */
-  ProductDoesNotExist = 'PRODUCT_DOES_NOT_EXIST',
+  ProductDoesNotExist: 'PRODUCT_DOES_NOT_EXIST',
   /** Product is suspended. */
-  ProductSuspended = 'PRODUCT_SUSPENDED'
-}
+  ProductSuspended: 'PRODUCT_SUSPENDED'
+} as const;
 
+export type ProductOptionsReorderUserErrorCode = typeof ProductOptionsReorderUserErrorCode[keyof typeof ProductOptionsReorderUserErrorCode];
 /** The price range of the product. */
 export type ProductPriceRange = {
   __typename?: 'ProductPriceRange';
@@ -49263,118 +49597,121 @@ export type ProductSetUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `ProductSetUserError`. */
-export enum ProductSetUserErrorCode {
+export const ProductSetUserErrorCode = {
   /** An option cannot have both metafield linked and nonlinked option values. */
-  CannotCombineLinkedAndNonlinkedOptionValues = 'CANNOT_COMBINE_LINKED_AND_NONLINKED_OPTION_VALUES',
+  CannotCombineLinkedAndNonlinkedOptionValues: 'CANNOT_COMBINE_LINKED_AND_NONLINKED_OPTION_VALUES',
   /** The metafield violates a capability restriction. */
-  CapabilityViolation = 'CAPABILITY_VIOLATION',
+  CapabilityViolation: 'CAPABILITY_VIOLATION',
   /** Duplicated metafield value for linked option. */
-  DuplicatedMetafieldValue = 'DUPLICATED_METAFIELD_VALUE',
+  DuplicatedMetafieldValue: 'DUPLICATED_METAFIELD_VALUE',
   /** Duplicated option name. */
-  DuplicatedOptionName = 'DUPLICATED_OPTION_NAME',
+  DuplicatedOptionName: 'DUPLICATED_OPTION_NAME',
   /** Duplicated option value. */
-  DuplicatedOptionValue = 'DUPLICATED_OPTION_VALUE',
+  DuplicatedOptionValue: 'DUPLICATED_OPTION_VALUE',
   /** Duplicated value. */
-  DuplicatedValue = 'DUPLICATED_VALUE',
+  DuplicatedValue: 'DUPLICATED_VALUE',
   /** Cannot link multiple options to the same metafield. */
-  DuplicateLinkedOption = 'DUPLICATE_LINKED_OPTION',
+  DuplicateLinkedOption: 'DUPLICATE_LINKED_OPTION',
   /** Something went wrong, please try again. */
-  GenericError = 'GENERIC_ERROR',
+  GenericError: 'GENERIC_ERROR',
   /** Gift card products can only be created after they have been activated. */
-  GiftCardsNotActivated = 'GIFT_CARDS_NOT_ACTIVATED',
+  GiftCardsNotActivated: 'GIFT_CARDS_NOT_ACTIVATED',
   /** The product gift_card attribute cannot be changed after creation. */
-  GiftCardAttributeCannotBeChanged = 'GIFT_CARD_ATTRIBUTE_CANNOT_BE_CHANGED',
+  GiftCardAttributeCannotBeChanged: 'GIFT_CARD_ATTRIBUTE_CANNOT_BE_CHANGED',
   /** Handle already in use. Please provide a new handle. */
-  HandleNotUnique = 'HANDLE_NOT_UNIQUE',
+  HandleNotUnique: 'HANDLE_NOT_UNIQUE',
   /** The id field is not allowed if identifier is provided. */
-  IdNotAllowed = 'ID_NOT_ALLOWED',
+  IdNotAllowed: 'ID_NOT_ALLOWED',
   /** The identifier value does not match the value of the corresponding field in the input. */
-  InputMismatch = 'INPUT_MISMATCH',
+  InputMismatch: 'INPUT_MISMATCH',
   /** Input is not valid. */
-  InvalidInput = 'INVALID_INPUT',
+  InvalidInput: 'INVALID_INPUT',
   /** Metafield is not valid. */
-  InvalidMetafield = 'INVALID_METAFIELD',
+  InvalidMetafield: 'INVALID_METAFIELD',
   /** Invalid metafield value for linked option. */
-  InvalidMetafieldValueForLinkedOption = 'INVALID_METAFIELD_VALUE_FOR_LINKED_OPTION',
+  InvalidMetafieldValueForLinkedOption: 'INVALID_METAFIELD_VALUE_FOR_LINKED_OPTION',
   /** Product is not valid. */
-  InvalidProduct = 'INVALID_PRODUCT',
+  InvalidProduct: 'INVALID_PRODUCT',
   /** Product variant is not valid. */
-  InvalidVariant = 'INVALID_VARIANT',
+  InvalidVariant: 'INVALID_VARIANT',
   /** Inventory quantity input exceeds the limit of 50000. Consider using separate `inventorySetQuantities` mutations. */
-  InventoryQuantitiesLimitExceeded = 'INVENTORY_QUANTITIES_LIMIT_EXCEEDED',
+  InventoryQuantitiesLimitExceeded: 'INVENTORY_QUANTITIES_LIMIT_EXCEEDED',
   /** Error processing request in the background job. */
-  JobError = 'JOB_ERROR',
+  JobError: 'JOB_ERROR',
   /** No valid metafield definition found for linked option. */
-  LinkedMetafieldDefinitionNotFound = 'LINKED_METAFIELD_DEFINITION_NOT_FOUND',
+  LinkedMetafieldDefinitionNotFound: 'LINKED_METAFIELD_DEFINITION_NOT_FOUND',
   /** Linked options are currently not supported for this shop. */
-  LinkedOptionsNotSupportedForShop = 'LINKED_OPTIONS_NOT_SUPPORTED_FOR_SHOP',
+  LinkedOptionsNotSupportedForShop: 'LINKED_OPTIONS_NOT_SUPPORTED_FOR_SHOP',
   /** The input argument `metafields` (if present) must contain the `customId` value. */
-  MetafieldMismatch = 'METAFIELD_MISMATCH',
+  MetafieldMismatch: 'METAFIELD_MISMATCH',
   /** The input field corresponding to the identifier is required. */
-  MissingFieldRequired = 'MISSING_FIELD_REQUIRED',
+  MissingFieldRequired: 'MISSING_FIELD_REQUIRED',
   /** Resource matching the identifier was not found. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** Options over limit. */
-  OptionsOverLimit = 'OPTIONS_OVER_LIMIT',
+  OptionsOverLimit: 'OPTIONS_OVER_LIMIT',
   /** Option does not exist. */
-  OptionDoesNotExist = 'OPTION_DOES_NOT_EXIST',
+  OptionDoesNotExist: 'OPTION_DOES_NOT_EXIST',
   /** Each option must have at least one option value specified. */
-  OptionValuesMissing = 'OPTION_VALUES_MISSING',
+  OptionValuesMissing: 'OPTION_VALUES_MISSING',
   /** Option values over limit. */
-  OptionValuesOverLimit = 'OPTION_VALUES_OVER_LIMIT',
+  OptionValuesOverLimit: 'OPTION_VALUES_OVER_LIMIT',
   /** Option value does not exist. */
-  OptionValueDoesNotExist = 'OPTION_VALUE_DOES_NOT_EXIST',
+  OptionValueDoesNotExist: 'OPTION_VALUE_DOES_NOT_EXIST',
   /** Product does not exist. */
-  ProductDoesNotExist = 'PRODUCT_DOES_NOT_EXIST',
+  ProductDoesNotExist: 'PRODUCT_DOES_NOT_EXIST',
   /** Must specify product options when updating variants. */
-  ProductOptionsInputMissing = 'PRODUCT_OPTIONS_INPUT_MISSING',
+  ProductOptionsInputMissing: 'PRODUCT_OPTIONS_INPUT_MISSING',
   /** Product is suspended. */
-  ProductSuspended = 'PRODUCT_SUSPENDED',
+  ProductSuspended: 'PRODUCT_SUSPENDED',
   /** Product variant does not exist. */
-  ProductVariantDoesNotExist = 'PRODUCT_VARIANT_DOES_NOT_EXIST',
+  ProductVariantDoesNotExist: 'PRODUCT_VARIANT_DOES_NOT_EXIST',
   /** Must specify variants when updating options. */
-  VariantsInputMissing = 'VARIANTS_INPUT_MISSING',
+  VariantsInputMissing: 'VARIANTS_INPUT_MISSING',
   /** Number of product variants exceeds shop limit. */
-  VariantsOverLimit = 'VARIANTS_OVER_LIMIT'
-}
+  VariantsOverLimit: 'VARIANTS_OVER_LIMIT'
+} as const;
 
+export type ProductSetUserErrorCode = typeof ProductSetUserErrorCode[keyof typeof ProductSetUserErrorCode];
 /** The set of valid sort keys for the Product query. */
-export enum ProductSortKeys {
+export const ProductSortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `inventory_total` value. */
-  InventoryTotal = 'INVENTORY_TOTAL',
+  InventoryTotal: 'INVENTORY_TOTAL',
   /** Sort by the `product_type` value. */
-  ProductType = 'PRODUCT_TYPE',
+  ProductType: 'PRODUCT_TYPE',
   /** Sort by the `published_at` value. */
-  PublishedAt = 'PUBLISHED_AT',
+  PublishedAt: 'PUBLISHED_AT',
   /**
    * Sort by relevance to the search terms when the `query` parameter is specified on the connection.
    * Don't use this sort key when no search query is specified.
    */
-  Relevance = 'RELEVANCE',
+  Relevance: 'RELEVANCE',
   /** Sort by the `title` value. */
-  Title = 'TITLE',
+  Title: 'TITLE',
   /** Sort by the `updated_at` value. */
-  UpdatedAt = 'UPDATED_AT',
+  UpdatedAt: 'UPDATED_AT',
   /** Sort by the `vendor` value. */
-  Vendor = 'VENDOR'
-}
+  Vendor: 'VENDOR'
+} as const;
 
+export type ProductSortKeys = typeof ProductSortKeys[keyof typeof ProductSortKeys];
 /** The possible product statuses. */
-export enum ProductStatus {
+export const ProductStatus = {
   /** The product is ready to sell and can be published to sales channels and apps. Products with an active status aren't automatically published to sales channels, such as the online store, or apps. By default, existing products are set to active. */
-  Active = 'ACTIVE',
+  Active: 'ACTIVE',
   /** The product is no longer being sold and isn't available to customers on sales channels and apps. */
-  Archived = 'ARCHIVED',
+  Archived: 'ARCHIVED',
   /** The product isn't ready to sell and is unavailable to customers on sales channels and apps. By default, duplicated and unarchived products are set to draft. */
-  Draft = 'DRAFT',
+  Draft: 'DRAFT',
   /** The product is active but you need a direct link to view it. The product doesn't show up in search, collections, or product recommendations. It will be returned in Storefront API and Liquid only when referenced individually by handle, id, or metafield reference.This status is only visible from 2025-10 and up, is translated to active in older versions and can't be changed from unlisted in older versions. */
-  Unlisted = 'UNLISTED'
-}
+  Unlisted: 'UNLISTED'
+} as const;
 
+export type ProductStatus = typeof ProductStatus[keyof typeof ProductStatus];
 /** Represents a [Shopify product taxonomy](https://shopify.github.io/product-taxonomy/releases/unstable/?categoryId=sg-4-17-2-17) node. */
 export type ProductTaxonomyNode = Node & {
   __typename?: 'ProductTaxonomyNode';
@@ -50234,13 +50571,14 @@ export type ProductVariantIdentifierInput = {
 };
 
 /** The valid values for the inventory policy of a product variant once it is out of stock. */
-export enum ProductVariantInventoryPolicy {
+export const ProductVariantInventoryPolicy = {
   /** Customers can buy this product variant after it's out of stock. */
-  Continue = 'CONTINUE',
+  Continue: 'CONTINUE',
   /** Customers can't buy this product variant after it's out of stock. */
-  Deny = 'DENY'
-}
+  Deny: 'DENY'
+} as const;
 
+export type ProductVariantInventoryPolicy = typeof ProductVariantInventoryPolicy[keyof typeof ProductVariantInventoryPolicy];
 /** Return type for `productVariantJoinSellingPlanGroups` mutation. */
 export type ProductVariantJoinSellingPlanGroupsPayload = {
   __typename?: 'ProductVariantJoinSellingPlanGroupsPayload';
@@ -50317,53 +50655,54 @@ export type ProductVariantRelationshipBulkUpdateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `ProductVariantRelationshipBulkUpdateUserError`. */
-export enum ProductVariantRelationshipBulkUpdateUserErrorCode {
+export const ProductVariantRelationshipBulkUpdateUserErrorCode = {
   /** Combined listing cannot be child product variants. */
-  ChildProductVariantCannotBeCombinedListing = 'CHILD_PRODUCT_VARIANT_CANNOT_BE_COMBINED_LISTING',
+  ChildProductVariantCannotBeCombinedListing: 'CHILD_PRODUCT_VARIANT_CANNOT_BE_COMBINED_LISTING',
   /** A parent product variant cannot contain itself as a component. */
-  CircularReference = 'CIRCULAR_REFERENCE',
+  CircularReference: 'CIRCULAR_REFERENCE',
   /** A parent product variant must not contain duplicate product variant relationships. */
-  DuplicateProductVariantRelationship = 'DUPLICATE_PRODUCT_VARIANT_RELATIONSHIP',
+  DuplicateProductVariantRelationship: 'DUPLICATE_PRODUCT_VARIANT_RELATIONSHIP',
   /** Exceeded the maximum allowable product variant relationships in a parent product variant. */
-  ExceededProductVariantRelationshipLimit = 'EXCEEDED_PRODUCT_VARIANT_RELATIONSHIP_LIMIT',
+  ExceededProductVariantRelationshipLimit: 'EXCEEDED_PRODUCT_VARIANT_RELATIONSHIP_LIMIT',
   /** Unable to create parent product variant. */
-  FailedToCreate = 'FAILED_TO_CREATE',
+  FailedToCreate: 'FAILED_TO_CREATE',
   /** Unable to remove product variant relationships. */
-  FailedToRemove = 'FAILED_TO_REMOVE',
+  FailedToRemove: 'FAILED_TO_REMOVE',
   /** Unable to update product variant relationships. */
-  FailedToUpdate = 'FAILED_TO_UPDATE',
+  FailedToUpdate: 'FAILED_TO_UPDATE',
   /** Unable to update parent product variant price. */
-  FailedToUpdateParentProductVariantPrice = 'FAILED_TO_UPDATE_PARENT_PRODUCT_VARIANT_PRICE',
+  FailedToUpdateParentProductVariantPrice: 'FAILED_TO_UPDATE_PARENT_PRODUCT_VARIANT_PRICE',
   /** Product variant relationships must have a quantity greater than 0. */
-  InvalidQuantity = 'INVALID_QUANTITY',
+  InvalidQuantity: 'INVALID_QUANTITY',
   /** The product variant relationships to remove must be specified if all the parent product variant's components aren't being removed. */
-  MustSpecifyComponents = 'MUST_SPECIFY_COMPONENTS',
+  MustSpecifyComponents: 'MUST_SPECIFY_COMPONENTS',
   /** Nested parent product variants aren't supported. */
-  NestedParentProductVariant = 'NESTED_PARENT_PRODUCT_VARIANT',
+  NestedParentProductVariant: 'NESTED_PARENT_PRODUCT_VARIANT',
   /** Combined listing cannot be parent product variants. */
-  ParentProductVariantCannotBeCombinedListing = 'PARENT_PRODUCT_VARIANT_CANNOT_BE_COMBINED_LISTING',
+  ParentProductVariantCannotBeCombinedListing: 'PARENT_PRODUCT_VARIANT_CANNOT_BE_COMBINED_LISTING',
   /** Gift cards cannot be parent product variants. */
-  ParentProductVariantCannotBeGiftCard = 'PARENT_PRODUCT_VARIANT_CANNOT_BE_GIFT_CARD',
+  ParentProductVariantCannotBeGiftCard: 'PARENT_PRODUCT_VARIANT_CANNOT_BE_GIFT_CARD',
   /** Parent product variants cannot require a selling plan. */
-  ParentProductVariantCannotRequireSellingPlan = 'PARENT_PRODUCT_VARIANT_CANNOT_REQUIRE_SELLING_PLAN',
+  ParentProductVariantCannotRequireSellingPlan: 'PARENT_PRODUCT_VARIANT_CANNOT_REQUIRE_SELLING_PLAN',
   /** A parent product variant ID or product ID must be provided. */
-  ParentRequired = 'PARENT_REQUIRED',
+  ParentRequired: 'PARENT_REQUIRED',
   /** The products for these product variants are already owned by another App. */
-  ProductExpanderAppOwnershipAlreadyExists = 'PRODUCT_EXPANDER_APP_OWNERSHIP_ALREADY_EXISTS',
+  ProductExpanderAppOwnershipAlreadyExists: 'PRODUCT_EXPANDER_APP_OWNERSHIP_ALREADY_EXISTS',
   /** Some of the provided product variants are not components of the specified parent product variant. */
-  ProductVariantsNotComponents = 'PRODUCT_VARIANTS_NOT_COMPONENTS',
+  ProductVariantsNotComponents: 'PRODUCT_VARIANTS_NOT_COMPONENTS',
   /** The product variants were not found. */
-  ProductVariantsNotFound = 'PRODUCT_VARIANTS_NOT_FOUND',
+  ProductVariantsNotFound: 'PRODUCT_VARIANTS_NOT_FOUND',
   /** A Core type relationship cannot be added to a composite product variant with SFN type relationships. */
-  ProductVariantRelationshipTypeConflict = 'PRODUCT_VARIANT_RELATIONSHIP_TYPE_CONFLICT',
+  ProductVariantRelationshipTypeConflict: 'PRODUCT_VARIANT_RELATIONSHIP_TYPE_CONFLICT',
   /** Unexpected error. */
-  UnexpectedError = 'UNEXPECTED_ERROR',
+  UnexpectedError: 'UNEXPECTED_ERROR',
   /** Multipack bundles are not supported. */
-  UnsupportedMultipackRelationship = 'UNSUPPORTED_MULTIPACK_RELATIONSHIP',
+  UnsupportedMultipackRelationship: 'UNSUPPORTED_MULTIPACK_RELATIONSHIP',
   /** A price must be provided for a parent product variant if the price calculation is set to fixed. */
-  UpdateParentVariantPriceRequired = 'UPDATE_PARENT_VARIANT_PRICE_REQUIRED'
-}
+  UpdateParentVariantPriceRequired: 'UPDATE_PARENT_VARIANT_PRICE_REQUIRED'
+} as const;
 
+export type ProductVariantRelationshipBulkUpdateUserErrorCode = typeof ProductVariantRelationshipBulkUpdateUserErrorCode[keyof typeof ProductVariantRelationshipBulkUpdateUserErrorCode];
 /** The input fields for updating a composite product variant. */
 export type ProductVariantRelationshipUpdateInput = {
   /** A product ID which contains product variants that have relationships with other variants. */
@@ -50441,39 +50780,40 @@ export type ProductVariantSetInput = {
 };
 
 /** The set of valid sort keys for the ProductVariant query. */
-export enum ProductVariantSortKeys {
+export const ProductVariantSortKeys = {
   /** Sort by the `full_title` value. */
-  FullTitle = 'FULL_TITLE',
+  FullTitle: 'FULL_TITLE',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /**
    * Sort by available inventory quantity in the location specified by the `query:"location_id:"` argument.
    * Don't use this sort key when no `location_id` in query is specified.
    */
-  InventoryLevelsAvailable = 'INVENTORY_LEVELS_AVAILABLE',
+  InventoryLevelsAvailable: 'INVENTORY_LEVELS_AVAILABLE',
   /** Sort by the `inventory_management` value. */
-  InventoryManagement = 'INVENTORY_MANAGEMENT',
+  InventoryManagement: 'INVENTORY_MANAGEMENT',
   /** Sort by the `inventory_policy` value. */
-  InventoryPolicy = 'INVENTORY_POLICY',
+  InventoryPolicy: 'INVENTORY_POLICY',
   /** Sort by the `inventory_quantity` value. */
-  InventoryQuantity = 'INVENTORY_QUANTITY',
+  InventoryQuantity: 'INVENTORY_QUANTITY',
   /** Sort by the `name` value. */
-  Name = 'NAME',
+  Name: 'NAME',
   /** Sort by the `popular` value. */
-  Popular = 'POPULAR',
+  Popular: 'POPULAR',
   /** Sort by the `position` value. */
-  Position = 'POSITION',
+  Position: 'POSITION',
   /**
    * Sort by relevance to the search terms when the `query` parameter is specified on the connection.
    * Don't use this sort key when no search query is specified.
    */
-  Relevance = 'RELEVANCE',
+  Relevance: 'RELEVANCE',
   /** Sort by the `sku` value. */
-  Sku = 'SKU',
+  Sku: 'SKU',
   /** Sort by the `title` value. */
-  Title = 'TITLE'
-}
+  Title: 'TITLE'
+} as const;
 
+export type ProductVariantSortKeys = typeof ProductVariantSortKeys[keyof typeof ProductVariantSortKeys];
 /** Return type for `productVariantsBulkCreate` mutation. */
 export type ProductVariantsBulkCreatePayload = {
   __typename?: 'ProductVariantsBulkCreatePayload';
@@ -50486,15 +50826,16 @@ export type ProductVariantsBulkCreatePayload = {
 };
 
 /** The set of strategies available for use on the `productVariantsBulkCreate` mutation. */
-export enum ProductVariantsBulkCreateStrategy {
+export const ProductVariantsBulkCreateStrategy = {
   /** The default strategy. Deletes the standalone default ("Default Title") variant when it's the only variant on the product. Preserves the standalone custom variant. */
-  Default = 'DEFAULT',
+  Default: 'DEFAULT',
   /** Preserves the existing standalone variant when the product has only a single default ("Default Title") or a single custom variant. */
-  PreserveStandaloneVariant = 'PRESERVE_STANDALONE_VARIANT',
+  PreserveStandaloneVariant: 'PRESERVE_STANDALONE_VARIANT',
   /** Deletes the existing standalone variant when the product has only a single default ("Default Title") or custom variant. */
-  RemoveStandaloneVariant = 'REMOVE_STANDALONE_VARIANT'
-}
+  RemoveStandaloneVariant: 'REMOVE_STANDALONE_VARIANT'
+} as const;
 
+export type ProductVariantsBulkCreateStrategy = typeof ProductVariantsBulkCreateStrategy[keyof typeof ProductVariantsBulkCreateStrategy];
 /** Error codes for failed product variant bulk create mutations. */
 export type ProductVariantsBulkCreateUserError = DisplayableError & {
   __typename?: 'ProductVariantsBulkCreateUserError';
@@ -50507,47 +50848,48 @@ export type ProductVariantsBulkCreateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `ProductVariantsBulkCreateUserError`. */
-export enum ProductVariantsBulkCreateUserErrorCode {
+export const ProductVariantsBulkCreateUserErrorCode = {
   /** Cannot set name for an option value linked to a metafield. */
-  CannotSetNameForLinkedOptionValue = 'CANNOT_SET_NAME_FOR_LINKED_OPTION_VALUE',
+  CannotSetNameForLinkedOptionValue: 'CANNOT_SET_NAME_FOR_LINKED_OPTION_VALUE',
   /** Variant price must be greater than or equal to zero. */
-  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  GreaterThanOrEqualTo: 'GREATER_THAN_OR_EQUAL_TO',
   /** Invalid input detected. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** Input is invalid. */
-  InvalidInput = 'INVALID_INPUT',
+  InvalidInput: 'INVALID_INPUT',
   /** Inventory quantity input exceeds the limit of 50000. Consider using separate `inventorySetQuantities` mutations. */
-  InventoryQuantitiesLimitExceeded = 'INVENTORY_QUANTITIES_LIMIT_EXCEEDED',
+  InventoryQuantitiesLimitExceeded: 'INVENTORY_QUANTITIES_LIMIT_EXCEEDED',
   /** Input must be for this product. */
-  MustBeForThisProduct = 'MUST_BE_FOR_THIS_PRODUCT',
+  MustBeForThisProduct: 'MUST_BE_FOR_THIS_PRODUCT',
   /** Variant options are not enough. */
-  NeedToAddOptionValues = 'NEED_TO_ADD_OPTION_VALUES',
+  NeedToAddOptionValues: 'NEED_TO_ADD_OPTION_VALUES',
   /** Price cannot take a negative value. */
-  NegativePriceValue = 'NEGATIVE_PRICE_VALUE',
+  NegativePriceValue: 'NEGATIVE_PRICE_VALUE',
   /** Input is not defined for this shop. */
-  NotDefinedForShop = 'NOT_DEFINED_FOR_SHOP',
+  NotDefinedForShop: 'NOT_DEFINED_FOR_SHOP',
   /** On create, this key cannot be used. */
-  NoKeyOnCreate = 'NO_KEY_ON_CREATE',
+  NoKeyOnCreate: 'NO_KEY_ON_CREATE',
   /** Variant options are more than the product options. */
-  OptionValuesForNumberOfUnknownOptions = 'OPTION_VALUES_FOR_NUMBER_OF_UNKNOWN_OPTIONS',
+  OptionValuesForNumberOfUnknownOptions: 'OPTION_VALUES_FOR_NUMBER_OF_UNKNOWN_OPTIONS',
   /** Product does not exist. */
-  ProductDoesNotExist = 'PRODUCT_DOES_NOT_EXIST',
+  ProductDoesNotExist: 'PRODUCT_DOES_NOT_EXIST',
   /** Product is suspended. */
-  ProductSuspended = 'PRODUCT_SUSPENDED',
+  ProductSuspended: 'PRODUCT_SUSPENDED',
   /** You reached the limit of available SKUs in your current plan. */
-  SubscriptionViolation = 'SUBSCRIPTION_VIOLATION',
+  SubscriptionViolation: 'SUBSCRIPTION_VIOLATION',
   /** Inventory locations cannot exceed the allowed resource limit or 10. */
-  TooManyInventoryLocations = 'TOO_MANY_INVENTORY_LOCATIONS',
+  TooManyInventoryLocations: 'TOO_MANY_INVENTORY_LOCATIONS',
   /** Quantity could not be set. The location was not found. */
-  TrackedVariantLocationNotFound = 'TRACKED_VARIANT_LOCATION_NOT_FOUND',
+  TrackedVariantLocationNotFound: 'TRACKED_VARIANT_LOCATION_NOT_FOUND',
   /** Operation is not supported for a combined listing parent product. */
-  UnsupportedCombinedListingParentOperation = 'UNSUPPORTED_COMBINED_LISTING_PARENT_OPERATION',
+  UnsupportedCombinedListingParentOperation: 'UNSUPPORTED_COMBINED_LISTING_PARENT_OPERATION',
   /** Variant already exists. */
-  VariantAlreadyExists = 'VARIANT_ALREADY_EXISTS',
+  VariantAlreadyExists: 'VARIANT_ALREADY_EXISTS',
   /** Variant options already exist. Please change the variant option(s). */
-  VariantAlreadyExistsChangeOptionValue = 'VARIANT_ALREADY_EXISTS_CHANGE_OPTION_VALUE'
-}
+  VariantAlreadyExistsChangeOptionValue: 'VARIANT_ALREADY_EXISTS_CHANGE_OPTION_VALUE'
+} as const;
 
+export type ProductVariantsBulkCreateUserErrorCode = typeof ProductVariantsBulkCreateUserErrorCode[keyof typeof ProductVariantsBulkCreateUserErrorCode];
 /** Return type for `productVariantsBulkDelete` mutation. */
 export type ProductVariantsBulkDeletePayload = {
   __typename?: 'ProductVariantsBulkDeletePayload';
@@ -50569,19 +50911,20 @@ export type ProductVariantsBulkDeleteUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `ProductVariantsBulkDeleteUserError`. */
-export enum ProductVariantsBulkDeleteUserErrorCode {
+export const ProductVariantsBulkDeleteUserErrorCode = {
   /** The variant does not exist. */
-  AtLeastOneVariantDoesNotBelongToTheProduct = 'AT_LEAST_ONE_VARIANT_DOES_NOT_BELONG_TO_THE_PRODUCT',
+  AtLeastOneVariantDoesNotBelongToTheProduct: 'AT_LEAST_ONE_VARIANT_DOES_NOT_BELONG_TO_THE_PRODUCT',
   /** Cannot delete default variant. */
-  CannotDeleteLastVariant = 'CANNOT_DELETE_LAST_VARIANT',
+  CannotDeleteLastVariant: 'CANNOT_DELETE_LAST_VARIANT',
   /** Product does not exist. */
-  ProductDoesNotExist = 'PRODUCT_DOES_NOT_EXIST',
+  ProductDoesNotExist: 'PRODUCT_DOES_NOT_EXIST',
   /** Product is suspended. */
-  ProductSuspended = 'PRODUCT_SUSPENDED',
+  ProductSuspended: 'PRODUCT_SUSPENDED',
   /** Operation is not supported for a combined listing parent product. */
-  UnsupportedCombinedListingParentOperation = 'UNSUPPORTED_COMBINED_LISTING_PARENT_OPERATION'
-}
+  UnsupportedCombinedListingParentOperation: 'UNSUPPORTED_COMBINED_LISTING_PARENT_OPERATION'
+} as const;
 
+export type ProductVariantsBulkDeleteUserErrorCode = typeof ProductVariantsBulkDeleteUserErrorCode[keyof typeof ProductVariantsBulkDeleteUserErrorCode];
 /** The input fields for specifying a product variant to create as part of a variant bulk mutation. */
 export type ProductVariantsBulkInput = {
   /** The value of the barcode associated with the product variant. */
@@ -50647,19 +50990,20 @@ export type ProductVariantsBulkReorderUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `ProductVariantsBulkReorderUserError`. */
-export enum ProductVariantsBulkReorderUserErrorCode {
+export const ProductVariantsBulkReorderUserErrorCode = {
   /** Product variant IDs must be unique. */
-  DuplicatedVariantId = 'DUPLICATED_VARIANT_ID',
+  DuplicatedVariantId: 'DUPLICATED_VARIANT_ID',
   /** Something went wrong, please try again. */
-  GenericError = 'GENERIC_ERROR',
+  GenericError: 'GENERIC_ERROR',
   /** Product variant position cannot be zero or negative number. */
-  InvalidPosition = 'INVALID_POSITION',
+  InvalidPosition: 'INVALID_POSITION',
   /** Product variant does not exist. */
-  MissingVariant = 'MISSING_VARIANT',
+  MissingVariant: 'MISSING_VARIANT',
   /** Product does not exist. */
-  ProductDoesNotExist = 'PRODUCT_DOES_NOT_EXIST'
-}
+  ProductDoesNotExist: 'PRODUCT_DOES_NOT_EXIST'
+} as const;
 
+export type ProductVariantsBulkReorderUserErrorCode = typeof ProductVariantsBulkReorderUserErrorCode[keyof typeof ProductVariantsBulkReorderUserErrorCode];
 /** Return type for `productVariantsBulkUpdate` mutation. */
 export type ProductVariantsBulkUpdatePayload = {
   __typename?: 'ProductVariantsBulkUpdatePayload';
@@ -50683,88 +51027,90 @@ export type ProductVariantsBulkUpdateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `ProductVariantsBulkUpdateUserError`. */
-export enum ProductVariantsBulkUpdateUserErrorCode {
+export const ProductVariantsBulkUpdateUserErrorCode = {
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** Cannot set name for an option value linked to a metafield. */
-  CannotSetNameForLinkedOptionValue = 'CANNOT_SET_NAME_FOR_LINKED_OPTION_VALUE',
+  CannotSetNameForLinkedOptionValue: 'CANNOT_SET_NAME_FOR_LINKED_OPTION_VALUE',
   /** Mutually exclusive input fields provided. */
-  CannotSpecifyBoth = 'CANNOT_SPECIFY_BOTH',
+  CannotSpecifyBoth: 'CANNOT_SPECIFY_BOTH',
   /** The price of the variant must be greater than or equal to zero. */
-  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  GreaterThanOrEqualTo: 'GREATER_THAN_OR_EQUAL_TO',
   /** Input is invalid. */
-  InvalidInput = 'INVALID_INPUT',
+  InvalidInput: 'INVALID_INPUT',
   /** Metafield value is invalid. */
-  InvalidValue = 'INVALID_VALUE',
+  InvalidValue: 'INVALID_VALUE',
   /** Inventory quantity input exceeds the limit of 50000. Consider using separate `inventorySetQuantities` mutations. */
-  InventoryQuantitiesLimitExceeded = 'INVENTORY_QUANTITIES_LIMIT_EXCEEDED',
+  InventoryQuantitiesLimitExceeded: 'INVENTORY_QUANTITIES_LIMIT_EXCEEDED',
   /** Input must be for this product. */
-  MustBeForThisProduct = 'MUST_BE_FOR_THIS_PRODUCT',
+  MustBeForThisProduct: 'MUST_BE_FOR_THIS_PRODUCT',
   /** Mandatory field input field missing. */
-  MustSpecifyOneOfPair = 'MUST_SPECIFY_ONE_OF_PAIR',
+  MustSpecifyOneOfPair: 'MUST_SPECIFY_ONE_OF_PAIR',
   /** Variant options are not enough. */
-  NeedToAddOptionValues = 'NEED_TO_ADD_OPTION_VALUES',
+  NeedToAddOptionValues: 'NEED_TO_ADD_OPTION_VALUES',
   /** Price cannot take a negative value. */
-  NegativePriceValue = 'NEGATIVE_PRICE_VALUE',
+  NegativePriceValue: 'NEGATIVE_PRICE_VALUE',
   /** Input is not defined for this shop. */
-  NotDefinedForShop = 'NOT_DEFINED_FOR_SHOP',
+  NotDefinedForShop: 'NOT_DEFINED_FOR_SHOP',
   /** Inventory quantities cannot be provided during update. */
-  NoInventoryQuantitesDuringUpdate = 'NO_INVENTORY_QUANTITES_DURING_UPDATE',
+  NoInventoryQuantitesDuringUpdate: 'NO_INVENTORY_QUANTITES_DURING_UPDATE',
   /** Inventory quantities can only be provided during create. To update inventory for existing variants, use inventoryAdjustQuantities. */
-  NoInventoryQuantitiesOnVariantsUpdate = 'NO_INVENTORY_QUANTITIES_ON_VARIANTS_UPDATE',
+  NoInventoryQuantitiesOnVariantsUpdate: 'NO_INVENTORY_QUANTITIES_ON_VARIANTS_UPDATE',
   /** Option does not exist. */
-  OptionDoesNotExist = 'OPTION_DOES_NOT_EXIST',
+  OptionDoesNotExist: 'OPTION_DOES_NOT_EXIST',
   /** Variant options are more than the product options. */
-  OptionValuesForNumberOfUnknownOptions = 'OPTION_VALUES_FOR_NUMBER_OF_UNKNOWN_OPTIONS',
+  OptionValuesForNumberOfUnknownOptions: 'OPTION_VALUES_FOR_NUMBER_OF_UNKNOWN_OPTIONS',
   /** Option value does not exist. */
-  OptionValueDoesNotExist = 'OPTION_VALUE_DOES_NOT_EXIST',
+  OptionValueDoesNotExist: 'OPTION_VALUE_DOES_NOT_EXIST',
   /** Option value name is too long. */
-  OptionValueNameTooLong = 'OPTION_VALUE_NAME_TOO_LONG',
+  OptionValueNameTooLong: 'OPTION_VALUE_NAME_TOO_LONG',
   /** Product does not exist. */
-  ProductDoesNotExist = 'PRODUCT_DOES_NOT_EXIST',
+  ProductDoesNotExist: 'PRODUCT_DOES_NOT_EXIST',
   /** Product is suspended. */
-  ProductSuspended = 'PRODUCT_SUSPENDED',
+  ProductSuspended: 'PRODUCT_SUSPENDED',
   /** Product variant does not exist. */
-  ProductVariantDoesNotExist = 'PRODUCT_VARIANT_DOES_NOT_EXIST',
+  ProductVariantDoesNotExist: 'PRODUCT_VARIANT_DOES_NOT_EXIST',
   /** Product variant is missing ID attribute. */
-  ProductVariantIdMissing = 'PRODUCT_VARIANT_ID_MISSING',
+  ProductVariantIdMissing: 'PRODUCT_VARIANT_ID_MISSING',
   /** You reached the limit of available SKUs in your current plan. */
-  SubscriptionViolation = 'SUBSCRIPTION_VIOLATION',
+  SubscriptionViolation: 'SUBSCRIPTION_VIOLATION',
   /** The input value is too long. */
-  TooLong = 'TOO_LONG',
+  TooLong: 'TOO_LONG',
   /** The input value is too short. */
-  TooShort = 'TOO_SHORT',
+  TooShort: 'TOO_SHORT',
   /** Operation is not supported for a combined listing parent product. */
-  UnsupportedCombinedListingParentOperation = 'UNSUPPORTED_COMBINED_LISTING_PARENT_OPERATION',
+  UnsupportedCombinedListingParentOperation: 'UNSUPPORTED_COMBINED_LISTING_PARENT_OPERATION',
   /** The variant already exists. */
-  VariantAlreadyExists = 'VARIANT_ALREADY_EXISTS'
-}
+  VariantAlreadyExists: 'VARIANT_ALREADY_EXISTS'
+} as const;
 
+export type ProductVariantsBulkUpdateUserErrorCode = typeof ProductVariantsBulkUpdateUserErrorCode[keyof typeof ProductVariantsBulkUpdateUserErrorCode];
 /** The set of valid sort keys for the ProfileItem query. */
-export enum ProfileItemSortKeys {
+export const ProfileItemSortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `inventory_total` value. */
-  InventoryTotal = 'INVENTORY_TOTAL',
+  InventoryTotal: 'INVENTORY_TOTAL',
   /** Sort by the `product_type` value. */
-  ProductType = 'PRODUCT_TYPE',
+  ProductType: 'PRODUCT_TYPE',
   /** Sort by the `published_at` value. */
-  PublishedAt = 'PUBLISHED_AT',
+  PublishedAt: 'PUBLISHED_AT',
   /**
    * Sort by relevance to the search terms when the `query` parameter is specified on the connection.
    * Don't use this sort key when no search query is specified.
    */
-  Relevance = 'RELEVANCE',
+  Relevance: 'RELEVANCE',
   /** Sort by the `title` value. */
-  Title = 'TITLE',
+  Title: 'TITLE',
   /** Sort by the `updated_at` value. */
-  UpdatedAt = 'UPDATED_AT',
+  UpdatedAt: 'UPDATED_AT',
   /** Sort by the `vendor` value. */
-  Vendor = 'VENDOR'
-}
+  Vendor: 'VENDOR'
+} as const;
 
+export type ProfileItemSortKeys = typeof ProfileItemSortKeys[keyof typeof ProfileItemSortKeys];
 /** Return type for `pubSubServerPixelUpdate` mutation. */
 export type PubSubServerPixelUpdatePayload = {
   __typename?: 'PubSubServerPixelUpdatePayload';
@@ -50795,13 +51141,14 @@ export type PubSubWebhookSubscriptionCreateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `PubSubWebhookSubscriptionCreateUserError`. */
-export enum PubSubWebhookSubscriptionCreateUserErrorCode {
+export const PubSubWebhookSubscriptionCreateUserErrorCode = {
   /** Invalid parameters provided. */
-  InvalidParameters = 'INVALID_PARAMETERS',
+  InvalidParameters: 'INVALID_PARAMETERS',
   /** Address for this topic has already been taken. */
-  Taken = 'TAKEN'
-}
+  Taken: 'TAKEN'
+} as const;
 
+export type PubSubWebhookSubscriptionCreateUserErrorCode = typeof PubSubWebhookSubscriptionCreateUserErrorCode[keyof typeof PubSubWebhookSubscriptionCreateUserErrorCode];
 /** The input fields for a PubSub webhook subscription. */
 export type PubSubWebhookSubscriptionInput = {
   /** A constraint specified using search syntax that ensures only webhooks that match the specified filter are emitted. See our [guide on filters](https://shopify.dev/docs/apps/build/webhooks/customize/filters) for more details. */
@@ -50841,13 +51188,14 @@ export type PubSubWebhookSubscriptionUpdateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `PubSubWebhookSubscriptionUpdateUserError`. */
-export enum PubSubWebhookSubscriptionUpdateUserErrorCode {
+export const PubSubWebhookSubscriptionUpdateUserErrorCode = {
   /** Invalid parameters provided. */
-  InvalidParameters = 'INVALID_PARAMETERS',
+  InvalidParameters: 'INVALID_PARAMETERS',
   /** Address for this topic has already been taken. */
-  Taken = 'TAKEN'
-}
+  Taken: 'TAKEN'
+} as const;
 
+export type PubSubWebhookSubscriptionUpdateUserErrorCode = typeof PubSubWebhookSubscriptionUpdateUserErrorCode[keyof typeof PubSubWebhookSubscriptionUpdateUserErrorCode];
 /**
  * A group of [products](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product) and [collections](https://shopify.dev/docs/api/admin-graphql/latest/objects/Collection) that are published to an app.
  *
@@ -51027,13 +51375,14 @@ export type PublicationCreateInput = {
 };
 
 /** The input fields for the possible values for the default state of a publication. */
-export enum PublicationCreateInputPublicationDefaultState {
+export const PublicationCreateInputPublicationDefaultState = {
   /** The publication is populated with all products. */
-  AllProducts = 'ALL_PRODUCTS',
+  AllProducts: 'ALL_PRODUCTS',
   /** The publication is empty. */
-  Empty = 'EMPTY'
-}
+  Empty: 'EMPTY'
+} as const;
 
+export type PublicationCreateInputPublicationDefaultState = typeof PublicationCreateInputPublicationDefaultState[keyof typeof PublicationCreateInputPublicationDefaultState];
 /** Return type for `publicationCreate` mutation. */
 export type PublicationCreatePayload = {
   __typename?: 'PublicationCreatePayload';
@@ -51116,45 +51465,46 @@ export type PublicationUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `PublicationUserError`. */
-export enum PublicationUserErrorCode {
+export const PublicationUserErrorCode = {
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** Cannot modify a catalog for an app. */
-  CannotModifyAppCatalog = 'CANNOT_MODIFY_APP_CATALOG',
+  CannotModifyAppCatalog: 'CANNOT_MODIFY_APP_CATALOG',
   /** Can't modify a publication that belongs to an app catalog. */
-  CannotModifyAppCatalogPublication = 'CANNOT_MODIFY_APP_CATALOG_PUBLICATION',
+  CannotModifyAppCatalogPublication: 'CANNOT_MODIFY_APP_CATALOG_PUBLICATION',
   /** Cannot modify a catalog for a market. */
-  CannotModifyMarketCatalog = 'CANNOT_MODIFY_MARKET_CATALOG',
+  CannotModifyMarketCatalog: 'CANNOT_MODIFY_MARKET_CATALOG',
   /** Can't modify a publication that belongs to a market catalog. */
-  CannotModifyMarketCatalogPublication = 'CANNOT_MODIFY_MARKET_CATALOG_PUBLICATION',
+  CannotModifyMarketCatalogPublication: 'CANNOT_MODIFY_MARKET_CATALOG_PUBLICATION',
   /** Catalog does not exist. */
-  CatalogNotFound = 'CATALOG_NOT_FOUND',
+  CatalogNotFound: 'CATALOG_NOT_FOUND',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** Publishable ID not found. */
-  InvalidPublishableId = 'INVALID_PUBLISHABLE_ID',
+  InvalidPublishableId: 'INVALID_PUBLISHABLE_ID',
   /** Market does not exist. */
-  MarketNotFound = 'MARKET_NOT_FOUND',
+  MarketNotFound: 'MARKET_NOT_FOUND',
   /** A product publication cannot be created because the catalog type associated with this publication does not permit publications of this product type. */
-  ProductTypeIncompatibleWithCatalogType = 'PRODUCT_TYPE_INCOMPATIBLE_WITH_CATALOG_TYPE',
+  ProductTypeIncompatibleWithCatalogType: 'PRODUCT_TYPE_INCOMPATIBLE_WITH_CATALOG_TYPE',
   /** The publication is currently being modified. Please try again later. */
-  PublicationLocked = 'PUBLICATION_LOCKED',
+  PublicationLocked: 'PUBLICATION_LOCKED',
   /** Publication not found. */
-  PublicationNotFound = 'PUBLICATION_NOT_FOUND',
+  PublicationNotFound: 'PUBLICATION_NOT_FOUND',
   /** The limit for simultaneous publication updates has been exceeded. */
-  PublicationUpdateLimitExceeded = 'PUBLICATION_UPDATE_LIMIT_EXCEEDED',
+  PublicationUpdateLimitExceeded: 'PUBLICATION_UPDATE_LIMIT_EXCEEDED',
   /** The input value is already taken. */
-  Taken = 'TAKEN',
+  Taken: 'TAKEN',
   /** The input value is too long. */
-  TooLong = 'TOO_LONG',
+  TooLong: 'TOO_LONG',
   /** The input value is too short. */
-  TooShort = 'TOO_SHORT',
+  TooShort: 'TOO_SHORT',
   /** Can't perform this action on a publication. */
-  UnsupportedPublicationAction = 'UNSUPPORTED_PUBLICATION_ACTION',
+  UnsupportedPublicationAction: 'UNSUPPORTED_PUBLICATION_ACTION',
   /** A catalog publication can only contain products. */
-  UnsupportedPublishableType = 'UNSUPPORTED_PUBLISHABLE_TYPE'
-}
+  UnsupportedPublishableType: 'UNSUPPORTED_PUBLISHABLE_TYPE'
+} as const;
 
+export type PublicationUserErrorCode = typeof PublicationUserErrorCode[keyof typeof PublicationUserErrorCode];
 /**
  * Represents a resource that can be published to a channel.
  * A publishable resource can be either a Product or Collection.
@@ -51444,13 +51794,14 @@ export type QuantityPriceBreakInput = {
 };
 
 /** The set of valid sort keys for the QuantityPriceBreak query. */
-export enum QuantityPriceBreakSortKeys {
+export const QuantityPriceBreakSortKeys = {
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `minimum_quantity` value. */
-  MinimumQuantity = 'MINIMUM_QUANTITY'
-}
+  MinimumQuantity: 'MINIMUM_QUANTITY'
+} as const;
 
+export type QuantityPriceBreakSortKeys = typeof QuantityPriceBreakSortKeys[keyof typeof QuantityPriceBreakSortKeys];
 /** The input fields used to update quantity pricing. */
 export type QuantityPricingByVariantUpdateInput = {
   /** A list of fixed prices to add. */
@@ -51490,85 +51841,86 @@ export type QuantityPricingByVariantUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `QuantityPricingByVariantUserError`. */
-export enum QuantityPricingByVariantUserErrorCode {
+export const QuantityPricingByVariantUserErrorCode = {
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** Something went wrong when trying to update quantity pricing. Please try again later. */
-  GenericError = 'GENERIC_ERROR',
+  GenericError: 'GENERIC_ERROR',
   /** Price list and fixed price currency mismatch. */
-  PriceAddCurrencyMismatch = 'PRICE_ADD_CURRENCY_MISMATCH',
+  PriceAddCurrencyMismatch: 'PRICE_ADD_CURRENCY_MISMATCH',
   /** Prices to add inputs must be unique by variant id. */
-  PriceAddDuplicateInputForVariant = 'PRICE_ADD_DUPLICATE_INPUT_FOR_VARIANT',
+  PriceAddDuplicateInputForVariant: 'PRICE_ADD_DUPLICATE_INPUT_FOR_VARIANT',
   /** The issuance currency of a local currency gift card must match the price list currency. */
-  PriceAddLocalCurrencyGiftCardIssuanceCurrencyMismatch = 'PRICE_ADD_LOCAL_CURRENCY_GIFT_CARD_ISSUANCE_CURRENCY_MISMATCH',
+  PriceAddLocalCurrencyGiftCardIssuanceCurrencyMismatch: 'PRICE_ADD_LOCAL_CURRENCY_GIFT_CARD_ISSUANCE_CURRENCY_MISMATCH',
   /** The price of a local currency gift card cannot exceed the maximum gift card purchase limit. */
-  PriceAddLocalCurrencyGiftCardLimitExceeded = 'PRICE_ADD_LOCAL_CURRENCY_GIFT_CARD_LIMIT_EXCEEDED',
+  PriceAddLocalCurrencyGiftCardLimitExceeded: 'PRICE_ADD_LOCAL_CURRENCY_GIFT_CARD_LIMIT_EXCEEDED',
   /** Fixed price's variant not found. */
-  PriceAddVariantNotFound = 'PRICE_ADD_VARIANT_NOT_FOUND',
+  PriceAddVariantNotFound: 'PRICE_ADD_VARIANT_NOT_FOUND',
   /** Price is not fixed. */
-  PriceDeletePriceNotFixed = 'PRICE_DELETE_PRICE_NOT_FIXED',
+  PriceDeletePriceNotFixed: 'PRICE_DELETE_PRICE_NOT_FIXED',
   /** Fixed price's variant not found. */
-  PriceDeleteVariantNotFound = 'PRICE_DELETE_VARIANT_NOT_FOUND',
+  PriceDeleteVariantNotFound: 'PRICE_DELETE_VARIANT_NOT_FOUND',
   /** Price List does not exist. */
-  PriceListNotFound = 'PRICE_LIST_NOT_FOUND',
+  PriceListNotFound: 'PRICE_LIST_NOT_FOUND',
   /** Price list and quantity price break currency mismatch. */
-  QuantityPriceBreakAddCurrencyMismatch = 'QUANTITY_PRICE_BREAK_ADD_CURRENCY_MISMATCH',
+  QuantityPriceBreakAddCurrencyMismatch: 'QUANTITY_PRICE_BREAK_ADD_CURRENCY_MISMATCH',
   /** Quantity price breaks to add inputs must be unique by variant id and minimum quantity. */
-  QuantityPriceBreakAddDuplicateInputForVariantAndMin = 'QUANTITY_PRICE_BREAK_ADD_DUPLICATE_INPUT_FOR_VARIANT_AND_MIN',
+  QuantityPriceBreakAddDuplicateInputForVariantAndMin: 'QUANTITY_PRICE_BREAK_ADD_DUPLICATE_INPUT_FOR_VARIANT_AND_MIN',
   /** Failed to save quantity price break. */
-  QuantityPriceBreakAddFailedToSave = 'QUANTITY_PRICE_BREAK_ADD_FAILED_TO_SAVE',
+  QuantityPriceBreakAddFailedToSave: 'QUANTITY_PRICE_BREAK_ADD_FAILED_TO_SAVE',
   /** Invalid quantity price break. */
-  QuantityPriceBreakAddInvalid = 'QUANTITY_PRICE_BREAK_ADD_INVALID',
+  QuantityPriceBreakAddInvalid: 'QUANTITY_PRICE_BREAK_ADD_INVALID',
   /** Exceeded the allowed number of quantity price breaks per variant. */
-  QuantityPriceBreakAddLimitExceeded = 'QUANTITY_PRICE_BREAK_ADD_LIMIT_EXCEEDED',
+  QuantityPriceBreakAddLimitExceeded: 'QUANTITY_PRICE_BREAK_ADD_LIMIT_EXCEEDED',
   /** Quantity price break miniumum is higher than the quantity rule maximum. */
-  QuantityPriceBreakAddMinHigherThanQuantityRulesMax = 'QUANTITY_PRICE_BREAK_ADD_MIN_HIGHER_THAN_QUANTITY_RULES_MAX',
+  QuantityPriceBreakAddMinHigherThanQuantityRulesMax: 'QUANTITY_PRICE_BREAK_ADD_MIN_HIGHER_THAN_QUANTITY_RULES_MAX',
   /** Quantity price break miniumum is less than the quantity rule minimum. */
-  QuantityPriceBreakAddMinLowerThanQuantityRulesMin = 'QUANTITY_PRICE_BREAK_ADD_MIN_LOWER_THAN_QUANTITY_RULES_MIN',
+  QuantityPriceBreakAddMinLowerThanQuantityRulesMin: 'QUANTITY_PRICE_BREAK_ADD_MIN_LOWER_THAN_QUANTITY_RULES_MIN',
   /** Quantity price break miniumum is not multiple of the quantity rule increment. */
-  QuantityPriceBreakAddMinNotAMultipleOfQuantityRulesIncrement = 'QUANTITY_PRICE_BREAK_ADD_MIN_NOT_A_MULTIPLE_OF_QUANTITY_RULES_INCREMENT',
+  QuantityPriceBreakAddMinNotAMultipleOfQuantityRulesIncrement: 'QUANTITY_PRICE_BREAK_ADD_MIN_NOT_A_MULTIPLE_OF_QUANTITY_RULES_INCREMENT',
   /** Quantity price break's fixed price not found. */
-  QuantityPriceBreakAddPriceListPriceNotFound = 'QUANTITY_PRICE_BREAK_ADD_PRICE_LIST_PRICE_NOT_FOUND',
+  QuantityPriceBreakAddPriceListPriceNotFound: 'QUANTITY_PRICE_BREAK_ADD_PRICE_LIST_PRICE_NOT_FOUND',
   /** Quantity price break variant not found. */
-  QuantityPriceBreakAddVariantNotFound = 'QUANTITY_PRICE_BREAK_ADD_VARIANT_NOT_FOUND',
+  QuantityPriceBreakAddVariantNotFound: 'QUANTITY_PRICE_BREAK_ADD_VARIANT_NOT_FOUND',
   /** Variant to delete by is not found. */
-  QuantityPriceBreakDeleteByVariantIdVariantNotFound = 'QUANTITY_PRICE_BREAK_DELETE_BY_VARIANT_ID_VARIANT_NOT_FOUND',
+  QuantityPriceBreakDeleteByVariantIdVariantNotFound: 'QUANTITY_PRICE_BREAK_DELETE_BY_VARIANT_ID_VARIANT_NOT_FOUND',
   /** Failed to delete quantity price break. */
-  QuantityPriceBreakDeleteFailed = 'QUANTITY_PRICE_BREAK_DELETE_FAILED',
+  QuantityPriceBreakDeleteFailed: 'QUANTITY_PRICE_BREAK_DELETE_FAILED',
   /** Quantity price break not found. */
-  QuantityPriceBreakDeleteNotFound = 'QUANTITY_PRICE_BREAK_DELETE_NOT_FOUND',
+  QuantityPriceBreakDeleteNotFound: 'QUANTITY_PRICE_BREAK_DELETE_NOT_FOUND',
   /** Quantity rule catalog context not supported. */
-  QuantityRuleAddCatalogContextNotSupported = 'QUANTITY_RULE_ADD_CATALOG_CONTEXT_NOT_SUPPORTED',
+  QuantityRuleAddCatalogContextNotSupported: 'QUANTITY_RULE_ADD_CATALOG_CONTEXT_NOT_SUPPORTED',
   /** Quantity rules to add inputs must be unique by variant id. */
-  QuantityRuleAddDuplicateInputForVariant = 'QUANTITY_RULE_ADD_DUPLICATE_INPUT_FOR_VARIANT',
+  QuantityRuleAddDuplicateInputForVariant: 'QUANTITY_RULE_ADD_DUPLICATE_INPUT_FOR_VARIANT',
   /** Quantity rule increment is greater than minimum. */
-  QuantityRuleAddIncrementIsGreaterThanMinimum = 'QUANTITY_RULE_ADD_INCREMENT_IS_GREATER_THAN_MINIMUM',
+  QuantityRuleAddIncrementIsGreaterThanMinimum: 'QUANTITY_RULE_ADD_INCREMENT_IS_GREATER_THAN_MINIMUM',
   /** Quantity rule increment is less than one. */
-  QuantityRuleAddIncrementIsLessThanOne = 'QUANTITY_RULE_ADD_INCREMENT_IS_LESS_THAN_ONE',
+  QuantityRuleAddIncrementIsLessThanOne: 'QUANTITY_RULE_ADD_INCREMENT_IS_LESS_THAN_ONE',
   /** Quantity rule increment must be a multiple of the quantity price break minimum. */
-  QuantityRuleAddIncrementNotAMultipleOfQuantityPriceBreakMin = 'QUANTITY_RULE_ADD_INCREMENT_NOT_A_MULTIPLE_OF_QUANTITY_PRICE_BREAK_MIN',
+  QuantityRuleAddIncrementNotAMultipleOfQuantityPriceBreakMin: 'QUANTITY_RULE_ADD_INCREMENT_NOT_A_MULTIPLE_OF_QUANTITY_PRICE_BREAK_MIN',
   /** Quantity rule maximum is less than one. */
-  QuantityRuleAddMaximumIsLessThanOne = 'QUANTITY_RULE_ADD_MAXIMUM_IS_LESS_THAN_ONE',
+  QuantityRuleAddMaximumIsLessThanOne: 'QUANTITY_RULE_ADD_MAXIMUM_IS_LESS_THAN_ONE',
   /** Quantity rule maximum is not a multiple of increment. */
-  QuantityRuleAddMaximumNotAMultipleOfIncrement = 'QUANTITY_RULE_ADD_MAXIMUM_NOT_A_MULTIPLE_OF_INCREMENT',
+  QuantityRuleAddMaximumNotAMultipleOfIncrement: 'QUANTITY_RULE_ADD_MAXIMUM_NOT_A_MULTIPLE_OF_INCREMENT',
   /** Quantity rule maximum is less than the quantity price break minimum. */
-  QuantityRuleAddMaxLowerThanQuantityPriceBreakMin = 'QUANTITY_RULE_ADD_MAX_LOWER_THAN_QUANTITY_PRICE_BREAK_MIN',
+  QuantityRuleAddMaxLowerThanQuantityPriceBreakMin: 'QUANTITY_RULE_ADD_MAX_LOWER_THAN_QUANTITY_PRICE_BREAK_MIN',
   /** Quantity rule minimum is greater than maximum. */
-  QuantityRuleAddMinimumGreaterThanMaximum = 'QUANTITY_RULE_ADD_MINIMUM_GREATER_THAN_MAXIMUM',
+  QuantityRuleAddMinimumGreaterThanMaximum: 'QUANTITY_RULE_ADD_MINIMUM_GREATER_THAN_MAXIMUM',
   /** Quantity rule minimum is less than one. */
-  QuantityRuleAddMinimumIsLessThanOne = 'QUANTITY_RULE_ADD_MINIMUM_IS_LESS_THAN_ONE',
+  QuantityRuleAddMinimumIsLessThanOne: 'QUANTITY_RULE_ADD_MINIMUM_IS_LESS_THAN_ONE',
   /** Quantity rule minimum is not a multiple of increment. */
-  QuantityRuleAddMinimumNotAMultipleOfIncrement = 'QUANTITY_RULE_ADD_MINIMUM_NOT_A_MULTIPLE_OF_INCREMENT',
+  QuantityRuleAddMinimumNotAMultipleOfIncrement: 'QUANTITY_RULE_ADD_MINIMUM_NOT_A_MULTIPLE_OF_INCREMENT',
   /** Quantity rule minimum is higher than the quantity price break minimum. */
-  QuantityRuleAddMinHigherThanQuantityPriceBreakMin = 'QUANTITY_RULE_ADD_MIN_HIGHER_THAN_QUANTITY_PRICE_BREAK_MIN',
+  QuantityRuleAddMinHigherThanQuantityPriceBreakMin: 'QUANTITY_RULE_ADD_MIN_HIGHER_THAN_QUANTITY_PRICE_BREAK_MIN',
   /** Quantity rule variant not found. */
-  QuantityRuleAddVariantNotFound = 'QUANTITY_RULE_ADD_VARIANT_NOT_FOUND',
+  QuantityRuleAddVariantNotFound: 'QUANTITY_RULE_ADD_VARIANT_NOT_FOUND',
   /** Quantity rule not found. */
-  QuantityRuleDeleteRuleNotFound = 'QUANTITY_RULE_DELETE_RULE_NOT_FOUND',
+  QuantityRuleDeleteRuleNotFound: 'QUANTITY_RULE_DELETE_RULE_NOT_FOUND',
   /** Quantity rule variant not found. */
-  QuantityRuleDeleteVariantNotFound = 'QUANTITY_RULE_DELETE_VARIANT_NOT_FOUND'
-}
+  QuantityRuleDeleteVariantNotFound: 'QUANTITY_RULE_DELETE_VARIANT_NOT_FOUND'
+} as const;
 
+export type QuantityPricingByVariantUserErrorCode = typeof QuantityPricingByVariantUserErrorCode[keyof typeof QuantityPricingByVariantUserErrorCode];
 /** The quantity rule for the product variant in a given context. */
 export type QuantityRule = {
   __typename?: 'QuantityRule';
@@ -51631,13 +51983,14 @@ export type QuantityRuleInput = {
 };
 
 /** The origin of quantity rule on a price list. */
-export enum QuantityRuleOriginType {
+export const QuantityRuleOriginType = {
   /** Quantity rule is explicitly defined. */
-  Fixed = 'FIXED',
+  Fixed: 'FIXED',
   /** Quantity rule falls back to the relative rule. */
-  Relative = 'RELATIVE'
-}
+  Relative: 'RELATIVE'
+} as const;
 
+export type QuantityRuleOriginType = typeof QuantityRuleOriginType[keyof typeof QuantityRuleOriginType];
 /** An error for a failed quantity rule operation. */
 export type QuantityRuleUserError = DisplayableError & {
   __typename?: 'QuantityRuleUserError';
@@ -51650,39 +52003,40 @@ export type QuantityRuleUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `QuantityRuleUserError`. */
-export enum QuantityRuleUserErrorCode {
+export const QuantityRuleUserErrorCode = {
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** Quantity rules can be associated only with company location catalogs or catalogs associated with compatible markets. */
-  CatalogContextDoesNotSupportQuantityRules = 'CATALOG_CONTEXT_DOES_NOT_SUPPORT_QUANTITY_RULES',
+  CatalogContextDoesNotSupportQuantityRules: 'CATALOG_CONTEXT_DOES_NOT_SUPPORT_QUANTITY_RULES',
   /** Quantity rule inputs must be unique by variant id. */
-  DuplicateInputForVariant = 'DUPLICATE_INPUT_FOR_VARIANT',
+  DuplicateInputForVariant: 'DUPLICATE_INPUT_FOR_VARIANT',
   /** Something went wrong when trying to save the quantity rule. Please try again later. */
-  GenericError = 'GENERIC_ERROR',
+  GenericError: 'GENERIC_ERROR',
   /** Value must be greater than or equal to 1. */
-  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  GreaterThanOrEqualTo: 'GREATER_THAN_OR_EQUAL_TO',
   /** Increment must be lower than or equal to the minimum. */
-  IncrementIsGreaterThanMinimum = 'INCREMENT_IS_GREATER_THAN_MINIMUM',
+  IncrementIsGreaterThanMinimum: 'INCREMENT_IS_GREATER_THAN_MINIMUM',
   /** Increment must be a multiple of all quantity price break minimums associated with this variant in the specified price list. */
-  IncrementNotAMultipleOfQuantityPriceBreakMinimum = 'INCREMENT_NOT_A_MULTIPLE_OF_QUANTITY_PRICE_BREAK_MINIMUM',
+  IncrementNotAMultipleOfQuantityPriceBreakMinimum: 'INCREMENT_NOT_A_MULTIPLE_OF_QUANTITY_PRICE_BREAK_MINIMUM',
   /** Maximum must be greater than or equal to all quantity price break minimums associated with this variant in the specified price list. */
-  MaximumIsLowerThanQuantityPriceBreakMinimum = 'MAXIMUM_IS_LOWER_THAN_QUANTITY_PRICE_BREAK_MINIMUM',
+  MaximumIsLowerThanQuantityPriceBreakMinimum: 'MAXIMUM_IS_LOWER_THAN_QUANTITY_PRICE_BREAK_MINIMUM',
   /** The maximum must be a multiple of the increment. */
-  MaximumNotMultipleOfIncrement = 'MAXIMUM_NOT_MULTIPLE_OF_INCREMENT',
+  MaximumNotMultipleOfIncrement: 'MAXIMUM_NOT_MULTIPLE_OF_INCREMENT',
   /** Minimum must be lower than or equal to the maximum. */
-  MinimumIsGreaterThanMaximum = 'MINIMUM_IS_GREATER_THAN_MAXIMUM',
+  MinimumIsGreaterThanMaximum: 'MINIMUM_IS_GREATER_THAN_MAXIMUM',
   /** Minimum must be less than or equal to all quantity price break minimums associated with this variant in the specified price list. */
-  MinimumIsHigherThanQuantityPriceBreakMinimum = 'MINIMUM_IS_HIGHER_THAN_QUANTITY_PRICE_BREAK_MINIMUM',
+  MinimumIsHigherThanQuantityPriceBreakMinimum: 'MINIMUM_IS_HIGHER_THAN_QUANTITY_PRICE_BREAK_MINIMUM',
   /** The minimum must be a multiple of the increment. */
-  MinimumNotMultipleOfIncrement = 'MINIMUM_NOT_MULTIPLE_OF_INCREMENT',
+  MinimumNotMultipleOfIncrement: 'MINIMUM_NOT_MULTIPLE_OF_INCREMENT',
   /** Price list does not exist. */
-  PriceListDoesNotExist = 'PRICE_LIST_DOES_NOT_EXIST',
+  PriceListDoesNotExist: 'PRICE_LIST_DOES_NOT_EXIST',
   /** Product variant ID does not exist. */
-  ProductVariantDoesNotExist = 'PRODUCT_VARIANT_DOES_NOT_EXIST',
+  ProductVariantDoesNotExist: 'PRODUCT_VARIANT_DOES_NOT_EXIST',
   /** Quantity rule for variant associated with the price list provided does not exist. */
-  VariantQuantityRuleDoesNotExist = 'VARIANT_QUANTITY_RULE_DOES_NOT_EXIST'
-}
+  VariantQuantityRuleDoesNotExist: 'VARIANT_QUANTITY_RULE_DOES_NOT_EXIST'
+} as const;
 
+export type QuantityRuleUserErrorCode = typeof QuantityRuleUserErrorCode[keyof typeof QuantityRuleUserErrorCode];
 /** Return type for `quantityRulesAdd` mutation. */
 export type QuantityRulesAddPayload = {
   __typename?: 'QuantityRulesAddPayload';
@@ -55299,13 +55653,14 @@ export type RefundDutyInput = {
 };
 
 /** The type of refund to perform for a particular refund duty. */
-export enum RefundDutyRefundType {
+export const RefundDutyRefundType = {
   /** The duty is fully refunded. */
-  Full = 'FULL',
+  Full: 'FULL',
   /** The duty is proportionally refunded based on the quantity of the refunded line item. */
-  Proportional = 'PROPORTIONAL'
-}
+  Proportional: 'PROPORTIONAL'
+} as const;
 
+export type RefundDutyRefundType = typeof RefundDutyRefundType[keyof typeof RefundDutyRefundType];
 /** An auto-generated type which holds one Refund and a cursor during pagination. */
 export type RefundEdge = {
   __typename?: 'RefundEdge';
@@ -55416,25 +55771,27 @@ export type RefundLineItemInput = {
 };
 
 /** The type of restock performed for a particular refund line item. */
-export enum RefundLineItemRestockType {
+export const RefundLineItemRestockType = {
   /** The refund line item was canceled. Use this when restocking unfulfilled line items. */
-  Cancel = 'CANCEL',
+  Cancel: 'CANCEL',
   /** Deprecated. The refund line item was restocked, without specifically beingidentified as a return or cancelation. This value is not accepted when creating new refunds. */
-  LegacyRestock = 'LEGACY_RESTOCK',
+  LegacyRestock: 'LEGACY_RESTOCK',
   /** Refund line item was not restocked. */
-  NoRestock = 'NO_RESTOCK',
+  NoRestock: 'NO_RESTOCK',
   /** The refund line item was returned. Use this when restocking line items that were fulfilled. */
-  Return = 'RETURN'
-}
+  Return: 'RETURN'
+} as const;
 
+export type RefundLineItemRestockType = typeof RefundLineItemRestockType[keyof typeof RefundLineItemRestockType];
 /** The different methods that a refund amount can be allocated to. */
-export enum RefundMethodAllocation {
+export const RefundMethodAllocation = {
   /** The refund is to original payment methods. */
-  OriginalPaymentMethods = 'ORIGINAL_PAYMENT_METHODS',
+  OriginalPaymentMethods: 'ORIGINAL_PAYMENT_METHODS',
   /** The refund is to store credit. */
-  StoreCredit = 'STORE_CREDIT'
-}
+  StoreCredit: 'STORE_CREDIT'
+} as const;
 
+export type RefundMethodAllocation = typeof RefundMethodAllocation[keyof typeof RefundMethodAllocation];
 /** The input fields for processing the financial outcome of a refund. */
 export type RefundMethodInput = {
   /** The details of the refund to store credit. */
@@ -55607,29 +55964,30 @@ export type ResourceAlertAction = {
 };
 
 /** The available icons for resource alerts. */
-export enum ResourceAlertIcon {
+export const ResourceAlertIcon = {
   /** A checkmark inside a circle. */
-  CheckmarkCircle = 'CHECKMARK_CIRCLE',
+  CheckmarkCircle: 'CHECKMARK_CIRCLE',
   /** A lowercase `i` inside a circle. */
-  InformationCircle = 'INFORMATION_CIRCLE'
-}
+  InformationCircle: 'INFORMATION_CIRCLE'
+} as const;
 
+export type ResourceAlertIcon = typeof ResourceAlertIcon[keyof typeof ResourceAlertIcon];
 /** The possible severity levels for a resource alert. */
-export enum ResourceAlertSeverity {
+export const ResourceAlertSeverity = {
   /** Indicates a critical alert. For example, a blocked app. */
-  Critical = 'CRITICAL',
+  Critical: 'CRITICAL',
   /** Indicates a neutral alert. For example, an accepted dispute. */
-  Default = 'DEFAULT',
-  /** @deprecated `ERROR` severity is being deprecated in favour of `WARNING` or `CRITICAL` instead. */
-  Error = 'ERROR',
+  Default: 'DEFAULT',
+  Error: 'ERROR',
   /** Indicates an informative alert. For example, an escalated dispute. */
-  Info = 'INFO',
+  Info: 'INFO',
   /** Indicates a success alert. For example, a winning a dispute. */
-  Success = 'SUCCESS',
+  Success: 'SUCCESS',
   /** Indicates an informative alert. For example, a new dispute. */
-  Warning = 'WARNING'
-}
+  Warning: 'WARNING'
+} as const;
 
+export type ResourceAlertSeverity = typeof ResourceAlertSeverity[keyof typeof ResourceAlertSeverity];
 /** Represents feedback from apps about a resource, and the steps required to set up the apps on the shop. */
 export type ResourceFeedback = {
   __typename?: 'ResourceFeedback';
@@ -55668,13 +56026,14 @@ export type ResourceFeedbackCreateInput = {
 };
 
 /** The state of the resource feedback. */
-export enum ResourceFeedbackState {
+export const ResourceFeedbackState = {
   /** No action required from merchant. */
-  Accepted = 'ACCEPTED',
+  Accepted: 'ACCEPTED',
   /** The merchant needs to resolve an issue with the resource. */
-  RequiresAction = 'REQUIRES_ACTION'
-}
+  RequiresAction: 'REQUIRES_ACTION'
+} as const;
 
+export type ResourceFeedbackState = typeof ResourceFeedbackState[keyof typeof ResourceFeedbackState];
 /** Represents a merchandising background operation interface. */
 export type ResourceOperation = {
   /** A globally-unique ID. */
@@ -55688,15 +56047,16 @@ export type ResourceOperation = {
 };
 
 /** Represents the state of this catalog operation. */
-export enum ResourceOperationStatus {
+export const ResourceOperationStatus = {
   /** Operation is currently running. */
-  Active = 'ACTIVE',
+  Active: 'ACTIVE',
   /** Operation is complete. */
-  Complete = 'COMPLETE',
+  Complete: 'COMPLETE',
   /** Operation has been created. */
-  Created = 'CREATED'
-}
+  Created: 'CREATED'
+} as const;
 
+export type ResourceOperationStatus = typeof ResourceOperationStatus[keyof typeof ResourceOperationStatus];
 /**
  * A resource publication represents information about the publication of a resource.
  * An instance of `ResourcePublication`, unlike `ResourcePublicationV2`, can be neither published or scheduled to be published.
@@ -56137,15 +56497,16 @@ export type ReturnDecline = {
 };
 
 /** The reason why the merchant declined a customer's return request. */
-export enum ReturnDeclineReason {
+export const ReturnDeclineReason = {
   /** The return contains final sale items. */
-  FinalSale = 'FINAL_SALE',
+  FinalSale: 'FINAL_SALE',
   /** The return is declined for another reason. */
-  Other = 'OTHER',
+  Other: 'OTHER',
   /** The return period has ended. */
-  ReturnPeriodEnded = 'RETURN_PERIOD_ENDED'
-}
+  ReturnPeriodEnded: 'RETURN_PERIOD_ENDED'
+} as const;
 
+export type ReturnDeclineReason = typeof ReturnDeclineReason[keyof typeof ReturnDeclineReason];
 /** The input fields for declining a customer's return request. */
 export type ReturnDeclineRequestInput = {
   /**
@@ -56183,59 +56544,60 @@ export type ReturnEdge = {
 };
 
 /** Possible error codes that can be returned by `ReturnUserError`. */
-export enum ReturnErrorCode {
+export const ReturnErrorCode = {
   /** The requested resource already exists. */
-  AlreadyExists = 'ALREADY_EXISTS',
+  AlreadyExists: 'ALREADY_EXISTS',
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** A requested resource could not be created. */
-  CreationFailed = 'CREATION_FAILED',
+  CreationFailed: 'CREATION_FAILED',
   /** The input value should be equal to the value allowed. */
-  EqualTo = 'EQUAL_TO',
+  EqualTo: 'EQUAL_TO',
   /** A required feature is not enabled. */
-  FeatureNotEnabled = 'FEATURE_NOT_ENABLED',
+  FeatureNotEnabled: 'FEATURE_NOT_ENABLED',
   /** The input value should be greater than the minimum allowed value. */
-  GreaterThan = 'GREATER_THAN',
+  GreaterThan: 'GREATER_THAN',
   /** The input value should be greater than or equal to the minimum value allowed. */
-  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  GreaterThanOrEqualTo: 'GREATER_THAN_OR_EQUAL_TO',
   /** The input value isn't included in the list. */
-  Inclusion = 'INCLUSION',
+  Inclusion: 'INCLUSION',
   /** Unexpected internal error happened. */
-  InternalError = 'INTERNAL_ERROR',
+  InternalError: 'INTERNAL_ERROR',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** A resource was not in the correct state for the operation to succeed. */
-  InvalidState = 'INVALID_STATE',
+  InvalidState: 'INVALID_STATE',
   /** The input value should be less than the maximum value allowed. */
-  LessThan = 'LESS_THAN',
+  LessThan: 'LESS_THAN',
   /** The input value should be less than or equal to the maximum value allowed. */
-  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  LessThanOrEqualTo: 'LESS_THAN_OR_EQUAL_TO',
   /** The user does not have permission to perform the operation. */
-  MissingPermission = 'MISSING_PERMISSION',
+  MissingPermission: 'MISSING_PERMISSION',
   /** A requested notification could not be sent. */
-  NotificationFailed = 'NOTIFICATION_FAILED',
+  NotificationFailed: 'NOTIFICATION_FAILED',
   /** The input value is not a number. */
-  NotANumber = 'NOT_A_NUMBER',
+  NotANumber: 'NOT_A_NUMBER',
   /** A requested item is not editable. */
-  NotEditable = 'NOT_EDITABLE',
+  NotEditable: 'NOT_EDITABLE',
   /** A requested item could not be found. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** The input value needs to be blank. */
-  Present = 'PRESENT',
+  Present: 'PRESENT',
   /** The input value is already taken. */
-  Taken = 'TAKEN',
+  Taken: 'TAKEN',
   /** The input value is too big. */
-  TooBig = 'TOO_BIG',
+  TooBig: 'TOO_BIG',
   /** The input value is too long. */
-  TooLong = 'TOO_LONG',
+  TooLong: 'TOO_LONG',
   /** Too many arguments provided. */
-  TooManyArguments = 'TOO_MANY_ARGUMENTS',
+  TooManyArguments: 'TOO_MANY_ARGUMENTS',
   /** The input value is too short. */
-  TooShort = 'TOO_SHORT',
+  TooShort: 'TOO_SHORT',
   /** The input value is the wrong length. */
-  WrongLength = 'WRONG_LENGTH'
-}
+  WrongLength: 'WRONG_LENGTH'
+} as const;
 
+export type ReturnErrorCode = typeof ReturnErrorCode[keyof typeof ReturnErrorCode];
 /** The input fields for a return. */
 export type ReturnInput = {
   /** The new line items to be added to the order. */
@@ -56439,37 +56801,39 @@ export type ReturnProcessReturnLineItemInput = {
 };
 
 /** Filter line items based on processing status. */
-export enum ReturnProcessingStatusFilterInput {
+export const ReturnProcessingStatusFilterInput = {
   /** Only include line items that have some processable quantity. */
-  Processable = 'PROCESSABLE',
+  Processable: 'PROCESSABLE',
   /** Only include line items that have been processed. */
-  Processed = 'PROCESSED'
-}
+  Processed: 'PROCESSED'
+} as const;
 
+export type ReturnProcessingStatusFilterInput = typeof ReturnProcessingStatusFilterInput[keyof typeof ReturnProcessingStatusFilterInput];
 /** The reason for returning the return line item. */
-export enum ReturnReason {
+export const ReturnReason = {
   /** The item is returned because the buyer did not like the color. Displays as **Color**. */
-  Color = 'COLOR',
+  Color: 'COLOR',
   /** The item is returned because it is damaged or defective. Displays as **Damaged or defective**. */
-  Defective = 'DEFECTIVE',
+  Defective: 'DEFECTIVE',
   /** The item is returned because it was not as described. Displays as **Item not as described**. */
-  NotAsDescribed = 'NOT_AS_DESCRIBED',
+  NotAsDescribed: 'NOT_AS_DESCRIBED',
   /** The item is returned for another reason. For this value, a return reason note is also provided. Displays as **Other**. */
-  Other = 'OTHER',
+  Other: 'OTHER',
   /** The item is returned because the size was too large. Displays as **Size was too large**. */
-  SizeTooLarge = 'SIZE_TOO_LARGE',
+  SizeTooLarge: 'SIZE_TOO_LARGE',
   /** The item is returned because the size was too small. Displays as **Size was too small**. */
-  SizeTooSmall = 'SIZE_TOO_SMALL',
+  SizeTooSmall: 'SIZE_TOO_SMALL',
   /** The item is returned because the buyer did not like the style. Displays as **Style**. */
-  Style = 'STYLE',
+  Style: 'STYLE',
   /** The item is returned because of an unknown reason. Displays as **Unknown**. */
-  Unknown = 'UNKNOWN',
+  Unknown: 'UNKNOWN',
   /** The item is returned because the customer changed their mind. Displays as **Customer changed their mind**. */
-  Unwanted = 'UNWANTED',
+  Unwanted: 'UNWANTED',
   /** The item is returned because the customer received the wrong one. Displays as **Received the wrong item**. */
-  WrongItem = 'WRONG_ITEM'
-}
+  WrongItem: 'WRONG_ITEM'
+} as const;
 
+export type ReturnReason = typeof ReturnReason[keyof typeof ReturnReason];
 /** The input fields to refund a return. */
 export type ReturnRefundInput = {
   /** Whether to send a refund notification to the customer. */
@@ -56576,19 +56940,20 @@ export type ReturnShippingFeeInput = {
 };
 
 /** The status of a return. */
-export enum ReturnStatus {
+export const ReturnStatus = {
   /** The return has been canceled. */
-  Canceled = 'CANCELED',
+  Canceled: 'CANCELED',
   /** The return has been completed. */
-  Closed = 'CLOSED',
+  Closed: 'CLOSED',
   /** The return was declined. */
-  Declined = 'DECLINED',
+  Declined: 'DECLINED',
   /** The return is in progress. */
-  Open = 'OPEN',
+  Open: 'OPEN',
   /** The return was requested. */
-  Requested = 'REQUESTED'
-}
+  Requested: 'REQUESTED'
+} as const;
 
+export type ReturnStatus = typeof ReturnStatus[keyof typeof ReturnStatus];
 /** An error that occurs during the execution of a return mutation. */
 export type ReturnUserError = DisplayableError & {
   __typename?: 'ReturnUserError';
@@ -56942,17 +57307,18 @@ export type ReverseFulfillmentOrderDisposition = Node & {
 };
 
 /** The final arrangement of an item from a reverse fulfillment order. */
-export enum ReverseFulfillmentOrderDispositionType {
+export const ReverseFulfillmentOrderDispositionType = {
   /** An item that was expected but absent. */
-  Missing = 'MISSING',
+  Missing: 'MISSING',
   /** An item that wasn't restocked. */
-  NotRestocked = 'NOT_RESTOCKED',
+  NotRestocked: 'NOT_RESTOCKED',
   /** An item that requires further processing before being restocked or discarded. */
-  ProcessingRequired = 'PROCESSING_REQUIRED',
+  ProcessingRequired: 'PROCESSING_REQUIRED',
   /** An item that was restocked. */
-  Restocked = 'RESTOCKED'
-}
+  Restocked: 'RESTOCKED'
+} as const;
 
+export type ReverseFulfillmentOrderDispositionType = typeof ReverseFulfillmentOrderDispositionType[keyof typeof ReverseFulfillmentOrderDispositionType];
 /** An auto-generated type which holds one ReverseFulfillmentOrder and a cursor during pagination. */
 export type ReverseFulfillmentOrderEdge = {
   __typename?: 'ReverseFulfillmentOrderEdge';
@@ -56996,15 +57362,16 @@ export type ReverseFulfillmentOrderLineItemEdge = {
 };
 
 /** The status of a reverse fulfillment order. */
-export enum ReverseFulfillmentOrderStatus {
+export const ReverseFulfillmentOrderStatus = {
   /** The reverse fulfillment order has been canceled. */
-  Canceled = 'CANCELED',
+  Canceled: 'CANCELED',
   /** The reverse fulfillment order has been completed. */
-  Closed = 'CLOSED',
+  Closed: 'CLOSED',
   /** The reverse fulfillment order is in progress. */
-  Open = 'OPEN'
-}
+  Open: 'OPEN'
+} as const;
 
+export type ReverseFulfillmentOrderStatus = typeof ReverseFulfillmentOrderStatus[keyof typeof ReverseFulfillmentOrderStatus];
 /** The third-party confirmation of a reverse fulfillment order. */
 export type ReverseFulfillmentOrderThirdPartyConfirmation = {
   __typename?: 'ReverseFulfillmentOrderThirdPartyConfirmation';
@@ -57013,35 +57380,37 @@ export type ReverseFulfillmentOrderThirdPartyConfirmation = {
 };
 
 /** The status of a reverse fulfillment order third-party confirmation. */
-export enum ReverseFulfillmentOrderThirdPartyConfirmationStatus {
+export const ReverseFulfillmentOrderThirdPartyConfirmationStatus = {
   /** The reverse fulfillment order was accepted by the fulfillment service. */
-  Accepted = 'ACCEPTED',
+  Accepted: 'ACCEPTED',
   /** The reverse fulfillment order cancelation was accepted by the fulfillment service. */
-  CancelAccepted = 'CANCEL_ACCEPTED',
+  CancelAccepted: 'CANCEL_ACCEPTED',
   /** The reverse fulfillment order cancelation was rejected by the fulfillment service. */
-  CancelRejected = 'CANCEL_REJECTED',
+  CancelRejected: 'CANCEL_REJECTED',
   /** The reverse fulfillment order is awaiting acceptance by the fulfillment service. */
-  PendingAcceptance = 'PENDING_ACCEPTANCE',
+  PendingAcceptance: 'PENDING_ACCEPTANCE',
   /** The reverse fulfillment order is awaiting cancelation by the fulfillment service. */
-  PendingCancelation = 'PENDING_CANCELATION',
+  PendingCancelation: 'PENDING_CANCELATION',
   /** The reverse fulfillment order was rejected by the fulfillment service. */
-  Rejected = 'REJECTED'
-}
+  Rejected: 'REJECTED'
+} as const;
 
+export type ReverseFulfillmentOrderThirdPartyConfirmationStatus = typeof ReverseFulfillmentOrderThirdPartyConfirmationStatus[keyof typeof ReverseFulfillmentOrderThirdPartyConfirmationStatus];
 /** List of possible values for a RiskAssessment result. */
-export enum RiskAssessmentResult {
+export const RiskAssessmentResult = {
   /** Indicates a high likelihood that the order is fraudulent. */
-  High = 'HIGH',
+  High: 'HIGH',
   /** Indicates a low likelihood that the order is fraudulent. */
-  Low = 'LOW',
+  Low: 'LOW',
   /** Indicates a medium likelihood that the order is fraudulent. */
-  Medium = 'MEDIUM',
+  Medium: 'MEDIUM',
   /** Indicates that the risk assessment will not provide a recommendation for the order. */
-  None = 'NONE',
+  None: 'NONE',
   /** Indicates that the risk assessment is still pending. */
-  Pending = 'PENDING'
-}
+  Pending: 'PENDING'
+} as const;
 
+export type RiskAssessmentResult = typeof RiskAssessmentResult[keyof typeof RiskAssessmentResult];
 /** A risk fact belongs to a single risk assessment and serves to provide additional context for an assessment. Risk facts are not necessarily tied to the result of the recommendation. */
 export type RiskFact = {
   __typename?: 'RiskFact';
@@ -57052,15 +57421,16 @@ export type RiskFact = {
 };
 
 /** List of possible values for a RiskFact sentiment. */
-export enum RiskFactSentiment {
+export const RiskFactSentiment = {
   /** A negative contributor that increases the risk. */
-  Negative = 'NEGATIVE',
+  Negative: 'NEGATIVE',
   /** A neutral contributor with regards to risk. */
-  Neutral = 'NEUTRAL',
+  Neutral: 'NEUTRAL',
   /** A positive contributor that lowers the risk. */
-  Positive = 'POSITIVE'
-}
+  Positive: 'POSITIVE'
+} as const;
 
+export type RiskFactSentiment = typeof RiskFactSentiment[keyof typeof RiskFactSentiment];
 /** A row count represents rows on background operation. */
 export type RowCount = {
   __typename?: 'RowCount';
@@ -57110,17 +57480,18 @@ export type Sale = {
 };
 
 /** The possible order action types for a sale. */
-export enum SaleActionType {
+export const SaleActionType = {
   /** A purchase or charge. */
-  Order = 'ORDER',
+  Order: 'ORDER',
   /** A removal or return. */
-  Return = 'RETURN',
+  Return: 'RETURN',
   /** An unknown order action. Represents new actions that may be added in future versions. */
-  Unknown = 'UNKNOWN',
+  Unknown: 'UNKNOWN',
   /** A change to the price, taxes, or discounts for a prior purchase. */
-  Update = 'UPDATE'
-}
+  Update: 'UPDATE'
+} as const;
 
+export type SaleActionType = typeof SaleActionType[keyof typeof SaleActionType];
 /** The additional fee details for a line item. */
 export type SaleAdditionalFee = Node & {
   __typename?: 'SaleAdditionalFee';
@@ -57155,27 +57526,28 @@ export type SaleEdge = {
 };
 
 /** The possible line types for a sale record. One of the possible order line types for a sale is an adjustment. Sales adjustments occur when a refund is issued for a line item that is either more or less than the total value of the line item. Examples are restocking fees and goodwill payments. When this happens, Shopify produces a sales agreement with sale records for each line item that is returned or refunded and an additional sale record for the adjustment (for example, a restocking fee). The sales records for the returned or refunded items represent the reversal of the original line item sale value. The additional adjustment sale record represents the difference between the original total value of all line items that were refunded, and the actual amount refunded. */
-export enum SaleLineType {
+export const SaleLineType = {
   /** An additional fee. */
-  AdditionalFee = 'ADDITIONAL_FEE',
+  AdditionalFee: 'ADDITIONAL_FEE',
   /** A sale adjustment. */
-  Adjustment = 'ADJUSTMENT',
+  Adjustment: 'ADJUSTMENT',
   /** A duty charge. */
-  Duty = 'DUTY',
+  Duty: 'DUTY',
   /** A fee charge. */
-  Fee = 'FEE',
+  Fee: 'FEE',
   /** A gift card. */
-  GiftCard = 'GIFT_CARD',
+  GiftCard: 'GIFT_CARD',
   /** A product purchased, returned or exchanged. */
-  Product = 'PRODUCT',
+  Product: 'PRODUCT',
   /** A shipping cost. */
-  Shipping = 'SHIPPING',
+  Shipping: 'SHIPPING',
   /** A tip added by the customer. */
-  Tip = 'TIP',
+  Tip: 'TIP',
   /** An unknown sale line. Represents new types that may be added in future versions. */
-  Unknown = 'UNKNOWN'
-}
+  Unknown: 'UNKNOWN'
+} as const;
 
+export type SaleLineType = typeof SaleLineType[keyof typeof SaleLineType];
 /** The tax allocated to a sale from a single tax line. */
 export type SaleTax = {
   __typename?: 'SaleTax';
@@ -57332,13 +57704,14 @@ export type SavedSearchUpdatePayload = {
 };
 
 /** The set of valid sort keys for the ScheduledChange query. */
-export enum ScheduledChangeSortKeys {
+export const ScheduledChangeSortKeys = {
   /** Sort by the `expected_at` value. */
-  ExpectedAt = 'EXPECTED_AT',
+  ExpectedAt: 'EXPECTED_AT',
   /** Sort by the `id` value. */
-  Id = 'ID'
-}
+  Id: 'ID'
+} as const;
 
+export type ScheduledChangeSortKeys = typeof ScheduledChangeSortKeys[keyof typeof ScheduledChangeSortKeys];
 /**
  * Script discount applications capture the intentions of a discount that
  * was created by a Shopify Script for an order's line item or shipping line.
@@ -57432,23 +57805,16 @@ export type ScriptTagDeletePayload = {
 };
 
 /** The page or pages on the online store where the script should be included. */
-export enum ScriptTagDisplayScope {
-  /**
-   * Include the script on both the web storefront and the <b>Order status</b> page.
-   * @deprecated `ALL` is deprecated. Use `ONLINE_STORE` instead.
-   *
-   */
-  All = 'ALL',
+export const ScriptTagDisplayScope = {
+  /** Include the script on both the web storefront and the <b>Order status</b> page. */
+  All: 'ALL',
   /** Include the script only on the web storefront. */
-  OnlineStore = 'ONLINE_STORE',
-  /**
-   * Include the script only on the <b>Order status</b> page.
-   * @deprecated `ORDER_STATUS` is deprecated and unavailable as a mutation input.
-   *
-   */
-  OrderStatus = 'ORDER_STATUS'
-}
+  OnlineStore: 'ONLINE_STORE',
+  /** Include the script only on the <b>Order status</b> page. */
+  OrderStatus: 'ORDER_STATUS'
+} as const;
 
+export type ScriptTagDisplayScope = typeof ScriptTagDisplayScope[keyof typeof ScriptTagDisplayScope];
 /** An auto-generated type which holds one ScriptTag and a cursor during pagination. */
 export type ScriptTagEdge = {
   __typename?: 'ScriptTagEdge';
@@ -57541,31 +57907,32 @@ export type SearchResultEdge = {
 };
 
 /** Specifies the type of resources to be returned from a search. */
-export enum SearchResultType {
+export const SearchResultType = {
   /** An article. */
-  Article = 'ARTICLE',
+  Article: 'ARTICLE',
   /** A balance transaction. */
-  BalanceTransaction = 'BALANCE_TRANSACTION',
+  BalanceTransaction: 'BALANCE_TRANSACTION',
   /** A blog. */
-  Blog = 'BLOG',
-  Collection = 'COLLECTION',
-  Customer = 'CUSTOMER',
+  Blog: 'BLOG',
+  Collection: 'COLLECTION',
+  Customer: 'CUSTOMER',
   /** A code discount redeem code. */
-  DiscountRedeemCode = 'DISCOUNT_REDEEM_CODE',
-  DraftOrder = 'DRAFT_ORDER',
+  DiscountRedeemCode: 'DISCOUNT_REDEEM_CODE',
+  DraftOrder: 'DRAFT_ORDER',
   /** A file. */
-  File = 'FILE',
+  File: 'FILE',
   /** An inventory transfer. */
-  InventoryTransfer = 'INVENTORY_TRANSFER',
-  Order = 'ORDER',
+  InventoryTransfer: 'INVENTORY_TRANSFER',
+  Order: 'ORDER',
   /** A page. */
-  Page = 'PAGE',
-  PriceRule = 'PRICE_RULE',
-  Product = 'PRODUCT',
+  Page: 'PAGE',
+  PriceRule: 'PRICE_RULE',
+  Product: 'PRODUCT',
   /** A URL redirect. */
-  UrlRedirect = 'URL_REDIRECT'
-}
+  UrlRedirect: 'URL_REDIRECT'
+} as const;
 
+export type SearchResultType = typeof SearchResultType[keyof typeof SearchResultType];
 /**
  * A group of [customers](https://shopify.dev/docs/api/admin-graphql/latest/objects/Customer) that meet specific criteria defined through [ShopifyQL query](https://shopify.dev/docs/api/shopifyql/segment-query-language-reference) conditions. Common use cases for segments include customer analytics, targeted marketing campaigns, and automated discount eligibility.
  *
@@ -57834,20 +58201,21 @@ export type SegmentMigrationEdge = {
 };
 
 /** The set of valid sort keys for the Segment query. */
-export enum SegmentSortKeys {
+export const SegmentSortKeys = {
   /** Sort by the `creation_date` value. */
-  CreationDate = 'CREATION_DATE',
+  CreationDate: 'CREATION_DATE',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `last_edit_date` value. */
-  LastEditDate = 'LAST_EDIT_DATE',
+  LastEditDate: 'LAST_EDIT_DATE',
   /**
    * Sort by relevance to the search terms when the `query` parameter is specified on the connection.
    * Don't use this sort key when no search query is specified.
    */
-  Relevance = 'RELEVANCE'
-}
+  Relevance: 'RELEVANCE'
+} as const;
 
+export type SegmentSortKeys = typeof SegmentSortKeys[keyof typeof SegmentSortKeys];
 /** The statistics of a given segment. */
 export type SegmentStatistics = {
   __typename?: 'SegmentStatistics';
@@ -58150,15 +58518,16 @@ export type SellingPlanAnchorInput = {
 };
 
 /** Represents the anchor type. */
-export enum SellingPlanAnchorType {
+export const SellingPlanAnchorType = {
   /** Which day of the month, between 1-31. */
-  Monthday = 'MONTHDAY',
+  Monthday: 'MONTHDAY',
   /** Which day of the week, between 1-7. */
-  Weekday = 'WEEKDAY',
+  Weekday: 'WEEKDAY',
   /** Which days of the month and year, month between 1-12, and day between 1-31. */
-  Yearday = 'YEARDAY'
-}
+  Yearday: 'YEARDAY'
+} as const;
 
+export type SellingPlanAnchorType = typeof SellingPlanAnchorType[keyof typeof SellingPlanAnchorType];
 /**
  * Represents the billing frequency associated to the selling plan (for example, bill every week, or bill every
  * three months). The selling plan billing policy and associated records (selling plan groups, selling plans, pricing
@@ -58180,17 +58549,18 @@ export type SellingPlanBillingPolicyInput = {
  *          you must fill out our [request form](https://docs.google.com/forms/d/e/1FAIpQLSeU18Xmw0Q61V8wdH-dfGafFqIBfRchQKUO8WAF3yJTvgyyZQ/viewform),
  *          where we'll review your request for a new purchase option.
  */
-export enum SellingPlanCategory {
+export const SellingPlanCategory = {
   /** The selling plan is for anything not in one of the other categories. */
-  Other = 'OTHER',
+  Other: 'OTHER',
   /** The selling plan is for pre-orders. */
-  PreOrder = 'PRE_ORDER',
+  PreOrder: 'PRE_ORDER',
   /** The selling plan is for subscriptions. */
-  Subscription = 'SUBSCRIPTION',
+  Subscription: 'SUBSCRIPTION',
   /** The selling plan is for try before you buy purchases. */
-  TryBeforeYouBuy = 'TRY_BEFORE_YOU_BUY'
-}
+  TryBeforeYouBuy: 'TRY_BEFORE_YOU_BUY'
+} as const;
 
+export type SellingPlanCategory = typeof SellingPlanCategory[keyof typeof SellingPlanCategory];
 /** The amount charged at checkout when the full amount isn't charged at checkout. */
 export type SellingPlanCheckoutCharge = {
   __typename?: 'SellingPlanCheckoutCharge';
@@ -58216,13 +58586,14 @@ export type SellingPlanCheckoutChargePercentageValue = {
 };
 
 /** The checkout charge when the full amount isn't charged at checkout. */
-export enum SellingPlanCheckoutChargeType {
+export const SellingPlanCheckoutChargeType = {
   /** The checkout charge is a percentage of the product or variant price. */
-  Percentage = 'PERCENTAGE',
+  Percentage: 'PERCENTAGE',
   /** The checkout charge is a fixed price amount. */
-  Price = 'PRICE'
-}
+  Price: 'PRICE'
+} as const;
 
+export type SellingPlanCheckoutChargeType = typeof SellingPlanCheckoutChargeType[keyof typeof SellingPlanCheckoutChargeType];
 /** The portion of the price to be charged at checkout. */
 export type SellingPlanCheckoutChargeValue = MoneyV2 | SellingPlanCheckoutChargePercentageValue;
 
@@ -58337,23 +58708,25 @@ export type SellingPlanFixedDeliveryPolicyInput = {
 };
 
 /** Possible intentions of a Delivery Policy. */
-export enum SellingPlanFixedDeliveryPolicyIntent {
+export const SellingPlanFixedDeliveryPolicyIntent = {
   /** A merchant-centric delivery policy. Mark this delivery policy to define when the merchant should start fulfillment. */
-  FulfillmentBegin = 'FULFILLMENT_BEGIN'
-}
+  FulfillmentBegin: 'FULFILLMENT_BEGIN'
+} as const;
 
+export type SellingPlanFixedDeliveryPolicyIntent = typeof SellingPlanFixedDeliveryPolicyIntent[keyof typeof SellingPlanFixedDeliveryPolicyIntent];
 /** The fulfillment or delivery behavior of the first fulfillment when the orderis placed before the anchor. */
-export enum SellingPlanFixedDeliveryPolicyPreAnchorBehavior {
+export const SellingPlanFixedDeliveryPolicyPreAnchorBehavior = {
   /** Orders placed can be fulfilled / delivered immediately. Orders placed inside a cutoff can be fulfilled / delivered at the next anchor. */
-  Asap = 'ASAP',
+  Asap: 'ASAP',
   /**
    * Orders placed can be fulfilled / delivered at the next anchor date.
    * Orders placed inside a cutoff will skip the next anchor and can be fulfilled /
    * delivered at the following anchor.
    */
-  Next = 'NEXT'
-}
+  Next: 'NEXT'
+} as const;
 
+export type SellingPlanFixedDeliveryPolicyPreAnchorBehavior = typeof SellingPlanFixedDeliveryPolicyPreAnchorBehavior[keyof typeof SellingPlanFixedDeliveryPolicyPreAnchorBehavior];
 /**
  * Represents the pricing policy of a subscription or deferred purchase option selling plan.
  * The selling plan fixed pricing policy works with the billing and delivery policy
@@ -58382,17 +58755,18 @@ export type SellingPlanFixedPricingPolicyInput = {
 };
 
 /** Describes what triggers fulfillment. */
-export enum SellingPlanFulfillmentTrigger {
+export const SellingPlanFulfillmentTrigger = {
   /** Use the anchor values to calculate fulfillment date. */
-  Anchor = 'ANCHOR',
+  Anchor: 'ANCHOR',
   /** As soon as possible. */
-  Asap = 'ASAP',
+  Asap: 'ASAP',
   /** At an exact time defined by the fulfillment_exact_time field. */
-  ExactTime = 'EXACT_TIME',
+  ExactTime: 'EXACT_TIME',
   /** Unknown. Usually to be determined in the future. */
-  Unknown = 'UNKNOWN'
-}
+  Unknown: 'UNKNOWN'
+} as const;
 
+export type SellingPlanFulfillmentTrigger = typeof SellingPlanFulfillmentTrigger[keyof typeof SellingPlanFulfillmentTrigger];
 /**
  * A selling method that defines how products can be sold through purchase options like subscriptions, pre-orders, or try-before-you-buy. Groups one or more [`SellingPlan`](https://shopify.dev/docs/api/admin-graphql/latest/objects/SellingPlan) objects that share the same selling method and options.
  *
@@ -58664,17 +59038,18 @@ export type SellingPlanGroupResourceInput = {
 };
 
 /** The set of valid sort keys for the SellingPlanGroup query. */
-export enum SellingPlanGroupSortKeys {
+export const SellingPlanGroupSortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `name` value. */
-  Name = 'NAME',
+  Name: 'NAME',
   /** Sort by the `updated_at` value. */
-  UpdatedAt = 'UPDATED_AT'
-}
+  UpdatedAt: 'UPDATED_AT'
+} as const;
 
+export type SellingPlanGroupSortKeys = typeof SellingPlanGroupSortKeys[keyof typeof SellingPlanGroupSortKeys];
 /** Return type for `sellingPlanGroupUpdate` mutation. */
 export type SellingPlanGroupUpdatePayload = {
   __typename?: 'SellingPlanGroupUpdatePayload';
@@ -58698,135 +59073,136 @@ export type SellingPlanGroupUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `SellingPlanGroupUserError`. */
-export enum SellingPlanGroupUserErrorCode {
+export const SellingPlanGroupUserErrorCode = {
   /** Billing and delivery policy types must be the same. */
-  BillingAndDeliveryPolicyTypesMustBeTheSame = 'BILLING_AND_DELIVERY_POLICY_TYPES_MUST_BE_THE_SAME',
+  BillingAndDeliveryPolicyTypesMustBeTheSame: 'BILLING_AND_DELIVERY_POLICY_TYPES_MUST_BE_THE_SAME',
   /** Billing policy's interval is too large. */
-  BillingPolicyIntervalTooLarge = 'BILLING_POLICY_INTERVAL_TOO_LARGE',
+  BillingPolicyIntervalTooLarge: 'BILLING_POLICY_INTERVAL_TOO_LARGE',
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** A fixed billing policy's checkout charge value and type must match. */
-  CheckoutChargeValueAndTypeMustMatch = 'CHECKOUT_CHARGE_VALUE_AND_TYPE_MUST_MATCH',
+  CheckoutChargeValueAndTypeMustMatch: 'CHECKOUT_CHARGE_VALUE_AND_TYPE_MUST_MATCH',
   /** Delivery policy's interval is too large. */
-  DeliveryPolicyIntervalTooLarge = 'DELIVERY_POLICY_INTERVAL_TOO_LARGE',
+  DeliveryPolicyIntervalTooLarge: 'DELIVERY_POLICY_INTERVAL_TOO_LARGE',
   /** The input value should be equal to the value allowed. */
-  EqualTo = 'EQUAL_TO',
+  EqualTo: 'EQUAL_TO',
   /** Could not add the resource to the selling plan group. */
-  ErrorAddingResourceToGroup = 'ERROR_ADDING_RESOURCE_TO_GROUP',
+  ErrorAddingResourceToGroup: 'ERROR_ADDING_RESOURCE_TO_GROUP',
   /** A fixed billing policy's fulfillment_exact_time must not be present when the fulfillment_trigger isn't EXACT_TIME. */
-  FulfillmentExactTimeNotAllowed = 'FULFILLMENT_EXACT_TIME_NOT_ALLOWED',
+  FulfillmentExactTimeNotAllowed: 'FULFILLMENT_EXACT_TIME_NOT_ALLOWED',
   /** A fixed billing policy's fulfillment_exact_time can't be blank when the fulfillment_trigger is EXACT_TIME. */
-  FulfillmentExactTimeRequired = 'FULFILLMENT_EXACT_TIME_REQUIRED',
+  FulfillmentExactTimeRequired: 'FULFILLMENT_EXACT_TIME_REQUIRED',
   /** The input value should be greater than the minimum allowed value. */
-  GreaterThan = 'GREATER_THAN',
+  GreaterThan: 'GREATER_THAN',
   /** The input value should be greater than or equal to the minimum value allowed. */
-  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  GreaterThanOrEqualTo: 'GREATER_THAN_OR_EQUAL_TO',
   /** Selling plan group could not be deleted. */
-  GroupCouldNotBeDeleted = 'GROUP_COULD_NOT_BE_DELETED',
+  GroupCouldNotBeDeleted: 'GROUP_COULD_NOT_BE_DELETED',
   /** Selling plan group does not exist. */
-  GroupDoesNotExist = 'GROUP_DOES_NOT_EXIST',
+  GroupDoesNotExist: 'GROUP_DOES_NOT_EXIST',
   /** The input value isn't included in the list. */
-  Inclusion = 'INCLUSION',
+  Inclusion: 'INCLUSION',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The input submitted is invalid. */
-  InvalidInput = 'INVALID_INPUT',
+  InvalidInput: 'INVALID_INPUT',
   /** The input value should be less than the maximum value allowed. */
-  LessThan = 'LESS_THAN',
+  LessThan: 'LESS_THAN',
   /** The input value should be less than or equal to the maximum value allowed. */
-  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  LessThanOrEqualTo: 'LESS_THAN_OR_EQUAL_TO',
   /** The input value is not a number. */
-  NotANumber = 'NOT_A_NUMBER',
+  NotANumber: 'NOT_A_NUMBER',
   /** The record with the ID used as the input value couldn't be found. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** Only one billing policy type can be defined. */
-  OnlyNeedOneBillingPolicyType = 'ONLY_NEED_ONE_BILLING_POLICY_TYPE',
+  OnlyNeedOneBillingPolicyType: 'ONLY_NEED_ONE_BILLING_POLICY_TYPE',
   /** A fixed billing policy's checkout charge can have at most one value. */
-  OnlyNeedOneCheckoutChargeValue = 'ONLY_NEED_ONE_CHECKOUT_CHARGE_VALUE',
+  OnlyNeedOneCheckoutChargeValue: 'ONLY_NEED_ONE_CHECKOUT_CHARGE_VALUE',
   /** Only one delivery policy type can be defined. */
-  OnlyNeedOneDeliveryPolicyType = 'ONLY_NEED_ONE_DELIVERY_POLICY_TYPE',
+  OnlyNeedOneDeliveryPolicyType: 'ONLY_NEED_ONE_DELIVERY_POLICY_TYPE',
   /** Only one pricing policy type can be defined. */
-  OnlyNeedOnePricingPolicyType = 'ONLY_NEED_ONE_PRICING_POLICY_TYPE',
+  OnlyNeedOnePricingPolicyType: 'ONLY_NEED_ONE_PRICING_POLICY_TYPE',
   /** Only one pricing policy adjustment value type can be defined. */
-  OnlyNeedOnePricingPolicyValue = 'ONLY_NEED_ONE_PRICING_POLICY_VALUE',
+  OnlyNeedOnePricingPolicyValue: 'ONLY_NEED_ONE_PRICING_POLICY_VALUE',
   /** A selling plan can't have both fixed and recurring billing policies. */
-  OnlyOneOfFixedOrRecurringBilling = 'ONLY_ONE_OF_FIXED_OR_RECURRING_BILLING',
+  OnlyOneOfFixedOrRecurringBilling: 'ONLY_ONE_OF_FIXED_OR_RECURRING_BILLING',
   /** A selling plan can't have both fixed and recurring delivery policies. */
-  OnlyOneOfFixedOrRecurringDelivery = 'ONLY_ONE_OF_FIXED_OR_RECURRING_DELIVERY',
+  OnlyOneOfFixedOrRecurringDelivery: 'ONLY_ONE_OF_FIXED_OR_RECURRING_DELIVERY',
   /** Selling plan does not exist. */
-  PlanDoesNotExist = 'PLAN_DOES_NOT_EXIST',
+  PlanDoesNotExist: 'PLAN_DOES_NOT_EXIST',
   /** Selling plan ID must be specified to update. */
-  PlanIdMustBeSpecifiedToUpdate = 'PLAN_ID_MUST_BE_SPECIFIED_TO_UPDATE',
+  PlanIdMustBeSpecifiedToUpdate: 'PLAN_ID_MUST_BE_SPECIFIED_TO_UPDATE',
   /** The input value needs to be blank. */
-  Present = 'PRESENT',
+  Present: 'PRESENT',
   /** Pricing policy's adjustment value and adjustment type must match. */
-  PricingPolicyAdjustmentValueAndTypeMustMatch = 'PRICING_POLICY_ADJUSTMENT_VALUE_AND_TYPE_MUST_MATCH',
+  PricingPolicyAdjustmentValueAndTypeMustMatch: 'PRICING_POLICY_ADJUSTMENT_VALUE_AND_TYPE_MUST_MATCH',
   /** Product does not exist. */
-  ProductDoesNotExist = 'PRODUCT_DOES_NOT_EXIST',
+  ProductDoesNotExist: 'PRODUCT_DOES_NOT_EXIST',
   /** Product variant does not exist. */
-  ProductVariantDoesNotExist = 'PRODUCT_VARIANT_DOES_NOT_EXIST',
+  ProductVariantDoesNotExist: 'PRODUCT_VARIANT_DOES_NOT_EXIST',
   /** A fixed billing policy's remaining_balance_charge_exact_time must not be present when the remaining_balance_charge_trigger isn't EXACT_TIME. */
-  RemainingBalanceChargeExactTimeNotAllowed = 'REMAINING_BALANCE_CHARGE_EXACT_TIME_NOT_ALLOWED',
+  RemainingBalanceChargeExactTimeNotAllowed: 'REMAINING_BALANCE_CHARGE_EXACT_TIME_NOT_ALLOWED',
   /** A fixed billing policy's remaining_balance_charge_exact_time can't be blank when the remaining_balance_charge_trigger is EXACT_TIME. */
-  RemainingBalanceChargeExactTimeRequired = 'REMAINING_BALANCE_CHARGE_EXACT_TIME_REQUIRED',
+  RemainingBalanceChargeExactTimeRequired: 'REMAINING_BALANCE_CHARGE_EXACT_TIME_REQUIRED',
   /** A fixed billing policy's remaining_balance_charge_time_after_checkout must be present and greater than zero when the remaining_balance_charge_trigger is TIME_AFTER_CHECKOUT. */
-  RemainingBalanceChargeTimeAfterCheckoutMustBeGreaterThanZero = 'REMAINING_BALANCE_CHARGE_TIME_AFTER_CHECKOUT_MUST_BE_GREATER_THAN_ZERO',
+  RemainingBalanceChargeTimeAfterCheckoutMustBeGreaterThanZero: 'REMAINING_BALANCE_CHARGE_TIME_AFTER_CHECKOUT_MUST_BE_GREATER_THAN_ZERO',
   /** A fixed billing policy's remaining_balance_charge_trigger can't be NO_REMAINING_BALANCE when the checkout_charge_type is PERCENTAGE and checkout_charge_value is less than 100. */
-  RemainingBalanceChargeTriggerNoRemainingBalanceOnPartialPercentageCheckoutCharge = 'REMAINING_BALANCE_CHARGE_TRIGGER_NO_REMAINING_BALANCE_ON_PARTIAL_PERCENTAGE_CHECKOUT_CHARGE',
+  RemainingBalanceChargeTriggerNoRemainingBalanceOnPartialPercentageCheckoutCharge: 'REMAINING_BALANCE_CHARGE_TRIGGER_NO_REMAINING_BALANCE_ON_PARTIAL_PERCENTAGE_CHECKOUT_CHARGE',
   /** A fixed billing policy's remaining_balance_charge_trigger can't be NO_REMAINING_BALANCE when the checkout_charge_type is PRICE. */
-  RemainingBalanceChargeTriggerNoRemainingBalanceOnPriceCheckoutCharge = 'REMAINING_BALANCE_CHARGE_TRIGGER_NO_REMAINING_BALANCE_ON_PRICE_CHECKOUT_CHARGE',
+  RemainingBalanceChargeTriggerNoRemainingBalanceOnPriceCheckoutCharge: 'REMAINING_BALANCE_CHARGE_TRIGGER_NO_REMAINING_BALANCE_ON_PRICE_CHECKOUT_CHARGE',
   /** A fixed billing policy's remaining_balance_charge_trigger must be NO_REMAINING_BALANCE when the checkout_charge_type is PERCENTAGE and checkout_charge_value is 100. */
-  RemainingBalanceChargeTriggerOnFullCheckout = 'REMAINING_BALANCE_CHARGE_TRIGGER_ON_FULL_CHECKOUT',
+  RemainingBalanceChargeTriggerOnFullCheckout: 'REMAINING_BALANCE_CHARGE_TRIGGER_ON_FULL_CHECKOUT',
   /** The selling plan list provided contains 1 or more invalid IDs. */
-  ResourceListContainsInvalidIds = 'RESOURCE_LIST_CONTAINS_INVALID_IDS',
+  ResourceListContainsInvalidIds: 'RESOURCE_LIST_CONTAINS_INVALID_IDS',
   /** A fixed delivery policy's anchors must not be present when the fulfillment_trigger isn't ANCHOR. */
-  SellingPlanAnchorsNotAllowed = 'SELLING_PLAN_ANCHORS_NOT_ALLOWED',
+  SellingPlanAnchorsNotAllowed: 'SELLING_PLAN_ANCHORS_NOT_ALLOWED',
   /** A fixed delivery policy's anchors must be present when the fulfillment_trigger is ANCHOR. */
-  SellingPlanAnchorsRequired = 'SELLING_PLAN_ANCHORS_REQUIRED',
+  SellingPlanAnchorsRequired: 'SELLING_PLAN_ANCHORS_REQUIRED',
   /** Selling plan's billing and delivery policies anchors must be equal. */
-  SellingPlanBillingAndDeliveryPolicyAnchorsMustBeEqual = 'SELLING_PLAN_BILLING_AND_DELIVERY_POLICY_ANCHORS_MUST_BE_EQUAL',
+  SellingPlanBillingAndDeliveryPolicyAnchorsMustBeEqual: 'SELLING_PLAN_BILLING_AND_DELIVERY_POLICY_ANCHORS_MUST_BE_EQUAL',
   /** Selling plan's billing cycle must be a multiple of delivery cycle. */
-  SellingPlanBillingCycleMustBeAMultipleOfDeliveryCycle = 'SELLING_PLAN_BILLING_CYCLE_MUST_BE_A_MULTIPLE_OF_DELIVERY_CYCLE',
+  SellingPlanBillingCycleMustBeAMultipleOfDeliveryCycle: 'SELLING_PLAN_BILLING_CYCLE_MUST_BE_A_MULTIPLE_OF_DELIVERY_CYCLE',
   /** Missing billing policy. */
-  SellingPlanBillingPolicyMissing = 'SELLING_PLAN_BILLING_POLICY_MISSING',
+  SellingPlanBillingPolicyMissing: 'SELLING_PLAN_BILLING_POLICY_MISSING',
   /** Must include at least one selling plan. */
-  SellingPlanCountLowerBound = 'SELLING_PLAN_COUNT_LOWER_BOUND',
+  SellingPlanCountLowerBound: 'SELLING_PLAN_COUNT_LOWER_BOUND',
   /** Exceeded the selling plan limit (31). */
-  SellingPlanCountUpperBound = 'SELLING_PLAN_COUNT_UPPER_BOUND',
+  SellingPlanCountUpperBound: 'SELLING_PLAN_COUNT_UPPER_BOUND',
   /** Missing delivery policy. */
-  SellingPlanDeliveryPolicyMissing = 'SELLING_PLAN_DELIVERY_POLICY_MISSING',
+  SellingPlanDeliveryPolicyMissing: 'SELLING_PLAN_DELIVERY_POLICY_MISSING',
   /** Cannot have multiple selling plans with the same name. */
-  SellingPlanDuplicateName = 'SELLING_PLAN_DUPLICATE_NAME',
+  SellingPlanDuplicateName: 'SELLING_PLAN_DUPLICATE_NAME',
   /** Cannot have multiple selling plans with the same options. */
-  SellingPlanDuplicateOptions = 'SELLING_PLAN_DUPLICATE_OPTIONS',
+  SellingPlanDuplicateOptions: 'SELLING_PLAN_DUPLICATE_OPTIONS',
   /** A fixed selling plan can have at most one pricing policy. */
-  SellingPlanFixedPricingPoliciesLimit = 'SELLING_PLAN_FIXED_PRICING_POLICIES_LIMIT',
+  SellingPlanFixedPricingPoliciesLimit: 'SELLING_PLAN_FIXED_PRICING_POLICIES_LIMIT',
   /** Selling plan's billing policy max cycles must be greater than min cycles. */
-  SellingPlanMaxCyclesMustBeGreaterThanMinCycles = 'SELLING_PLAN_MAX_CYCLES_MUST_BE_GREATER_THAN_MIN_CYCLES',
+  SellingPlanMaxCyclesMustBeGreaterThanMinCycles: 'SELLING_PLAN_MAX_CYCLES_MUST_BE_GREATER_THAN_MIN_CYCLES',
   /** Cannot define option2 on this selling plan as there's no label on the parent selling plan group. */
-  SellingPlanMissingOption2LabelOnParentGroup = 'SELLING_PLAN_MISSING_OPTION2_LABEL_ON_PARENT_GROUP',
+  SellingPlanMissingOption2LabelOnParentGroup: 'SELLING_PLAN_MISSING_OPTION2_LABEL_ON_PARENT_GROUP',
   /** Cannot define option3 on this selling plan as there's no label on the parent selling plan group. */
-  SellingPlanMissingOption3LabelOnParentGroup = 'SELLING_PLAN_MISSING_OPTION3_LABEL_ON_PARENT_GROUP',
+  SellingPlanMissingOption3LabelOnParentGroup: 'SELLING_PLAN_MISSING_OPTION3_LABEL_ON_PARENT_GROUP',
   /** Selling plan's option2 is required because option2 exists. */
-  SellingPlanOption2RequiredAsDefinedOnParentGroup = 'SELLING_PLAN_OPTION2_REQUIRED_AS_DEFINED_ON_PARENT_GROUP',
+  SellingPlanOption2RequiredAsDefinedOnParentGroup: 'SELLING_PLAN_OPTION2_REQUIRED_AS_DEFINED_ON_PARENT_GROUP',
   /** Selling plan's option3 is required because option3 exists. */
-  SellingPlanOption3RequiredAsDefinedOnParentGroup = 'SELLING_PLAN_OPTION3_REQUIRED_AS_DEFINED_ON_PARENT_GROUP',
+  SellingPlanOption3RequiredAsDefinedOnParentGroup: 'SELLING_PLAN_OPTION3_REQUIRED_AS_DEFINED_ON_PARENT_GROUP',
   /** Selling plans can't have more than 2 pricing policies. */
-  SellingPlanPricingPoliciesLimit = 'SELLING_PLAN_PRICING_POLICIES_LIMIT',
+  SellingPlanPricingPoliciesLimit: 'SELLING_PLAN_PRICING_POLICIES_LIMIT',
   /** Selling plan's pricing policies must contain one fixed pricing policy. */
-  SellingPlanPricingPoliciesMustContainAFixedPricingPolicy = 'SELLING_PLAN_PRICING_POLICIES_MUST_CONTAIN_A_FIXED_PRICING_POLICY',
+  SellingPlanPricingPoliciesMustContainAFixedPricingPolicy: 'SELLING_PLAN_PRICING_POLICIES_MUST_CONTAIN_A_FIXED_PRICING_POLICY',
   /** The input value is already taken. */
-  Taken = 'TAKEN',
+  Taken: 'TAKEN',
   /** The input value is too big. */
-  TooBig = 'TOO_BIG',
+  TooBig: 'TOO_BIG',
   /** The input value is too long. */
-  TooLong = 'TOO_LONG',
+  TooLong: 'TOO_LONG',
   /** The input value is too short. */
-  TooShort = 'TOO_SHORT',
+  TooShort: 'TOO_SHORT',
   /** The input value is the wrong length. */
-  WrongLength = 'WRONG_LENGTH'
-}
+  WrongLength: 'WRONG_LENGTH'
+} as const;
 
+export type SellingPlanGroupUserErrorCode = typeof SellingPlanGroupUserErrorCode[keyof typeof SellingPlanGroupUserErrorCode];
 /** The input fields to create or update a selling plan. */
 export type SellingPlanInput = {
   /** Selling plan policy which describes the billing details. */
@@ -58857,17 +59233,18 @@ export type SellingPlanInput = {
 };
 
 /** Represents valid selling plan interval. */
-export enum SellingPlanInterval {
+export const SellingPlanInterval = {
   /** Day interval. */
-  Day = 'DAY',
+  Day: 'DAY',
   /** Month interval. */
-  Month = 'MONTH',
+  Month: 'MONTH',
   /** Week interval. */
-  Week = 'WEEK',
+  Week: 'WEEK',
   /** Year interval. */
-  Year = 'YEAR'
-}
+  Year: 'YEAR'
+} as const;
 
+export type SellingPlanInterval = typeof SellingPlanInterval[keyof typeof SellingPlanInterval];
 /** The selling plan inventory policy. */
 export type SellingPlanInventoryPolicy = {
   __typename?: 'SellingPlanInventoryPolicy';
@@ -58891,15 +59268,16 @@ export type SellingPlanInventoryPolicyInput = {
 export type SellingPlanPricingPolicy = SellingPlanFixedPricingPolicy | SellingPlanRecurringPricingPolicy;
 
 /** Represents a selling plan pricing policy adjustment type. */
-export enum SellingPlanPricingPolicyAdjustmentType {
+export const SellingPlanPricingPolicyAdjustmentType = {
   /** Fixed amount off adjustment. */
-  FixedAmount = 'FIXED_AMOUNT',
+  FixedAmount: 'FIXED_AMOUNT',
   /** Percentage off adjustment. */
-  Percentage = 'PERCENTAGE',
+  Percentage: 'PERCENTAGE',
   /** Price of the policy. */
-  Price = 'PRICE'
-}
+  Price: 'PRICE'
+} as const;
 
+export type SellingPlanPricingPolicyAdjustmentType = typeof SellingPlanPricingPolicyAdjustmentType[keyof typeof SellingPlanPricingPolicyAdjustmentType];
 /** Represents a selling plan pricing policy adjustment value type. */
 export type SellingPlanPricingPolicyAdjustmentValue = MoneyV2 | SellingPlanPricingPolicyPercentageValue;
 
@@ -59006,23 +59384,25 @@ export type SellingPlanRecurringDeliveryPolicyInput = {
 };
 
 /** Whether the delivery policy is merchant or buyer-centric. */
-export enum SellingPlanRecurringDeliveryPolicyIntent {
+export const SellingPlanRecurringDeliveryPolicyIntent = {
   /** A merchant-centric delivery policy. Mark this delivery policy to define when the merchant should start fulfillment. */
-  FulfillmentBegin = 'FULFILLMENT_BEGIN'
-}
+  FulfillmentBegin: 'FULFILLMENT_BEGIN'
+} as const;
 
+export type SellingPlanRecurringDeliveryPolicyIntent = typeof SellingPlanRecurringDeliveryPolicyIntent[keyof typeof SellingPlanRecurringDeliveryPolicyIntent];
 /** The fulfillment or delivery behaviors of the first fulfillment when the orderis placed before the anchor. */
-export enum SellingPlanRecurringDeliveryPolicyPreAnchorBehavior {
+export const SellingPlanRecurringDeliveryPolicyPreAnchorBehavior = {
   /** The orders placed can be fulfilled or delivered immediately. The orders placed inside a cutoff can be fulfilled or delivered at the next anchor. */
-  Asap = 'ASAP',
+  Asap: 'ASAP',
   /**
    * The orders placed can be fulfilled or delivered at the next anchor date.
    * The orders placed inside a cutoff will skip the next anchor and can be fulfilled or
    * delivered at the following anchor.
    */
-  Next = 'NEXT'
-}
+  Next: 'NEXT'
+} as const;
 
+export type SellingPlanRecurringDeliveryPolicyPreAnchorBehavior = typeof SellingPlanRecurringDeliveryPolicyPreAnchorBehavior[keyof typeof SellingPlanRecurringDeliveryPolicyPreAnchorBehavior];
 /** Represents a recurring selling plan pricing policy. It applies after the fixed pricing policy. By using the afterCycle parameter, you can specify the cycle when the recurring pricing policy comes into effect. Recurring pricing policies are not available for deferred purchase options. */
 export type SellingPlanRecurringPricingPolicy = SellingPlanPricingPolicyBase & {
   __typename?: 'SellingPlanRecurringPricingPolicy';
@@ -59049,25 +59429,27 @@ export type SellingPlanRecurringPricingPolicyInput = {
 };
 
 /** When to capture the payment for the remaining amount due. */
-export enum SellingPlanRemainingBalanceChargeTrigger {
+export const SellingPlanRemainingBalanceChargeTrigger = {
   /** At an exact time defined by the remaining_balance_charge_exact_time field. */
-  ExactTime = 'EXACT_TIME',
+  ExactTime: 'EXACT_TIME',
   /** When there's no remaining balance to be charged after checkout. */
-  NoRemainingBalance = 'NO_REMAINING_BALANCE',
+  NoRemainingBalance: 'NO_REMAINING_BALANCE',
   /** When the order is fulfilled. */
-  OnFulfillment = 'ON_FULFILLMENT',
+  OnFulfillment: 'ON_FULFILLMENT',
   /** After the duration defined by the remaining_balance_charge_time_after_checkout field. */
-  TimeAfterCheckout = 'TIME_AFTER_CHECKOUT'
-}
+  TimeAfterCheckout: 'TIME_AFTER_CHECKOUT'
+} as const;
 
+export type SellingPlanRemainingBalanceChargeTrigger = typeof SellingPlanRemainingBalanceChargeTrigger[keyof typeof SellingPlanRemainingBalanceChargeTrigger];
 /** When to reserve inventory for a selling plan. */
-export enum SellingPlanReserve {
+export const SellingPlanReserve = {
   /** Reserve inventory when order is fulfilled. */
-  OnFulfillment = 'ON_FULFILLMENT',
+  OnFulfillment: 'ON_FULFILLMENT',
   /** Reserve inventory at time of sale. */
-  OnSale = 'ON_SALE'
-}
+  OnSale: 'ON_SALE'
+} as const;
 
+export type SellingPlanReserve = typeof SellingPlanReserve[keyof typeof SellingPlanReserve];
 /** A server pixel stores configuration for streaming customer interactions to an EventBridge or PubSub endpoint. */
 export type ServerPixel = Node & {
   __typename?: 'ServerPixel';
@@ -59098,30 +59480,33 @@ export type ServerPixelDeletePayload = {
 };
 
 /** The current state of a server pixel. */
-export enum ServerPixelStatus {
+export const ServerPixelStatus = {
   /** This server pixel is connected: it will stream customer events to the endpoint if it is configured properly. */
-  Connected = 'CONNECTED',
+  Connected: 'CONNECTED',
   /** This server pixel is disconnected: it does not stream events to the endpoint and an endpoint address has been added to the server pixel. */
-  DisconnectedConfigured = 'DISCONNECTED_CONFIGURED',
+  DisconnectedConfigured: 'DISCONNECTED_CONFIGURED',
   /** This server pixel is disconnected and unconfigured: it does not stream events to the endpoint and no endpoint address had been added to the server pixel. */
-  DisconnectedUnconfigured = 'DISCONNECTED_UNCONFIGURED'
-}
+  DisconnectedUnconfigured: 'DISCONNECTED_UNCONFIGURED'
+} as const;
 
+export type ServerPixelStatus = typeof ServerPixelStatus[keyof typeof ServerPixelStatus];
 /** The set of valid sort keys for the ShipmentLineItem query. */
-export enum ShipmentLineItemSortKeys {
+export const ShipmentLineItemSortKeys = {
   /** Sort by the `id` value. */
-  Id = 'ID'
-}
+  Id: 'ID'
+} as const;
 
+export type ShipmentLineItemSortKeys = typeof ShipmentLineItemSortKeys[keyof typeof ShipmentLineItemSortKeys];
 /**
  * The [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
  * that's used to control how discounts can be combined.
  */
-export enum ShippingDiscountClass {
+export const ShippingDiscountClass = {
   /** Combined as a shipping discount. */
-  Shipping = 'SHIPPING'
-}
+  Shipping: 'SHIPPING'
+} as const;
 
+export type ShippingDiscountClass = typeof ShippingDiscountClass[keyof typeof ShippingDiscountClass];
 /** The shipping method that customers select for an order. Includes pricing details, carrier information, and any applied discounts or taxes. */
 export type ShippingLine = {
   __typename?: 'ShippingLine';
@@ -59262,17 +59647,18 @@ export type ShippingPackageMakeDefaultPayload = {
 };
 
 /** Type of a shipping package. */
-export enum ShippingPackageType {
+export const ShippingPackageType = {
   /** A shipping box. */
-  Box = 'BOX',
+  Box: 'BOX',
   /** An envelope. */
-  Envelope = 'ENVELOPE',
+  Envelope: 'ENVELOPE',
   /** A flat rate packaging supplied by a carrier. */
-  FlatRate = 'FLAT_RATE',
+  FlatRate: 'FLAT_RATE',
   /** A soft-pack, bubble-wrap or vinyl envelope. */
-  SoftPack = 'SOFT_PACK'
-}
+  SoftPack: 'SOFT_PACK'
+} as const;
 
+export type ShippingPackageType = typeof ShippingPackageType[keyof typeof ShippingPackageType];
 /** Return type for `shippingPackageUpdate` mutation. */
 export type ShippingPackageUpdatePayload = {
   __typename?: 'ShippingPackageUpdatePayload';
@@ -60086,24 +60472,26 @@ export type ShopBillingPreferences = {
  * Possible branding of a shop.
  * Branding can be used to define the look of a shop including its styling and logo in the Shopify Admin.
  */
-export enum ShopBranding {
+export const ShopBranding = {
   /** Shop has Rogers branding. */
-  Rogers = 'ROGERS',
+  Rogers: 'ROGERS',
   /** Shop has Shopify branding. */
-  Shopify = 'SHOPIFY',
+  Shopify: 'SHOPIFY',
   /** Shop has Shopify Gold branding. */
-  ShopifyGold = 'SHOPIFY_GOLD',
+  ShopifyGold: 'SHOPIFY_GOLD',
   /** Shop has Shopify Plus branding. */
-  ShopifyPlus = 'SHOPIFY_PLUS'
-}
+  ShopifyPlus: 'SHOPIFY_PLUS'
+} as const;
 
+export type ShopBranding = typeof ShopBranding[keyof typeof ShopBranding];
 /** Represents the shop's customer account requirement preference. */
-export enum ShopCustomerAccountsSetting {
-  Disabled = 'DISABLED',
-  Optional = 'OPTIONAL',
-  Required = 'REQUIRED'
-}
+export const ShopCustomerAccountsSetting = {
+  Disabled: 'DISABLED',
+  Optional: 'OPTIONAL',
+  Required: 'REQUIRED'
+} as const;
 
+export type ShopCustomerAccountsSetting = typeof ShopCustomerAccountsSetting[keyof typeof ShopCustomerAccountsSetting];
 /**
  * Represents the feature set available to the shop.
  * Most fields specify whether a feature is enabled for a shop, and some fields return information
@@ -60308,13 +60696,14 @@ export type ShopPayPaymentRequestContactField = {
 };
 
 /** Represents the delivery method type for a Shop Pay payment request. */
-export enum ShopPayPaymentRequestDeliveryMethodType {
+export const ShopPayPaymentRequestDeliveryMethodType = {
   /** The delivery method type is pickup. */
-  Pickup = 'PICKUP',
+  Pickup: 'PICKUP',
   /** The delivery method type is shipping. */
-  Shipping = 'SHIPPING'
-}
+  Shipping: 'SHIPPING'
+} as const;
 
+export type ShopPayPaymentRequestDeliveryMethodType = typeof ShopPayPaymentRequestDeliveryMethodType[keyof typeof ShopPayPaymentRequestDeliveryMethodType];
 /** Represents a discount for a Shop Pay payment request. */
 export type ShopPayPaymentRequestDiscount = {
   __typename?: 'ShopPayPaymentRequestDiscount';
@@ -60413,79 +60802,82 @@ export type ShopPayPaymentRequestReceiptProcessingStatus = {
 };
 
 /** A standardized error code, independent of the payment provider. */
-export enum ShopPayPaymentRequestReceiptProcessingStatusErrorCode {
+export const ShopPayPaymentRequestReceiptProcessingStatusErrorCode = {
   /** The amount is too small. */
-  AmountTooSmall = 'AMOUNT_TOO_SMALL',
+  AmountTooSmall: 'AMOUNT_TOO_SMALL',
   /** Call the card issuer. */
-  CallIssuer = 'CALL_ISSUER',
+  CallIssuer: 'CALL_ISSUER',
   /** The card was declined. */
-  CardDeclined = 'CARD_DECLINED',
+  CardDeclined: 'CARD_DECLINED',
   /** There is an error in the gateway or merchant configuration. */
-  ConfigError = 'CONFIG_ERROR',
+  ConfigError: 'CONFIG_ERROR',
   /** Too many failed CVV verification attempts. */
-  CvvAttemptsExceeded = 'CVV_ATTEMPTS_EXCEEDED',
+  CvvAttemptsExceeded: 'CVV_ATTEMPTS_EXCEEDED',
   /** The card is expired. */
-  ExpiredCard = 'EXPIRED_CARD',
+  ExpiredCard: 'EXPIRED_CARD',
   /** The card issuer has flagged the transaction as potentially fraudulent. */
-  FraudSuspected = 'FRAUD_SUSPECTED',
+  FraudSuspected: 'FRAUD_SUSPECTED',
   /** There was an unknown error with processing the payment. */
-  GenericError = 'GENERIC_ERROR',
+  GenericError: 'GENERIC_ERROR',
   /** The address does not match the card number. */
-  IncorrectAddress = 'INCORRECT_ADDRESS',
+  IncorrectAddress: 'INCORRECT_ADDRESS',
   /** The CVC does not match the card number. */
-  IncorrectCvc = 'INCORRECT_CVC',
+  IncorrectCvc: 'INCORRECT_CVC',
   /** The card number is incorrect. */
-  IncorrectNumber = 'INCORRECT_NUMBER',
+  IncorrectNumber: 'INCORRECT_NUMBER',
   /** The entered PIN is incorrect. */
-  IncorrectPin = 'INCORRECT_PIN',
+  IncorrectPin: 'INCORRECT_PIN',
   /** The ZIP or postal code does not match the card number. */
-  IncorrectZip = 'INCORRECT_ZIP',
+  IncorrectZip: 'INCORRECT_ZIP',
   /** The amount is either too high or too low for the provider. */
-  InvalidAmount = 'INVALID_AMOUNT',
+  InvalidAmount: 'INVALID_AMOUNT',
   /** The payment method is not available in the customer's country. */
-  InvalidCountry = 'INVALID_COUNTRY',
+  InvalidCountry: 'INVALID_COUNTRY',
   /** The format of the CVC is incorrect. */
-  InvalidCvc = 'INVALID_CVC',
+  InvalidCvc: 'INVALID_CVC',
   /** The format of the expiry date is incorrect. */
-  InvalidExpiryDate = 'INVALID_EXPIRY_DATE',
+  InvalidExpiryDate: 'INVALID_EXPIRY_DATE',
   /** The format of the card number is incorrect. */
-  InvalidNumber = 'INVALID_NUMBER',
+  InvalidNumber: 'INVALID_NUMBER',
   /** The payment method is momentarily unavailable. */
-  PaymentMethodUnavailable = 'PAYMENT_METHOD_UNAVAILABLE',
+  PaymentMethodUnavailable: 'PAYMENT_METHOD_UNAVAILABLE',
   /** The card has been reported as lost or stolen, and the card issuer has requested that the merchant keep the card and call the number on the back. */
-  PickUpCard = 'PICK_UP_CARD',
+  PickUpCard: 'PICK_UP_CARD',
   /** There was an error while processing the payment. */
-  ProcessingError = 'PROCESSING_ERROR',
+  ProcessingError: 'PROCESSING_ERROR',
   /** A real card was used but the gateway was in test mode. */
-  TestModeLiveCard = 'TEST_MODE_LIVE_CARD',
+  TestModeLiveCard: 'TEST_MODE_LIVE_CARD',
   /** The 3D Secure check failed. */
-  ThreeDSecureFailed = 'THREE_D_SECURE_FAILED',
+  ThreeDSecureFailed: 'THREE_D_SECURE_FAILED',
   /** The gateway or merchant configuration doesn't support a feature, such as network tokenization. */
-  UnsupportedFeature = 'UNSUPPORTED_FEATURE'
-}
+  UnsupportedFeature: 'UNSUPPORTED_FEATURE'
+} as const;
 
+export type ShopPayPaymentRequestReceiptProcessingStatusErrorCode = typeof ShopPayPaymentRequestReceiptProcessingStatusErrorCode[keyof typeof ShopPayPaymentRequestReceiptProcessingStatusErrorCode];
 /** The state of the payment request receipt. */
-export enum ShopPayPaymentRequestReceiptProcessingStatusState {
+export const ShopPayPaymentRequestReceiptProcessingStatusState = {
   /** The payment request requires action from the buyer. */
-  ActionRequired = 'ACTION_REQUIRED',
+  ActionRequired: 'ACTION_REQUIRED',
   /** The payment request processing completed successfully. */
-  Completed = 'COMPLETED',
+  Completed: 'COMPLETED',
   /** The payment request processing failed. */
-  Failed = 'FAILED',
+  Failed: 'FAILED',
   /** The payment request currently being processed. */
-  Processing = 'PROCESSING',
+  Processing: 'PROCESSING',
   /** The payment request is ready and queued to be processed. */
-  Ready = 'READY'
-}
+  Ready: 'READY'
+} as const;
 
+export type ShopPayPaymentRequestReceiptProcessingStatusState = typeof ShopPayPaymentRequestReceiptProcessingStatusState[keyof typeof ShopPayPaymentRequestReceiptProcessingStatusState];
 /** The set of valid sort keys for the ShopPayPaymentRequestReceipts query. */
-export enum ShopPayPaymentRequestReceiptsSortKeys {
+export const ShopPayPaymentRequestReceiptsSortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `id` value. */
-  Id = 'ID'
-}
+  Id: 'ID'
+} as const;
 
+export type ShopPayPaymentRequestReceiptsSortKeys = typeof ShopPayPaymentRequestReceiptsSortKeys[keyof typeof ShopPayPaymentRequestReceiptsSortKeys];
 /** Represents a shipping line for a Shop Pay payment request. */
 export type ShopPayPaymentRequestShippingLine = {
   __typename?: 'ShopPayPaymentRequestShippingLine';
@@ -60553,11 +60945,12 @@ export type ShopPolicyTranslationsArgs = {
 };
 
 /** Possible error codes that can be returned by `ShopPolicyUserError`. */
-export enum ShopPolicyErrorCode {
+export const ShopPolicyErrorCode = {
   /** The input value is too big. */
-  TooBig = 'TOO_BIG'
-}
+  TooBig: 'TOO_BIG'
+} as const;
 
+export type ShopPolicyErrorCode = typeof ShopPolicyErrorCode[keyof typeof ShopPolicyErrorCode];
 /** The input fields required to update a policy. */
 export type ShopPolicyInput = {
   /** Policy text, maximum size of 512kb. */
@@ -60567,25 +60960,26 @@ export type ShopPolicyInput = {
 };
 
 /** Available shop policy types. */
-export enum ShopPolicyType {
+export const ShopPolicyType = {
   /** The contact information. */
-  ContactInformation = 'CONTACT_INFORMATION',
+  ContactInformation: 'CONTACT_INFORMATION',
   /** The legal notice. */
-  LegalNotice = 'LEGAL_NOTICE',
+  LegalNotice: 'LEGAL_NOTICE',
   /** The privacy policy. */
-  PrivacyPolicy = 'PRIVACY_POLICY',
+  PrivacyPolicy: 'PRIVACY_POLICY',
   /** The refund policy. */
-  RefundPolicy = 'REFUND_POLICY',
+  RefundPolicy: 'REFUND_POLICY',
   /** The shipping policy. */
-  ShippingPolicy = 'SHIPPING_POLICY',
+  ShippingPolicy: 'SHIPPING_POLICY',
   /** The cancellation policy. */
-  SubscriptionPolicy = 'SUBSCRIPTION_POLICY',
+  SubscriptionPolicy: 'SUBSCRIPTION_POLICY',
   /** The terms of sale. */
-  TermsOfSale = 'TERMS_OF_SALE',
+  TermsOfSale: 'TERMS_OF_SALE',
   /** The terms of service. */
-  TermsOfService = 'TERMS_OF_SERVICE'
-}
+  TermsOfService: 'TERMS_OF_SERVICE'
+} as const;
 
+export type ShopPolicyType = typeof ShopPolicyType[keyof typeof ShopPolicyType];
 /** Return type for `shopPolicyUpdate` mutation. */
 export type ShopPolicyUpdatePayload = {
   __typename?: 'ShopPolicyUpdatePayload';
@@ -60627,21 +61021,22 @@ export type ShopResourceFeedbackCreateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `ShopResourceFeedbackCreateUserError`. */
-export enum ShopResourceFeedbackCreateUserErrorCode {
+export const ShopResourceFeedbackCreateUserErrorCode = {
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** The feedback date cannot be set in the future. */
-  FeedbackDateInFuture = 'FEEDBACK_DATE_IN_FUTURE',
+  FeedbackDateInFuture: 'FEEDBACK_DATE_IN_FUTURE',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The record with the ID used as the input value couldn't be found. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** The feedback for a later version of the resource was already accepted. */
-  OutdatedFeedback = 'OUTDATED_FEEDBACK',
+  OutdatedFeedback: 'OUTDATED_FEEDBACK',
   /** The input value needs to be blank. */
-  Present = 'PRESENT'
-}
+  Present: 'PRESENT'
+} as const;
 
+export type ShopResourceFeedbackCreateUserErrorCode = typeof ShopResourceFeedbackCreateUserErrorCode[keyof typeof ShopResourceFeedbackCreateUserErrorCode];
 /** Resource limits of a shop. */
 export type ShopResourceLimits = {
   __typename?: 'ShopResourceLimits';
@@ -60656,13 +61051,14 @@ export type ShopResourceLimits = {
 };
 
 /** Possible sort of tags. */
-export enum ShopTagSort {
+export const ShopTagSort = {
   /** Alphabetical sort. */
-  Alphabetical = 'ALPHABETICAL',
+  Alphabetical: 'ALPHABETICAL',
   /** Popularity sort. */
-  Popular = 'POPULAR'
-}
+  Popular: 'POPULAR'
+} as const;
 
+export type ShopTagSort = typeof ShopTagSort[keyof typeof ShopTagSort];
 /** A Shopify Function. */
 export type ShopifyFunction = {
   __typename?: 'ShopifyFunction';
@@ -60939,29 +61335,27 @@ export type ShopifyPaymentsBalanceTransactionEdge = {
 };
 
 /** The payout status of the balance transaction. */
-export enum ShopifyPaymentsBalanceTransactionPayoutStatus {
+export const ShopifyPaymentsBalanceTransactionPayoutStatus = {
   /** The transaction requires action before it can be paid out. */
-  ActionRequired = 'ACTION_REQUIRED',
+  ActionRequired: 'ACTION_REQUIRED',
   /** The payout has been canceled by Shopify. */
-  Canceled = 'CANCELED',
+  Canceled: 'CANCELED',
   /** The payout has been declined by the bank. */
-  Failed = 'FAILED',
-  /**
-   * The payout has been submitted to the bank.
-   * @deprecated Use `SCHEDULED` instead.
-   */
-  InTransit = 'IN_TRANSIT',
+  Failed: 'FAILED',
+  /** The payout has been submitted to the bank. */
+  InTransit: 'IN_TRANSIT',
   /** The payout has been successfully deposited into the bank. */
-  Paid = 'PAID',
+  Paid: 'PAID',
   /** The transaction has not been assigned a payout yet. */
-  Pending = 'PENDING',
+  Pending: 'PENDING',
   /**
    * The payout has been created and had transactions assigned to it, but
    * it has not yet been submitted to the bank.
    */
-  Scheduled = 'SCHEDULED'
-}
+  Scheduled: 'SCHEDULED'
+} as const;
 
+export type ShopifyPaymentsBalanceTransactionPayoutStatus = typeof ShopifyPaymentsBalanceTransactionPayoutStatus[keyof typeof ShopifyPaymentsBalanceTransactionPayoutStatus];
 /** A bank account that can receive payouts. */
 export type ShopifyPaymentsBankAccount = Node & {
   __typename?: 'ShopifyPaymentsBankAccount';
@@ -61018,71 +61412,73 @@ export type ShopifyPaymentsBankAccountEdge = {
 };
 
 /** The bank account status. */
-export enum ShopifyPaymentsBankAccountStatus {
+export const ShopifyPaymentsBankAccountStatus = {
   /** A payout to the bank account failed. */
-  Errored = 'ERRORED',
+  Errored: 'ERRORED',
   /** A bank account that hasn't had any activity and that's not validated. */
-  New = 'NEW',
+  New: 'NEW',
   /** It was determined that the bank account exists. */
-  Validated = 'VALIDATED',
+  Validated: 'VALIDATED',
   /** Bank account validation was successful. */
-  Verified = 'VERIFIED'
-}
+  Verified: 'VERIFIED'
+} as const;
 
+export type ShopifyPaymentsBankAccountStatus = typeof ShopifyPaymentsBankAccountStatus[keyof typeof ShopifyPaymentsBankAccountStatus];
 /** The business type of a Shopify Payments account. */
-export enum ShopifyPaymentsBusinessType {
+export const ShopifyPaymentsBusinessType = {
   /** The business type is a corporation. */
-  Corporation = 'CORPORATION',
+  Corporation: 'CORPORATION',
   /** The business type is a free zone establishment. */
-  FreeZoneEstablishment = 'FREE_ZONE_ESTABLISHMENT',
+  FreeZoneEstablishment: 'FREE_ZONE_ESTABLISHMENT',
   /** The business type is a free zone LLC. */
-  FreeZoneLlc = 'FREE_ZONE_LLC',
+  FreeZoneLlc: 'FREE_ZONE_LLC',
   /** The business type is a government. */
-  Government = 'GOVERNMENT',
+  Government: 'GOVERNMENT',
   /** The business type is an incorporated partnership. */
-  IncorporatedPartnership = 'INCORPORATED_PARTNERSHIP',
+  IncorporatedPartnership: 'INCORPORATED_PARTNERSHIP',
   /** The business is an individual. */
-  Individual = 'INDIVIDUAL',
+  Individual: 'INDIVIDUAL',
   /** The business type is a Limited Liability Company. */
-  Llc = 'LLC',
+  Llc: 'LLC',
   /** The business type is a non profit. */
-  NonProfit = 'NON_PROFIT',
+  NonProfit: 'NON_PROFIT',
   /** The business type is a non profit (incorporated). */
-  NonProfitIncorporated = 'NON_PROFIT_INCORPORATED',
+  NonProfitIncorporated: 'NON_PROFIT_INCORPORATED',
   /** The business type is a non profit (registered charity). */
-  NonProfitRegisteredCharity = 'NON_PROFIT_REGISTERED_CHARITY',
+  NonProfitRegisteredCharity: 'NON_PROFIT_REGISTERED_CHARITY',
   /** The business type is a non profit (unincorporated). */
-  NonProfitUnincorporated = 'NON_PROFIT_UNINCORPORATED',
+  NonProfitUnincorporated: 'NON_PROFIT_UNINCORPORATED',
   /** The business type is a non profit (unincorporated_association). */
-  NonProfitUnincorporatedAssociation = 'NON_PROFIT_UNINCORPORATED_ASSOCIATION',
+  NonProfitUnincorporatedAssociation: 'NON_PROFIT_UNINCORPORATED_ASSOCIATION',
   /** The business type is not set. This is usually because onboarding is incomplete. */
-  NotSet = 'NOT_SET',
+  NotSet: 'NOT_SET',
   /** The business type is a partnership. */
-  Partnership = 'PARTNERSHIP',
+  Partnership: 'PARTNERSHIP',
   /** The business type is a private corporation. */
-  PrivateCorporation = 'PRIVATE_CORPORATION',
+  PrivateCorporation: 'PRIVATE_CORPORATION',
   /** The business type is a private multi member LLC. */
-  PrivateMultiMemberLlc = 'PRIVATE_MULTI_MEMBER_LLC',
+  PrivateMultiMemberLlc: 'PRIVATE_MULTI_MEMBER_LLC',
   /** The business type is a private partnership. */
-  PrivatePartnership = 'PRIVATE_PARTNERSHIP',
+  PrivatePartnership: 'PRIVATE_PARTNERSHIP',
   /** The business type is a private single member LLC. */
-  PrivateSingleMemberLlc = 'PRIVATE_SINGLE_MEMBER_LLC',
+  PrivateSingleMemberLlc: 'PRIVATE_SINGLE_MEMBER_LLC',
   /** The business type is a private unincorporated association. */
-  PrivateUnincorporatedAssociation = 'PRIVATE_UNINCORPORATED_ASSOCIATION',
+  PrivateUnincorporatedAssociation: 'PRIVATE_UNINCORPORATED_ASSOCIATION',
   /** The business type is a public company. */
-  PublicCompany = 'PUBLIC_COMPANY',
+  PublicCompany: 'PUBLIC_COMPANY',
   /** The business type is a public corporation. */
-  PublicCorporation = 'PUBLIC_CORPORATION',
+  PublicCorporation: 'PUBLIC_CORPORATION',
   /** The business type is a public partnership. */
-  PublicPartnership = 'PUBLIC_PARTNERSHIP',
+  PublicPartnership: 'PUBLIC_PARTNERSHIP',
   /** The business type is a sole establishment. */
-  SoleEstablishment = 'SOLE_ESTABLISHMENT',
+  SoleEstablishment: 'SOLE_ESTABLISHMENT',
   /** The business type is a sole proprietorship. */
-  SoleProp = 'SOLE_PROP',
+  SoleProp: 'SOLE_PROP',
   /** The business type is an unincorporated partnership. */
-  UnincorporatedPartnership = 'UNINCORPORATED_PARTNERSHIP'
-}
+  UnincorporatedPartnership: 'UNINCORPORATED_PARTNERSHIP'
+} as const;
 
+export type ShopifyPaymentsBusinessType = typeof ShopifyPaymentsBusinessType[keyof typeof ShopifyPaymentsBusinessType];
 /** The charge descriptors for a payments account. */
 export type ShopifyPaymentsChargeStatementDescriptor = {
   /** The default charge statement descriptor. */
@@ -61203,23 +61599,24 @@ export type ShopifyPaymentsDisputeEvidence = Node & {
 };
 
 /** The possible dispute evidence file types. */
-export enum ShopifyPaymentsDisputeEvidenceFileType {
+export const ShopifyPaymentsDisputeEvidenceFileType = {
   /** Cancellation Policy File. */
-  CancellationPolicyFile = 'CANCELLATION_POLICY_FILE',
+  CancellationPolicyFile: 'CANCELLATION_POLICY_FILE',
   /** Customer Communication File. */
-  CustomerCommunicationFile = 'CUSTOMER_COMMUNICATION_FILE',
+  CustomerCommunicationFile: 'CUSTOMER_COMMUNICATION_FILE',
   /** Refund Policy File. */
-  RefundPolicyFile = 'REFUND_POLICY_FILE',
+  RefundPolicyFile: 'REFUND_POLICY_FILE',
   /** Response Summary File. */
-  ResponseSummaryFile = 'RESPONSE_SUMMARY_FILE',
+  ResponseSummaryFile: 'RESPONSE_SUMMARY_FILE',
   /** Service Documentation File. */
-  ServiceDocumentationFile = 'SERVICE_DOCUMENTATION_FILE',
+  ServiceDocumentationFile: 'SERVICE_DOCUMENTATION_FILE',
   /** Shipping Documentation File. */
-  ShippingDocumentationFile = 'SHIPPING_DOCUMENTATION_FILE',
+  ShippingDocumentationFile: 'SHIPPING_DOCUMENTATION_FILE',
   /** Uncategorized File. */
-  UncategorizedFile = 'UNCATEGORIZED_FILE'
-}
+  UncategorizedFile: 'UNCATEGORIZED_FILE'
+} as const;
 
+export type ShopifyPaymentsDisputeEvidenceFileType = typeof ShopifyPaymentsDisputeEvidenceFileType[keyof typeof ShopifyPaymentsDisputeEvidenceFileType];
 /** The input fields required to update a dispute evidence object. */
 export type ShopifyPaymentsDisputeEvidenceUpdateInput = {
   /** Activity logs. */
@@ -61297,37 +61694,38 @@ export type ShopifyPaymentsDisputeFulfillment = Node & {
 };
 
 /** The reason for the dispute provided by the cardholder's bank. */
-export enum ShopifyPaymentsDisputeReason {
+export const ShopifyPaymentsDisputeReason = {
   /** The customer's bank can't process the charge. */
-  BankCannotProcess = 'BANK_CANNOT_PROCESS',
+  BankCannotProcess: 'BANK_CANNOT_PROCESS',
   /** The customer claims that the purchased product was returned or the transaction was otherwise canceled, but you haven't yet provided a refund or credit. */
-  CreditNotProcessed = 'CREDIT_NOT_PROCESSED',
+  CreditNotProcessed: 'CREDIT_NOT_PROCESSED',
   /** The customer initiated the dispute. Contact the customer for additional details on why the payment was disputed. */
-  CustomerInitiated = 'CUSTOMER_INITIATED',
+  CustomerInitiated: 'CUSTOMER_INITIATED',
   /** The customer's bank can't proceed with the debit since it hasn't been authorized. */
-  DebitNotAuthorized = 'DEBIT_NOT_AUTHORIZED',
+  DebitNotAuthorized: 'DEBIT_NOT_AUTHORIZED',
   /** The customer claims they were charged multiple times for the same product or service. */
-  Duplicate = 'DUPLICATE',
+  Duplicate: 'DUPLICATE',
   /** The cardholder claims that they didn’t authorize the payment. */
-  Fraudulent = 'FRAUDULENT',
+  Fraudulent: 'FRAUDULENT',
   /** The dispute is uncategorized, so you should contact the customer for additional details to find out why the payment was disputed. */
-  General = 'GENERAL',
+  General: 'GENERAL',
   /** The customer account associated with the purchase is incorrect. */
-  IncorrectAccountDetails = 'INCORRECT_ACCOUNT_DETAILS',
+  IncorrectAccountDetails: 'INCORRECT_ACCOUNT_DETAILS',
   /** The customer's bank account has insufficient funds. */
-  InsufficientFunds = 'INSUFFICIENT_FUNDS',
+  InsufficientFunds: 'INSUFFICIENT_FUNDS',
   /** The card issuer believes the disputed transaction doesn't conform to the network rules. These disputes occur when transactions don't meet card network requirements and may incur additional network fees if escalated for resolution. */
-  Noncompliant = 'NONCOMPLIANT',
+  Noncompliant: 'NONCOMPLIANT',
   /** The customer claims they did not receive the products or services purchased. */
-  ProductNotReceived = 'PRODUCT_NOT_RECEIVED',
+  ProductNotReceived: 'PRODUCT_NOT_RECEIVED',
   /** The product or service was received but was defective, damaged, or not as described. */
-  ProductUnacceptable = 'PRODUCT_UNACCEPTABLE',
+  ProductUnacceptable: 'PRODUCT_UNACCEPTABLE',
   /** The customer claims that you continued to charge them after a subscription was canceled. */
-  SubscriptionCancelled = 'SUBSCRIPTION_CANCELLED',
+  SubscriptionCancelled: 'SUBSCRIPTION_CANCELLED',
   /** The customer doesn’t recognize the payment appearing on their card statement. */
-  Unrecognized = 'UNRECOGNIZED'
-}
+  Unrecognized: 'UNRECOGNIZED'
+} as const;
 
+export type ShopifyPaymentsDisputeReason = typeof ShopifyPaymentsDisputeReason[keyof typeof ShopifyPaymentsDisputeReason];
 /** Details regarding a dispute reason. */
 export type ShopifyPaymentsDisputeReasonDetails = {
   __typename?: 'ShopifyPaymentsDisputeReasonDetails';
@@ -61443,17 +61841,18 @@ export type ShopifyPaymentsPayoutAlternateCurrencyCreateUserError = DisplayableE
 };
 
 /** Possible error codes that can be returned by `ShopifyPaymentsPayoutAlternateCurrencyCreateUserError`. */
-export enum ShopifyPaymentsPayoutAlternateCurrencyCreateUserErrorCode {
+export const ShopifyPaymentsPayoutAlternateCurrencyCreateUserErrorCode = {
   /** Failed to create payout, there is no eligible balance in this currency. */
-  AlternateCurrencyPayoutFailedNoEligibleBalance = 'ALTERNATE_CURRENCY_PAYOUT_FAILED_NO_ELIGIBLE_BALANCE',
+  AlternateCurrencyPayoutFailedNoEligibleBalance: 'ALTERNATE_CURRENCY_PAYOUT_FAILED_NO_ELIGIBLE_BALANCE',
   /** Failed to create payout due to an error from Stripe. */
-  AlternateCurrencyPayoutFailedStripeError = 'ALTERNATE_CURRENCY_PAYOUT_FAILED_STRIPE_ERROR',
+  AlternateCurrencyPayoutFailedStripeError: 'ALTERNATE_CURRENCY_PAYOUT_FAILED_STRIPE_ERROR',
   /** No Stripe provider account was found. */
-  MissingProviderAccount = 'MISSING_PROVIDER_ACCOUNT',
+  MissingProviderAccount: 'MISSING_PROVIDER_ACCOUNT',
   /** Failed to create payout due to an error from Shopify Core. */
-  UnknownCoreError = 'UNKNOWN_CORE_ERROR'
-}
+  UnknownCoreError: 'UNKNOWN_CORE_ERROR'
+} as const;
 
+export type ShopifyPaymentsPayoutAlternateCurrencyCreateUserErrorCode = typeof ShopifyPaymentsPayoutAlternateCurrencyCreateUserErrorCode[keyof typeof ShopifyPaymentsPayoutAlternateCurrencyCreateUserErrorCode];
 /** An auto-generated type for paginating through multiple ShopifyPaymentsPayouts. */
 export type ShopifyPaymentsPayoutConnection = {
   __typename?: 'ShopifyPaymentsPayoutConnection';
@@ -61475,17 +61874,18 @@ export type ShopifyPaymentsPayoutEdge = {
 };
 
 /** The interval at which payouts are sent to the connected bank account. */
-export enum ShopifyPaymentsPayoutInterval {
+export const ShopifyPaymentsPayoutInterval = {
   /** Each business day. */
-  Daily = 'DAILY',
+  Daily: 'DAILY',
   /** Payouts will not be automatically made. */
-  Manual = 'MANUAL',
+  Manual: 'MANUAL',
   /** Each month, on the day of month specified by monthlyAnchor. */
-  Monthly = 'MONTHLY',
+  Monthly: 'MONTHLY',
   /** Each week, on the day of week specified by weeklyAnchor. */
-  Weekly = 'WEEKLY'
-}
+  Weekly: 'WEEKLY'
+} as const;
 
+export type ShopifyPaymentsPayoutInterval = typeof ShopifyPaymentsPayoutInterval[keyof typeof ShopifyPaymentsPayoutInterval];
 /** The payment schedule for a payments account. */
 export type ShopifyPaymentsPayoutSchedule = {
   __typename?: 'ShopifyPaymentsPayoutSchedule';
@@ -61509,25 +61909,23 @@ export type ShopifyPaymentsPayoutSchedule = {
 };
 
 /** The transfer status of the payout. */
-export enum ShopifyPaymentsPayoutStatus {
+export const ShopifyPaymentsPayoutStatus = {
   /** The payout has been canceled by Shopify. */
-  Canceled = 'CANCELED',
+  Canceled: 'CANCELED',
   /** The payout has been declined by the bank. */
-  Failed = 'FAILED',
-  /**
-   * The payout has been submitted to the bank.
-   * @deprecated Use `SCHEDULED` instead.
-   */
-  InTransit = 'IN_TRANSIT',
+  Failed: 'FAILED',
+  /** The payout has been submitted to the bank. */
+  InTransit: 'IN_TRANSIT',
   /** The payout has been successfully deposited into the bank. */
-  Paid = 'PAID',
+  Paid: 'PAID',
   /**
    * The payout has been created and had transactions assigned to it, but
    * it has not yet been submitted to the bank.
    */
-  Scheduled = 'SCHEDULED'
-}
+  Scheduled: 'SCHEDULED'
+} as const;
 
+export type ShopifyPaymentsPayoutStatus = typeof ShopifyPaymentsPayoutStatus[keyof typeof ShopifyPaymentsPayoutStatus];
 /**
  * Breakdown of the total fees and gross of each of the different types of transactions associated
  * with the payout.
@@ -61563,13 +61961,14 @@ export type ShopifyPaymentsPayoutSummary = {
 };
 
 /** The possible transaction types for a payout. */
-export enum ShopifyPaymentsPayoutTransactionType {
+export const ShopifyPaymentsPayoutTransactionType = {
   /** The payout is a deposit. */
-  Deposit = 'DEPOSIT',
+  Deposit: 'DEPOSIT',
   /** The payout is a withdrawal. */
-  Withdrawal = 'WITHDRAWAL'
-}
+  Withdrawal: 'WITHDRAWAL'
+} as const;
 
+export type ShopifyPaymentsPayoutTransactionType = typeof ShopifyPaymentsPayoutTransactionType[keyof typeof ShopifyPaymentsPayoutTransactionType];
 /** Presents all Shopify Payments specific information related to an order refund. */
 export type ShopifyPaymentsRefundSet = {
   __typename?: 'ShopifyPaymentsRefundSet';
@@ -61578,23 +61977,24 @@ export type ShopifyPaymentsRefundSet = {
 };
 
 /** The possible source types for a balance transaction. */
-export enum ShopifyPaymentsSourceType {
+export const ShopifyPaymentsSourceType = {
   /** The adjustment source type. */
-  Adjustment = 'ADJUSTMENT',
+  Adjustment: 'ADJUSTMENT',
   /** The adjustment_reversal source type. */
-  AdjustmentReversal = 'ADJUSTMENT_REVERSAL',
+  AdjustmentReversal: 'ADJUSTMENT_REVERSAL',
   /** The charge source type. */
-  Charge = 'CHARGE',
+  Charge: 'CHARGE',
   /** The dispute source type. */
-  Dispute = 'DISPUTE',
+  Dispute: 'DISPUTE',
   /** The refund source type. */
-  Refund = 'REFUND',
+  Refund: 'REFUND',
   /** The system_adjustment source type. */
-  SystemAdjustment = 'SYSTEM_ADJUSTMENT',
+  SystemAdjustment: 'SYSTEM_ADJUSTMENT',
   /** The transfer source type. */
-  Transfer = 'TRANSFER'
-}
+  Transfer: 'TRANSFER'
+} as const;
 
+export type ShopifyPaymentsSourceType = typeof ShopifyPaymentsSourceType[keyof typeof ShopifyPaymentsSourceType];
 /** A typed identifier that represents an individual within a tax jurisdiction. */
 export type ShopifyPaymentsTaxIdentification = {
   __typename?: 'ShopifyPaymentsTaxIdentification';
@@ -61605,15 +62005,16 @@ export type ShopifyPaymentsTaxIdentification = {
 };
 
 /** The type of tax identification field. */
-export enum ShopifyPaymentsTaxIdentificationType {
+export const ShopifyPaymentsTaxIdentificationType = {
   /** Business EIN. */
-  Ein = 'EIN',
+  Ein: 'EIN',
   /** Full SSN. */
-  FullSsn = 'FULL_SSN',
+  FullSsn: 'FULL_SSN',
   /** The last 4 digits of the SSN. */
-  SsnLast4Digits = 'SSN_LAST4_DIGITS'
-}
+  SsnLast4Digits: 'SSN_LAST4_DIGITS'
+} as const;
 
+export type ShopifyPaymentsTaxIdentificationType = typeof ShopifyPaymentsTaxIdentificationType[keyof typeof ShopifyPaymentsTaxIdentificationType];
 /** Relevant reference information for an alternate currency payout. */
 export type ShopifyPaymentsToolingProviderPayout = {
   __typename?: 'ShopifyPaymentsToolingProviderPayout';
@@ -61639,248 +62040,250 @@ export type ShopifyPaymentsTransactionSet = {
 };
 
 /** The possible types of transactions. */
-export enum ShopifyPaymentsTransactionType {
+export const ShopifyPaymentsTransactionType = {
   /** The ach_bank_failure_debit_fee transaction type. */
-  AchBankFailureDebitFee = 'ACH_BANK_FAILURE_DEBIT_FEE',
+  AchBankFailureDebitFee: 'ACH_BANK_FAILURE_DEBIT_FEE',
   /** The ach_bank_failure_debit_reversal_fee transaction type. */
-  AchBankFailureDebitReversalFee = 'ACH_BANK_FAILURE_DEBIT_REVERSAL_FEE',
+  AchBankFailureDebitReversalFee: 'ACH_BANK_FAILURE_DEBIT_REVERSAL_FEE',
   /** The adjustment transaction type. */
-  Adjustment = 'ADJUSTMENT',
+  Adjustment: 'ADJUSTMENT',
   /** The ads_publisher_credit transaction type. */
-  AdsPublisherCredit = 'ADS_PUBLISHER_CREDIT',
+  AdsPublisherCredit: 'ADS_PUBLISHER_CREDIT',
   /** The ads_publisher_credit_reversal transaction type. */
-  AdsPublisherCreditReversal = 'ADS_PUBLISHER_CREDIT_REVERSAL',
+  AdsPublisherCreditReversal: 'ADS_PUBLISHER_CREDIT_REVERSAL',
   /** The advance transaction type. */
-  Advance = 'ADVANCE',
+  Advance: 'ADVANCE',
   /** The advance funding transaction type. */
-  AdvanceFunding = 'ADVANCE_FUNDING',
+  AdvanceFunding: 'ADVANCE_FUNDING',
   /** The anomaly_credit transaction type. */
-  AnomalyCredit = 'ANOMALY_CREDIT',
+  AnomalyCredit: 'ANOMALY_CREDIT',
   /** The anomaly_credit_reversal transaction type. */
-  AnomalyCreditReversal = 'ANOMALY_CREDIT_REVERSAL',
+  AnomalyCreditReversal: 'ANOMALY_CREDIT_REVERSAL',
   /** The anomaly_debit transaction type. */
-  AnomalyDebit = 'ANOMALY_DEBIT',
+  AnomalyDebit: 'ANOMALY_DEBIT',
   /** The anomaly_debit_reversal transaction type. */
-  AnomalyDebitReversal = 'ANOMALY_DEBIT_REVERSAL',
+  AnomalyDebitReversal: 'ANOMALY_DEBIT_REVERSAL',
   /** The application_fee_refund transaction type. */
-  ApplicationFeeRefund = 'APPLICATION_FEE_REFUND',
+  ApplicationFeeRefund: 'APPLICATION_FEE_REFUND',
   /** The balance_transfer_inbound transaction type. */
-  BalanceTransferInbound = 'BALANCE_TRANSFER_INBOUND',
+  BalanceTransferInbound: 'BALANCE_TRANSFER_INBOUND',
   /** The balance_transfer_outbound transaction type. */
-  BalanceTransferOutbound = 'BALANCE_TRANSFER_OUTBOUND',
+  BalanceTransferOutbound: 'BALANCE_TRANSFER_OUTBOUND',
   /** The billing_debit transaction type. */
-  BillingDebit = 'BILLING_DEBIT',
+  BillingDebit: 'BILLING_DEBIT',
   /** The billing_debit_reversal transaction type. */
-  BillingDebitReversal = 'BILLING_DEBIT_REVERSAL',
+  BillingDebitReversal: 'BILLING_DEBIT_REVERSAL',
   /** The channel_credit transaction type. */
-  ChannelCredit = 'CHANNEL_CREDIT',
+  ChannelCredit: 'CHANNEL_CREDIT',
   /** The channel_credit_reversal transaction type. */
-  ChannelCreditReversal = 'CHANNEL_CREDIT_REVERSAL',
+  ChannelCreditReversal: 'CHANNEL_CREDIT_REVERSAL',
   /** The channel_promotion_credit transaction type. */
-  ChannelPromotionCredit = 'CHANNEL_PROMOTION_CREDIT',
+  ChannelPromotionCredit: 'CHANNEL_PROMOTION_CREDIT',
   /** The channel_promotion_credit_reversal transaction type. */
-  ChannelPromotionCreditReversal = 'CHANNEL_PROMOTION_CREDIT_REVERSAL',
+  ChannelPromotionCreditReversal: 'CHANNEL_PROMOTION_CREDIT_REVERSAL',
   /** The channel_transfer_credit transaction type. */
-  ChannelTransferCredit = 'CHANNEL_TRANSFER_CREDIT',
+  ChannelTransferCredit: 'CHANNEL_TRANSFER_CREDIT',
   /** The channel_transfer_credit_reversal transaction type. */
-  ChannelTransferCreditReversal = 'CHANNEL_TRANSFER_CREDIT_REVERSAL',
+  ChannelTransferCreditReversal: 'CHANNEL_TRANSFER_CREDIT_REVERSAL',
   /** The channel_transfer_debit transaction type. */
-  ChannelTransferDebit = 'CHANNEL_TRANSFER_DEBIT',
+  ChannelTransferDebit: 'CHANNEL_TRANSFER_DEBIT',
   /** The channel_transfer_debit_reversal transaction type. */
-  ChannelTransferDebitReversal = 'CHANNEL_TRANSFER_DEBIT_REVERSAL',
+  ChannelTransferDebitReversal: 'CHANNEL_TRANSFER_DEBIT_REVERSAL',
   /** The charge transaction type. */
-  Charge = 'CHARGE',
+  Charge: 'CHARGE',
   /** The chargeback_fee transaction type. */
-  ChargebackFee = 'CHARGEBACK_FEE',
+  ChargebackFee: 'CHARGEBACK_FEE',
   /** The chargeback_fee_refund transaction type. */
-  ChargebackFeeRefund = 'CHARGEBACK_FEE_REFUND',
+  ChargebackFeeRefund: 'CHARGEBACK_FEE_REFUND',
   /** The chargeback_hold transaction type. */
-  ChargebackHold = 'CHARGEBACK_HOLD',
+  ChargebackHold: 'CHARGEBACK_HOLD',
   /** The chargeback_hold_release transaction type. */
-  ChargebackHoldRelease = 'CHARGEBACK_HOLD_RELEASE',
+  ChargebackHoldRelease: 'CHARGEBACK_HOLD_RELEASE',
   /** The chargeback_protection_credit transaction type. */
-  ChargebackProtectionCredit = 'CHARGEBACK_PROTECTION_CREDIT',
+  ChargebackProtectionCredit: 'CHARGEBACK_PROTECTION_CREDIT',
   /** The chargeback_protection_credit_reversal transaction type. */
-  ChargebackProtectionCreditReversal = 'CHARGEBACK_PROTECTION_CREDIT_REVERSAL',
+  ChargebackProtectionCreditReversal: 'CHARGEBACK_PROTECTION_CREDIT_REVERSAL',
   /** The chargeback_protection_debit transaction type. */
-  ChargebackProtectionDebit = 'CHARGEBACK_PROTECTION_DEBIT',
+  ChargebackProtectionDebit: 'CHARGEBACK_PROTECTION_DEBIT',
   /** The chargeback_protection_debit_reversal transaction type. */
-  ChargebackProtectionDebitReversal = 'CHARGEBACK_PROTECTION_DEBIT_REVERSAL',
+  ChargebackProtectionDebitReversal: 'CHARGEBACK_PROTECTION_DEBIT_REVERSAL',
   /** The charge_adjustment transaction type. */
-  ChargeAdjustment = 'CHARGE_ADJUSTMENT',
+  ChargeAdjustment: 'CHARGE_ADJUSTMENT',
   /** The collections_credit transaction type. */
-  CollectionsCredit = 'COLLECTIONS_CREDIT',
+  CollectionsCredit: 'COLLECTIONS_CREDIT',
   /** The collections_credit_reversal transaction type. */
-  CollectionsCreditReversal = 'COLLECTIONS_CREDIT_REVERSAL',
+  CollectionsCreditReversal: 'COLLECTIONS_CREDIT_REVERSAL',
   /** The customs_duty transaction type. */
-  CustomsDuty = 'CUSTOMS_DUTY',
+  CustomsDuty: 'CUSTOMS_DUTY',
   /** The customs_duty_adjustment transaction type. */
-  CustomsDutyAdjustment = 'CUSTOMS_DUTY_ADJUSTMENT',
+  CustomsDutyAdjustment: 'CUSTOMS_DUTY_ADJUSTMENT',
   /** The dispute_reversal transaction type. */
-  DisputeReversal = 'DISPUTE_REVERSAL',
+  DisputeReversal: 'DISPUTE_REVERSAL',
   /** The dispute_withdrawal transaction type. */
-  DisputeWithdrawal = 'DISPUTE_WITHDRAWAL',
+  DisputeWithdrawal: 'DISPUTE_WITHDRAWAL',
   /** The import_tax transaction type. */
-  ImportTax = 'IMPORT_TAX',
+  ImportTax: 'IMPORT_TAX',
   /** The import_tax_adjustment transaction type. */
-  ImportTaxAdjustment = 'IMPORT_TAX_ADJUSTMENT',
+  ImportTaxAdjustment: 'IMPORT_TAX_ADJUSTMENT',
   /** The tax refund transaction type. */
-  ImportTaxRefund = 'IMPORT_TAX_REFUND',
+  ImportTaxRefund: 'IMPORT_TAX_REFUND',
   /** The lending_capital_refund transaction type. */
-  LendingCapitalRefund = 'LENDING_CAPITAL_REFUND',
+  LendingCapitalRefund: 'LENDING_CAPITAL_REFUND',
   /** The lending_capital_refund_reversal transaction type. */
-  LendingCapitalRefundReversal = 'LENDING_CAPITAL_REFUND_REVERSAL',
+  LendingCapitalRefundReversal: 'LENDING_CAPITAL_REFUND_REVERSAL',
   /** The lending_capital_remittance transaction type. */
-  LendingCapitalRemittance = 'LENDING_CAPITAL_REMITTANCE',
+  LendingCapitalRemittance: 'LENDING_CAPITAL_REMITTANCE',
   /** The lending_capital_remittance_reversal transaction type. */
-  LendingCapitalRemittanceReversal = 'LENDING_CAPITAL_REMITTANCE_REVERSAL',
+  LendingCapitalRemittanceReversal: 'LENDING_CAPITAL_REMITTANCE_REVERSAL',
   /** The lending_credit transaction type. */
-  LendingCredit = 'LENDING_CREDIT',
+  LendingCredit: 'LENDING_CREDIT',
   /** The lending_credit_refund transaction type. */
-  LendingCreditRefund = 'LENDING_CREDIT_REFUND',
+  LendingCreditRefund: 'LENDING_CREDIT_REFUND',
   /** The lending_credit_refund_reversal transaction type. */
-  LendingCreditRefundReversal = 'LENDING_CREDIT_REFUND_REVERSAL',
+  LendingCreditRefundReversal: 'LENDING_CREDIT_REFUND_REVERSAL',
   /** The lending_credit_remittance transaction type. */
-  LendingCreditRemittance = 'LENDING_CREDIT_REMITTANCE',
+  LendingCreditRemittance: 'LENDING_CREDIT_REMITTANCE',
   /** The lending_credit_remittance_reversal transaction type. */
-  LendingCreditRemittanceReversal = 'LENDING_CREDIT_REMITTANCE_REVERSAL',
+  LendingCreditRemittanceReversal: 'LENDING_CREDIT_REMITTANCE_REVERSAL',
   /** The lending_credit_reversal transaction type. */
-  LendingCreditReversal = 'LENDING_CREDIT_REVERSAL',
+  LendingCreditReversal: 'LENDING_CREDIT_REVERSAL',
   /** The lending_debit transaction type. */
-  LendingDebit = 'LENDING_DEBIT',
+  LendingDebit: 'LENDING_DEBIT',
   /** The lending_debit_reversal transaction type. */
-  LendingDebitReversal = 'LENDING_DEBIT_REVERSAL',
+  LendingDebitReversal: 'LENDING_DEBIT_REVERSAL',
   /** The marketplace_fee_credit transaction type. */
-  MarketplaceFeeCredit = 'MARKETPLACE_FEE_CREDIT',
+  MarketplaceFeeCredit: 'MARKETPLACE_FEE_CREDIT',
   /** The marketplace_fee_credit_reversal transaction type. */
-  MarketplaceFeeCreditReversal = 'MARKETPLACE_FEE_CREDIT_REVERSAL',
+  MarketplaceFeeCreditReversal: 'MARKETPLACE_FEE_CREDIT_REVERSAL',
   /** The markets_pro_credit transaction type. */
-  MarketsProCredit = 'MARKETS_PRO_CREDIT',
+  MarketsProCredit: 'MARKETS_PRO_CREDIT',
   /** The merchant_goodwill_credit transaction type. */
-  MerchantGoodwillCredit = 'MERCHANT_GOODWILL_CREDIT',
+  MerchantGoodwillCredit: 'MERCHANT_GOODWILL_CREDIT',
   /** The merchant_goodwill_credit_reversal transaction type. */
-  MerchantGoodwillCreditReversal = 'MERCHANT_GOODWILL_CREDIT_REVERSAL',
+  MerchantGoodwillCreditReversal: 'MERCHANT_GOODWILL_CREDIT_REVERSAL',
   /** The merchant_to_merchant_credit transaction type. */
-  MerchantToMerchantCredit = 'MERCHANT_TO_MERCHANT_CREDIT',
+  MerchantToMerchantCredit: 'MERCHANT_TO_MERCHANT_CREDIT',
   /** The merchant_to_merchant_credit_reversal transaction type. */
-  MerchantToMerchantCreditReversal = 'MERCHANT_TO_MERCHANT_CREDIT_REVERSAL',
+  MerchantToMerchantCreditReversal: 'MERCHANT_TO_MERCHANT_CREDIT_REVERSAL',
   /** The merchant_to_merchant_debit transaction type. */
-  MerchantToMerchantDebit = 'MERCHANT_TO_MERCHANT_DEBIT',
+  MerchantToMerchantDebit: 'MERCHANT_TO_MERCHANT_DEBIT',
   /** The merchant_to_merchant_debit_reversal transaction type. */
-  MerchantToMerchantDebitReversal = 'MERCHANT_TO_MERCHANT_DEBIT_REVERSAL',
+  MerchantToMerchantDebitReversal: 'MERCHANT_TO_MERCHANT_DEBIT_REVERSAL',
   /** The promotion_credit transaction type. */
-  PromotionCredit = 'PROMOTION_CREDIT',
+  PromotionCredit: 'PROMOTION_CREDIT',
   /** The promotion_credit_reversal transaction type. */
-  PromotionCreditReversal = 'PROMOTION_CREDIT_REVERSAL',
+  PromotionCreditReversal: 'PROMOTION_CREDIT_REVERSAL',
   /** The referral_fee transaction type. */
-  ReferralFee = 'REFERRAL_FEE',
+  ReferralFee: 'REFERRAL_FEE',
   /** The referral_fee_tax transaction type. */
-  ReferralFeeTax = 'REFERRAL_FEE_TAX',
+  ReferralFeeTax: 'REFERRAL_FEE_TAX',
   /** The refund transaction type. */
-  Refund = 'REFUND',
+  Refund: 'REFUND',
   /** The refund_adjustment transaction type. */
-  RefundAdjustment = 'REFUND_ADJUSTMENT',
+  RefundAdjustment: 'REFUND_ADJUSTMENT',
   /** The refund_failure transaction type. */
-  RefundFailure = 'REFUND_FAILURE',
+  RefundFailure: 'REFUND_FAILURE',
   /** The reserved_funds transaction type. */
-  ReservedFunds = 'RESERVED_FUNDS',
+  ReservedFunds: 'RESERVED_FUNDS',
   /** The reserved_funds_reversal transaction type. */
-  ReservedFundsReversal = 'RESERVED_FUNDS_REVERSAL',
+  ReservedFundsReversal: 'RESERVED_FUNDS_REVERSAL',
   /** The reserved_funds_withdrawal transaction type. */
-  ReservedFundsWithdrawal = 'RESERVED_FUNDS_WITHDRAWAL',
+  ReservedFundsWithdrawal: 'RESERVED_FUNDS_WITHDRAWAL',
   /** The risk_reversal transaction type. */
-  RiskReversal = 'RISK_REVERSAL',
+  RiskReversal: 'RISK_REVERSAL',
   /** The risk_withdrawal transaction type. */
-  RiskWithdrawal = 'RISK_WITHDRAWAL',
+  RiskWithdrawal: 'RISK_WITHDRAWAL',
   /** The seller_protection_credit transaction type. */
-  SellerProtectionCredit = 'SELLER_PROTECTION_CREDIT',
+  SellerProtectionCredit: 'SELLER_PROTECTION_CREDIT',
   /** The seller_protection_credit_reversal transaction type. */
-  SellerProtectionCreditReversal = 'SELLER_PROTECTION_CREDIT_REVERSAL',
+  SellerProtectionCreditReversal: 'SELLER_PROTECTION_CREDIT_REVERSAL',
   /** The shipping_label transaction type. */
-  ShippingLabel = 'SHIPPING_LABEL',
+  ShippingLabel: 'SHIPPING_LABEL',
   /** The shipping_label_adjustment transaction type. */
-  ShippingLabelAdjustment = 'SHIPPING_LABEL_ADJUSTMENT',
+  ShippingLabelAdjustment: 'SHIPPING_LABEL_ADJUSTMENT',
   /** The shipping_label_adjustment_base transaction type. */
-  ShippingLabelAdjustmentBase = 'SHIPPING_LABEL_ADJUSTMENT_BASE',
+  ShippingLabelAdjustmentBase: 'SHIPPING_LABEL_ADJUSTMENT_BASE',
   /** The shipping_label_adjustment_surcharge transaction type. */
-  ShippingLabelAdjustmentSurcharge = 'SHIPPING_LABEL_ADJUSTMENT_SURCHARGE',
+  ShippingLabelAdjustmentSurcharge: 'SHIPPING_LABEL_ADJUSTMENT_SURCHARGE',
   /** The shipping_other_carrier_charge_adjustment transaction type. */
-  ShippingOtherCarrierChargeAdjustment = 'SHIPPING_OTHER_CARRIER_CHARGE_ADJUSTMENT',
+  ShippingOtherCarrierChargeAdjustment: 'SHIPPING_OTHER_CARRIER_CHARGE_ADJUSTMENT',
   /** The shipping_return_to_origin_adjustment transaction type. */
-  ShippingReturnToOriginAdjustment = 'SHIPPING_RETURN_TO_ORIGIN_ADJUSTMENT',
+  ShippingReturnToOriginAdjustment: 'SHIPPING_RETURN_TO_ORIGIN_ADJUSTMENT',
   /** The shopify_collective_credit transaction type. */
-  ShopifyCollectiveCredit = 'SHOPIFY_COLLECTIVE_CREDIT',
+  ShopifyCollectiveCredit: 'SHOPIFY_COLLECTIVE_CREDIT',
   /** The shopify_collective_credit_reversal transaction type. */
-  ShopifyCollectiveCreditReversal = 'SHOPIFY_COLLECTIVE_CREDIT_REVERSAL',
+  ShopifyCollectiveCreditReversal: 'SHOPIFY_COLLECTIVE_CREDIT_REVERSAL',
   /** The shopify_collective_debit transaction type. */
-  ShopifyCollectiveDebit = 'SHOPIFY_COLLECTIVE_DEBIT',
+  ShopifyCollectiveDebit: 'SHOPIFY_COLLECTIVE_DEBIT',
   /** The shopify_collective_debit_reversal transaction type. */
-  ShopifyCollectiveDebitReversal = 'SHOPIFY_COLLECTIVE_DEBIT_REVERSAL',
+  ShopifyCollectiveDebitReversal: 'SHOPIFY_COLLECTIVE_DEBIT_REVERSAL',
   /** The shopify_source_credit transaction type. */
-  ShopifySourceCredit = 'SHOPIFY_SOURCE_CREDIT',
+  ShopifySourceCredit: 'SHOPIFY_SOURCE_CREDIT',
   /** The shopify_source_credit_reversal transaction type. */
-  ShopifySourceCreditReversal = 'SHOPIFY_SOURCE_CREDIT_REVERSAL',
+  ShopifySourceCreditReversal: 'SHOPIFY_SOURCE_CREDIT_REVERSAL',
   /** The shopify_source_debit transaction type. */
-  ShopifySourceDebit = 'SHOPIFY_SOURCE_DEBIT',
+  ShopifySourceDebit: 'SHOPIFY_SOURCE_DEBIT',
   /** The shopify_source_debit_reversal transaction type. */
-  ShopifySourceDebitReversal = 'SHOPIFY_SOURCE_DEBIT_REVERSAL',
+  ShopifySourceDebitReversal: 'SHOPIFY_SOURCE_DEBIT_REVERSAL',
   /** The shop_cash_billing_debit transaction type. */
-  ShopCashBillingDebit = 'SHOP_CASH_BILLING_DEBIT',
+  ShopCashBillingDebit: 'SHOP_CASH_BILLING_DEBIT',
   /** The shop_cash_billing_debit_reversal transaction type. */
-  ShopCashBillingDebitReversal = 'SHOP_CASH_BILLING_DEBIT_REVERSAL',
+  ShopCashBillingDebitReversal: 'SHOP_CASH_BILLING_DEBIT_REVERSAL',
   /** The shop_cash_campaign_billing_credit transaction type. */
-  ShopCashCampaignBillingCredit = 'SHOP_CASH_CAMPAIGN_BILLING_CREDIT',
+  ShopCashCampaignBillingCredit: 'SHOP_CASH_CAMPAIGN_BILLING_CREDIT',
   /** The shop_cash_campaign_billing_credit_reversal transaction type. */
-  ShopCashCampaignBillingCreditReversal = 'SHOP_CASH_CAMPAIGN_BILLING_CREDIT_REVERSAL',
+  ShopCashCampaignBillingCreditReversal: 'SHOP_CASH_CAMPAIGN_BILLING_CREDIT_REVERSAL',
   /** The shop_cash_campaign_billing_debit transaction type. */
-  ShopCashCampaignBillingDebit = 'SHOP_CASH_CAMPAIGN_BILLING_DEBIT',
+  ShopCashCampaignBillingDebit: 'SHOP_CASH_CAMPAIGN_BILLING_DEBIT',
   /** The shop_cash_campaign_billing_debit_reversal transaction type. */
-  ShopCashCampaignBillingDebitReversal = 'SHOP_CASH_CAMPAIGN_BILLING_DEBIT_REVERSAL',
+  ShopCashCampaignBillingDebitReversal: 'SHOP_CASH_CAMPAIGN_BILLING_DEBIT_REVERSAL',
   /** The shop_cash_credit transaction type. */
-  ShopCashCredit = 'SHOP_CASH_CREDIT',
+  ShopCashCredit: 'SHOP_CASH_CREDIT',
   /** The shop_cash_credit_reversal transaction type. */
-  ShopCashCreditReversal = 'SHOP_CASH_CREDIT_REVERSAL',
+  ShopCashCreditReversal: 'SHOP_CASH_CREDIT_REVERSAL',
   /** The shop_cash_refund_debit transaction type. */
-  ShopCashRefundDebit = 'SHOP_CASH_REFUND_DEBIT',
+  ShopCashRefundDebit: 'SHOP_CASH_REFUND_DEBIT',
   /** The shop_cash_refund_debit_reversal transaction type. */
-  ShopCashRefundDebitReversal = 'SHOP_CASH_REFUND_DEBIT_REVERSAL',
+  ShopCashRefundDebitReversal: 'SHOP_CASH_REFUND_DEBIT_REVERSAL',
   /** The stripe_fee transaction type. */
-  StripeFee = 'STRIPE_FEE',
+  StripeFee: 'STRIPE_FEE',
   /** The tax_adjustment_credit transaction type. */
-  TaxAdjustmentCredit = 'TAX_ADJUSTMENT_CREDIT',
+  TaxAdjustmentCredit: 'TAX_ADJUSTMENT_CREDIT',
   /** The tax_adjustment_credit_reversal transaction type. */
-  TaxAdjustmentCreditReversal = 'TAX_ADJUSTMENT_CREDIT_REVERSAL',
+  TaxAdjustmentCreditReversal: 'TAX_ADJUSTMENT_CREDIT_REVERSAL',
   /** The tax_adjustment_debit transaction type. */
-  TaxAdjustmentDebit = 'TAX_ADJUSTMENT_DEBIT',
+  TaxAdjustmentDebit: 'TAX_ADJUSTMENT_DEBIT',
   /** The tax_adjustment_debit_reversal transaction type. */
-  TaxAdjustmentDebitReversal = 'TAX_ADJUSTMENT_DEBIT_REVERSAL',
+  TaxAdjustmentDebitReversal: 'TAX_ADJUSTMENT_DEBIT_REVERSAL',
   /** The transfer transaction type. */
-  Transfer = 'TRANSFER',
+  Transfer: 'TRANSFER',
   /** The transfer_cancel transaction type. */
-  TransferCancel = 'TRANSFER_CANCEL',
+  TransferCancel: 'TRANSFER_CANCEL',
   /** The transfer_failure transaction type. */
-  TransferFailure = 'TRANSFER_FAILURE',
+  TransferFailure: 'TRANSFER_FAILURE',
   /** The transfer_refund transaction type. */
-  TransferRefund = 'TRANSFER_REFUND',
+  TransferRefund: 'TRANSFER_REFUND',
   /** The vat_refund_credit transaction type. */
-  VatRefundCredit = 'VAT_REFUND_CREDIT',
+  VatRefundCredit: 'VAT_REFUND_CREDIT',
   /** The vat_refund_credit_reversal transaction type. */
-  VatRefundCreditReversal = 'VAT_REFUND_CREDIT_REVERSAL'
-}
+  VatRefundCreditReversal: 'VAT_REFUND_CREDIT_REVERSAL'
+} as const;
 
+export type ShopifyPaymentsTransactionType = typeof ShopifyPaymentsTransactionType[keyof typeof ShopifyPaymentsTransactionType];
 /** The status of an order's eligibility for protection against fraudulent chargebacks by Shopify Protect. */
-export enum ShopifyProtectEligibilityStatus {
+export const ShopifyProtectEligibilityStatus = {
   /**
    * The order is eligible for protection against fraudulent chargebacks.
    * If an order is updated, the order's eligibility may change and protection could be removed.
    */
-  Eligible = 'ELIGIBLE',
+  Eligible: 'ELIGIBLE',
   /** The order isn't eligible for protection against fraudulent chargebacks. */
-  NotEligible = 'NOT_ELIGIBLE',
+  NotEligible: 'NOT_ELIGIBLE',
   /** The eligibility of the order is pending and has not yet been determined. */
-  Pending = 'PENDING'
-}
+  Pending: 'PENDING'
+} as const;
 
+export type ShopifyProtectEligibilityStatus = typeof ShopifyProtectEligibilityStatus[keyof typeof ShopifyProtectEligibilityStatus];
 /** The eligibility details of an order's protection against fraudulent chargebacks by Shopify Protect. */
 export type ShopifyProtectOrderEligibility = {
   __typename?: 'ShopifyProtectOrderEligibility';
@@ -61898,22 +62301,23 @@ export type ShopifyProtectOrderSummary = {
 };
 
 /** The status of an order's protection with Shopify Protect. */
-export enum ShopifyProtectStatus {
+export const ShopifyProtectStatus = {
   /**
    * The protection for the order is active and eligible for reimbursement against fraudulent chargebacks.
    * If an order is updated, the order's eligibility may change and protection could become inactive.
    */
-  Active = 'ACTIVE',
+  Active: 'ACTIVE',
   /** The protection for an order isn't active because the order didn't meet eligibility requirements. */
-  Inactive = 'INACTIVE',
+  Inactive: 'INACTIVE',
   /** The order received a chargeback but the order wasn't protected because it didn't meet coverage requirements. */
-  NotProtected = 'NOT_PROTECTED',
+  NotProtected: 'NOT_PROTECTED',
   /** The protection for the order is pending and has not yet been determined. */
-  Pending = 'PENDING',
+  Pending: 'PENDING',
   /** The order received a fraudulent chargeback and it was protected. */
-  Protected = 'PROTECTED'
-}
+  Protected: 'PROTECTED'
+} as const;
 
+export type ShopifyProtectStatus = typeof ShopifyProtectStatus[keyof typeof ShopifyProtectStatus];
 /** A response to a ShopifyQL query. */
 export type ShopifyqlQueryResponse = {
   __typename?: 'ShopifyqlQueryResponse';
@@ -62004,15 +62408,16 @@ export type StaffMemberConnection = {
 };
 
 /** Represents the fallback avatar image for a staff member. This is used only if the staff member has no avatar image. */
-export enum StaffMemberDefaultImage {
+export const StaffMemberDefaultImage = {
   /** Returns a default avatar image for the staff member. */
-  Default = 'DEFAULT',
+  Default: 'DEFAULT',
   /** Returns a URL that returns a 404 error if the image is not present. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** Returns a transparent avatar image for the staff member. */
-  Transparent = 'TRANSPARENT'
-}
+  Transparent: 'TRANSPARENT'
+} as const;
 
+export type StaffMemberDefaultImage = typeof StaffMemberDefaultImage[keyof typeof StaffMemberDefaultImage];
 /** An auto-generated type which holds one StaffMember and a cursor during pagination. */
 export type StaffMemberEdge = {
   __typename?: 'StaffMemberEdge';
@@ -62023,83 +62428,78 @@ export type StaffMemberEdge = {
 };
 
 /** Represents access permissions for a staff member. */
-export enum StaffMemberPermission {
+export const StaffMemberPermission = {
   /** The staff member can manage and install apps and channels. */
-  Applications = 'APPLICATIONS',
+  Applications: 'APPLICATIONS',
   /** The staff member can manage and install sales channels. */
-  Channels = 'CHANNELS',
+  Channels: 'CHANNELS',
   /** The staff member can create and edit customers. */
-  CreateAndEditCustomers = 'CREATE_AND_EDIT_CUSTOMERS',
+  CreateAndEditCustomers: 'CREATE_AND_EDIT_CUSTOMERS',
   /** The staff member can create and edit gift cards. */
-  CreateAndEditGiftCards = 'CREATE_AND_EDIT_GIFT_CARDS',
+  CreateAndEditGiftCards: 'CREATE_AND_EDIT_GIFT_CARDS',
   /** The staff member can create and edit markets. */
-  CreateAndEditMarkets = 'CREATE_AND_EDIT_MARKETS',
+  CreateAndEditMarkets: 'CREATE_AND_EDIT_MARKETS',
   /** The staff member can view customers. */
-  Customers = 'CUSTOMERS',
+  Customers: 'CUSTOMERS',
   /** The staff member can view the Shopify Home page, which includes sales information and other shop data. */
-  Dashboard = 'DASHBOARD',
+  Dashboard: 'DASHBOARD',
   /** The staff member can deactivate gift cards. */
-  DeactivateGiftCards = 'DEACTIVATE_GIFT_CARDS',
+  DeactivateGiftCards: 'DEACTIVATE_GIFT_CARDS',
   /** The staff member can delete customers. */
-  DeleteCustomers = 'DELETE_CUSTOMERS',
+  DeleteCustomers: 'DELETE_CUSTOMERS',
   /** The staff member can delete markets. */
-  DeleteMarkets = 'DELETE_MARKETS',
+  DeleteMarkets: 'DELETE_MARKETS',
   /** The staff member can view, buy, and manage domains. */
-  Domains = 'DOMAINS',
+  Domains: 'DOMAINS',
   /** The staff member can create, update, and delete draft orders. */
-  DraftOrders = 'DRAFT_ORDERS',
+  DraftOrders: 'DRAFT_ORDERS',
   /** The staff member can update orders. */
-  EditOrders = 'EDIT_ORDERS',
+  EditOrders: 'EDIT_ORDERS',
   /** The staff member can erase customer private data. */
-  EraseCustomerData = 'ERASE_CUSTOMER_DATA',
+  EraseCustomerData: 'ERASE_CUSTOMER_DATA',
   /** The staff member can export customers. */
-  ExportCustomers = 'EXPORT_CUSTOMERS',
+  ExportCustomers: 'EXPORT_CUSTOMERS',
   /** The staff member can export gift cards. */
-  ExportGiftCards = 'EXPORT_GIFT_CARDS',
-  /**
-   * The staff has the same permissions as the [store owner](https://shopify.dev/en/manual/your-account/staff-accounts/staff-permissions#store-owner-permissions) with some exceptions, such as modifying the account billing or deleting staff accounts.
-   * @deprecated Use the list of the staff member's explicit permissions returned in the `StaffMember.permissions.userPermissions` field instead of `full` permission.
-   */
-  Full = 'FULL',
+  ExportGiftCards: 'EXPORT_GIFT_CARDS',
+  /** The staff has the same permissions as the [store owner](https://shopify.dev/en/manual/your-account/staff-accounts/staff-permissions#store-owner-permissions) with some exceptions, such as modifying the account billing or deleting staff accounts. */
+  Full: 'FULL',
   /** The staff member can view, create, issue, and export gift cards to a CSV file. */
-  GiftCards = 'GIFT_CARDS',
+  GiftCards: 'GIFT_CARDS',
   /** The staff member can view and modify links and navigation menus. */
-  Links = 'LINKS',
+  Links: 'LINKS',
   /** The staff member can create, update, and delete locations where inventory is stocked or managed. */
-  Locations = 'LOCATIONS',
+  Locations: 'LOCATIONS',
   /** The staff member can view and create discount codes and automatic discounts, and export discounts to a CSV file. */
-  Marketing = 'MARKETING',
+  Marketing: 'MARKETING',
   /** The staff member can view, create, and automate marketing campaigns. */
-  MarketingSection = 'MARKETING_SECTION',
+  MarketingSection: 'MARKETING_SECTION',
   /** The staff member can merge customers. */
-  MergeCustomers = 'MERGE_CUSTOMERS',
+  MergeCustomers: 'MERGE_CUSTOMERS',
   /** The staff member can view, create, update, delete, and cancel orders, and receive order notifications. The staff member can still create draft orders without this permission. */
-  Orders = 'ORDERS',
+  Orders: 'ORDERS',
   /** The staff member can view the Overview and Live view pages, which include sales information, and other shop and sales channels data. */
-  Overviews = 'OVERVIEWS',
+  Overviews: 'OVERVIEWS',
   /** The staff member can view, create, update, publish, and delete blog posts and pages. */
-  Pages = 'PAGES',
+  Pages: 'PAGES',
   /** The staff member can pay for an order by using a vaulted card. */
-  PayOrdersByVaultedCard = 'PAY_ORDERS_BY_VAULTED_CARD',
+  PayOrdersByVaultedCard: 'PAY_ORDERS_BY_VAULTED_CARD',
   /** The staff member can view the preferences and configuration of a shop. */
-  Preferences = 'PREFERENCES',
+  Preferences: 'PREFERENCES',
   /** The staff member can view, create, import, and update products, collections, and inventory. */
-  Products = 'PRODUCTS',
+  Products: 'PRODUCTS',
   /** The staff member can view and create all reports, which includes sales information and other shop data. */
-  Reports = 'REPORTS',
+  Reports: 'REPORTS',
   /** The staff member can request customer private data. */
-  RequestCustomerData = 'REQUEST_CUSTOMER_DATA',
+  RequestCustomerData: 'REQUEST_CUSTOMER_DATA',
   /** The staff member can view, update, and publish themes. */
-  Themes = 'THEMES',
-  /**
-   * The staff member can view and create translations.
-   * @deprecated Unused.
-   */
-  Translations = 'TRANSLATIONS',
+  Themes: 'THEMES',
+  /** The staff member can view and create translations. */
+  Translations: 'TRANSLATIONS',
   /** The staff member can view markets. */
-  ViewMarkets = 'VIEW_MARKETS'
-}
+  ViewMarkets: 'VIEW_MARKETS'
+} as const;
 
+export type StaffMemberPermission = typeof StaffMemberPermission[keyof typeof StaffMemberPermission];
 /** Represents the data used to customize the Shopify admin experience for a logged-in staff member. */
 export type StaffMemberPrivateData = {
   __typename?: 'StaffMemberPrivateData';
@@ -62115,17 +62515,18 @@ export type StaffMemberPrivateData = {
 };
 
 /** The set of valid sort keys for the StaffMembers query. */
-export enum StaffMembersSortKeys {
+export const StaffMembersSortKeys = {
   /** Sort by the `email` value. */
-  Email = 'EMAIL',
+  Email: 'EMAIL',
   /** Sort by the `first_name` value. */
-  FirstName = 'FIRST_NAME',
+  FirstName: 'FIRST_NAME',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `last_name` value. */
-  LastName = 'LAST_NAME'
-}
+  LastName: 'LAST_NAME'
+} as const;
 
+export type StaffMembersSortKeys = typeof StaffMembersSortKeys[keyof typeof StaffMembersSortKeys];
 /**
  * An image to be uploaded.
  *
@@ -62176,13 +62577,14 @@ export type StagedMediaUploadTarget = {
  * The possible HTTP methods that can be used when sending a request to upload a file using information from a
  * [StagedMediaUploadTarget](https://shopify.dev/api/admin-graphql/latest/objects/StagedMediaUploadTarget).
  */
-export enum StagedUploadHttpMethodType {
+export const StagedUploadHttpMethodType = {
   /** The POST HTTP method. */
-  Post = 'POST',
+  Post: 'POST',
   /** The PUT HTTP method. */
-  Put = 'PUT'
-}
+  Put: 'PUT'
+} as const;
 
+export type StagedUploadHttpMethodType = typeof StagedUploadHttpMethodType[keyof typeof StagedUploadHttpMethodType];
 /** The input fields for generating staged upload targets. */
 export type StagedUploadInput = {
   /**
@@ -62269,14 +62671,14 @@ export type StagedUploadTargetGeneratePayload = {
 };
 
 /** The resource type to receive. */
-export enum StagedUploadTargetGenerateUploadResource {
+export const StagedUploadTargetGenerateUploadResource = {
   /**
    * Represents bulk mutation variables.
    *
    * For example, bulk mutation variables can be used for bulk operations using the
    * [bulkOperationRunMutation mutation](https://shopify.dev/api/admin-graphql/latest/mutations/bulkOperationRunMutation).
    */
-  BulkMutationVariables = 'BULK_MUTATION_VARIABLES',
+  BulkMutationVariables: 'BULK_MUTATION_VARIABLES',
   /**
    * An image associated with a collection.
    *
@@ -62284,14 +62686,14 @@ export enum StagedUploadTargetGenerateUploadResource {
    * [collectionUpdate mutation](https://shopify.dev/api/admin-graphql/latest/mutations/collectionUpdate)
    * to add the image to a collection.
    */
-  CollectionImage = 'COLLECTION_IMAGE',
+  CollectionImage: 'COLLECTION_IMAGE',
   /**
    * Represents a file associated with a dispute.
    *
    * For example, after uploading the file, you can add the file to a dispute using the
    * [disputeEvidenceUpdate mutation](https://shopify.dev/api/admin-graphql/latest/mutations/disputeEvidenceUpdate).
    */
-  DisputeFileUpload = 'DISPUTE_FILE_UPLOAD',
+  DisputeFileUpload: 'DISPUTE_FILE_UPLOAD',
   /**
    * Represents any file other than HTML.
    *
@@ -62299,7 +62701,7 @@ export enum StagedUploadTargetGenerateUploadResource {
    * [Files page](https://shopify.com/admin/settings/files) in Shopify admin using the
    * [fileCreate mutation](https://shopify.dev/api/admin-graphql/latest/mutations/fileCreate).
    */
-  File = 'FILE',
+  File: 'FILE',
   /**
    * An image.
    *
@@ -62308,29 +62710,28 @@ export enum StagedUploadTargetGenerateUploadResource {
    * or to the [Files page](https://shopify.com/admin/settings/files) in Shopify admin using the
    * [fileCreate mutation](https://shopify.dev/api/admin-graphql/latest/mutations/fileCreate).
    */
-  Image = 'IMAGE',
+  Image: 'IMAGE',
   /**
    * A Shopify hosted 3d model.
    *
    * For example, after uploading the 3d model, you can add the 3d model to a product using the
    * [productCreateMedia mutation](https://shopify.dev/api/admin-graphql/latest/mutations/productCreateMedia).
    */
-  Model_3D = 'MODEL_3D',
+  Model_3D: 'MODEL_3D',
   /**
    * An image that's associated with a product.
    *
    * For example, after uploading the image, you can add the image to a product using the
    * [productCreateMedia mutation](https://shopify.dev/api/admin-graphql/latest/mutations/productCreateMedia).
-   * @deprecated Use IMAGE instead. This resource type will be removed in a future version.
    */
-  ProductImage = 'PRODUCT_IMAGE',
+  ProductImage: 'PRODUCT_IMAGE',
   /**
    * Represents a label associated with a return.
    *
    * For example, once uploaded, this resource can be used to [create a
    * ReverseDelivery](https://shopify.dev/api/admin-graphql/unstable/mutations/reverseDeliveryCreateWithShipping).
    */
-  ReturnLabel = 'RETURN_LABEL',
+  ReturnLabel: 'RETURN_LABEL',
   /**
    * An image.
    *
@@ -62338,7 +62739,7 @@ export enum StagedUploadTargetGenerateUploadResource {
    * [Files page](https://shopify.com/admin/settings/files) in Shopify admin using the
    * [fileCreate mutation](https://shopify.dev/api/admin-graphql/latest/mutations/fileCreate).
    */
-  ShopImage = 'SHOP_IMAGE',
+  ShopImage: 'SHOP_IMAGE',
   /**
    * Represents a redirect CSV file.
    *
@@ -62347,7 +62748,7 @@ export enum StagedUploadTargetGenerateUploadResource {
    * object for use in the
    * [urlRedirectImportCreate mutation](https://shopify.dev/api/admin-graphql/latest/mutations/urlRedirectImportCreate).
    */
-  UrlRedirectImport = 'URL_REDIRECT_IMPORT',
+  UrlRedirectImport: 'URL_REDIRECT_IMPORT',
   /**
    * A Shopify-hosted video.
    *
@@ -62356,9 +62757,10 @@ export enum StagedUploadTargetGenerateUploadResource {
    * or to the [Files page](https://shopify.com/admin/settings/files) in Shopify admin using the
    * [fileCreate mutation](https://shopify.dev/api/admin-graphql/latest/mutations/fileCreate).
    */
-  Video = 'VIDEO'
-}
+  Video: 'VIDEO'
+} as const;
 
+export type StagedUploadTargetGenerateUploadResource = typeof StagedUploadTargetGenerateUploadResource[keyof typeof StagedUploadTargetGenerateUploadResource];
 /** Return type for `stagedUploadTargetsGenerate` mutation. */
 export type StagedUploadTargetsGeneratePayload = {
   __typename?: 'StagedUploadTargetsGeneratePayload';
@@ -62408,33 +62810,34 @@ export type StandardMetafieldDefinitionEnableUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `StandardMetafieldDefinitionEnableUserError`. */
-export enum StandardMetafieldDefinitionEnableUserErrorCode {
+export const StandardMetafieldDefinitionEnableUserErrorCode = {
   /** Admin access can only be specified for app-owned metafield definitions. */
-  AdminAccessInputNotAllowed = 'ADMIN_ACCESS_INPUT_NOT_ALLOWED',
+  AdminAccessInputNotAllowed: 'ADMIN_ACCESS_INPUT_NOT_ALLOWED',
   /** The metafield definition capability cannot be disabled. */
-  CapabilityCannotBeDisabled = 'CAPABILITY_CANNOT_BE_DISABLED',
+  CapabilityCannotBeDisabled: 'CAPABILITY_CANNOT_BE_DISABLED',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The metafield definition capability is invalid. */
-  InvalidCapability = 'INVALID_CAPABILITY',
+  InvalidCapability: 'INVALID_CAPABILITY',
   /** The input combination is invalid. */
-  InvalidInputCombination = 'INVALID_INPUT_COMBINATION',
+  InvalidInputCombination: 'INVALID_INPUT_COMBINATION',
   /** The maximum number of definitions per owner type has been exceeded. */
-  LimitExceeded = 'LIMIT_EXCEEDED',
+  LimitExceeded: 'LIMIT_EXCEEDED',
   /** You have reached the maximum allowed definitions to be used as admin filters. */
-  OwnerTypeLimitExceededForUseAsAdminFilters = 'OWNER_TYPE_LIMIT_EXCEEDED_FOR_USE_AS_ADMIN_FILTERS',
+  OwnerTypeLimitExceededForUseAsAdminFilters: 'OWNER_TYPE_LIMIT_EXCEEDED_FOR_USE_AS_ADMIN_FILTERS',
   /** The input value is already taken. */
-  Taken = 'TAKEN',
+  Taken: 'TAKEN',
   /** The standard metafield definition template was not found. */
-  TemplateNotFound = 'TEMPLATE_NOT_FOUND',
+  TemplateNotFound: 'TEMPLATE_NOT_FOUND',
   /** The definition type is not eligible to be used as collection condition. */
-  TypeNotAllowedForConditions = 'TYPE_NOT_ALLOWED_FOR_CONDITIONS',
+  TypeNotAllowedForConditions: 'TYPE_NOT_ALLOWED_FOR_CONDITIONS',
   /** The namespace and key is already in use for a set of your metafields. */
-  UnstructuredAlreadyExists = 'UNSTRUCTURED_ALREADY_EXISTS',
+  UnstructuredAlreadyExists: 'UNSTRUCTURED_ALREADY_EXISTS',
   /** The metafield definition does not support pinning. */
-  UnsupportedPinning = 'UNSUPPORTED_PINNING'
-}
+  UnsupportedPinning: 'UNSUPPORTED_PINNING'
+} as const;
 
+export type StandardMetafieldDefinitionEnableUserErrorCode = typeof StandardMetafieldDefinitionEnableUserErrorCode[keyof typeof StandardMetafieldDefinitionEnableUserErrorCode];
 /**
  * Standard metafield definition templates provide preset configurations to create metafield definitions.
  * Each template has a specific namespace and key that we've reserved to have specific meanings for common use cases.
@@ -62647,23 +63050,24 @@ export type StoreCreditAccountCreditUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `StoreCreditAccountCreditUserError`. */
-export enum StoreCreditAccountCreditUserErrorCode {
+export const StoreCreditAccountCreditUserErrorCode = {
   /** The store credit account could not be found. */
-  AccountNotFound = 'ACCOUNT_NOT_FOUND',
+  AccountNotFound: 'ACCOUNT_NOT_FOUND',
   /** The operation would cause the account's credit limit to be exceeded. */
-  CreditLimitExceeded = 'CREDIT_LIMIT_EXCEEDED',
+  CreditLimitExceeded: 'CREDIT_LIMIT_EXCEEDED',
   /** The expiry date must be in the future. */
-  ExpiresAtInPast = 'EXPIRES_AT_IN_PAST',
+  ExpiresAtInPast: 'EXPIRES_AT_IN_PAST',
   /** The currency provided does not match the currency of the store credit account. */
-  MismatchingCurrency = 'MISMATCHING_CURRENCY',
+  MismatchingCurrency: 'MISMATCHING_CURRENCY',
   /** A positive amount must be used to credit a store credit account. */
-  NegativeOrZeroAmount = 'NEGATIVE_OR_ZERO_AMOUNT',
+  NegativeOrZeroAmount: 'NEGATIVE_OR_ZERO_AMOUNT',
   /** Owner does not exist. */
-  OwnerNotFound = 'OWNER_NOT_FOUND',
+  OwnerNotFound: 'OWNER_NOT_FOUND',
   /** The currency provided is not currently supported. */
-  UnsupportedCurrency = 'UNSUPPORTED_CURRENCY'
-}
+  UnsupportedCurrency: 'UNSUPPORTED_CURRENCY'
+} as const;
 
+export type StoreCreditAccountCreditUserErrorCode = typeof StoreCreditAccountCreditUserErrorCode[keyof typeof StoreCreditAccountCreditUserErrorCode];
 /** The input fields for a store credit account debit transaction. */
 export type StoreCreditAccountDebitInput = {
   /** The amount to debit the store credit account. */
@@ -62737,17 +63141,18 @@ export type StoreCreditAccountDebitUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `StoreCreditAccountDebitUserError`. */
-export enum StoreCreditAccountDebitUserErrorCode {
+export const StoreCreditAccountDebitUserErrorCode = {
   /** The store credit account could not be found. */
-  AccountNotFound = 'ACCOUNT_NOT_FOUND',
+  AccountNotFound: 'ACCOUNT_NOT_FOUND',
   /** The store credit account does not have sufficient funds to satisfy the request. */
-  InsufficientFunds = 'INSUFFICIENT_FUNDS',
+  InsufficientFunds: 'INSUFFICIENT_FUNDS',
   /** The currency provided does not match the currency of the store credit account. */
-  MismatchingCurrency = 'MISMATCHING_CURRENCY',
+  MismatchingCurrency: 'MISMATCHING_CURRENCY',
   /** A positive amount must be used to debit a store credit account. */
-  NegativeOrZeroAmount = 'NEGATIVE_OR_ZERO_AMOUNT'
-}
+  NegativeOrZeroAmount: 'NEGATIVE_OR_ZERO_AMOUNT'
+} as const;
 
+export type StoreCreditAccountDebitUserErrorCode = typeof StoreCreditAccountDebitUserErrorCode[keyof typeof StoreCreditAccountDebitUserErrorCode];
 /** An auto-generated type which holds one StoreCreditAccount and a cursor during pagination. */
 export type StoreCreditAccountEdge = {
   __typename?: 'StoreCreditAccountEdge';
@@ -62829,23 +63234,24 @@ export type StoreCreditRefundInput = {
 };
 
 /** The event that caused the store credit account transaction. */
-export enum StoreCreditSystemEvent {
+export const StoreCreditSystemEvent = {
   /** An adjustment was made to the store credit account. */
-  Adjustment = 'ADJUSTMENT',
+  Adjustment: 'ADJUSTMENT',
   /** Store credit was returned when an authorized payment was voided. */
-  OrderCancellation = 'ORDER_CANCELLATION',
+  OrderCancellation: 'ORDER_CANCELLATION',
   /** Store credit was used as payment for an order. */
-  OrderPayment = 'ORDER_PAYMENT',
+  OrderPayment: 'ORDER_PAYMENT',
   /** Store credit was refunded from an order. */
-  OrderRefund = 'ORDER_REFUND',
+  OrderRefund: 'ORDER_REFUND',
   /** A store credit payment was reverted due to another payment method failing. */
-  PaymentFailure = 'PAYMENT_FAILURE',
+  PaymentFailure: 'PAYMENT_FAILURE',
   /** A smaller amount of store credit was captured than was originally authorized. */
-  PaymentReturned = 'PAYMENT_RETURNED',
+  PaymentReturned: 'PAYMENT_RETURNED',
   /** Tax finalization affected the store credit payment. */
-  TaxFinalization = 'TAX_FINALIZATION'
-}
+  TaxFinalization: 'TAX_FINALIZATION'
+} as const;
 
+export type StoreCreditSystemEvent = typeof StoreCreditSystemEvent[keyof typeof StoreCreditSystemEvent];
 /**
  * A token that delegates unauthenticated access scopes to clients that need to access the [Storefront API](https://shopify.dev/docs/api/storefront). Storefront access tokens enable headless storefronts and custom applications to interact with a store on behalf of customers without requiring authentication.
  *
@@ -63080,61 +63486,62 @@ export type SubscriptionBillingAttemptEdge = {
  * The possible error codes associated with making billing attempts. The error codes supplement the
  * `error_message` to provide consistent results and help with dunning management.
  */
-export enum SubscriptionBillingAttemptErrorCode {
+export const SubscriptionBillingAttemptErrorCode = {
   /** The amount is too small. */
-  AmountTooSmall = 'AMOUNT_TOO_SMALL',
+  AmountTooSmall: 'AMOUNT_TOO_SMALL',
   /** There was an error during the payment authentication. */
-  AuthenticationError = 'AUTHENTICATION_ERROR',
+  AuthenticationError: 'AUTHENTICATION_ERROR',
   /** Payment method was canceled by buyer. */
-  BuyerCanceledPaymentMethod = 'BUYER_CANCELED_PAYMENT_METHOD',
+  BuyerCanceledPaymentMethod: 'BUYER_CANCELED_PAYMENT_METHOD',
   /** Card number was incorrect. */
-  CardNumberIncorrect = 'CARD_NUMBER_INCORRECT',
+  CardNumberIncorrect: 'CARD_NUMBER_INCORRECT',
   /** Customer is invalid. */
-  CustomerInvalid = 'CUSTOMER_INVALID',
+  CustomerInvalid: 'CUSTOMER_INVALID',
   /** Customer was not found. */
-  CustomerNotFound = 'CUSTOMER_NOT_FOUND',
+  CustomerNotFound: 'CUSTOMER_NOT_FOUND',
   /** Payment method is expired. */
-  ExpiredPaymentMethod = 'EXPIRED_PAYMENT_METHOD',
+  ExpiredPaymentMethod: 'EXPIRED_PAYMENT_METHOD',
   /** Fraud was suspected. */
-  FraudSuspected = 'FRAUD_SUSPECTED',
+  FraudSuspected: 'FRAUD_SUSPECTED',
   /** Gift cards must have a price greater than zero. */
-  FreeGiftCardNotAllowed = 'FREE_GIFT_CARD_NOT_ALLOWED',
+  FreeGiftCardNotAllowed: 'FREE_GIFT_CARD_NOT_ALLOWED',
   /** Insufficient funds. */
-  InsufficientFunds = 'INSUFFICIENT_FUNDS',
+  InsufficientFunds: 'INSUFFICIENT_FUNDS',
   /** Not enough inventory found. */
-  InsufficientInventory = 'INSUFFICIENT_INVENTORY',
+  InsufficientInventory: 'INSUFFICIENT_INVENTORY',
   /** The billing agreement ID or the transaction ID for the customer's payment method is invalid. */
-  InvalidCustomerBillingAgreement = 'INVALID_CUSTOMER_BILLING_AGREEMENT',
+  InvalidCustomerBillingAgreement: 'INVALID_CUSTOMER_BILLING_AGREEMENT',
   /** Payment method is invalid. Please update or create a new payment method. */
-  InvalidPaymentMethod = 'INVALID_PAYMENT_METHOD',
+  InvalidPaymentMethod: 'INVALID_PAYMENT_METHOD',
   /** The shipping address is either missing or invalid. */
-  InvalidShippingAddress = 'INVALID_SHIPPING_ADDRESS',
+  InvalidShippingAddress: 'INVALID_SHIPPING_ADDRESS',
   /** No inventory location found or enabled. */
-  InventoryAllocationsNotFound = 'INVENTORY_ALLOCATIONS_NOT_FOUND',
+  InventoryAllocationsNotFound: 'INVENTORY_ALLOCATIONS_NOT_FOUND',
   /** A payment has already been made for this invoice. */
-  InvoiceAlreadyPaid = 'INVOICE_ALREADY_PAID',
+  InvoiceAlreadyPaid: 'INVOICE_ALREADY_PAID',
   /** Non-test order limit reached. Use a test payment gateway to place another order. */
-  NonTestOrderLimitReached = 'NON_TEST_ORDER_LIMIT_REACHED',
+  NonTestOrderLimitReached: 'NON_TEST_ORDER_LIMIT_REACHED',
   /** Payment method was declined by processor. */
-  PaymentMethodDeclined = 'PAYMENT_METHOD_DECLINED',
+  PaymentMethodDeclined: 'PAYMENT_METHOD_DECLINED',
   /** Payment method cannot be used with the current payment gateway test mode configuration. */
-  PaymentMethodIncompatibleWithGatewayConfig = 'PAYMENT_METHOD_INCOMPATIBLE_WITH_GATEWAY_CONFIG',
+  PaymentMethodIncompatibleWithGatewayConfig: 'PAYMENT_METHOD_INCOMPATIBLE_WITH_GATEWAY_CONFIG',
   /** Payment method was not found. */
-  PaymentMethodNotFound = 'PAYMENT_METHOD_NOT_FOUND',
+  PaymentMethodNotFound: 'PAYMENT_METHOD_NOT_FOUND',
   /** Payment provider is not enabled. */
-  PaymentProviderIsNotEnabled = 'PAYMENT_PROVIDER_IS_NOT_ENABLED',
+  PaymentProviderIsNotEnabled: 'PAYMENT_PROVIDER_IS_NOT_ENABLED',
   /** Paypal Error General. */
-  PaypalErrorGeneral = 'PAYPAL_ERROR_GENERAL',
+  PaypalErrorGeneral: 'PAYPAL_ERROR_GENERAL',
   /** Purchase Type is not supported. */
-  PurchaseTypeNotSupported = 'PURCHASE_TYPE_NOT_SUPPORTED',
+  PurchaseTypeNotSupported: 'PURCHASE_TYPE_NOT_SUPPORTED',
   /** Gateway is in test mode and attempted to bill a live payment method. */
-  TestMode = 'TEST_MODE',
+  TestMode: 'TEST_MODE',
   /** Transient error, try again later. */
-  TransientError = 'TRANSIENT_ERROR',
+  TransientError: 'TRANSIENT_ERROR',
   /** There was an unexpected error during the billing attempt. */
-  UnexpectedError = 'UNEXPECTED_ERROR'
-}
+  UnexpectedError: 'UNEXPECTED_ERROR'
+} as const;
 
+export type SubscriptionBillingAttemptErrorCode = typeof SubscriptionBillingAttemptErrorCode[keyof typeof SubscriptionBillingAttemptErrorCode];
 /** A base error type that applies to all uncategorized error classes. */
 export type SubscriptionBillingAttemptGenericError = SubscriptionBillingAttemptProcessingError & {
   __typename?: 'SubscriptionBillingAttemptGenericError';
@@ -63188,19 +63595,20 @@ export type SubscriptionBillingAttemptInsufficientStockProductVariantsErrorInsuf
 };
 
 /** The inventory policy for a billing attempt. */
-export enum SubscriptionBillingAttemptInventoryPolicy {
+export const SubscriptionBillingAttemptInventoryPolicy = {
   /**
    * Override the merchant's product variant
    *          inventory policy and allow overselling for this billing attempt.
    */
-  AllowOverselling = 'ALLOW_OVERSELLING',
+  AllowOverselling: 'ALLOW_OVERSELLING',
   /**
    * Respect the merchant's product variant
    *         inventory policy for this billing attempt.
    */
-  ProductVariantInventoryPolicy = 'PRODUCT_VARIANT_INVENTORY_POLICY'
-}
+  ProductVariantInventoryPolicy: 'PRODUCT_VARIANT_INVENTORY_POLICY'
+} as const;
 
+export type SubscriptionBillingAttemptInventoryPolicy = typeof SubscriptionBillingAttemptInventoryPolicy[keyof typeof SubscriptionBillingAttemptInventoryPolicy];
 /** An inventory error caused by an issue with one or more of the contract merchandise lines. */
 export type SubscriptionBillingAttemptOutOfStockProductVariantsError = SubscriptionBillingAttemptProcessingError & {
   __typename?: 'SubscriptionBillingAttemptOutOfStockProductVariantsError';
@@ -63234,13 +63642,14 @@ export type SubscriptionBillingAttemptProcessingError = {
 };
 
 /** The set of valid sort keys for the SubscriptionBillingAttempts query. */
-export enum SubscriptionBillingAttemptsSortKeys {
+export const SubscriptionBillingAttemptsSortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `id` value. */
-  Id = 'ID'
-}
+  Id: 'ID'
+} as const;
 
+export type SubscriptionBillingAttemptsSortKeys = typeof SubscriptionBillingAttemptsSortKeys[keyof typeof SubscriptionBillingAttemptsSortKeys];
 /** A subscription billing cycle. */
 export type SubscriptionBillingCycle = {
   __typename?: 'SubscriptionBillingCycle';
@@ -63277,23 +63686,25 @@ export type SubscriptionBillingCycleBillingAttemptsArgs = {
 };
 
 /** The presence of billing attempts on Billing Cycles. */
-export enum SubscriptionBillingCycleBillingAttemptStatus {
+export const SubscriptionBillingCycleBillingAttemptStatus = {
   /** Billing cycle has any number of billing attempts. */
-  Any = 'ANY',
+  Any: 'ANY',
   /** Billing cycle has at least one billing attempt. */
-  HasAttempt = 'HAS_ATTEMPT',
+  HasAttempt: 'HAS_ATTEMPT',
   /** Billing cycle has no billing attempts. */
-  NoAttempt = 'NO_ATTEMPT'
-}
+  NoAttempt: 'NO_ATTEMPT'
+} as const;
 
+export type SubscriptionBillingCycleBillingAttemptStatus = typeof SubscriptionBillingCycleBillingAttemptStatus[keyof typeof SubscriptionBillingCycleBillingAttemptStatus];
 /** The possible status values of a subscription billing cycle. */
-export enum SubscriptionBillingCycleBillingCycleStatus {
+export const SubscriptionBillingCycleBillingCycleStatus = {
   /** The billing cycle is billed. */
-  Billed = 'BILLED',
+  Billed: 'BILLED',
   /** The billing cycle hasn't been billed. */
-  Unbilled = 'UNBILLED'
-}
+  Unbilled: 'UNBILLED'
+} as const;
 
+export type SubscriptionBillingCycleBillingCycleStatus = typeof SubscriptionBillingCycleBillingCycleStatus[keyof typeof SubscriptionBillingCycleBillingCycleStatus];
 /** Return type for `subscriptionBillingCycleBulkCharge` mutation. */
 export type SubscriptionBillingCycleBulkChargePayload = {
   __typename?: 'SubscriptionBillingCycleBulkChargePayload';
@@ -63334,19 +63745,20 @@ export type SubscriptionBillingCycleBulkUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `SubscriptionBillingCycleBulkUserError`. */
-export enum SubscriptionBillingCycleBulkUserErrorCode {
+export const SubscriptionBillingCycleBulkUserErrorCode = {
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** End date can't be more than 24 hours in the future. */
-  EndDateInTheFuture = 'END_DATE_IN_THE_FUTURE',
+  EndDateInTheFuture: 'END_DATE_IN_THE_FUTURE',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The range between start date and end date shouldn't be more than 1 week. */
-  InvalidDateRange = 'INVALID_DATE_RANGE',
+  InvalidDateRange: 'INVALID_DATE_RANGE',
   /** Start date should be before end date. */
-  StartDateBeforeEndDate = 'START_DATE_BEFORE_END_DATE'
-}
+  StartDateBeforeEndDate: 'START_DATE_BEFORE_END_DATE'
+} as const;
 
+export type SubscriptionBillingCycleBulkUserErrorCode = typeof SubscriptionBillingCycleBulkUserErrorCode[keyof typeof SubscriptionBillingCycleBulkUserErrorCode];
 /** Return type for `subscriptionBillingCycleCharge` mutation. */
 export type SubscriptionBillingCycleChargePayload = {
   __typename?: 'SubscriptionBillingCycleChargePayload';
@@ -63511,33 +63923,34 @@ export type SubscriptionBillingCycleEditsDeletePayload = {
 };
 
 /** Possible error codes that can be returned by `SubscriptionBillingCycleUserError`. */
-export enum SubscriptionBillingCycleErrorCode {
+export const SubscriptionBillingCycleErrorCode = {
   /** Billing date cannot be set on skipped billing cycle. */
-  BillingDateSetOnSkipped = 'BILLING_DATE_SET_ON_SKIPPED',
+  BillingDateSetOnSkipped: 'BILLING_DATE_SET_ON_SKIPPED',
   /** Billing cycle selector cannot select billing cycle outside of index range. */
-  CycleIndexOutOfRange = 'CYCLE_INDEX_OUT_OF_RANGE',
+  CycleIndexOutOfRange: 'CYCLE_INDEX_OUT_OF_RANGE',
   /** Can't find the billing cycle. */
-  CycleNotFound = 'CYCLE_NOT_FOUND',
+  CycleNotFound: 'CYCLE_NOT_FOUND',
   /** Billing cycle selector cannot select billing cycle outside of start date range. */
-  CycleStartDateOutOfRange = 'CYCLE_START_DATE_OUT_OF_RANGE',
+  CycleStartDateOutOfRange: 'CYCLE_START_DATE_OUT_OF_RANGE',
   /** Billing cycle schedule edit input provided is empty. Must take in parameters to modify schedule. */
-  EmptyBillingCycleEditScheduleInput = 'EMPTY_BILLING_CYCLE_EDIT_SCHEDULE_INPUT',
+  EmptyBillingCycleEditScheduleInput: 'EMPTY_BILLING_CYCLE_EDIT_SCHEDULE_INPUT',
   /** Billing cycle has incomplete billing attempts in progress. */
-  IncompleteBillingAttempts = 'INCOMPLETE_BILLING_ATTEMPTS',
+  IncompleteBillingAttempts: 'INCOMPLETE_BILLING_ATTEMPTS',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The index selector is invalid. */
-  InvalidCycleIndex = 'INVALID_CYCLE_INDEX',
+  InvalidCycleIndex: 'INVALID_CYCLE_INDEX',
   /** The date selector is invalid. */
-  InvalidDate = 'INVALID_DATE',
+  InvalidDate: 'INVALID_DATE',
   /** There's no contract or schedule edit associated with the targeted billing cycle(s). */
-  NoCycleEdits = 'NO_CYCLE_EDITS',
+  NoCycleEdits: 'NO_CYCLE_EDITS',
   /** Billing date of a cycle cannot be set to a value outside of its billing date range. */
-  OutOfBounds = 'OUT_OF_BOUNDS',
+  OutOfBounds: 'OUT_OF_BOUNDS',
   /** Billing cycle selector cannot select upcoming billing cycle past limit. */
-  UpcomingCycleLimitExceeded = 'UPCOMING_CYCLE_LIMIT_EXCEEDED'
-}
+  UpcomingCycleLimitExceeded: 'UPCOMING_CYCLE_LIMIT_EXCEEDED'
+} as const;
 
+export type SubscriptionBillingCycleErrorCode = typeof SubscriptionBillingCycleErrorCode[keyof typeof SubscriptionBillingCycleErrorCode];
 /** The input fields for specifying the subscription contract and selecting the associated billing cycle. */
 export type SubscriptionBillingCycleInput = {
   /** The ID of the subscription contract associated with the billing cycle. */
@@ -63557,15 +63970,16 @@ export type SubscriptionBillingCycleScheduleEditInput = {
 };
 
 /** The input fields for possible reasons for editing the billing cycle's schedule. */
-export enum SubscriptionBillingCycleScheduleEditInputScheduleEditReason {
+export const SubscriptionBillingCycleScheduleEditInputScheduleEditReason = {
   /** Buyer initiated the schedule edit. */
-  BuyerInitiated = 'BUYER_INITIATED',
+  BuyerInitiated: 'BUYER_INITIATED',
   /** Developer initiated the schedule edit. */
-  DevInitiated = 'DEV_INITIATED',
+  DevInitiated: 'DEV_INITIATED',
   /** Merchant initiated the schedule edit. */
-  MerchantInitiated = 'MERCHANT_INITIATED'
-}
+  MerchantInitiated: 'MERCHANT_INITIATED'
+} as const;
 
+export type SubscriptionBillingCycleScheduleEditInputScheduleEditReason = typeof SubscriptionBillingCycleScheduleEditInputScheduleEditReason[keyof typeof SubscriptionBillingCycleScheduleEditInputScheduleEditReason];
 /** Return type for `subscriptionBillingCycleScheduleEdit` mutation. */
 export type SubscriptionBillingCycleScheduleEditPayload = {
   __typename?: 'SubscriptionBillingCycleScheduleEditPayload';
@@ -63604,11 +64018,12 @@ export type SubscriptionBillingCycleSkipUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `SubscriptionBillingCycleSkipUserError`. */
-export enum SubscriptionBillingCycleSkipUserErrorCode {
+export const SubscriptionBillingCycleSkipUserErrorCode = {
   /** The input value is invalid. */
-  Invalid = 'INVALID'
-}
+  Invalid: 'INVALID'
+} as const;
 
+export type SubscriptionBillingCycleSkipUserErrorCode = typeof SubscriptionBillingCycleSkipUserErrorCode[keyof typeof SubscriptionBillingCycleSkipUserErrorCode];
 /** Return type for `subscriptionBillingCycleUnskip` mutation. */
 export type SubscriptionBillingCycleUnskipPayload = {
   __typename?: 'SubscriptionBillingCycleUnskipPayload';
@@ -63630,11 +64045,12 @@ export type SubscriptionBillingCycleUnskipUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `SubscriptionBillingCycleUnskipUserError`. */
-export enum SubscriptionBillingCycleUnskipUserErrorCode {
+export const SubscriptionBillingCycleUnskipUserErrorCode = {
   /** The input value is invalid. */
-  Invalid = 'INVALID'
-}
+  Invalid: 'INVALID'
+} as const;
 
+export type SubscriptionBillingCycleUnskipUserErrorCode = typeof SubscriptionBillingCycleUnskipUserErrorCode[keyof typeof SubscriptionBillingCycleUnskipUserErrorCode];
 /** The possible errors for a subscription billing cycle. */
 export type SubscriptionBillingCycleUserError = DisplayableError & {
   __typename?: 'SubscriptionBillingCycleUserError';
@@ -63663,19 +64079,21 @@ export type SubscriptionBillingCyclesIndexRangeSelector = {
 };
 
 /** The set of valid sort keys for the SubscriptionBillingCycles query. */
-export enum SubscriptionBillingCyclesSortKeys {
+export const SubscriptionBillingCyclesSortKeys = {
   /** Sort by the `cycle_index` value. */
-  CycleIndex = 'CYCLE_INDEX',
+  CycleIndex: 'CYCLE_INDEX',
   /** Sort by the `id` value. */
-  Id = 'ID'
-}
+  Id: 'ID'
+} as const;
 
+export type SubscriptionBillingCyclesSortKeys = typeof SubscriptionBillingCyclesSortKeys[keyof typeof SubscriptionBillingCyclesSortKeys];
 /** Select subscription billing cycles to be targeted. */
-export enum SubscriptionBillingCyclesTargetSelection {
+export const SubscriptionBillingCyclesTargetSelection = {
   /** Target all current and upcoming subscription billing cycles. */
-  All = 'ALL'
-}
+  All: 'ALL'
+} as const;
 
+export type SubscriptionBillingCyclesTargetSelection = typeof SubscriptionBillingCyclesTargetSelection[keyof typeof SubscriptionBillingCyclesTargetSelection];
 /** Represents a Subscription Billing Policy. */
 export type SubscriptionBillingPolicy = {
   __typename?: 'SubscriptionBillingPolicy';
@@ -64010,11 +64428,12 @@ export type SubscriptionContractEdge = {
 };
 
 /** Possible error codes that can be returned by `SubscriptionContractUserError`. */
-export enum SubscriptionContractErrorCode {
+export const SubscriptionContractErrorCode = {
   /** The input value is invalid. */
-  Invalid = 'INVALID'
-}
+  Invalid: 'INVALID'
+} as const;
 
+export type SubscriptionContractErrorCode = typeof SubscriptionContractErrorCode[keyof typeof SubscriptionContractErrorCode];
 /** Return type for `subscriptionContractExpire` mutation. */
 export type SubscriptionContractExpirePayload = {
   __typename?: 'SubscriptionContractExpirePayload';
@@ -64034,25 +64453,27 @@ export type SubscriptionContractFailPayload = {
 };
 
 /** The possible values of the last billing error on a subscription contract. */
-export enum SubscriptionContractLastBillingErrorType {
+export const SubscriptionContractLastBillingErrorType = {
   /** Subscription billing attempt error due to customer error. */
-  CustomerError = 'CUSTOMER_ERROR',
+  CustomerError: 'CUSTOMER_ERROR',
   /** Subscription billing attempt error due to inventory error. */
-  InventoryError = 'INVENTORY_ERROR',
+  InventoryError: 'INVENTORY_ERROR',
   /** All other billing attempt errors. */
-  Other = 'OTHER',
+  Other: 'OTHER',
   /** Subscription billing attempt error due to payment error. */
-  PaymentError = 'PAYMENT_ERROR'
-}
+  PaymentError: 'PAYMENT_ERROR'
+} as const;
 
+export type SubscriptionContractLastBillingErrorType = typeof SubscriptionContractLastBillingErrorType[keyof typeof SubscriptionContractLastBillingErrorType];
 /** The possible status values of the last payment on a subscription contract. */
-export enum SubscriptionContractLastPaymentStatus {
+export const SubscriptionContractLastPaymentStatus = {
   /** Failed subscription billing attempt. */
-  Failed = 'FAILED',
+  Failed: 'FAILED',
   /** Successful subscription billing attempt. */
-  Succeeded = 'SUCCEEDED'
-}
+  Succeeded: 'SUCCEEDED'
+} as const;
 
+export type SubscriptionContractLastPaymentStatus = typeof SubscriptionContractLastPaymentStatus[keyof typeof SubscriptionContractLastPaymentStatus];
 /** Return type for `subscriptionContractPause` mutation. */
 export type SubscriptionContractPausePayload = {
   __typename?: 'SubscriptionContractPausePayload';
@@ -64091,13 +64512,14 @@ export type SubscriptionContractSetNextBillingDatePayload = {
 };
 
 /** Possible error codes that can be returned by `SubscriptionContractStatusUpdateUserError`. */
-export enum SubscriptionContractStatusUpdateErrorCode {
+export const SubscriptionContractStatusUpdateErrorCode = {
   /** Subscription contract status cannot be changed once terminated. */
-  ContractTerminated = 'CONTRACT_TERMINATED',
+  ContractTerminated: 'CONTRACT_TERMINATED',
   /** The input value is invalid. */
-  Invalid = 'INVALID'
-}
+  Invalid: 'INVALID'
+} as const;
 
+export type SubscriptionContractStatusUpdateErrorCode = typeof SubscriptionContractStatusUpdateErrorCode[keyof typeof SubscriptionContractStatusUpdateErrorCode];
 /** Represents a subscription contract status update error. */
 export type SubscriptionContractStatusUpdateUserError = DisplayableError & {
   __typename?: 'SubscriptionContractStatusUpdateUserError';
@@ -64110,19 +64532,20 @@ export type SubscriptionContractStatusUpdateUserError = DisplayableError & {
 };
 
 /** The possible status values of a subscription. */
-export enum SubscriptionContractSubscriptionStatus {
+export const SubscriptionContractSubscriptionStatus = {
   /** The contract is active and continuing per its policies. */
-  Active = 'ACTIVE',
+  Active: 'ACTIVE',
   /** The contract was ended by an unplanned customer action. */
-  Cancelled = 'CANCELLED',
+  Cancelled: 'CANCELLED',
   /** The contract has ended per the expected circumstances. All billing and deliverycycles of the subscriptions were executed. */
-  Expired = 'EXPIRED',
+  Expired: 'EXPIRED',
   /** The contract ended because billing failed and no further billing attempts are expected. */
-  Failed = 'FAILED',
+  Failed: 'FAILED',
   /** The contract is temporarily paused and is expected to resume in the future. */
-  Paused = 'PAUSED'
-}
+  Paused: 'PAUSED'
+} as const;
 
+export type SubscriptionContractSubscriptionStatus = typeof SubscriptionContractSubscriptionStatus[keyof typeof SubscriptionContractSubscriptionStatus];
 /** Return type for `subscriptionContractUpdate` mutation. */
 export type SubscriptionContractUpdatePayload = {
   __typename?: 'SubscriptionContractUpdatePayload';
@@ -64144,17 +64567,18 @@ export type SubscriptionContractUserError = DisplayableError & {
 };
 
 /** The set of valid sort keys for the SubscriptionContracts query. */
-export enum SubscriptionContractsSortKeys {
+export const SubscriptionContractsSortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `status` value. */
-  Status = 'STATUS',
+  Status: 'STATUS',
   /** Sort by the `updated_at` value. */
-  UpdatedAt = 'UPDATED_AT'
-}
+  UpdatedAt: 'UPDATED_AT'
+} as const;
 
+export type SubscriptionContractsSortKeys = typeof SubscriptionContractsSortKeys[keyof typeof SubscriptionContractsSortKeys];
 /** Represents a Subscription Line Pricing Cycle Adjustment. */
 export type SubscriptionCyclePriceAdjustment = {
   __typename?: 'SubscriptionCyclePriceAdjustment';
@@ -64460,31 +64884,32 @@ export type SubscriptionDiscountPercentageValue = {
 };
 
 /** The reason a discount on a subscription draft was rejected. */
-export enum SubscriptionDiscountRejectionReason {
+export const SubscriptionDiscountRejectionReason = {
   /** Discount is inactive. */
-  CurrentlyInactive = 'CURRENTLY_INACTIVE',
+  CurrentlyInactive: 'CURRENTLY_INACTIVE',
   /** Given customer does not qualify for the discount. */
-  CustomerNotEligible = 'CUSTOMER_NOT_ELIGIBLE',
+  CustomerNotEligible: 'CUSTOMER_NOT_ELIGIBLE',
   /** Customer usage limit has been reached. */
-  CustomerUsageLimitReached = 'CUSTOMER_USAGE_LIMIT_REACHED',
+  CustomerUsageLimitReached: 'CUSTOMER_USAGE_LIMIT_REACHED',
   /** Purchase type does not qualify for the discount. */
-  IncompatiblePurchaseType = 'INCOMPATIBLE_PURCHASE_TYPE',
+  IncompatiblePurchaseType: 'INCOMPATIBLE_PURCHASE_TYPE',
   /** Internal error during discount code validation. */
-  InternalError = 'INTERNAL_ERROR',
+  InternalError: 'INTERNAL_ERROR',
   /** Discount code is not found. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** Discount does not apply to any of the given line items. */
-  NoEntitledLineItems = 'NO_ENTITLED_LINE_ITEMS',
+  NoEntitledLineItems: 'NO_ENTITLED_LINE_ITEMS',
   /** No applicable shipping lines. */
-  NoEntitledShippingLines = 'NO_ENTITLED_SHIPPING_LINES',
+  NoEntitledShippingLines: 'NO_ENTITLED_SHIPPING_LINES',
   /** Purchase amount of items does not qualify for the discount. */
-  PurchaseNotInRange = 'PURCHASE_NOT_IN_RANGE',
+  PurchaseNotInRange: 'PURCHASE_NOT_IN_RANGE',
   /** Quantity of items does not qualify for the discount. */
-  QuantityNotInRange = 'QUANTITY_NOT_IN_RANGE',
+  QuantityNotInRange: 'QUANTITY_NOT_IN_RANGE',
   /** Discount usage limit has been reached. */
-  UsageLimitReached = 'USAGE_LIMIT_REACHED'
-}
+  UsageLimitReached: 'USAGE_LIMIT_REACHED'
+} as const;
 
+export type SubscriptionDiscountRejectionReason = typeof SubscriptionDiscountRejectionReason[keyof typeof SubscriptionDiscountRejectionReason];
 /** The value of the discount and how it will be applied. */
 export type SubscriptionDiscountValue = SubscriptionDiscountFixedAmountValue | SubscriptionDiscountPercentageValue;
 
@@ -65045,95 +65470,96 @@ export type SubscriptionDraftDiscountUpdatePayload = {
 };
 
 /** Possible error codes that can be returned by `SubscriptionDraftUserError`. */
-export enum SubscriptionDraftErrorCode {
+export const SubscriptionDraftErrorCode = {
   /** This line has already been removed. */
-  AlreadyRemoved = 'ALREADY_REMOVED',
+  AlreadyRemoved: 'ALREADY_REMOVED',
   /** Cannot commit a contract draft with this mutation. Please use SubscriptionDraftCommit. */
-  BillingCycleAbsent = 'BILLING_CYCLE_ABSENT',
+  BillingCycleAbsent: 'BILLING_CYCLE_ABSENT',
   /** Billing policy cannot be updated for billing cycle contract drafts. */
-  BillingCycleContractDraftBillingPolicyInvalid = 'BILLING_CYCLE_CONTRACT_DRAFT_BILLING_POLICY_INVALID',
+  BillingCycleContractDraftBillingPolicyInvalid: 'BILLING_CYCLE_CONTRACT_DRAFT_BILLING_POLICY_INVALID',
   /** Delivery policy cannot be updated for billing cycle contract drafts. */
-  BillingCycleContractDraftDeliveryPolicyInvalid = 'BILLING_CYCLE_CONTRACT_DRAFT_DELIVERY_POLICY_INVALID',
+  BillingCycleContractDraftDeliveryPolicyInvalid: 'BILLING_CYCLE_CONTRACT_DRAFT_DELIVERY_POLICY_INVALID',
   /** Cannot commit a billing cycle contract draft with this mutation. Please use SubscriptionBillingCycleContractDraftCommit. */
-  BillingCyclePresent = 'BILLING_CYCLE_PRESENT',
+  BillingCyclePresent: 'BILLING_CYCLE_PRESENT',
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** Subscription draft has been already committed. */
-  Committed = 'COMMITTED',
+  Committed: 'COMMITTED',
   /** Contract draft must be a billing cycle contract draft for contract concatenation. */
-  ConcatenationBillingCycleContractDraftRequired = 'CONCATENATION_BILLING_CYCLE_CONTRACT_DRAFT_REQUIRED',
+  ConcatenationBillingCycleContractDraftRequired: 'CONCATENATION_BILLING_CYCLE_CONTRACT_DRAFT_REQUIRED',
   /** Cannot concatenate a contract draft from subscriptionContractCreate mutation. */
-  ConcatenationUncommittedContractDraft = 'CONCATENATION_UNCOMMITTED_CONTRACT_DRAFT',
+  ConcatenationUncommittedContractDraft: 'CONCATENATION_UNCOMMITTED_CONTRACT_DRAFT',
   /** Currency is not enabled. */
-  CurrencyNotEnabled = 'CURRENCY_NOT_ENABLED',
+  CurrencyNotEnabled: 'CURRENCY_NOT_ENABLED',
   /** The customer doesn't exist. */
-  CustomerDoesNotExist = 'CUSTOMER_DOES_NOT_EXIST',
+  CustomerDoesNotExist: 'CUSTOMER_DOES_NOT_EXIST',
   /** The payment method customer must be the same as the contract customer. */
-  CustomerMismatch = 'CUSTOMER_MISMATCH',
+  CustomerMismatch: 'CUSTOMER_MISMATCH',
   /** Customer is scheduled for redaction or has been redacted. */
-  CustomerRedacted = 'CUSTOMER_REDACTED',
+  CustomerRedacted: 'CUSTOMER_REDACTED',
   /** The after cycle attribute must be unique between cycle discounts. */
-  CycleDiscountsUniqueAfterCycle = 'CYCLE_DISCOUNTS_UNIQUE_AFTER_CYCLE',
+  CycleDiscountsUniqueAfterCycle: 'CYCLE_DISCOUNTS_UNIQUE_AFTER_CYCLE',
   /** Billing cycle selector cannot select billing cycle outside of index range. */
-  CycleIndexOutOfRange = 'CYCLE_INDEX_OUT_OF_RANGE',
+  CycleIndexOutOfRange: 'CYCLE_INDEX_OUT_OF_RANGE',
   /** Billing cycle selector requires exactly one of index or date to be provided. */
-  CycleSelectorValidateOneOf = 'CYCLE_SELECTOR_VALIDATE_ONE_OF',
+  CycleSelectorValidateOneOf: 'CYCLE_SELECTOR_VALIDATE_ONE_OF',
   /** Billing cycle selector cannot select billing cycle outside of start date range. */
-  CycleStartDateOutOfRange = 'CYCLE_START_DATE_OUT_OF_RANGE',
+  CycleStartDateOutOfRange: 'CYCLE_START_DATE_OUT_OF_RANGE',
   /** The delivery method can't be blank if any lines require shipping. */
-  DeliveryMethodRequired = 'DELIVERY_METHOD_REQUIRED',
+  DeliveryMethodRequired: 'DELIVERY_METHOD_REQUIRED',
   /** The delivery policy interval must be a multiple of the billing policy interval. */
-  DeliveryMustBeMultipleOfBilling = 'DELIVERY_MUST_BE_MULTIPLE_OF_BILLING',
+  DeliveryMustBeMultipleOfBilling: 'DELIVERY_MUST_BE_MULTIPLE_OF_BILLING',
   /** Concatenated contracts cannot contain duplicate subscription contracts. */
-  DuplicateConcatenatedContracts = 'DUPLICATE_CONCATENATED_CONTRACTS',
+  DuplicateConcatenatedContracts: 'DUPLICATE_CONCATENATED_CONTRACTS',
   /** Maximum number of concatenated contracts on a billing cycle contract draft exceeded. */
-  ExceededMaxConcatenatedContracts = 'EXCEEDED_MAX_CONCATENATED_CONTRACTS',
+  ExceededMaxConcatenatedContracts: 'EXCEEDED_MAX_CONCATENATED_CONTRACTS',
   /** The input value should be greater than the minimum allowed value. */
-  GreaterThan = 'GREATER_THAN',
+  GreaterThan: 'GREATER_THAN',
   /** The input value should be greater than or equal to the minimum value allowed. */
-  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  GreaterThanOrEqualTo: 'GREATER_THAN_OR_EQUAL_TO',
   /** Cannot update a subscription contract with a current or upcoming billing cycle contract edit. */
-  HasFutureEdits = 'HAS_FUTURE_EDITS',
+  HasFutureEdits: 'HAS_FUTURE_EDITS',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The adjustment value must the same type as the adjustment type. */
-  InvalidAdjustmentType = 'INVALID_ADJUSTMENT_TYPE',
+  InvalidAdjustmentType: 'INVALID_ADJUSTMENT_TYPE',
   /** The adjustment value must be either fixed_value or percentage. */
-  InvalidAdjustmentValue = 'INVALID_ADJUSTMENT_VALUE',
+  InvalidAdjustmentValue: 'INVALID_ADJUSTMENT_VALUE',
   /** Next billing date is invalid. */
-  InvalidBillingDate = 'INVALID_BILLING_DATE',
+  InvalidBillingDate: 'INVALID_BILLING_DATE',
   /** Must have at least one line. */
-  InvalidLines = 'INVALID_LINES',
+  InvalidLines: 'INVALID_LINES',
   /** Note length is too long. */
-  InvalidNoteLength = 'INVALID_NOTE_LENGTH',
+  InvalidNoteLength: 'INVALID_NOTE_LENGTH',
   /** The input value should be less than the maximum value allowed. */
-  LessThan = 'LESS_THAN',
+  LessThan: 'LESS_THAN',
   /** The input value should be less than or equal to the maximum value allowed. */
-  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  LessThanOrEqualTo: 'LESS_THAN_OR_EQUAL_TO',
   /** Customer payment method is required. */
-  MissingCustomerPaymentMethod = 'MISSING_CUSTOMER_PAYMENT_METHOD',
+  MissingCustomerPaymentMethod: 'MISSING_CUSTOMER_PAYMENT_METHOD',
   /** The local delivery options must be set for local delivery. */
-  MissingLocalDeliveryOptions = 'MISSING_LOCAL_DELIVERY_OPTIONS',
+  MissingLocalDeliveryOptions: 'MISSING_LOCAL_DELIVERY_OPTIONS',
   /** The value is not an integer. */
-  NotAnInteger = 'NOT_AN_INTEGER',
+  NotAnInteger: 'NOT_AN_INTEGER',
   /** Value is not in range. */
-  NotInRange = 'NOT_IN_RANGE',
+  NotInRange: 'NOT_IN_RANGE',
   /** Discount must have at least one entitled line. */
-  NoEntitledLines = 'NO_ENTITLED_LINES',
+  NoEntitledLines: 'NO_ENTITLED_LINES',
   /** Input value is not present. */
-  Presence = 'PRESENCE',
+  Presence: 'PRESENCE',
   /** The maximum number of cycles must be greater than the minimum. */
-  SellingPlanMaxCyclesMustBeGreaterThanMinCycles = 'SELLING_PLAN_MAX_CYCLES_MUST_BE_GREATER_THAN_MIN_CYCLES',
+  SellingPlanMaxCyclesMustBeGreaterThanMinCycles: 'SELLING_PLAN_MAX_CYCLES_MUST_BE_GREATER_THAN_MIN_CYCLES',
   /** Another operation updated the contract concurrently as the commit was in progress. */
-  StaleContract = 'STALE_CONTRACT',
+  StaleContract: 'STALE_CONTRACT',
   /** The input value is too long. */
-  TooLong = 'TOO_LONG',
+  TooLong: 'TOO_LONG',
   /** The input value is too short. */
-  TooShort = 'TOO_SHORT',
+  TooShort: 'TOO_SHORT',
   /** Billing cycle selector cannot select upcoming billing cycle past limit. */
-  UpcomingCycleLimitExceeded = 'UPCOMING_CYCLE_LIMIT_EXCEEDED'
-}
+  UpcomingCycleLimitExceeded: 'UPCOMING_CYCLE_LIMIT_EXCEEDED'
+} as const;
 
+export type SubscriptionDraftErrorCode = typeof SubscriptionDraftErrorCode[keyof typeof SubscriptionDraftErrorCode];
 /** Return type for `subscriptionDraftFreeShippingDiscountAdd` mutation. */
 export type SubscriptionDraftFreeShippingDiscountAddPayload = {
   __typename?: 'SubscriptionDraftFreeShippingDiscountAddPayload';
@@ -65595,11 +66021,12 @@ export type SuggestedOrderTransaction = {
 };
 
 /** Specifies the kind of the suggested order transaction. */
-export enum SuggestedOrderTransactionKind {
+export const SuggestedOrderTransactionKind = {
   /** A suggested refund transaction for an order. */
-  SuggestedRefund = 'SUGGESTED_REFUND'
-}
+  SuggestedRefund: 'SUGGESTED_REFUND'
+} as const;
 
+export type SuggestedOrderTransactionKind = typeof SuggestedOrderTransactionKind[keyof typeof SuggestedOrderTransactionKind];
 /** The input fields for an exchange line item. */
 export type SuggestedOutcomeExchangeLineItemInput = {
   /** The ID of the exchange line item. */
@@ -65784,163 +66211,165 @@ export type TaxAppConfigureUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `TaxAppConfigureUserError`. */
-export enum TaxAppConfigureUserErrorCode {
+export const TaxAppConfigureUserErrorCode = {
   /** Unable to update already active tax partner. */
-  TaxPartnerAlreadyActive = 'TAX_PARTNER_ALREADY_ACTIVE',
+  TaxPartnerAlreadyActive: 'TAX_PARTNER_ALREADY_ACTIVE',
   /** Unable to find the tax partner record. */
-  TaxPartnerNotFound = 'TAX_PARTNER_NOT_FOUND',
+  TaxPartnerNotFound: 'TAX_PARTNER_NOT_FOUND',
   /** Unable to update tax partner state. */
-  TaxPartnerStateUpdateFailed = 'TAX_PARTNER_STATE_UPDATE_FAILED'
-}
+  TaxPartnerStateUpdateFailed: 'TAX_PARTNER_STATE_UPDATE_FAILED'
+} as const;
 
+export type TaxAppConfigureUserErrorCode = typeof TaxAppConfigureUserErrorCode[keyof typeof TaxAppConfigureUserErrorCode];
 /** Available customer tax exemptions. */
-export enum TaxExemption {
+export const TaxExemption = {
   /** This customer is exempt from specific taxes for holding a valid COMMERCIAL_FISHERY_EXEMPTION in British Columbia. */
-  CaBcCommercialFisheryExemption = 'CA_BC_COMMERCIAL_FISHERY_EXEMPTION',
+  CaBcCommercialFisheryExemption: 'CA_BC_COMMERCIAL_FISHERY_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid CONTRACTOR_EXEMPTION in British Columbia. */
-  CaBcContractorExemption = 'CA_BC_CONTRACTOR_EXEMPTION',
+  CaBcContractorExemption: 'CA_BC_CONTRACTOR_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid PRODUCTION_AND_MACHINERY_EXEMPTION in British Columbia. */
-  CaBcProductionAndMachineryExemption = 'CA_BC_PRODUCTION_AND_MACHINERY_EXEMPTION',
+  CaBcProductionAndMachineryExemption: 'CA_BC_PRODUCTION_AND_MACHINERY_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in British Columbia. */
-  CaBcResellerExemption = 'CA_BC_RESELLER_EXEMPTION',
+  CaBcResellerExemption: 'CA_BC_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid SUB_CONTRACTOR_EXEMPTION in British Columbia. */
-  CaBcSubContractorExemption = 'CA_BC_SUB_CONTRACTOR_EXEMPTION',
+  CaBcSubContractorExemption: 'CA_BC_SUB_CONTRACTOR_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid DIPLOMAT_EXEMPTION in Canada. */
-  CaDiplomatExemption = 'CA_DIPLOMAT_EXEMPTION',
+  CaDiplomatExemption: 'CA_DIPLOMAT_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid COMMERCIAL_FISHERY_EXEMPTION in Manitoba. */
-  CaMbCommercialFisheryExemption = 'CA_MB_COMMERCIAL_FISHERY_EXEMPTION',
+  CaMbCommercialFisheryExemption: 'CA_MB_COMMERCIAL_FISHERY_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid FARMER_EXEMPTION in Manitoba. */
-  CaMbFarmerExemption = 'CA_MB_FARMER_EXEMPTION',
+  CaMbFarmerExemption: 'CA_MB_FARMER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Manitoba. */
-  CaMbResellerExemption = 'CA_MB_RESELLER_EXEMPTION',
+  CaMbResellerExemption: 'CA_MB_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid COMMERCIAL_FISHERY_EXEMPTION in Nova Scotia. */
-  CaNsCommercialFisheryExemption = 'CA_NS_COMMERCIAL_FISHERY_EXEMPTION',
+  CaNsCommercialFisheryExemption: 'CA_NS_COMMERCIAL_FISHERY_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid FARMER_EXEMPTION in Nova Scotia. */
-  CaNsFarmerExemption = 'CA_NS_FARMER_EXEMPTION',
+  CaNsFarmerExemption: 'CA_NS_FARMER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid PURCHASE_EXEMPTION in Ontario. */
-  CaOnPurchaseExemption = 'CA_ON_PURCHASE_EXEMPTION',
+  CaOnPurchaseExemption: 'CA_ON_PURCHASE_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid COMMERCIAL_FISHERY_EXEMPTION in Prince Edward Island. */
-  CaPeCommercialFisheryExemption = 'CA_PE_COMMERCIAL_FISHERY_EXEMPTION',
+  CaPeCommercialFisheryExemption: 'CA_PE_COMMERCIAL_FISHERY_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid COMMERCIAL_FISHERY_EXEMPTION in Saskatchewan. */
-  CaSkCommercialFisheryExemption = 'CA_SK_COMMERCIAL_FISHERY_EXEMPTION',
+  CaSkCommercialFisheryExemption: 'CA_SK_COMMERCIAL_FISHERY_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid CONTRACTOR_EXEMPTION in Saskatchewan. */
-  CaSkContractorExemption = 'CA_SK_CONTRACTOR_EXEMPTION',
+  CaSkContractorExemption: 'CA_SK_CONTRACTOR_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid FARMER_EXEMPTION in Saskatchewan. */
-  CaSkFarmerExemption = 'CA_SK_FARMER_EXEMPTION',
+  CaSkFarmerExemption: 'CA_SK_FARMER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid PRODUCTION_AND_MACHINERY_EXEMPTION in Saskatchewan. */
-  CaSkProductionAndMachineryExemption = 'CA_SK_PRODUCTION_AND_MACHINERY_EXEMPTION',
+  CaSkProductionAndMachineryExemption: 'CA_SK_PRODUCTION_AND_MACHINERY_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Saskatchewan. */
-  CaSkResellerExemption = 'CA_SK_RESELLER_EXEMPTION',
+  CaSkResellerExemption: 'CA_SK_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid SUB_CONTRACTOR_EXEMPTION in Saskatchewan. */
-  CaSkSubContractorExemption = 'CA_SK_SUB_CONTRACTOR_EXEMPTION',
+  CaSkSubContractorExemption: 'CA_SK_SUB_CONTRACTOR_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid STATUS_CARD_EXEMPTION in Canada. */
-  CaStatusCardExemption = 'CA_STATUS_CARD_EXEMPTION',
+  CaStatusCardExemption: 'CA_STATUS_CARD_EXEMPTION',
   /** This customer is exempt from VAT for purchases within the EU that is shipping from outside of customer's country, as well as purchases from the EU to the UK. */
-  EuReverseChargeExemptionRule = 'EU_REVERSE_CHARGE_EXEMPTION_RULE',
+  EuReverseChargeExemptionRule: 'EU_REVERSE_CHARGE_EXEMPTION_RULE',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Alaska. */
-  UsAkResellerExemption = 'US_AK_RESELLER_EXEMPTION',
+  UsAkResellerExemption: 'US_AK_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Alabama. */
-  UsAlResellerExemption = 'US_AL_RESELLER_EXEMPTION',
+  UsAlResellerExemption: 'US_AL_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Arkansas. */
-  UsArResellerExemption = 'US_AR_RESELLER_EXEMPTION',
+  UsArResellerExemption: 'US_AR_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Arizona. */
-  UsAzResellerExemption = 'US_AZ_RESELLER_EXEMPTION',
+  UsAzResellerExemption: 'US_AZ_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in California. */
-  UsCaResellerExemption = 'US_CA_RESELLER_EXEMPTION',
+  UsCaResellerExemption: 'US_CA_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Colorado. */
-  UsCoResellerExemption = 'US_CO_RESELLER_EXEMPTION',
+  UsCoResellerExemption: 'US_CO_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Connecticut. */
-  UsCtResellerExemption = 'US_CT_RESELLER_EXEMPTION',
+  UsCtResellerExemption: 'US_CT_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Washington DC. */
-  UsDcResellerExemption = 'US_DC_RESELLER_EXEMPTION',
+  UsDcResellerExemption: 'US_DC_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Delaware. */
-  UsDeResellerExemption = 'US_DE_RESELLER_EXEMPTION',
+  UsDeResellerExemption: 'US_DE_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Florida. */
-  UsFlResellerExemption = 'US_FL_RESELLER_EXEMPTION',
+  UsFlResellerExemption: 'US_FL_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Georgia. */
-  UsGaResellerExemption = 'US_GA_RESELLER_EXEMPTION',
+  UsGaResellerExemption: 'US_GA_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Hawaii. */
-  UsHiResellerExemption = 'US_HI_RESELLER_EXEMPTION',
+  UsHiResellerExemption: 'US_HI_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Iowa. */
-  UsIaResellerExemption = 'US_IA_RESELLER_EXEMPTION',
+  UsIaResellerExemption: 'US_IA_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Idaho. */
-  UsIdResellerExemption = 'US_ID_RESELLER_EXEMPTION',
+  UsIdResellerExemption: 'US_ID_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Illinois. */
-  UsIlResellerExemption = 'US_IL_RESELLER_EXEMPTION',
+  UsIlResellerExemption: 'US_IL_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Indiana. */
-  UsInResellerExemption = 'US_IN_RESELLER_EXEMPTION',
+  UsInResellerExemption: 'US_IN_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Kansas. */
-  UsKsResellerExemption = 'US_KS_RESELLER_EXEMPTION',
+  UsKsResellerExemption: 'US_KS_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Kentucky. */
-  UsKyResellerExemption = 'US_KY_RESELLER_EXEMPTION',
+  UsKyResellerExemption: 'US_KY_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Louisiana. */
-  UsLaResellerExemption = 'US_LA_RESELLER_EXEMPTION',
+  UsLaResellerExemption: 'US_LA_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Massachusetts. */
-  UsMaResellerExemption = 'US_MA_RESELLER_EXEMPTION',
+  UsMaResellerExemption: 'US_MA_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Maryland. */
-  UsMdResellerExemption = 'US_MD_RESELLER_EXEMPTION',
+  UsMdResellerExemption: 'US_MD_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Maine. */
-  UsMeResellerExemption = 'US_ME_RESELLER_EXEMPTION',
+  UsMeResellerExemption: 'US_ME_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Michigan. */
-  UsMiResellerExemption = 'US_MI_RESELLER_EXEMPTION',
+  UsMiResellerExemption: 'US_MI_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Minnesota. */
-  UsMnResellerExemption = 'US_MN_RESELLER_EXEMPTION',
+  UsMnResellerExemption: 'US_MN_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Missouri. */
-  UsMoResellerExemption = 'US_MO_RESELLER_EXEMPTION',
+  UsMoResellerExemption: 'US_MO_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Mississippi. */
-  UsMsResellerExemption = 'US_MS_RESELLER_EXEMPTION',
+  UsMsResellerExemption: 'US_MS_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Montana. */
-  UsMtResellerExemption = 'US_MT_RESELLER_EXEMPTION',
+  UsMtResellerExemption: 'US_MT_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in North Carolina. */
-  UsNcResellerExemption = 'US_NC_RESELLER_EXEMPTION',
+  UsNcResellerExemption: 'US_NC_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in North Dakota. */
-  UsNdResellerExemption = 'US_ND_RESELLER_EXEMPTION',
+  UsNdResellerExemption: 'US_ND_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Nebraska. */
-  UsNeResellerExemption = 'US_NE_RESELLER_EXEMPTION',
+  UsNeResellerExemption: 'US_NE_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in New Hampshire. */
-  UsNhResellerExemption = 'US_NH_RESELLER_EXEMPTION',
+  UsNhResellerExemption: 'US_NH_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in New Jersey. */
-  UsNjResellerExemption = 'US_NJ_RESELLER_EXEMPTION',
+  UsNjResellerExemption: 'US_NJ_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in New Mexico. */
-  UsNmResellerExemption = 'US_NM_RESELLER_EXEMPTION',
+  UsNmResellerExemption: 'US_NM_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Nevada. */
-  UsNvResellerExemption = 'US_NV_RESELLER_EXEMPTION',
+  UsNvResellerExemption: 'US_NV_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in New York. */
-  UsNyResellerExemption = 'US_NY_RESELLER_EXEMPTION',
+  UsNyResellerExemption: 'US_NY_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Ohio. */
-  UsOhResellerExemption = 'US_OH_RESELLER_EXEMPTION',
+  UsOhResellerExemption: 'US_OH_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Oklahoma. */
-  UsOkResellerExemption = 'US_OK_RESELLER_EXEMPTION',
+  UsOkResellerExemption: 'US_OK_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Oregon. */
-  UsOrResellerExemption = 'US_OR_RESELLER_EXEMPTION',
+  UsOrResellerExemption: 'US_OR_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Pennsylvania. */
-  UsPaResellerExemption = 'US_PA_RESELLER_EXEMPTION',
+  UsPaResellerExemption: 'US_PA_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Rhode Island. */
-  UsRiResellerExemption = 'US_RI_RESELLER_EXEMPTION',
+  UsRiResellerExemption: 'US_RI_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in South Carolina. */
-  UsScResellerExemption = 'US_SC_RESELLER_EXEMPTION',
+  UsScResellerExemption: 'US_SC_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in South Dakota. */
-  UsSdResellerExemption = 'US_SD_RESELLER_EXEMPTION',
+  UsSdResellerExemption: 'US_SD_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Tennessee. */
-  UsTnResellerExemption = 'US_TN_RESELLER_EXEMPTION',
+  UsTnResellerExemption: 'US_TN_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Texas. */
-  UsTxResellerExemption = 'US_TX_RESELLER_EXEMPTION',
+  UsTxResellerExemption: 'US_TX_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Utah. */
-  UsUtResellerExemption = 'US_UT_RESELLER_EXEMPTION',
+  UsUtResellerExemption: 'US_UT_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Virginia. */
-  UsVaResellerExemption = 'US_VA_RESELLER_EXEMPTION',
+  UsVaResellerExemption: 'US_VA_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Vermont. */
-  UsVtResellerExemption = 'US_VT_RESELLER_EXEMPTION',
+  UsVtResellerExemption: 'US_VT_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Washington. */
-  UsWaResellerExemption = 'US_WA_RESELLER_EXEMPTION',
+  UsWaResellerExemption: 'US_WA_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Wisconsin. */
-  UsWiResellerExemption = 'US_WI_RESELLER_EXEMPTION',
+  UsWiResellerExemption: 'US_WI_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in West Virginia. */
-  UsWvResellerExemption = 'US_WV_RESELLER_EXEMPTION',
+  UsWvResellerExemption: 'US_WV_RESELLER_EXEMPTION',
   /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Wyoming. */
-  UsWyResellerExemption = 'US_WY_RESELLER_EXEMPTION'
-}
+  UsWyResellerExemption: 'US_WY_RESELLER_EXEMPTION'
+} as const;
 
+export type TaxExemption = typeof TaxExemption[keyof typeof TaxExemption];
 /**
  * A tax applied to a [`LineItem`](https://shopify.dev/docs/api/admin-graphql/latest/objects/LineItem) or [`ShippingLine`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ShippingLine). Includes the tax amount, rate, title, and whether the channel that submitted the tax is liable for remitting it.
  *
@@ -65968,15 +66397,16 @@ export type TaxLine = {
 };
 
 /** State of the tax app configuration. */
-export enum TaxPartnerState {
+export const TaxPartnerState = {
   /** App is configured and to be used for tax calculations. */
-  Active = 'ACTIVE',
+  Active: 'ACTIVE',
   /** App is not configured. */
-  Pending = 'PENDING',
+  Pending: 'PENDING',
   /** App is configured, but not used for tax calculations. */
-  Ready = 'READY'
-}
+  Ready: 'READY'
+} as const;
 
+export type TaxPartnerState = typeof TaxPartnerState[keyof typeof TaxPartnerState];
 /**
  * Represents Shopify's [standardized product taxonomy](https://shopify.github.io/product-taxonomy/releases/unstable/?categoryId=sg-4-17-2-17) tree. Provides categories that you can filter by search criteria or hierarchical relationships.
  *
@@ -66246,22 +66676,23 @@ export type ThemeCreateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `ThemeCreateUserError`. */
-export enum ThemeCreateUserErrorCode {
+export const ThemeCreateUserErrorCode = {
   /** Invalid theme role for theme creation. */
-  InvalidThemeRoleForThemeCreation = 'INVALID_THEME_ROLE_FOR_THEME_CREATION',
+  InvalidThemeRoleForThemeCreation: 'INVALID_THEME_ROLE_FOR_THEME_CREATION',
   /** Must be a zip file. */
-  InvalidZip = 'INVALID_ZIP',
+  InvalidZip: 'INVALID_ZIP',
   /** Theme creation is not allowed for your shop's plan. */
-  ThemeCreationNotAllowedForThemeLimitedPlan = 'THEME_CREATION_NOT_ALLOWED_FOR_THEME_LIMITED_PLAN',
+  ThemeCreationNotAllowedForThemeLimitedPlan: 'THEME_CREATION_NOT_ALLOWED_FOR_THEME_LIMITED_PLAN',
   /** Zip is empty. */
-  ZipIsEmpty = 'ZIP_IS_EMPTY',
+  ZipIsEmpty: 'ZIP_IS_EMPTY',
   /**
    * May not be used to fetch a file bigger
    *             than 50MB.
    */
-  ZipTooLarge = 'ZIP_TOO_LARGE'
-}
+  ZipTooLarge: 'ZIP_TOO_LARGE'
+} as const;
 
+export type ThemeCreateUserErrorCode = typeof ThemeCreateUserErrorCode[keyof typeof ThemeCreateUserErrorCode];
 /** Return type for `themeDelete` mutation. */
 export type ThemeDeletePayload = {
   __typename?: 'ThemeDeletePayload';
@@ -66283,11 +66714,12 @@ export type ThemeDeleteUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `ThemeDeleteUserError`. */
-export enum ThemeDeleteUserErrorCode {
+export const ThemeDeleteUserErrorCode = {
   /** The record with the ID used as the input value couldn't be found. */
-  NotFound = 'NOT_FOUND'
-}
+  NotFound: 'NOT_FOUND'
+} as const;
 
+export type ThemeDeleteUserErrorCode = typeof ThemeDeleteUserErrorCode[keyof typeof ThemeDeleteUserErrorCode];
 /** Return type for `themeDuplicate` mutation. */
 export type ThemeDuplicatePayload = {
   __typename?: 'ThemeDuplicatePayload';
@@ -66309,11 +66741,12 @@ export type ThemeDuplicateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `ThemeDuplicateUserError`. */
-export enum ThemeDuplicateUserErrorCode {
+export const ThemeDuplicateUserErrorCode = {
   /** The record with the ID used as the input value couldn't be found. */
-  NotFound = 'NOT_FOUND'
-}
+  NotFound: 'NOT_FOUND'
+} as const;
 
+export type ThemeDuplicateUserErrorCode = typeof ThemeDuplicateUserErrorCode[keyof typeof ThemeDuplicateUserErrorCode];
 /** The input fields for the file copy. */
 export type ThemeFilesCopyFileInput = {
   /** The new file where the content is copied to. */
@@ -66372,36 +66805,35 @@ export type ThemePublishUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `ThemePublishUserError`. */
-export enum ThemePublishUserErrorCode {
+export const ThemePublishUserErrorCode = {
   /** Theme publishing is not available during install. */
-  CannotPublishThemeDuringInstall = 'CANNOT_PUBLISH_THEME_DURING_INSTALL',
+  CannotPublishThemeDuringInstall: 'CANNOT_PUBLISH_THEME_DURING_INSTALL',
   /** The record with the ID used as the input value couldn't be found. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** Theme publishing is not allowed on this plan. */
-  ThemePublishNotAvailableForThemeLimitedPlan = 'THEME_PUBLISH_NOT_AVAILABLE_FOR_THEME_LIMITED_PLAN'
-}
+  ThemePublishNotAvailableForThemeLimitedPlan: 'THEME_PUBLISH_NOT_AVAILABLE_FOR_THEME_LIMITED_PLAN'
+} as const;
 
+export type ThemePublishUserErrorCode = typeof ThemePublishUserErrorCode[keyof typeof ThemePublishUserErrorCode];
 /** The role of the theme. */
-export enum ThemeRole {
+export const ThemeRole = {
   /** The theme is archived if a merchant changes their plan and exceeds the maximum number of themes allowed. Archived themes can be downloaded by merchant, but can not be customized or published until the plan is upgraded. */
-  Archived = 'ARCHIVED',
+  Archived: 'ARCHIVED',
   /** The theme is installed as a trial from the Shopify Theme Store. It can be customized using the theme editor, but access to the code editor and the ability to publish the theme are restricted until it is purchased. */
-  Demo = 'DEMO',
+  Demo: 'DEMO',
   /** The theme is automatically created by the CLI for previewing purposes when in a development session. */
-  Development = 'DEVELOPMENT',
+  Development: 'DEVELOPMENT',
   /** The theme is locked if it is identified as unlicensed. Customization and publishing are restricted until the merchant resolves the licensing issue. */
-  Locked = 'LOCKED',
+  Locked: 'LOCKED',
   /** The currently published theme. There can only be one main theme at any time. */
-  Main = 'MAIN',
-  /**
-   * The currently published theme that is only accessible to a mobile client.
-   * @deprecated The feature for this role has been deprecated.
-   */
-  Mobile = 'MOBILE',
+  Main: 'MAIN',
+  /** The currently published theme that is only accessible to a mobile client. */
+  Mobile: 'MOBILE',
   /** The theme is currently not published. It can be transitioned to the main role if it is published by the merchant. */
-  Unpublished = 'UNPUBLISHED'
-}
+  Unpublished: 'UNPUBLISHED'
+} as const;
 
+export type ThemeRole = typeof ThemeRole[keyof typeof ThemeRole];
 /** Return type for `themeUpdate` mutation. */
 export type ThemeUpdatePayload = {
   __typename?: 'ThemeUpdatePayload';
@@ -66423,15 +66855,16 @@ export type ThemeUpdateUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `ThemeUpdateUserError`. */
-export enum ThemeUpdateUserErrorCode {
+export const ThemeUpdateUserErrorCode = {
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The record with the ID used as the input value couldn't be found. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** The input value is too long. */
-  TooLong = 'TOO_LONG'
-}
+  TooLong: 'TOO_LONG'
+} as const;
 
+export type ThemeUpdateUserErrorCode = typeof ThemeUpdateUserErrorCode[keyof typeof ThemeUpdateUserErrorCode];
 /** A sale associated with a tip. */
 export type TipSale = Sale & {
   __typename?: 'TipSale';
@@ -66479,13 +66912,14 @@ export type TransactionFee = Node & {
 };
 
 /** The set of valid sort keys for the Transaction query. */
-export enum TransactionSortKeys {
+export const TransactionSortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `expires_at` value. */
-  ExpiresAt = 'EXPIRES_AT'
-}
+  ExpiresAt: 'EXPIRES_AT'
+} as const;
 
+export type TransactionSortKeys = typeof TransactionSortKeys[keyof typeof TransactionSortKeys];
 /** Return type for `transactionVoid` mutation. */
 export type TransactionVoidPayload = {
   __typename?: 'TransactionVoidPayload';
@@ -66507,37 +66941,39 @@ export type TransactionVoidUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `TransactionVoidUserError`. */
-export enum TransactionVoidUserErrorCode {
+export const TransactionVoidUserErrorCode = {
   /** Transaction must be a successful authorization. */
-  AuthNotSuccessful = 'AUTH_NOT_SUCCESSFUL',
+  AuthNotSuccessful: 'AUTH_NOT_SUCCESSFUL',
   /** Transaction must be voidable. */
-  AuthNotVoidable = 'AUTH_NOT_VOIDABLE',
+  AuthNotVoidable: 'AUTH_NOT_VOIDABLE',
   /** A generic error occurred while attempting to void the transaction. */
-  GenericError = 'GENERIC_ERROR',
+  GenericError: 'GENERIC_ERROR',
   /** Transaction does not exist. */
-  TransactionNotFound = 'TRANSACTION_NOT_FOUND'
-}
+  TransactionNotFound: 'TRANSACTION_NOT_FOUND'
+} as const;
 
+export type TransactionVoidUserErrorCode = typeof TransactionVoidUserErrorCode[keyof typeof TransactionVoidUserErrorCode];
 /** The set of valid sort keys for the Transfer query. */
-export enum TransferSortKeys {
+export const TransferSortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `destination_name` value. */
-  DestinationName = 'DESTINATION_NAME',
+  DestinationName: 'DESTINATION_NAME',
   /** Sort by the `expected_shipment_arrival` value. */
-  ExpectedShipmentArrival = 'EXPECTED_SHIPMENT_ARRIVAL',
+  ExpectedShipmentArrival: 'EXPECTED_SHIPMENT_ARRIVAL',
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `name` value. */
-  Name = 'NAME',
+  Name: 'NAME',
   /** Sort by the `origin_name` value. */
-  OriginName = 'ORIGIN_NAME',
+  OriginName: 'ORIGIN_NAME',
   /** Sort by the `source_name` value. */
-  SourceName = 'SOURCE_NAME',
+  SourceName: 'SOURCE_NAME',
   /** Sort by the `status` value. */
-  Status = 'STATUS'
-}
+  Status: 'STATUS'
+} as const;
 
+export type TransferSortKeys = typeof TransferSortKeys[keyof typeof TransferSortKeys];
 /** Translatable content of a resource's field. */
 export type TranslatableContent = {
   __typename?: 'TranslatableContent';
@@ -66644,72 +67080,73 @@ export type TranslatableResourceEdge = {
 };
 
 /** Specifies the type of resources that are translatable. */
-export enum TranslatableResourceType {
+export const TranslatableResourceType = {
   /** A blog post. Translatable fields: `title`, `body_html`, `summary_html`, `handle`, `meta_title`, `meta_description`. */
-  Article = 'ARTICLE',
+  Article: 'ARTICLE',
   /** An article image. Translatable fields: `alt`. */
-  ArticleImage = 'ARTICLE_IMAGE',
+  ArticleImage: 'ARTICLE_IMAGE',
   /** A blog. Translatable fields: `title`, `handle`, `meta_title`, `meta_description`. */
-  Blog = 'BLOG',
+  Blog: 'BLOG',
   /** A product collection. Translatable fields: `title`, `body_html`, `handle`, `meta_title`, `meta_description`. */
-  Collection = 'COLLECTION',
+  Collection: 'COLLECTION',
   /** A collection image. Translatable fields: `alt`. */
-  CollectionImage = 'COLLECTION_IMAGE',
+  CollectionImage: 'COLLECTION_IMAGE',
   /** The delivery method definition. For example, "Standard", or "Expedited". Translatable fields: `name`, `description`. */
-  DeliveryMethodDefinition = 'DELIVERY_METHOD_DEFINITION',
+  DeliveryMethodDefinition: 'DELIVERY_METHOD_DEFINITION',
   /** An email template. Translatable fields: `title`, `body_html`. */
-  EmailTemplate = 'EMAIL_TEMPLATE',
+  EmailTemplate: 'EMAIL_TEMPLATE',
   /** A filter. Translatable fields: `label`. */
-  Filter = 'FILTER',
+  Filter: 'FILTER',
   /** A link to direct users. Translatable fields: `title`. */
-  Link = 'LINK',
+  Link: 'LINK',
   /** An image. Translatable fields: `alt`. */
-  MediaImage = 'MEDIA_IMAGE',
+  MediaImage: 'MEDIA_IMAGE',
   /** A category of links. Translatable fields: `title`. */
-  Menu = 'MENU',
+  Menu: 'MENU',
   /** A Metafield. Translatable fields: `value`. */
-  Metafield = 'METAFIELD',
+  Metafield: 'METAFIELD',
   /** A Metaobject. Translatable fields are determined by the Metaobject type. */
-  Metaobject = 'METAOBJECT',
+  Metaobject: 'METAOBJECT',
   /** An online store theme. Translatable fields: `dynamic keys based on theme data`. */
-  OnlineStoreTheme = 'ONLINE_STORE_THEME',
+  OnlineStoreTheme: 'ONLINE_STORE_THEME',
   /** A theme app embed. Translatable fields: `dynamic keys based on theme data`. */
-  OnlineStoreThemeAppEmbed = 'ONLINE_STORE_THEME_APP_EMBED',
+  OnlineStoreThemeAppEmbed: 'ONLINE_STORE_THEME_APP_EMBED',
   /** A theme json template. Translatable fields: `dynamic keys based on theme data`. */
-  OnlineStoreThemeJsonTemplate = 'ONLINE_STORE_THEME_JSON_TEMPLATE',
+  OnlineStoreThemeJsonTemplate: 'ONLINE_STORE_THEME_JSON_TEMPLATE',
   /** Locale file content of an online store theme. Translatable fields: `dynamic keys based on theme data`. */
-  OnlineStoreThemeLocaleContent = 'ONLINE_STORE_THEME_LOCALE_CONTENT',
+  OnlineStoreThemeLocaleContent: 'ONLINE_STORE_THEME_LOCALE_CONTENT',
   /** A theme json section group. Translatable fields: `dynamic keys based on theme data`. */
-  OnlineStoreThemeSectionGroup = 'ONLINE_STORE_THEME_SECTION_GROUP',
+  OnlineStoreThemeSectionGroup: 'ONLINE_STORE_THEME_SECTION_GROUP',
   /** A theme setting category. Translatable fields: `dynamic keys based on theme data`. */
-  OnlineStoreThemeSettingsCategory = 'ONLINE_STORE_THEME_SETTINGS_CATEGORY',
+  OnlineStoreThemeSettingsCategory: 'ONLINE_STORE_THEME_SETTINGS_CATEGORY',
   /** Shared static sections of an online store theme. Translatable fields: `dynamic keys based on theme data`. */
-  OnlineStoreThemeSettingsDataSections = 'ONLINE_STORE_THEME_SETTINGS_DATA_SECTIONS',
+  OnlineStoreThemeSettingsDataSections: 'ONLINE_STORE_THEME_SETTINGS_DATA_SECTIONS',
   /** A packing slip template. Translatable fields: `body`. */
-  PackingSlipTemplate = 'PACKING_SLIP_TEMPLATE',
+  PackingSlipTemplate: 'PACKING_SLIP_TEMPLATE',
   /** A page. Translatable fields: `title`, `body_html`, `handle`, `meta_title`, `meta_description`. */
-  Page = 'PAGE',
+  Page: 'PAGE',
   /** A payment gateway. Translatable fields: `name`, `message`, `before_payment_instructions`. */
-  PaymentGateway = 'PAYMENT_GATEWAY',
+  PaymentGateway: 'PAYMENT_GATEWAY',
   /** An online store product. Translatable fields: `title`, `body_html`, `handle`, `product_type`, `meta_title`, `meta_description`. */
-  Product = 'PRODUCT',
+  Product: 'PRODUCT',
   /**
    * An online store custom product property name. For example, "Size", "Color", or "Material".
    *         Translatable fields: `name`.
    */
-  ProductOption = 'PRODUCT_OPTION',
+  ProductOption: 'PRODUCT_OPTION',
   /** The product option value names. For example, "Red", "Blue", and "Green" for a "Color" option. Translatable fields: `name`. */
-  ProductOptionValue = 'PRODUCT_OPTION_VALUE',
+  ProductOptionValue: 'PRODUCT_OPTION_VALUE',
   /** A selling plan. Translatable fields:`name`, `option1`, `option2`, `option3`, `description`. */
-  SellingPlan = 'SELLING_PLAN',
+  SellingPlan: 'SELLING_PLAN',
   /** A selling plan group. Translatable fields: `name`, `option1`, `option2`, `option3`. */
-  SellingPlanGroup = 'SELLING_PLAN_GROUP',
+  SellingPlanGroup: 'SELLING_PLAN_GROUP',
   /** A shop. Translatable fields: `meta_title`, `meta_description`. */
-  Shop = 'SHOP',
+  Shop: 'SHOP',
   /** A shop policy. Translatable fields: `body`. */
-  ShopPolicy = 'SHOP_POLICY'
-}
+  ShopPolicy: 'SHOP_POLICY'
+} as const;
 
+export type TranslatableResourceType = typeof TranslatableResourceType[keyof typeof TranslatableResourceType];
 /**
  * A localized version of a field on a resource. Translations enable merchants to provide content in multiple languages for [`Product`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product) objects, [`Collection`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Collection) objects, and other store resources.
  *
@@ -66734,49 +67171,46 @@ export type Translation = {
 };
 
 /** Possible error codes that can be returned by `TranslationUserError`. */
-export enum TranslationErrorCode {
+export const TranslationErrorCode = {
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** Translation value is invalid. */
-  FailsResourceValidation = 'FAILS_RESOURCE_VALIDATION',
+  FailsResourceValidation: 'FAILS_RESOURCE_VALIDATION',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** Locale language code is invalid. */
-  InvalidCode = 'INVALID_CODE',
+  InvalidCode: 'INVALID_CODE',
   /** Locale code format is invalid. */
-  InvalidFormat = 'INVALID_FORMAT',
+  InvalidFormat: 'INVALID_FORMAT',
   /** Translation key is invalid. */
-  InvalidKeyForModel = 'INVALID_KEY_FOR_MODEL',
-  /**
-   * The locale is missing on the market corresponding to the `marketId` argument.
-   * @deprecated `invalid_locale_for_market` is deprecated because the creation of a locale that's specific to a market no longer needs to be tied to that market's URL.
-   *
-   */
-  InvalidLocaleForMarket = 'INVALID_LOCALE_FOR_MARKET',
+  InvalidKeyForModel: 'INVALID_KEY_FOR_MODEL',
+  /** The locale is missing on the market corresponding to the `marketId` argument. */
+  InvalidLocaleForMarket: 'INVALID_LOCALE_FOR_MARKET',
   /** Locale is invalid for the shop. */
-  InvalidLocaleForShop = 'INVALID_LOCALE_FOR_SHOP',
+  InvalidLocaleForShop: 'INVALID_LOCALE_FOR_SHOP',
   /** Market localizable content is invalid. */
-  InvalidMarketLocalizableContent = 'INVALID_MARKET_LOCALIZABLE_CONTENT',
+  InvalidMarketLocalizableContent: 'INVALID_MARKET_LOCALIZABLE_CONTENT',
   /** Translatable content is invalid. */
-  InvalidTranslatableContent = 'INVALID_TRANSLATABLE_CONTENT',
+  InvalidTranslatableContent: 'INVALID_TRANSLATABLE_CONTENT',
   /** The handle is already taken for this resource. */
-  InvalidValueForHandleTranslation = 'INVALID_VALUE_FOR_HANDLE_TRANSLATION',
+  InvalidValueForHandleTranslation: 'INVALID_VALUE_FOR_HANDLE_TRANSLATION',
   /** The shop isn't allowed to operate on market custom content. */
-  MarketCustomContentNotAllowed = 'MARKET_CUSTOM_CONTENT_NOT_ALLOWED',
+  MarketCustomContentNotAllowed: 'MARKET_CUSTOM_CONTENT_NOT_ALLOWED',
   /** The market corresponding to the `marketId` argument doesn't exist. */
-  MarketDoesNotExist = 'MARKET_DOES_NOT_EXIST',
+  MarketDoesNotExist: 'MARKET_DOES_NOT_EXIST',
   /** The market override locale creation failed. */
-  MarketLocaleCreationFailed = 'MARKET_LOCALE_CREATION_FAILED',
+  MarketLocaleCreationFailed: 'MARKET_LOCALE_CREATION_FAILED',
   /** Resource does not exist. */
-  ResourceNotFound = 'RESOURCE_NOT_FOUND',
+  ResourceNotFound: 'RESOURCE_NOT_FOUND',
   /** The specified resource can't be customized for a market. */
-  ResourceNotMarketCustomizable = 'RESOURCE_NOT_MARKET_CUSTOMIZABLE',
+  ResourceNotMarketCustomizable: 'RESOURCE_NOT_MARKET_CUSTOMIZABLE',
   /** Resource is not translatable. */
-  ResourceNotTranslatable = 'RESOURCE_NOT_TRANSLATABLE',
+  ResourceNotTranslatable: 'RESOURCE_NOT_TRANSLATABLE',
   /** Too many translation keys for the resource. */
-  TooManyKeysForResource = 'TOO_MANY_KEYS_FOR_RESOURCE'
-}
+  TooManyKeysForResource: 'TOO_MANY_KEYS_FOR_RESOURCE'
+} as const;
 
+export type TranslationErrorCode = typeof TranslationErrorCode[keyof typeof TranslationErrorCode];
 /** The input fields and values for creating or updating a translation. */
 export type TranslationInput = {
   /** On the resource that this translation belongs to, the reference to the value being translated. */
@@ -66896,79 +67330,82 @@ export type UnitPriceMeasurementInput = {
 };
 
 /** The accepted types of unit of measurement. */
-export enum UnitPriceMeasurementMeasuredType {
+export const UnitPriceMeasurementMeasuredType = {
   /** Unit of measurements representing areas. */
-  Area = 'AREA',
+  Area: 'AREA',
   /** Unit of measurements representing counts. */
-  Count = 'COUNT',
+  Count: 'COUNT',
   /** Unit of measurements representing lengths. */
-  Length = 'LENGTH',
+  Length: 'LENGTH',
   /** The type of measurement is unknown. Upgrade to the latest version of the API to resolve this type. */
-  Unknown = 'UNKNOWN',
+  Unknown: 'UNKNOWN',
   /** Unit of measurements representing volumes. */
-  Volume = 'VOLUME',
+  Volume: 'VOLUME',
   /** Unit of measurements representing weights. */
-  Weight = 'WEIGHT'
-}
+  Weight: 'WEIGHT'
+} as const;
 
+export type UnitPriceMeasurementMeasuredType = typeof UnitPriceMeasurementMeasuredType[keyof typeof UnitPriceMeasurementMeasuredType];
 /** The valid units of measurement for a unit price measurement. */
-export enum UnitPriceMeasurementMeasuredUnit {
+export const UnitPriceMeasurementMeasuredUnit = {
   /** 100 centiliters equals 1 liter. */
-  Cl = 'CL',
+  Cl: 'CL',
   /** 100 centimeters equals 1 meter. */
-  Cm = 'CM',
+  Cm: 'CM',
   /** Imperial system unit of volume (U.S. customary unit). */
-  Floz = 'FLOZ',
+  Floz: 'FLOZ',
   /** 1 foot equals 12 inches. */
-  Ft = 'FT',
+  Ft: 'FT',
   /** Imperial system unit of area. */
-  Ft2 = 'FT2',
+  Ft2: 'FT2',
   /** Metric system unit of weight. */
-  G = 'G',
+  G: 'G',
   /** 1 gallon equals 128 fluid ounces (U.S. customary unit). */
-  Gal = 'GAL',
+  Gal: 'GAL',
   /** Imperial system unit of length. */
-  In = 'IN',
+  In: 'IN',
   /** 1 item, a unit of count. */
-  Item = 'ITEM',
+  Item: 'ITEM',
   /** 1 kilogram equals 1000 grams. */
-  Kg = 'KG',
+  Kg: 'KG',
   /** Metric system unit of volume. */
-  L = 'L',
+  L: 'L',
   /** Imperial system unit of weight. */
-  Lb = 'LB',
+  Lb: 'LB',
   /** Metric system unit of length. */
-  M = 'M',
+  M: 'M',
   /** Metric system unit of area. */
-  M2 = 'M2',
+  M2: 'M2',
   /** 1 cubic meter equals 1000 liters. */
-  M3 = 'M3',
+  M3: 'M3',
   /** 1000 milligrams equals 1 gram. */
-  Mg = 'MG',
+  Mg: 'MG',
   /** 1000 milliliters equals 1 liter. */
-  Ml = 'ML',
+  Ml: 'ML',
   /** 1000 millimeters equals 1 meter. */
-  Mm = 'MM',
+  Mm: 'MM',
   /** 16 ounces equals 1 pound. */
-  Oz = 'OZ',
+  Oz: 'OZ',
   /** 1 pint equals 16 fluid ounces (U.S. customary unit). */
-  Pt = 'PT',
+  Pt: 'PT',
   /** 1 quart equals 32 fluid ounces (U.S. customary unit). */
-  Qt = 'QT',
+  Qt: 'QT',
   /** The unit of measurement is unknown. Upgrade to the latest version of the API to resolve this unit. */
-  Unknown = 'UNKNOWN',
+  Unknown: 'UNKNOWN',
   /** 1 yard equals 36 inches. */
-  Yd = 'YD'
-}
+  Yd: 'YD'
+} as const;
 
+export type UnitPriceMeasurementMeasuredUnit = typeof UnitPriceMeasurementMeasuredUnit[keyof typeof UnitPriceMeasurementMeasuredUnit];
 /** Systems of weights and measures. */
-export enum UnitSystem {
+export const UnitSystem = {
   /** Imperial system of weights and measures. */
-  ImperialSystem = 'IMPERIAL_SYSTEM',
+  ImperialSystem: 'IMPERIAL_SYSTEM',
   /** Metric system of weights and measures. */
-  MetricSystem = 'METRIC_SYSTEM'
-}
+  MetricSystem: 'METRIC_SYSTEM'
+} as const;
 
+export type UnitSystem = typeof UnitSystem[keyof typeof UnitSystem];
 /** This is represents new sale types that have been added in future API versions. You may update to a more recent API version to receive additional details about this sale. */
 export type UnknownSale = Sale & {
   __typename?: 'UnknownSale';
@@ -67070,15 +67507,16 @@ export type UrlRedirectBulkDeleteByIdsUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `UrlRedirectBulkDeleteByIdsUserError`. */
-export enum UrlRedirectBulkDeleteByIdsUserErrorCode {
+export const UrlRedirectBulkDeleteByIdsUserErrorCode = {
   /**
    * You must pass one or more [`URLRedirect`](
    *             https://help.shopify.com/en/manual/online-store/menus-and-links/url-redirect
    *           ) object IDs.
    */
-  IdsEmpty = 'IDS_EMPTY'
-}
+  IdsEmpty: 'IDS_EMPTY'
+} as const;
 
+export type UrlRedirectBulkDeleteByIdsUserErrorCode = typeof UrlRedirectBulkDeleteByIdsUserErrorCode[keyof typeof UrlRedirectBulkDeleteByIdsUserErrorCode];
 /** Return type for `urlRedirectBulkDeleteBySavedSearch` mutation. */
 export type UrlRedirectBulkDeleteBySavedSearchPayload = {
   __typename?: 'UrlRedirectBulkDeleteBySavedSearchPayload';
@@ -67100,13 +67538,14 @@ export type UrlRedirectBulkDeleteBySavedSearchUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `UrlRedirectBulkDeleteBySavedSearchUserError`. */
-export enum UrlRedirectBulkDeleteBySavedSearchUserErrorCode {
+export const UrlRedirectBulkDeleteBySavedSearchUserErrorCode = {
   /** The saved search's query cannot match all entries or be empty. */
-  InvalidSavedSearchQuery = 'INVALID_SAVED_SEARCH_QUERY',
+  InvalidSavedSearchQuery: 'INVALID_SAVED_SEARCH_QUERY',
   /** Saved search not found. */
-  SavedSearchNotFound = 'SAVED_SEARCH_NOT_FOUND'
-}
+  SavedSearchNotFound: 'SAVED_SEARCH_NOT_FOUND'
+} as const;
 
+export type UrlRedirectBulkDeleteBySavedSearchUserErrorCode = typeof UrlRedirectBulkDeleteBySavedSearchUserErrorCode[keyof typeof UrlRedirectBulkDeleteBySavedSearchUserErrorCode];
 /** Return type for `urlRedirectBulkDeleteBySearch` mutation. */
 export type UrlRedirectBulkDeleteBySearchPayload = {
   __typename?: 'UrlRedirectBulkDeleteBySearchPayload';
@@ -67128,11 +67567,12 @@ export type UrlRedirectBulkDeleteBySearchUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `UrlRedirectBulkDeleteBySearchUserError`. */
-export enum UrlRedirectBulkDeleteBySearchUserErrorCode {
+export const UrlRedirectBulkDeleteBySearchUserErrorCode = {
   /** Invalid search string. */
-  InvalidSearchArgument = 'INVALID_SEARCH_ARGUMENT'
-}
+  InvalidSearchArgument: 'INVALID_SEARCH_ARGUMENT'
+} as const;
 
+export type UrlRedirectBulkDeleteBySearchUserErrorCode = typeof UrlRedirectBulkDeleteBySearchUserErrorCode[keyof typeof UrlRedirectBulkDeleteBySearchUserErrorCode];
 /** An auto-generated type for paginating through multiple UrlRedirects. */
 export type UrlRedirectConnection = {
   __typename?: 'UrlRedirectConnection';
@@ -67172,17 +67612,18 @@ export type UrlRedirectEdge = {
 };
 
 /** Possible error codes that can be returned by `UrlRedirectUserError`. */
-export enum UrlRedirectErrorCode {
+export const UrlRedirectErrorCode = {
   /** Redirect could not be created. */
-  CreateFailed = 'CREATE_FAILED',
+  CreateFailed: 'CREATE_FAILED',
   /** Redirect could not be deleted. */
-  DeleteFailed = 'DELETE_FAILED',
+  DeleteFailed: 'DELETE_FAILED',
   /** Redirect does not exist. */
-  DoesNotExist = 'DOES_NOT_EXIST',
+  DoesNotExist: 'DOES_NOT_EXIST',
   /** Redirect could not be updated. */
-  UpdateFailed = 'UPDATE_FAILED'
-}
+  UpdateFailed: 'UPDATE_FAILED'
+} as const;
 
+export type UrlRedirectErrorCode = typeof UrlRedirectErrorCode[keyof typeof UrlRedirectErrorCode];
 /**
  * A request to import a [`URLRedirect`](https://shopify.dev/api/admin-graphql/latest/objects/UrlRedirect) object
  * into the Online Store channel. Apps can use this to query the state of an `UrlRedirectImport` request.
@@ -67219,20 +67660,18 @@ export type UrlRedirectImportCreatePayload = {
 };
 
 /** Possible error codes that can be returned by `UrlRedirectImportUserError`. */
-export enum UrlRedirectImportErrorCode {
+export const UrlRedirectImportErrorCode = {
   /** The import has already completed. */
-  AlreadyImported = 'ALREADY_IMPORTED',
-  /**
-   * CSV file does not exist at given URL.
-   * @deprecated This error code is never returned
-   */
-  FileDoesNotExist = 'FILE_DOES_NOT_EXIST',
+  AlreadyImported: 'ALREADY_IMPORTED',
+  /** CSV file does not exist at given URL. */
+  FileDoesNotExist: 'FILE_DOES_NOT_EXIST',
   /** The import is already in progress. */
-  InProgress = 'IN_PROGRESS',
+  InProgress: 'IN_PROGRESS',
   /** URL redirect import not found. */
-  NotFound = 'NOT_FOUND'
-}
+  NotFound: 'NOT_FOUND'
+} as const;
 
+export type UrlRedirectImportErrorCode = typeof UrlRedirectImportErrorCode[keyof typeof UrlRedirectImportErrorCode];
 /** A preview of a URL redirect import row. */
 export type UrlRedirectImportPreview = {
   __typename?: 'UrlRedirectImportPreview';
@@ -67271,18 +67710,19 @@ export type UrlRedirectInput = {
 };
 
 /** The set of valid sort keys for the UrlRedirect query. */
-export enum UrlRedirectSortKeys {
+export const UrlRedirectSortKeys = {
   /** Sort by the `id` value. */
-  Id = 'ID',
+  Id: 'ID',
   /** Sort by the `path` value. */
-  Path = 'PATH',
+  Path: 'PATH',
   /**
    * Sort by relevance to the search terms when the `query` parameter is specified on the connection.
    * Don't use this sort key when no search query is specified.
    */
-  Relevance = 'RELEVANCE'
-}
+  Relevance: 'RELEVANCE'
+} as const;
 
+export type UrlRedirectSortKeys = typeof UrlRedirectSortKeys[keyof typeof UrlRedirectSortKeys];
 /** Return type for `urlRedirectUpdate` mutation. */
 export type UrlRedirectUpdatePayload = {
   __typename?: 'UrlRedirectUpdatePayload';
@@ -67447,11 +67887,12 @@ export type ValidationEdge = {
 };
 
 /** The set of valid sort keys for the Validation query. */
-export enum ValidationSortKeys {
+export const ValidationSortKeys = {
   /** Sort by the `id` value. */
-  Id = 'ID'
-}
+  Id: 'ID'
+} as const;
 
+export type ValidationSortKeys = typeof ValidationSortKeys[keyof typeof ValidationSortKeys];
 /** The input fields required to update a validation. */
 export type ValidationUpdateInput = {
   /** Whether the validation should block on failures other than expected violations. */
@@ -67485,55 +67926,56 @@ export type ValidationUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `ValidationUserError`. */
-export enum ValidationUserErrorCode {
+export const ValidationUserErrorCode = {
   /** ApiPermission metafields can only be created or updated by the app owner. */
-  AppNotAuthorized = 'APP_NOT_AUTHORIZED',
+  AppNotAuthorized: 'APP_NOT_AUTHORIZED',
   /** The input value is blank. */
-  Blank = 'BLANK',
+  Blank: 'BLANK',
   /** The metafield violates a capability restriction. */
-  CapabilityViolation = 'CAPABILITY_VIOLATION',
+  CapabilityViolation: 'CAPABILITY_VIOLATION',
   /** Shop must be on a Shopify Plus plan to activate functions from a custom app. */
-  CustomAppFunctionNotEligible = 'CUSTOM_APP_FUNCTION_NOT_ELIGIBLE',
+  CustomAppFunctionNotEligible: 'CUSTOM_APP_FUNCTION_NOT_ELIGIBLE',
   /** Owner type can't be used in this mutation. */
-  DisallowedOwnerType = 'DISALLOWED_OWNER_TYPE',
+  DisallowedOwnerType: 'DISALLOWED_OWNER_TYPE',
   /** Function does not implement the required interface for this cart & checkout validation. */
-  FunctionDoesNotImplement = 'FUNCTION_DOES_NOT_IMPLEMENT',
+  FunctionDoesNotImplement: 'FUNCTION_DOES_NOT_IMPLEMENT',
   /** Function not found. */
-  FunctionNotFound = 'FUNCTION_NOT_FOUND',
+  FunctionNotFound: 'FUNCTION_NOT_FOUND',
   /** Function is pending deletion. */
-  FunctionPendingDeletion = 'FUNCTION_PENDING_DELETION',
+  FunctionPendingDeletion: 'FUNCTION_PENDING_DELETION',
   /** The input value isn't included in the list. */
-  Inclusion = 'INCLUSION',
+  Inclusion: 'INCLUSION',
   /** An internal error occurred. */
-  InternalError = 'INTERNAL_ERROR',
+  InternalError: 'INTERNAL_ERROR',
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  Invalid: 'INVALID',
   /** The type is invalid. */
-  InvalidType = 'INVALID_TYPE',
+  InvalidType: 'INVALID_TYPE',
   /** The value is invalid for the metafield type or for the definition options. */
-  InvalidValue = 'INVALID_VALUE',
+  InvalidValue: 'INVALID_VALUE',
   /** Cannot have more than 25 active validation functions. */
-  MaxValidationsActivated = 'MAX_VALIDATIONS_ACTIVATED',
+  MaxValidationsActivated: 'MAX_VALIDATIONS_ACTIVATED',
   /** Either function_id or function_handle must be provided. */
-  MissingFunctionIdentifier = 'MISSING_FUNCTION_IDENTIFIER',
+  MissingFunctionIdentifier: 'MISSING_FUNCTION_IDENTIFIER',
   /** Only one of function_id or function_handle can be provided, not both. */
-  MultipleFunctionIdentifiers = 'MULTIPLE_FUNCTION_IDENTIFIERS',
+  MultipleFunctionIdentifiers: 'MULTIPLE_FUNCTION_IDENTIFIERS',
   /** Validation not found. */
-  NotFound = 'NOT_FOUND',
+  NotFound: 'NOT_FOUND',
   /** The input value needs to be blank. */
-  Present = 'PRESENT',
+  Present: 'PRESENT',
   /** Only unlisted apps can be used for this cart & checkout validation. */
-  PublicAppNotAllowed = 'PUBLIC_APP_NOT_ALLOWED',
+  PublicAppNotAllowed: 'PUBLIC_APP_NOT_ALLOWED',
   /** The input value is already taken. */
-  Taken = 'TAKEN',
+  Taken: 'TAKEN',
   /** The input value is too long. */
-  TooLong = 'TOO_LONG',
+  TooLong: 'TOO_LONG',
   /** The input value is too short. */
-  TooShort = 'TOO_SHORT',
+  TooShort: 'TOO_SHORT',
   /** Unstructured reserved namespace. */
-  UnstructuredReservedNamespace = 'UNSTRUCTURED_RESERVED_NAMESPACE'
-}
+  UnstructuredReservedNamespace: 'UNSTRUCTURED_RESERVED_NAMESPACE'
+} as const;
 
+export type ValidationUserErrorCode = typeof ValidationUserErrorCode[keyof typeof ValidationUserErrorCode];
 /** The input fields required to create or modify a product variant's option value. */
 export type VariantOptionValueInput = {
   /** Specifies the product option value by ID. */
@@ -67914,11 +68356,12 @@ export type WebhookSubscriptionEdge = {
 export type WebhookSubscriptionEndpoint = WebhookEventBridgeEndpoint | WebhookHttpEndpoint | WebhookPubSubEndpoint;
 
 /** The supported formats for webhook subscriptions. */
-export enum WebhookSubscriptionFormat {
-  Json = 'JSON',
-  Xml = 'XML'
-}
+export const WebhookSubscriptionFormat = {
+  Json: 'JSON',
+  Xml: 'XML'
+} as const;
 
+export type WebhookSubscriptionFormat = typeof WebhookSubscriptionFormat[keyof typeof WebhookSubscriptionFormat];
 /** The input fields for a webhook subscription. */
 export type WebhookSubscriptionInput = {
   /** A constraint specified using search syntax that ensures only webhooks that match the specified filter are emitted. See our [guide on filters](https://shopify.dev/docs/apps/build/webhooks/customize/filters) for more details. */
@@ -67967,13 +68410,14 @@ export type WebhookSubscriptionMetafieldIdentifier = {
 };
 
 /** The set of valid sort keys for the WebhookSubscription query. */
-export enum WebhookSubscriptionSortKeys {
+export const WebhookSubscriptionSortKeys = {
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  CreatedAt: 'CREATED_AT',
   /** Sort by the `id` value. */
-  Id = 'ID'
-}
+  Id: 'ID'
+} as const;
 
+export type WebhookSubscriptionSortKeys = typeof WebhookSubscriptionSortKeys[keyof typeof WebhookSubscriptionSortKeys];
 /**
  * The supported topics for webhook subscriptions. You can use webhook subscriptions to receive
  * notifications about particular events in a shop.
@@ -67985,207 +68429,207 @@ export enum WebhookSubscriptionSortKeys {
  * > Tip:
  * >To configure your subscription using the app configuration file, refer to the [full list of topic names](https://shopify.dev/docs/api/webhooks?reference=graphql).
  */
-export enum WebhookSubscriptionTopic {
+export const WebhookSubscriptionTopic = {
   /** The webhook topic for `app_purchases_one_time/update` events. Occurs whenever a one-time app charge is updated. */
-  AppPurchasesOneTimeUpdate = 'APP_PURCHASES_ONE_TIME_UPDATE',
+  AppPurchasesOneTimeUpdate: 'APP_PURCHASES_ONE_TIME_UPDATE',
   /** The webhook topic for `app/scopes_update` events. Occurs whenever the access scopes of any installation are modified. Allows apps to keep track of the granted access scopes of their installations. */
-  AppScopesUpdate = 'APP_SCOPES_UPDATE',
+  AppScopesUpdate: 'APP_SCOPES_UPDATE',
   /** The webhook topic for `app_subscriptions/approaching_capped_amount` events. Occurs when the balance used on an app subscription crosses 90% of the capped amount. */
-  AppSubscriptionsApproachingCappedAmount = 'APP_SUBSCRIPTIONS_APPROACHING_CAPPED_AMOUNT',
+  AppSubscriptionsApproachingCappedAmount: 'APP_SUBSCRIPTIONS_APPROACHING_CAPPED_AMOUNT',
   /** The webhook topic for `app_subscriptions/update` events. Occurs whenever an app subscription is updated. */
-  AppSubscriptionsUpdate = 'APP_SUBSCRIPTIONS_UPDATE',
+  AppSubscriptionsUpdate: 'APP_SUBSCRIPTIONS_UPDATE',
   /** The webhook topic for `app/uninstalled` events. Occurs whenever a shop has uninstalled the app. */
-  AppUninstalled = 'APP_UNINSTALLED',
+  AppUninstalled: 'APP_UNINSTALLED',
   /** The webhook topic for `attributed_sessions/first` events. Occurs whenever an order with a "first" attributed session is attributed. Requires the `read_marketing_events` scope. */
-  AttributedSessionsFirst = 'ATTRIBUTED_SESSIONS_FIRST',
+  AttributedSessionsFirst: 'ATTRIBUTED_SESSIONS_FIRST',
   /** The webhook topic for `attributed_sessions/last` events. Occurs whenever an order with a "last" attributed session is attributed. Requires the `read_marketing_events` scope. */
-  AttributedSessionsLast = 'ATTRIBUTED_SESSIONS_LAST',
+  AttributedSessionsLast: 'ATTRIBUTED_SESSIONS_LAST',
   /** The webhook topic for `audit_events/admin_api_activity` events. Triggers for each auditable Admin API request. This topic is limited to one active subscription per Plus store and requires the use of Google Cloud Pub/Sub or AWS EventBridge. Requires the `read_audit_events` scope. */
-  AuditEventsAdminApiActivity = 'AUDIT_EVENTS_ADMIN_API_ACTIVITY',
+  AuditEventsAdminApiActivity: 'AUDIT_EVENTS_ADMIN_API_ACTIVITY',
   /** The webhook topic for `bulk_operations/finish` events. Notifies when a Bulk Operation finishes. */
-  BulkOperationsFinish = 'BULK_OPERATIONS_FINISH',
+  BulkOperationsFinish: 'BULK_OPERATIONS_FINISH',
   /** The webhook topic for `carts/create` events. Occurs when a cart is created in the online store. Other types of carts aren't supported. For example, the webhook doesn't support carts that are created in a custom storefront. Requires the `read_orders` scope. */
-  CartsCreate = 'CARTS_CREATE',
+  CartsCreate: 'CARTS_CREATE',
   /** The webhook topic for `carts/update` events. Occurs when a cart is updated in the online store. Other types of carts aren't supported. For example, the webhook doesn't support carts that are updated in a custom storefront. Requires the `read_orders` scope. */
-  CartsUpdate = 'CARTS_UPDATE',
+  CartsUpdate: 'CARTS_UPDATE',
   /** The webhook topic for `channels/delete` events. Occurs whenever a channel is deleted. Requires the `read_publications` scope. */
-  ChannelsDelete = 'CHANNELS_DELETE',
+  ChannelsDelete: 'CHANNELS_DELETE',
   /** The webhook topic for `checkouts/create` events. Occurs whenever a checkout is created. Requires the `read_orders` scope. */
-  CheckoutsCreate = 'CHECKOUTS_CREATE',
+  CheckoutsCreate: 'CHECKOUTS_CREATE',
   /** The webhook topic for `checkouts/delete` events. Occurs whenever a checkout is deleted. Requires the `read_orders` scope. */
-  CheckoutsDelete = 'CHECKOUTS_DELETE',
+  CheckoutsDelete: 'CHECKOUTS_DELETE',
   /** The webhook topic for `checkouts/update` events. Occurs whenever a checkout is updated. Requires the `read_orders` scope. */
-  CheckoutsUpdate = 'CHECKOUTS_UPDATE',
+  CheckoutsUpdate: 'CHECKOUTS_UPDATE',
   /** The webhook topic for `checkout_and_accounts_configurations/update` events. The event occurs whenever a published checkout and account configuration is updated. */
-  CheckoutAndAccountsConfigurationsUpdate = 'CHECKOUT_AND_ACCOUNTS_CONFIGURATIONS_UPDATE',
+  CheckoutAndAccountsConfigurationsUpdate: 'CHECKOUT_AND_ACCOUNTS_CONFIGURATIONS_UPDATE',
   /** The webhook topic for `collections/create` events. Occurs whenever a collection is created. Requires the `read_products` scope. */
-  CollectionsCreate = 'COLLECTIONS_CREATE',
+  CollectionsCreate: 'COLLECTIONS_CREATE',
   /** The webhook topic for `collections/delete` events. Occurs whenever a collection is deleted. Requires the `read_products` scope. */
-  CollectionsDelete = 'COLLECTIONS_DELETE',
+  CollectionsDelete: 'COLLECTIONS_DELETE',
   /** The webhook topic for `collections/update` events. Occurs whenever a collection is updated, including when a product is manually added or removed from the collection or when the collection rules change. Occurs once if multiple products are manually added or removed from a collection at the same time. Not fired when attribute changes affect whether a product matches a collection's rules. Requires the `read_products` scope. */
-  CollectionsUpdate = 'COLLECTIONS_UPDATE',
+  CollectionsUpdate: 'COLLECTIONS_UPDATE',
   /** The webhook topic for `collection_listings/add` events. Occurs whenever a collection listing is added. Requires the `read_product_listings` scope. */
-  CollectionListingsAdd = 'COLLECTION_LISTINGS_ADD',
+  CollectionListingsAdd: 'COLLECTION_LISTINGS_ADD',
   /** The webhook topic for `collection_listings/remove` events. Occurs whenever a collection listing is removed. Requires the `read_product_listings` scope. */
-  CollectionListingsRemove = 'COLLECTION_LISTINGS_REMOVE',
+  CollectionListingsRemove: 'COLLECTION_LISTINGS_REMOVE',
   /** The webhook topic for `collection_listings/update` events. Occurs whenever a collection listing is updated. Requires the `read_product_listings` scope. */
-  CollectionListingsUpdate = 'COLLECTION_LISTINGS_UPDATE',
+  CollectionListingsUpdate: 'COLLECTION_LISTINGS_UPDATE',
   /** The webhook topic for `collection_publications/create` events. Occurs whenever a collection publication listing is created. Requires the `read_publications` scope. */
-  CollectionPublicationsCreate = 'COLLECTION_PUBLICATIONS_CREATE',
+  CollectionPublicationsCreate: 'COLLECTION_PUBLICATIONS_CREATE',
   /** The webhook topic for `collection_publications/delete` events. Occurs whenever a collection publication listing is deleted. Requires the `read_publications` scope. */
-  CollectionPublicationsDelete = 'COLLECTION_PUBLICATIONS_DELETE',
+  CollectionPublicationsDelete: 'COLLECTION_PUBLICATIONS_DELETE',
   /** The webhook topic for `collection_publications/update` events. Occurs whenever a collection publication listing is updated. Requires the `read_publications` scope. */
-  CollectionPublicationsUpdate = 'COLLECTION_PUBLICATIONS_UPDATE',
+  CollectionPublicationsUpdate: 'COLLECTION_PUBLICATIONS_UPDATE',
   /** The webhook topic for `companies/create` events. Occurs whenever a company is created. Requires at least one of the following scopes: read_customers, read_companies. */
-  CompaniesCreate = 'COMPANIES_CREATE',
+  CompaniesCreate: 'COMPANIES_CREATE',
   /** The webhook topic for `companies/delete` events. Occurs whenever a company is deleted. Requires at least one of the following scopes: read_customers, read_companies. */
-  CompaniesDelete = 'COMPANIES_DELETE',
+  CompaniesDelete: 'COMPANIES_DELETE',
   /** The webhook topic for `companies/update` events. Occurs whenever a company is updated. Requires at least one of the following scopes: read_customers, read_companies. */
-  CompaniesUpdate = 'COMPANIES_UPDATE',
+  CompaniesUpdate: 'COMPANIES_UPDATE',
   /** The webhook topic for `company_contacts/create` events. Occurs whenever a company contact is created. Requires at least one of the following scopes: read_customers, read_companies. */
-  CompanyContactsCreate = 'COMPANY_CONTACTS_CREATE',
+  CompanyContactsCreate: 'COMPANY_CONTACTS_CREATE',
   /** The webhook topic for `company_contacts/delete` events. Occurs whenever a company contact is deleted. Requires at least one of the following scopes: read_customers, read_companies. */
-  CompanyContactsDelete = 'COMPANY_CONTACTS_DELETE',
+  CompanyContactsDelete: 'COMPANY_CONTACTS_DELETE',
   /** The webhook topic for `company_contacts/update` events. Occurs whenever a company contact is updated. Requires at least one of the following scopes: read_customers, read_companies. */
-  CompanyContactsUpdate = 'COMPANY_CONTACTS_UPDATE',
+  CompanyContactsUpdate: 'COMPANY_CONTACTS_UPDATE',
   /** The webhook topic for `company_contact_roles/assign` events. Occurs whenever a role is assigned to a contact at a location. Requires at least one of the following scopes: read_customers, read_companies. */
-  CompanyContactRolesAssign = 'COMPANY_CONTACT_ROLES_ASSIGN',
+  CompanyContactRolesAssign: 'COMPANY_CONTACT_ROLES_ASSIGN',
   /** The webhook topic for `company_contact_roles/revoke` events. Occurs whenever a role is revoked from a contact at a location. Requires at least one of the following scopes: read_customers, read_companies. */
-  CompanyContactRolesRevoke = 'COMPANY_CONTACT_ROLES_REVOKE',
+  CompanyContactRolesRevoke: 'COMPANY_CONTACT_ROLES_REVOKE',
   /** The webhook topic for `company_locations/create` events. Occurs whenever a company location is created. Requires at least one of the following scopes: read_customers, read_companies. */
-  CompanyLocationsCreate = 'COMPANY_LOCATIONS_CREATE',
+  CompanyLocationsCreate: 'COMPANY_LOCATIONS_CREATE',
   /** The webhook topic for `company_locations/delete` events. Occurs whenever a company location is deleted. Requires at least one of the following scopes: read_customers, read_companies. */
-  CompanyLocationsDelete = 'COMPANY_LOCATIONS_DELETE',
+  CompanyLocationsDelete: 'COMPANY_LOCATIONS_DELETE',
   /** The webhook topic for `company_locations/update` events. Occurs whenever a company location is updated. Requires at least one of the following scopes: read_customers, read_companies. */
-  CompanyLocationsUpdate = 'COMPANY_LOCATIONS_UPDATE',
+  CompanyLocationsUpdate: 'COMPANY_LOCATIONS_UPDATE',
   /** The webhook topic for `customers/create` events. Occurs whenever a customer is created. Requires the `read_customers` scope. */
-  CustomersCreate = 'CUSTOMERS_CREATE',
+  CustomersCreate: 'CUSTOMERS_CREATE',
   /** The webhook topic for `customers/delete` events. Occurs whenever a customer is deleted. Requires the `read_customers` scope. */
-  CustomersDelete = 'CUSTOMERS_DELETE',
+  CustomersDelete: 'CUSTOMERS_DELETE',
   /** The webhook topic for `customers/disable` events. Occurs whenever a customer account is disabled. Requires the `read_customers` scope. */
-  CustomersDisable = 'CUSTOMERS_DISABLE',
+  CustomersDisable: 'CUSTOMERS_DISABLE',
   /** The webhook topic for `customers_email_marketing_consent/update` events. Occurs whenever a customer's email marketing consent is updated. Requires the `read_customers` scope. */
-  CustomersEmailMarketingConsentUpdate = 'CUSTOMERS_EMAIL_MARKETING_CONSENT_UPDATE',
+  CustomersEmailMarketingConsentUpdate: 'CUSTOMERS_EMAIL_MARKETING_CONSENT_UPDATE',
   /** The webhook topic for `customers/enable` events. Occurs whenever a customer account is enabled. Requires the `read_customers` scope. */
-  CustomersEnable = 'CUSTOMERS_ENABLE',
+  CustomersEnable: 'CUSTOMERS_ENABLE',
   /** The webhook topic for `customers_marketing_consent/update` events. Occurs whenever a customer's SMS marketing consent is updated. Requires the `read_customers` scope. */
-  CustomersMarketingConsentUpdate = 'CUSTOMERS_MARKETING_CONSENT_UPDATE',
+  CustomersMarketingConsentUpdate: 'CUSTOMERS_MARKETING_CONSENT_UPDATE',
   /** The webhook topic for `customers/merge` events. Triggers when two customers are merged Requires the `read_customer_merge` scope. */
-  CustomersMerge = 'CUSTOMERS_MERGE',
+  CustomersMerge: 'CUSTOMERS_MERGE',
   /** The webhook topic for `customers/purchasing_summary` events. Occurs when a customer sales history change. Requires the `read_customers` scope. */
-  CustomersPurchasingSummary = 'CUSTOMERS_PURCHASING_SUMMARY',
+  CustomersPurchasingSummary: 'CUSTOMERS_PURCHASING_SUMMARY',
   /** The webhook topic for `customers/update` events. Occurs whenever a customer is updated. Requires the `read_customers` scope. */
-  CustomersUpdate = 'CUSTOMERS_UPDATE',
+  CustomersUpdate: 'CUSTOMERS_UPDATE',
   /** The webhook topic for `customer_account_settings/update` events. Triggers when merchants change customer account setting. */
-  CustomerAccountSettingsUpdate = 'CUSTOMER_ACCOUNT_SETTINGS_UPDATE',
+  CustomerAccountSettingsUpdate: 'CUSTOMER_ACCOUNT_SETTINGS_UPDATE',
   /** The webhook topic for `customer_groups/create` events. Occurs whenever a customer saved search is created. Requires the `read_customers` scope. */
-  CustomerGroupsCreate = 'CUSTOMER_GROUPS_CREATE',
+  CustomerGroupsCreate: 'CUSTOMER_GROUPS_CREATE',
   /** The webhook topic for `customer_groups/delete` events. Occurs whenever a customer saved search is deleted. Requires the `read_customers` scope. */
-  CustomerGroupsDelete = 'CUSTOMER_GROUPS_DELETE',
+  CustomerGroupsDelete: 'CUSTOMER_GROUPS_DELETE',
   /** The webhook topic for `customer_groups/update` events. Occurs whenever a customer saved search is updated. Requires the `read_customers` scope. */
-  CustomerGroupsUpdate = 'CUSTOMER_GROUPS_UPDATE',
+  CustomerGroupsUpdate: 'CUSTOMER_GROUPS_UPDATE',
   /** The webhook topic for `customer.joined_segment` events. Triggers when a customer joins a segment. Requires the `read_customers` scope. */
-  CustomerJoinedSegment = 'CUSTOMER_JOINED_SEGMENT',
+  CustomerJoinedSegment: 'CUSTOMER_JOINED_SEGMENT',
   /** The webhook topic for `customer.left_segment` events. Triggers when a customer leaves a segment. Requires the `read_customers` scope. */
-  CustomerLeftSegment = 'CUSTOMER_LEFT_SEGMENT',
+  CustomerLeftSegment: 'CUSTOMER_LEFT_SEGMENT',
   /** The webhook topic for `customer_payment_methods/create` events. Occurs whenever a customer payment method is created. Requires the `read_customer_payment_methods` scope. */
-  CustomerPaymentMethodsCreate = 'CUSTOMER_PAYMENT_METHODS_CREATE',
+  CustomerPaymentMethodsCreate: 'CUSTOMER_PAYMENT_METHODS_CREATE',
   /** The webhook topic for `customer_payment_methods/revoke` events. Occurs whenever a customer payment method is revoked. Requires the `read_customer_payment_methods` scope. */
-  CustomerPaymentMethodsRevoke = 'CUSTOMER_PAYMENT_METHODS_REVOKE',
+  CustomerPaymentMethodsRevoke: 'CUSTOMER_PAYMENT_METHODS_REVOKE',
   /** The webhook topic for `customer_payment_methods/update` events. Occurs whenever a customer payment method is updated. Requires the `read_customer_payment_methods` scope. */
-  CustomerPaymentMethodsUpdate = 'CUSTOMER_PAYMENT_METHODS_UPDATE',
+  CustomerPaymentMethodsUpdate: 'CUSTOMER_PAYMENT_METHODS_UPDATE',
   /** The webhook topic for `customer.tags_added` events. Triggers when tags are added to a customer. Requires the `read_customers` scope. */
-  CustomerTagsAdded = 'CUSTOMER_TAGS_ADDED',
+  CustomerTagsAdded: 'CUSTOMER_TAGS_ADDED',
   /** The webhook topic for `customer.tags_removed` events. Triggers when tags are removed from a customer. Requires the `read_customers` scope. */
-  CustomerTagsRemoved = 'CUSTOMER_TAGS_REMOVED',
+  CustomerTagsRemoved: 'CUSTOMER_TAGS_REMOVED',
   /** The webhook topic for `delivery_promise_settings/update` events. Occurs when a promise setting is updated. Requires the `read_shipping` scope. */
-  DeliveryPromiseSettingsUpdate = 'DELIVERY_PROMISE_SETTINGS_UPDATE',
+  DeliveryPromiseSettingsUpdate: 'DELIVERY_PROMISE_SETTINGS_UPDATE',
   /** The webhook topic for `discounts/create` events. Occurs whenever a discount is created. Requires the `read_discounts` scope. */
-  DiscountsCreate = 'DISCOUNTS_CREATE',
+  DiscountsCreate: 'DISCOUNTS_CREATE',
   /** The webhook topic for `discounts/delete` events. Occurs whenever a discount is deleted. Requires the `read_discounts` scope. */
-  DiscountsDelete = 'DISCOUNTS_DELETE',
+  DiscountsDelete: 'DISCOUNTS_DELETE',
   /** The webhook topic for `discounts/redeemcode_added` events. Occurs whenever a redeem code is added to a code discount. Requires the `read_discounts` scope. */
-  DiscountsRedeemcodeAdded = 'DISCOUNTS_REDEEMCODE_ADDED',
+  DiscountsRedeemcodeAdded: 'DISCOUNTS_REDEEMCODE_ADDED',
   /** The webhook topic for `discounts/redeemcode_removed` events. Occurs whenever a redeem code on a code discount is deleted. Requires the `read_discounts` scope. */
-  DiscountsRedeemcodeRemoved = 'DISCOUNTS_REDEEMCODE_REMOVED',
+  DiscountsRedeemcodeRemoved: 'DISCOUNTS_REDEEMCODE_REMOVED',
   /** The webhook topic for `discounts/update` events. Occurs whenever a discount is updated. Requires the `read_discounts` scope. */
-  DiscountsUpdate = 'DISCOUNTS_UPDATE',
+  DiscountsUpdate: 'DISCOUNTS_UPDATE',
   /** The webhook topic for `disputes/create` events. Occurs whenever a dispute is created. Requires the `read_shopify_payments_disputes` scope. */
-  DisputesCreate = 'DISPUTES_CREATE',
+  DisputesCreate: 'DISPUTES_CREATE',
   /** The webhook topic for `disputes/update` events. Occurs whenever a dispute is updated. Requires the `read_shopify_payments_disputes` scope. */
-  DisputesUpdate = 'DISPUTES_UPDATE',
+  DisputesUpdate: 'DISPUTES_UPDATE',
   /** The webhook topic for `domains/create` events. Occurs whenever a domain is created. */
-  DomainsCreate = 'DOMAINS_CREATE',
+  DomainsCreate: 'DOMAINS_CREATE',
   /** The webhook topic for `domains/destroy` events. Occurs whenever a domain is destroyed. */
-  DomainsDestroy = 'DOMAINS_DESTROY',
+  DomainsDestroy: 'DOMAINS_DESTROY',
   /** The webhook topic for `domains/update` events. Occurs whenever a domain is updated. */
-  DomainsUpdate = 'DOMAINS_UPDATE',
+  DomainsUpdate: 'DOMAINS_UPDATE',
   /** The webhook topic for `draft_orders/create` events. Occurs whenever a draft order is created. Requires the `read_draft_orders` scope. */
-  DraftOrdersCreate = 'DRAFT_ORDERS_CREATE',
+  DraftOrdersCreate: 'DRAFT_ORDERS_CREATE',
   /** The webhook topic for `draft_orders/delete` events. Occurs whenever a draft order is deleted. Requires the `read_draft_orders` scope. */
-  DraftOrdersDelete = 'DRAFT_ORDERS_DELETE',
+  DraftOrdersDelete: 'DRAFT_ORDERS_DELETE',
   /** The webhook topic for `draft_orders/update` events. Occurs whenever a draft order is updated. Requires the `read_draft_orders` scope. */
-  DraftOrdersUpdate = 'DRAFT_ORDERS_UPDATE',
+  DraftOrdersUpdate: 'DRAFT_ORDERS_UPDATE',
   /** The webhook topic for `finance_app_staff_member/delete` events. Triggers when a staff with access to all or some finance app has been removed. Requires the `read_financial_kyc_information` scope. */
-  FinanceAppStaffMemberDelete = 'FINANCE_APP_STAFF_MEMBER_DELETE',
+  FinanceAppStaffMemberDelete: 'FINANCE_APP_STAFF_MEMBER_DELETE',
   /** The webhook topic for `finance_app_staff_member/grant` events. Triggers when a staff is granted access to all or some finance app. Requires the `read_financial_kyc_information` scope. */
-  FinanceAppStaffMemberGrant = 'FINANCE_APP_STAFF_MEMBER_GRANT',
+  FinanceAppStaffMemberGrant: 'FINANCE_APP_STAFF_MEMBER_GRANT',
   /** The webhook topic for `finance_app_staff_member/revoke` events. Triggers when a staff's access to all or some finance app has been revoked. Requires the `read_financial_kyc_information` scope. */
-  FinanceAppStaffMemberRevoke = 'FINANCE_APP_STAFF_MEMBER_REVOKE',
+  FinanceAppStaffMemberRevoke: 'FINANCE_APP_STAFF_MEMBER_REVOKE',
   /** The webhook topic for `finance_app_staff_member/update` events. Triggers when a staff's information has been updated. Requires the `read_financial_kyc_information` scope. */
-  FinanceAppStaffMemberUpdate = 'FINANCE_APP_STAFF_MEMBER_UPDATE',
+  FinanceAppStaffMemberUpdate: 'FINANCE_APP_STAFF_MEMBER_UPDATE',
   /** The webhook topic for `finance_kyc_information/update` events. Occurs whenever shop's finance KYC information was updated Requires the `read_financial_kyc_information` scope. */
-  FinanceKycInformationUpdate = 'FINANCE_KYC_INFORMATION_UPDATE',
+  FinanceKycInformationUpdate: 'FINANCE_KYC_INFORMATION_UPDATE',
   /** The webhook topic for `fulfillments/create` events. Occurs whenever a fulfillment is created. Requires at least one of the following scopes: read_fulfillments, read_marketplace_orders. */
-  FulfillmentsCreate = 'FULFILLMENTS_CREATE',
+  FulfillmentsCreate: 'FULFILLMENTS_CREATE',
   /** The webhook topic for `fulfillments/update` events. Occurs whenever a fulfillment is updated. Requires at least one of the following scopes: read_fulfillments, read_marketplace_orders. */
-  FulfillmentsUpdate = 'FULFILLMENTS_UPDATE',
+  FulfillmentsUpdate: 'FULFILLMENTS_UPDATE',
   /** The webhook topic for `fulfillment_events/create` events. Occurs whenever a fulfillment event is created. Requires the `read_fulfillments` scope. */
-  FulfillmentEventsCreate = 'FULFILLMENT_EVENTS_CREATE',
+  FulfillmentEventsCreate: 'FULFILLMENT_EVENTS_CREATE',
   /** The webhook topic for `fulfillment_events/delete` events. Occurs whenever a fulfillment event is deleted. Requires the `read_fulfillments` scope. */
-  FulfillmentEventsDelete = 'FULFILLMENT_EVENTS_DELETE',
+  FulfillmentEventsDelete: 'FULFILLMENT_EVENTS_DELETE',
   /**
    * The webhook topic for `fulfillment_holds/added` events. Occurs each time that a hold is added to a fulfillment order.
    *
    * For cases where multiple holds are applied to a fulfillment order, this webhook will trigger after each hold is applied.
    *  Requires at least one of the following scopes: read_merchant_managed_fulfillment_orders, read_assigned_fulfillment_orders, read_third_party_fulfillment_orders, read_marketplace_fulfillment_orders.
    */
-  FulfillmentHoldsAdded = 'FULFILLMENT_HOLDS_ADDED',
+  FulfillmentHoldsAdded: 'FULFILLMENT_HOLDS_ADDED',
   /**
    * The webhook topic for `fulfillment_holds/released` events. Occurs each time that a hold is released from a fulfillment order.
    * For cases where multiple holds are released from a fulfillment order a the same time, this webhook will trigger for each released hold.
    *  Requires at least one of the following scopes: read_merchant_managed_fulfillment_orders, read_assigned_fulfillment_orders, read_third_party_fulfillment_orders, read_marketplace_fulfillment_orders.
    */
-  FulfillmentHoldsReleased = 'FULFILLMENT_HOLDS_RELEASED',
+  FulfillmentHoldsReleased: 'FULFILLMENT_HOLDS_RELEASED',
   /** The webhook topic for `fulfillment_orders/cancellation_request_accepted` events. Occurs when a 3PL accepts a fulfillment cancellation request, received from a merchant. Requires at least one of the following scopes: read_merchant_managed_fulfillment_orders, read_assigned_fulfillment_orders, read_third_party_fulfillment_orders, read_marketplace_fulfillment_orders. */
-  FulfillmentOrdersCancellationRequestAccepted = 'FULFILLMENT_ORDERS_CANCELLATION_REQUEST_ACCEPTED',
+  FulfillmentOrdersCancellationRequestAccepted: 'FULFILLMENT_ORDERS_CANCELLATION_REQUEST_ACCEPTED',
   /** The webhook topic for `fulfillment_orders/cancellation_request_rejected` events. Occurs when a 3PL rejects a fulfillment cancellation request, received from a merchant. Requires at least one of the following scopes: read_merchant_managed_fulfillment_orders, read_assigned_fulfillment_orders, read_third_party_fulfillment_orders, read_marketplace_fulfillment_orders. */
-  FulfillmentOrdersCancellationRequestRejected = 'FULFILLMENT_ORDERS_CANCELLATION_REQUEST_REJECTED',
+  FulfillmentOrdersCancellationRequestRejected: 'FULFILLMENT_ORDERS_CANCELLATION_REQUEST_REJECTED',
   /** The webhook topic for `fulfillment_orders/cancellation_request_submitted` events. Occurs when a merchant requests a fulfillment request to be cancelled after that request was approved by a 3PL. Requires at least one of the following scopes: read_merchant_managed_fulfillment_orders, read_assigned_fulfillment_orders, read_third_party_fulfillment_orders, read_marketplace_fulfillment_orders. */
-  FulfillmentOrdersCancellationRequestSubmitted = 'FULFILLMENT_ORDERS_CANCELLATION_REQUEST_SUBMITTED',
+  FulfillmentOrdersCancellationRequestSubmitted: 'FULFILLMENT_ORDERS_CANCELLATION_REQUEST_SUBMITTED',
   /** The webhook topic for `fulfillment_orders/cancelled` events. Occurs when a fulfillment order is cancelled. Requires at least one of the following scopes: read_merchant_managed_fulfillment_orders, read_assigned_fulfillment_orders, read_third_party_fulfillment_orders, read_marketplace_fulfillment_orders. */
-  FulfillmentOrdersCancelled = 'FULFILLMENT_ORDERS_CANCELLED',
+  FulfillmentOrdersCancelled: 'FULFILLMENT_ORDERS_CANCELLED',
   /** The webhook topic for `fulfillment_orders/fulfillment_request_accepted` events. Occurs when a fulfillment service accepts a request to fulfill a fulfillment order. Requires at least one of the following scopes: read_merchant_managed_fulfillment_orders, read_assigned_fulfillment_orders, read_third_party_fulfillment_orders, read_marketplace_fulfillment_orders. */
-  FulfillmentOrdersFulfillmentRequestAccepted = 'FULFILLMENT_ORDERS_FULFILLMENT_REQUEST_ACCEPTED',
+  FulfillmentOrdersFulfillmentRequestAccepted: 'FULFILLMENT_ORDERS_FULFILLMENT_REQUEST_ACCEPTED',
   /** The webhook topic for `fulfillment_orders/fulfillment_request_rejected` events. Occurs when a 3PL rejects a fulfillment request that was sent by a merchant. Requires at least one of the following scopes: read_merchant_managed_fulfillment_orders, read_assigned_fulfillment_orders, read_third_party_fulfillment_orders, read_marketplace_fulfillment_orders. */
-  FulfillmentOrdersFulfillmentRequestRejected = 'FULFILLMENT_ORDERS_FULFILLMENT_REQUEST_REJECTED',
+  FulfillmentOrdersFulfillmentRequestRejected: 'FULFILLMENT_ORDERS_FULFILLMENT_REQUEST_REJECTED',
   /** The webhook topic for `fulfillment_orders/fulfillment_request_submitted` events. Occurs when a merchant submits a fulfillment request to a 3PL. Requires at least one of the following scopes: read_merchant_managed_fulfillment_orders, read_assigned_fulfillment_orders, read_third_party_fulfillment_orders, read_marketplace_fulfillment_orders. */
-  FulfillmentOrdersFulfillmentRequestSubmitted = 'FULFILLMENT_ORDERS_FULFILLMENT_REQUEST_SUBMITTED',
+  FulfillmentOrdersFulfillmentRequestSubmitted: 'FULFILLMENT_ORDERS_FULFILLMENT_REQUEST_SUBMITTED',
   /** The webhook topic for `fulfillment_orders/fulfillment_service_failed_to_complete` events. Occurs when a fulfillment service intends to close an in_progress fulfillment order. Requires at least one of the following scopes: read_merchant_managed_fulfillment_orders, read_assigned_fulfillment_orders, read_third_party_fulfillment_orders, read_marketplace_fulfillment_orders. */
-  FulfillmentOrdersFulfillmentServiceFailedToComplete = 'FULFILLMENT_ORDERS_FULFILLMENT_SERVICE_FAILED_TO_COMPLETE',
+  FulfillmentOrdersFulfillmentServiceFailedToComplete: 'FULFILLMENT_ORDERS_FULFILLMENT_SERVICE_FAILED_TO_COMPLETE',
   /**
    * The webhook topic for `fulfillment_orders/hold_released` events. Occurs when a fulfillment order is released and is no longer on hold.
    *
    * If a fulfillment order has multiple holds then this webhook will only be triggered once when the last hold is released and the status of the fulfillment order is no longer `ON_HOLD`.
    *  Requires at least one of the following scopes: read_merchant_managed_fulfillment_orders, read_assigned_fulfillment_orders, read_third_party_fulfillment_orders, read_marketplace_fulfillment_orders.
    */
-  FulfillmentOrdersHoldReleased = 'FULFILLMENT_ORDERS_HOLD_RELEASED',
+  FulfillmentOrdersHoldReleased: 'FULFILLMENT_ORDERS_HOLD_RELEASED',
   /** The webhook topic for `fulfillment_orders/line_items_prepared_for_local_delivery` events. Occurs whenever a fulfillment order's line items are prepared for local delivery. Requires at least one of the following scopes: read_merchant_managed_fulfillment_orders, read_assigned_fulfillment_orders, read_third_party_fulfillment_orders, read_marketplace_fulfillment_orders. */
-  FulfillmentOrdersLineItemsPreparedForLocalDelivery = 'FULFILLMENT_ORDERS_LINE_ITEMS_PREPARED_FOR_LOCAL_DELIVERY',
+  FulfillmentOrdersLineItemsPreparedForLocalDelivery: 'FULFILLMENT_ORDERS_LINE_ITEMS_PREPARED_FOR_LOCAL_DELIVERY',
   /** The webhook topic for `fulfillment_orders/line_items_prepared_for_pickup` events. Triggers when one or more of the line items for a fulfillment order are prepared for pickup Requires at least one of the following scopes: read_merchant_managed_fulfillment_orders, read_assigned_fulfillment_orders, read_third_party_fulfillment_orders, read_marketplace_fulfillment_orders. */
-  FulfillmentOrdersLineItemsPreparedForPickup = 'FULFILLMENT_ORDERS_LINE_ITEMS_PREPARED_FOR_PICKUP',
+  FulfillmentOrdersLineItemsPreparedForPickup: 'FULFILLMENT_ORDERS_LINE_ITEMS_PREPARED_FOR_PICKUP',
   /** The webhook topic for `fulfillment_orders/merged` events. Occurs when multiple fulfillment orders are merged into a single fulfillment order. Requires at least one of the following scopes: read_merchant_managed_fulfillment_orders, read_assigned_fulfillment_orders, read_third_party_fulfillment_orders. */
-  FulfillmentOrdersMerged = 'FULFILLMENT_ORDERS_MERGED',
+  FulfillmentOrdersMerged: 'FULFILLMENT_ORDERS_MERGED',
   /**
    * The webhook topic for `fulfillment_orders/moved` events. Occurs whenever the location which is assigned to fulfill one or more fulfillment order line items is changed.
    *
@@ -68201,16 +68645,16 @@ export enum WebhookSubscriptionTopic {
    * [Learn more about moving line items](https://shopify.dev/docs/api/admin-graphql/latest/mutations/fulfillmentOrderMove).
    *  Requires at least one of the following scopes: read_merchant_managed_fulfillment_orders, read_assigned_fulfillment_orders, read_third_party_fulfillment_orders, read_marketplace_fulfillment_orders.
    */
-  FulfillmentOrdersMoved = 'FULFILLMENT_ORDERS_MOVED',
+  FulfillmentOrdersMoved: 'FULFILLMENT_ORDERS_MOVED',
   /** The webhook topic for `fulfillment_orders/order_routing_complete` events. Occurs when an order has finished being routed and it's fulfillment orders assigned to a fulfillment service's location. Requires at least one of the following scopes: read_merchant_managed_fulfillment_orders, read_assigned_fulfillment_orders, read_third_party_fulfillment_orders, read_buyer_membership_orders, read_marketplace_fulfillment_orders. */
-  FulfillmentOrdersOrderRoutingComplete = 'FULFILLMENT_ORDERS_ORDER_ROUTING_COMPLETE',
+  FulfillmentOrdersOrderRoutingComplete: 'FULFILLMENT_ORDERS_ORDER_ROUTING_COMPLETE',
   /**
    * The webhook topic for `fulfillment_orders/placed_on_hold` events. Occurs when a fulfillment order transitions to the `ON_HOLD` status
    *
    * For cases where multiple holds are applied to a fulfillment order, this webhook will only trigger once when the first hold is applied and the fulfillment order status changes to `ON_HOLD`.
    *  Requires at least one of the following scopes: read_merchant_managed_fulfillment_orders, read_assigned_fulfillment_orders, read_third_party_fulfillment_orders, read_marketplace_fulfillment_orders.
    */
-  FulfillmentOrdersPlacedOnHold = 'FULFILLMENT_ORDERS_PLACED_ON_HOLD',
+  FulfillmentOrdersPlacedOnHold: 'FULFILLMENT_ORDERS_PLACED_ON_HOLD',
   /**
    * The webhook topic for `fulfillment_orders/rescheduled` events. Triggers when a fulfillment order is rescheduled.
    *
@@ -68219,101 +68663,101 @@ export enum WebhookSubscriptionTopic {
    * Otherwise it will be the original fulfillment order with an updated `fulfill_at` datetime.
    *  Requires at least one of the following scopes: read_merchant_managed_fulfillment_orders, read_assigned_fulfillment_orders, read_third_party_fulfillment_orders, read_marketplace_fulfillment_orders.
    */
-  FulfillmentOrdersRescheduled = 'FULFILLMENT_ORDERS_RESCHEDULED',
+  FulfillmentOrdersRescheduled: 'FULFILLMENT_ORDERS_RESCHEDULED',
   /** The webhook topic for `fulfillment_orders/scheduled_fulfillment_order_ready` events. Occurs whenever a fulfillment order which was scheduled becomes due. Requires at least one of the following scopes: read_merchant_managed_fulfillment_orders, read_assigned_fulfillment_orders, read_third_party_fulfillment_orders, read_marketplace_fulfillment_orders. */
-  FulfillmentOrdersScheduledFulfillmentOrderReady = 'FULFILLMENT_ORDERS_SCHEDULED_FULFILLMENT_ORDER_READY',
+  FulfillmentOrdersScheduledFulfillmentOrderReady: 'FULFILLMENT_ORDERS_SCHEDULED_FULFILLMENT_ORDER_READY',
   /** The webhook topic for `fulfillment_orders/split` events. Occurs when a fulfillment order is split into multiple fulfillment orders. Requires at least one of the following scopes: read_merchant_managed_fulfillment_orders, read_assigned_fulfillment_orders, read_third_party_fulfillment_orders. */
-  FulfillmentOrdersSplit = 'FULFILLMENT_ORDERS_SPLIT',
+  FulfillmentOrdersSplit: 'FULFILLMENT_ORDERS_SPLIT',
   /** The webhook topic for `inventory_items/create` events. Occurs whenever an inventory item is created. Requires at least one of the following scopes: read_inventory, read_products. */
-  InventoryItemsCreate = 'INVENTORY_ITEMS_CREATE',
+  InventoryItemsCreate: 'INVENTORY_ITEMS_CREATE',
   /** The webhook topic for `inventory_items/delete` events. Occurs whenever an inventory item is deleted. Requires at least one of the following scopes: read_inventory, read_products. */
-  InventoryItemsDelete = 'INVENTORY_ITEMS_DELETE',
+  InventoryItemsDelete: 'INVENTORY_ITEMS_DELETE',
   /** The webhook topic for `inventory_items/update` events. Occurs whenever an inventory item is updated. Requires at least one of the following scopes: read_inventory, read_products. */
-  InventoryItemsUpdate = 'INVENTORY_ITEMS_UPDATE',
+  InventoryItemsUpdate: 'INVENTORY_ITEMS_UPDATE',
   /** The webhook topic for `inventory_levels/connect` events. Occurs whenever an inventory level is connected. Requires the `read_inventory` scope. */
-  InventoryLevelsConnect = 'INVENTORY_LEVELS_CONNECT',
+  InventoryLevelsConnect: 'INVENTORY_LEVELS_CONNECT',
   /** The webhook topic for `inventory_levels/disconnect` events. Occurs whenever an inventory level is disconnected. Requires the `read_inventory` scope. */
-  InventoryLevelsDisconnect = 'INVENTORY_LEVELS_DISCONNECT',
+  InventoryLevelsDisconnect: 'INVENTORY_LEVELS_DISCONNECT',
   /** The webhook topic for `inventory_levels/update` events. Occurs whenever an inventory level is updated. Requires the `read_inventory` scope. */
-  InventoryLevelsUpdate = 'INVENTORY_LEVELS_UPDATE',
+  InventoryLevelsUpdate: 'INVENTORY_LEVELS_UPDATE',
   /** The webhook topic for `inventory_shipments/add_items` events. Occurs whenever items are added to a shipment. Requires the `read_inventory_shipments` scope. */
-  InventoryShipmentsAddItems = 'INVENTORY_SHIPMENTS_ADD_ITEMS',
+  InventoryShipmentsAddItems: 'INVENTORY_SHIPMENTS_ADD_ITEMS',
   /** The webhook topic for `inventory_shipments/create` events. Triggers when a shipment is created. Requires the `read_inventory_shipments` scope. */
-  InventoryShipmentsCreate = 'INVENTORY_SHIPMENTS_CREATE',
+  InventoryShipmentsCreate: 'INVENTORY_SHIPMENTS_CREATE',
   /** The webhook topic for `inventory_shipments/delete` events. Triggers when a shipment is deleted. Requires the `read_inventory_shipments` scope. */
-  InventoryShipmentsDelete = 'INVENTORY_SHIPMENTS_DELETE',
+  InventoryShipmentsDelete: 'INVENTORY_SHIPMENTS_DELETE',
   /** The webhook topic for `inventory_shipments/mark_in_transit` events. Triggers when a shipment is marked as in transit. Requires the `read_inventory_shipments` scope. */
-  InventoryShipmentsMarkInTransit = 'INVENTORY_SHIPMENTS_MARK_IN_TRANSIT',
+  InventoryShipmentsMarkInTransit: 'INVENTORY_SHIPMENTS_MARK_IN_TRANSIT',
   /** The webhook topic for `inventory_shipments/receive_items` events. Triggers when items on a shipment are received. Requires the `read_inventory_shipments_received_items` scope. */
-  InventoryShipmentsReceiveItems = 'INVENTORY_SHIPMENTS_RECEIVE_ITEMS',
+  InventoryShipmentsReceiveItems: 'INVENTORY_SHIPMENTS_RECEIVE_ITEMS',
   /** The webhook topic for `inventory_shipments/remove_items` events. Occurs whenever items are removed from a shipment. Requires the `read_inventory_shipments` scope. */
-  InventoryShipmentsRemoveItems = 'INVENTORY_SHIPMENTS_REMOVE_ITEMS',
+  InventoryShipmentsRemoveItems: 'INVENTORY_SHIPMENTS_REMOVE_ITEMS',
   /** The webhook topic for `inventory_shipments/update_item_quantities` events. Occurs whenever quantities change on a shipment. Requires the `read_inventory_shipments` scope. */
-  InventoryShipmentsUpdateItemQuantities = 'INVENTORY_SHIPMENTS_UPDATE_ITEM_QUANTITIES',
+  InventoryShipmentsUpdateItemQuantities: 'INVENTORY_SHIPMENTS_UPDATE_ITEM_QUANTITIES',
   /** The webhook topic for `inventory_shipments/update_tracking` events. Triggers when tracking info on a shipment is updated. Requires the `read_inventory_shipments` scope. */
-  InventoryShipmentsUpdateTracking = 'INVENTORY_SHIPMENTS_UPDATE_TRACKING',
+  InventoryShipmentsUpdateTracking: 'INVENTORY_SHIPMENTS_UPDATE_TRACKING',
   /** The webhook topic for `inventory_transfers/add_items` events. Occurs any time items are added to a transfer. Requires the `read_inventory_transfers` scope. */
-  InventoryTransfersAddItems = 'INVENTORY_TRANSFERS_ADD_ITEMS',
+  InventoryTransfersAddItems: 'INVENTORY_TRANSFERS_ADD_ITEMS',
   /** The webhook topic for `inventory_transfers/cancel` events. Triggers when a transfer is canceled. Requires the `read_inventory_transfers` scope. */
-  InventoryTransfersCancel = 'INVENTORY_TRANSFERS_CANCEL',
+  InventoryTransfersCancel: 'INVENTORY_TRANSFERS_CANCEL',
   /** The webhook topic for `inventory_transfers/complete` events. Triggers when a transfer is completed. Requires the `read_inventory_transfers` scope. */
-  InventoryTransfersComplete = 'INVENTORY_TRANSFERS_COMPLETE',
+  InventoryTransfersComplete: 'INVENTORY_TRANSFERS_COMPLETE',
   /** The webhook topic for `inventory_transfers/ready_to_ship` events. Triggers when a transfer is marked as ready to ship. Requires the `read_inventory_transfers` scope. */
-  InventoryTransfersReadyToShip = 'INVENTORY_TRANSFERS_READY_TO_SHIP',
+  InventoryTransfersReadyToShip: 'INVENTORY_TRANSFERS_READY_TO_SHIP',
   /** The webhook topic for `inventory_transfers/remove_items` events. Occurs any time items are removed from a transfer. Requires the `read_inventory_transfers` scope. */
-  InventoryTransfersRemoveItems = 'INVENTORY_TRANSFERS_REMOVE_ITEMS',
+  InventoryTransfersRemoveItems: 'INVENTORY_TRANSFERS_REMOVE_ITEMS',
   /** The webhook topic for `inventory_transfers/update_item_quantities` events. Occurs whenever the quantity of transfer line items changes. Requires the `read_inventory_transfers` scope. */
-  InventoryTransfersUpdateItemQuantities = 'INVENTORY_TRANSFERS_UPDATE_ITEM_QUANTITIES',
+  InventoryTransfersUpdateItemQuantities: 'INVENTORY_TRANSFERS_UPDATE_ITEM_QUANTITIES',
   /** The webhook topic for `locales/create` events. Occurs whenever a shop locale is created Requires the `read_locales` scope. */
-  LocalesCreate = 'LOCALES_CREATE',
+  LocalesCreate: 'LOCALES_CREATE',
   /** The webhook topic for `locales/destroy` events. Occurs whenever a shop locale is destroyed Requires the `read_locales` scope. */
-  LocalesDestroy = 'LOCALES_DESTROY',
+  LocalesDestroy: 'LOCALES_DESTROY',
   /** The webhook topic for `locales/update` events. Occurs whenever a shop locale is updated, such as published or unpublished Requires the `read_locales` scope. */
-  LocalesUpdate = 'LOCALES_UPDATE',
+  LocalesUpdate: 'LOCALES_UPDATE',
   /** The webhook topic for `locations/activate` events. Occurs whenever a deactivated location is re-activated. Requires the `read_locations` scope. */
-  LocationsActivate = 'LOCATIONS_ACTIVATE',
+  LocationsActivate: 'LOCATIONS_ACTIVATE',
   /** The webhook topic for `locations/create` events. Occurs whenever a location is created. Requires the `read_locations` scope. */
-  LocationsCreate = 'LOCATIONS_CREATE',
+  LocationsCreate: 'LOCATIONS_CREATE',
   /** The webhook topic for `locations/deactivate` events. Occurs whenever a location is deactivated. Requires the `read_locations` scope. */
-  LocationsDeactivate = 'LOCATIONS_DEACTIVATE',
+  LocationsDeactivate: 'LOCATIONS_DEACTIVATE',
   /** The webhook topic for `locations/delete` events. Occurs whenever a location is deleted. Requires the `read_locations` scope. */
-  LocationsDelete = 'LOCATIONS_DELETE',
+  LocationsDelete: 'LOCATIONS_DELETE',
   /** The webhook topic for `locations/update` events. Occurs whenever a location is updated. Requires the `read_locations` scope. */
-  LocationsUpdate = 'LOCATIONS_UPDATE',
+  LocationsUpdate: 'LOCATIONS_UPDATE',
   /** The webhook topic for `markets_backup_region/update` events. Occurs when a backup region is updated. Requires the `read_markets` scope. */
-  MarketsBackupRegionUpdate = 'MARKETS_BACKUP_REGION_UPDATE',
+  MarketsBackupRegionUpdate: 'MARKETS_BACKUP_REGION_UPDATE',
   /** The webhook topic for `markets/create` events. Occurs when a new market is created. Requires the `read_markets` scope. */
-  MarketsCreate = 'MARKETS_CREATE',
+  MarketsCreate: 'MARKETS_CREATE',
   /** The webhook topic for `markets/delete` events. Occurs when a market is deleted. Requires the `read_markets` scope. */
-  MarketsDelete = 'MARKETS_DELETE',
+  MarketsDelete: 'MARKETS_DELETE',
   /** The webhook topic for `markets/update` events. Occurs when a market is updated. Requires the `read_markets` scope. */
-  MarketsUpdate = 'MARKETS_UPDATE',
+  MarketsUpdate: 'MARKETS_UPDATE',
   /** The webhook topic for `metafield_definitions/create` events. Occurs when a metafield definition is created. Requires the `read_content` scope. */
-  MetafieldDefinitionsCreate = 'METAFIELD_DEFINITIONS_CREATE',
+  MetafieldDefinitionsCreate: 'METAFIELD_DEFINITIONS_CREATE',
   /** The webhook topic for `metafield_definitions/delete` events. Occurs when a metafield definition is deleted. Requires the `read_content` scope. */
-  MetafieldDefinitionsDelete = 'METAFIELD_DEFINITIONS_DELETE',
+  MetafieldDefinitionsDelete: 'METAFIELD_DEFINITIONS_DELETE',
   /** The webhook topic for `metafield_definitions/update` events. Occurs when a metafield definition is updated. Requires the `read_content` scope. */
-  MetafieldDefinitionsUpdate = 'METAFIELD_DEFINITIONS_UPDATE',
+  MetafieldDefinitionsUpdate: 'METAFIELD_DEFINITIONS_UPDATE',
   /** The webhook topic for `metaobjects/create` events. Occurs when a metaobject is created. Requires the `read_metaobjects` scope. */
-  MetaobjectsCreate = 'METAOBJECTS_CREATE',
+  MetaobjectsCreate: 'METAOBJECTS_CREATE',
   /** The webhook topic for `metaobjects/delete` events. Occurs when a metaobject is deleted. Requires the `read_metaobjects` scope. */
-  MetaobjectsDelete = 'METAOBJECTS_DELETE',
+  MetaobjectsDelete: 'METAOBJECTS_DELETE',
   /** The webhook topic for `metaobjects/update` events. Occurs when a metaobject is updated. Requires the `read_metaobjects` scope. */
-  MetaobjectsUpdate = 'METAOBJECTS_UPDATE',
+  MetaobjectsUpdate: 'METAOBJECTS_UPDATE',
   /** The webhook topic for `orders/cancelled` events. Occurs whenever an order is cancelled. Requires at least one of the following scopes: read_orders, read_marketplace_orders, read_buyer_membership_orders. */
-  OrdersCancelled = 'ORDERS_CANCELLED',
+  OrdersCancelled: 'ORDERS_CANCELLED',
   /** The webhook topic for `orders/create` events. Occurs whenever an order is created. Requires at least one of the following scopes: read_orders, read_marketplace_orders. */
-  OrdersCreate = 'ORDERS_CREATE',
+  OrdersCreate: 'ORDERS_CREATE',
   /** The webhook topic for `orders/delete` events. Occurs whenever an order is deleted. Requires the `read_orders` scope. */
-  OrdersDelete = 'ORDERS_DELETE',
+  OrdersDelete: 'ORDERS_DELETE',
   /** The webhook topic for `orders/edited` events. Occurs whenever an order is edited. Requires at least one of the following scopes: read_orders, read_marketplace_orders, read_buyer_membership_orders. */
-  OrdersEdited = 'ORDERS_EDITED',
+  OrdersEdited: 'ORDERS_EDITED',
   /** The webhook topic for `orders/fulfilled` events. Occurs whenever an order is fulfilled. Requires at least one of the following scopes: read_orders, read_marketplace_orders. */
-  OrdersFulfilled = 'ORDERS_FULFILLED',
+  OrdersFulfilled: 'ORDERS_FULFILLED',
   /** The webhook topic for `orders/paid` events. Occurs whenever an order is paid. Requires at least one of the following scopes: read_orders, read_marketplace_orders. */
-  OrdersPaid = 'ORDERS_PAID',
+  OrdersPaid: 'ORDERS_PAID',
   /** The webhook topic for `orders/partially_fulfilled` events. Occurs whenever an order is partially fulfilled. Requires at least one of the following scopes: read_orders, read_marketplace_orders. */
-  OrdersPartiallyFulfilled = 'ORDERS_PARTIALLY_FULFILLED',
+  OrdersPartiallyFulfilled: 'ORDERS_PARTIALLY_FULFILLED',
   /**
    * The webhook topic for `orders/risk_assessment_changed` events. Triggers when a new risk assessment is available on the order.
    * This can be the first or a subsequent risk assessment.
@@ -68324,164 +68768,165 @@ export enum WebhookSubscriptionTopic {
    * The Shop ID is available in the headers.
    *  Requires the `read_orders` scope.
    */
-  OrdersRiskAssessmentChanged = 'ORDERS_RISK_ASSESSMENT_CHANGED',
+  OrdersRiskAssessmentChanged: 'ORDERS_RISK_ASSESSMENT_CHANGED',
   /** The webhook topic for `orders/shopify_protect_eligibility_changed` events. Occurs whenever Shopify Protect's eligibility for an order is changed. Requires the `read_orders` scope. */
-  OrdersShopifyProtectEligibilityChanged = 'ORDERS_SHOPIFY_PROTECT_ELIGIBILITY_CHANGED',
+  OrdersShopifyProtectEligibilityChanged: 'ORDERS_SHOPIFY_PROTECT_ELIGIBILITY_CHANGED',
   /** The webhook topic for `orders/updated` events. Occurs whenever an order is updated. Requires at least one of the following scopes: read_orders, read_marketplace_orders, read_buyer_membership_orders. */
-  OrdersUpdated = 'ORDERS_UPDATED',
+  OrdersUpdated: 'ORDERS_UPDATED',
   /** The webhook topic for `order_transactions/create` events. Occurs when a order transaction is created or when it's status is updated. Only occurs for transactions with a status of success, failure or error. Requires at least one of the following scopes: read_orders, read_marketplace_orders, read_buyer_membership_orders. */
-  OrderTransactionsCreate = 'ORDER_TRANSACTIONS_CREATE',
+  OrderTransactionsCreate: 'ORDER_TRANSACTIONS_CREATE',
   /** The webhook topic for `payment_schedules/due` events. Occurs whenever payment schedules are due. Requires the `read_payment_terms` scope. */
-  PaymentSchedulesDue = 'PAYMENT_SCHEDULES_DUE',
+  PaymentSchedulesDue: 'PAYMENT_SCHEDULES_DUE',
   /** The webhook topic for `payment_terms/create` events. Occurs whenever payment terms are created. Requires the `read_payment_terms` scope. */
-  PaymentTermsCreate = 'PAYMENT_TERMS_CREATE',
+  PaymentTermsCreate: 'PAYMENT_TERMS_CREATE',
   /** The webhook topic for `payment_terms/delete` events. Occurs whenever payment terms are deleted. Requires the `read_payment_terms` scope. */
-  PaymentTermsDelete = 'PAYMENT_TERMS_DELETE',
+  PaymentTermsDelete: 'PAYMENT_TERMS_DELETE',
   /** The webhook topic for `payment_terms/update` events. Occurs whenever payment terms are updated. Requires the `read_payment_terms` scope. */
-  PaymentTermsUpdate = 'PAYMENT_TERMS_UPDATE',
+  PaymentTermsUpdate: 'PAYMENT_TERMS_UPDATE',
   /** The webhook topic for `products/create` events. Occurs whenever a product is created. Requires the `read_products` scope. */
-  ProductsCreate = 'PRODUCTS_CREATE',
+  ProductsCreate: 'PRODUCTS_CREATE',
   /** The webhook topic for `products/delete` events. Occurs whenever a product is deleted. Requires the `read_products` scope. */
-  ProductsDelete = 'PRODUCTS_DELETE',
+  ProductsDelete: 'PRODUCTS_DELETE',
   /** The webhook topic for `products/update` events. Occurs whenever a product is updated, ordered, or variants are added, removed or updated. Requires the `read_products` scope. */
-  ProductsUpdate = 'PRODUCTS_UPDATE',
+  ProductsUpdate: 'PRODUCTS_UPDATE',
   /** The webhook topic for `product_feeds/create` events. Triggers when product feed is created Requires the `read_product_listings` scope. */
-  ProductFeedsCreate = 'PRODUCT_FEEDS_CREATE',
+  ProductFeedsCreate: 'PRODUCT_FEEDS_CREATE',
   /** The webhook topic for `product_feeds/full_sync` events. Triggers when a full sync for a product feed is performed Requires the `read_product_listings` scope. */
-  ProductFeedsFullSync = 'PRODUCT_FEEDS_FULL_SYNC',
+  ProductFeedsFullSync: 'PRODUCT_FEEDS_FULL_SYNC',
   /** The webhook topic for `product_feeds/full_sync_finish` events. Triggers when a full sync finishes Requires the `read_product_listings` scope. */
-  ProductFeedsFullSyncFinish = 'PRODUCT_FEEDS_FULL_SYNC_FINISH',
+  ProductFeedsFullSyncFinish: 'PRODUCT_FEEDS_FULL_SYNC_FINISH',
   /** The webhook topic for `product_feeds/incremental_sync` events. Occurs whenever a product publication is created, updated or removed for a product feed Requires the `read_product_listings` scope. */
-  ProductFeedsIncrementalSync = 'PRODUCT_FEEDS_INCREMENTAL_SYNC',
+  ProductFeedsIncrementalSync: 'PRODUCT_FEEDS_INCREMENTAL_SYNC',
   /** The webhook topic for `product_feeds/update` events. Triggers when product feed is updated Requires the `read_product_listings` scope. */
-  ProductFeedsUpdate = 'PRODUCT_FEEDS_UPDATE',
+  ProductFeedsUpdate: 'PRODUCT_FEEDS_UPDATE',
   /** The webhook topic for `product_listings/add` events. Occurs whenever an active product is listed on a channel. Requires the `read_product_listings` scope. */
-  ProductListingsAdd = 'PRODUCT_LISTINGS_ADD',
+  ProductListingsAdd: 'PRODUCT_LISTINGS_ADD',
   /** The webhook topic for `product_listings/remove` events. Occurs whenever a product listing is removed from the channel. Requires the `read_product_listings` scope. */
-  ProductListingsRemove = 'PRODUCT_LISTINGS_REMOVE',
+  ProductListingsRemove: 'PRODUCT_LISTINGS_REMOVE',
   /** The webhook topic for `product_listings/update` events. Occurs whenever a product publication is updated. Requires the `read_product_listings` scope. */
-  ProductListingsUpdate = 'PRODUCT_LISTINGS_UPDATE',
+  ProductListingsUpdate: 'PRODUCT_LISTINGS_UPDATE',
   /** The webhook topic for `product_publications/create` events. Occurs whenever a product publication for an active product is created, or whenever an existing product publication is published on the app that is subscribed to this webhook topic. Note that a webhook is only emitted when there are publishing changes to the app that is subscribed to the topic (ie. no webhook will be emitted if there is a publishing change to the online store and the webhook subscriber of the topic is a third-party app). Requires the `read_publications` scope. */
-  ProductPublicationsCreate = 'PRODUCT_PUBLICATIONS_CREATE',
+  ProductPublicationsCreate: 'PRODUCT_PUBLICATIONS_CREATE',
   /** The webhook topic for `product_publications/delete` events. Occurs whenever a product publication for an active product is removed, or whenever an existing product publication is unpublished from the app that is subscribed to this webhook topic. Note that a webhook is only emitted when there are publishing changes to the app that is subscribed to the topic (ie. no webhook will be emitted if there is a publishing change to the online store and the webhook subscriber of the topic is a third-party app). Requires the `read_publications` scope. */
-  ProductPublicationsDelete = 'PRODUCT_PUBLICATIONS_DELETE',
+  ProductPublicationsDelete: 'PRODUCT_PUBLICATIONS_DELETE',
   /** The webhook topic for `product_publications/update` events. Occurs whenever a product publication is updated from the app that is subscribed to this webhook topic. Note that a webhook is only emitted when there are publishing changes to the app that is subscribed to the topic (ie. no webhook will be emitted if there is a publishing change to the online store and the webhook subscriber of the topic is a third-party app). Requires the `read_publications` scope. */
-  ProductPublicationsUpdate = 'PRODUCT_PUBLICATIONS_UPDATE',
+  ProductPublicationsUpdate: 'PRODUCT_PUBLICATIONS_UPDATE',
   /** The webhook topic for `profiles/create` events. Occurs whenever a delivery profile is created Requires at least one of the following scopes: read_shipping, read_assigned_shipping. */
-  ProfilesCreate = 'PROFILES_CREATE',
+  ProfilesCreate: 'PROFILES_CREATE',
   /** The webhook topic for `profiles/delete` events. Occurs whenever a delivery profile is deleted Requires at least one of the following scopes: read_shipping, read_assigned_shipping. */
-  ProfilesDelete = 'PROFILES_DELETE',
+  ProfilesDelete: 'PROFILES_DELETE',
   /** The webhook topic for `profiles/update` events. Occurs whenever a delivery profile is updated Requires at least one of the following scopes: read_shipping, read_assigned_shipping. */
-  ProfilesUpdate = 'PROFILES_UPDATE',
+  ProfilesUpdate: 'PROFILES_UPDATE',
   /** The webhook topic for `publications/delete` events. Occurs whenever a publication is deleted. Requires the `read_publications` scope. */
-  PublicationsDelete = 'PUBLICATIONS_DELETE',
+  PublicationsDelete: 'PUBLICATIONS_DELETE',
   /** The webhook topic for `refunds/create` events. Occurs whenever a new refund is created without errors on an order, independent from the movement of money. Requires at least one of the following scopes: read_orders, read_marketplace_orders, read_buyer_membership_orders. */
-  RefundsCreate = 'REFUNDS_CREATE',
+  RefundsCreate: 'REFUNDS_CREATE',
   /** The webhook topic for `returns/approve` events. Occurs whenever a return is approved. This means `Return.status` is `OPEN`. Requires at least one of the following scopes: read_returns, read_marketplace_returns, read_buyer_membership_orders. */
-  ReturnsApprove = 'RETURNS_APPROVE',
+  ReturnsApprove: 'RETURNS_APPROVE',
   /** The webhook topic for `returns/cancel` events. Occurs whenever a return is canceled. Requires at least one of the following scopes: read_orders, read_marketplace_orders, read_returns, read_marketplace_returns, read_buyer_membership_orders. */
-  ReturnsCancel = 'RETURNS_CANCEL',
+  ReturnsCancel: 'RETURNS_CANCEL',
   /** The webhook topic for `returns/close` events. Occurs whenever a return is closed. Requires at least one of the following scopes: read_orders, read_marketplace_orders, read_returns, read_marketplace_returns, read_buyer_membership_orders. */
-  ReturnsClose = 'RETURNS_CLOSE',
+  ReturnsClose: 'RETURNS_CLOSE',
   /** The webhook topic for `returns/decline` events. Occurs whenever a return is declined. This means `Return.status` is `DECLINED`. Requires at least one of the following scopes: read_returns, read_marketplace_returns, read_buyer_membership_orders. */
-  ReturnsDecline = 'RETURNS_DECLINE',
+  ReturnsDecline: 'RETURNS_DECLINE',
   /** The webhook topic for `returns/process` events. Occurs whenever a return is processed. Requires at least one of the following scopes: read_returns, read_marketplace_returns, read_buyer_membership_orders. */
-  ReturnsProcess = 'RETURNS_PROCESS',
+  ReturnsProcess: 'RETURNS_PROCESS',
   /** The webhook topic for `returns/reopen` events. Occurs whenever a closed return is reopened. Requires at least one of the following scopes: read_orders, read_marketplace_orders, read_returns, read_marketplace_returns, read_buyer_membership_orders. */
-  ReturnsReopen = 'RETURNS_REOPEN',
+  ReturnsReopen: 'RETURNS_REOPEN',
   /** The webhook topic for `returns/request` events. Occurs whenever a return is requested. This means `Return.status` is `REQUESTED`. Requires at least one of the following scopes: read_returns, read_marketplace_returns, read_buyer_membership_orders. */
-  ReturnsRequest = 'RETURNS_REQUEST',
+  ReturnsRequest: 'RETURNS_REQUEST',
   /** The webhook topic for `returns/update` events. Occurs whenever a return is updated. Requires at least one of the following scopes: read_returns, read_marketplace_returns, read_buyer_membership_orders. */
-  ReturnsUpdate = 'RETURNS_UPDATE',
+  ReturnsUpdate: 'RETURNS_UPDATE',
   /**
    * The webhook topic for `reverse_deliveries/attach_deliverable` events. Occurs whenever a deliverable is attached to a reverse delivery.
    * This occurs when a reverse delivery is created or updated with delivery metadata.
    * Metadata includes the delivery method, label, and tracking information associated with a reverse delivery.
    *  Requires at least one of the following scopes: read_returns, read_marketplace_returns.
    */
-  ReverseDeliveriesAttachDeliverable = 'REVERSE_DELIVERIES_ATTACH_DELIVERABLE',
+  ReverseDeliveriesAttachDeliverable: 'REVERSE_DELIVERIES_ATTACH_DELIVERABLE',
   /**
    * The webhook topic for `reverse_fulfillment_orders/dispose` events. Occurs whenever a disposition is made on a reverse fulfillment order.
    * This includes dispositions made on reverse deliveries that are associated with the reverse fulfillment order.
    *  Requires at least one of the following scopes: read_returns, read_marketplace_returns.
    */
-  ReverseFulfillmentOrdersDispose = 'REVERSE_FULFILLMENT_ORDERS_DISPOSE',
+  ReverseFulfillmentOrdersDispose: 'REVERSE_FULFILLMENT_ORDERS_DISPOSE',
   /** The webhook topic for `scheduled_product_listings/add` events. Occurs whenever a product is scheduled to be published. Requires the `read_product_listings` scope. */
-  ScheduledProductListingsAdd = 'SCHEDULED_PRODUCT_LISTINGS_ADD',
+  ScheduledProductListingsAdd: 'SCHEDULED_PRODUCT_LISTINGS_ADD',
   /** The webhook topic for `scheduled_product_listings/remove` events. Occurs whenever a product is no longer scheduled to be published. Requires the `read_product_listings` scope. */
-  ScheduledProductListingsRemove = 'SCHEDULED_PRODUCT_LISTINGS_REMOVE',
+  ScheduledProductListingsRemove: 'SCHEDULED_PRODUCT_LISTINGS_REMOVE',
   /** The webhook topic for `scheduled_product_listings/update` events. Occurs whenever a product's scheduled availability date changes. Requires the `read_product_listings` scope. */
-  ScheduledProductListingsUpdate = 'SCHEDULED_PRODUCT_LISTINGS_UPDATE',
+  ScheduledProductListingsUpdate: 'SCHEDULED_PRODUCT_LISTINGS_UPDATE',
   /** The webhook topic for `segments/create` events. Occurs whenever a segment is created. Requires the `read_customers` scope. */
-  SegmentsCreate = 'SEGMENTS_CREATE',
+  SegmentsCreate: 'SEGMENTS_CREATE',
   /** The webhook topic for `segments/delete` events. Occurs whenever a segment is deleted. Requires the `read_customers` scope. */
-  SegmentsDelete = 'SEGMENTS_DELETE',
+  SegmentsDelete: 'SEGMENTS_DELETE',
   /** The webhook topic for `segments/update` events. Occurs whenever a segment is updated. Requires the `read_customers` scope. */
-  SegmentsUpdate = 'SEGMENTS_UPDATE',
+  SegmentsUpdate: 'SEGMENTS_UPDATE',
   /** The webhook topic for `selling_plan_groups/create` events. Notifies when a SellingPlanGroup is created. Requires the `read_products` scope. */
-  SellingPlanGroupsCreate = 'SELLING_PLAN_GROUPS_CREATE',
+  SellingPlanGroupsCreate: 'SELLING_PLAN_GROUPS_CREATE',
   /** The webhook topic for `selling_plan_groups/delete` events. Notifies when a SellingPlanGroup is deleted. Requires the `read_products` scope. */
-  SellingPlanGroupsDelete = 'SELLING_PLAN_GROUPS_DELETE',
+  SellingPlanGroupsDelete: 'SELLING_PLAN_GROUPS_DELETE',
   /** The webhook topic for `selling_plan_groups/update` events. Notifies when a SellingPlanGroup is updated. Requires the `read_products` scope. */
-  SellingPlanGroupsUpdate = 'SELLING_PLAN_GROUPS_UPDATE',
+  SellingPlanGroupsUpdate: 'SELLING_PLAN_GROUPS_UPDATE',
   /** The webhook topic for `shipping_addresses/create` events. Occurs whenever a shipping address is created. Requires the `read_shipping` scope. */
-  ShippingAddressesCreate = 'SHIPPING_ADDRESSES_CREATE',
+  ShippingAddressesCreate: 'SHIPPING_ADDRESSES_CREATE',
   /** The webhook topic for `shipping_addresses/update` events. Occurs whenever a shipping address is updated. Requires the `read_shipping` scope. */
-  ShippingAddressesUpdate = 'SHIPPING_ADDRESSES_UPDATE',
+  ShippingAddressesUpdate: 'SHIPPING_ADDRESSES_UPDATE',
   /** The webhook topic for `shop/update` events. Occurs whenever a shop is updated. */
-  ShopUpdate = 'SHOP_UPDATE',
+  ShopUpdate: 'SHOP_UPDATE',
   /** The webhook topic for `subscription_billing_attempts/challenged` events. Occurs when the financial instutition challenges the subscripttion billing attempt charge as per 3D Secure. Requires the `read_own_subscription_contracts` scope. */
-  SubscriptionBillingAttemptsChallenged = 'SUBSCRIPTION_BILLING_ATTEMPTS_CHALLENGED',
+  SubscriptionBillingAttemptsChallenged: 'SUBSCRIPTION_BILLING_ATTEMPTS_CHALLENGED',
   /** The webhook topic for `subscription_billing_attempts/failure` events. Occurs whenever a subscription billing attempt fails. Requires the `read_own_subscription_contracts` scope. */
-  SubscriptionBillingAttemptsFailure = 'SUBSCRIPTION_BILLING_ATTEMPTS_FAILURE',
+  SubscriptionBillingAttemptsFailure: 'SUBSCRIPTION_BILLING_ATTEMPTS_FAILURE',
   /** The webhook topic for `subscription_billing_attempts/success` events. Occurs whenever a subscription billing attempt succeeds. Requires the `read_own_subscription_contracts` scope. */
-  SubscriptionBillingAttemptsSuccess = 'SUBSCRIPTION_BILLING_ATTEMPTS_SUCCESS',
+  SubscriptionBillingAttemptsSuccess: 'SUBSCRIPTION_BILLING_ATTEMPTS_SUCCESS',
   /** The webhook topic for `subscription_billing_cycles/skip` events. Occurs whenever a subscription contract billing cycle is skipped. Requires the `read_own_subscription_contracts` scope. */
-  SubscriptionBillingCyclesSkip = 'SUBSCRIPTION_BILLING_CYCLES_SKIP',
+  SubscriptionBillingCyclesSkip: 'SUBSCRIPTION_BILLING_CYCLES_SKIP',
   /** The webhook topic for `subscription_billing_cycles/unskip` events. Occurs whenever a subscription contract billing cycle is unskipped. Requires the `read_own_subscription_contracts` scope. */
-  SubscriptionBillingCyclesUnskip = 'SUBSCRIPTION_BILLING_CYCLES_UNSKIP',
+  SubscriptionBillingCyclesUnskip: 'SUBSCRIPTION_BILLING_CYCLES_UNSKIP',
   /** The webhook topic for `subscription_billing_cycle_edits/create` events. Occurs whenever a subscription contract billing cycle is edited. Requires the `read_own_subscription_contracts` scope. */
-  SubscriptionBillingCycleEditsCreate = 'SUBSCRIPTION_BILLING_CYCLE_EDITS_CREATE',
+  SubscriptionBillingCycleEditsCreate: 'SUBSCRIPTION_BILLING_CYCLE_EDITS_CREATE',
   /** The webhook topic for `subscription_billing_cycle_edits/delete` events. Occurs whenever a subscription contract billing cycle edit is deleted. Requires the `read_own_subscription_contracts` scope. */
-  SubscriptionBillingCycleEditsDelete = 'SUBSCRIPTION_BILLING_CYCLE_EDITS_DELETE',
+  SubscriptionBillingCycleEditsDelete: 'SUBSCRIPTION_BILLING_CYCLE_EDITS_DELETE',
   /** The webhook topic for `subscription_billing_cycle_edits/update` events. Occurs whenever a subscription contract billing cycle edit is updated. Requires the `read_own_subscription_contracts` scope. */
-  SubscriptionBillingCycleEditsUpdate = 'SUBSCRIPTION_BILLING_CYCLE_EDITS_UPDATE',
+  SubscriptionBillingCycleEditsUpdate: 'SUBSCRIPTION_BILLING_CYCLE_EDITS_UPDATE',
   /** The webhook topic for `subscription_contracts/activate` events. Occurs when a subscription contract is activated. Requires the `read_own_subscription_contracts` scope. */
-  SubscriptionContractsActivate = 'SUBSCRIPTION_CONTRACTS_ACTIVATE',
+  SubscriptionContractsActivate: 'SUBSCRIPTION_CONTRACTS_ACTIVATE',
   /** The webhook topic for `subscription_contracts/cancel` events. Occurs when a subscription contract is canceled. Requires the `read_own_subscription_contracts` scope. */
-  SubscriptionContractsCancel = 'SUBSCRIPTION_CONTRACTS_CANCEL',
+  SubscriptionContractsCancel: 'SUBSCRIPTION_CONTRACTS_CANCEL',
   /** The webhook topic for `subscription_contracts/create` events. Occurs whenever a subscription contract is created. Requires the `read_own_subscription_contracts` scope. */
-  SubscriptionContractsCreate = 'SUBSCRIPTION_CONTRACTS_CREATE',
+  SubscriptionContractsCreate: 'SUBSCRIPTION_CONTRACTS_CREATE',
   /** The webhook topic for `subscription_contracts/expire` events. Occurs when a subscription contract expires. Requires the `read_own_subscription_contracts` scope. */
-  SubscriptionContractsExpire = 'SUBSCRIPTION_CONTRACTS_EXPIRE',
+  SubscriptionContractsExpire: 'SUBSCRIPTION_CONTRACTS_EXPIRE',
   /** The webhook topic for `subscription_contracts/fail` events. Occurs when a subscription contract is failed. Requires the `read_own_subscription_contracts` scope. */
-  SubscriptionContractsFail = 'SUBSCRIPTION_CONTRACTS_FAIL',
+  SubscriptionContractsFail: 'SUBSCRIPTION_CONTRACTS_FAIL',
   /** The webhook topic for `subscription_contracts/pause` events. Occurs when a subscription contract is paused. Requires the `read_own_subscription_contracts` scope. */
-  SubscriptionContractsPause = 'SUBSCRIPTION_CONTRACTS_PAUSE',
+  SubscriptionContractsPause: 'SUBSCRIPTION_CONTRACTS_PAUSE',
   /** The webhook topic for `subscription_contracts/update` events. Occurs whenever a subscription contract is updated. Requires the `read_own_subscription_contracts` scope. */
-  SubscriptionContractsUpdate = 'SUBSCRIPTION_CONTRACTS_UPDATE',
+  SubscriptionContractsUpdate: 'SUBSCRIPTION_CONTRACTS_UPDATE',
   /** The webhook topic for `tax_partners/update` events. Occurs whenever a tax partner is created or updated. Requires the `read_taxes` scope. */
-  TaxPartnersUpdate = 'TAX_PARTNERS_UPDATE',
+  TaxPartnersUpdate: 'TAX_PARTNERS_UPDATE',
   /** The webhook topic for `tax_services/create` events. Occurs whenever a tax service is created. Requires the `read_taxes` scope. */
-  TaxServicesCreate = 'TAX_SERVICES_CREATE',
+  TaxServicesCreate: 'TAX_SERVICES_CREATE',
   /** The webhook topic for `tax_services/update` events. Occurs whenver a tax service is updated. Requires the `read_taxes` scope. */
-  TaxServicesUpdate = 'TAX_SERVICES_UPDATE',
+  TaxServicesUpdate: 'TAX_SERVICES_UPDATE',
   /** The webhook topic for `tender_transactions/create` events. Occurs when a tender transaction is created. Requires the `read_orders` scope. */
-  TenderTransactionsCreate = 'TENDER_TRANSACTIONS_CREATE',
+  TenderTransactionsCreate: 'TENDER_TRANSACTIONS_CREATE',
   /** The webhook topic for `themes/create` events. Occurs whenever a theme is created. Does not occur when theme files are created. Requires the `read_themes` scope. */
-  ThemesCreate = 'THEMES_CREATE',
+  ThemesCreate: 'THEMES_CREATE',
   /** The webhook topic for `themes/delete` events. Occurs whenever a theme is deleted. Does not occur when theme files are deleted. Requires the `read_themes` scope. */
-  ThemesDelete = 'THEMES_DELETE',
+  ThemesDelete: 'THEMES_DELETE',
   /** The webhook topic for `themes/publish` events. Occurs whenever a theme with the main or mobile (deprecated) role is published. Requires the `read_themes` scope. */
-  ThemesPublish = 'THEMES_PUBLISH',
+  ThemesPublish: 'THEMES_PUBLISH',
   /** The webhook topic for `themes/update` events. Occurs whenever a theme is updated. Does not occur when theme files are updated. Requires the `read_themes` scope. */
-  ThemesUpdate = 'THEMES_UPDATE',
+  ThemesUpdate: 'THEMES_UPDATE',
   /** The webhook topic for `variants/in_stock` events. Occurs whenever a variant becomes in stock. Online channels receive this webhook only when the variant becomes in stock online. Requires the `read_products` scope. */
-  VariantsInStock = 'VARIANTS_IN_STOCK',
+  VariantsInStock: 'VARIANTS_IN_STOCK',
   /** The webhook topic for `variants/out_of_stock` events. Occurs whenever a variant becomes out of stock. Online channels receive this webhook only when the variant becomes out of stock online. Requires the `read_products` scope. */
-  VariantsOutOfStock = 'VARIANTS_OUT_OF_STOCK'
-}
+  VariantsOutOfStock: 'VARIANTS_OUT_OF_STOCK'
+} as const;
 
+export type WebhookSubscriptionTopic = typeof WebhookSubscriptionTopic[keyof typeof WebhookSubscriptionTopic];
 /** Return type for `webhookSubscriptionUpdate` mutation. */
 export type WebhookSubscriptionUpdatePayload = {
   __typename?: 'WebhookSubscriptionUpdatePayload';
@@ -68513,13 +68958,15 @@ export type WeightInput = {
 };
 
 /** Units of measurement for weight. */
-export enum WeightUnit {
+export const WeightUnit = {
   /** Metric system unit of mass. */
-  Grams = 'GRAMS',
+  Grams: 'GRAMS',
   /** 1 kilogram equals 1000 grams. */
-  Kilograms = 'KILOGRAMS',
+  Kilograms: 'KILOGRAMS',
   /** Imperial system unit of mass. */
-  Ounces = 'OUNCES',
+  Ounces: 'OUNCES',
   /** 1 pound equals 16 ounces. */
-  Pounds = 'POUNDS'
-}
+  Pounds: 'POUNDS'
+} as const;
+
+export type WeightUnit = typeof WeightUnit[keyof typeof WeightUnit];

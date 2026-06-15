@@ -1,7 +1,7 @@
 /* eslint-disable eslint-comments/disable-enable-pair */
 /* eslint-disable eslint-comments/no-unlimited-disable */
 /* eslint-disable */
-import type * as AdminTypes from './admin.types.d.ts';
+import * as AdminTypes from './admin.types.ts';
 
 export type GetAssignedFulfillmentOrdersQueryVariables = AdminTypes.Exact<{
   locationIds?: AdminTypes.InputMaybe<Array<AdminTypes.Scalars['ID']['input']> | AdminTypes.Scalars['ID']['input']>;

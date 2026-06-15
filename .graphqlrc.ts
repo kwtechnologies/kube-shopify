@@ -8,6 +8,8 @@ export default {
       apiType: ApiType.Admin,
       apiVersion: "2025-10",
       outputDir: "./src/generated",
+      enumsAsConst: true,
+      declarations: false,
     }),
   },
 };

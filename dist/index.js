@@ -263,6 +263,100 @@ async function updateTrackingInfo({ credentials, fulfillmentId, trackingInfo, no
 	})).fulfillmentTrackingInfoUpdateV2, "fulfillmentTrackingInfoUpdateV2");
 }
 //#endregion
+//#region src/generated/admin.types.ts
+/** The assigment status to be used to filter fulfillment orders. */
+const FulfillmentOrderAssignmentStatus = {
+	CancellationRequested: "CANCELLATION_REQUESTED",
+	FulfillmentAccepted: "FULFILLMENT_ACCEPTED",
+	FulfillmentRequested: "FULFILLMENT_REQUESTED",
+	FulfillmentUnsubmitted: "FULFILLMENT_UNSUBMITTED"
+};
+/** The kinds of request merchants can make to a fulfillment service. */
+const FulfillmentOrderMerchantRequestKind = {
+	CancellationRequest: "CANCELLATION_REQUEST",
+	FulfillmentRequest: "FULFILLMENT_REQUEST"
+};
+//#endregion
+Object.defineProperty(exports, "AssignedFulfillmentOrder", {
+	enumerable: true,
+	get: function() {
+		return AssignedFulfillmentOrder;
+	}
+});
+Object.defineProperty(exports, "FulfillmentCreatePayload", {
+	enumerable: true,
+	get: function() {
+		return FulfillmentCreatePayload;
+	}
+});
+Object.defineProperty(exports, "FulfillmentOrderActionPayload", {
+	enumerable: true,
+	get: function() {
+		return FulfillmentOrderActionPayload;
+	}
+});
+exports.FulfillmentOrderAssignmentStatus = FulfillmentOrderAssignmentStatus;
+Object.defineProperty(exports, "FulfillmentOrderDestination", {
+	enumerable: true,
+	get: function() {
+		return FulfillmentOrderDestination;
+	}
+});
+Object.defineProperty(exports, "FulfillmentOrderLineItem", {
+	enumerable: true,
+	get: function() {
+		return FulfillmentOrderLineItem;
+	}
+});
+Object.defineProperty(exports, "FulfillmentOrderMerchantRequest", {
+	enumerable: true,
+	get: function() {
+		return FulfillmentOrderMerchantRequest;
+	}
+});
+exports.FulfillmentOrderMerchantRequestKind = FulfillmentOrderMerchantRequestKind;
+Object.defineProperty(exports, "FulfillmentOrderOrder", {
+	enumerable: true,
+	get: function() {
+		return FulfillmentOrderOrder;
+	}
+});
+Object.defineProperty(exports, "FulfillmentTrackingInfo", {
+	enumerable: true,
+	get: function() {
+		return FulfillmentTrackingInfo;
+	}
+});
+Object.defineProperty(exports, "FulfillmentTrackingInfoPayload", {
+	enumerable: true,
+	get: function() {
+		return FulfillmentTrackingInfoPayload;
+	}
+});
+Object.defineProperty(exports, "OrderLineItem", {
+	enumerable: true,
+	get: function() {
+		return OrderLineItem;
+	}
+});
+Object.defineProperty(exports, "OrderShippingAddress", {
+	enumerable: true,
+	get: function() {
+		return OrderShippingAddress;
+	}
+});
+Object.defineProperty(exports, "ShopifyCredentials", {
+	enumerable: true,
+	get: function() {
+		return ShopifyCredentials;
+	}
+});
+Object.defineProperty(exports, "ShopifyUserError", {
+	enumerable: true,
+	get: function() {
+		return ShopifyUserError;
+	}
+});
 exports.acceptCancellationRequest = acceptCancellationRequest;
 exports.acceptFulfillmentRequest = acceptFulfillmentRequest;
 exports.createFulfillment = createFulfillment;

@@ -94,24 +94,17 @@ type AccessScope = {
   handle: Scalars['String']['output'];
 };
 /** Possible account types that a staff member can have. */
-declare enum AccountType {
-  /** The account of a partner who collaborates with the merchant. */
-  Collaborator = 'COLLABORATOR',
-  /** The account of a partner collaborator team member. */
-  CollaboratorTeamMember = 'COLLABORATOR_TEAM_MEMBER',
-  /** The user has not yet accepted the invitation to create an account. */
-  Invited = 'INVITED',
-  /** The user has not yet accepted the invitation to become the store owner. */
-  InvitedStoreOwner = 'INVITED_STORE_OWNER',
-  /** The account can access the Shopify admin. */
-  Regular = 'REGULAR',
-  /** The admin has not yet accepted the request to create a collaborator account. */
-  Requested = 'REQUESTED',
-  /** The account cannot access the Shopify admin. */
-  Restricted = 'RESTRICTED',
-  /** The account can be signed into via a SAML provider. */
-  Saml = 'SAML'
-}
+declare const AccountType: {
+  /** The account of a partner who collaborates with the merchant. */readonly Collaborator: "COLLABORATOR"; /** The account of a partner collaborator team member. */
+  readonly CollaboratorTeamMember: "COLLABORATOR_TEAM_MEMBER"; /** The user has not yet accepted the invitation to create an account. */
+  readonly Invited: "INVITED"; /** The user has not yet accepted the invitation to become the store owner. */
+  readonly InvitedStoreOwner: "INVITED_STORE_OWNER"; /** The account can access the Shopify admin. */
+  readonly Regular: "REGULAR"; /** The admin has not yet accepted the request to create a collaborator account. */
+  readonly Requested: "REQUESTED"; /** The account cannot access the Shopify admin. */
+  readonly Restricted: "RESTRICTED"; /** The account can be signed into via a SAML provider. */
+  readonly Saml: "SAML";
+};
+type AccountType = typeof AccountType[keyof typeof AccountType];
 /** Represents an operation publishing all products to a publication. */
 type AddAllProductsOperation = Node & ResourceOperation & {
   __typename?: 'AddAllProductsOperation'; /** A globally-unique ID. */
@@ -253,16 +246,13 @@ type AppCreditEdge = {
   node: AppCredit;
 };
 /** Possible types of app developer. */
-declare enum AppDeveloperType {
-  /** Indicates the app developer works directly for a Merchant. */
-  Merchant = 'MERCHANT',
-  /** Indicates the app developer is a Partner. */
-  Partner = 'PARTNER',
-  /** Indicates the app developer is Shopify. */
-  Shopify = 'SHOPIFY',
-  /** Indicates the app developer is unknown. It is not categorized as any of the other developer types. */
-  Unknown = 'UNKNOWN'
-}
+declare const AppDeveloperType: {
+  /** Indicates the app developer works directly for a Merchant. */readonly Merchant: "MERCHANT"; /** Indicates the app developer is a Partner. */
+  readonly Partner: "PARTNER"; /** Indicates the app developer is Shopify. */
+  readonly Shopify: "SHOPIFY"; /** Indicates the app developer is unknown. It is not categorized as any of the other developer types. */
+  readonly Unknown: "UNKNOWN";
+};
+type AppDeveloperType = typeof AppDeveloperType[keyof typeof AppDeveloperType];
 /**
  * The details about the app extension that's providing the
  * [discount type](https://help.shopify.com/manual/discounts/discount-types).
@@ -407,23 +397,19 @@ type AppPlanV2 = {
  */
 type AppPricingDetails = AppRecurringPricing | AppUsagePricing;
 /** The frequency at which the shop is billed for an app subscription. */
-declare enum AppPricingInterval {
-  /** The app subscription bills the shop annually. */
-  Annual = 'ANNUAL',
-  /** The app subscription bills the shop every 30 days. */
-  Every_30Days = 'EVERY_30_DAYS'
-}
+declare const AppPricingInterval: {
+  /** The app subscription bills the shop annually. */readonly Annual: "ANNUAL"; /** The app subscription bills the shop every 30 days. */
+  readonly Every_30Days: "EVERY_30_DAYS";
+};
+type AppPricingInterval = typeof AppPricingInterval[keyof typeof AppPricingInterval];
 /** The public-facing category for an app. */
-declare enum AppPublicCategory {
-  /** The app's public category is [custom](https://shopify.dev/apps/distribution#capabilities-and-requirements). */
-  Custom = 'CUSTOM',
-  /** The app's public category is other. An app is in this category if it's not classified under any of the other app types (private, public, or custom). */
-  Other = 'OTHER',
-  /** The app's public category is [private](https://shopify.dev/apps/distribution#deprecated-app-types). */
-  Private = 'PRIVATE',
-  /** The app's public category is [public](https://shopify.dev/apps/distribution#capabilities-and-requirements). */
-  Public = 'PUBLIC'
-}
+declare const AppPublicCategory: {
+  /** The app's public category is [custom](https://shopify.dev/apps/distribution#capabilities-and-requirements). */readonly Custom: "CUSTOM"; /** The app's public category is other. An app is in this category if it's not classified under any of the other app types (private, public, or custom). */
+  readonly Other: "OTHER"; /** The app's public category is [private](https://shopify.dev/apps/distribution#deprecated-app-types). */
+  readonly Private: "PRIVATE"; /** The app's public category is [public](https://shopify.dev/apps/distribution#capabilities-and-requirements). */
+  readonly Public: "PUBLIC";
+};
+type AppPublicCategory = typeof AppPublicCategory[keyof typeof AppPublicCategory];
 /** Services and features purchased once by the store. */
 type AppPurchase = {
   /** The date and time when the app purchase occurred. */createdAt: Scalars['DateTime']['output']; /** The name of the app purchase. */
@@ -479,21 +465,14 @@ type AppPurchaseOneTimeEdge = {
  * Purchases start as `pending` and can change to: `active`, `declined`, `expired`. After a purchase changes, it
  * remains in that final state.
  */
-declare enum AppPurchaseStatus {
-  /**
-   * The app purchase has been approved by the merchant and is ready to be activated by the app. App purchases created through the GraphQL Admin API are activated upon approval.
-   * @deprecated When a merchant accepts an app purchase, the status immediately changes from `pending` to `active`.
-   */
-  Accepted = 'ACCEPTED',
-  /** The app purchase was approved by the merchant and has been activated by the app. Active app purchases are charged to the merchant and are paid out to the partner. */
-  Active = 'ACTIVE',
-  /** The app purchase was declined by the merchant. */
-  Declined = 'DECLINED',
-  /** The app purchase was not accepted within two days of being created. */
-  Expired = 'EXPIRED',
-  /** The app purchase is pending approval by the merchant. */
-  Pending = 'PENDING'
-}
+declare const AppPurchaseStatus: {
+  /** The app purchase has been approved by the merchant and is ready to be activated by the app. App purchases created through the GraphQL Admin API are activated upon approval. */readonly Accepted: "ACCEPTED"; /** The app purchase was approved by the merchant and has been activated by the app. Active app purchases are charged to the merchant and are paid out to the partner. */
+  readonly Active: "ACTIVE"; /** The app purchase was declined by the merchant. */
+  readonly Declined: "DECLINED"; /** The app purchase was not accepted within two days of being created. */
+  readonly Expired: "EXPIRED"; /** The app purchase is pending approval by the merchant. */
+  readonly Pending: "PENDING";
+};
+type AppPurchaseStatus = typeof AppPurchaseStatus[keyof typeof AppPurchaseStatus];
 /**
  * The pricing information about a subscription app.
  * The object contains an interval (the frequency at which the shop is billed for an app subscription) and
@@ -554,16 +533,13 @@ type AppRevenueAttributionRecordEdge = {
   node: AppRevenueAttributionRecord;
 };
 /** Represents the billing types of revenue attribution. */
-declare enum AppRevenueAttributionType {
-  /** App purchase related revenue collection. */
-  ApplicationPurchase = 'APPLICATION_PURCHASE',
-  /** App subscription revenue collection. */
-  ApplicationSubscription = 'APPLICATION_SUBSCRIPTION',
-  /** App usage-based revenue collection. */
-  ApplicationUsage = 'APPLICATION_USAGE',
-  /** Other app revenue collection type. */
-  Other = 'OTHER'
-}
+declare const AppRevenueAttributionType: {
+  /** App purchase related revenue collection. */readonly ApplicationPurchase: "APPLICATION_PURCHASE"; /** App subscription revenue collection. */
+  readonly ApplicationSubscription: "APPLICATION_SUBSCRIPTION"; /** App usage-based revenue collection. */
+  readonly ApplicationUsage: "APPLICATION_USAGE"; /** Other app revenue collection type. */
+  readonly Other: "OTHER";
+};
+type AppRevenueAttributionType = typeof AppRevenueAttributionType[keyof typeof AppRevenueAttributionType];
 /**
  * A recurring billing agreement that associates an [`App`](https://shopify.dev/docs/api/admin-graphql/latest/objects/App) with a merchant's shop. Each subscription contains one or more [`AppSubscriptionLineItem`](https://shopify.dev/docs/api/admin-graphql/latest/objects/AppSubscriptionLineItem) objects that define the pricing structure. The pricing structure can include recurring charges, usage-based pricing, or both.
  *
@@ -643,25 +619,16 @@ type AppSubscriptionLineItem = {
   usageRecords: AppUsageRecordConnection;
 };
 /** The status of the app subscription. */
-declare enum AppSubscriptionStatus {
-  /**
-   * The app subscription has been approved by the merchant and is ready to be activated by the app.
-   * @deprecated When a merchant approves an app subscription, the status immediately transitions from `pending` to `active`.
-   */
-  Accepted = 'ACCEPTED',
-  /** The app subscription has been approved by the merchant. Active app subscriptions are billed to the shop. After payment, partners receive payouts. */
-  Active = 'ACTIVE',
-  /** The app subscription was cancelled by the app. This could be caused by the app being uninstalled, a new app subscription being activated, or a direct cancellation by the app. This is a terminal state. */
-  Cancelled = 'CANCELLED',
-  /** The app subscription was declined by the merchant. This is a terminal state. */
-  Declined = 'DECLINED',
-  /** The app subscription wasn't approved by the merchant within two days of being created. This is a terminal state. */
-  Expired = 'EXPIRED',
-  /** The app subscription is on hold due to non-payment. The subscription re-activates after payments resume. */
-  Frozen = 'FROZEN',
-  /** The app subscription is pending approval by the merchant. */
-  Pending = 'PENDING'
-}
+declare const AppSubscriptionStatus: {
+  /** The app subscription has been approved by the merchant and is ready to be activated by the app. */readonly Accepted: "ACCEPTED"; /** The app subscription has been approved by the merchant. Active app subscriptions are billed to the shop. After payment, partners receive payouts. */
+  readonly Active: "ACTIVE"; /** The app subscription was cancelled by the app. This could be caused by the app being uninstalled, a new app subscription being activated, or a direct cancellation by the app. This is a terminal state. */
+  readonly Cancelled: "CANCELLED"; /** The app subscription was declined by the merchant. This is a terminal state. */
+  readonly Declined: "DECLINED"; /** The app subscription wasn't approved by the merchant within two days of being created. This is a terminal state. */
+  readonly Expired: "EXPIRED"; /** The app subscription is on hold due to non-payment. The subscription re-activates after payments resume. */
+  readonly Frozen: "FROZEN"; /** The app subscription is pending approval by the merchant. */
+  readonly Pending: "PENDING";
+};
+type AppSubscriptionStatus = typeof AppSubscriptionStatus[keyof typeof AppSubscriptionStatus];
 /**
  * Defines usage-based pricing terms for app subscriptions where merchants pay based on their actual consumption of app features or services. This pricing model provides flexibility for merchants who want to pay only for what they use rather than fixed monthly fees.
  *
@@ -1100,14 +1067,12 @@ type CatalogEdge = {
   node: Catalog;
 };
 /** The state of a catalog. */
-declare enum CatalogStatus {
-  /** The catalog is active. */
-  Active = 'ACTIVE',
-  /** The catalog is archived. */
-  Archived = 'ARCHIVED',
-  /** The catalog is in draft. */
-  Draft = 'DRAFT'
-}
+declare const CatalogStatus: {
+  /** The catalog is active. */readonly Active: "ACTIVE"; /** The catalog is archived. */
+  readonly Archived: "ARCHIVED"; /** The catalog is in draft. */
+  readonly Draft: "DRAFT";
+};
+type CatalogStatus = typeof CatalogStatus[keyof typeof CatalogStatus];
 /**
  * A connection between a Shopify shop and an external selling platform that supports product syndication and optionally order ingestion. Each channel binds a merchant's account on a specific platform — such as Amazon, eBay, Google, or a point-of-sale system — to the shop, establishing the publishing destination for product feeds.
  *
@@ -1416,49 +1381,38 @@ type CollectionRuleCategoryCondition = {
   value: TaxonomyCategory;
 };
 /** Specifies the attribute of a product being used to populate the smart collection. */
-declare enum CollectionRuleColumn {
+declare const CollectionRuleColumn: {
   /**
    * An attribute evaluated based on the `compare_at_price` attribute of the product's variants.
    * With `is_set` relation, the rule matches products with at least one variant with `compare_at_price` set.
    * With `is_not_set` relation, the rule matches matches products with at least one variant with `compare_at_price` not set.
    */
-  IsPriceReduced = 'IS_PRICE_REDUCED',
+  readonly IsPriceReduced: "IS_PRICE_REDUCED";
   /**
    * This rule type is designed to dynamically include products in a smart collection based on their category id.
    * When a specific product category is set as a condition, this rule will match products that are directly assigned to the specified category.
    */
-  ProductCategoryId = 'PRODUCT_CATEGORY_ID',
+  readonly ProductCategoryId: "PRODUCT_CATEGORY_ID";
   /**
    * This rule type is designed to dynamically include products in a smart collection based on their category id.
    * When a specific product category is set as a condition, this rule will not only match products that are
    * directly assigned to the specified category but also include any products categorized under any descendant of that category.
    */
-  ProductCategoryIdWithDescendants = 'PRODUCT_CATEGORY_ID_WITH_DESCENDANTS',
-  /** This category includes metafield definitions that have the `useAsCollectionCondition` flag set to true. */
-  ProductMetafieldDefinition = 'PRODUCT_METAFIELD_DEFINITION',
-  /** The [`product_taxonomy_node_id`](https://shopify.dev/api/admin-graphql/latest/objects/Product#field-Product.fields.productCategory) attribute. */
-  ProductTaxonomyNodeId = 'PRODUCT_TAXONOMY_NODE_ID',
-  /** The [`tag`](https://shopify.dev/api/admin-graphql/latest/objects/Product#field-Product.fields.tags) attribute. */
-  Tag = 'TAG',
-  /** The [`title`](https://shopify.dev/api/admin-graphql/latest/objects/Product#field-Product.fields.title) attribute. */
-  Title = 'TITLE',
-  /** The [`type`](https://shopify.dev/api/admin-graphql/latest/objects/Product#field-Product.fields.productType) attribute. */
-  Type = 'TYPE',
-  /** The [`variant_compare_at_price`](https://shopify.dev/api/admin-graphql/latest/objects/ProductVariant#field-ProductVariant.fields.compareAtPrice) attribute. */
-  VariantCompareAtPrice = 'VARIANT_COMPARE_AT_PRICE',
-  /** The [`variant_inventory`](https://shopify.dev/api/admin-graphql/latest/objects/ProductVariant#field-ProductVariant.fields.inventoryQuantity) attribute. */
-  VariantInventory = 'VARIANT_INVENTORY',
-  /** This category includes metafield definitions that have the `useAsCollectionCondition` flag set to true. */
-  VariantMetafieldDefinition = 'VARIANT_METAFIELD_DEFINITION',
-  /** The [`variant_price`](https://shopify.dev/api/admin-graphql/latest/objects/ProductVariant#field-ProductVariant.fields.price) attribute. */
-  VariantPrice = 'VARIANT_PRICE',
-  /** The [`variant_title`](https://shopify.dev/api/admin-graphql/latest/objects/ProductVariant#field-ProductVariant.fields.title) attribute. */
-  VariantTitle = 'VARIANT_TITLE',
-  /** The [`variant_weight`](https://shopify.dev/api/admin-graphql/latest/objects/ProductVariant#field-ProductVariant.fields.inventoryItem.measurement.weight) attribute. */
-  VariantWeight = 'VARIANT_WEIGHT',
-  /** The [`vendor`](https://shopify.dev/api/admin-graphql/latest/objects/Product#field-Product.fields.vendor) attribute. */
-  Vendor = 'VENDOR'
-}
+  readonly ProductCategoryIdWithDescendants: "PRODUCT_CATEGORY_ID_WITH_DESCENDANTS"; /** This category includes metafield definitions that have the `useAsCollectionCondition` flag set to true. */
+  readonly ProductMetafieldDefinition: "PRODUCT_METAFIELD_DEFINITION"; /** The [`product_taxonomy_node_id`](https://shopify.dev/api/admin-graphql/latest/objects/Product#field-Product.fields.productCategory) attribute. */
+  readonly ProductTaxonomyNodeId: "PRODUCT_TAXONOMY_NODE_ID"; /** The [`tag`](https://shopify.dev/api/admin-graphql/latest/objects/Product#field-Product.fields.tags) attribute. */
+  readonly Tag: "TAG"; /** The [`title`](https://shopify.dev/api/admin-graphql/latest/objects/Product#field-Product.fields.title) attribute. */
+  readonly Title: "TITLE"; /** The [`type`](https://shopify.dev/api/admin-graphql/latest/objects/Product#field-Product.fields.productType) attribute. */
+  readonly Type: "TYPE"; /** The [`variant_compare_at_price`](https://shopify.dev/api/admin-graphql/latest/objects/ProductVariant#field-ProductVariant.fields.compareAtPrice) attribute. */
+  readonly VariantCompareAtPrice: "VARIANT_COMPARE_AT_PRICE"; /** The [`variant_inventory`](https://shopify.dev/api/admin-graphql/latest/objects/ProductVariant#field-ProductVariant.fields.inventoryQuantity) attribute. */
+  readonly VariantInventory: "VARIANT_INVENTORY"; /** This category includes metafield definitions that have the `useAsCollectionCondition` flag set to true. */
+  readonly VariantMetafieldDefinition: "VARIANT_METAFIELD_DEFINITION"; /** The [`variant_price`](https://shopify.dev/api/admin-graphql/latest/objects/ProductVariant#field-ProductVariant.fields.price) attribute. */
+  readonly VariantPrice: "VARIANT_PRICE"; /** The [`variant_title`](https://shopify.dev/api/admin-graphql/latest/objects/ProductVariant#field-ProductVariant.fields.title) attribute. */
+  readonly VariantTitle: "VARIANT_TITLE"; /** The [`variant_weight`](https://shopify.dev/api/admin-graphql/latest/objects/ProductVariant#field-ProductVariant.fields.inventoryItem.measurement.weight) attribute. */
+  readonly VariantWeight: "VARIANT_WEIGHT"; /** The [`vendor`](https://shopify.dev/api/admin-graphql/latest/objects/Product#field-Product.fields.vendor) attribute. */
+  readonly Vendor: "VENDOR";
+};
+type CollectionRuleColumn = typeof CollectionRuleColumn[keyof typeof CollectionRuleColumn];
 /** Specifies object for the condition of the rule. */
 type CollectionRuleConditionObject = CollectionRuleCategoryCondition | CollectionRuleMetafieldCondition | CollectionRuleProductCategoryCondition | CollectionRuleTextCondition;
 /** Identifies a metafield definition used as a rule for the smart collection. */
@@ -1472,28 +1426,19 @@ type CollectionRuleProductCategoryCondition = {
   value: ProductTaxonomyNode;
 };
 /** Specifies the relationship between the `column` and the `condition`. */
-declare enum CollectionRuleRelation {
-  /** The attribute contains the condition. */
-  Contains = 'CONTAINS',
-  /** The attribute ends with the condition. */
-  EndsWith = 'ENDS_WITH',
-  /** The attribute is equal to the condition. */
-  Equals = 'EQUALS',
-  /** The attribute is greater than the condition. */
-  GreaterThan = 'GREATER_THAN',
-  /** The attribute is not set (equal to `null`). */
-  IsNotSet = 'IS_NOT_SET',
-  /** The attribute is set (not equal to `null`). */
-  IsSet = 'IS_SET',
-  /** The attribute is less than the condition. */
-  LessThan = 'LESS_THAN',
-  /** The attribute does not contain the condition. */
-  NotContains = 'NOT_CONTAINS',
-  /** The attribute does not equal the condition. */
-  NotEquals = 'NOT_EQUALS',
-  /** The attribute starts with the condition. */
-  StartsWith = 'STARTS_WITH'
-}
+declare const CollectionRuleRelation: {
+  /** The attribute contains the condition. */readonly Contains: "CONTAINS"; /** The attribute ends with the condition. */
+  readonly EndsWith: "ENDS_WITH"; /** The attribute is equal to the condition. */
+  readonly Equals: "EQUALS"; /** The attribute is greater than the condition. */
+  readonly GreaterThan: "GREATER_THAN"; /** The attribute is not set (equal to `null`). */
+  readonly IsNotSet: "IS_NOT_SET"; /** The attribute is set (not equal to `null`). */
+  readonly IsSet: "IS_SET"; /** The attribute is less than the condition. */
+  readonly LessThan: "LESS_THAN"; /** The attribute does not contain the condition. */
+  readonly NotContains: "NOT_CONTAINS"; /** The attribute does not equal the condition. */
+  readonly NotEquals: "NOT_EQUALS"; /** The attribute starts with the condition. */
+  readonly StartsWith: "STARTS_WITH";
+};
+type CollectionRuleRelation = typeof CollectionRuleRelation[keyof typeof CollectionRuleRelation];
 /** The set of rules that are used to determine which products are included in the collection. */
 type CollectionRuleSet = {
   __typename?: 'CollectionRuleSet';
@@ -1511,24 +1456,17 @@ type CollectionRuleTextCondition = {
   value: Scalars['String']['output'];
 };
 /** Specifies the sort order for the products in the collection. */
-declare enum CollectionSortOrder {
-  /** Alphabetically, in ascending order (A - Z). */
-  AlphaAsc = 'ALPHA_ASC',
-  /** Alphabetically, in descending order (Z - A). */
-  AlphaDesc = 'ALPHA_DESC',
-  /** By best-selling products. */
-  BestSelling = 'BEST_SELLING',
-  /** By date created, in ascending order (oldest - newest). */
-  Created = 'CREATED',
-  /** By date created, in descending order (newest - oldest). */
-  CreatedDesc = 'CREATED_DESC',
-  /** In the order set manually by the merchant. */
-  Manual = 'MANUAL',
-  /** By price, in ascending order (lowest - highest). */
-  PriceAsc = 'PRICE_ASC',
-  /** By price, in descending order (highest - lowest). */
-  PriceDesc = 'PRICE_DESC'
-}
+declare const CollectionSortOrder: {
+  /** Alphabetically, in ascending order (A - Z). */readonly AlphaAsc: "ALPHA_ASC"; /** Alphabetically, in descending order (Z - A). */
+  readonly AlphaDesc: "ALPHA_DESC"; /** By best-selling products. */
+  readonly BestSelling: "BEST_SELLING"; /** By date created, in ascending order (oldest - newest). */
+  readonly Created: "CREATED"; /** By date created, in descending order (newest - oldest). */
+  readonly CreatedDesc: "CREATED_DESC"; /** In the order set manually by the merchant. */
+  readonly Manual: "MANUAL"; /** By price, in ascending order (lowest - highest). */
+  readonly PriceAsc: "PRICE_ASC"; /** By price, in descending order (highest - lowest). */
+  readonly PriceDesc: "PRICE_DESC";
+};
+type CollectionSortOrder = typeof CollectionSortOrder[keyof typeof CollectionSortOrder];
 /** A combined listing of products. */
 type CombinedListing = {
   __typename?: 'CombinedListing'; /** A list of child products in the combined listing. */
@@ -1555,12 +1493,11 @@ type CombinedListingChildEdge = {
   node: CombinedListingChild;
 };
 /** The role of the combined listing. */
-declare enum CombinedListingsRole {
-  /** The product is the child of a combined listing. */
-  Child = 'CHILD',
-  /** The product is the parent of a combined listing. */
-  Parent = 'PARENT'
-}
+declare const CombinedListingsRole: {
+  /** The product is the child of a combined listing. */readonly Child: "CHILD"; /** The product is the parent of a combined listing. */
+  readonly Parent: "PARENT";
+};
+type CombinedListingsRole = typeof CombinedListingsRole[keyof typeof CombinedListingsRole];
 /** A comment on an article. */
 type Comment = HasEvents & Node & {
   __typename?: 'Comment'; /** The article associated with the comment. */
@@ -1612,27 +1549,21 @@ type CommentEventSubject = {
   id: Scalars['ID']['output'];
 };
 /** Possible comment policies for a blog. */
-declare enum CommentPolicy {
-  /** Readers can post comments to blog articles without moderation. */
-  AutoPublished = 'AUTO_PUBLISHED',
-  /** Readers cannot post comments to blog articles. */
-  Closed = 'CLOSED',
-  /** Readers can post comments to blog articles, but comments must be moderated before they appear. */
-  Moderated = 'MODERATED'
-}
+declare const CommentPolicy: {
+  /** Readers can post comments to blog articles without moderation. */readonly AutoPublished: "AUTO_PUBLISHED"; /** Readers cannot post comments to blog articles. */
+  readonly Closed: "CLOSED"; /** Readers can post comments to blog articles, but comments must be moderated before they appear. */
+  readonly Moderated: "MODERATED";
+};
+type CommentPolicy = typeof CommentPolicy[keyof typeof CommentPolicy];
 /** The status of a comment. */
-declare enum CommentStatus {
-  /** The comment is pending approval. */
-  Pending = 'PENDING',
-  /** The comment is published. */
-  Published = 'PUBLISHED',
-  /** The comment has been removed. */
-  Removed = 'REMOVED',
-  /** The comment is marked as spam. */
-  Spam = 'SPAM',
-  /** The comment is unapproved. */
-  Unapproved = 'UNAPPROVED'
-}
+declare const CommentStatus: {
+  /** The comment is pending approval. */readonly Pending: "PENDING"; /** The comment is published. */
+  readonly Published: "PUBLISHED"; /** The comment has been removed. */
+  readonly Removed: "REMOVED"; /** The comment is marked as spam. */
+  readonly Spam: "SPAM"; /** The comment is unapproved. */
+  readonly Unapproved: "UNAPPROVED";
+};
+type CommentStatus = typeof CommentStatus[keyof typeof CommentStatus];
 /** A business entity that purchases from the shop as part of B2B commerce. Companies organize multiple locations and contacts who can place orders on behalf of the organization. [`CompanyLocation`](https://shopify.dev/docs/api/admin-graphql/latest/objects/CompanyLocation) objects can have custom pricing through [`Catalog`](https://shopify.dev/docs/api/admin-graphql/latest/interfaces/Catalog) and [`PriceList`](https://shopify.dev/docs/api/admin-graphql/latest/objects/PriceList) configurations. */
 type Company = CommentEventSubject & HasEvents & HasMetafieldDefinitions & HasMetafields & Navigable & Node & {
   __typename?: 'Company';
@@ -1923,12 +1854,11 @@ type Count = {
   precision: CountPrecision;
 };
 /** The precision of the value returned by a count field. */
-declare enum CountPrecision {
-  /** The count is at least the value. A limit was imposed and reached. */
-  AtLeast = 'AT_LEAST',
-  /** The count is exactly the value. A write may not be reflected instantaneously. */
-  Exact = 'EXACT'
-}
+declare const CountPrecision: {
+  /** The count is at least the value. A limit was imposed and reached. */readonly AtLeast: "AT_LEAST"; /** The count is exactly the value. A write may not be reflected instantaneously. */
+  readonly Exact: "EXACT";
+};
+type CountPrecision = typeof CountPrecision[keyof typeof CountPrecision];
 /** The list of all the countries from the combined shipping zones for the shop. */
 type CountriesInShippingZones = {
   __typename?: 'CountriesInShippingZones'; /** The list of all the countries from all the combined shipping zones. */
@@ -1941,498 +1871,254 @@ type CountriesInShippingZones = {
  * of another country. For example, the territories associated with Spain are represented by the country code `ES`,
  * and the territories associated with the United States of America are represented by the country code `US`.
  */
-declare enum CountryCode {
-  /** Ascension Island. */
-  Ac = 'AC',
-  /** Andorra. */
-  Ad = 'AD',
-  /** United Arab Emirates. */
-  Ae = 'AE',
-  /** Afghanistan. */
-  Af = 'AF',
-  /** Antigua & Barbuda. */
-  Ag = 'AG',
-  /** Anguilla. */
-  Ai = 'AI',
-  /** Albania. */
-  Al = 'AL',
-  /** Armenia. */
-  Am = 'AM',
-  /** Netherlands Antilles. */
-  An = 'AN',
-  /** Angola. */
-  Ao = 'AO',
-  /** Argentina. */
-  Ar = 'AR',
-  /** Austria. */
-  At = 'AT',
-  /** Australia. */
-  Au = 'AU',
-  /** Aruba. */
-  Aw = 'AW',
-  /** Åland Islands. */
-  Ax = 'AX',
-  /** Azerbaijan. */
-  Az = 'AZ',
-  /** Bosnia & Herzegovina. */
-  Ba = 'BA',
-  /** Barbados. */
-  Bb = 'BB',
-  /** Bangladesh. */
-  Bd = 'BD',
-  /** Belgium. */
-  Be = 'BE',
-  /** Burkina Faso. */
-  Bf = 'BF',
-  /** Bulgaria. */
-  Bg = 'BG',
-  /** Bahrain. */
-  Bh = 'BH',
-  /** Burundi. */
-  Bi = 'BI',
-  /** Benin. */
-  Bj = 'BJ',
-  /** St. Barthélemy. */
-  Bl = 'BL',
-  /** Bermuda. */
-  Bm = 'BM',
-  /** Brunei. */
-  Bn = 'BN',
-  /** Bolivia. */
-  Bo = 'BO',
-  /** Caribbean Netherlands. */
-  Bq = 'BQ',
-  /** Brazil. */
-  Br = 'BR',
-  /** Bahamas. */
-  Bs = 'BS',
-  /** Bhutan. */
-  Bt = 'BT',
-  /** Bouvet Island. */
-  Bv = 'BV',
-  /** Botswana. */
-  Bw = 'BW',
-  /** Belarus. */
-  By = 'BY',
-  /** Belize. */
-  Bz = 'BZ',
-  /** Canada. */
-  Ca = 'CA',
-  /** Cocos (Keeling) Islands. */
-  Cc = 'CC',
-  /** Congo - Kinshasa. */
-  Cd = 'CD',
-  /** Central African Republic. */
-  Cf = 'CF',
-  /** Congo - Brazzaville. */
-  Cg = 'CG',
-  /** Switzerland. */
-  Ch = 'CH',
-  /** Côte d’Ivoire. */
-  Ci = 'CI',
-  /** Cook Islands. */
-  Ck = 'CK',
-  /** Chile. */
-  Cl = 'CL',
-  /** Cameroon. */
-  Cm = 'CM',
-  /** China. */
-  Cn = 'CN',
-  /** Colombia. */
-  Co = 'CO',
-  /** Costa Rica. */
-  Cr = 'CR',
-  /** Cuba. */
-  Cu = 'CU',
-  /** Cape Verde. */
-  Cv = 'CV',
-  /** Curaçao. */
-  Cw = 'CW',
-  /** Christmas Island. */
-  Cx = 'CX',
-  /** Cyprus. */
-  Cy = 'CY',
-  /** Czechia. */
-  Cz = 'CZ',
-  /** Germany. */
-  De = 'DE',
-  /** Djibouti. */
-  Dj = 'DJ',
-  /** Denmark. */
-  Dk = 'DK',
-  /** Dominica. */
-  Dm = 'DM',
-  /** Dominican Republic. */
-  Do = 'DO',
-  /** Algeria. */
-  Dz = 'DZ',
-  /** Ecuador. */
-  Ec = 'EC',
-  /** Estonia. */
-  Ee = 'EE',
-  /** Egypt. */
-  Eg = 'EG',
-  /** Western Sahara. */
-  Eh = 'EH',
-  /** Eritrea. */
-  Er = 'ER',
-  /** Spain. */
-  Es = 'ES',
-  /** Ethiopia. */
-  Et = 'ET',
-  /** Finland. */
-  Fi = 'FI',
-  /** Fiji. */
-  Fj = 'FJ',
-  /** Falkland Islands. */
-  Fk = 'FK',
-  /** Faroe Islands. */
-  Fo = 'FO',
-  /** France. */
-  Fr = 'FR',
-  /** Gabon. */
-  Ga = 'GA',
-  /** United Kingdom. */
-  Gb = 'GB',
-  /** Grenada. */
-  Gd = 'GD',
-  /** Georgia. */
-  Ge = 'GE',
-  /** French Guiana. */
-  Gf = 'GF',
-  /** Guernsey. */
-  Gg = 'GG',
-  /** Ghana. */
-  Gh = 'GH',
-  /** Gibraltar. */
-  Gi = 'GI',
-  /** Greenland. */
-  Gl = 'GL',
-  /** Gambia. */
-  Gm = 'GM',
-  /** Guinea. */
-  Gn = 'GN',
-  /** Guadeloupe. */
-  Gp = 'GP',
-  /** Equatorial Guinea. */
-  Gq = 'GQ',
-  /** Greece. */
-  Gr = 'GR',
-  /** South Georgia & South Sandwich Islands. */
-  Gs = 'GS',
-  /** Guatemala. */
-  Gt = 'GT',
-  /** Guinea-Bissau. */
-  Gw = 'GW',
-  /** Guyana. */
-  Gy = 'GY',
-  /** Hong Kong SAR. */
-  Hk = 'HK',
-  /** Heard & McDonald Islands. */
-  Hm = 'HM',
-  /** Honduras. */
-  Hn = 'HN',
-  /** Croatia. */
-  Hr = 'HR',
-  /** Haiti. */
-  Ht = 'HT',
-  /** Hungary. */
-  Hu = 'HU',
-  /** Indonesia. */
-  Id = 'ID',
-  /** Ireland. */
-  Ie = 'IE',
-  /** Israel. */
-  Il = 'IL',
-  /** Isle of Man. */
-  Im = 'IM',
-  /** India. */
-  In = 'IN',
-  /** British Indian Ocean Territory. */
-  Io = 'IO',
-  /** Iraq. */
-  Iq = 'IQ',
-  /** Iran. */
-  Ir = 'IR',
-  /** Iceland. */
-  Is = 'IS',
-  /** Italy. */
-  It = 'IT',
-  /** Jersey. */
-  Je = 'JE',
-  /** Jamaica. */
-  Jm = 'JM',
-  /** Jordan. */
-  Jo = 'JO',
-  /** Japan. */
-  Jp = 'JP',
-  /** Kenya. */
-  Ke = 'KE',
-  /** Kyrgyzstan. */
-  Kg = 'KG',
-  /** Cambodia. */
-  Kh = 'KH',
-  /** Kiribati. */
-  Ki = 'KI',
-  /** Comoros. */
-  Km = 'KM',
-  /** St. Kitts & Nevis. */
-  Kn = 'KN',
-  /** North Korea. */
-  Kp = 'KP',
-  /** South Korea. */
-  Kr = 'KR',
-  /** Kuwait. */
-  Kw = 'KW',
-  /** Cayman Islands. */
-  Ky = 'KY',
-  /** Kazakhstan. */
-  Kz = 'KZ',
-  /** Laos. */
-  La = 'LA',
-  /** Lebanon. */
-  Lb = 'LB',
-  /** St. Lucia. */
-  Lc = 'LC',
-  /** Liechtenstein. */
-  Li = 'LI',
-  /** Sri Lanka. */
-  Lk = 'LK',
-  /** Liberia. */
-  Lr = 'LR',
-  /** Lesotho. */
-  Ls = 'LS',
-  /** Lithuania. */
-  Lt = 'LT',
-  /** Luxembourg. */
-  Lu = 'LU',
-  /** Latvia. */
-  Lv = 'LV',
-  /** Libya. */
-  Ly = 'LY',
-  /** Morocco. */
-  Ma = 'MA',
-  /** Monaco. */
-  Mc = 'MC',
-  /** Moldova. */
-  Md = 'MD',
-  /** Montenegro. */
-  Me = 'ME',
-  /** St. Martin. */
-  Mf = 'MF',
-  /** Madagascar. */
-  Mg = 'MG',
-  /** North Macedonia. */
-  Mk = 'MK',
-  /** Mali. */
-  Ml = 'ML',
-  /** Myanmar (Burma). */
-  Mm = 'MM',
-  /** Mongolia. */
-  Mn = 'MN',
-  /** Macao SAR. */
-  Mo = 'MO',
-  /** Martinique. */
-  Mq = 'MQ',
-  /** Mauritania. */
-  Mr = 'MR',
-  /** Montserrat. */
-  Ms = 'MS',
-  /** Malta. */
-  Mt = 'MT',
-  /** Mauritius. */
-  Mu = 'MU',
-  /** Maldives. */
-  Mv = 'MV',
-  /** Malawi. */
-  Mw = 'MW',
-  /** Mexico. */
-  Mx = 'MX',
-  /** Malaysia. */
-  My = 'MY',
-  /** Mozambique. */
-  Mz = 'MZ',
-  /** Namibia. */
-  Na = 'NA',
-  /** New Caledonia. */
-  Nc = 'NC',
-  /** Niger. */
-  Ne = 'NE',
-  /** Norfolk Island. */
-  Nf = 'NF',
-  /** Nigeria. */
-  Ng = 'NG',
-  /** Nicaragua. */
-  Ni = 'NI',
-  /** Netherlands. */
-  Nl = 'NL',
-  /** Norway. */
-  No = 'NO',
-  /** Nepal. */
-  Np = 'NP',
-  /** Nauru. */
-  Nr = 'NR',
-  /** Niue. */
-  Nu = 'NU',
-  /** New Zealand. */
-  Nz = 'NZ',
-  /** Oman. */
-  Om = 'OM',
-  /** Panama. */
-  Pa = 'PA',
-  /** Peru. */
-  Pe = 'PE',
-  /** French Polynesia. */
-  Pf = 'PF',
-  /** Papua New Guinea. */
-  Pg = 'PG',
-  /** Philippines. */
-  Ph = 'PH',
-  /** Pakistan. */
-  Pk = 'PK',
-  /** Poland. */
-  Pl = 'PL',
-  /** St. Pierre & Miquelon. */
-  Pm = 'PM',
-  /** Pitcairn Islands. */
-  Pn = 'PN',
-  /** Palestinian Territories. */
-  Ps = 'PS',
-  /** Portugal. */
-  Pt = 'PT',
-  /** Paraguay. */
-  Py = 'PY',
-  /** Qatar. */
-  Qa = 'QA',
-  /** Réunion. */
-  Re = 'RE',
-  /** Romania. */
-  Ro = 'RO',
-  /** Serbia. */
-  Rs = 'RS',
-  /** Russia. */
-  Ru = 'RU',
-  /** Rwanda. */
-  Rw = 'RW',
-  /** Saudi Arabia. */
-  Sa = 'SA',
-  /** Solomon Islands. */
-  Sb = 'SB',
-  /** Seychelles. */
-  Sc = 'SC',
-  /** Sudan. */
-  Sd = 'SD',
-  /** Sweden. */
-  Se = 'SE',
-  /** Singapore. */
-  Sg = 'SG',
-  /** St. Helena. */
-  Sh = 'SH',
-  /** Slovenia. */
-  Si = 'SI',
-  /** Svalbard & Jan Mayen. */
-  Sj = 'SJ',
-  /** Slovakia. */
-  Sk = 'SK',
-  /** Sierra Leone. */
-  Sl = 'SL',
-  /** San Marino. */
-  Sm = 'SM',
-  /** Senegal. */
-  Sn = 'SN',
-  /** Somalia. */
-  So = 'SO',
-  /** Suriname. */
-  Sr = 'SR',
-  /** South Sudan. */
-  Ss = 'SS',
-  /** São Tomé & Príncipe. */
-  St = 'ST',
-  /** El Salvador. */
-  Sv = 'SV',
-  /** Sint Maarten. */
-  Sx = 'SX',
-  /** Syria. */
-  Sy = 'SY',
-  /** Eswatini. */
-  Sz = 'SZ',
-  /** Tristan da Cunha. */
-  Ta = 'TA',
-  /** Turks & Caicos Islands. */
-  Tc = 'TC',
-  /** Chad. */
-  Td = 'TD',
-  /** French Southern Territories. */
-  Tf = 'TF',
-  /** Togo. */
-  Tg = 'TG',
-  /** Thailand. */
-  Th = 'TH',
-  /** Tajikistan. */
-  Tj = 'TJ',
-  /** Tokelau. */
-  Tk = 'TK',
-  /** Timor-Leste. */
-  Tl = 'TL',
-  /** Turkmenistan. */
-  Tm = 'TM',
-  /** Tunisia. */
-  Tn = 'TN',
-  /** Tonga. */
-  To = 'TO',
-  /** Türkiye. */
-  Tr = 'TR',
-  /** Trinidad & Tobago. */
-  Tt = 'TT',
-  /** Tuvalu. */
-  Tv = 'TV',
-  /** Taiwan. */
-  Tw = 'TW',
-  /** Tanzania. */
-  Tz = 'TZ',
-  /** Ukraine. */
-  Ua = 'UA',
-  /** Uganda. */
-  Ug = 'UG',
-  /** U.S. Outlying Islands. */
-  Um = 'UM',
-  /** United States. */
-  Us = 'US',
-  /** Uruguay. */
-  Uy = 'UY',
-  /** Uzbekistan. */
-  Uz = 'UZ',
-  /** Vatican City. */
-  Va = 'VA',
-  /** St. Vincent & Grenadines. */
-  Vc = 'VC',
-  /** Venezuela. */
-  Ve = 'VE',
-  /** British Virgin Islands. */
-  Vg = 'VG',
-  /** Vietnam. */
-  Vn = 'VN',
-  /** Vanuatu. */
-  Vu = 'VU',
-  /** Wallis & Futuna. */
-  Wf = 'WF',
-  /** Samoa. */
-  Ws = 'WS',
-  /** Kosovo. */
-  Xk = 'XK',
-  /** Yemen. */
-  Ye = 'YE',
-  /** Mayotte. */
-  Yt = 'YT',
-  /** South Africa. */
-  Za = 'ZA',
-  /** Zambia. */
-  Zm = 'ZM',
-  /** Zimbabwe. */
-  Zw = 'ZW',
-  /** Unknown Region. */
-  Zz = 'ZZ'
-}
+declare const CountryCode: {
+  /** Ascension Island. */readonly Ac: "AC"; /** Andorra. */
+  readonly Ad: "AD"; /** United Arab Emirates. */
+  readonly Ae: "AE"; /** Afghanistan. */
+  readonly Af: "AF"; /** Antigua & Barbuda. */
+  readonly Ag: "AG"; /** Anguilla. */
+  readonly Ai: "AI"; /** Albania. */
+  readonly Al: "AL"; /** Armenia. */
+  readonly Am: "AM"; /** Netherlands Antilles. */
+  readonly An: "AN"; /** Angola. */
+  readonly Ao: "AO"; /** Argentina. */
+  readonly Ar: "AR"; /** Austria. */
+  readonly At: "AT"; /** Australia. */
+  readonly Au: "AU"; /** Aruba. */
+  readonly Aw: "AW"; /** Åland Islands. */
+  readonly Ax: "AX"; /** Azerbaijan. */
+  readonly Az: "AZ"; /** Bosnia & Herzegovina. */
+  readonly Ba: "BA"; /** Barbados. */
+  readonly Bb: "BB"; /** Bangladesh. */
+  readonly Bd: "BD"; /** Belgium. */
+  readonly Be: "BE"; /** Burkina Faso. */
+  readonly Bf: "BF"; /** Bulgaria. */
+  readonly Bg: "BG"; /** Bahrain. */
+  readonly Bh: "BH"; /** Burundi. */
+  readonly Bi: "BI"; /** Benin. */
+  readonly Bj: "BJ"; /** St. Barthélemy. */
+  readonly Bl: "BL"; /** Bermuda. */
+  readonly Bm: "BM"; /** Brunei. */
+  readonly Bn: "BN"; /** Bolivia. */
+  readonly Bo: "BO"; /** Caribbean Netherlands. */
+  readonly Bq: "BQ"; /** Brazil. */
+  readonly Br: "BR"; /** Bahamas. */
+  readonly Bs: "BS"; /** Bhutan. */
+  readonly Bt: "BT"; /** Bouvet Island. */
+  readonly Bv: "BV"; /** Botswana. */
+  readonly Bw: "BW"; /** Belarus. */
+  readonly By: "BY"; /** Belize. */
+  readonly Bz: "BZ"; /** Canada. */
+  readonly Ca: "CA"; /** Cocos (Keeling) Islands. */
+  readonly Cc: "CC"; /** Congo - Kinshasa. */
+  readonly Cd: "CD"; /** Central African Republic. */
+  readonly Cf: "CF"; /** Congo - Brazzaville. */
+  readonly Cg: "CG"; /** Switzerland. */
+  readonly Ch: "CH"; /** Côte d’Ivoire. */
+  readonly Ci: "CI"; /** Cook Islands. */
+  readonly Ck: "CK"; /** Chile. */
+  readonly Cl: "CL"; /** Cameroon. */
+  readonly Cm: "CM"; /** China. */
+  readonly Cn: "CN"; /** Colombia. */
+  readonly Co: "CO"; /** Costa Rica. */
+  readonly Cr: "CR"; /** Cuba. */
+  readonly Cu: "CU"; /** Cape Verde. */
+  readonly Cv: "CV"; /** Curaçao. */
+  readonly Cw: "CW"; /** Christmas Island. */
+  readonly Cx: "CX"; /** Cyprus. */
+  readonly Cy: "CY"; /** Czechia. */
+  readonly Cz: "CZ"; /** Germany. */
+  readonly De: "DE"; /** Djibouti. */
+  readonly Dj: "DJ"; /** Denmark. */
+  readonly Dk: "DK"; /** Dominica. */
+  readonly Dm: "DM"; /** Dominican Republic. */
+  readonly Do: "DO"; /** Algeria. */
+  readonly Dz: "DZ"; /** Ecuador. */
+  readonly Ec: "EC"; /** Estonia. */
+  readonly Ee: "EE"; /** Egypt. */
+  readonly Eg: "EG"; /** Western Sahara. */
+  readonly Eh: "EH"; /** Eritrea. */
+  readonly Er: "ER"; /** Spain. */
+  readonly Es: "ES"; /** Ethiopia. */
+  readonly Et: "ET"; /** Finland. */
+  readonly Fi: "FI"; /** Fiji. */
+  readonly Fj: "FJ"; /** Falkland Islands. */
+  readonly Fk: "FK"; /** Faroe Islands. */
+  readonly Fo: "FO"; /** France. */
+  readonly Fr: "FR"; /** Gabon. */
+  readonly Ga: "GA"; /** United Kingdom. */
+  readonly Gb: "GB"; /** Grenada. */
+  readonly Gd: "GD"; /** Georgia. */
+  readonly Ge: "GE"; /** French Guiana. */
+  readonly Gf: "GF"; /** Guernsey. */
+  readonly Gg: "GG"; /** Ghana. */
+  readonly Gh: "GH"; /** Gibraltar. */
+  readonly Gi: "GI"; /** Greenland. */
+  readonly Gl: "GL"; /** Gambia. */
+  readonly Gm: "GM"; /** Guinea. */
+  readonly Gn: "GN"; /** Guadeloupe. */
+  readonly Gp: "GP"; /** Equatorial Guinea. */
+  readonly Gq: "GQ"; /** Greece. */
+  readonly Gr: "GR"; /** South Georgia & South Sandwich Islands. */
+  readonly Gs: "GS"; /** Guatemala. */
+  readonly Gt: "GT"; /** Guinea-Bissau. */
+  readonly Gw: "GW"; /** Guyana. */
+  readonly Gy: "GY"; /** Hong Kong SAR. */
+  readonly Hk: "HK"; /** Heard & McDonald Islands. */
+  readonly Hm: "HM"; /** Honduras. */
+  readonly Hn: "HN"; /** Croatia. */
+  readonly Hr: "HR"; /** Haiti. */
+  readonly Ht: "HT"; /** Hungary. */
+  readonly Hu: "HU"; /** Indonesia. */
+  readonly Id: "ID"; /** Ireland. */
+  readonly Ie: "IE"; /** Israel. */
+  readonly Il: "IL"; /** Isle of Man. */
+  readonly Im: "IM"; /** India. */
+  readonly In: "IN"; /** British Indian Ocean Territory. */
+  readonly Io: "IO"; /** Iraq. */
+  readonly Iq: "IQ"; /** Iran. */
+  readonly Ir: "IR"; /** Iceland. */
+  readonly Is: "IS"; /** Italy. */
+  readonly It: "IT"; /** Jersey. */
+  readonly Je: "JE"; /** Jamaica. */
+  readonly Jm: "JM"; /** Jordan. */
+  readonly Jo: "JO"; /** Japan. */
+  readonly Jp: "JP"; /** Kenya. */
+  readonly Ke: "KE"; /** Kyrgyzstan. */
+  readonly Kg: "KG"; /** Cambodia. */
+  readonly Kh: "KH"; /** Kiribati. */
+  readonly Ki: "KI"; /** Comoros. */
+  readonly Km: "KM"; /** St. Kitts & Nevis. */
+  readonly Kn: "KN"; /** North Korea. */
+  readonly Kp: "KP"; /** South Korea. */
+  readonly Kr: "KR"; /** Kuwait. */
+  readonly Kw: "KW"; /** Cayman Islands. */
+  readonly Ky: "KY"; /** Kazakhstan. */
+  readonly Kz: "KZ"; /** Laos. */
+  readonly La: "LA"; /** Lebanon. */
+  readonly Lb: "LB"; /** St. Lucia. */
+  readonly Lc: "LC"; /** Liechtenstein. */
+  readonly Li: "LI"; /** Sri Lanka. */
+  readonly Lk: "LK"; /** Liberia. */
+  readonly Lr: "LR"; /** Lesotho. */
+  readonly Ls: "LS"; /** Lithuania. */
+  readonly Lt: "LT"; /** Luxembourg. */
+  readonly Lu: "LU"; /** Latvia. */
+  readonly Lv: "LV"; /** Libya. */
+  readonly Ly: "LY"; /** Morocco. */
+  readonly Ma: "MA"; /** Monaco. */
+  readonly Mc: "MC"; /** Moldova. */
+  readonly Md: "MD"; /** Montenegro. */
+  readonly Me: "ME"; /** St. Martin. */
+  readonly Mf: "MF"; /** Madagascar. */
+  readonly Mg: "MG"; /** North Macedonia. */
+  readonly Mk: "MK"; /** Mali. */
+  readonly Ml: "ML"; /** Myanmar (Burma). */
+  readonly Mm: "MM"; /** Mongolia. */
+  readonly Mn: "MN"; /** Macao SAR. */
+  readonly Mo: "MO"; /** Martinique. */
+  readonly Mq: "MQ"; /** Mauritania. */
+  readonly Mr: "MR"; /** Montserrat. */
+  readonly Ms: "MS"; /** Malta. */
+  readonly Mt: "MT"; /** Mauritius. */
+  readonly Mu: "MU"; /** Maldives. */
+  readonly Mv: "MV"; /** Malawi. */
+  readonly Mw: "MW"; /** Mexico. */
+  readonly Mx: "MX"; /** Malaysia. */
+  readonly My: "MY"; /** Mozambique. */
+  readonly Mz: "MZ"; /** Namibia. */
+  readonly Na: "NA"; /** New Caledonia. */
+  readonly Nc: "NC"; /** Niger. */
+  readonly Ne: "NE"; /** Norfolk Island. */
+  readonly Nf: "NF"; /** Nigeria. */
+  readonly Ng: "NG"; /** Nicaragua. */
+  readonly Ni: "NI"; /** Netherlands. */
+  readonly Nl: "NL"; /** Norway. */
+  readonly No: "NO"; /** Nepal. */
+  readonly Np: "NP"; /** Nauru. */
+  readonly Nr: "NR"; /** Niue. */
+  readonly Nu: "NU"; /** New Zealand. */
+  readonly Nz: "NZ"; /** Oman. */
+  readonly Om: "OM"; /** Panama. */
+  readonly Pa: "PA"; /** Peru. */
+  readonly Pe: "PE"; /** French Polynesia. */
+  readonly Pf: "PF"; /** Papua New Guinea. */
+  readonly Pg: "PG"; /** Philippines. */
+  readonly Ph: "PH"; /** Pakistan. */
+  readonly Pk: "PK"; /** Poland. */
+  readonly Pl: "PL"; /** St. Pierre & Miquelon. */
+  readonly Pm: "PM"; /** Pitcairn Islands. */
+  readonly Pn: "PN"; /** Palestinian Territories. */
+  readonly Ps: "PS"; /** Portugal. */
+  readonly Pt: "PT"; /** Paraguay. */
+  readonly Py: "PY"; /** Qatar. */
+  readonly Qa: "QA"; /** Réunion. */
+  readonly Re: "RE"; /** Romania. */
+  readonly Ro: "RO"; /** Serbia. */
+  readonly Rs: "RS"; /** Russia. */
+  readonly Ru: "RU"; /** Rwanda. */
+  readonly Rw: "RW"; /** Saudi Arabia. */
+  readonly Sa: "SA"; /** Solomon Islands. */
+  readonly Sb: "SB"; /** Seychelles. */
+  readonly Sc: "SC"; /** Sudan. */
+  readonly Sd: "SD"; /** Sweden. */
+  readonly Se: "SE"; /** Singapore. */
+  readonly Sg: "SG"; /** St. Helena. */
+  readonly Sh: "SH"; /** Slovenia. */
+  readonly Si: "SI"; /** Svalbard & Jan Mayen. */
+  readonly Sj: "SJ"; /** Slovakia. */
+  readonly Sk: "SK"; /** Sierra Leone. */
+  readonly Sl: "SL"; /** San Marino. */
+  readonly Sm: "SM"; /** Senegal. */
+  readonly Sn: "SN"; /** Somalia. */
+  readonly So: "SO"; /** Suriname. */
+  readonly Sr: "SR"; /** South Sudan. */
+  readonly Ss: "SS"; /** São Tomé & Príncipe. */
+  readonly St: "ST"; /** El Salvador. */
+  readonly Sv: "SV"; /** Sint Maarten. */
+  readonly Sx: "SX"; /** Syria. */
+  readonly Sy: "SY"; /** Eswatini. */
+  readonly Sz: "SZ"; /** Tristan da Cunha. */
+  readonly Ta: "TA"; /** Turks & Caicos Islands. */
+  readonly Tc: "TC"; /** Chad. */
+  readonly Td: "TD"; /** French Southern Territories. */
+  readonly Tf: "TF"; /** Togo. */
+  readonly Tg: "TG"; /** Thailand. */
+  readonly Th: "TH"; /** Tajikistan. */
+  readonly Tj: "TJ"; /** Tokelau. */
+  readonly Tk: "TK"; /** Timor-Leste. */
+  readonly Tl: "TL"; /** Turkmenistan. */
+  readonly Tm: "TM"; /** Tunisia. */
+  readonly Tn: "TN"; /** Tonga. */
+  readonly To: "TO"; /** Türkiye. */
+  readonly Tr: "TR"; /** Trinidad & Tobago. */
+  readonly Tt: "TT"; /** Tuvalu. */
+  readonly Tv: "TV"; /** Taiwan. */
+  readonly Tw: "TW"; /** Tanzania. */
+  readonly Tz: "TZ"; /** Ukraine. */
+  readonly Ua: "UA"; /** Uganda. */
+  readonly Ug: "UG"; /** U.S. Outlying Islands. */
+  readonly Um: "UM"; /** United States. */
+  readonly Us: "US"; /** Uruguay. */
+  readonly Uy: "UY"; /** Uzbekistan. */
+  readonly Uz: "UZ"; /** Vatican City. */
+  readonly Va: "VA"; /** St. Vincent & Grenadines. */
+  readonly Vc: "VC"; /** Venezuela. */
+  readonly Ve: "VE"; /** British Virgin Islands. */
+  readonly Vg: "VG"; /** Vietnam. */
+  readonly Vn: "VN"; /** Vanuatu. */
+  readonly Vu: "VU"; /** Wallis & Futuna. */
+  readonly Wf: "WF"; /** Samoa. */
+  readonly Ws: "WS"; /** Kosovo. */
+  readonly Xk: "XK"; /** Yemen. */
+  readonly Ye: "YE"; /** Mayotte. */
+  readonly Yt: "YT"; /** South Africa. */
+  readonly Za: "ZA"; /** Zambia. */
+  readonly Zm: "ZM"; /** Zimbabwe. */
+  readonly Zw: "ZW"; /** Unknown Region. */
+  readonly Zz: "ZZ";
+};
+type CountryCode = typeof CountryCode[keyof typeof CountryCode];
 /** The country-specific harmonized system code and ISO country code for an inventory item. */
 type CountryHarmonizedSystemCode = {
   __typename?: 'CountryHarmonizedSystemCode'; /** The ISO 3166-1 alpha-2 country code for the country that issued the specified harmonized system code. */
@@ -2457,341 +2143,171 @@ type CountryHarmonizedSystemCodeEdge = {
  * [standard ISO 4217 codes](https://en.wikipedia.org/wiki/ISO_4217), legacy codes, non-standard codes,
  * digital currency codes.
  */
-declare enum CurrencyCode {
-  /** United Arab Emirates Dirham (AED). */
-  Aed = 'AED',
-  /** Afghan Afghani (AFN). */
-  Afn = 'AFN',
-  /** Albanian Lek (ALL). */
-  All = 'ALL',
-  /** Armenian Dram (AMD). */
-  Amd = 'AMD',
-  /** Netherlands Antillean Guilder. */
-  Ang = 'ANG',
-  /** Angolan Kwanza (AOA). */
-  Aoa = 'AOA',
-  /** Argentine Pesos (ARS). */
-  Ars = 'ARS',
-  /** Australian Dollars (AUD). */
-  Aud = 'AUD',
-  /** Aruban Florin (AWG). */
-  Awg = 'AWG',
-  /** Azerbaijani Manat (AZN). */
-  Azn = 'AZN',
-  /** Bosnia and Herzegovina Convertible Mark (BAM). */
-  Bam = 'BAM',
-  /** Barbadian Dollar (BBD). */
-  Bbd = 'BBD',
-  /** Bangladesh Taka (BDT). */
-  Bdt = 'BDT',
-  /** Bulgarian Lev (BGN). */
-  Bgn = 'BGN',
-  /** Bahraini Dinar (BHD). */
-  Bhd = 'BHD',
-  /** Burundian Franc (BIF). */
-  Bif = 'BIF',
-  /** Bermudian Dollar (BMD). */
-  Bmd = 'BMD',
-  /** Brunei Dollar (BND). */
-  Bnd = 'BND',
-  /** Bolivian Boliviano (BOB). */
-  Bob = 'BOB',
-  /** Brazilian Real (BRL). */
-  Brl = 'BRL',
-  /** Bahamian Dollar (BSD). */
-  Bsd = 'BSD',
-  /** Bhutanese Ngultrum (BTN). */
-  Btn = 'BTN',
-  /** Botswana Pula (BWP). */
-  Bwp = 'BWP',
-  /** Belarusian Ruble (BYN). */
-  Byn = 'BYN',
-  /**
-   * Belarusian Ruble (BYR).
-   * @deprecated Use `BYN` instead.
-   */
-  Byr = 'BYR',
-  /** Belize Dollar (BZD). */
-  Bzd = 'BZD',
-  /** Canadian Dollars (CAD). */
-  Cad = 'CAD',
-  /** Congolese franc (CDF). */
-  Cdf = 'CDF',
-  /** Swiss Francs (CHF). */
-  Chf = 'CHF',
-  /** Chilean Peso (CLP). */
-  Clp = 'CLP',
-  /** Chinese Yuan Renminbi (CNY). */
-  Cny = 'CNY',
-  /** Colombian Peso (COP). */
-  Cop = 'COP',
-  /** Costa Rican Colones (CRC). */
-  Crc = 'CRC',
-  /** Cape Verdean escudo (CVE). */
-  Cve = 'CVE',
-  /** Czech Koruny (CZK). */
-  Czk = 'CZK',
-  /** Djiboutian Franc (DJF). */
-  Djf = 'DJF',
-  /** Danish Kroner (DKK). */
-  Dkk = 'DKK',
-  /** Dominican Peso (DOP). */
-  Dop = 'DOP',
-  /** Algerian Dinar (DZD). */
-  Dzd = 'DZD',
-  /** Egyptian Pound (EGP). */
-  Egp = 'EGP',
-  /** Eritrean Nakfa (ERN). */
-  Ern = 'ERN',
-  /** Ethiopian Birr (ETB). */
-  Etb = 'ETB',
-  /** Euro (EUR). */
-  Eur = 'EUR',
-  /** Fijian Dollars (FJD). */
-  Fjd = 'FJD',
-  /** Falkland Islands Pounds (FKP). */
-  Fkp = 'FKP',
-  /** United Kingdom Pounds (GBP). */
-  Gbp = 'GBP',
-  /** Georgian Lari (GEL). */
-  Gel = 'GEL',
-  /** Ghanaian Cedi (GHS). */
-  Ghs = 'GHS',
-  /** Gibraltar Pounds (GIP). */
-  Gip = 'GIP',
-  /** Gambian Dalasi (GMD). */
-  Gmd = 'GMD',
-  /** Guinean Franc (GNF). */
-  Gnf = 'GNF',
-  /** Guatemalan Quetzal (GTQ). */
-  Gtq = 'GTQ',
-  /** Guyanese Dollar (GYD). */
-  Gyd = 'GYD',
-  /** Hong Kong Dollars (HKD). */
-  Hkd = 'HKD',
-  /** Honduran Lempira (HNL). */
-  Hnl = 'HNL',
-  /** Croatian Kuna (HRK). */
-  Hrk = 'HRK',
-  /** Haitian Gourde (HTG). */
-  Htg = 'HTG',
-  /** Hungarian Forint (HUF). */
-  Huf = 'HUF',
-  /** Indonesian Rupiah (IDR). */
-  Idr = 'IDR',
-  /** Israeli New Shekel (NIS). */
-  Ils = 'ILS',
-  /** Indian Rupees (INR). */
-  Inr = 'INR',
-  /** Iraqi Dinar (IQD). */
-  Iqd = 'IQD',
-  /** Iranian Rial (IRR). */
-  Irr = 'IRR',
-  /** Icelandic Kronur (ISK). */
-  Isk = 'ISK',
-  /** Jersey Pound. */
-  Jep = 'JEP',
-  /** Jamaican Dollars (JMD). */
-  Jmd = 'JMD',
-  /** Jordanian Dinar (JOD). */
-  Jod = 'JOD',
-  /** Japanese Yen (JPY). */
-  Jpy = 'JPY',
-  /** Kenyan Shilling (KES). */
-  Kes = 'KES',
-  /** Kyrgyzstani Som (KGS). */
-  Kgs = 'KGS',
-  /** Cambodian Riel. */
-  Khr = 'KHR',
-  /** Kiribati Dollar (KID). */
-  Kid = 'KID',
-  /** Comorian Franc (KMF). */
-  Kmf = 'KMF',
-  /** South Korean Won (KRW). */
-  Krw = 'KRW',
-  /** Kuwaiti Dinar (KWD). */
-  Kwd = 'KWD',
-  /** Cayman Dollars (KYD). */
-  Kyd = 'KYD',
-  /** Kazakhstani Tenge (KZT). */
-  Kzt = 'KZT',
-  /** Laotian Kip (LAK). */
-  Lak = 'LAK',
-  /** Lebanese Pounds (LBP). */
-  Lbp = 'LBP',
-  /** Sri Lankan Rupees (LKR). */
-  Lkr = 'LKR',
-  /** Liberian Dollar (LRD). */
-  Lrd = 'LRD',
-  /** Lesotho Loti (LSL). */
-  Lsl = 'LSL',
-  /** Lithuanian Litai (LTL). */
-  Ltl = 'LTL',
-  /** Latvian Lati (LVL). */
-  Lvl = 'LVL',
-  /** Libyan Dinar (LYD). */
-  Lyd = 'LYD',
-  /** Moroccan Dirham. */
-  Mad = 'MAD',
-  /** Moldovan Leu (MDL). */
-  Mdl = 'MDL',
-  /** Malagasy Ariary (MGA). */
-  Mga = 'MGA',
-  /** Macedonia Denar (MKD). */
-  Mkd = 'MKD',
-  /** Burmese Kyat (MMK). */
-  Mmk = 'MMK',
-  /** Mongolian Tugrik. */
-  Mnt = 'MNT',
-  /** Macanese Pataca (MOP). */
-  Mop = 'MOP',
-  /** Mauritanian Ouguiya (MRU). */
-  Mru = 'MRU',
-  /** Mauritian Rupee (MUR). */
-  Mur = 'MUR',
-  /** Maldivian Rufiyaa (MVR). */
-  Mvr = 'MVR',
-  /** Malawian Kwacha (MWK). */
-  Mwk = 'MWK',
-  /** Mexican Pesos (MXN). */
-  Mxn = 'MXN',
-  /** Malaysian Ringgits (MYR). */
-  Myr = 'MYR',
-  /** Mozambican Metical. */
-  Mzn = 'MZN',
-  /** Namibian Dollar. */
-  Nad = 'NAD',
-  /** Nigerian Naira (NGN). */
-  Ngn = 'NGN',
-  /** Nicaraguan Córdoba (NIO). */
-  Nio = 'NIO',
-  /** Norwegian Kroner (NOK). */
-  Nok = 'NOK',
-  /** Nepalese Rupee (NPR). */
-  Npr = 'NPR',
-  /** New Zealand Dollars (NZD). */
-  Nzd = 'NZD',
-  /** Omani Rial (OMR). */
-  Omr = 'OMR',
-  /** Panamian Balboa (PAB). */
-  Pab = 'PAB',
-  /** Peruvian Nuevo Sol (PEN). */
-  Pen = 'PEN',
-  /** Papua New Guinean Kina (PGK). */
-  Pgk = 'PGK',
-  /** Philippine Peso (PHP). */
-  Php = 'PHP',
-  /** Pakistani Rupee (PKR). */
-  Pkr = 'PKR',
-  /** Polish Zlotych (PLN). */
-  Pln = 'PLN',
-  /** Paraguayan Guarani (PYG). */
-  Pyg = 'PYG',
-  /** Qatari Rial (QAR). */
-  Qar = 'QAR',
-  /** Romanian Lei (RON). */
-  Ron = 'RON',
-  /** Serbian dinar (RSD). */
-  Rsd = 'RSD',
-  /** Russian Rubles (RUB). */
-  Rub = 'RUB',
-  /** Rwandan Franc (RWF). */
-  Rwf = 'RWF',
-  /** Saudi Riyal (SAR). */
-  Sar = 'SAR',
-  /** Solomon Islands Dollar (SBD). */
-  Sbd = 'SBD',
-  /** Seychellois Rupee (SCR). */
-  Scr = 'SCR',
-  /** Sudanese Pound (SDG). */
-  Sdg = 'SDG',
-  /** Swedish Kronor (SEK). */
-  Sek = 'SEK',
-  /** Singapore Dollars (SGD). */
-  Sgd = 'SGD',
-  /** Saint Helena Pounds (SHP). */
-  Shp = 'SHP',
-  /** Sierra Leonean Leone (SLL). */
-  Sll = 'SLL',
-  /** Somali Shilling (SOS). */
-  Sos = 'SOS',
-  /** Surinamese Dollar (SRD). */
-  Srd = 'SRD',
-  /** South Sudanese Pound (SSP). */
-  Ssp = 'SSP',
-  /**
-   * Sao Tome And Principe Dobra (STD).
-   * @deprecated Use `STN` instead.
-   */
-  Std = 'STD',
-  /** Sao Tome And Principe Dobra (STN). */
-  Stn = 'STN',
-  /** Syrian Pound (SYP). */
-  Syp = 'SYP',
-  /** Swazi Lilangeni (SZL). */
-  Szl = 'SZL',
-  /** Thai baht (THB). */
-  Thb = 'THB',
-  /** Tajikistani Somoni (TJS). */
-  Tjs = 'TJS',
-  /** Turkmenistani Manat (TMT). */
-  Tmt = 'TMT',
-  /** Tunisian Dinar (TND). */
-  Tnd = 'TND',
-  /** Tongan Pa'anga (TOP). */
-  Top = 'TOP',
-  /** Turkish Lira (TRY). */
-  Try = 'TRY',
-  /** Trinidad and Tobago Dollars (TTD). */
-  Ttd = 'TTD',
-  /** Taiwan Dollars (TWD). */
-  Twd = 'TWD',
-  /** Tanzanian Shilling (TZS). */
-  Tzs = 'TZS',
-  /** Ukrainian Hryvnia (UAH). */
-  Uah = 'UAH',
-  /** Ugandan Shilling (UGX). */
-  Ugx = 'UGX',
-  /** United States Dollars (USD). */
-  Usd = 'USD',
-  /** United States Dollars Coin (USDC). */
-  Usdc = 'USDC',
-  /** Uruguayan Pesos (UYU). */
-  Uyu = 'UYU',
-  /** Uzbekistan som (UZS). */
-  Uzs = 'UZS',
-  /** Venezuelan Bolivares (VED). */
-  Ved = 'VED',
-  /**
-   * Venezuelan Bolivares (VEF).
-   * @deprecated Use `VES` instead.
-   */
-  Vef = 'VEF',
-  /** Venezuelan Bolivares Soberanos (VES). */
-  Ves = 'VES',
-  /** Vietnamese đồng (VND). */
-  Vnd = 'VND',
-  /** Vanuatu Vatu (VUV). */
-  Vuv = 'VUV',
-  /** Samoan Tala (WST). */
-  Wst = 'WST',
-  /** Central African CFA Franc (XAF). */
-  Xaf = 'XAF',
-  /** East Caribbean Dollar (XCD). */
-  Xcd = 'XCD',
-  /** West African CFA franc (XOF). */
-  Xof = 'XOF',
-  /** CFP Franc (XPF). */
-  Xpf = 'XPF',
-  /** Unrecognized currency. */
-  Xxx = 'XXX',
-  /** Yemeni Rial (YER). */
-  Yer = 'YER',
-  /** South African Rand (ZAR). */
-  Zar = 'ZAR',
-  /** Zambian Kwacha (ZMW). */
-  Zmw = 'ZMW'
-}
+declare const CurrencyCode: {
+  /** United Arab Emirates Dirham (AED). */readonly Aed: "AED"; /** Afghan Afghani (AFN). */
+  readonly Afn: "AFN"; /** Albanian Lek (ALL). */
+  readonly All: "ALL"; /** Armenian Dram (AMD). */
+  readonly Amd: "AMD"; /** Netherlands Antillean Guilder. */
+  readonly Ang: "ANG"; /** Angolan Kwanza (AOA). */
+  readonly Aoa: "AOA"; /** Argentine Pesos (ARS). */
+  readonly Ars: "ARS"; /** Australian Dollars (AUD). */
+  readonly Aud: "AUD"; /** Aruban Florin (AWG). */
+  readonly Awg: "AWG"; /** Azerbaijani Manat (AZN). */
+  readonly Azn: "AZN"; /** Bosnia and Herzegovina Convertible Mark (BAM). */
+  readonly Bam: "BAM"; /** Barbadian Dollar (BBD). */
+  readonly Bbd: "BBD"; /** Bangladesh Taka (BDT). */
+  readonly Bdt: "BDT"; /** Bulgarian Lev (BGN). */
+  readonly Bgn: "BGN"; /** Bahraini Dinar (BHD). */
+  readonly Bhd: "BHD"; /** Burundian Franc (BIF). */
+  readonly Bif: "BIF"; /** Bermudian Dollar (BMD). */
+  readonly Bmd: "BMD"; /** Brunei Dollar (BND). */
+  readonly Bnd: "BND"; /** Bolivian Boliviano (BOB). */
+  readonly Bob: "BOB"; /** Brazilian Real (BRL). */
+  readonly Brl: "BRL"; /** Bahamian Dollar (BSD). */
+  readonly Bsd: "BSD"; /** Bhutanese Ngultrum (BTN). */
+  readonly Btn: "BTN"; /** Botswana Pula (BWP). */
+  readonly Bwp: "BWP"; /** Belarusian Ruble (BYN). */
+  readonly Byn: "BYN"; /** Belarusian Ruble (BYR). */
+  readonly Byr: "BYR"; /** Belize Dollar (BZD). */
+  readonly Bzd: "BZD"; /** Canadian Dollars (CAD). */
+  readonly Cad: "CAD"; /** Congolese franc (CDF). */
+  readonly Cdf: "CDF"; /** Swiss Francs (CHF). */
+  readonly Chf: "CHF"; /** Chilean Peso (CLP). */
+  readonly Clp: "CLP"; /** Chinese Yuan Renminbi (CNY). */
+  readonly Cny: "CNY"; /** Colombian Peso (COP). */
+  readonly Cop: "COP"; /** Costa Rican Colones (CRC). */
+  readonly Crc: "CRC"; /** Cape Verdean escudo (CVE). */
+  readonly Cve: "CVE"; /** Czech Koruny (CZK). */
+  readonly Czk: "CZK"; /** Djiboutian Franc (DJF). */
+  readonly Djf: "DJF"; /** Danish Kroner (DKK). */
+  readonly Dkk: "DKK"; /** Dominican Peso (DOP). */
+  readonly Dop: "DOP"; /** Algerian Dinar (DZD). */
+  readonly Dzd: "DZD"; /** Egyptian Pound (EGP). */
+  readonly Egp: "EGP"; /** Eritrean Nakfa (ERN). */
+  readonly Ern: "ERN"; /** Ethiopian Birr (ETB). */
+  readonly Etb: "ETB"; /** Euro (EUR). */
+  readonly Eur: "EUR"; /** Fijian Dollars (FJD). */
+  readonly Fjd: "FJD"; /** Falkland Islands Pounds (FKP). */
+  readonly Fkp: "FKP"; /** United Kingdom Pounds (GBP). */
+  readonly Gbp: "GBP"; /** Georgian Lari (GEL). */
+  readonly Gel: "GEL"; /** Ghanaian Cedi (GHS). */
+  readonly Ghs: "GHS"; /** Gibraltar Pounds (GIP). */
+  readonly Gip: "GIP"; /** Gambian Dalasi (GMD). */
+  readonly Gmd: "GMD"; /** Guinean Franc (GNF). */
+  readonly Gnf: "GNF"; /** Guatemalan Quetzal (GTQ). */
+  readonly Gtq: "GTQ"; /** Guyanese Dollar (GYD). */
+  readonly Gyd: "GYD"; /** Hong Kong Dollars (HKD). */
+  readonly Hkd: "HKD"; /** Honduran Lempira (HNL). */
+  readonly Hnl: "HNL"; /** Croatian Kuna (HRK). */
+  readonly Hrk: "HRK"; /** Haitian Gourde (HTG). */
+  readonly Htg: "HTG"; /** Hungarian Forint (HUF). */
+  readonly Huf: "HUF"; /** Indonesian Rupiah (IDR). */
+  readonly Idr: "IDR"; /** Israeli New Shekel (NIS). */
+  readonly Ils: "ILS"; /** Indian Rupees (INR). */
+  readonly Inr: "INR"; /** Iraqi Dinar (IQD). */
+  readonly Iqd: "IQD"; /** Iranian Rial (IRR). */
+  readonly Irr: "IRR"; /** Icelandic Kronur (ISK). */
+  readonly Isk: "ISK"; /** Jersey Pound. */
+  readonly Jep: "JEP"; /** Jamaican Dollars (JMD). */
+  readonly Jmd: "JMD"; /** Jordanian Dinar (JOD). */
+  readonly Jod: "JOD"; /** Japanese Yen (JPY). */
+  readonly Jpy: "JPY"; /** Kenyan Shilling (KES). */
+  readonly Kes: "KES"; /** Kyrgyzstani Som (KGS). */
+  readonly Kgs: "KGS"; /** Cambodian Riel. */
+  readonly Khr: "KHR"; /** Kiribati Dollar (KID). */
+  readonly Kid: "KID"; /** Comorian Franc (KMF). */
+  readonly Kmf: "KMF"; /** South Korean Won (KRW). */
+  readonly Krw: "KRW"; /** Kuwaiti Dinar (KWD). */
+  readonly Kwd: "KWD"; /** Cayman Dollars (KYD). */
+  readonly Kyd: "KYD"; /** Kazakhstani Tenge (KZT). */
+  readonly Kzt: "KZT"; /** Laotian Kip (LAK). */
+  readonly Lak: "LAK"; /** Lebanese Pounds (LBP). */
+  readonly Lbp: "LBP"; /** Sri Lankan Rupees (LKR). */
+  readonly Lkr: "LKR"; /** Liberian Dollar (LRD). */
+  readonly Lrd: "LRD"; /** Lesotho Loti (LSL). */
+  readonly Lsl: "LSL"; /** Lithuanian Litai (LTL). */
+  readonly Ltl: "LTL"; /** Latvian Lati (LVL). */
+  readonly Lvl: "LVL"; /** Libyan Dinar (LYD). */
+  readonly Lyd: "LYD"; /** Moroccan Dirham. */
+  readonly Mad: "MAD"; /** Moldovan Leu (MDL). */
+  readonly Mdl: "MDL"; /** Malagasy Ariary (MGA). */
+  readonly Mga: "MGA"; /** Macedonia Denar (MKD). */
+  readonly Mkd: "MKD"; /** Burmese Kyat (MMK). */
+  readonly Mmk: "MMK"; /** Mongolian Tugrik. */
+  readonly Mnt: "MNT"; /** Macanese Pataca (MOP). */
+  readonly Mop: "MOP"; /** Mauritanian Ouguiya (MRU). */
+  readonly Mru: "MRU"; /** Mauritian Rupee (MUR). */
+  readonly Mur: "MUR"; /** Maldivian Rufiyaa (MVR). */
+  readonly Mvr: "MVR"; /** Malawian Kwacha (MWK). */
+  readonly Mwk: "MWK"; /** Mexican Pesos (MXN). */
+  readonly Mxn: "MXN"; /** Malaysian Ringgits (MYR). */
+  readonly Myr: "MYR"; /** Mozambican Metical. */
+  readonly Mzn: "MZN"; /** Namibian Dollar. */
+  readonly Nad: "NAD"; /** Nigerian Naira (NGN). */
+  readonly Ngn: "NGN"; /** Nicaraguan Córdoba (NIO). */
+  readonly Nio: "NIO"; /** Norwegian Kroner (NOK). */
+  readonly Nok: "NOK"; /** Nepalese Rupee (NPR). */
+  readonly Npr: "NPR"; /** New Zealand Dollars (NZD). */
+  readonly Nzd: "NZD"; /** Omani Rial (OMR). */
+  readonly Omr: "OMR"; /** Panamian Balboa (PAB). */
+  readonly Pab: "PAB"; /** Peruvian Nuevo Sol (PEN). */
+  readonly Pen: "PEN"; /** Papua New Guinean Kina (PGK). */
+  readonly Pgk: "PGK"; /** Philippine Peso (PHP). */
+  readonly Php: "PHP"; /** Pakistani Rupee (PKR). */
+  readonly Pkr: "PKR"; /** Polish Zlotych (PLN). */
+  readonly Pln: "PLN"; /** Paraguayan Guarani (PYG). */
+  readonly Pyg: "PYG"; /** Qatari Rial (QAR). */
+  readonly Qar: "QAR"; /** Romanian Lei (RON). */
+  readonly Ron: "RON"; /** Serbian dinar (RSD). */
+  readonly Rsd: "RSD"; /** Russian Rubles (RUB). */
+  readonly Rub: "RUB"; /** Rwandan Franc (RWF). */
+  readonly Rwf: "RWF"; /** Saudi Riyal (SAR). */
+  readonly Sar: "SAR"; /** Solomon Islands Dollar (SBD). */
+  readonly Sbd: "SBD"; /** Seychellois Rupee (SCR). */
+  readonly Scr: "SCR"; /** Sudanese Pound (SDG). */
+  readonly Sdg: "SDG"; /** Swedish Kronor (SEK). */
+  readonly Sek: "SEK"; /** Singapore Dollars (SGD). */
+  readonly Sgd: "SGD"; /** Saint Helena Pounds (SHP). */
+  readonly Shp: "SHP"; /** Sierra Leonean Leone (SLL). */
+  readonly Sll: "SLL"; /** Somali Shilling (SOS). */
+  readonly Sos: "SOS"; /** Surinamese Dollar (SRD). */
+  readonly Srd: "SRD"; /** South Sudanese Pound (SSP). */
+  readonly Ssp: "SSP"; /** Sao Tome And Principe Dobra (STD). */
+  readonly Std: "STD"; /** Sao Tome And Principe Dobra (STN). */
+  readonly Stn: "STN"; /** Syrian Pound (SYP). */
+  readonly Syp: "SYP"; /** Swazi Lilangeni (SZL). */
+  readonly Szl: "SZL"; /** Thai baht (THB). */
+  readonly Thb: "THB"; /** Tajikistani Somoni (TJS). */
+  readonly Tjs: "TJS"; /** Turkmenistani Manat (TMT). */
+  readonly Tmt: "TMT"; /** Tunisian Dinar (TND). */
+  readonly Tnd: "TND"; /** Tongan Pa'anga (TOP). */
+  readonly Top: "TOP"; /** Turkish Lira (TRY). */
+  readonly Try: "TRY"; /** Trinidad and Tobago Dollars (TTD). */
+  readonly Ttd: "TTD"; /** Taiwan Dollars (TWD). */
+  readonly Twd: "TWD"; /** Tanzanian Shilling (TZS). */
+  readonly Tzs: "TZS"; /** Ukrainian Hryvnia (UAH). */
+  readonly Uah: "UAH"; /** Ugandan Shilling (UGX). */
+  readonly Ugx: "UGX"; /** United States Dollars (USD). */
+  readonly Usd: "USD"; /** United States Dollars Coin (USDC). */
+  readonly Usdc: "USDC"; /** Uruguayan Pesos (UYU). */
+  readonly Uyu: "UYU"; /** Uzbekistan som (UZS). */
+  readonly Uzs: "UZS"; /** Venezuelan Bolivares (VED). */
+  readonly Ved: "VED"; /** Venezuelan Bolivares (VEF). */
+  readonly Vef: "VEF"; /** Venezuelan Bolivares Soberanos (VES). */
+  readonly Ves: "VES"; /** Vietnamese đồng (VND). */
+  readonly Vnd: "VND"; /** Vanuatu Vatu (VUV). */
+  readonly Vuv: "VUV"; /** Samoan Tala (WST). */
+  readonly Wst: "WST"; /** Central African CFA Franc (XAF). */
+  readonly Xaf: "XAF"; /** East Caribbean Dollar (XCD). */
+  readonly Xcd: "XCD"; /** West African CFA franc (XOF). */
+  readonly Xof: "XOF"; /** CFP Franc (XPF). */
+  readonly Xpf: "XPF"; /** Unrecognized currency. */
+  readonly Xxx: "XXX"; /** Yemeni Rial (YER). */
+  readonly Yer: "YER"; /** South African Rand (ZAR). */
+  readonly Zar: "ZAR"; /** Zambian Kwacha (ZMW). */
+  readonly Zmw: "ZMW";
+};
+type CurrencyCode = typeof CurrencyCode[keyof typeof CurrencyCode];
 /** Represents a currency exchange adjustment applied to an order transaction. */
 type CurrencyExchangeAdjustment = Node & {
   __typename?: 'CurrencyExchangeAdjustment'; /** The adjustment amount in both shop and presentment currencies. */
@@ -2977,12 +2493,11 @@ type CustomerAccountsV2 = {
   url?: Maybe<Scalars['URL']['output']>;
 };
 /** The login redirection target for customer accounts. */
-declare enum CustomerAccountsVersion {
-  /** The customer is redirected to the classic customer accounts login page. */
-  Classic = 'CLASSIC',
-  /** The customer is redirected to the new customer accounts login page. */
-  NewCustomerAccounts = 'NEW_CUSTOMER_ACCOUNTS'
-}
+declare const CustomerAccountsVersion: {
+  /** The customer is redirected to the classic customer accounts login page. */readonly Classic: "CLASSIC"; /** The customer is redirected to the new customer accounts login page. */
+  readonly NewCustomerAccounts: "NEW_CUSTOMER_ACCOUNTS";
+};
+type CustomerAccountsVersion = typeof CustomerAccountsVersion[keyof typeof CustomerAccountsVersion];
 /** An auto-generated type for paginating through multiple Customers. */
 type CustomerConnection = {
   __typename?: 'CustomerConnection'; /** The connection between the node and its parent. Each edge contains a minimum of the edge's cursor and the node. */
@@ -2991,12 +2506,11 @@ type CustomerConnection = {
   pageInfo: PageInfo;
 };
 /** The source that collected the customer's consent to receive marketing materials. */
-declare enum CustomerConsentCollectedFrom {
-  /** The customer consent was collected outside of Shopify. */
-  Other = 'OTHER',
-  /** The customer consent was collected by Shopify. */
-  Shopify = 'SHOPIFY'
-}
+declare const CustomerConsentCollectedFrom: {
+  /** The customer consent was collected outside of Shopify. */readonly Other: "OTHER"; /** The customer consent was collected by Shopify. */
+  readonly Shopify: "SHOPIFY";
+};
+type CustomerConsentCollectedFrom = typeof CustomerConsentCollectedFrom[keyof typeof CustomerConsentCollectedFrom];
 /** Represents a card instrument for customer payment method. */
 type CustomerCreditCard = {
   __typename?: 'CustomerCreditCard'; /** The billing address of the card. */
@@ -3073,27 +2587,21 @@ type CustomerEmailAddress = {
   validFormat: Scalars['Boolean']['output'];
 };
 /** Possible marketing states for the customer’s email address. */
-declare enum CustomerEmailAddressMarketingState {
-  /** The customer’s email address marketing state is invalid. */
-  Invalid = 'INVALID',
-  /** The customer is not subscribed to email marketing. */
-  NotSubscribed = 'NOT_SUBSCRIBED',
-  /** The customer is in the process of subscribing to email marketing. */
-  Pending = 'PENDING',
-  /** The customer is subscribed to email marketing. */
-  Subscribed = 'SUBSCRIBED',
-  /** The customer is not subscribed to email marketing but was previously subscribed. */
-  Unsubscribed = 'UNSUBSCRIBED'
-}
+declare const CustomerEmailAddressMarketingState: {
+  /** The customer’s email address marketing state is invalid. */readonly Invalid: "INVALID"; /** The customer is not subscribed to email marketing. */
+  readonly NotSubscribed: "NOT_SUBSCRIBED"; /** The customer is in the process of subscribing to email marketing. */
+  readonly Pending: "PENDING"; /** The customer is subscribed to email marketing. */
+  readonly Subscribed: "SUBSCRIBED"; /** The customer is not subscribed to email marketing but was previously subscribed. */
+  readonly Unsubscribed: "UNSUBSCRIBED";
+};
+type CustomerEmailAddressMarketingState = typeof CustomerEmailAddressMarketingState[keyof typeof CustomerEmailAddressMarketingState];
 /** The different levels related to whether a customer has opted in to having their opened emails tracked. */
-declare enum CustomerEmailAddressOpenTrackingLevel {
-  /** The customer has opted in to having their open emails tracked. */
-  OptedIn = 'OPTED_IN',
-  /** The customer has opted out of having their open emails tracked. */
-  OptedOut = 'OPTED_OUT',
-  /** The customer has not specified whether they want to opt in or out of having their open emails tracked. */
-  Unknown = 'UNKNOWN'
-}
+declare const CustomerEmailAddressOpenTrackingLevel: {
+  /** The customer has opted in to having their open emails tracked. */readonly OptedIn: "OPTED_IN"; /** The customer has opted out of having their open emails tracked. */
+  readonly OptedOut: "OPTED_OUT"; /** The customer has not specified whether they want to opt in or out of having their open emails tracked. */
+  readonly Unknown: "UNKNOWN";
+};
+type CustomerEmailAddressOpenTrackingLevel = typeof CustomerEmailAddressOpenTrackingLevel[keyof typeof CustomerEmailAddressOpenTrackingLevel];
 /** The record of when a customer consented to receive marketing material by email. */
 type CustomerEmailMarketingConsentState = {
   __typename?: 'CustomerEmailMarketingConsentState';
@@ -3112,24 +2620,20 @@ type CustomerEmailMarketingConsentState = {
   sourceLocation?: Maybe<Location>;
 };
 /** The possible email marketing states for a customer. */
-declare enum CustomerEmailMarketingState {
-  /** This value is internally-set and read-only. */
-  Invalid = 'INVALID',
+declare const CustomerEmailMarketingState: {
+  /** This value is internally-set and read-only. */readonly Invalid: "INVALID";
   /**
    * Default state for customers who have never subscribed to email marketing.
    * This value cannot be set via the mutation; use UNSUBSCRIBED instead to indicate
    * a customer has opted out.
    */
-  NotSubscribed = 'NOT_SUBSCRIBED',
-  /** The customer is in the process of subscribing to email marketing. */
-  Pending = 'PENDING',
-  /** The customer's personal data is erased. This value is internally-set and read-only. */
-  Redacted = 'REDACTED',
-  /** The customer is subscribed to email marketing. */
-  Subscribed = 'SUBSCRIBED',
-  /** The customer isn't currently subscribed to email marketing but was previously subscribed. */
-  Unsubscribed = 'UNSUBSCRIBED'
-}
+  readonly NotSubscribed: "NOT_SUBSCRIBED"; /** The customer is in the process of subscribing to email marketing. */
+  readonly Pending: "PENDING"; /** The customer's personal data is erased. This value is internally-set and read-only. */
+  readonly Redacted: "REDACTED"; /** The customer is subscribed to email marketing. */
+  readonly Subscribed: "SUBSCRIBED"; /** The customer isn't currently subscribed to email marketing but was previously subscribed. */
+  readonly Unsubscribed: "UNSUBSCRIBED";
+};
+type CustomerEmailMarketingState = typeof CustomerEmailMarketingState[keyof typeof CustomerEmailMarketingState];
 /** Tracks a customer's path to purchase through their online store visits. The journey captures key moments like shop sessions that led to the order, helping merchants understand customer behavior and marketing attribution within a 30-day window. Includes the first and last sessions before an [`Order`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order), the time between initial visit and conversion, and the customer's order position in their purchase history. */
 type CustomerJourney = {
   __typename?: 'CustomerJourney'; /** The position of the current order within the customer's order history. */
@@ -3160,20 +2664,20 @@ type CustomerJourneySummary = {
  * The levels are defined by [the M3AAWG best practices guideline
  *   document](https://www.m3aawg.org/sites/maawg/files/news/M3AAWG_Senders_BCP_Ver3-2015-02.pdf).
  */
-declare enum CustomerMarketingOptInLevel {
+declare const CustomerMarketingOptInLevel: {
   /**
    * After providing their information, the customer receives a confirmation and is required to
    * perform a intermediate step before receiving marketing information.
    */
-  ConfirmedOptIn = 'CONFIRMED_OPT_IN',
+  readonly ConfirmedOptIn: "CONFIRMED_OPT_IN";
   /**
    * After providing their information, the customer receives marketing information without any
    * intermediate steps.
    */
-  SingleOptIn = 'SINGLE_OPT_IN',
-  /** The customer receives marketing information but how they were opted in is unknown. */
-  Unknown = 'UNKNOWN'
-}
+  readonly SingleOptIn: "SINGLE_OPT_IN"; /** The customer receives marketing information but how they were opted in is unknown. */
+  readonly Unknown: "UNKNOWN";
+};
+type CustomerMarketingOptInLevel = typeof CustomerMarketingOptInLevel[keyof typeof CustomerMarketingOptInLevel];
 /** The error blocking a customer merge. */
 type CustomerMergeError = {
   __typename?: 'CustomerMergeError'; /** The list of fields preventing the customer from being merged. */
@@ -3181,30 +2685,20 @@ type CustomerMergeError = {
   message: Scalars['String']['output'];
 };
 /** The types of the hard blockers preventing a customer from being merged to another customer. */
-declare enum CustomerMergeErrorFieldType {
-  /** The customer is a company contact. */
-  CompanyContact = 'COMPANY_CONTACT',
-  /** The customer has payment methods. */
-  CustomerPaymentMethods = 'CUSTOMER_PAYMENT_METHODS',
-  /** The customer does not exist. */
-  DeletedAt = 'DELETED_AT',
-  /** The customer has gift cards. */
-  GiftCards = 'GIFT_CARDS',
-  /** The customer has a merge in progress. */
-  MergeInProgress = 'MERGE_IN_PROGRESS',
-  /** The customer has a multipass identifier. */
-  MultipassIdentifier = 'MULTIPASS_IDENTIFIER',
-  /** The override fields are invalid. */
-  OverrideFields = 'OVERRIDE_FIELDS',
-  /** The customer has a pending data request. */
-  PendingDataRequest = 'PENDING_DATA_REQUEST',
-  /** The customer has a pending or completed redaction. */
-  RedactedAt = 'REDACTED_AT',
-  /** The customer has store credit. */
-  StoreCredit = 'STORE_CREDIT',
-  /** The customer has a subscription history. */
-  Subscriptions = 'SUBSCRIPTIONS'
-}
+declare const CustomerMergeErrorFieldType: {
+  /** The customer is a company contact. */readonly CompanyContact: "COMPANY_CONTACT"; /** The customer has payment methods. */
+  readonly CustomerPaymentMethods: "CUSTOMER_PAYMENT_METHODS"; /** The customer does not exist. */
+  readonly DeletedAt: "DELETED_AT"; /** The customer has gift cards. */
+  readonly GiftCards: "GIFT_CARDS"; /** The customer has a merge in progress. */
+  readonly MergeInProgress: "MERGE_IN_PROGRESS"; /** The customer has a multipass identifier. */
+  readonly MultipassIdentifier: "MULTIPASS_IDENTIFIER"; /** The override fields are invalid. */
+  readonly OverrideFields: "OVERRIDE_FIELDS"; /** The customer has a pending data request. */
+  readonly PendingDataRequest: "PENDING_DATA_REQUEST"; /** The customer has a pending or completed redaction. */
+  readonly RedactedAt: "REDACTED_AT"; /** The customer has store credit. */
+  readonly StoreCredit: "STORE_CREDIT"; /** The customer has a subscription history. */
+  readonly Subscriptions: "SUBSCRIPTIONS";
+};
+type CustomerMergeErrorFieldType = typeof CustomerMergeErrorFieldType[keyof typeof CustomerMergeErrorFieldType];
 /** A merge request for merging two customers. */
 type CustomerMergeRequest = {
   __typename?: 'CustomerMergeRequest'; /** The merge errors that occurred during the customer merge request. */
@@ -3214,16 +2708,13 @@ type CustomerMergeRequest = {
   status: CustomerMergeRequestStatus;
 };
 /** The status of the customer merge request. */
-declare enum CustomerMergeRequestStatus {
-  /** The customer merge request has been completed. */
-  Completed = 'COMPLETED',
-  /** The customer merge request has failed. */
-  Failed = 'FAILED',
-  /** The customer merge request is currently in progress. */
-  InProgress = 'IN_PROGRESS',
-  /** The customer merge request has been requested. */
-  Requested = 'REQUESTED'
-}
+declare const CustomerMergeRequestStatus: {
+  /** The customer merge request has been completed. */readonly Completed: "COMPLETED"; /** The customer merge request has failed. */
+  readonly Failed: "FAILED"; /** The customer merge request is currently in progress. */
+  readonly InProgress: "IN_PROGRESS"; /** The customer merge request has been requested. */
+  readonly Requested: "REQUESTED";
+};
+type CustomerMergeRequestStatus = typeof CustomerMergeRequestStatus[keyof typeof CustomerMergeRequestStatus];
 /** An object that represents whether a customer can be merged with another customer. */
 type CustomerMergeable = {
   __typename?: 'CustomerMergeable'; /** The list of fields preventing the customer from being merged. */
@@ -3300,48 +2791,29 @@ type CustomerPaymentMethodEdge = {
   node: CustomerPaymentMethod;
 };
 /** The revocation reason types for a customer payment method. */
-declare enum CustomerPaymentMethodRevocationReason {
-  /** The Authorize.net payment gateway is not enabled. */
-  AuthorizeNetGatewayNotEnabled = 'AUTHORIZE_NET_GATEWAY_NOT_ENABLED',
-  /** Authorize.net did not return any payment methods. Make sure that the correct Authorize.net account is linked. */
-  AuthorizeNetReturnedNoPaymentMethod = 'AUTHORIZE_NET_RETURNED_NO_PAYMENT_METHOD',
-  /** Failed to contact Braintree API. */
-  BraintreeApiAuthenticationError = 'BRAINTREE_API_AUTHENTICATION_ERROR',
-  /** The Braintree payment gateway is not enabled. */
-  BraintreeGatewayNotEnabled = 'BRAINTREE_GATEWAY_NOT_ENABLED',
-  /** The Braintree payment method type should be a credit card or Apple Pay card. */
-  BraintreePaymentMethodNotCard = 'BRAINTREE_PAYMENT_METHOD_NOT_CARD',
-  /** Braintree returned no payment methods. Make sure the correct Braintree account is linked. */
-  BraintreeReturnedNoPaymentMethod = 'BRAINTREE_RETURNED_NO_PAYMENT_METHOD',
-  /** The customer redacted their payment method. */
-  CustomerRedacted = 'CUSTOMER_REDACTED',
-  /** CVV attempts limit exceeded. */
-  CvvAttemptsLimitExceeded = 'CVV_ATTEMPTS_LIMIT_EXCEEDED',
-  /** The billing address failed to retrieve. */
-  FailedToRetrieveBillingAddress = 'FAILED_TO_RETRIEVE_BILLING_ADDRESS',
-  /** The credit card failed to update. */
-  FailedToUpdateCreditCard = 'FAILED_TO_UPDATE_CREDIT_CARD',
-  /** The payment method was manually revoked. */
-  ManuallyRevoked = 'MANUALLY_REVOKED',
-  /** The payment method was replaced with an existing payment method. The associated contracts have been migrated to the other payment method. */
-  Merged = 'MERGED',
-  /** Verification of payment method failed. */
-  PaymentMethodVerificationFailed = 'PAYMENT_METHOD_VERIFICATION_FAILED',
-  /** Failed to contact the Stripe API. */
-  StripeApiAuthenticationError = 'STRIPE_API_AUTHENTICATION_ERROR',
-  /** Invalid request. Failed to retrieve payment method from Stripe. */
-  StripeApiInvalidRequestError = 'STRIPE_API_INVALID_REQUEST_ERROR',
-  /** The Stripe payment gateway is not enabled. */
-  StripeGatewayNotEnabled = 'STRIPE_GATEWAY_NOT_ENABLED',
-  /** The Stripe payment method type should be card. */
-  StripePaymentMethodNotCard = 'STRIPE_PAYMENT_METHOD_NOT_CARD',
-  /** Stripe did not return any payment methods. Make sure that the correct Stripe account is linked. */
-  StripeReturnedNoPaymentMethod = 'STRIPE_RETURNED_NO_PAYMENT_METHOD',
-  /** Verification of the payment method failed due to 3DS not being supported. */
-  ThreeDSecureFlowInVerificationNotImplemented = 'THREE_D_SECURE_FLOW_IN_VERIFICATION_NOT_IMPLEMENTED',
-  /** Too many consecutive failed attempts. */
-  TooManyConsecutiveFailures = 'TOO_MANY_CONSECUTIVE_FAILURES'
-}
+declare const CustomerPaymentMethodRevocationReason: {
+  /** The Authorize.net payment gateway is not enabled. */readonly AuthorizeNetGatewayNotEnabled: "AUTHORIZE_NET_GATEWAY_NOT_ENABLED"; /** Authorize.net did not return any payment methods. Make sure that the correct Authorize.net account is linked. */
+  readonly AuthorizeNetReturnedNoPaymentMethod: "AUTHORIZE_NET_RETURNED_NO_PAYMENT_METHOD"; /** Failed to contact Braintree API. */
+  readonly BraintreeApiAuthenticationError: "BRAINTREE_API_AUTHENTICATION_ERROR"; /** The Braintree payment gateway is not enabled. */
+  readonly BraintreeGatewayNotEnabled: "BRAINTREE_GATEWAY_NOT_ENABLED"; /** The Braintree payment method type should be a credit card or Apple Pay card. */
+  readonly BraintreePaymentMethodNotCard: "BRAINTREE_PAYMENT_METHOD_NOT_CARD"; /** Braintree returned no payment methods. Make sure the correct Braintree account is linked. */
+  readonly BraintreeReturnedNoPaymentMethod: "BRAINTREE_RETURNED_NO_PAYMENT_METHOD"; /** The customer redacted their payment method. */
+  readonly CustomerRedacted: "CUSTOMER_REDACTED"; /** CVV attempts limit exceeded. */
+  readonly CvvAttemptsLimitExceeded: "CVV_ATTEMPTS_LIMIT_EXCEEDED"; /** The billing address failed to retrieve. */
+  readonly FailedToRetrieveBillingAddress: "FAILED_TO_RETRIEVE_BILLING_ADDRESS"; /** The credit card failed to update. */
+  readonly FailedToUpdateCreditCard: "FAILED_TO_UPDATE_CREDIT_CARD"; /** The payment method was manually revoked. */
+  readonly ManuallyRevoked: "MANUALLY_REVOKED"; /** The payment method was replaced with an existing payment method. The associated contracts have been migrated to the other payment method. */
+  readonly Merged: "MERGED"; /** Verification of payment method failed. */
+  readonly PaymentMethodVerificationFailed: "PAYMENT_METHOD_VERIFICATION_FAILED"; /** Failed to contact the Stripe API. */
+  readonly StripeApiAuthenticationError: "STRIPE_API_AUTHENTICATION_ERROR"; /** Invalid request. Failed to retrieve payment method from Stripe. */
+  readonly StripeApiInvalidRequestError: "STRIPE_API_INVALID_REQUEST_ERROR"; /** The Stripe payment gateway is not enabled. */
+  readonly StripeGatewayNotEnabled: "STRIPE_GATEWAY_NOT_ENABLED"; /** The Stripe payment method type should be card. */
+  readonly StripePaymentMethodNotCard: "STRIPE_PAYMENT_METHOD_NOT_CARD"; /** Stripe did not return any payment methods. Make sure that the correct Stripe account is linked. */
+  readonly StripeReturnedNoPaymentMethod: "STRIPE_RETURNED_NO_PAYMENT_METHOD"; /** Verification of the payment method failed due to 3DS not being supported. */
+  readonly ThreeDSecureFlowInVerificationNotImplemented: "THREE_D_SECURE_FLOW_IN_VERIFICATION_NOT_IMPLEMENTED"; /** Too many consecutive failed attempts. */
+  readonly TooManyConsecutiveFailures: "TOO_MANY_CONSECUTIVE_FAILURES";
+};
+type CustomerPaymentMethodRevocationReason = typeof CustomerPaymentMethodRevocationReason[keyof typeof CustomerPaymentMethodRevocationReason];
 /** Represents a PayPal instrument for customer payment method. */
 type CustomerPaypalBillingAgreement = {
   __typename?: 'CustomerPaypalBillingAgreement'; /** The billing address of this payment method. */
@@ -3370,66 +2842,53 @@ type CustomerPhoneNumber = {
   sourceLocation?: Maybe<Location>;
 };
 /** The valid tiers for the predicted spend of a customer with a shop. */
-declare enum CustomerPredictedSpendTier {
-  /** The customer's spending is predicted to be in the top spending range for the shop in the following year. */
-  High = 'HIGH',
-  /** The customer's spending is predicted to be zero, or in the lowest spending range for the shop in the following year. */
-  Low = 'LOW',
-  /** The customer's spending is predicted to be in the normal spending range for the shop in the following year. */
-  Medium = 'MEDIUM'
-}
+declare const CustomerPredictedSpendTier: {
+  /** The customer's spending is predicted to be in the top spending range for the shop in the following year. */readonly High: "HIGH"; /** The customer's spending is predicted to be zero, or in the lowest spending range for the shop in the following year. */
+  readonly Low: "LOW"; /** The customer's spending is predicted to be in the normal spending range for the shop in the following year. */
+  readonly Medium: "MEDIUM";
+};
+type CustomerPredictedSpendTier = typeof CustomerPredictedSpendTier[keyof typeof CustomerPredictedSpendTier];
 /** The possible product subscription states for a customer, as defined by the customer's subscription contracts. */
-declare enum CustomerProductSubscriberStatus {
-  /** The customer has at least one active subscription contract. */
-  Active = 'ACTIVE',
+declare const CustomerProductSubscriberStatus: {
+  /** The customer has at least one active subscription contract. */readonly Active: "ACTIVE";
   /**
    * The customer's last subscription contract was cancelled and there are no other active or paused
    * subscription contracts.
    */
-  Cancelled = 'CANCELLED',
+  readonly Cancelled: "CANCELLED";
   /**
    * The customer's last subscription contract expired and there are no other active or paused
    * subscription contracts.
    */
-  Expired = 'EXPIRED',
+  readonly Expired: "EXPIRED";
   /**
    * The customer's last subscription contract failed and there are no other active or paused
    * subscription contracts.
    */
-  Failed = 'FAILED',
-  /** The customer has never had a subscription contract. */
-  NeverSubscribed = 'NEVER_SUBSCRIBED',
+  readonly Failed: "FAILED"; /** The customer has never had a subscription contract. */
+  readonly NeverSubscribed: "NEVER_SUBSCRIBED";
   /**
    * The customer has at least one paused subscription contract and there are no other active
    * subscription contracts.
    */
-  Paused = 'PAUSED'
-}
+  readonly Paused: "PAUSED";
+};
+type CustomerProductSubscriberStatus = typeof CustomerProductSubscriberStatus[keyof typeof CustomerProductSubscriberStatus];
 /** The RFM (Recency, Frequency, Monetary) group for a customer. */
-declare enum CustomerRfmGroup {
-  /** Customers with recent purchases, some orders, and moderate spend. */
-  Active = 'ACTIVE',
-  /** Customers without recent purchases, fewer orders, and with lower spend. */
-  AlmostLost = 'ALMOST_LOST',
-  /** Customers without recent purchases, but with a strong history of orders and spend. */
-  AtRisk = 'AT_RISK',
-  /** Customers with very recent purchases, many orders, and the most spend. */
-  Champions = 'CHAMPIONS',
-  /** Customers without recent orders, with infrequent orders, and with low spend. */
-  Dormant = 'DORMANT',
-  /** Customers with recent purchases, many orders, and the most spend. */
-  Loyal = 'LOYAL',
-  /** Customers with recent purchases, some orders, and moderate spend. */
-  NeedsAttention = 'NEEDS_ATTENTION',
-  /** Customers with very recent purchases, few orders, and low spend. */
-  New = 'NEW',
-  /** Customers without recent purchases, but with a very strong history of orders and spend. */
-  PreviouslyLoyal = 'PREVIOUSLY_LOYAL',
-  /** Customers with recent purchases, few orders, and low spend. */
-  Promising = 'PROMISING',
-  /** Customers with no orders yet. */
-  Prospects = 'PROSPECTS'
-}
+declare const CustomerRfmGroup: {
+  /** Customers with recent purchases, some orders, and moderate spend. */readonly Active: "ACTIVE"; /** Customers without recent purchases, fewer orders, and with lower spend. */
+  readonly AlmostLost: "ALMOST_LOST"; /** Customers without recent purchases, but with a strong history of orders and spend. */
+  readonly AtRisk: "AT_RISK"; /** Customers with very recent purchases, many orders, and the most spend. */
+  readonly Champions: "CHAMPIONS"; /** Customers without recent orders, with infrequent orders, and with low spend. */
+  readonly Dormant: "DORMANT"; /** Customers with recent purchases, many orders, and the most spend. */
+  readonly Loyal: "LOYAL"; /** Customers with recent purchases, some orders, and moderate spend. */
+  readonly NeedsAttention: "NEEDS_ATTENTION"; /** Customers with very recent purchases, few orders, and low spend. */
+  readonly New: "NEW"; /** Customers without recent purchases, but with a very strong history of orders and spend. */
+  readonly PreviouslyLoyal: "PREVIOUSLY_LOYAL"; /** Customers with recent purchases, few orders, and low spend. */
+  readonly Promising: "PROMISING"; /** Customers with no orders yet. */
+  readonly Prospects: "PROSPECTS";
+};
+type CustomerRfmGroup = typeof CustomerRfmGroup[keyof typeof CustomerRfmGroup];
 /** Represents a Shop Pay card instrument for customer payment method. */
 type CustomerShopPayAgreement = {
   __typename?: 'CustomerShopPayAgreement'; /** The billing address of the card. */
@@ -3461,29 +2920,22 @@ type CustomerSmsMarketingConsentState = {
   sourceLocation?: Maybe<Location>;
 };
 /** The valid SMS marketing states for a customer’s phone number. */
-declare enum CustomerSmsMarketingState {
-  /** The customer hasn't subscribed to SMS marketing. */
-  NotSubscribed = 'NOT_SUBSCRIBED',
-  /** The customer is in the process of subscribing to SMS marketing. */
-  Pending = 'PENDING',
-  /** The customer's personal data is erased. This value is internally-set and read-only. */
-  Redacted = 'REDACTED',
-  /** The customer is subscribed to SMS marketing. */
-  Subscribed = 'SUBSCRIBED',
-  /** The customer isn't currently subscribed to SMS marketing but was previously subscribed. */
-  Unsubscribed = 'UNSUBSCRIBED'
-}
+declare const CustomerSmsMarketingState: {
+  /** The customer hasn't subscribed to SMS marketing. */readonly NotSubscribed: "NOT_SUBSCRIBED"; /** The customer is in the process of subscribing to SMS marketing. */
+  readonly Pending: "PENDING"; /** The customer's personal data is erased. This value is internally-set and read-only. */
+  readonly Redacted: "REDACTED"; /** The customer is subscribed to SMS marketing. */
+  readonly Subscribed: "SUBSCRIBED"; /** The customer isn't currently subscribed to SMS marketing but was previously subscribed. */
+  readonly Unsubscribed: "UNSUBSCRIBED";
+};
+type CustomerSmsMarketingState = typeof CustomerSmsMarketingState[keyof typeof CustomerSmsMarketingState];
 /** The valid values for the state of a customer's account with a shop. */
-declare enum CustomerState {
-  /** The customer declined the email invite to create an account. */
-  Declined = 'DECLINED',
-  /** The customer doesn't have an active account. Customer accounts can be disabled from the Shopify admin at any time. */
-  Disabled = 'DISABLED',
-  /** The customer has created an account. */
-  Enabled = 'ENABLED',
-  /** The customer has received an email invite to create an account. */
-  Invited = 'INVITED'
-}
+declare const CustomerState: {
+  /** The customer declined the email invite to create an account. */readonly Declined: "DECLINED"; /** The customer doesn't have an active account. Customer accounts can be disabled from the Shopify admin at any time. */
+  readonly Disabled: "DISABLED"; /** The customer has created an account. */
+  readonly Enabled: "ENABLED"; /** The customer has received an email invite to create an account. */
+  readonly Invited: "INVITED";
+};
+type CustomerState = typeof CustomerState[keyof typeof CustomerState];
 /** A customer's computed statistics. */
 type CustomerStatistics = {
   __typename?: 'CustomerStatistics'; /** The predicted spend tier of a customer with a shop. */
@@ -3528,22 +2980,16 @@ type CustomerVisit = CustomerMoment & Node & {
   utmParameters?: Maybe<UtmParameters>;
 };
 /** Days of the week from Monday to Sunday. */
-declare enum DayOfTheWeek {
-  /** Friday. */
-  Friday = 'FRIDAY',
-  /** Monday. */
-  Monday = 'MONDAY',
-  /** Saturday. */
-  Saturday = 'SATURDAY',
-  /** Sunday. */
-  Sunday = 'SUNDAY',
-  /** Thursday. */
-  Thursday = 'THURSDAY',
-  /** Tuesday. */
-  Tuesday = 'TUESDAY',
-  /** Wednesday. */
-  Wednesday = 'WEDNESDAY'
-}
+declare const DayOfTheWeek: {
+  /** Friday. */readonly Friday: "FRIDAY"; /** Monday. */
+  readonly Monday: "MONDAY"; /** Saturday. */
+  readonly Saturday: "SATURDAY"; /** Sunday. */
+  readonly Sunday: "SUNDAY"; /** Thursday. */
+  readonly Thursday: "THURSDAY"; /** Tuesday. */
+  readonly Tuesday: "TUESDAY"; /** Wednesday. */
+  readonly Wednesday: "WEDNESDAY";
+};
+type DayOfTheWeek = typeof DayOfTheWeek[keyof typeof DayOfTheWeek];
 /** A shipping service and a list of countries that the service is available for. */
 type DeliveryAvailableService = {
   __typename?: 'DeliveryAvailableService'; /** The countries the service provider ships to. */
@@ -3761,19 +3207,17 @@ type DeliveryCondition = Node & {
 /** The value (weight or price) that the condition field is compared to. */
 type DeliveryConditionCriteria = MoneyV2 | Weight;
 /** The field type that the condition will be applied to. */
-declare enum DeliveryConditionField {
-  /** The condition will check against the total price of the order. */
-  TotalPrice = 'TOTAL_PRICE',
-  /** The condition will check against the total weight of the order. */
-  TotalWeight = 'TOTAL_WEIGHT'
-}
+declare const DeliveryConditionField: {
+  /** The condition will check against the total price of the order. */readonly TotalPrice: "TOTAL_PRICE"; /** The condition will check against the total weight of the order. */
+  readonly TotalWeight: "TOTAL_WEIGHT";
+};
+type DeliveryConditionField = typeof DeliveryConditionField[keyof typeof DeliveryConditionField];
 /** The operator to use to determine if the condition passes. */
-declare enum DeliveryConditionOperator {
-  /** The condition will check whether the field is greater than or equal to the criterion. */
-  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
-  /** The condition will check if the field is less than or equal to the criterion. */
-  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO'
-}
+declare const DeliveryConditionOperator: {
+  /** The condition will check whether the field is greater than or equal to the criterion. */readonly GreaterThanOrEqualTo: "GREATER_THAN_OR_EQUAL_TO"; /** The condition will check if the field is less than or equal to the criterion. */
+  readonly LessThanOrEqualTo: "LESS_THAN_OR_EQUAL_TO";
+};
+type DeliveryConditionOperator = typeof DeliveryConditionOperator[keyof typeof DeliveryConditionOperator];
 /** A country that is used to define a shipping zone. */
 type DeliveryCountry = Node & {
   __typename?: 'DeliveryCountry';
@@ -3842,25 +3286,16 @@ type DeliveryLocalPickupSettings = {
   pickupTime: DeliveryLocalPickupTime;
 };
 /** Possible pickup time values that a location enabled for local pickup can have. */
-declare enum DeliveryLocalPickupTime {
-  /**
-   * Custom pickup time. Unrecognized pickup time enum value.
-   * @deprecated Custom pickup time is no longer supported.
-   */
-  Custom = 'CUSTOM',
-  /** Usually ready in 5+ days. */
-  FiveOrMoreDays = 'FIVE_OR_MORE_DAYS',
-  /** Usually ready in 4 hours. */
-  FourHours = 'FOUR_HOURS',
-  /** Usually ready in 1 hour. */
-  OneHour = 'ONE_HOUR',
-  /** Usually ready in 24 hours. */
-  TwentyFourHours = 'TWENTY_FOUR_HOURS',
-  /** Usually ready in 2 hours. */
-  TwoHours = 'TWO_HOURS',
-  /** Usually ready in 2-4 days. */
-  TwoToFourDays = 'TWO_TO_FOUR_DAYS'
-}
+declare const DeliveryLocalPickupTime: {
+  /** Custom pickup time. Unrecognized pickup time enum value. */readonly Custom: "CUSTOM"; /** Usually ready in 5+ days. */
+  readonly FiveOrMoreDays: "FIVE_OR_MORE_DAYS"; /** Usually ready in 4 hours. */
+  readonly FourHours: "FOUR_HOURS"; /** Usually ready in 1 hour. */
+  readonly OneHour: "ONE_HOUR"; /** Usually ready in 24 hours. */
+  readonly TwentyFourHours: "TWENTY_FOUR_HOURS"; /** Usually ready in 2 hours. */
+  readonly TwoHours: "TWO_HOURS"; /** Usually ready in 2-4 days. */
+  readonly TwoToFourDays: "TWO_TO_FOUR_DAYS";
+};
+type DeliveryLocalPickupTime = typeof DeliveryLocalPickupTime[keyof typeof DeliveryLocalPickupTime];
 /**
  * A location group is a collection of locations. They share zones and delivery methods across delivery
  * profiles.
@@ -3947,20 +3382,15 @@ type DeliveryMethodDefinitionEdge = {
   node: DeliveryMethodDefinition;
 };
 /** Possible method types that a delivery method can have. */
-declare enum DeliveryMethodType {
-  /** The order is delivered using a local delivery service. */
-  Local = 'LOCAL',
-  /** Non-physical items, no delivery needed. */
-  None = 'NONE',
-  /** The order is delivered to a pickup point. */
-  PickupPoint = 'PICKUP_POINT',
-  /** The order is picked up by the customer. */
-  PickUp = 'PICK_UP',
-  /** In-store sale, no delivery needed. */
-  Retail = 'RETAIL',
-  /** The order is shipped. */
-  Shipping = 'SHIPPING'
-}
+declare const DeliveryMethodType: {
+  /** The order is delivered using a local delivery service. */readonly Local: "LOCAL"; /** Non-physical items, no delivery needed. */
+  readonly None: "NONE"; /** The order is delivered to a pickup point. */
+  readonly PickupPoint: "PICKUP_POINT"; /** The order is picked up by the customer. */
+  readonly PickUp: "PICK_UP"; /** In-store sale, no delivery needed. */
+  readonly Retail: "RETAIL"; /** The order is shipped. */
+  readonly Shipping: "SHIPPING";
+};
+type DeliveryMethodType = typeof DeliveryMethodType[keyof typeof DeliveryMethodType];
 /**
  * A participant defines carrier-calculated rates for shipping services
  * with a possible merchant-defined fixed fee or a percentage-of-rate fee.
@@ -4078,20 +3508,15 @@ type DepositPercentage = {
   percentage: Scalars['Float']['output'];
 };
 /** Digital wallet, such as Apple Pay, which can be used for accelerated checkouts. */
-declare enum DigitalWallet {
-  /** Amazon Pay. */
-  AmazonPay = 'AMAZON_PAY',
-  /** Android Pay. */
-  AndroidPay = 'ANDROID_PAY',
-  /** Apple Pay. */
-  ApplePay = 'APPLE_PAY',
-  /** Facebook Pay. */
-  FacebookPay = 'FACEBOOK_PAY',
-  /** Google Pay. */
-  GooglePay = 'GOOGLE_PAY',
-  /** Shopify Pay. */
-  ShopifyPay = 'SHOPIFY_PAY'
-}
+declare const DigitalWallet: {
+  /** Amazon Pay. */readonly AmazonPay: "AMAZON_PAY"; /** Android Pay. */
+  readonly AndroidPay: "ANDROID_PAY"; /** Apple Pay. */
+  readonly ApplePay: "APPLE_PAY"; /** Facebook Pay. */
+  readonly FacebookPay: "FACEBOOK_PAY"; /** Google Pay. */
+  readonly GooglePay: "GOOGLE_PAY"; /** Shopify Pay. */
+  readonly ShopifyPay: "SHOPIFY_PAY";
+};
+type DigitalWallet = typeof DigitalWallet[keyof typeof DigitalWallet];
 /** A discount offers promotional value and can be applied by entering a code or automatically when conditions are met. Discounts can provide fixed amounts, percentage reductions, free shipping, or Buy X Get Y (BXGY) benefits on specific products or the entire order. For more complex scenarios, developers can use Function-backed discounts to create custom discount configurations. */
 type Discount = DiscountAutomaticApp | DiscountAutomaticBasic | DiscountAutomaticBxgy | DiscountAutomaticFreeShipping | DiscountCodeApp | DiscountCodeBasic | DiscountCodeBxgy | DiscountCodeFreeShipping;
 /**
@@ -4133,17 +3558,12 @@ type DiscountApplication = {
   value: PricingValue;
 };
 /** The method by which the discount's value is allocated onto its entitled lines. */
-declare enum DiscountApplicationAllocationMethod {
-  /** The value is spread across all entitled lines. */
-  Across = 'ACROSS',
-  /** The value is applied onto every entitled line. */
-  Each = 'EACH',
-  /**
-   * The value is specifically applied onto a particular line.
-   * @deprecated Use ACROSS instead.
-   */
-  One = 'ONE'
-}
+declare const DiscountApplicationAllocationMethod: {
+  /** The value is spread across all entitled lines. */readonly Across: "ACROSS"; /** The value is applied onto every entitled line. */
+  readonly Each: "EACH"; /** The value is specifically applied onto a particular line. */
+  readonly One: "ONE";
+};
+type DiscountApplicationAllocationMethod = typeof DiscountApplicationAllocationMethod[keyof typeof DiscountApplicationAllocationMethod];
 /** An auto-generated type for paginating through multiple DiscountApplications. */
 type DiscountApplicationConnection = {
   __typename?: 'DiscountApplicationConnection'; /** The connection between the node and its parent. Each edge contains a minimum of the edge's cursor and the node. */
@@ -4163,21 +3583,18 @@ type DiscountApplicationEdge = {
  * `LINE_ITEM`, applies the discount on all line items that are entitled to the discount.
  * The value `ALL`, combined with a `targetType` of `SHIPPING_LINE`, applies the discount on all shipping lines.
  */
-declare enum DiscountApplicationTargetSelection {
-  /** The discount is allocated onto all the lines. */
-  All = 'ALL',
-  /** The discount is allocated onto only the lines that it's entitled for. */
-  Entitled = 'ENTITLED',
-  /** The discount is allocated onto explicitly chosen lines. */
-  Explicit = 'EXPLICIT'
-}
+declare const DiscountApplicationTargetSelection: {
+  /** The discount is allocated onto all the lines. */readonly All: "ALL"; /** The discount is allocated onto only the lines that it's entitled for. */
+  readonly Entitled: "ENTITLED"; /** The discount is allocated onto explicitly chosen lines. */
+  readonly Explicit: "EXPLICIT";
+};
+type DiscountApplicationTargetSelection = typeof DiscountApplicationTargetSelection[keyof typeof DiscountApplicationTargetSelection];
 /** The type of line (i.e. line item or shipping line) on an order that the discount is applicable towards. */
-declare enum DiscountApplicationTargetType {
-  /** The discount applies onto line items. */
-  LineItem = 'LINE_ITEM',
-  /** The discount applies onto shipping lines. */
-  ShippingLine = 'SHIPPING_LINE'
-}
+declare const DiscountApplicationTargetType: {
+  /** The discount applies onto line items. */readonly LineItem: "LINE_ITEM"; /** The discount applies onto shipping lines. */
+  readonly ShippingLine: "SHIPPING_LINE";
+};
+type DiscountApplicationTargetType = typeof DiscountApplicationTargetType[keyof typeof DiscountApplicationTargetType];
 /**
  * The types of automatic discounts applied in the cart and at checkout when an order meets specific criteria.
  *
@@ -4595,10 +4012,10 @@ type DiscountAutomaticNode = HasEvents & HasMetafieldDefinitions & HasMetafields
   metafields: MetafieldConnection;
 };
 /** All buyers are eligible for the discount. */
-declare enum DiscountBuyerSelection {
-  /** All buyers are eligible for the discount. */
-  All = 'ALL'
-}
+declare const DiscountBuyerSelection: {
+  /** All buyers are eligible for the discount. */readonly All: "ALL";
+};
+type DiscountBuyerSelection = typeof DiscountBuyerSelection[keyof typeof DiscountBuyerSelection];
 /**
  * Indicates that a discount applies to all buyers without restrictions, enabling universal promotions that reach every customer. This selection removes buyer-specific limitations from discount eligibility.
  *
@@ -4614,26 +4031,27 @@ type DiscountBuyerSelectionAll = {
  * The [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
  * that's used to control how discounts can be combined.
  */
-declare enum DiscountClass {
+declare const DiscountClass: {
   /**
    * The discount is combined with an
    * [order discount](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
    * class.
    */
-  Order = 'ORDER',
+  readonly Order: "ORDER";
   /**
    * The discount is combined with a
    * [product discount](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
    * class.
    */
-  Product = 'PRODUCT',
+  readonly Product: "PRODUCT";
   /**
    * The discount is combined with a
    * [shipping discount](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
    * class.
    */
-  Shipping = 'SHIPPING'
-}
+  readonly Shipping: "SHIPPING";
+};
+type DiscountClass = typeof DiscountClass[keyof typeof DiscountClass];
 /** The type of discount associated with the discount code. For example, the discount code might offer a basic discount of a fixed percentage, or a fixed amount, on specific products or the order. Alternatively, the discount might offer the customer free shipping on their order. A third option is a Buy X, Get Y (BXGY) discount, which offers a customer discounts on select products if they add a specific product to their order. */
 type DiscountCode = DiscountCodeApp | DiscountCodeBasic | DiscountCodeBxgy | DiscountCodeFreeShipping;
 /**
@@ -5354,69 +4772,58 @@ type DiscountShareableUrl = {
   url: Scalars['URL']['output'];
 };
 /** The type of page where a shareable discount URL lands. */
-declare enum DiscountShareableUrlTargetType {
-  /** The URL lands on a collection page. */
-  Collection = 'COLLECTION',
-  /** The URL lands on a home page. */
-  Home = 'HOME',
-  /** The URL lands on a product page. */
-  Product = 'PRODUCT'
-}
+declare const DiscountShareableUrlTargetType: {
+  /** The URL lands on a collection page. */readonly Collection: "COLLECTION"; /** The URL lands on a home page. */
+  readonly Home: "HOME"; /** The URL lands on a product page. */
+  readonly Product: "PRODUCT";
+};
+type DiscountShareableUrlTargetType = typeof DiscountShareableUrlTargetType[keyof typeof DiscountShareableUrlTargetType];
 /** The type used to target the eligible countries of an order's shipping destination for which the discount applies. For example, the discount might be applicable when shipping to all countries, or only to a set of countries. */
 type DiscountShippingDestinationSelection = DiscountCountries | DiscountCountryAll;
 /**
  * The status of the discount that describes its availability,
  * expiration, or pending activation.
  */
-declare enum DiscountStatus {
-  /** The discount is currently available for use. */
-  Active = 'ACTIVE',
-  /** The discount has reached its end date and is no longer valid. */
-  Expired = 'EXPIRED',
-  /** The discount is set to become active at a future date. */
-  Scheduled = 'SCHEDULED'
-}
+declare const DiscountStatus: {
+  /** The discount is currently available for use. */readonly Active: "ACTIVE"; /** The discount has reached its end date and is no longer valid. */
+  readonly Expired: "EXPIRED"; /** The discount is set to become active at a future date. */
+  readonly Scheduled: "SCHEDULED";
+};
+type DiscountStatus = typeof DiscountStatus[keyof typeof DiscountStatus];
 /** The type of line (line item or shipping line) on an order that the subscription discount is applicable towards. */
-declare enum DiscountTargetType {
-  /** The discount applies onto line items. */
-  LineItem = 'LINE_ITEM',
-  /** The discount applies onto shipping lines. */
-  ShippingLine = 'SHIPPING_LINE'
-}
+declare const DiscountTargetType: {
+  /** The discount applies onto line items. */readonly LineItem: "LINE_ITEM"; /** The discount applies onto shipping lines. */
+  readonly ShippingLine: "SHIPPING_LINE";
+};
+type DiscountTargetType = typeof DiscountTargetType[keyof typeof DiscountTargetType];
 /** The type of the subscription discount. */
-declare enum DiscountType {
-  /** Automatic discount type. */
-  AutomaticDiscount = 'AUTOMATIC_DISCOUNT',
-  /** Code discount type. */
-  CodeDiscount = 'CODE_DISCOUNT',
-  /** Manual discount type. */
-  Manual = 'MANUAL'
-}
+declare const DiscountType: {
+  /** Automatic discount type. */readonly AutomaticDiscount: "AUTOMATIC_DISCOUNT"; /** Code discount type. */
+  readonly CodeDiscount: "CODE_DISCOUNT"; /** Manual discount type. */
+  readonly Manual: "MANUAL";
+};
+type DiscountType = typeof DiscountType[keyof typeof DiscountType];
 /** Represents an error in the input of a mutation. */
 type DisplayableError = {
   /** The path to the input field that caused the error. */field?: Maybe<Array<Scalars['String']['output']>>; /** The error message. */
   message: Scalars['String']['output'];
 };
 /** The possible statuses of a dispute. */
-declare enum DisputeStatus {
-  Accepted = 'ACCEPTED',
-  /**
-   * Status previously used by Stripe to indicate that a dispute led to a refund.
-   * @deprecated CHARGE_REFUNDED is no longer supported.
-   */
-  ChargeRefunded = 'CHARGE_REFUNDED',
-  Lost = 'LOST',
-  NeedsResponse = 'NEEDS_RESPONSE',
-  UnderReview = 'UNDER_REVIEW',
-  Won = 'WON'
-}
+declare const DisputeStatus: {
+  readonly Accepted: "ACCEPTED"; /** Status previously used by Stripe to indicate that a dispute led to a refund. */
+  readonly ChargeRefunded: "CHARGE_REFUNDED";
+  readonly Lost: "LOST";
+  readonly NeedsResponse: "NEEDS_RESPONSE";
+  readonly UnderReview: "UNDER_REVIEW";
+  readonly Won: "WON";
+};
+type DisputeStatus = typeof DisputeStatus[keyof typeof DisputeStatus];
 /** The possible types for a dispute. */
-declare enum DisputeType {
-  /** The dispute has turned into a chargeback. */
-  Chargeback = 'CHARGEBACK',
-  /** The dispute is in the inquiry phase. */
-  Inquiry = 'INQUIRY'
-}
+declare const DisputeType: {
+  /** The dispute has turned into a chargeback. */readonly Chargeback: "CHARGEBACK"; /** The dispute is in the inquiry phase. */
+  readonly Inquiry: "INQUIRY";
+};
+type DisputeType = typeof DisputeType[keyof typeof DisputeType];
 /** A unique string that represents the address of a Shopify store on the Internet. */
 type Domain = Node & {
   __typename?: 'Domain'; /** The host name of the domain. For example, `example.com`. */
@@ -5613,12 +5020,11 @@ type DraftOrderAppliedDiscount = {
   valueType: DraftOrderAppliedDiscountType;
 };
 /** The valid discount types that can be applied to a draft order. */
-declare enum DraftOrderAppliedDiscountType {
-  /** A fixed amount in the store's currency. */
-  FixedAmount = 'FIXED_AMOUNT',
-  /** A percentage of the order subtotal. */
-  Percentage = 'PERCENTAGE'
-}
+declare const DraftOrderAppliedDiscountType: {
+  /** A fixed amount in the store's currency. */readonly FixedAmount: "FIXED_AMOUNT"; /** A percentage of the order subtotal. */
+  readonly Percentage: "PERCENTAGE";
+};
+type DraftOrderAppliedDiscountType = typeof DraftOrderAppliedDiscountType[keyof typeof DraftOrderAppliedDiscountType];
 /** An auto-generated type for paginating through multiple DraftOrders. */
 type DraftOrderConnection = {
   __typename?: 'DraftOrderConnection'; /** The connection between the node and its parent. Each edge contains a minimum of the edge's cursor and the node. */
@@ -5777,14 +5183,12 @@ type DraftOrderPlatformDiscountAllocation = {
 /** The element of the draft being discounted. */
 type DraftOrderPlatformDiscountAllocationTarget = CalculatedDraftOrderLineItem | DraftOrderLineItem | ShippingLine;
 /** The valid statuses for a draft order. */
-declare enum DraftOrderStatus {
-  /** The draft order has been paid. */
-  Completed = 'COMPLETED',
-  /** An invoice for the draft order has been sent to the customer. */
-  InvoiceSent = 'INVOICE_SENT',
-  /** The draft order is open. It has not been paid, and an invoice hasn't been sent. */
-  Open = 'OPEN'
-}
+declare const DraftOrderStatus: {
+  /** The draft order has been paid. */readonly Completed: "COMPLETED"; /** An invoice for the draft order has been sent to the customer. */
+  readonly InvoiceSent: "INVOICE_SENT"; /** The draft order is open. It has not been paid, and an invoice hasn't been sent. */
+  readonly Open: "OPEN";
+};
+type DraftOrderStatus = typeof DraftOrderStatus[keyof typeof DraftOrderStatus];
 /** A warning that is displayed to the merchant when a change is made to a draft order. */
 type DraftOrderWarning = {
   /** The error code. */errorCode: Scalars['String']['output']; /** The input field that the warning applies to. */
@@ -5991,85 +5395,50 @@ type FileError = {
   message: Scalars['String']['output'];
 };
 /** The error types for a file. */
-declare enum FileErrorCode {
-  /** File could not be created because a file with the same name already exists. */
-  DuplicateFilenameError = 'DUPLICATE_FILENAME_ERROR',
-  /** File could not be created because embed permissions are disabled for this video. */
-  ExternalVideoEmbedDisabled = 'EXTERNAL_VIDEO_EMBED_DISABLED',
-  /** File could not be created because video is either not found or still transcoding. */
-  ExternalVideoEmbedNotFoundOrTranscoding = 'EXTERNAL_VIDEO_EMBED_NOT_FOUND_OR_TRANSCODING',
-  /** File could not be created because the external video has an invalid aspect ratio. */
-  ExternalVideoInvalidAspectRatio = 'EXTERNAL_VIDEO_INVALID_ASPECT_RATIO',
-  /** File could not be created because the external video could not be found. */
-  ExternalVideoNotFound = 'EXTERNAL_VIDEO_NOT_FOUND',
-  /** File could not be created because the external video is not listed or is private. */
-  ExternalVideoUnlisted = 'EXTERNAL_VIDEO_UNLISTED',
-  /** File could not be created because the cumulative file storage limit would be exceeded. */
-  FileStorageLimitExceeded = 'FILE_STORAGE_LIMIT_EXCEEDED',
-  /** File could not be processed because the source could not be downloaded. */
-  GenericFileDownloadFailure = 'GENERIC_FILE_DOWNLOAD_FAILURE',
-  /** File could not be created because the size is too large. */
-  GenericFileInvalidSize = 'GENERIC_FILE_INVALID_SIZE',
-  /** File could not be processed because the image could not be downloaded. */
-  ImageDownloadFailure = 'IMAGE_DOWNLOAD_FAILURE',
-  /** File could not be processed because the image could not be processed. */
-  ImageProcessingFailure = 'IMAGE_PROCESSING_FAILURE',
-  /** File could not be created because the image has an invalid aspect ratio. */
-  InvalidImageAspectRatio = 'INVALID_IMAGE_ASPECT_RATIO',
-  /** File could not be created because the image size is too large. */
-  InvalidImageFileSize = 'INVALID_IMAGE_FILE_SIZE',
-  /** File could not be created because the image's resolution exceeds the max limit. */
-  InvalidImageResolution = 'INVALID_IMAGE_RESOLUTION',
-  /** File could not be processed because the signed URL was invalid. */
-  InvalidSignedUrl = 'INVALID_SIGNED_URL',
-  /** File timed out because it is currently being modified by another operation. */
-  MediaTimeoutError = 'MEDIA_TIMEOUT_ERROR',
-  /** File could not be created because the model file failed processing. */
-  Model3DGlbOutputCreationError = 'MODEL3D_GLB_OUTPUT_CREATION_ERROR',
-  /** File could not be created because the model can't be converted to USDZ format. */
-  Model3DGlbToUsdzConversionError = 'MODEL3D_GLB_TO_USDZ_CONVERSION_ERROR',
-  /** File could not be created because the model file failed processing. */
-  Model3DProcessingFailure = 'MODEL3D_PROCESSING_FAILURE',
-  /** File could not be created because the model's thumbnail generation failed. */
-  Model3DThumbnailGenerationError = 'MODEL3D_THUMBNAIL_GENERATION_ERROR',
-  /** There was an issue while trying to generate a new thumbnail. */
-  Model3DThumbnailRegenerationError = 'MODEL3D_THUMBNAIL_REGENERATION_ERROR',
-  /** Model failed validation. */
-  Model3DValidationError = 'MODEL3D_VALIDATION_ERROR',
-  /** File error has occurred for an unknown reason. */
-  Unknown = 'UNKNOWN',
-  /** File could not be created because the image is an unsupported file type. */
-  UnsupportedImageFileType = 'UNSUPPORTED_IMAGE_FILE_TYPE',
-  /** File could not be created because it has an invalid file type. */
-  VideoInvalidFiletypeError = 'VIDEO_INVALID_FILETYPE_ERROR',
-  /** File could not be created because it does not meet the maximum duration requirement. */
-  VideoMaxDurationError = 'VIDEO_MAX_DURATION_ERROR',
-  /** File could not be created because it does not meet the maximum height requirement. */
-  VideoMaxHeightError = 'VIDEO_MAX_HEIGHT_ERROR',
-  /** File could not be created because it does not meet the maximum width requirement. */
-  VideoMaxWidthError = 'VIDEO_MAX_WIDTH_ERROR',
-  /** File could not be created because the metadata could not be read. */
-  VideoMetadataReadError = 'VIDEO_METADATA_READ_ERROR',
-  /** File could not be created because it does not meet the minimum duration requirement. */
-  VideoMinDurationError = 'VIDEO_MIN_DURATION_ERROR',
-  /** File could not be created because it does not meet the minimum height requirement. */
-  VideoMinHeightError = 'VIDEO_MIN_HEIGHT_ERROR',
-  /** File could not be created because it does not meet the minimum width requirement. */
-  VideoMinWidthError = 'VIDEO_MIN_WIDTH_ERROR',
-  /** Video failed validation. */
-  VideoValidationError = 'VIDEO_VALIDATION_ERROR'
-}
+declare const FileErrorCode: {
+  /** File could not be created because a file with the same name already exists. */readonly DuplicateFilenameError: "DUPLICATE_FILENAME_ERROR"; /** File could not be created because embed permissions are disabled for this video. */
+  readonly ExternalVideoEmbedDisabled: "EXTERNAL_VIDEO_EMBED_DISABLED"; /** File could not be created because video is either not found or still transcoding. */
+  readonly ExternalVideoEmbedNotFoundOrTranscoding: "EXTERNAL_VIDEO_EMBED_NOT_FOUND_OR_TRANSCODING"; /** File could not be created because the external video has an invalid aspect ratio. */
+  readonly ExternalVideoInvalidAspectRatio: "EXTERNAL_VIDEO_INVALID_ASPECT_RATIO"; /** File could not be created because the external video could not be found. */
+  readonly ExternalVideoNotFound: "EXTERNAL_VIDEO_NOT_FOUND"; /** File could not be created because the external video is not listed or is private. */
+  readonly ExternalVideoUnlisted: "EXTERNAL_VIDEO_UNLISTED"; /** File could not be created because the cumulative file storage limit would be exceeded. */
+  readonly FileStorageLimitExceeded: "FILE_STORAGE_LIMIT_EXCEEDED"; /** File could not be processed because the source could not be downloaded. */
+  readonly GenericFileDownloadFailure: "GENERIC_FILE_DOWNLOAD_FAILURE"; /** File could not be created because the size is too large. */
+  readonly GenericFileInvalidSize: "GENERIC_FILE_INVALID_SIZE"; /** File could not be processed because the image could not be downloaded. */
+  readonly ImageDownloadFailure: "IMAGE_DOWNLOAD_FAILURE"; /** File could not be processed because the image could not be processed. */
+  readonly ImageProcessingFailure: "IMAGE_PROCESSING_FAILURE"; /** File could not be created because the image has an invalid aspect ratio. */
+  readonly InvalidImageAspectRatio: "INVALID_IMAGE_ASPECT_RATIO"; /** File could not be created because the image size is too large. */
+  readonly InvalidImageFileSize: "INVALID_IMAGE_FILE_SIZE"; /** File could not be created because the image's resolution exceeds the max limit. */
+  readonly InvalidImageResolution: "INVALID_IMAGE_RESOLUTION"; /** File could not be processed because the signed URL was invalid. */
+  readonly InvalidSignedUrl: "INVALID_SIGNED_URL"; /** File timed out because it is currently being modified by another operation. */
+  readonly MediaTimeoutError: "MEDIA_TIMEOUT_ERROR"; /** File could not be created because the model file failed processing. */
+  readonly Model3DGlbOutputCreationError: "MODEL3D_GLB_OUTPUT_CREATION_ERROR"; /** File could not be created because the model can't be converted to USDZ format. */
+  readonly Model3DGlbToUsdzConversionError: "MODEL3D_GLB_TO_USDZ_CONVERSION_ERROR"; /** File could not be created because the model file failed processing. */
+  readonly Model3DProcessingFailure: "MODEL3D_PROCESSING_FAILURE"; /** File could not be created because the model's thumbnail generation failed. */
+  readonly Model3DThumbnailGenerationError: "MODEL3D_THUMBNAIL_GENERATION_ERROR"; /** There was an issue while trying to generate a new thumbnail. */
+  readonly Model3DThumbnailRegenerationError: "MODEL3D_THUMBNAIL_REGENERATION_ERROR"; /** Model failed validation. */
+  readonly Model3DValidationError: "MODEL3D_VALIDATION_ERROR"; /** File error has occurred for an unknown reason. */
+  readonly Unknown: "UNKNOWN"; /** File could not be created because the image is an unsupported file type. */
+  readonly UnsupportedImageFileType: "UNSUPPORTED_IMAGE_FILE_TYPE"; /** File could not be created because it has an invalid file type. */
+  readonly VideoInvalidFiletypeError: "VIDEO_INVALID_FILETYPE_ERROR"; /** File could not be created because it does not meet the maximum duration requirement. */
+  readonly VideoMaxDurationError: "VIDEO_MAX_DURATION_ERROR"; /** File could not be created because it does not meet the maximum height requirement. */
+  readonly VideoMaxHeightError: "VIDEO_MAX_HEIGHT_ERROR"; /** File could not be created because it does not meet the maximum width requirement. */
+  readonly VideoMaxWidthError: "VIDEO_MAX_WIDTH_ERROR"; /** File could not be created because the metadata could not be read. */
+  readonly VideoMetadataReadError: "VIDEO_METADATA_READ_ERROR"; /** File could not be created because it does not meet the minimum duration requirement. */
+  readonly VideoMinDurationError: "VIDEO_MIN_DURATION_ERROR"; /** File could not be created because it does not meet the minimum height requirement. */
+  readonly VideoMinHeightError: "VIDEO_MIN_HEIGHT_ERROR"; /** File could not be created because it does not meet the minimum width requirement. */
+  readonly VideoMinWidthError: "VIDEO_MIN_WIDTH_ERROR"; /** Video failed validation. */
+  readonly VideoValidationError: "VIDEO_VALIDATION_ERROR";
+};
+type FileErrorCode = typeof FileErrorCode[keyof typeof FileErrorCode];
 /** The possible statuses for a file object. */
-declare enum FileStatus {
-  /** File processing has failed. */
-  Failed = 'FAILED',
-  /** File is being processed. */
-  Processing = 'PROCESSING',
-  /** File is ready to be displayed. */
-  Ready = 'READY',
-  /** File has been uploaded but hasn't been processed. */
-  Uploaded = 'UPLOADED'
-}
+declare const FileStatus: {
+  /** File processing has failed. */readonly Failed: "FAILED"; /** File is being processed. */
+  readonly Processing: "PROCESSING"; /** File is ready to be displayed. */
+  readonly Ready: "READY"; /** File has been uploaded but hasn't been processed. */
+  readonly Uploaded: "UPLOADED";
+};
+type FileStatus = typeof FileStatus[keyof typeof FileStatus];
 /** A filter option is one possible value in a search filter. */
 type FilterOption = {
   __typename?: 'FilterOption'; /** The filter option's label for display purposes. */
@@ -6134,44 +5503,27 @@ type FulfillmentConnection = {
   pageInfo: PageInfo;
 };
 /** The display status of a fulfillment. */
-declare enum FulfillmentDisplayStatus {
-  /** Displayed as **Attempted delivery**. */
-  AttemptedDelivery = 'ATTEMPTED_DELIVERY',
-  /** Displayed as **Canceled**. */
-  Canceled = 'CANCELED',
-  /** Displayed as **Picked up by carrier**. */
-  CarrierPickedUp = 'CARRIER_PICKED_UP',
-  /** Displayed as **Confirmed**. */
-  Confirmed = 'CONFIRMED',
-  /** Displayed as **Delayed**. */
-  Delayed = 'DELAYED',
-  /** Displayed as **Delivered**. */
-  Delivered = 'DELIVERED',
-  /** Displayed as **Failure**. */
-  Failure = 'FAILURE',
-  /** Displayed as **Fulfilled**. */
-  Fulfilled = 'FULFILLED',
-  /** Displayed as **In transit**. */
-  InTransit = 'IN_TRANSIT',
-  /** Displayed as **Label printed**. */
-  LabelPrinted = 'LABEL_PRINTED',
-  /** Displayed as **Label purchased**. */
-  LabelPurchased = 'LABEL_PURCHASED',
-  /** Displayed as **Label voided**. */
-  LabelVoided = 'LABEL_VOIDED',
-  /** Displayed as **Marked as fulfilled**. */
-  MarkedAsFulfilled = 'MARKED_AS_FULFILLED',
-  /** Displayed as **Not delivered**. */
-  NotDelivered = 'NOT_DELIVERED',
-  /** Displayed as **Out for delivery**. */
-  OutForDelivery = 'OUT_FOR_DELIVERY',
-  /** Displayed as **Picked up**. */
-  PickedUp = 'PICKED_UP',
-  /** Displayed as **Ready for pickup**. */
-  ReadyForPickup = 'READY_FOR_PICKUP',
-  /** Displayed as **Submitted**. */
-  Submitted = 'SUBMITTED'
-}
+declare const FulfillmentDisplayStatus: {
+  /** Displayed as **Attempted delivery**. */readonly AttemptedDelivery: "ATTEMPTED_DELIVERY"; /** Displayed as **Canceled**. */
+  readonly Canceled: "CANCELED"; /** Displayed as **Picked up by carrier**. */
+  readonly CarrierPickedUp: "CARRIER_PICKED_UP"; /** Displayed as **Confirmed**. */
+  readonly Confirmed: "CONFIRMED"; /** Displayed as **Delayed**. */
+  readonly Delayed: "DELAYED"; /** Displayed as **Delivered**. */
+  readonly Delivered: "DELIVERED"; /** Displayed as **Failure**. */
+  readonly Failure: "FAILURE"; /** Displayed as **Fulfilled**. */
+  readonly Fulfilled: "FULFILLED"; /** Displayed as **In transit**. */
+  readonly InTransit: "IN_TRANSIT"; /** Displayed as **Label printed**. */
+  readonly LabelPrinted: "LABEL_PRINTED"; /** Displayed as **Label purchased**. */
+  readonly LabelPurchased: "LABEL_PURCHASED"; /** Displayed as **Label voided**. */
+  readonly LabelVoided: "LABEL_VOIDED"; /** Displayed as **Marked as fulfilled**. */
+  readonly MarkedAsFulfilled: "MARKED_AS_FULFILLED"; /** Displayed as **Not delivered**. */
+  readonly NotDelivered: "NOT_DELIVERED"; /** Displayed as **Out for delivery**. */
+  readonly OutForDelivery: "OUT_FOR_DELIVERY"; /** Displayed as **Picked up**. */
+  readonly PickedUp: "PICKED_UP"; /** Displayed as **Ready for pickup**. */
+  readonly ReadyForPickup: "READY_FOR_PICKUP"; /** Displayed as **Submitted**. */
+  readonly Submitted: "SUBMITTED";
+};
+type FulfillmentDisplayStatus = typeof FulfillmentDisplayStatus[keyof typeof FulfillmentDisplayStatus];
 /** An auto-generated type which holds one Fulfillment and a cursor during pagination. */
 type FulfillmentEdge = {
   __typename?: 'FulfillmentEdge'; /** The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql). */
@@ -6213,30 +5565,20 @@ type FulfillmentEventEdge = {
   node: FulfillmentEvent;
 };
 /** The status that describes a fulfillment or delivery event. */
-declare enum FulfillmentEventStatus {
-  /** A delivery was attempted. */
-  AttemptedDelivery = 'ATTEMPTED_DELIVERY',
-  /** The fulfillment has been picked up by the carrier. */
-  CarrierPickedUp = 'CARRIER_PICKED_UP',
-  /** The fulfillment is confirmed. This is the default value when no other information is available. */
-  Confirmed = 'CONFIRMED',
-  /** The fulfillment is delayed. */
-  Delayed = 'DELAYED',
-  /** The fulfillment was successfully delivered. */
-  Delivered = 'DELIVERED',
-  /** The fulfillment request failed. */
-  Failure = 'FAILURE',
-  /** The fulfillment is in transit. */
-  InTransit = 'IN_TRANSIT',
-  /** A purchased shipping label has been printed. */
-  LabelPrinted = 'LABEL_PRINTED',
-  /** A shipping label has been purchased. */
-  LabelPurchased = 'LABEL_PURCHASED',
-  /** The fulfillment is out for delivery. */
-  OutForDelivery = 'OUT_FOR_DELIVERY',
-  /** The fulfillment is ready to be picked up. */
-  ReadyForPickup = 'READY_FOR_PICKUP'
-}
+declare const FulfillmentEventStatus: {
+  /** A delivery was attempted. */readonly AttemptedDelivery: "ATTEMPTED_DELIVERY"; /** The fulfillment has been picked up by the carrier. */
+  readonly CarrierPickedUp: "CARRIER_PICKED_UP"; /** The fulfillment is confirmed. This is the default value when no other information is available. */
+  readonly Confirmed: "CONFIRMED"; /** The fulfillment is delayed. */
+  readonly Delayed: "DELAYED"; /** The fulfillment was successfully delivered. */
+  readonly Delivered: "DELIVERED"; /** The fulfillment request failed. */
+  readonly Failure: "FAILURE"; /** The fulfillment is in transit. */
+  readonly InTransit: "IN_TRANSIT"; /** A purchased shipping label has been printed. */
+  readonly LabelPrinted: "LABEL_PRINTED"; /** A shipping label has been purchased. */
+  readonly LabelPurchased: "LABEL_PURCHASED"; /** The fulfillment is out for delivery. */
+  readonly OutForDelivery: "OUT_FOR_DELIVERY"; /** The fulfillment is ready to be picked up. */
+  readonly ReadyForPickup: "READY_FOR_PICKUP";
+};
+type FulfillmentEventStatus = typeof FulfillmentEventStatus[keyof typeof FulfillmentEventStatus];
 /** A fulfillment hold currently applied on a fulfillment order. */
 type FulfillmentHold = Node & {
   __typename?: 'FulfillmentHold'; /** The localized reason for the fulfillment hold for display purposes. */
@@ -6253,24 +5595,17 @@ type FulfillmentHold = Node & {
   reasonNotes?: Maybe<Scalars['String']['output']>;
 };
 /** The reason for a fulfillment hold. */
-declare enum FulfillmentHoldReason {
-  /** The fulfillment hold is applied because payment is pending. */
-  AwaitingPayment = 'AWAITING_PAYMENT',
-  /** The fulfillment hold is applied because of return items not yet received during an exchange. */
-  AwaitingReturnItems = 'AWAITING_RETURN_ITEMS',
-  /** The fulfillment hold is applied because of a high risk of fraud. */
-  HighRiskOfFraud = 'HIGH_RISK_OF_FRAUD',
-  /** The fulfillment hold is applied because of an incorrect address. */
-  IncorrectAddress = 'INCORRECT_ADDRESS',
-  /** The fulfillment hold is applied because inventory is out of stock. */
-  InventoryOutOfStock = 'INVENTORY_OUT_OF_STOCK',
-  /** The fulfillment hold is applied because of a post purchase upsell offer. */
-  OnlineStorePostPurchaseCrossSell = 'ONLINE_STORE_POST_PURCHASE_CROSS_SELL',
-  /** The fulfillment hold is applied for another reason. */
-  Other = 'OTHER',
-  /** The fulfillment hold is applied because of an unknown delivery date. */
-  UnknownDeliveryDate = 'UNKNOWN_DELIVERY_DATE'
-}
+declare const FulfillmentHoldReason: {
+  /** The fulfillment hold is applied because payment is pending. */readonly AwaitingPayment: "AWAITING_PAYMENT"; /** The fulfillment hold is applied because of return items not yet received during an exchange. */
+  readonly AwaitingReturnItems: "AWAITING_RETURN_ITEMS"; /** The fulfillment hold is applied because of a high risk of fraud. */
+  readonly HighRiskOfFraud: "HIGH_RISK_OF_FRAUD"; /** The fulfillment hold is applied because of an incorrect address. */
+  readonly IncorrectAddress: "INCORRECT_ADDRESS"; /** The fulfillment hold is applied because inventory is out of stock. */
+  readonly InventoryOutOfStock: "INVENTORY_OUT_OF_STOCK"; /** The fulfillment hold is applied because of a post purchase upsell offer. */
+  readonly OnlineStorePostPurchaseCrossSell: "ONLINE_STORE_POST_PURCHASE_CROSS_SELL"; /** The fulfillment hold is applied for another reason. */
+  readonly Other: "OTHER"; /** The fulfillment hold is applied because of an unknown delivery date. */
+  readonly UnknownDeliveryDate: "UNKNOWN_DELIVERY_DATE";
+};
+type FulfillmentHoldReason = typeof FulfillmentHoldReason[keyof typeof FulfillmentHoldReason];
 /**
  * A line item from an [`Order`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order) that's included in a [`Fulfillment`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Fulfillment). Links the fulfillment to specific items from the original order, tracking how many units were fulfilled.
  *
@@ -6522,30 +5857,20 @@ type FulfillmentOrder = Node & {
   updatedAt: Scalars['DateTime']['output'];
 };
 /** The actions that can be taken on a fulfillment order. */
-declare enum FulfillmentOrderAction {
-  /** Cancels a fulfillment order. The corresponding mutation for this action is `fulfillmentOrderCancel`. */
-  CancelFulfillmentOrder = 'CANCEL_FULFILLMENT_ORDER',
-  /** Creates a fulfillment for selected line items in the fulfillment order. The corresponding mutation for this action is `fulfillmentCreateV2`. */
-  CreateFulfillment = 'CREATE_FULFILLMENT',
-  /** Opens an external URL to initiate the fulfillment process outside Shopify. This action should be paired with `FulfillmentOrderSupportedAction.externalUrl`. */
-  External = 'EXTERNAL',
-  /** Applies a fulfillment hold on the fulfillment order. The corresponding mutation for this action is `fulfillmentOrderHold`. */
-  Hold = 'HOLD',
-  /** Marks the fulfillment order as open. The corresponding mutation for this action is `fulfillmentOrderOpen`. */
-  MarkAsOpen = 'MARK_AS_OPEN',
-  /** Merges a fulfillment order. The corresponding mutation for this action is `fulfillmentOrderMerge`. */
-  Merge = 'MERGE',
-  /** Moves a fulfillment order. The corresponding mutation for this action is `fulfillmentOrderMove`. */
-  Move = 'MOVE',
-  /** Releases the fulfillment hold on the fulfillment order. The corresponding mutation for this action is `fulfillmentOrderReleaseHold`. */
-  ReleaseHold = 'RELEASE_HOLD',
-  /** Sends a cancellation request to the fulfillment service of a fulfillment order. The corresponding mutation for this action is `fulfillmentOrderSubmitCancellationRequest`. */
-  RequestCancellation = 'REQUEST_CANCELLATION',
-  /** Sends a request for fulfilling selected line items in a fulfillment order to a fulfillment service. The corresponding mutation for this action is `fulfillmentOrderSubmitFulfillmentRequest`. */
-  RequestFulfillment = 'REQUEST_FULFILLMENT',
-  /** Splits a fulfillment order. The corresponding mutation for this action is `fulfillmentOrderSplit`. */
-  Split = 'SPLIT'
-}
+declare const FulfillmentOrderAction: {
+  /** Cancels a fulfillment order. The corresponding mutation for this action is `fulfillmentOrderCancel`. */readonly CancelFulfillmentOrder: "CANCEL_FULFILLMENT_ORDER"; /** Creates a fulfillment for selected line items in the fulfillment order. The corresponding mutation for this action is `fulfillmentCreateV2`. */
+  readonly CreateFulfillment: "CREATE_FULFILLMENT"; /** Opens an external URL to initiate the fulfillment process outside Shopify. This action should be paired with `FulfillmentOrderSupportedAction.externalUrl`. */
+  readonly External: "EXTERNAL"; /** Applies a fulfillment hold on the fulfillment order. The corresponding mutation for this action is `fulfillmentOrderHold`. */
+  readonly Hold: "HOLD"; /** Marks the fulfillment order as open. The corresponding mutation for this action is `fulfillmentOrderOpen`. */
+  readonly MarkAsOpen: "MARK_AS_OPEN"; /** Merges a fulfillment order. The corresponding mutation for this action is `fulfillmentOrderMerge`. */
+  readonly Merge: "MERGE"; /** Moves a fulfillment order. The corresponding mutation for this action is `fulfillmentOrderMove`. */
+  readonly Move: "MOVE"; /** Releases the fulfillment hold on the fulfillment order. The corresponding mutation for this action is `fulfillmentOrderReleaseHold`. */
+  readonly ReleaseHold: "RELEASE_HOLD"; /** Sends a cancellation request to the fulfillment service of a fulfillment order. The corresponding mutation for this action is `fulfillmentOrderSubmitCancellationRequest`. */
+  readonly RequestCancellation: "REQUEST_CANCELLATION"; /** Sends a request for fulfilling selected line items in a fulfillment order to a fulfillment service. The corresponding mutation for this action is `fulfillmentOrderSubmitFulfillmentRequest`. */
+  readonly RequestFulfillment: "REQUEST_FULFILLMENT"; /** Splits a fulfillment order. The corresponding mutation for this action is `fulfillmentOrderSplit`. */
+  readonly Split: "SPLIT";
+};
+type FulfillmentOrderAction = typeof FulfillmentOrderAction[keyof typeof FulfillmentOrderAction];
 /**
  * The fulfillment order's assigned location. This is the location where the fulfillment is expected to happen.
  *
@@ -6600,23 +5925,22 @@ type FulfillmentOrderAssignedLocation = {
   zip?: Maybe<Scalars['String']['output']>;
 };
 /** The assigment status to be used to filter fulfillment orders. */
-declare enum FulfillmentOrderAssignmentStatus {
+declare const FulfillmentOrderAssignmentStatus: {
   /**
    * Fulfillment orders for which the merchant has requested cancellation of
    * the previously accepted fulfillment request.
    */
-  CancellationRequested = 'CANCELLATION_REQUESTED',
+  readonly CancellationRequested: "CANCELLATION_REQUESTED";
   /**
    * Fulfillment orders for which the merchant's fulfillment request has been accepted.
    * Any number of fulfillments can be created on these fulfillment orders
    * to completely fulfill the requested items.
    */
-  FulfillmentAccepted = 'FULFILLMENT_ACCEPTED',
-  /** Fulfillment orders for which the merchant has requested fulfillment. */
-  FulfillmentRequested = 'FULFILLMENT_REQUESTED',
-  /** Fulfillment orders for which the merchant hasn't yet requested fulfillment. */
-  FulfillmentUnsubmitted = 'FULFILLMENT_UNSUBMITTED'
-}
+  readonly FulfillmentAccepted: "FULFILLMENT_ACCEPTED"; /** Fulfillment orders for which the merchant has requested fulfillment. */
+  readonly FulfillmentRequested: "FULFILLMENT_REQUESTED"; /** Fulfillment orders for which the merchant hasn't yet requested fulfillment. */
+  readonly FulfillmentUnsubmitted: "FULFILLMENT_UNSUBMITTED";
+};
+type FulfillmentOrderAssignmentStatus = typeof FulfillmentOrderAssignmentStatus[keyof typeof FulfillmentOrderAssignmentStatus];
 /** An auto-generated type for paginating through multiple FulfillmentOrders. */
 type FulfillmentOrderConnection = {
   __typename?: 'FulfillmentOrderConnection'; /** The connection between the node and its parent. Each edge contains a minimum of the edge's cursor and the node. */
@@ -6792,51 +6116,38 @@ type FulfillmentOrderMerchantRequestEdge = {
   node: FulfillmentOrderMerchantRequest$1;
 };
 /** The kinds of request merchants can make to a fulfillment service. */
-declare enum FulfillmentOrderMerchantRequestKind {
-  /** The merchant requests cancellation of an `IN_PROGRESS` fulfillment order. */
-  CancellationRequest = 'CANCELLATION_REQUEST',
-  /** The merchant requests fulfillment for an `OPEN` fulfillment order. */
-  FulfillmentRequest = 'FULFILLMENT_REQUEST'
-}
+declare const FulfillmentOrderMerchantRequestKind: {
+  /** The merchant requests cancellation of an `IN_PROGRESS` fulfillment order. */readonly CancellationRequest: "CANCELLATION_REQUEST"; /** The merchant requests fulfillment for an `OPEN` fulfillment order. */
+  readonly FulfillmentRequest: "FULFILLMENT_REQUEST";
+};
+type FulfillmentOrderMerchantRequestKind = typeof FulfillmentOrderMerchantRequestKind[keyof typeof FulfillmentOrderMerchantRequestKind];
 /** The request status of a fulfillment order. */
-declare enum FulfillmentOrderRequestStatus {
-  /** The fulfillment service accepted the merchant's fulfillment request. */
-  Accepted = 'ACCEPTED',
-  /** The fulfillment service accepted the merchant's fulfillment cancellation request. */
-  CancellationAccepted = 'CANCELLATION_ACCEPTED',
-  /** The fulfillment service rejected the merchant's fulfillment cancellation request. */
-  CancellationRejected = 'CANCELLATION_REJECTED',
-  /** The merchant requested a cancellation of the fulfillment request for this fulfillment order. */
-  CancellationRequested = 'CANCELLATION_REQUESTED',
-  /** The fulfillment service closed the fulfillment order without completing it. */
-  Closed = 'CLOSED',
-  /** The fulfillment service rejected the merchant's fulfillment request. */
-  Rejected = 'REJECTED',
-  /** The merchant requested fulfillment for this fulfillment order. */
-  Submitted = 'SUBMITTED',
+declare const FulfillmentOrderRequestStatus: {
+  /** The fulfillment service accepted the merchant's fulfillment request. */readonly Accepted: "ACCEPTED"; /** The fulfillment service accepted the merchant's fulfillment cancellation request. */
+  readonly CancellationAccepted: "CANCELLATION_ACCEPTED"; /** The fulfillment service rejected the merchant's fulfillment cancellation request. */
+  readonly CancellationRejected: "CANCELLATION_REJECTED"; /** The merchant requested a cancellation of the fulfillment request for this fulfillment order. */
+  readonly CancellationRequested: "CANCELLATION_REQUESTED"; /** The fulfillment service closed the fulfillment order without completing it. */
+  readonly Closed: "CLOSED"; /** The fulfillment service rejected the merchant's fulfillment request. */
+  readonly Rejected: "REJECTED"; /** The merchant requested fulfillment for this fulfillment order. */
+  readonly Submitted: "SUBMITTED";
   /**
    * The initial request status for the newly-created fulfillment orders. This is the only valid
    * request status for fulfillment orders that aren't assigned to a fulfillment service.
    */
-  Unsubmitted = 'UNSUBMITTED'
-}
+  readonly Unsubmitted: "UNSUBMITTED";
+};
+type FulfillmentOrderRequestStatus = typeof FulfillmentOrderRequestStatus[keyof typeof FulfillmentOrderRequestStatus];
 /** The status of a fulfillment order. */
-declare enum FulfillmentOrderStatus {
-  /** The fulfillment order has been cancelled by the merchant. */
-  Cancelled = 'CANCELLED',
-  /** The fulfillment order has been completed and closed. */
-  Closed = 'CLOSED',
-  /** The fulfillment order cannot be completed as requested. */
-  Incomplete = 'INCOMPLETE',
-  /** The fulfillment order is being processed. */
-  InProgress = 'IN_PROGRESS',
-  /** The fulfillment order is on hold. The fulfillment process can't be initiated until the hold on the fulfillment order is released. */
-  OnHold = 'ON_HOLD',
-  /** The fulfillment order is ready for fulfillment. */
-  Open = 'OPEN',
-  /** The fulfillment order is deferred and will be ready for fulfillment after the date and time specified in `fulfill_at`. */
-  Scheduled = 'SCHEDULED'
-}
+declare const FulfillmentOrderStatus: {
+  /** The fulfillment order has been cancelled by the merchant. */readonly Cancelled: "CANCELLED"; /** The fulfillment order has been completed and closed. */
+  readonly Closed: "CLOSED"; /** The fulfillment order cannot be completed as requested. */
+  readonly Incomplete: "INCOMPLETE"; /** The fulfillment order is being processed. */
+  readonly InProgress: "IN_PROGRESS"; /** The fulfillment order is on hold. The fulfillment process can't be initiated until the hold on the fulfillment order is released. */
+  readonly OnHold: "ON_HOLD"; /** The fulfillment order is ready for fulfillment. */
+  readonly Open: "OPEN"; /** The fulfillment order is deferred and will be ready for fulfillment after the date and time specified in `fulfill_at`. */
+  readonly Scheduled: "SCHEDULED";
+};
+type FulfillmentOrderStatus = typeof FulfillmentOrderStatus[keyof typeof FulfillmentOrderStatus];
 /** One of the actions that the fulfillment order supports in its current state. */
 type FulfillmentOrderSupportedAction = {
   __typename?: 'FulfillmentOrderSupportedAction'; /** The action value. */
@@ -6970,35 +6281,22 @@ type FulfillmentService = {
   type: FulfillmentServiceType;
 };
 /** The type of a fulfillment service. */
-declare enum FulfillmentServiceType {
-  /** Fulfillment by gift card. */
-  GiftCard = 'GIFT_CARD',
-  /** Manual fulfillment by the merchant. */
-  Manual = 'MANUAL',
-  /** Fullfillment by a third-party fulfillment service. */
-  ThirdParty = 'THIRD_PARTY'
-}
+declare const FulfillmentServiceType: {
+  /** Fulfillment by gift card. */readonly GiftCard: "GIFT_CARD"; /** Manual fulfillment by the merchant. */
+  readonly Manual: "MANUAL"; /** Fullfillment by a third-party fulfillment service. */
+  readonly ThirdParty: "THIRD_PARTY";
+};
+type FulfillmentServiceType = typeof FulfillmentServiceType[keyof typeof FulfillmentServiceType];
 /** The status of a fulfillment. */
-declare enum FulfillmentStatus {
-  /** The fulfillment was canceled. */
-  Cancelled = 'CANCELLED',
-  /** There was an error with the fulfillment request. */
-  Error = 'ERROR',
-  /** The fulfillment request failed. */
-  Failure = 'FAILURE',
-  /**
-   * The third-party fulfillment service has acknowledged the fulfillment and is processing it.
-   * @deprecated This is a legacy status and is due to be deprecated.
-   */
-  Open = 'OPEN',
-  /**
-   * Shopify has created the fulfillment and is waiting for the third-party fulfillment service to transition it to `open` or `success`.
-   * @deprecated This is a legacy status and is due to be deprecated.
-   */
-  Pending = 'PENDING',
-  /** The fulfillment was completed successfully. */
-  Success = 'SUCCESS'
-}
+declare const FulfillmentStatus: {
+  /** The fulfillment was canceled. */readonly Cancelled: "CANCELLED"; /** There was an error with the fulfillment request. */
+  readonly Error: "ERROR"; /** The fulfillment request failed. */
+  readonly Failure: "FAILURE"; /** The third-party fulfillment service has acknowledged the fulfillment and is processing it. */
+  readonly Open: "OPEN"; /** Shopify has created the fulfillment and is waiting for the third-party fulfillment service to transition it to `open` or `success`. */
+  readonly Pending: "PENDING"; /** The fulfillment was completed successfully. */
+  readonly Success: "SUCCESS";
+};
+type FulfillmentStatus = typeof FulfillmentStatus[keyof typeof FulfillmentStatus];
 /** Represents the tracking information for a fulfillment. */
 type FulfillmentTrackingInfo$1 = {
   __typename?: 'FulfillmentTrackingInfo';
@@ -7529,21 +6827,18 @@ type ImageEdge = {
   node: Image;
 };
 /** Answers the question if prices include duties and / or taxes. */
-declare enum InclusiveDutiesPricingStrategy {
-  /** Add duties at checkout when configured to collect. */
-  AddDutiesAtCheckout = 'ADD_DUTIES_AT_CHECKOUT',
-  /** Include duties in price when configured to collect. */
-  IncludeDutiesInPrice = 'INCLUDE_DUTIES_IN_PRICE'
-}
+declare const InclusiveDutiesPricingStrategy: {
+  /** Add duties at checkout when configured to collect. */readonly AddDutiesAtCheckout: "ADD_DUTIES_AT_CHECKOUT"; /** Include duties in price when configured to collect. */
+  readonly IncludeDutiesInPrice: "INCLUDE_DUTIES_IN_PRICE";
+};
+type InclusiveDutiesPricingStrategy = typeof InclusiveDutiesPricingStrategy[keyof typeof InclusiveDutiesPricingStrategy];
 /** Answers the question if prices include duties and / or taxes. */
-declare enum InclusiveTaxPricingStrategy {
-  /** Add taxes at checkout when configured to collect. */
-  AddTaxesAtCheckout = 'ADD_TAXES_AT_CHECKOUT',
-  /** Include taxes in price when configured to collect. */
-  IncludesTaxesInPrice = 'INCLUDES_TAXES_IN_PRICE',
-  /** Include taxes in price based on country when configured to collect. */
-  IncludesTaxesInPriceBasedOnCountry = 'INCLUDES_TAXES_IN_PRICE_BASED_ON_COUNTRY'
-}
+declare const InclusiveTaxPricingStrategy: {
+  /** Add taxes at checkout when configured to collect. */readonly AddTaxesAtCheckout: "ADD_TAXES_AT_CHECKOUT"; /** Include taxes in price when configured to collect. */
+  readonly IncludesTaxesInPrice: "INCLUDES_TAXES_IN_PRICE"; /** Include taxes in price based on country when configured to collect. */
+  readonly IncludesTaxesInPriceBasedOnCountry: "INCLUDES_TAXES_IN_PRICE_BASED_ON_COUNTRY";
+};
+type InclusiveTaxPricingStrategy = typeof InclusiveTaxPricingStrategy[keyof typeof InclusiveTaxPricingStrategy];
 /**
  * A [product variant's](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductVariant) inventory information across all locations. The inventory item connects the product variant to its [inventory levels](https://shopify.dev/docs/api/admin-graphql/latest/objects/InventoryLevel) at different locations, tracking stock keeping unit (SKU), whether quantities are tracked, shipping requirements, and customs information for the product.
  *
@@ -7933,89 +7228,52 @@ type LocalizationExtensionEdge = {
   node: LocalizationExtension;
 };
 /** The key of a localization extension. */
-declare enum LocalizationExtensionKey {
-  /** Extension key 'shipping_credential_br' for country BR. */
-  ShippingCredentialBr = 'SHIPPING_CREDENTIAL_BR',
-  /** Extension key 'shipping_credential_cl' for country CL. */
-  ShippingCredentialCl = 'SHIPPING_CREDENTIAL_CL',
-  /** Extension key 'shipping_credential_cn' for country CN. */
-  ShippingCredentialCn = 'SHIPPING_CREDENTIAL_CN',
-  /** Extension key 'shipping_credential_co' for country CO. */
-  ShippingCredentialCo = 'SHIPPING_CREDENTIAL_CO',
-  /** Extension key 'shipping_credential_cr' for country CR. */
-  ShippingCredentialCr = 'SHIPPING_CREDENTIAL_CR',
-  /** Extension key 'shipping_credential_ec' for country EC. */
-  ShippingCredentialEc = 'SHIPPING_CREDENTIAL_EC',
-  /** Extension key 'shipping_credential_es' for country ES. */
-  ShippingCredentialEs = 'SHIPPING_CREDENTIAL_ES',
-  /** Extension key 'shipping_credential_gt' for country GT. */
-  ShippingCredentialGt = 'SHIPPING_CREDENTIAL_GT',
-  /** Extension key 'shipping_credential_id' for country ID. */
-  ShippingCredentialId = 'SHIPPING_CREDENTIAL_ID',
-  /** Extension key 'shipping_credential_kr' for country KR. */
-  ShippingCredentialKr = 'SHIPPING_CREDENTIAL_KR',
-  /** Extension key 'shipping_credential_mx' for country MX. */
-  ShippingCredentialMx = 'SHIPPING_CREDENTIAL_MX',
-  /** Extension key 'shipping_credential_my' for country MY. */
-  ShippingCredentialMy = 'SHIPPING_CREDENTIAL_MY',
-  /** Extension key 'shipping_credential_pe' for country PE. */
-  ShippingCredentialPe = 'SHIPPING_CREDENTIAL_PE',
-  /** Extension key 'shipping_credential_pt' for country PT. */
-  ShippingCredentialPt = 'SHIPPING_CREDENTIAL_PT',
-  /** Extension key 'shipping_credential_py' for country PY. */
-  ShippingCredentialPy = 'SHIPPING_CREDENTIAL_PY',
-  /** Extension key 'shipping_credential_tr' for country TR. */
-  ShippingCredentialTr = 'SHIPPING_CREDENTIAL_TR',
-  /** Extension key 'shipping_credential_tw' for country TW. */
-  ShippingCredentialTw = 'SHIPPING_CREDENTIAL_TW',
-  /** Extension key 'shipping_credential_type_co' for country CO. */
-  ShippingCredentialTypeCo = 'SHIPPING_CREDENTIAL_TYPE_CO',
-  /** Extension key 'tax_credential_br' for country BR. */
-  TaxCredentialBr = 'TAX_CREDENTIAL_BR',
-  /** Extension key 'tax_credential_cl' for country CL. */
-  TaxCredentialCl = 'TAX_CREDENTIAL_CL',
-  /** Extension key 'tax_credential_co' for country CO. */
-  TaxCredentialCo = 'TAX_CREDENTIAL_CO',
-  /** Extension key 'tax_credential_cr' for country CR. */
-  TaxCredentialCr = 'TAX_CREDENTIAL_CR',
-  /** Extension key 'tax_credential_ec' for country EC. */
-  TaxCredentialEc = 'TAX_CREDENTIAL_EC',
-  /** Extension key 'tax_credential_es' for country ES. */
-  TaxCredentialEs = 'TAX_CREDENTIAL_ES',
-  /** Extension key 'tax_credential_gt' for country GT. */
-  TaxCredentialGt = 'TAX_CREDENTIAL_GT',
-  /** Extension key 'tax_credential_id' for country ID. */
-  TaxCredentialId = 'TAX_CREDENTIAL_ID',
-  /** Extension key 'tax_credential_it' for country IT. */
-  TaxCredentialIt = 'TAX_CREDENTIAL_IT',
-  /** Extension key 'tax_credential_mx' for country MX. */
-  TaxCredentialMx = 'TAX_CREDENTIAL_MX',
-  /** Extension key 'tax_credential_my' for country MY. */
-  TaxCredentialMy = 'TAX_CREDENTIAL_MY',
-  /** Extension key 'tax_credential_pe' for country PE. */
-  TaxCredentialPe = 'TAX_CREDENTIAL_PE',
-  /** Extension key 'tax_credential_pt' for country PT. */
-  TaxCredentialPt = 'TAX_CREDENTIAL_PT',
-  /** Extension key 'tax_credential_py' for country PY. */
-  TaxCredentialPy = 'TAX_CREDENTIAL_PY',
-  /** Extension key 'tax_credential_tr' for country TR. */
-  TaxCredentialTr = 'TAX_CREDENTIAL_TR',
-  /** Extension key 'tax_credential_type_co' for country CO. */
-  TaxCredentialTypeCo = 'TAX_CREDENTIAL_TYPE_CO',
-  /** Extension key 'tax_credential_type_mx' for country MX. */
-  TaxCredentialTypeMx = 'TAX_CREDENTIAL_TYPE_MX',
-  /** Extension key 'tax_credential_use_mx' for country MX. */
-  TaxCredentialUseMx = 'TAX_CREDENTIAL_USE_MX',
-  /** Extension key 'tax_email_it' for country IT. */
-  TaxEmailIt = 'TAX_EMAIL_IT'
-}
+declare const LocalizationExtensionKey: {
+  /** Extension key 'shipping_credential_br' for country BR. */readonly ShippingCredentialBr: "SHIPPING_CREDENTIAL_BR"; /** Extension key 'shipping_credential_cl' for country CL. */
+  readonly ShippingCredentialCl: "SHIPPING_CREDENTIAL_CL"; /** Extension key 'shipping_credential_cn' for country CN. */
+  readonly ShippingCredentialCn: "SHIPPING_CREDENTIAL_CN"; /** Extension key 'shipping_credential_co' for country CO. */
+  readonly ShippingCredentialCo: "SHIPPING_CREDENTIAL_CO"; /** Extension key 'shipping_credential_cr' for country CR. */
+  readonly ShippingCredentialCr: "SHIPPING_CREDENTIAL_CR"; /** Extension key 'shipping_credential_ec' for country EC. */
+  readonly ShippingCredentialEc: "SHIPPING_CREDENTIAL_EC"; /** Extension key 'shipping_credential_es' for country ES. */
+  readonly ShippingCredentialEs: "SHIPPING_CREDENTIAL_ES"; /** Extension key 'shipping_credential_gt' for country GT. */
+  readonly ShippingCredentialGt: "SHIPPING_CREDENTIAL_GT"; /** Extension key 'shipping_credential_id' for country ID. */
+  readonly ShippingCredentialId: "SHIPPING_CREDENTIAL_ID"; /** Extension key 'shipping_credential_kr' for country KR. */
+  readonly ShippingCredentialKr: "SHIPPING_CREDENTIAL_KR"; /** Extension key 'shipping_credential_mx' for country MX. */
+  readonly ShippingCredentialMx: "SHIPPING_CREDENTIAL_MX"; /** Extension key 'shipping_credential_my' for country MY. */
+  readonly ShippingCredentialMy: "SHIPPING_CREDENTIAL_MY"; /** Extension key 'shipping_credential_pe' for country PE. */
+  readonly ShippingCredentialPe: "SHIPPING_CREDENTIAL_PE"; /** Extension key 'shipping_credential_pt' for country PT. */
+  readonly ShippingCredentialPt: "SHIPPING_CREDENTIAL_PT"; /** Extension key 'shipping_credential_py' for country PY. */
+  readonly ShippingCredentialPy: "SHIPPING_CREDENTIAL_PY"; /** Extension key 'shipping_credential_tr' for country TR. */
+  readonly ShippingCredentialTr: "SHIPPING_CREDENTIAL_TR"; /** Extension key 'shipping_credential_tw' for country TW. */
+  readonly ShippingCredentialTw: "SHIPPING_CREDENTIAL_TW"; /** Extension key 'shipping_credential_type_co' for country CO. */
+  readonly ShippingCredentialTypeCo: "SHIPPING_CREDENTIAL_TYPE_CO"; /** Extension key 'tax_credential_br' for country BR. */
+  readonly TaxCredentialBr: "TAX_CREDENTIAL_BR"; /** Extension key 'tax_credential_cl' for country CL. */
+  readonly TaxCredentialCl: "TAX_CREDENTIAL_CL"; /** Extension key 'tax_credential_co' for country CO. */
+  readonly TaxCredentialCo: "TAX_CREDENTIAL_CO"; /** Extension key 'tax_credential_cr' for country CR. */
+  readonly TaxCredentialCr: "TAX_CREDENTIAL_CR"; /** Extension key 'tax_credential_ec' for country EC. */
+  readonly TaxCredentialEc: "TAX_CREDENTIAL_EC"; /** Extension key 'tax_credential_es' for country ES. */
+  readonly TaxCredentialEs: "TAX_CREDENTIAL_ES"; /** Extension key 'tax_credential_gt' for country GT. */
+  readonly TaxCredentialGt: "TAX_CREDENTIAL_GT"; /** Extension key 'tax_credential_id' for country ID. */
+  readonly TaxCredentialId: "TAX_CREDENTIAL_ID"; /** Extension key 'tax_credential_it' for country IT. */
+  readonly TaxCredentialIt: "TAX_CREDENTIAL_IT"; /** Extension key 'tax_credential_mx' for country MX. */
+  readonly TaxCredentialMx: "TAX_CREDENTIAL_MX"; /** Extension key 'tax_credential_my' for country MY. */
+  readonly TaxCredentialMy: "TAX_CREDENTIAL_MY"; /** Extension key 'tax_credential_pe' for country PE. */
+  readonly TaxCredentialPe: "TAX_CREDENTIAL_PE"; /** Extension key 'tax_credential_pt' for country PT. */
+  readonly TaxCredentialPt: "TAX_CREDENTIAL_PT"; /** Extension key 'tax_credential_py' for country PY. */
+  readonly TaxCredentialPy: "TAX_CREDENTIAL_PY"; /** Extension key 'tax_credential_tr' for country TR. */
+  readonly TaxCredentialTr: "TAX_CREDENTIAL_TR"; /** Extension key 'tax_credential_type_co' for country CO. */
+  readonly TaxCredentialTypeCo: "TAX_CREDENTIAL_TYPE_CO"; /** Extension key 'tax_credential_type_mx' for country MX. */
+  readonly TaxCredentialTypeMx: "TAX_CREDENTIAL_TYPE_MX"; /** Extension key 'tax_credential_use_mx' for country MX. */
+  readonly TaxCredentialUseMx: "TAX_CREDENTIAL_USE_MX"; /** Extension key 'tax_email_it' for country IT. */
+  readonly TaxEmailIt: "TAX_EMAIL_IT";
+};
+type LocalizationExtensionKey = typeof LocalizationExtensionKey[keyof typeof LocalizationExtensionKey];
 /** The purpose of a localization extension. */
-declare enum LocalizationExtensionPurpose {
-  /** Extensions that are used for shipping purposes, for example, customs clearance. */
-  Shipping = 'SHIPPING',
-  /** Extensions that are used for taxes purposes, for example, invoicing. */
-  Tax = 'TAX'
-}
+declare const LocalizationExtensionPurpose: {
+  /** Extensions that are used for shipping purposes, for example, customs clearance. */readonly Shipping: "SHIPPING"; /** Extensions that are used for taxes purposes, for example, invoicing. */
+  readonly Tax: "TAX";
+};
+type LocalizationExtensionPurpose = typeof LocalizationExtensionPurpose[keyof typeof LocalizationExtensionPurpose];
 /** Represents the value captured by a localized field. Localized fields are additional fields required by certain countries on international orders. For example, some countries require additional fields for customs information or tax identification numbers. */
 type LocalizedField = {
   __typename?: 'LocalizedField'; /** Country ISO 3166-1 alpha-2 code. */
@@ -8039,89 +7297,52 @@ type LocalizedFieldEdge = {
   node: LocalizedField;
 };
 /** The key of a localized field. */
-declare enum LocalizedFieldKey {
-  /** Localized field key 'shipping_credential_br' for country Brazil. */
-  ShippingCredentialBr = 'SHIPPING_CREDENTIAL_BR',
-  /** Localized field key 'shipping_credential_cl' for country Chile. */
-  ShippingCredentialCl = 'SHIPPING_CREDENTIAL_CL',
-  /** Localized field key 'shipping_credential_cn' for country China. */
-  ShippingCredentialCn = 'SHIPPING_CREDENTIAL_CN',
-  /** Localized field key 'shipping_credential_co' for country Colombia. */
-  ShippingCredentialCo = 'SHIPPING_CREDENTIAL_CO',
-  /** Localized field key 'shipping_credential_cr' for country Costa Rica. */
-  ShippingCredentialCr = 'SHIPPING_CREDENTIAL_CR',
-  /** Localized field key 'shipping_credential_ec' for country Ecuador. */
-  ShippingCredentialEc = 'SHIPPING_CREDENTIAL_EC',
-  /** Localized field key 'shipping_credential_es' for country Spain. */
-  ShippingCredentialEs = 'SHIPPING_CREDENTIAL_ES',
-  /** Localized field key 'shipping_credential_gt' for country Guatemala. */
-  ShippingCredentialGt = 'SHIPPING_CREDENTIAL_GT',
-  /** Localized field key 'shipping_credential_id' for country Indonesia. */
-  ShippingCredentialId = 'SHIPPING_CREDENTIAL_ID',
-  /** Localized field key 'shipping_credential_kr' for country South Korea. */
-  ShippingCredentialKr = 'SHIPPING_CREDENTIAL_KR',
-  /** Localized field key 'shipping_credential_mx' for country Mexico. */
-  ShippingCredentialMx = 'SHIPPING_CREDENTIAL_MX',
-  /** Localized field key 'shipping_credential_my' for country Malaysia. */
-  ShippingCredentialMy = 'SHIPPING_CREDENTIAL_MY',
-  /** Localized field key 'shipping_credential_pe' for country Peru. */
-  ShippingCredentialPe = 'SHIPPING_CREDENTIAL_PE',
-  /** Localized field key 'shipping_credential_pt' for country Portugal. */
-  ShippingCredentialPt = 'SHIPPING_CREDENTIAL_PT',
-  /** Localized field key 'shipping_credential_py' for country Paraguay. */
-  ShippingCredentialPy = 'SHIPPING_CREDENTIAL_PY',
-  /** Localized field key 'shipping_credential_tr' for country Turkey. */
-  ShippingCredentialTr = 'SHIPPING_CREDENTIAL_TR',
-  /** Localized field key 'shipping_credential_tw' for country Taiwan. */
-  ShippingCredentialTw = 'SHIPPING_CREDENTIAL_TW',
-  /** Localized field key 'shipping_credential_type_co' for country Colombia. */
-  ShippingCredentialTypeCo = 'SHIPPING_CREDENTIAL_TYPE_CO',
-  /** Localized field key 'tax_credential_br' for country Brazil. */
-  TaxCredentialBr = 'TAX_CREDENTIAL_BR',
-  /** Localized field key 'tax_credential_cl' for country Chile. */
-  TaxCredentialCl = 'TAX_CREDENTIAL_CL',
-  /** Localized field key 'tax_credential_co' for country Colombia. */
-  TaxCredentialCo = 'TAX_CREDENTIAL_CO',
-  /** Localized field key 'tax_credential_cr' for country Costa Rica. */
-  TaxCredentialCr = 'TAX_CREDENTIAL_CR',
-  /** Localized field key 'tax_credential_ec' for country Ecuador. */
-  TaxCredentialEc = 'TAX_CREDENTIAL_EC',
-  /** Localized field key 'tax_credential_es' for country Spain. */
-  TaxCredentialEs = 'TAX_CREDENTIAL_ES',
-  /** Localized field key 'tax_credential_gt' for country Guatemala. */
-  TaxCredentialGt = 'TAX_CREDENTIAL_GT',
-  /** Localized field key 'tax_credential_id' for country Indonesia. */
-  TaxCredentialId = 'TAX_CREDENTIAL_ID',
-  /** Localized field key 'tax_credential_it' for country Italy. */
-  TaxCredentialIt = 'TAX_CREDENTIAL_IT',
-  /** Localized field key 'tax_credential_mx' for country Mexico. */
-  TaxCredentialMx = 'TAX_CREDENTIAL_MX',
-  /** Localized field key 'tax_credential_my' for country Malaysia. */
-  TaxCredentialMy = 'TAX_CREDENTIAL_MY',
-  /** Localized field key 'tax_credential_pe' for country Peru. */
-  TaxCredentialPe = 'TAX_CREDENTIAL_PE',
-  /** Localized field key 'tax_credential_pt' for country Portugal. */
-  TaxCredentialPt = 'TAX_CREDENTIAL_PT',
-  /** Localized field key 'tax_credential_py' for country Paraguay. */
-  TaxCredentialPy = 'TAX_CREDENTIAL_PY',
-  /** Localized field key 'tax_credential_tr' for country Turkey. */
-  TaxCredentialTr = 'TAX_CREDENTIAL_TR',
-  /** Localized field key 'tax_credential_type_co' for country Colombia. */
-  TaxCredentialTypeCo = 'TAX_CREDENTIAL_TYPE_CO',
-  /** Localized field key 'tax_credential_type_mx' for country Mexico. */
-  TaxCredentialTypeMx = 'TAX_CREDENTIAL_TYPE_MX',
-  /** Localized field key 'tax_credential_use_mx' for country Mexico. */
-  TaxCredentialUseMx = 'TAX_CREDENTIAL_USE_MX',
-  /** Localized field key 'tax_email_it' for country Italy. */
-  TaxEmailIt = 'TAX_EMAIL_IT'
-}
+declare const LocalizedFieldKey: {
+  /** Localized field key 'shipping_credential_br' for country Brazil. */readonly ShippingCredentialBr: "SHIPPING_CREDENTIAL_BR"; /** Localized field key 'shipping_credential_cl' for country Chile. */
+  readonly ShippingCredentialCl: "SHIPPING_CREDENTIAL_CL"; /** Localized field key 'shipping_credential_cn' for country China. */
+  readonly ShippingCredentialCn: "SHIPPING_CREDENTIAL_CN"; /** Localized field key 'shipping_credential_co' for country Colombia. */
+  readonly ShippingCredentialCo: "SHIPPING_CREDENTIAL_CO"; /** Localized field key 'shipping_credential_cr' for country Costa Rica. */
+  readonly ShippingCredentialCr: "SHIPPING_CREDENTIAL_CR"; /** Localized field key 'shipping_credential_ec' for country Ecuador. */
+  readonly ShippingCredentialEc: "SHIPPING_CREDENTIAL_EC"; /** Localized field key 'shipping_credential_es' for country Spain. */
+  readonly ShippingCredentialEs: "SHIPPING_CREDENTIAL_ES"; /** Localized field key 'shipping_credential_gt' for country Guatemala. */
+  readonly ShippingCredentialGt: "SHIPPING_CREDENTIAL_GT"; /** Localized field key 'shipping_credential_id' for country Indonesia. */
+  readonly ShippingCredentialId: "SHIPPING_CREDENTIAL_ID"; /** Localized field key 'shipping_credential_kr' for country South Korea. */
+  readonly ShippingCredentialKr: "SHIPPING_CREDENTIAL_KR"; /** Localized field key 'shipping_credential_mx' for country Mexico. */
+  readonly ShippingCredentialMx: "SHIPPING_CREDENTIAL_MX"; /** Localized field key 'shipping_credential_my' for country Malaysia. */
+  readonly ShippingCredentialMy: "SHIPPING_CREDENTIAL_MY"; /** Localized field key 'shipping_credential_pe' for country Peru. */
+  readonly ShippingCredentialPe: "SHIPPING_CREDENTIAL_PE"; /** Localized field key 'shipping_credential_pt' for country Portugal. */
+  readonly ShippingCredentialPt: "SHIPPING_CREDENTIAL_PT"; /** Localized field key 'shipping_credential_py' for country Paraguay. */
+  readonly ShippingCredentialPy: "SHIPPING_CREDENTIAL_PY"; /** Localized field key 'shipping_credential_tr' for country Turkey. */
+  readonly ShippingCredentialTr: "SHIPPING_CREDENTIAL_TR"; /** Localized field key 'shipping_credential_tw' for country Taiwan. */
+  readonly ShippingCredentialTw: "SHIPPING_CREDENTIAL_TW"; /** Localized field key 'shipping_credential_type_co' for country Colombia. */
+  readonly ShippingCredentialTypeCo: "SHIPPING_CREDENTIAL_TYPE_CO"; /** Localized field key 'tax_credential_br' for country Brazil. */
+  readonly TaxCredentialBr: "TAX_CREDENTIAL_BR"; /** Localized field key 'tax_credential_cl' for country Chile. */
+  readonly TaxCredentialCl: "TAX_CREDENTIAL_CL"; /** Localized field key 'tax_credential_co' for country Colombia. */
+  readonly TaxCredentialCo: "TAX_CREDENTIAL_CO"; /** Localized field key 'tax_credential_cr' for country Costa Rica. */
+  readonly TaxCredentialCr: "TAX_CREDENTIAL_CR"; /** Localized field key 'tax_credential_ec' for country Ecuador. */
+  readonly TaxCredentialEc: "TAX_CREDENTIAL_EC"; /** Localized field key 'tax_credential_es' for country Spain. */
+  readonly TaxCredentialEs: "TAX_CREDENTIAL_ES"; /** Localized field key 'tax_credential_gt' for country Guatemala. */
+  readonly TaxCredentialGt: "TAX_CREDENTIAL_GT"; /** Localized field key 'tax_credential_id' for country Indonesia. */
+  readonly TaxCredentialId: "TAX_CREDENTIAL_ID"; /** Localized field key 'tax_credential_it' for country Italy. */
+  readonly TaxCredentialIt: "TAX_CREDENTIAL_IT"; /** Localized field key 'tax_credential_mx' for country Mexico. */
+  readonly TaxCredentialMx: "TAX_CREDENTIAL_MX"; /** Localized field key 'tax_credential_my' for country Malaysia. */
+  readonly TaxCredentialMy: "TAX_CREDENTIAL_MY"; /** Localized field key 'tax_credential_pe' for country Peru. */
+  readonly TaxCredentialPe: "TAX_CREDENTIAL_PE"; /** Localized field key 'tax_credential_pt' for country Portugal. */
+  readonly TaxCredentialPt: "TAX_CREDENTIAL_PT"; /** Localized field key 'tax_credential_py' for country Paraguay. */
+  readonly TaxCredentialPy: "TAX_CREDENTIAL_PY"; /** Localized field key 'tax_credential_tr' for country Turkey. */
+  readonly TaxCredentialTr: "TAX_CREDENTIAL_TR"; /** Localized field key 'tax_credential_type_co' for country Colombia. */
+  readonly TaxCredentialTypeCo: "TAX_CREDENTIAL_TYPE_CO"; /** Localized field key 'tax_credential_type_mx' for country Mexico. */
+  readonly TaxCredentialTypeMx: "TAX_CREDENTIAL_TYPE_MX"; /** Localized field key 'tax_credential_use_mx' for country Mexico. */
+  readonly TaxCredentialUseMx: "TAX_CREDENTIAL_USE_MX"; /** Localized field key 'tax_email_it' for country Italy. */
+  readonly TaxEmailIt: "TAX_EMAIL_IT";
+};
+type LocalizedFieldKey = typeof LocalizedFieldKey[keyof typeof LocalizedFieldKey];
 /** The purpose of a localized field. */
-declare enum LocalizedFieldPurpose {
-  /** Fields that are used for shipping purposes, for example, customs clearance. */
-  Shipping = 'SHIPPING',
-  /** Fields that are used for taxes purposes, for example, invoicing. */
-  Tax = 'TAX'
-}
+declare const LocalizedFieldPurpose: {
+  /** Fields that are used for shipping purposes, for example, customs clearance. */readonly Shipping: "SHIPPING"; /** Fields that are used for taxes purposes, for example, invoicing. */
+  readonly Tax: "TAX";
+};
+type LocalizedFieldPurpose = typeof LocalizedFieldPurpose[keyof typeof LocalizedFieldPurpose];
 /**
  * A physical location where merchants store and fulfill inventory. Locations include retail stores, warehouses, popups, dropshippers, or other places where inventory is managed or stocked.
  *
@@ -8302,27 +7523,21 @@ type MailingAddressEdge = {
   node: MailingAddress;
 };
 /** Highest level of validation concerns identified for the address. */
-declare enum MailingAddressValidationResult {
-  /** Indicates that the address has been validated and is very likely to contain invalid information. */
-  Error = 'ERROR',
-  /** Indicates that the address has been validated and no issues were found. */
-  NoIssues = 'NO_ISSUES',
-  /** Indicates that the address has been validated and might contain invalid information. */
-  Warning = 'WARNING'
-}
+declare const MailingAddressValidationResult: {
+  /** Indicates that the address has been validated and is very likely to contain invalid information. */readonly Error: "ERROR"; /** Indicates that the address has been validated and no issues were found. */
+  readonly NoIssues: "NO_ISSUES"; /** Indicates that the address has been validated and might contain invalid information. */
+  readonly Warning: "WARNING";
+};
+type MailingAddressValidationResult = typeof MailingAddressValidationResult[keyof typeof MailingAddressValidationResult];
 /** The type of resource a payment mandate can be used for. */
-declare enum MandateResourceType {
-  /** A credential stored on file for checkout. */
-  Checkout = 'CHECKOUT',
-  /** A credential stored on file for merchant and customer initiated transactions. */
-  CredentialOnFile = 'CREDENTIAL_ON_FILE',
-  /** A credential stored on file for a Draft Order. */
-  DraftOrder = 'DRAFT_ORDER',
-  /** A credential stored on file for an Order. */
-  Order = 'ORDER',
-  /** A credential stored for subscription billing attempts. */
-  Subscriptions = 'SUBSCRIPTIONS'
-}
+declare const MandateResourceType: {
+  /** A credential stored on file for checkout. */readonly Checkout: "CHECKOUT"; /** A credential stored on file for merchant and customer initiated transactions. */
+  readonly CredentialOnFile: "CREDENTIAL_ON_FILE"; /** A credential stored on file for a Draft Order. */
+  readonly DraftOrder: "DRAFT_ORDER"; /** A credential stored on file for an Order. */
+  readonly Order: "ORDER"; /** A credential stored for subscription billing attempts. */
+  readonly Subscriptions: "SUBSCRIPTIONS";
+};
+type MandateResourceType = typeof MandateResourceType[keyof typeof MandateResourceType];
 /**
  * A market is a group of one or more regions that you want to target for international sales.
  * By creating a market, you can configure a distinct, localized shopping experience for
@@ -8436,21 +7651,18 @@ type MarketCatalogEdge = {
   node: MarketCatalog;
 };
 /** The application level for a market condition. */
-declare enum MarketConditionApplicationType {
-  /** The condition matches all records of a given type. */
-  All = 'ALL',
-  /** The condition matches specified records of a given type. */
-  Specified = 'SPECIFIED'
-}
+declare const MarketConditionApplicationType: {
+  /** The condition matches all records of a given type. */readonly All: "ALL"; /** The condition matches specified records of a given type. */
+  readonly Specified: "SPECIFIED";
+};
+type MarketConditionApplicationType = typeof MarketConditionApplicationType[keyof typeof MarketConditionApplicationType];
 /** The condition types for the condition set. */
-declare enum MarketConditionType {
-  /** The condition checks the company location that the visitor is purchasing for. */
-  CompanyLocation = 'COMPANY_LOCATION',
-  /** The condition checks the location that the visitor is shopping from. */
-  Location = 'LOCATION',
-  /** The condition checks the visitor's region. */
-  Region = 'REGION'
-}
+declare const MarketConditionType: {
+  /** The condition checks the company location that the visitor is purchasing for. */readonly CompanyLocation: "COMPANY_LOCATION"; /** The condition checks the location that the visitor is shopping from. */
+  readonly Location: "LOCATION"; /** The condition checks the visitor's region. */
+  readonly Region: "REGION";
+};
+type MarketConditionType = typeof MarketConditionType[keyof typeof MarketConditionType];
 /** The conditions that determine whether a visitor is in a market. */
 type MarketConditions = {
   __typename?: 'MarketConditions'; /** The company location conditions that determine whether a visitor is in the market. */
@@ -8510,23 +7722,19 @@ type MarketRegionEdge = {
   node: MarketRegion;
 };
 /** The possible market statuses. */
-declare enum MarketStatus {
-  /** The market is active. */
-  Active = 'ACTIVE',
-  /** The market is in draft. */
-  Draft = 'DRAFT'
-}
+declare const MarketStatus: {
+  /** The market is active. */readonly Active: "ACTIVE"; /** The market is in draft. */
+  readonly Draft: "DRAFT";
+};
+type MarketStatus = typeof MarketStatus[keyof typeof MarketStatus];
 /** The market types. */
-declare enum MarketType {
-  /** The market applies to the visitor based on the company location. */
-  CompanyLocation = 'COMPANY_LOCATION',
-  /** The market applies to the visitor based on the location. */
-  Location = 'LOCATION',
-  /** The market does not apply to any visitor. */
-  None = 'NONE',
-  /** The market applies to the visitor based on region. */
-  Region = 'REGION'
-}
+declare const MarketType: {
+  /** The market applies to the visitor based on the company location. */readonly CompanyLocation: "COMPANY_LOCATION"; /** The market applies to the visitor based on the location. */
+  readonly Location: "LOCATION"; /** The market does not apply to any visitor. */
+  readonly None: "NONE"; /** The market applies to the visitor based on region. */
+  readonly Region: "REGION";
+};
+type MarketType = typeof MarketType[keyof typeof MarketType];
 /**
  * The market’s web presence, which defines its SEO strategy. This can be a different domain
  * (e.g. `example.ca`), subdomain (e.g. `ca.example.com`), or subfolders of the primary
@@ -8594,18 +7802,14 @@ type MarketWebPresenceRootUrl = {
   url: Scalars['URL']['output'];
 };
 /** The medium through which the marketing activity and event reached consumers. This is used for reporting aggregation. */
-declare enum MarketingChannel {
-  /** Displayed ads. */
-  Display = 'DISPLAY',
-  /** Email. */
-  Email = 'EMAIL',
-  /** Referral links. */
-  Referral = 'REFERRAL',
-  /** Paid search. */
-  Search = 'SEARCH',
-  /** Social media. */
-  Social = 'SOCIAL'
-}
+declare const MarketingChannel: {
+  /** Displayed ads. */readonly Display: "DISPLAY"; /** Email. */
+  readonly Email: "EMAIL"; /** Referral links. */
+  readonly Referral: "REFERRAL"; /** Paid search. */
+  readonly Search: "SEARCH"; /** Social media. */
+  readonly Social: "SOCIAL";
+};
+type MarketingChannel = typeof MarketingChannel[keyof typeof MarketingChannel];
 /** Represents actions that market a merchant's store or products. */
 type MarketingEvent = LegacyInteroperability & Node & {
   __typename?: 'MarketingEvent'; /** The app that the marketing event is attributed to. */
@@ -8645,34 +7849,22 @@ type MarketingEvent = LegacyInteroperability & Node & {
   utmSource?: Maybe<Scalars['String']['output']>;
 };
 /** The available types of tactics for a marketing activity. */
-declare enum MarketingTactic {
-  /** An abandoned cart recovery email. */
-  AbandonedCart = 'ABANDONED_CART',
-  /** An ad, such as a Facebook ad. */
-  Ad = 'AD',
-  /** An affiliate link. */
-  Affiliate = 'AFFILIATE',
-  /** A link. */
-  Link = 'LINK',
-  /** A loyalty program. */
-  Loyalty = 'LOYALTY',
-  /** A messaging app, such as Facebook Messenger. */
-  Message = 'MESSAGE',
-  /** A newsletter. */
-  Newsletter = 'NEWSLETTER',
-  /** A notification in the Shopify admin. */
-  Notification = 'NOTIFICATION',
-  /** A blog post. */
-  Post = 'POST',
-  /** A retargeting ad. */
-  Retargeting = 'RETARGETING',
-  /** Search engine optimization. */
-  Seo = 'SEO',
-  /** A popup on the online store. */
-  StorefrontApp = 'STOREFRONT_APP',
-  /** A transactional email. */
-  Transactional = 'TRANSACTIONAL'
-}
+declare const MarketingTactic: {
+  /** An abandoned cart recovery email. */readonly AbandonedCart: "ABANDONED_CART"; /** An ad, such as a Facebook ad. */
+  readonly Ad: "AD"; /** An affiliate link. */
+  readonly Affiliate: "AFFILIATE"; /** A link. */
+  readonly Link: "LINK"; /** A loyalty program. */
+  readonly Loyalty: "LOYALTY"; /** A messaging app, such as Facebook Messenger. */
+  readonly Message: "MESSAGE"; /** A newsletter. */
+  readonly Newsletter: "NEWSLETTER"; /** A notification in the Shopify admin. */
+  readonly Notification: "NOTIFICATION"; /** A blog post. */
+  readonly Post: "POST"; /** A retargeting ad. */
+  readonly Retargeting: "RETARGETING"; /** Search engine optimization. */
+  readonly Seo: "SEO"; /** A popup on the online store. */
+  readonly StorefrontApp: "STOREFRONT_APP"; /** A transactional email. */
+  readonly Transactional: "TRANSACTIONAL";
+};
+type MarketingTactic = typeof MarketingTactic[keyof typeof MarketingTactic];
 /** The entitlements for B2B markets. */
 type MarketsB2BEntitlement = {
   __typename?: 'MarketsB2BEntitlement'; /** The entitlements for B2B market catalogs. */
@@ -8727,16 +7919,13 @@ type MediaConnection = {
   pageInfo: PageInfo;
 };
 /** The possible content types for a media object. */
-declare enum MediaContentType {
-  /** An externally hosted video. */
-  ExternalVideo = 'EXTERNAL_VIDEO',
-  /** A Shopify-hosted image. */
-  Image = 'IMAGE',
-  /** A 3d model. */
-  Model_3D = 'MODEL_3D',
-  /** A Shopify-hosted video. */
-  Video = 'VIDEO'
-}
+declare const MediaContentType: {
+  /** An externally hosted video. */readonly ExternalVideo: "EXTERNAL_VIDEO"; /** A Shopify-hosted image. */
+  readonly Image: "IMAGE"; /** A 3d model. */
+  readonly Model_3D: "MODEL_3D"; /** A Shopify-hosted video. */
+  readonly Video: "VIDEO";
+};
+type MediaContentType = typeof MediaContentType[keyof typeof MediaContentType];
 /** An auto-generated type which holds one Media and a cursor during pagination. */
 type MediaEdge = {
   __typename?: 'MediaEdge'; /** The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql). */
@@ -8754,74 +7943,42 @@ type MediaError = {
   message: Scalars['String']['output'];
 };
 /** Error types for media. */
-declare enum MediaErrorCode {
-  /** Media could not be created because a file with the same name already exists. */
-  DuplicateFilenameError = 'DUPLICATE_FILENAME_ERROR',
-  /** Media could not be created because embed permissions are disabled for this video. */
-  ExternalVideoEmbedDisabled = 'EXTERNAL_VIDEO_EMBED_DISABLED',
-  /** Media could not be created because video is either not found or still transcoding. */
-  ExternalVideoEmbedNotFoundOrTranscoding = 'EXTERNAL_VIDEO_EMBED_NOT_FOUND_OR_TRANSCODING',
-  /** Media could not be created because the external video has an invalid aspect ratio. */
-  ExternalVideoInvalidAspectRatio = 'EXTERNAL_VIDEO_INVALID_ASPECT_RATIO',
-  /** Media could not be created because the external video could not be found. */
-  ExternalVideoNotFound = 'EXTERNAL_VIDEO_NOT_FOUND',
-  /** Media could not be created because the external video is not listed or is private. */
-  ExternalVideoUnlisted = 'EXTERNAL_VIDEO_UNLISTED',
-  /** Media could not be created because the cumulative file storage limit would be exceeded. */
-  FileStorageLimitExceeded = 'FILE_STORAGE_LIMIT_EXCEEDED',
-  /** File could not be processed because the source could not be downloaded. */
-  GenericFileDownloadFailure = 'GENERIC_FILE_DOWNLOAD_FAILURE',
-  /** File could not be created because the size is too large. */
-  GenericFileInvalidSize = 'GENERIC_FILE_INVALID_SIZE',
-  /** Media could not be processed because the image could not be downloaded. */
-  ImageDownloadFailure = 'IMAGE_DOWNLOAD_FAILURE',
-  /** Media could not be processed because the image could not be processed. */
-  ImageProcessingFailure = 'IMAGE_PROCESSING_FAILURE',
-  /** Media could not be created because the image has an invalid aspect ratio. */
-  InvalidImageAspectRatio = 'INVALID_IMAGE_ASPECT_RATIO',
-  /** Media could not be created because the image size is too large. */
-  InvalidImageFileSize = 'INVALID_IMAGE_FILE_SIZE',
-  /** Media could not be created because the image's resolution exceeds the max limit. */
-  InvalidImageResolution = 'INVALID_IMAGE_RESOLUTION',
-  /** Media could not be processed because the signed URL was invalid. */
-  InvalidSignedUrl = 'INVALID_SIGNED_URL',
-  /** Media timed out because it is currently being modified by another operation. */
-  MediaTimeoutError = 'MEDIA_TIMEOUT_ERROR',
-  /** Media could not be created because the model file failed processing. */
-  Model3DGlbOutputCreationError = 'MODEL3D_GLB_OUTPUT_CREATION_ERROR',
-  /** Media could not be created because the model can't be converted to USDZ format. */
-  Model3DGlbToUsdzConversionError = 'MODEL3D_GLB_TO_USDZ_CONVERSION_ERROR',
-  /** Media could not be created because the model file failed processing. */
-  Model3DProcessingFailure = 'MODEL3D_PROCESSING_FAILURE',
-  /** Media could not be created because the model's thumbnail generation failed. */
-  Model3DThumbnailGenerationError = 'MODEL3D_THUMBNAIL_GENERATION_ERROR',
-  /** There was an issue while trying to generate a new thumbnail. */
-  Model3DThumbnailRegenerationError = 'MODEL3D_THUMBNAIL_REGENERATION_ERROR',
-  /** Model failed validation. */
-  Model3DValidationError = 'MODEL3D_VALIDATION_ERROR',
-  /** Media error has occured for unknown reason. */
-  Unknown = 'UNKNOWN',
-  /** Media could not be created because the image is an unsupported file type. */
-  UnsupportedImageFileType = 'UNSUPPORTED_IMAGE_FILE_TYPE',
-  /** Media could not be created because it has an invalid file type. */
-  VideoInvalidFiletypeError = 'VIDEO_INVALID_FILETYPE_ERROR',
-  /** Media could not be created because it does not meet the maximum duration requirement. */
-  VideoMaxDurationError = 'VIDEO_MAX_DURATION_ERROR',
-  /** Media could not be created because it does not meet the maximum height requirement. */
-  VideoMaxHeightError = 'VIDEO_MAX_HEIGHT_ERROR',
-  /** Media could not be created because it does not meet the maximum width requirement. */
-  VideoMaxWidthError = 'VIDEO_MAX_WIDTH_ERROR',
-  /** Media could not be created because the metadata could not be read. */
-  VideoMetadataReadError = 'VIDEO_METADATA_READ_ERROR',
-  /** Media could not be created because it does not meet the minimum duration requirement. */
-  VideoMinDurationError = 'VIDEO_MIN_DURATION_ERROR',
-  /** Media could not be created because it does not meet the minimum height requirement. */
-  VideoMinHeightError = 'VIDEO_MIN_HEIGHT_ERROR',
-  /** Media could not be created because it does not meet the minimum width requirement. */
-  VideoMinWidthError = 'VIDEO_MIN_WIDTH_ERROR',
-  /** Video failed validation. */
-  VideoValidationError = 'VIDEO_VALIDATION_ERROR'
-}
+declare const MediaErrorCode: {
+  /** Media could not be created because a file with the same name already exists. */readonly DuplicateFilenameError: "DUPLICATE_FILENAME_ERROR"; /** Media could not be created because embed permissions are disabled for this video. */
+  readonly ExternalVideoEmbedDisabled: "EXTERNAL_VIDEO_EMBED_DISABLED"; /** Media could not be created because video is either not found or still transcoding. */
+  readonly ExternalVideoEmbedNotFoundOrTranscoding: "EXTERNAL_VIDEO_EMBED_NOT_FOUND_OR_TRANSCODING"; /** Media could not be created because the external video has an invalid aspect ratio. */
+  readonly ExternalVideoInvalidAspectRatio: "EXTERNAL_VIDEO_INVALID_ASPECT_RATIO"; /** Media could not be created because the external video could not be found. */
+  readonly ExternalVideoNotFound: "EXTERNAL_VIDEO_NOT_FOUND"; /** Media could not be created because the external video is not listed or is private. */
+  readonly ExternalVideoUnlisted: "EXTERNAL_VIDEO_UNLISTED"; /** Media could not be created because the cumulative file storage limit would be exceeded. */
+  readonly FileStorageLimitExceeded: "FILE_STORAGE_LIMIT_EXCEEDED"; /** File could not be processed because the source could not be downloaded. */
+  readonly GenericFileDownloadFailure: "GENERIC_FILE_DOWNLOAD_FAILURE"; /** File could not be created because the size is too large. */
+  readonly GenericFileInvalidSize: "GENERIC_FILE_INVALID_SIZE"; /** Media could not be processed because the image could not be downloaded. */
+  readonly ImageDownloadFailure: "IMAGE_DOWNLOAD_FAILURE"; /** Media could not be processed because the image could not be processed. */
+  readonly ImageProcessingFailure: "IMAGE_PROCESSING_FAILURE"; /** Media could not be created because the image has an invalid aspect ratio. */
+  readonly InvalidImageAspectRatio: "INVALID_IMAGE_ASPECT_RATIO"; /** Media could not be created because the image size is too large. */
+  readonly InvalidImageFileSize: "INVALID_IMAGE_FILE_SIZE"; /** Media could not be created because the image's resolution exceeds the max limit. */
+  readonly InvalidImageResolution: "INVALID_IMAGE_RESOLUTION"; /** Media could not be processed because the signed URL was invalid. */
+  readonly InvalidSignedUrl: "INVALID_SIGNED_URL"; /** Media timed out because it is currently being modified by another operation. */
+  readonly MediaTimeoutError: "MEDIA_TIMEOUT_ERROR"; /** Media could not be created because the model file failed processing. */
+  readonly Model3DGlbOutputCreationError: "MODEL3D_GLB_OUTPUT_CREATION_ERROR"; /** Media could not be created because the model can't be converted to USDZ format. */
+  readonly Model3DGlbToUsdzConversionError: "MODEL3D_GLB_TO_USDZ_CONVERSION_ERROR"; /** Media could not be created because the model file failed processing. */
+  readonly Model3DProcessingFailure: "MODEL3D_PROCESSING_FAILURE"; /** Media could not be created because the model's thumbnail generation failed. */
+  readonly Model3DThumbnailGenerationError: "MODEL3D_THUMBNAIL_GENERATION_ERROR"; /** There was an issue while trying to generate a new thumbnail. */
+  readonly Model3DThumbnailRegenerationError: "MODEL3D_THUMBNAIL_REGENERATION_ERROR"; /** Model failed validation. */
+  readonly Model3DValidationError: "MODEL3D_VALIDATION_ERROR"; /** Media error has occured for unknown reason. */
+  readonly Unknown: "UNKNOWN"; /** Media could not be created because the image is an unsupported file type. */
+  readonly UnsupportedImageFileType: "UNSUPPORTED_IMAGE_FILE_TYPE"; /** Media could not be created because it has an invalid file type. */
+  readonly VideoInvalidFiletypeError: "VIDEO_INVALID_FILETYPE_ERROR"; /** Media could not be created because it does not meet the maximum duration requirement. */
+  readonly VideoMaxDurationError: "VIDEO_MAX_DURATION_ERROR"; /** Media could not be created because it does not meet the maximum height requirement. */
+  readonly VideoMaxHeightError: "VIDEO_MAX_HEIGHT_ERROR"; /** Media could not be created because it does not meet the maximum width requirement. */
+  readonly VideoMaxWidthError: "VIDEO_MAX_WIDTH_ERROR"; /** Media could not be created because the metadata could not be read. */
+  readonly VideoMetadataReadError: "VIDEO_METADATA_READ_ERROR"; /** Media could not be created because it does not meet the minimum duration requirement. */
+  readonly VideoMinDurationError: "VIDEO_MIN_DURATION_ERROR"; /** Media could not be created because it does not meet the minimum height requirement. */
+  readonly VideoMinHeightError: "VIDEO_MIN_HEIGHT_ERROR"; /** Media could not be created because it does not meet the minimum width requirement. */
+  readonly VideoMinWidthError: "VIDEO_MIN_WIDTH_ERROR"; /** Video failed validation. */
+  readonly VideoValidationError: "VIDEO_VALIDATION_ERROR";
+};
+type MediaErrorCode = typeof MediaErrorCode[keyof typeof MediaErrorCode];
 /**
  * The `MediaImage` object represents an image hosted on Shopify's
  * [content delivery network (CDN)](https://shopify.dev/docs/storefronts/themes/best-practices/performance/platform#shopify-cdn).
@@ -8892,27 +8049,21 @@ type MediaPreviewImage = {
   status: MediaPreviewImageStatus;
 };
 /** The possible statuses for a media preview image. */
-declare enum MediaPreviewImageStatus {
-  /** Preview image processing has failed. */
-  Failed = 'FAILED',
-  /** Preview image is being processed. */
-  Processing = 'PROCESSING',
-  /** Preview image is ready to be displayed. */
-  Ready = 'READY',
-  /** Preview image is uploaded but not yet processed. */
-  Uploaded = 'UPLOADED'
-}
+declare const MediaPreviewImageStatus: {
+  /** Preview image processing has failed. */readonly Failed: "FAILED"; /** Preview image is being processed. */
+  readonly Processing: "PROCESSING"; /** Preview image is ready to be displayed. */
+  readonly Ready: "READY"; /** Preview image is uploaded but not yet processed. */
+  readonly Uploaded: "UPLOADED";
+};
+type MediaPreviewImageStatus = typeof MediaPreviewImageStatus[keyof typeof MediaPreviewImageStatus];
 /** The possible statuses for a media object. */
-declare enum MediaStatus {
-  /** Media processing has failed. */
-  Failed = 'FAILED',
-  /** Media is being processed. */
-  Processing = 'PROCESSING',
-  /** Media is ready to be displayed. */
-  Ready = 'READY',
-  /** Media has been uploaded but not yet processed. */
-  Uploaded = 'UPLOADED'
-}
+declare const MediaStatus: {
+  /** Media processing has failed. */readonly Failed: "FAILED"; /** Media is being processed. */
+  readonly Processing: "PROCESSING"; /** Media is ready to be displayed. */
+  readonly Ready: "READY"; /** Media has been uploaded but not yet processed. */
+  readonly Uploaded: "UPLOADED";
+};
+type MediaStatus = typeof MediaStatus[keyof typeof MediaStatus];
 /**
  * Represents a media warning. This occurs when there is a non-blocking concern regarding your media.
  * Consider reviewing your media to ensure it is correct and its parameters are as expected.
@@ -8923,32 +8074,31 @@ type MediaWarning = {
   message?: Maybe<Scalars['String']['output']>;
 };
 /** Warning types for media. */
-declare enum MediaWarningCode {
-  /** 3D model physical size might be invalid. The dimensions of your model are very large. Consider reviewing your model to ensure they are correct. */
-  ModelLargePhysicalSize = 'MODEL_LARGE_PHYSICAL_SIZE',
-  /** The thumbnail failed to regenerate.Try applying the changes again to regenerate the thumbnail. */
-  ModelPreviewImageFail = 'MODEL_PREVIEW_IMAGE_FAIL',
-  /** 3D model physical size might be invalid. The dimensions of your model are very small. Consider reviewing your model to ensure they are correct. */
-  ModelSmallPhysicalSize = 'MODEL_SMALL_PHYSICAL_SIZE'
-}
+declare const MediaWarningCode: {
+  /** 3D model physical size might be invalid. The dimensions of your model are very large. Consider reviewing your model to ensure they are correct. */readonly ModelLargePhysicalSize: "MODEL_LARGE_PHYSICAL_SIZE"; /** The thumbnail failed to regenerate.Try applying the changes again to regenerate the thumbnail. */
+  readonly ModelPreviewImageFail: "MODEL_PREVIEW_IMAGE_FAIL"; /** 3D model physical size might be invalid. The dimensions of your model are very small. Consider reviewing your model to ensure they are correct. */
+  readonly ModelSmallPhysicalSize: "MODEL_SMALL_PHYSICAL_SIZE";
+};
+type MediaWarningCode = typeof MediaWarningCode[keyof typeof MediaWarningCode];
 /**
  * The [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
  * that's used to control how discounts can be combined.
  */
-declare enum MerchandiseDiscountClass {
+declare const MerchandiseDiscountClass: {
   /**
    * The discount is combined with an
    * [order discount](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
    * class.
    */
-  Order = 'ORDER',
+  readonly Order: "ORDER";
   /**
    * The discount is combined with a
    * [product discount](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
    * class.
    */
-  Product = 'PRODUCT'
-}
+  readonly Product: "PRODUCT";
+};
+type MerchandiseDiscountClass = typeof MerchandiseDiscountClass[keyof typeof MerchandiseDiscountClass];
 /** Merchant approval for accelerated onboarding to channel integration apps. */
 type MerchantApprovalSignals = {
   __typename?: 'MerchantApprovalSignals'; /** Whether the shop's Shopify Payments account identity is verified. Returns `false` if the identity is unverified or if the shop doesn't have a Shopify Payments account. */
@@ -8998,18 +8148,14 @@ type MetafieldAccess = {
   storefront?: Maybe<MetafieldStorefrontAccess>;
 };
 /** Metafield access permissions for the Admin API. */
-declare enum MetafieldAdminAccess {
-  /** The merchant has read-only access. No other apps have access. */
-  MerchantRead = 'MERCHANT_READ',
-  /** The merchant has read and write access. No other apps have access. */
-  MerchantReadWrite = 'MERCHANT_READ_WRITE',
-  /** The merchant and other apps have no access. */
-  Private = 'PRIVATE',
-  /** The merchant and other apps have read-only access. */
-  PublicRead = 'PUBLIC_READ',
-  /** The merchant and other apps have read and write access. */
-  PublicReadWrite = 'PUBLIC_READ_WRITE'
-}
+declare const MetafieldAdminAccess: {
+  /** The merchant has read-only access. No other apps have access. */readonly MerchantRead: "MERCHANT_READ"; /** The merchant has read and write access. No other apps have access. */
+  readonly MerchantReadWrite: "MERCHANT_READ_WRITE"; /** The merchant and other apps have no access. */
+  readonly Private: "PRIVATE"; /** The merchant and other apps have read-only access. */
+  readonly PublicRead: "PUBLIC_READ"; /** The merchant and other apps have read and write access. */
+  readonly PublicReadWrite: "PUBLIC_READ_WRITE";
+};
+type MetafieldAdminAccess = typeof MetafieldAdminAccess[keyof typeof MetafieldAdminAccess];
 /** Provides the capabilities of a metafield definition. */
 type MetafieldCapabilities = {
   __typename?: 'MetafieldCapabilities'; /** Indicate whether a metafield definition is configured for filtering. */
@@ -9044,14 +8190,12 @@ type MetafieldConnection = {
   pageInfo: PageInfo;
 };
 /** Metafield access permissions for the Customer Account API. */
-declare enum MetafieldCustomerAccountAccess {
-  /** No access. */
-  None = 'NONE',
-  /** Read-only access. */
-  Read = 'READ',
-  /** Read and write access. */
-  ReadWrite = 'READ_WRITE'
-}
+declare const MetafieldCustomerAccountAccess: {
+  /** No access. */readonly None: "NONE"; /** Read-only access. */
+  readonly Read: "READ"; /** Read and write access. */
+  readonly ReadWrite: "READ_WRITE";
+};
+type MetafieldCustomerAccountAccess = typeof MetafieldCustomerAccountAccess[keyof typeof MetafieldCustomerAccountAccess];
 /**
  * Defines the structure, validation rules, and permissions for [`Metafield`](https://shopify.dev/docs/api/admin-graphql/current/objects/Metafield) objects attached to a specific owner type. Each definition establishes a schema that metafields must follow, including the data type and validation constraints.
  *
@@ -9092,16 +8236,13 @@ type MetafieldDefinition = Node & {
   validations: Array<MetafieldDefinitionValidation>;
 };
 /** Possible filter statuses associated with a metafield definition for use in admin filtering. */
-declare enum MetafieldDefinitionAdminFilterStatus {
-  /** The metafield definition has failed to be enabled for admin filtering. */
-  Failed = 'FAILED',
-  /** The metafield definition allows admin filtering by matching metafield values. */
-  Filterable = 'FILTERABLE',
-  /** The metafield definition's metafields are currently being processed for admin filtering. */
-  InProgress = 'IN_PROGRESS',
-  /** The metafield definition cannot be used for admin filtering. */
-  NotFilterable = 'NOT_FILTERABLE'
-}
+declare const MetafieldDefinitionAdminFilterStatus: {
+  /** The metafield definition has failed to be enabled for admin filtering. */readonly Failed: "FAILED"; /** The metafield definition allows admin filtering by matching metafield values. */
+  readonly Filterable: "FILTERABLE"; /** The metafield definition's metafields are currently being processed for admin filtering. */
+  readonly InProgress: "IN_PROGRESS"; /** The metafield definition cannot be used for admin filtering. */
+  readonly NotFilterable: "NOT_FILTERABLE";
+};
+type MetafieldDefinitionAdminFilterStatus = typeof MetafieldDefinitionAdminFilterStatus[keyof typeof MetafieldDefinitionAdminFilterStatus];
 /** An auto-generated type for paginating through multiple MetafieldDefinitions. */
 type MetafieldDefinitionConnection = {
   __typename?: 'MetafieldDefinitionConnection'; /** The connection between the node and its parent. Each edge contains a minimum of the edge's cursor and the node. */
@@ -9185,14 +8326,12 @@ type MetafieldDefinitionValidation = {
   value?: Maybe<Scalars['String']['output']>;
 };
 /** Possible metafield definition validation statuses. */
-declare enum MetafieldDefinitionValidationStatus {
-  /** All of this definition's metafields are valid. */
-  AllValid = 'ALL_VALID',
-  /** Asynchronous validation of this definition's metafields is in progress. */
-  InProgress = 'IN_PROGRESS',
-  /** Some of this definition's metafields are invalid. */
-  SomeInvalid = 'SOME_INVALID'
-}
+declare const MetafieldDefinitionValidationStatus: {
+  /** All of this definition's metafields are valid. */readonly AllValid: "ALL_VALID"; /** Asynchronous validation of this definition's metafields is in progress. */
+  readonly InProgress: "IN_PROGRESS"; /** Some of this definition's metafields are invalid. */
+  readonly SomeInvalid: "SOME_INVALID";
+};
+type MetafieldDefinitionValidationStatus = typeof MetafieldDefinitionValidationStatus[keyof typeof MetafieldDefinitionValidationStatus];
 /** An auto-generated type which holds one Metafield and a cursor during pagination. */
 type MetafieldEdge = {
   __typename?: 'MetafieldEdge'; /** The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql). */
@@ -9200,61 +8339,34 @@ type MetafieldEdge = {
   node: Metafield;
 };
 /** Possible types of a metafield's owner resource. */
-declare enum MetafieldOwnerType {
-  /** The Api Permission metafield owner type. */
-  ApiPermission = 'API_PERMISSION',
-  /** The Article metafield owner type. */
-  Article = 'ARTICLE',
-  /** The Blog metafield owner type. */
-  Blog = 'BLOG',
-  /** The Cart Transform metafield owner type. */
-  Carttransform = 'CARTTRANSFORM',
-  /** The Collection metafield owner type. */
-  Collection = 'COLLECTION',
-  /** The Company metafield owner type. */
-  Company = 'COMPANY',
-  /** The Company Location metafield owner type. */
-  CompanyLocation = 'COMPANY_LOCATION',
-  /** The Customer metafield owner type. */
-  Customer = 'CUSTOMER',
-  /** The Delivery Customization metafield owner type. */
-  DeliveryCustomization = 'DELIVERY_CUSTOMIZATION',
-  /** The Discount metafield owner type. */
-  Discount = 'DISCOUNT',
-  /** The draft order metafield owner type. */
-  Draftorder = 'DRAFTORDER',
-  /** The Fulfillment Constraint Rule metafield owner type. */
-  FulfillmentConstraintRule = 'FULFILLMENT_CONSTRAINT_RULE',
-  /** The GiftCardTransaction metafield owner type. */
-  GiftCardTransaction = 'GIFT_CARD_TRANSACTION',
-  /** The Location metafield owner type. */
-  Location = 'LOCATION',
-  /** The Market metafield owner type. */
-  Market = 'MARKET',
-  /**
-   * The Media Image metafield owner type.
-   * @deprecated `MEDIA_IMAGE` is deprecated.
-   */
-  MediaImage = 'MEDIA_IMAGE',
-  /** The Order metafield owner type. */
-  Order = 'ORDER',
-  /** The Order Routing Location Rule metafield owner type. */
-  OrderRoutingLocationRule = 'ORDER_ROUTING_LOCATION_RULE',
-  /** The Page metafield owner type. */
-  Page = 'PAGE',
-  /** The Payment Customization metafield owner type. */
-  PaymentCustomization = 'PAYMENT_CUSTOMIZATION',
-  /** The Product metafield owner type. */
-  Product = 'PRODUCT',
-  /** The Product Variant metafield owner type. */
-  Productvariant = 'PRODUCTVARIANT',
-  /** The Selling Plan metafield owner type. */
-  SellingPlan = 'SELLING_PLAN',
-  /** The Shop metafield owner type. */
-  Shop = 'SHOP',
-  /** The Validation metafield owner type. */
-  Validation = 'VALIDATION'
-}
+declare const MetafieldOwnerType: {
+  /** The Api Permission metafield owner type. */readonly ApiPermission: "API_PERMISSION"; /** The Article metafield owner type. */
+  readonly Article: "ARTICLE"; /** The Blog metafield owner type. */
+  readonly Blog: "BLOG"; /** The Cart Transform metafield owner type. */
+  readonly Carttransform: "CARTTRANSFORM"; /** The Collection metafield owner type. */
+  readonly Collection: "COLLECTION"; /** The Company metafield owner type. */
+  readonly Company: "COMPANY"; /** The Company Location metafield owner type. */
+  readonly CompanyLocation: "COMPANY_LOCATION"; /** The Customer metafield owner type. */
+  readonly Customer: "CUSTOMER"; /** The Delivery Customization metafield owner type. */
+  readonly DeliveryCustomization: "DELIVERY_CUSTOMIZATION"; /** The Discount metafield owner type. */
+  readonly Discount: "DISCOUNT"; /** The draft order metafield owner type. */
+  readonly Draftorder: "DRAFTORDER"; /** The Fulfillment Constraint Rule metafield owner type. */
+  readonly FulfillmentConstraintRule: "FULFILLMENT_CONSTRAINT_RULE"; /** The GiftCardTransaction metafield owner type. */
+  readonly GiftCardTransaction: "GIFT_CARD_TRANSACTION"; /** The Location metafield owner type. */
+  readonly Location: "LOCATION"; /** The Market metafield owner type. */
+  readonly Market: "MARKET"; /** The Media Image metafield owner type. */
+  readonly MediaImage: "MEDIA_IMAGE"; /** The Order metafield owner type. */
+  readonly Order: "ORDER"; /** The Order Routing Location Rule metafield owner type. */
+  readonly OrderRoutingLocationRule: "ORDER_ROUTING_LOCATION_RULE"; /** The Page metafield owner type. */
+  readonly Page: "PAGE"; /** The Payment Customization metafield owner type. */
+  readonly PaymentCustomization: "PAYMENT_CUSTOMIZATION"; /** The Product metafield owner type. */
+  readonly Product: "PRODUCT"; /** The Product Variant metafield owner type. */
+  readonly Productvariant: "PRODUCTVARIANT"; /** The Selling Plan metafield owner type. */
+  readonly SellingPlan: "SELLING_PLAN"; /** The Shop metafield owner type. */
+  readonly Shop: "SHOP"; /** The Validation metafield owner type. */
+  readonly Validation: "VALIDATION";
+};
+type MetafieldOwnerType = typeof MetafieldOwnerType[keyof typeof MetafieldOwnerType];
 /** The resource referenced by the metafield value. */
 type MetafieldReference = Article | Collection | Company | Customer | GenericFile | MediaImage | Metaobject | Model3d | Order | Page | Product | ProductVariant | TaxonomyValue | Video;
 /** An auto-generated type for paginating through multiple MetafieldReferences. */
@@ -9303,26 +8415,22 @@ type MetafieldRelationEdge = {
   node: MetafieldRelation;
 };
 /** Metafield access permissions for the Storefront API. */
-declare enum MetafieldStorefrontAccess {
-  /** No access. */
-  None = 'NONE',
-  /** Read-only access. */
-  PublicRead = 'PUBLIC_READ'
-}
+declare const MetafieldStorefrontAccess: {
+  /** No access. */readonly None: "NONE"; /** Read-only access. */
+  readonly PublicRead: "PUBLIC_READ";
+};
+type MetafieldStorefrontAccess = typeof MetafieldStorefrontAccess[keyof typeof MetafieldStorefrontAccess];
 /**
  * Legacy type information for the stored value.
  * Replaced by `type`.
  */
-declare enum MetafieldValueType {
-  /** A `true` or `false` value. */
-  Boolean = 'BOOLEAN',
-  /** A whole number. */
-  Integer = 'INTEGER',
-  /** A JSON string. */
-  JsonString = 'JSON_STRING',
-  /** A text field. */
-  String = 'STRING'
-}
+declare const MetafieldValueType: {
+  /** A `true` or `false` value. */readonly Boolean: "BOOLEAN"; /** A whole number. */
+  readonly Integer: "INTEGER"; /** A JSON string. */
+  readonly JsonString: "JSON_STRING"; /** A text field. */
+  readonly String: "STRING";
+};
+type MetafieldValueType = typeof MetafieldValueType[keyof typeof MetafieldValueType];
 /**
  * An instance of custom structured data defined by a [`MetaobjectDefinition`](https://shopify.dev/docs/api/admin-graphql/latest/objects/MetaobjectDefinition). [Metaobjects](https://shopify.dev/docs/apps/build/custom-data#what-are-metaobjects) store reusable data that extends beyond Shopify's standard resources, such as product highlights, size charts, or custom content sections.
  *
@@ -9360,18 +8468,14 @@ type MetaobjectAccess = {
  * Metaobject access permissions for the Admin API. When the metaobject is app-owned, the owning app always has
  * full access.
  */
-declare enum MetaobjectAdminAccess {
-  /** The merchant has read-only access. No other apps have access. */
-  MerchantRead = 'MERCHANT_READ',
-  /** The merchant has read and write access. No other apps have access. */
-  MerchantReadWrite = 'MERCHANT_READ_WRITE',
-  /** The merchant and other apps have no access. */
-  Private = 'PRIVATE',
-  /** The merchant and other apps have read-only access. */
-  PublicRead = 'PUBLIC_READ',
-  /** The merchant and other apps have read and write access. */
-  PublicReadWrite = 'PUBLIC_READ_WRITE'
-}
+declare const MetaobjectAdminAccess: {
+  /** The merchant has read-only access. No other apps have access. */readonly MerchantRead: "MERCHANT_READ"; /** The merchant has read and write access. No other apps have access. */
+  readonly MerchantReadWrite: "MERCHANT_READ_WRITE"; /** The merchant and other apps have no access. */
+  readonly Private: "PRIVATE"; /** The merchant and other apps have read-only access. */
+  readonly PublicRead: "PUBLIC_READ"; /** The merchant and other apps have read and write access. */
+  readonly PublicReadWrite: "PUBLIC_READ_WRITE";
+};
+type MetaobjectAdminAccess = typeof MetaobjectAdminAccess[keyof typeof MetaobjectAdminAccess];
 /** Provides the capabilities of a metaobject definition. */
 type MetaobjectCapabilities = {
   __typename?: 'MetaobjectCapabilities'; /** Indicates whether a metaobject definition can be displayed as a page on the Online Store. */
@@ -9431,16 +8535,13 @@ type MetaobjectCapabilityDefinitionDataRenderable = {
   metaTitleKey?: Maybe<Scalars['String']['output']>;
 };
 /** Metaobject Capabilities types which can be enabled. */
-declare enum MetaobjectCapabilityType {
-  /** Allows for a Metaobject to be rendered as an Online Store page. */
-  OnlineStore = 'ONLINE_STORE',
-  /** Allows for a Metaobject to be conditionally publishable. */
-  Publishable = 'PUBLISHABLE',
-  /** Allows for a Metaobject to have attributes of a renderable page such as SEO. */
-  Renderable = 'RENDERABLE',
-  /** Allows for a Metaobject to be translated using the translation api. */
-  Translatable = 'TRANSLATABLE'
-}
+declare const MetaobjectCapabilityType: {
+  /** Allows for a Metaobject to be rendered as an Online Store page. */readonly OnlineStore: "ONLINE_STORE"; /** Allows for a Metaobject to be conditionally publishable. */
+  readonly Publishable: "PUBLISHABLE"; /** Allows for a Metaobject to have attributes of a renderable page such as SEO. */
+  readonly Renderable: "RENDERABLE"; /** Allows for a Metaobject to be translated using the translation api. */
+  readonly Translatable: "TRANSLATABLE";
+};
+type MetaobjectCapabilityType = typeof MetaobjectCapabilityType[keyof typeof MetaobjectCapabilityType];
 /** An auto-generated type for paginating through multiple Metaobjects. */
 type MetaobjectConnection = {
   __typename?: 'MetaobjectConnection'; /** The connection between the node and its parent. Each edge contains a minimum of the edge's cursor and the node. */
@@ -9518,19 +8619,17 @@ type MetaobjectFieldDefinitionCapabilities = {
   adminFilterable: MetaobjectFieldCapabilityAdminFilterable;
 };
 /** Defines visibility status for metaobjects. */
-declare enum MetaobjectStatus {
-  /** The metaobjects is active for public use. */
-  Active = 'ACTIVE',
-  /** The metaobjects is an internal record. */
-  Draft = 'DRAFT'
-}
+declare const MetaobjectStatus: {
+  /** The metaobjects is active for public use. */readonly Active: "ACTIVE"; /** The metaobjects is an internal record. */
+  readonly Draft: "DRAFT";
+};
+type MetaobjectStatus = typeof MetaobjectStatus[keyof typeof MetaobjectStatus];
 /** Metaobject access permissions for the Storefront API. */
-declare enum MetaobjectStorefrontAccess {
-  /** No access. */
-  None = 'NONE',
-  /** Read-only access. */
-  PublicRead = 'PUBLIC_READ'
-}
+declare const MetaobjectStorefrontAccess: {
+  /** No access. */readonly None: "NONE"; /** Read-only access. */
+  readonly PublicRead: "PUBLIC_READ";
+};
+type MetaobjectStorefrontAccess = typeof MetaobjectStorefrontAccess[keyof typeof MetaobjectStorefrontAccess];
 /** Provides attributes for visual representation. */
 type MetaobjectThumbnail = {
   __typename?: 'MetaobjectThumbnail'; /** The file to be used for visual representation of this metaobject. */
@@ -10208,18 +9307,14 @@ type Order = CommentEventSubject & HasEvents & HasLocalizationExtensions & HasLo
  * The possible order action types for a
  * [sales agreement](https://shopify.dev/api/admin-graphql/latest/interfaces/salesagreement).
  */
-declare enum OrderActionType {
-  /** An order with a purchase or charge. */
-  Order = 'ORDER',
-  /** An edit to the order. */
-  OrderEdit = 'ORDER_EDIT',
-  /** A refund on the order. */
-  Refund = 'REFUND',
-  /** A return on the order. */
-  Return = 'RETURN',
-  /** An unknown agreement action. Represents new actions that may be added in future versions. */
-  Unknown = 'UNKNOWN'
-}
+declare const OrderActionType: {
+  /** An order with a purchase or charge. */readonly Order: "ORDER"; /** An edit to the order. */
+  readonly OrderEdit: "ORDER_EDIT"; /** A refund on the order. */
+  readonly Refund: "REFUND"; /** A return on the order. */
+  readonly Return: "RETURN"; /** An unknown agreement action. Represents new actions that may be added in future versions. */
+  readonly Unknown: "UNKNOWN";
+};
+type OrderActionType = typeof OrderActionType[keyof typeof OrderActionType];
 /** An order adjustment accounts for the difference between a calculated and actual refund amount. */
 type OrderAdjustment = Node & {
   __typename?: 'OrderAdjustment'; /** The amount of the order adjustment in shop and presentment currencies. */
@@ -10236,20 +9331,15 @@ type OrderAdjustmentConnection = {
   pageInfo: PageInfo;
 };
 /** Discrepancy reasons for order adjustments. */
-declare enum OrderAdjustmentDiscrepancyReason {
-  /** The discrepancy reason is customer. */
-  Customer = 'CUSTOMER',
-  /** The discrepancy reason is damage. */
-  Damage = 'DAMAGE',
-  /** The discrepancy reason is balance adjustment. */
-  FullReturnBalancingAdjustment = 'FULL_RETURN_BALANCING_ADJUSTMENT',
-  /** The discrepancy reason is pending refund. */
-  PendingRefundDiscrepancy = 'PENDING_REFUND_DISCREPANCY',
-  /** The discrepancy reason is not one of the predefined reasons. */
-  RefundDiscrepancy = 'REFUND_DISCREPANCY',
-  /** The discrepancy reason is restocking. */
-  Restock = 'RESTOCK'
-}
+declare const OrderAdjustmentDiscrepancyReason: {
+  /** The discrepancy reason is customer. */readonly Customer: "CUSTOMER"; /** The discrepancy reason is damage. */
+  readonly Damage: "DAMAGE"; /** The discrepancy reason is balance adjustment. */
+  readonly FullReturnBalancingAdjustment: "FULL_RETURN_BALANCING_ADJUSTMENT"; /** The discrepancy reason is pending refund. */
+  readonly PendingRefundDiscrepancy: "PENDING_REFUND_DISCREPANCY"; /** The discrepancy reason is not one of the predefined reasons. */
+  readonly RefundDiscrepancy: "REFUND_DISCREPANCY"; /** The discrepancy reason is restocking. */
+  readonly Restock: "RESTOCK";
+};
+type OrderAdjustmentDiscrepancyReason = typeof OrderAdjustmentDiscrepancyReason[keyof typeof OrderAdjustmentDiscrepancyReason];
 /** An auto-generated type which holds one OrderAdjustment and a cursor during pagination. */
 type OrderAdjustmentEdge = {
   __typename?: 'OrderAdjustmentEdge'; /** The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql). */
@@ -10268,20 +9358,15 @@ type OrderApp = {
   name: Scalars['String']['output'];
 };
 /** Represents the reason for the order's cancellation. */
-declare enum OrderCancelReason {
-  /** The customer wanted to cancel the order. */
-  Customer = 'CUSTOMER',
-  /** Payment was declined. */
-  Declined = 'DECLINED',
-  /** The order was fraudulent. */
-  Fraud = 'FRAUD',
-  /** There was insufficient inventory. */
-  Inventory = 'INVENTORY',
-  /** The order was canceled for an unlisted reason. */
-  Other = 'OTHER',
-  /** Staff made an error. */
-  Staff = 'STAFF'
-}
+declare const OrderCancelReason: {
+  /** The customer wanted to cancel the order. */readonly Customer: "CUSTOMER"; /** Payment was declined. */
+  readonly Declined: "DECLINED"; /** The order was fraudulent. */
+  readonly Fraud: "FRAUD"; /** There was insufficient inventory. */
+  readonly Inventory: "INVENTORY"; /** The order was canceled for an unlisted reason. */
+  readonly Other: "OTHER"; /** Staff made an error. */
+  readonly Staff: "STAFF";
+};
+type OrderCancelReason = typeof OrderCancelReason[keyof typeof OrderCancelReason];
 /** Details about the order cancellation. */
 type OrderCancellation = {
   __typename?: 'OrderCancellation'; /** Staff provided note for the order cancellation. */
@@ -10295,50 +9380,35 @@ type OrderConnection = {
   pageInfo: PageInfo;
 };
 /** Represents the order's current financial status. */
-declare enum OrderDisplayFinancialStatus {
-  /** Displayed as **Authorized**. The payment provider has validated the customer's payment information. This status appears only for manual payment capture and indicates payments should be captured before the authorization period expires. */
-  Authorized = 'AUTHORIZED',
-  /** Displayed as **Expired**. Payment wasn't captured before the payment provider's deadline on an authorized order. Some payment providers use this status to indicate failed payment processing. */
-  Expired = 'EXPIRED',
-  /** Displayed as **Paid**. Payment was automatically or manually captured, or the order was marked as paid. */
-  Paid = 'PAID',
-  /** Displayed as **Partially paid**. A payment was manually captured for the order with an amount less than the full order value. */
-  PartiallyPaid = 'PARTIALLY_PAID',
-  /** Displayed as **Partially refunded**. The amount refunded to a customer is less than the full amount paid for an order. */
-  PartiallyRefunded = 'PARTIALLY_REFUNDED',
-  /** Displayed as **Pending**. Orders have this status when the payment provider needs time to complete the payment, or when manual payment methods are being used. */
-  Pending = 'PENDING',
-  /** Displayed as **Refunded**. The full amount paid for an order was refunded to the customer. */
-  Refunded = 'REFUNDED',
+declare const OrderDisplayFinancialStatus: {
+  /** Displayed as **Authorized**. The payment provider has validated the customer's payment information. This status appears only for manual payment capture and indicates payments should be captured before the authorization period expires. */readonly Authorized: "AUTHORIZED"; /** Displayed as **Expired**. Payment wasn't captured before the payment provider's deadline on an authorized order. Some payment providers use this status to indicate failed payment processing. */
+  readonly Expired: "EXPIRED"; /** Displayed as **Paid**. Payment was automatically or manually captured, or the order was marked as paid. */
+  readonly Paid: "PAID"; /** Displayed as **Partially paid**. A payment was manually captured for the order with an amount less than the full order value. */
+  readonly PartiallyPaid: "PARTIALLY_PAID"; /** Displayed as **Partially refunded**. The amount refunded to a customer is less than the full amount paid for an order. */
+  readonly PartiallyRefunded: "PARTIALLY_REFUNDED"; /** Displayed as **Pending**. Orders have this status when the payment provider needs time to complete the payment, or when manual payment methods are being used. */
+  readonly Pending: "PENDING"; /** Displayed as **Refunded**. The full amount paid for an order was refunded to the customer. */
+  readonly Refunded: "REFUNDED";
   /**
    * Displayed as **Voided**. An unpaid (payment authorized but not captured) order was manually
    *          canceled.
    */
-  Voided = 'VOIDED'
-}
+  readonly Voided: "VOIDED";
+};
+type OrderDisplayFinancialStatus = typeof OrderDisplayFinancialStatus[keyof typeof OrderDisplayFinancialStatus];
 /** Represents the order's aggregated fulfillment status for display purposes. */
-declare enum OrderDisplayFulfillmentStatus {
-  /** Displayed as **Fulfilled**. All the items in the order have been fulfilled. */
-  Fulfilled = 'FULFILLED',
-  /** Displayed as **In progress**. All of the items in the order have had a request for fulfillment sent to the fulfillment service or all of the items have been marked as in progress. */
-  InProgress = 'IN_PROGRESS',
-  /** Displayed as **On hold**. All of the unfulfilled items in this order are on hold. */
-  OnHold = 'ON_HOLD',
-  /** Displayed as **Open**. None of the items in the order have been fulfilled. Replaced by "UNFULFILLED" status. */
-  Open = 'OPEN',
-  /** Displayed as **Partially fulfilled**. Some of the items in the order have been fulfilled. */
-  PartiallyFulfilled = 'PARTIALLY_FULFILLED',
-  /** Displayed as **Pending fulfillment**. A request for fulfillment of some items awaits a response from the fulfillment service. Replaced by the "IN_PROGRESS" status. */
-  PendingFulfillment = 'PENDING_FULFILLMENT',
-  /** Displayed as **Request declined**. Some of the items in the order have been rejected for fulfillment by the fulfillment service. */
-  RequestDeclined = 'REQUEST_DECLINED',
-  /** Displayed as **Restocked**. All the items in the order have been restocked. Replaced by the "UNFULFILLED" status. */
-  Restocked = 'RESTOCKED',
-  /** Displayed as **Scheduled**. All of the unfulfilled items in this order are scheduled for fulfillment at later time. */
-  Scheduled = 'SCHEDULED',
-  /** Displayed as **Unfulfilled**. None of the items in the order have been fulfilled. */
-  Unfulfilled = 'UNFULFILLED'
-}
+declare const OrderDisplayFulfillmentStatus: {
+  /** Displayed as **Fulfilled**. All the items in the order have been fulfilled. */readonly Fulfilled: "FULFILLED"; /** Displayed as **In progress**. All of the items in the order have had a request for fulfillment sent to the fulfillment service or all of the items have been marked as in progress. */
+  readonly InProgress: "IN_PROGRESS"; /** Displayed as **On hold**. All of the unfulfilled items in this order are on hold. */
+  readonly OnHold: "ON_HOLD"; /** Displayed as **Open**. None of the items in the order have been fulfilled. Replaced by "UNFULFILLED" status. */
+  readonly Open: "OPEN"; /** Displayed as **Partially fulfilled**. Some of the items in the order have been fulfilled. */
+  readonly PartiallyFulfilled: "PARTIALLY_FULFILLED"; /** Displayed as **Pending fulfillment**. A request for fulfillment of some items awaits a response from the fulfillment service. Replaced by the "IN_PROGRESS" status. */
+  readonly PendingFulfillment: "PENDING_FULFILLMENT"; /** Displayed as **Request declined**. Some of the items in the order have been rejected for fulfillment by the fulfillment service. */
+  readonly RequestDeclined: "REQUEST_DECLINED"; /** Displayed as **Restocked**. All the items in the order have been restocked. Replaced by the "UNFULFILLED" status. */
+  readonly Restocked: "RESTOCKED"; /** Displayed as **Scheduled**. All of the unfulfilled items in this order are scheduled for fulfillment at later time. */
+  readonly Scheduled: "SCHEDULED"; /** Displayed as **Unfulfilled**. None of the items in the order have been fulfilled. */
+  readonly Unfulfilled: "UNFULFILLED";
+};
+type OrderDisplayFulfillmentStatus = typeof OrderDisplayFulfillmentStatus[keyof typeof OrderDisplayFulfillmentStatus];
 /** A summary of the important details for a dispute on an order. */
 type OrderDisputeSummary = Node & {
   __typename?: 'OrderDisputeSummary'; /** A globally-unique ID. */
@@ -10363,20 +9433,15 @@ type OrderPaymentCollectionDetails = {
  * An order might have multiple returns, so this field communicates the prioritized return status.
  * The `OrderReturnStatus` enum is a supported filter parameter in the [`orders` query](https://shopify.dev/api/admin-graphql/latest/queries/orders#:~:text=reference_location_id-,return_status,-risk_level).
  */
-declare enum OrderReturnStatus {
-  /** All return shipments from a return in this order were inspected. */
-  InspectionComplete = 'INSPECTION_COMPLETE',
-  /** Some items in the order are being returned. */
-  InProgress = 'IN_PROGRESS',
-  /** No items in the order were returned. */
-  NoReturn = 'NO_RETURN',
-  /** Some items in the order were returned. */
-  Returned = 'RETURNED',
-  /** Some returns in the order were not completed successfully. */
-  ReturnFailed = 'RETURN_FAILED',
-  /** A return was requested for some items in the order. */
-  ReturnRequested = 'RETURN_REQUESTED'
-}
+declare const OrderReturnStatus: {
+  /** All return shipments from a return in this order were inspected. */readonly InspectionComplete: "INSPECTION_COMPLETE"; /** Some items in the order are being returned. */
+  readonly InProgress: "IN_PROGRESS"; /** No items in the order were returned. */
+  readonly NoReturn: "NO_RETURN"; /** Some items in the order were returned. */
+  readonly Returned: "RETURNED"; /** Some returns in the order were not completed successfully. */
+  readonly ReturnFailed: "RETURN_FAILED"; /** A return was requested for some items in the order. */
+  readonly ReturnRequested: "RETURN_REQUESTED";
+};
+type OrderReturnStatus = typeof OrderReturnStatus[keyof typeof OrderReturnStatus];
 /** Represents a fraud check on an order. This object is deprecated in favor of [OrderRiskAssessment](https://shopify.dev/api/admin-graphql/latest/objects/OrderRiskAssessment) and its enhanced capabilities. */
 type OrderRisk = {
   __typename?: 'OrderRisk';
@@ -10417,25 +9482,20 @@ type OrderRiskAssessment = {
  * [RiskAssessmentResult](https://shopify.dev/api/admin-graphql/latest/enums/RiskAssessmentResult)
  * which allows for more granular risk levels, including PENDING and NONE.
  */
-declare enum OrderRiskLevel {
-  /** There is a high level of risk that this order is fraudulent. */
-  High = 'HIGH',
-  /** There is a low level of risk that this order is fraudulent. */
-  Low = 'LOW',
-  /** There is a medium level of risk that this order is fraudulent. */
-  Medium = 'MEDIUM'
-}
+declare const OrderRiskLevel: {
+  /** There is a high level of risk that this order is fraudulent. */readonly High: "HIGH"; /** There is a low level of risk that this order is fraudulent. */
+  readonly Low: "LOW"; /** There is a medium level of risk that this order is fraudulent. */
+  readonly Medium: "MEDIUM";
+};
+type OrderRiskLevel = typeof OrderRiskLevel[keyof typeof OrderRiskLevel];
 /** List of possible values for an OrderRiskRecommendation recommendation. */
-declare enum OrderRiskRecommendationResult {
-  /** Recommends fulfilling the order. */
-  Accept = 'ACCEPT',
-  /** Recommends cancelling the order. */
-  Cancel = 'CANCEL',
-  /** Recommends investigating the order by contacting buyers. */
-  Investigate = 'INVESTIGATE',
-  /** There is no recommended action for the order. */
-  None = 'NONE'
-}
+declare const OrderRiskRecommendationResult: {
+  /** Recommends fulfilling the order. */readonly Accept: "ACCEPT"; /** Recommends cancelling the order. */
+  readonly Cancel: "CANCEL"; /** Recommends investigating the order by contacting buyers. */
+  readonly Investigate: "INVESTIGATE"; /** There is no recommended action for the order. */
+  readonly None: "NONE";
+};
+type OrderRiskRecommendationResult = typeof OrderRiskRecommendationResult[keyof typeof OrderRiskRecommendationResult];
 /**
  * Summary of risk characteristics for an order.
  *
@@ -10577,102 +9637,66 @@ type OrderTransactionEdge = {
   node: OrderTransaction;
 };
 /** A standardized error code, independent of the payment provider. */
-declare enum OrderTransactionErrorCode {
-  /** The payment method was invalid. */
-  AmazonPaymentsInvalidPaymentMethod = 'AMAZON_PAYMENTS_INVALID_PAYMENT_METHOD',
-  /** The maximum amount has been captured. */
-  AmazonPaymentsMaxAmountCharged = 'AMAZON_PAYMENTS_MAX_AMOUNT_CHARGED',
-  /** The maximum amount has been refunded. */
-  AmazonPaymentsMaxAmountRefunded = 'AMAZON_PAYMENTS_MAX_AMOUNT_REFUNDED',
-  /** The maximum of 10 authorizations has been captured for an order. */
-  AmazonPaymentsMaxAuthorizationsCaptured = 'AMAZON_PAYMENTS_MAX_AUTHORIZATIONS_CAPTURED',
-  /** The maximum of 10 refunds has been processed for an order. */
-  AmazonPaymentsMaxRefundsProcessed = 'AMAZON_PAYMENTS_MAX_REFUNDS_PROCESSED',
-  /** The order was canceled, which canceled all open authorizations. */
-  AmazonPaymentsOrderReferenceCanceled = 'AMAZON_PAYMENTS_ORDER_REFERENCE_CANCELED',
-  /** The order was not confirmed within three hours. */
-  AmazonPaymentsStale = 'AMAZON_PAYMENTS_STALE',
-  /** The issuer declined the transaction, the customer should contact their issuer for more details. */
-  CallIssuer = 'CALL_ISSUER',
-  /** The card was declined. */
-  CardDeclined = 'CARD_DECLINED',
-  /** There is an error in the gateway or merchant configuration. */
-  ConfigError = 'CONFIG_ERROR',
-  /** The card is expired. */
-  ExpiredCard = 'EXPIRED_CARD',
-  /** There was an unknown error with processing the payment. */
-  GenericError = 'GENERIC_ERROR',
-  /** The address is incorrect. */
-  IncorrectAddress = 'INCORRECT_ADDRESS',
-  /** The card security code (CVC/CVV) is incorrect. */
-  IncorrectCvc = 'INCORRECT_CVC',
-  /** The card number is incorrect. */
-  IncorrectNumber = 'INCORRECT_NUMBER',
-  /** The PIN entered is incorrect. */
-  IncorrectPin = 'INCORRECT_PIN',
-  /** The ZIP or postal code doesn't match the one on file. */
-  IncorrectZip = 'INCORRECT_ZIP',
-  /** The amount is invalid. */
-  InvalidAmount = 'INVALID_AMOUNT',
-  /** The payment method is not available in the customer's country. */
-  InvalidCountry = 'INVALID_COUNTRY',
-  /** The format of the CVC is incorrect. */
-  InvalidCvc = 'INVALID_CVC',
-  /** The format of the expiry date is incorrect. */
-  InvalidExpiryDate = 'INVALID_EXPIRY_DATE',
-  /** The format of the card number is incorrect. */
-  InvalidNumber = 'INVALID_NUMBER',
-  /** The payment method is momentarily unavailable. */
-  PaymentMethodUnavailable = 'PAYMENT_METHOD_UNAVAILABLE',
-  /** The card has been reported as lost or stolen, and the card issuer has requested that the merchant keep the card and call the number on the back. */
-  PickUpCard = 'PICK_UP_CARD',
-  /** There was an error while processing the payment. */
-  ProcessingError = 'PROCESSING_ERROR',
-  /** A real card was used but the gateway was in test mode. */
-  TestModeLiveCard = 'TEST_MODE_LIVE_CARD',
-  /** The gateway or merchant configuration doesn't support a feature, such as network tokenization. */
-  UnsupportedFeature = 'UNSUPPORTED_FEATURE'
-}
+declare const OrderTransactionErrorCode: {
+  /** The payment method was invalid. */readonly AmazonPaymentsInvalidPaymentMethod: "AMAZON_PAYMENTS_INVALID_PAYMENT_METHOD"; /** The maximum amount has been captured. */
+  readonly AmazonPaymentsMaxAmountCharged: "AMAZON_PAYMENTS_MAX_AMOUNT_CHARGED"; /** The maximum amount has been refunded. */
+  readonly AmazonPaymentsMaxAmountRefunded: "AMAZON_PAYMENTS_MAX_AMOUNT_REFUNDED"; /** The maximum of 10 authorizations has been captured for an order. */
+  readonly AmazonPaymentsMaxAuthorizationsCaptured: "AMAZON_PAYMENTS_MAX_AUTHORIZATIONS_CAPTURED"; /** The maximum of 10 refunds has been processed for an order. */
+  readonly AmazonPaymentsMaxRefundsProcessed: "AMAZON_PAYMENTS_MAX_REFUNDS_PROCESSED"; /** The order was canceled, which canceled all open authorizations. */
+  readonly AmazonPaymentsOrderReferenceCanceled: "AMAZON_PAYMENTS_ORDER_REFERENCE_CANCELED"; /** The order was not confirmed within three hours. */
+  readonly AmazonPaymentsStale: "AMAZON_PAYMENTS_STALE"; /** The issuer declined the transaction, the customer should contact their issuer for more details. */
+  readonly CallIssuer: "CALL_ISSUER"; /** The card was declined. */
+  readonly CardDeclined: "CARD_DECLINED"; /** There is an error in the gateway or merchant configuration. */
+  readonly ConfigError: "CONFIG_ERROR"; /** The card is expired. */
+  readonly ExpiredCard: "EXPIRED_CARD"; /** There was an unknown error with processing the payment. */
+  readonly GenericError: "GENERIC_ERROR"; /** The address is incorrect. */
+  readonly IncorrectAddress: "INCORRECT_ADDRESS"; /** The card security code (CVC/CVV) is incorrect. */
+  readonly IncorrectCvc: "INCORRECT_CVC"; /** The card number is incorrect. */
+  readonly IncorrectNumber: "INCORRECT_NUMBER"; /** The PIN entered is incorrect. */
+  readonly IncorrectPin: "INCORRECT_PIN"; /** The ZIP or postal code doesn't match the one on file. */
+  readonly IncorrectZip: "INCORRECT_ZIP"; /** The amount is invalid. */
+  readonly InvalidAmount: "INVALID_AMOUNT"; /** The payment method is not available in the customer's country. */
+  readonly InvalidCountry: "INVALID_COUNTRY"; /** The format of the CVC is incorrect. */
+  readonly InvalidCvc: "INVALID_CVC"; /** The format of the expiry date is incorrect. */
+  readonly InvalidExpiryDate: "INVALID_EXPIRY_DATE"; /** The format of the card number is incorrect. */
+  readonly InvalidNumber: "INVALID_NUMBER"; /** The payment method is momentarily unavailable. */
+  readonly PaymentMethodUnavailable: "PAYMENT_METHOD_UNAVAILABLE"; /** The card has been reported as lost or stolen, and the card issuer has requested that the merchant keep the card and call the number on the back. */
+  readonly PickUpCard: "PICK_UP_CARD"; /** There was an error while processing the payment. */
+  readonly ProcessingError: "PROCESSING_ERROR"; /** A real card was used but the gateway was in test mode. */
+  readonly TestModeLiveCard: "TEST_MODE_LIVE_CARD"; /** The gateway or merchant configuration doesn't support a feature, such as network tokenization. */
+  readonly UnsupportedFeature: "UNSUPPORTED_FEATURE";
+};
+type OrderTransactionErrorCode = typeof OrderTransactionErrorCode[keyof typeof OrderTransactionErrorCode];
 /** The different kinds of order transactions. */
-declare enum OrderTransactionKind {
+declare const OrderTransactionKind: {
   /**
    * An amount reserved against the cardholder's funding source.
    * Money does not change hands until the authorization is captured.
    */
-  Authorization = 'AUTHORIZATION',
-  /** A transfer of the money that was reserved by an authorization. */
-  Capture = 'CAPTURE',
-  /** The money returned to the customer when they've paid too much during a cash transaction. */
-  Change = 'CHANGE',
-  /** An authorization for a payment taken with an EMV credit card reader. */
-  EmvAuthorization = 'EMV_AUTHORIZATION',
+  readonly Authorization: "AUTHORIZATION"; /** A transfer of the money that was reserved by an authorization. */
+  readonly Capture: "CAPTURE"; /** The money returned to the customer when they've paid too much during a cash transaction. */
+  readonly Change: "CHANGE"; /** An authorization for a payment taken with an EMV credit card reader. */
+  readonly EmvAuthorization: "EMV_AUTHORIZATION";
   /**
    * A partial or full return of captured funds to the cardholder.
    * A refund can happen only after a capture is processed.
    */
-  Refund = 'REFUND',
-  /** An authorization and capture performed together in a single step. */
-  Sale = 'SALE',
-  /** A suggested refund transaction that can be used to create a refund. */
-  SuggestedRefund = 'SUGGESTED_REFUND',
-  /** A cancelation of an authorization transaction. */
-  Void = 'VOID'
-}
+  readonly Refund: "REFUND"; /** An authorization and capture performed together in a single step. */
+  readonly Sale: "SALE"; /** A suggested refund transaction that can be used to create a refund. */
+  readonly SuggestedRefund: "SUGGESTED_REFUND"; /** A cancelation of an authorization transaction. */
+  readonly Void: "VOID";
+};
+type OrderTransactionKind = typeof OrderTransactionKind[keyof typeof OrderTransactionKind];
 /** The different states that an `OrderTransaction` can have. */
-declare enum OrderTransactionStatus {
-  /** Awaiting a response. */
-  AwaitingResponse = 'AWAITING_RESPONSE',
-  /** There was an error while processing the transaction. */
-  Error = 'ERROR',
-  /** The transaction failed. */
-  Failure = 'FAILURE',
-  /** The transaction is pending. */
-  Pending = 'PENDING',
-  /** The transaction succeeded. */
-  Success = 'SUCCESS',
-  /** The transaction status is unknown. */
-  Unknown = 'UNKNOWN'
-}
+declare const OrderTransactionStatus: {
+  /** Awaiting a response. */readonly AwaitingResponse: "AWAITING_RESPONSE"; /** There was an error while processing the transaction. */
+  readonly Error: "ERROR"; /** The transaction failed. */
+  readonly Failure: "FAILURE"; /** The transaction is pending. */
+  readonly Pending: "PENDING"; /** The transaction succeeded. */
+  readonly Success: "SUCCESS"; /** The transaction status is unknown. */
+  readonly Unknown: "UNKNOWN";
+};
+type OrderTransactionStatus = typeof OrderTransactionStatus[keyof typeof OrderTransactionStatus];
 /**
  * A standalone content page in the online store. Pages display HTML-formatted content for informational pages like "About Us", contact information, or shipping policies.
  *
@@ -10793,34 +9817,29 @@ type PaymentMandateResourceEdge = {
   node: PaymentMandateResource;
 };
 /** Some of the payment methods used in Shopify. */
-declare enum PaymentMethods {
-  AmericanExpress = 'AMERICAN_EXPRESS',
-  /** The payment method for Bancontact payment. */
-  Bancontact = 'BANCONTACT',
-  Bitcoin = 'BITCOIN',
-  Bogus = 'BOGUS',
-  /** The payment method for Cartes Bancaires payment. */
-  CartesBancaires = 'CARTES_BANCAIRES',
-  Dankort = 'DANKORT',
-  DinersClub = 'DINERS_CLUB',
-  Discover = 'DISCOVER',
-  Dogecoin = 'DOGECOIN',
-  /** The payment method for eftpos_au payment. */
-  Eftpos = 'EFTPOS',
-  /** The payment method for Elo payment. */
-  Elo = 'ELO',
-  Forbrugsforeningen = 'FORBRUGSFORENINGEN',
-  /** The payment method for Interac payment. */
-  Interac = 'INTERAC',
-  Jcb = 'JCB',
-  Litecoin = 'LITECOIN',
-  Maestro = 'MAESTRO',
-  Mastercard = 'MASTERCARD',
-  Paypal = 'PAYPAL',
-  /** The payment method for UnionPay payment. */
-  Unionpay = 'UNIONPAY',
-  Visa = 'VISA'
-}
+declare const PaymentMethods: {
+  readonly AmericanExpress: "AMERICAN_EXPRESS"; /** The payment method for Bancontact payment. */
+  readonly Bancontact: "BANCONTACT";
+  readonly Bitcoin: "BITCOIN";
+  readonly Bogus: "BOGUS"; /** The payment method for Cartes Bancaires payment. */
+  readonly CartesBancaires: "CARTES_BANCAIRES";
+  readonly Dankort: "DANKORT";
+  readonly DinersClub: "DINERS_CLUB";
+  readonly Discover: "DISCOVER";
+  readonly Dogecoin: "DOGECOIN"; /** The payment method for eftpos_au payment. */
+  readonly Eftpos: "EFTPOS"; /** The payment method for Elo payment. */
+  readonly Elo: "ELO";
+  readonly Forbrugsforeningen: "FORBRUGSFORENINGEN"; /** The payment method for Interac payment. */
+  readonly Interac: "INTERAC";
+  readonly Jcb: "JCB";
+  readonly Litecoin: "LITECOIN";
+  readonly Maestro: "MAESTRO";
+  readonly Mastercard: "MASTERCARD";
+  readonly Paypal: "PAYPAL"; /** The payment method for UnionPay payment. */
+  readonly Unionpay: "UNIONPAY";
+  readonly Visa: "VISA";
+};
+type PaymentMethods = typeof PaymentMethods[keyof typeof PaymentMethods];
 /** Represents the payment schedule for a single payment defined in the payment terms. */
 type PaymentSchedule = Node & {
   __typename?: 'PaymentSchedule';
@@ -10887,27 +9906,21 @@ type PaymentTermsTemplate = Node & {
   translatedName: Scalars['String']['output'];
 };
 /** The type of a payment terms or a payment terms template. */
-declare enum PaymentTermsType {
-  /** The payment terms or payment terms template is a fixed type. It's due on a specified date. */
-  Fixed = 'FIXED',
-  /** The payment terms or payment terms template is due on fulfillment. */
-  Fulfillment = 'FULFILLMENT',
-  /** The payment terms or payment terms template is a net type. It's due a number of days after issue. */
-  Net = 'NET',
-  /** The payment terms or payment terms template is due on receipt. */
-  Receipt = 'RECEIPT',
-  /** The type of the payment terms or payment terms template is unknown. */
-  Unknown = 'UNKNOWN'
-}
+declare const PaymentTermsType: {
+  /** The payment terms or payment terms template is a fixed type. It's due on a specified date. */readonly Fixed: "FIXED"; /** The payment terms or payment terms template is due on fulfillment. */
+  readonly Fulfillment: "FULFILLMENT"; /** The payment terms or payment terms template is a net type. It's due a number of days after issue. */
+  readonly Net: "NET"; /** The payment terms or payment terms template is due on receipt. */
+  readonly Receipt: "RECEIPT"; /** The type of the payment terms or payment terms template is unknown. */
+  readonly Unknown: "UNKNOWN";
+};
+type PaymentTermsType = typeof PaymentTermsType[keyof typeof PaymentTermsType];
 /** Represents a valid PayPal Express subscriptions gateway status. */
-declare enum PaypalExpressSubscriptionsGatewayStatus {
-  /** The status is disabled. */
-  Disabled = 'DISABLED',
-  /** The status is enabled. */
-  Enabled = 'ENABLED',
-  /** The status is pending. */
-  Pending = 'PENDING'
-}
+declare const PaypalExpressSubscriptionsGatewayStatus: {
+  /** The status is disabled. */readonly Disabled: "DISABLED"; /** The status is enabled. */
+  readonly Enabled: "ENABLED"; /** The status is pending. */
+  readonly Pending: "PENDING";
+};
+type PaypalExpressSubscriptionsGatewayStatus = typeof PaypalExpressSubscriptionsGatewayStatus[keyof typeof PaypalExpressSubscriptionsGatewayStatus];
 /** PayPal Wallet payment details related to a transaction. */
 type PaypalWalletPaymentDetails = BasePaymentDetails & {
   __typename?: 'PaypalWalletPaymentDetails'; /** The name of payment method used by the buyer. */
@@ -10957,19 +9970,17 @@ type PriceListAdjustmentSettings = {
   compareAtMode: PriceListCompareAtMode;
 };
 /** Represents a percentage price adjustment type. */
-declare enum PriceListAdjustmentType {
-  /** Percentage decrease type. Prices will have a lower value. */
-  PercentageDecrease = 'PERCENTAGE_DECREASE',
-  /** Percentage increase type. Prices will have a higher value. */
-  PercentageIncrease = 'PERCENTAGE_INCREASE'
-}
+declare const PriceListAdjustmentType: {
+  /** Percentage decrease type. Prices will have a lower value. */readonly PercentageDecrease: "PERCENTAGE_DECREASE"; /** Percentage increase type. Prices will have a higher value. */
+  readonly PercentageIncrease: "PERCENTAGE_INCREASE";
+};
+type PriceListAdjustmentType = typeof PriceListAdjustmentType[keyof typeof PriceListAdjustmentType];
 /** Represents how the compare at price will be determined for a price list. */
-declare enum PriceListCompareAtMode {
-  /** The compare at price is adjusted based on percentage specified in price list. */
-  Adjusted = 'ADJUSTED',
-  /** The compare at prices are set to `null` unless explicitly defined by a fixed price value. */
-  Nullify = 'NULLIFY'
-}
+declare const PriceListCompareAtMode: {
+  /** The compare at price is adjusted based on percentage specified in price list. */readonly Adjusted: "ADJUSTED"; /** The compare at prices are set to `null` unless explicitly defined by a fixed price value. */
+  readonly Nullify: "NULLIFY";
+};
+type PriceListCompareAtMode = typeof PriceListCompareAtMode[keyof typeof PriceListCompareAtMode];
 /**
  * Represents relative adjustments from one price list to other prices.
  *   You can use a `PriceListParent` to specify an adjusted relative price using a percentage-based
@@ -11010,12 +10021,11 @@ type PriceListPriceEdge = {
   node: PriceListPrice;
 };
 /** Represents the origin of a price, either fixed (defined on the price list) or relative (calculated using a price list adjustment configuration). For examples, refer to [PriceList](https://shopify.dev/api/admin-graphql/latest/queries/priceList#section-examples). */
-declare enum PriceListPriceOriginType {
-  /** The price is defined on the price list. */
-  Fixed = 'FIXED',
-  /** The price is relative to the adjustment type and value. */
-  Relative = 'RELATIVE'
-}
+declare const PriceListPriceOriginType: {
+  /** The price is defined on the price list. */readonly Fixed: "FIXED"; /** The price is relative to the adjustment type and value. */
+  readonly Relative: "RELATIVE";
+};
+type PriceListPriceOriginType = typeof PriceListPriceOriginType[keyof typeof PriceListPriceOriginType];
 /**
  * One type of value given to a customer when a discount is applied to an order.
  * The application of a discount with this value gives the customer the specified percentage off a specified item.
@@ -11443,16 +10453,13 @@ type ProductBundleComponentOptionSelection = {
   values: Array<ProductBundleComponentOptionSelectionValue>;
 };
 /** The status of a component option value related to a bundle. */
-declare enum ProductBundleComponentOptionSelectionStatus {
-  /** The component option value is not selected as sellable in the bundle. */
-  Deselected = 'DESELECTED',
-  /** The component option value was not initially selected, but is now available for the bundle. */
-  New = 'NEW',
-  /** The component option value is selected as sellable in the bundle. */
-  Selected = 'SELECTED',
-  /** The component option value was selected, is no longer available for the bundle. */
-  Unavailable = 'UNAVAILABLE'
-}
+declare const ProductBundleComponentOptionSelectionStatus: {
+  /** The component option value is not selected as sellable in the bundle. */readonly Deselected: "DESELECTED"; /** The component option value was not initially selected, but is now available for the bundle. */
+  readonly New: "NEW"; /** The component option value is selected as sellable in the bundle. */
+  readonly Selected: "SELECTED"; /** The component option value was selected, is no longer available for the bundle. */
+  readonly Unavailable: "UNAVAILABLE";
+};
+type ProductBundleComponentOptionSelectionStatus = typeof ProductBundleComponentOptionSelectionStatus[keyof typeof ProductBundleComponentOptionSelectionStatus];
 /** A component option value related to a bundle line. */
 type ProductBundleComponentOptionSelectionValue = {
   __typename?: 'ProductBundleComponentOptionSelectionValue'; /** Selection status of the option. */
@@ -11600,16 +10607,13 @@ type ProductPublicationEdge = {
   node: ProductPublication;
 };
 /** The possible product statuses. */
-declare enum ProductStatus {
-  /** The product is ready to sell and can be published to sales channels and apps. Products with an active status aren't automatically published to sales channels, such as the online store, or apps. By default, existing products are set to active. */
-  Active = 'ACTIVE',
-  /** The product is no longer being sold and isn't available to customers on sales channels and apps. */
-  Archived = 'ARCHIVED',
-  /** The product isn't ready to sell and is unavailable to customers on sales channels and apps. By default, duplicated and unarchived products are set to draft. */
-  Draft = 'DRAFT',
-  /** The product is active but you need a direct link to view it. The product doesn't show up in search, collections, or product recommendations. It will be returned in Storefront API and Liquid only when referenced individually by handle, id, or metafield reference.This status is only visible from 2025-10 and up, is translated to active in older versions and can't be changed from unlisted in older versions. */
-  Unlisted = 'UNLISTED'
-}
+declare const ProductStatus: {
+  /** The product is ready to sell and can be published to sales channels and apps. Products with an active status aren't automatically published to sales channels, such as the online store, or apps. By default, existing products are set to active. */readonly Active: "ACTIVE"; /** The product is no longer being sold and isn't available to customers on sales channels and apps. */
+  readonly Archived: "ARCHIVED"; /** The product isn't ready to sell and is unavailable to customers on sales channels and apps. By default, duplicated and unarchived products are set to draft. */
+  readonly Draft: "DRAFT"; /** The product is active but you need a direct link to view it. The product doesn't show up in search, collections, or product recommendations. It will be returned in Storefront API and Liquid only when referenced individually by handle, id, or metafield reference.This status is only visible from 2025-10 and up, is translated to active in older versions and can't be changed from unlisted in older versions. */
+  readonly Unlisted: "UNLISTED";
+};
+type ProductStatus = typeof ProductStatus[keyof typeof ProductStatus];
 /** Represents a [Shopify product taxonomy](https://shopify.github.io/product-taxonomy/releases/unstable/?categoryId=sg-4-17-2-17) node. */
 type ProductTaxonomyNode = Node & {
   __typename?: 'ProductTaxonomyNode'; /** The full name of the product taxonomy node. For example,  Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Beds. */
@@ -11792,12 +10796,11 @@ type ProductVariantEdge = {
   node: ProductVariant;
 };
 /** The valid values for the inventory policy of a product variant once it is out of stock. */
-declare enum ProductVariantInventoryPolicy {
-  /** Customers can buy this product variant after it's out of stock. */
-  Continue = 'CONTINUE',
-  /** Customers can't buy this product variant after it's out of stock. */
-  Deny = 'DENY'
-}
+declare const ProductVariantInventoryPolicy: {
+  /** Customers can buy this product variant after it's out of stock. */readonly Continue: "CONTINUE"; /** Customers can't buy this product variant after it's out of stock. */
+  readonly Deny: "DENY";
+};
+type ProductVariantInventoryPolicy = typeof ProductVariantInventoryPolicy[keyof typeof ProductVariantInventoryPolicy];
 /** The compare-at price and price of a variant sharing a currency. */
 type ProductVariantPricePair = {
   __typename?: 'ProductVariantPricePair'; /** The compare-at price of the variant with associated currency. */
@@ -12017,12 +11020,11 @@ type QuantityRuleEdge = {
   node: QuantityRule;
 };
 /** The origin of quantity rule on a price list. */
-declare enum QuantityRuleOriginType {
-  /** Quantity rule is explicitly defined. */
-  Fixed = 'FIXED',
-  /** Quantity rule falls back to the relative rule. */
-  Relative = 'RELATIVE'
-}
+declare const QuantityRuleOriginType: {
+  /** Quantity rule is explicitly defined. */readonly Fixed: "FIXED"; /** Quantity rule falls back to the relative rule. */
+  readonly Relative: "RELATIVE";
+};
+type QuantityRuleOriginType = typeof QuantityRuleOriginType[keyof typeof QuantityRuleOriginType];
 /**
  * The `Refund` object represents a financial record of money returned to a customer from an order.
  * It provides a comprehensive view of all refunded amounts, transactions, and restocking instructions
@@ -12147,16 +11149,13 @@ type RefundLineItemEdge = {
   node: RefundLineItem;
 };
 /** The type of restock performed for a particular refund line item. */
-declare enum RefundLineItemRestockType {
-  /** The refund line item was canceled. Use this when restocking unfulfilled line items. */
-  Cancel = 'CANCEL',
-  /** Deprecated. The refund line item was restocked, without specifically beingidentified as a return or cancelation. This value is not accepted when creating new refunds. */
-  LegacyRestock = 'LEGACY_RESTOCK',
-  /** Refund line item was not restocked. */
-  NoRestock = 'NO_RESTOCK',
-  /** The refund line item was returned. Use this when restocking line items that were fulfilled. */
-  Return = 'RETURN'
-}
+declare const RefundLineItemRestockType: {
+  /** The refund line item was canceled. Use this when restocking unfulfilled line items. */readonly Cancel: "CANCEL"; /** Deprecated. The refund line item was restocked, without specifically beingidentified as a return or cancelation. This value is not accepted when creating new refunds. */
+  readonly LegacyRestock: "LEGACY_RESTOCK"; /** Refund line item was not restocked. */
+  readonly NoRestock: "NO_RESTOCK"; /** The refund line item was returned. Use this when restocking line items that were fulfilled. */
+  readonly Return: "RETURN";
+};
+type RefundLineItemRestockType = typeof RefundLineItemRestockType[keyof typeof RefundLineItemRestockType];
 /** The financial transfer details for a return outcome that results in a refund. */
 type RefundReturnOutcome = {
   __typename?: 'RefundReturnOutcome'; /** The total monetary value to be refunded in shop and presentment currencies. */
@@ -12221,27 +11220,21 @@ type ResourceAlertAction = {
   url: Scalars['URL']['output'];
 };
 /** The available icons for resource alerts. */
-declare enum ResourceAlertIcon {
-  /** A checkmark inside a circle. */
-  CheckmarkCircle = 'CHECKMARK_CIRCLE',
-  /** A lowercase `i` inside a circle. */
-  InformationCircle = 'INFORMATION_CIRCLE'
-}
+declare const ResourceAlertIcon: {
+  /** A checkmark inside a circle. */readonly CheckmarkCircle: "CHECKMARK_CIRCLE"; /** A lowercase `i` inside a circle. */
+  readonly InformationCircle: "INFORMATION_CIRCLE";
+};
+type ResourceAlertIcon = typeof ResourceAlertIcon[keyof typeof ResourceAlertIcon];
 /** The possible severity levels for a resource alert. */
-declare enum ResourceAlertSeverity {
-  /** Indicates a critical alert. For example, a blocked app. */
-  Critical = 'CRITICAL',
-  /** Indicates a neutral alert. For example, an accepted dispute. */
-  Default = 'DEFAULT',
-  /** @deprecated `ERROR` severity is being deprecated in favour of `WARNING` or `CRITICAL` instead. */
-  Error = 'ERROR',
-  /** Indicates an informative alert. For example, an escalated dispute. */
-  Info = 'INFO',
-  /** Indicates a success alert. For example, a winning a dispute. */
-  Success = 'SUCCESS',
-  /** Indicates an informative alert. For example, a new dispute. */
-  Warning = 'WARNING'
-}
+declare const ResourceAlertSeverity: {
+  /** Indicates a critical alert. For example, a blocked app. */readonly Critical: "CRITICAL"; /** Indicates a neutral alert. For example, an accepted dispute. */
+  readonly Default: "DEFAULT";
+  readonly Error: "ERROR"; /** Indicates an informative alert. For example, an escalated dispute. */
+  readonly Info: "INFO"; /** Indicates a success alert. For example, a winning a dispute. */
+  readonly Success: "SUCCESS"; /** Indicates an informative alert. For example, a new dispute. */
+  readonly Warning: "WARNING";
+};
+type ResourceAlertSeverity = typeof ResourceAlertSeverity[keyof typeof ResourceAlertSeverity];
 /** Represents feedback from apps about a resource, and the steps required to set up the apps on the shop. */
 type ResourceFeedback = {
   __typename?: 'ResourceFeedback';
@@ -12254,12 +11247,11 @@ type ResourceFeedback = {
   summary: Scalars['String']['output'];
 };
 /** The state of the resource feedback. */
-declare enum ResourceFeedbackState {
-  /** No action required from merchant. */
-  Accepted = 'ACCEPTED',
-  /** The merchant needs to resolve an issue with the resource. */
-  RequiresAction = 'REQUIRES_ACTION'
-}
+declare const ResourceFeedbackState: {
+  /** No action required from merchant. */readonly Accepted: "ACCEPTED"; /** The merchant needs to resolve an issue with the resource. */
+  readonly RequiresAction: "REQUIRES_ACTION";
+};
+type ResourceFeedbackState = typeof ResourceFeedbackState[keyof typeof ResourceFeedbackState];
 /** Represents a merchandising background operation interface. */
 type ResourceOperation = {
   /** A globally-unique ID. */id: Scalars['ID']['output']; /** The count of processed rows, summing imported, failed, and skipped rows. */
@@ -12268,14 +11260,12 @@ type ResourceOperation = {
   status: ResourceOperationStatus;
 };
 /** Represents the state of this catalog operation. */
-declare enum ResourceOperationStatus {
-  /** Operation is currently running. */
-  Active = 'ACTIVE',
-  /** Operation is complete. */
-  Complete = 'COMPLETE',
-  /** Operation has been created. */
-  Created = 'CREATED'
-}
+declare const ResourceOperationStatus: {
+  /** Operation is currently running. */readonly Active: "ACTIVE"; /** Operation is complete. */
+  readonly Complete: "COMPLETE"; /** Operation has been created. */
+  readonly Created: "CREATED";
+};
+type ResourceOperationStatus = typeof ResourceOperationStatus[keyof typeof ResourceOperationStatus];
 /**
  * A resource publication represents information about the publication of a resource.
  * An instance of `ResourcePublication`, unlike `ResourcePublicationV2`, can be neither published or scheduled to be published.
@@ -12410,14 +11400,12 @@ type ReturnDecline = {
   reason: ReturnDeclineReason;
 };
 /** The reason why the merchant declined a customer's return request. */
-declare enum ReturnDeclineReason {
-  /** The return contains final sale items. */
-  FinalSale = 'FINAL_SALE',
-  /** The return is declined for another reason. */
-  Other = 'OTHER',
-  /** The return period has ended. */
-  ReturnPeriodEnded = 'RETURN_PERIOD_ENDED'
-}
+declare const ReturnDeclineReason: {
+  /** The return contains final sale items. */readonly FinalSale: "FINAL_SALE"; /** The return is declined for another reason. */
+  readonly Other: "OTHER"; /** The return period has ended. */
+  readonly ReturnPeriodEnded: "RETURN_PERIOD_ENDED";
+};
+type ReturnDeclineReason = typeof ReturnDeclineReason[keyof typeof ReturnDeclineReason];
 /** An auto-generated type which holds one Return and a cursor during pagination. */
 type ReturnEdge = {
   __typename?: 'ReturnEdge'; /** The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql). */
@@ -12453,28 +11441,19 @@ type ReturnLineItemTypeEdge = {
 /** The financial transfer details for the return outcome. */
 type ReturnOutcomeFinancialTransfer = InvoiceReturnOutcome | RefundReturnOutcome;
 /** The reason for returning the return line item. */
-declare enum ReturnReason {
-  /** The item is returned because the buyer did not like the color. Displays as **Color**. */
-  Color = 'COLOR',
-  /** The item is returned because it is damaged or defective. Displays as **Damaged or defective**. */
-  Defective = 'DEFECTIVE',
-  /** The item is returned because it was not as described. Displays as **Item not as described**. */
-  NotAsDescribed = 'NOT_AS_DESCRIBED',
-  /** The item is returned for another reason. For this value, a return reason note is also provided. Displays as **Other**. */
-  Other = 'OTHER',
-  /** The item is returned because the size was too large. Displays as **Size was too large**. */
-  SizeTooLarge = 'SIZE_TOO_LARGE',
-  /** The item is returned because the size was too small. Displays as **Size was too small**. */
-  SizeTooSmall = 'SIZE_TOO_SMALL',
-  /** The item is returned because the buyer did not like the style. Displays as **Style**. */
-  Style = 'STYLE',
-  /** The item is returned because of an unknown reason. Displays as **Unknown**. */
-  Unknown = 'UNKNOWN',
-  /** The item is returned because the customer changed their mind. Displays as **Customer changed their mind**. */
-  Unwanted = 'UNWANTED',
-  /** The item is returned because the customer received the wrong one. Displays as **Received the wrong item**. */
-  WrongItem = 'WRONG_ITEM'
-}
+declare const ReturnReason: {
+  /** The item is returned because the buyer did not like the color. Displays as **Color**. */readonly Color: "COLOR"; /** The item is returned because it is damaged or defective. Displays as **Damaged or defective**. */
+  readonly Defective: "DEFECTIVE"; /** The item is returned because it was not as described. Displays as **Item not as described**. */
+  readonly NotAsDescribed: "NOT_AS_DESCRIBED"; /** The item is returned for another reason. For this value, a return reason note is also provided. Displays as **Other**. */
+  readonly Other: "OTHER"; /** The item is returned because the size was too large. Displays as **Size was too large**. */
+  readonly SizeTooLarge: "SIZE_TOO_LARGE"; /** The item is returned because the size was too small. Displays as **Size was too small**. */
+  readonly SizeTooSmall: "SIZE_TOO_SMALL"; /** The item is returned because the buyer did not like the style. Displays as **Style**. */
+  readonly Style: "STYLE"; /** The item is returned because of an unknown reason. Displays as **Unknown**. */
+  readonly Unknown: "UNKNOWN"; /** The item is returned because the customer changed their mind. Displays as **Customer changed their mind**. */
+  readonly Unwanted: "UNWANTED"; /** The item is returned because the customer received the wrong one. Displays as **Received the wrong item**. */
+  readonly WrongItem: "WRONG_ITEM";
+};
+type ReturnReason = typeof ReturnReason[keyof typeof ReturnReason];
 /** A return shipping fee is a fee captured as part of a return to cover the costs of shipping the return. */
 type ReturnShippingFee = Fee & {
   __typename?: 'ReturnShippingFee'; /** The amount of the return shipping fee, in shop and presentment currencies. */
@@ -12482,18 +11461,14 @@ type ReturnShippingFee = Fee & {
   id: Scalars['ID']['output'];
 };
 /** The status of a return. */
-declare enum ReturnStatus {
-  /** The return has been canceled. */
-  Canceled = 'CANCELED',
-  /** The return has been completed. */
-  Closed = 'CLOSED',
-  /** The return was declined. */
-  Declined = 'DECLINED',
-  /** The return is in progress. */
-  Open = 'OPEN',
-  /** The return was requested. */
-  Requested = 'REQUESTED'
-}
+declare const ReturnStatus: {
+  /** The return has been canceled. */readonly Canceled: "CANCELED"; /** The return has been completed. */
+  readonly Closed: "CLOSED"; /** The return was declined. */
+  readonly Declined: "DECLINED"; /** The return is in progress. */
+  readonly Open: "OPEN"; /** The return was requested. */
+  readonly Requested: "REQUESTED";
+};
+type ReturnStatus = typeof ReturnStatus[keyof typeof ReturnStatus];
 /**
  * A reverse delivery is a post-fulfillment object that represents a buyer sending a package to a merchant.
  * For example, a buyer requests a return, and a merchant sends the buyer a shipping label.
@@ -12597,16 +11572,13 @@ type ReverseFulfillmentOrderDisposition = Node & {
   type: ReverseFulfillmentOrderDispositionType;
 };
 /** The final arrangement of an item from a reverse fulfillment order. */
-declare enum ReverseFulfillmentOrderDispositionType {
-  /** An item that was expected but absent. */
-  Missing = 'MISSING',
-  /** An item that wasn't restocked. */
-  NotRestocked = 'NOT_RESTOCKED',
-  /** An item that requires further processing before being restocked or discarded. */
-  ProcessingRequired = 'PROCESSING_REQUIRED',
-  /** An item that was restocked. */
-  Restocked = 'RESTOCKED'
-}
+declare const ReverseFulfillmentOrderDispositionType: {
+  /** An item that was expected but absent. */readonly Missing: "MISSING"; /** An item that wasn't restocked. */
+  readonly NotRestocked: "NOT_RESTOCKED"; /** An item that requires further processing before being restocked or discarded. */
+  readonly ProcessingRequired: "PROCESSING_REQUIRED"; /** An item that was restocked. */
+  readonly Restocked: "RESTOCKED";
+};
+type ReverseFulfillmentOrderDispositionType = typeof ReverseFulfillmentOrderDispositionType[keyof typeof ReverseFulfillmentOrderDispositionType];
 /** An auto-generated type which holds one ReverseFulfillmentOrder and a cursor during pagination. */
 type ReverseFulfillmentOrderEdge = {
   __typename?: 'ReverseFulfillmentOrderEdge'; /** The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql). */
@@ -12635,47 +11607,36 @@ type ReverseFulfillmentOrderLineItemEdge = {
   node: ReverseFulfillmentOrderLineItem;
 };
 /** The status of a reverse fulfillment order. */
-declare enum ReverseFulfillmentOrderStatus {
-  /** The reverse fulfillment order has been canceled. */
-  Canceled = 'CANCELED',
-  /** The reverse fulfillment order has been completed. */
-  Closed = 'CLOSED',
-  /** The reverse fulfillment order is in progress. */
-  Open = 'OPEN'
-}
+declare const ReverseFulfillmentOrderStatus: {
+  /** The reverse fulfillment order has been canceled. */readonly Canceled: "CANCELED"; /** The reverse fulfillment order has been completed. */
+  readonly Closed: "CLOSED"; /** The reverse fulfillment order is in progress. */
+  readonly Open: "OPEN";
+};
+type ReverseFulfillmentOrderStatus = typeof ReverseFulfillmentOrderStatus[keyof typeof ReverseFulfillmentOrderStatus];
 /** The third-party confirmation of a reverse fulfillment order. */
 type ReverseFulfillmentOrderThirdPartyConfirmation = {
   __typename?: 'ReverseFulfillmentOrderThirdPartyConfirmation'; /** The status of the reverse fulfillment order third-party confirmation. */
   status: ReverseFulfillmentOrderThirdPartyConfirmationStatus;
 };
 /** The status of a reverse fulfillment order third-party confirmation. */
-declare enum ReverseFulfillmentOrderThirdPartyConfirmationStatus {
-  /** The reverse fulfillment order was accepted by the fulfillment service. */
-  Accepted = 'ACCEPTED',
-  /** The reverse fulfillment order cancelation was accepted by the fulfillment service. */
-  CancelAccepted = 'CANCEL_ACCEPTED',
-  /** The reverse fulfillment order cancelation was rejected by the fulfillment service. */
-  CancelRejected = 'CANCEL_REJECTED',
-  /** The reverse fulfillment order is awaiting acceptance by the fulfillment service. */
-  PendingAcceptance = 'PENDING_ACCEPTANCE',
-  /** The reverse fulfillment order is awaiting cancelation by the fulfillment service. */
-  PendingCancelation = 'PENDING_CANCELATION',
-  /** The reverse fulfillment order was rejected by the fulfillment service. */
-  Rejected = 'REJECTED'
-}
+declare const ReverseFulfillmentOrderThirdPartyConfirmationStatus: {
+  /** The reverse fulfillment order was accepted by the fulfillment service. */readonly Accepted: "ACCEPTED"; /** The reverse fulfillment order cancelation was accepted by the fulfillment service. */
+  readonly CancelAccepted: "CANCEL_ACCEPTED"; /** The reverse fulfillment order cancelation was rejected by the fulfillment service. */
+  readonly CancelRejected: "CANCEL_REJECTED"; /** The reverse fulfillment order is awaiting acceptance by the fulfillment service. */
+  readonly PendingAcceptance: "PENDING_ACCEPTANCE"; /** The reverse fulfillment order is awaiting cancelation by the fulfillment service. */
+  readonly PendingCancelation: "PENDING_CANCELATION"; /** The reverse fulfillment order was rejected by the fulfillment service. */
+  readonly Rejected: "REJECTED";
+};
+type ReverseFulfillmentOrderThirdPartyConfirmationStatus = typeof ReverseFulfillmentOrderThirdPartyConfirmationStatus[keyof typeof ReverseFulfillmentOrderThirdPartyConfirmationStatus];
 /** List of possible values for a RiskAssessment result. */
-declare enum RiskAssessmentResult {
-  /** Indicates a high likelihood that the order is fraudulent. */
-  High = 'HIGH',
-  /** Indicates a low likelihood that the order is fraudulent. */
-  Low = 'LOW',
-  /** Indicates a medium likelihood that the order is fraudulent. */
-  Medium = 'MEDIUM',
-  /** Indicates that the risk assessment will not provide a recommendation for the order. */
-  None = 'NONE',
-  /** Indicates that the risk assessment is still pending. */
-  Pending = 'PENDING'
-}
+declare const RiskAssessmentResult: {
+  /** Indicates a high likelihood that the order is fraudulent. */readonly High: "HIGH"; /** Indicates a low likelihood that the order is fraudulent. */
+  readonly Low: "LOW"; /** Indicates a medium likelihood that the order is fraudulent. */
+  readonly Medium: "MEDIUM"; /** Indicates that the risk assessment will not provide a recommendation for the order. */
+  readonly None: "NONE"; /** Indicates that the risk assessment is still pending. */
+  readonly Pending: "PENDING";
+};
+type RiskAssessmentResult = typeof RiskAssessmentResult[keyof typeof RiskAssessmentResult];
 /** A risk fact belongs to a single risk assessment and serves to provide additional context for an assessment. Risk facts are not necessarily tied to the result of the recommendation. */
 type RiskFact = {
   __typename?: 'RiskFact'; /** A description of the fact. */
@@ -12683,14 +11644,12 @@ type RiskFact = {
   sentiment: RiskFactSentiment;
 };
 /** List of possible values for a RiskFact sentiment. */
-declare enum RiskFactSentiment {
-  /** A negative contributor that increases the risk. */
-  Negative = 'NEGATIVE',
-  /** A neutral contributor with regards to risk. */
-  Neutral = 'NEUTRAL',
-  /** A positive contributor that lowers the risk. */
-  Positive = 'POSITIVE'
-}
+declare const RiskFactSentiment: {
+  /** A negative contributor that increases the risk. */readonly Negative: "NEGATIVE"; /** A neutral contributor with regards to risk. */
+  readonly Neutral: "NEUTRAL"; /** A positive contributor that lowers the risk. */
+  readonly Positive: "POSITIVE";
+};
+type RiskFactSentiment = typeof RiskFactSentiment[keyof typeof RiskFactSentiment];
 /** A row count represents rows on background operation. */
 type RowCount = {
   __typename?: 'RowCount'; /** Estimated number of rows contained within this background operation. */
@@ -12716,16 +11675,13 @@ type Sale = {
   totalTaxAmount: MoneyBag;
 };
 /** The possible order action types for a sale. */
-declare enum SaleActionType {
-  /** A purchase or charge. */
-  Order = 'ORDER',
-  /** A removal or return. */
-  Return = 'RETURN',
-  /** An unknown order action. Represents new actions that may be added in future versions. */
-  Unknown = 'UNKNOWN',
-  /** A change to the price, taxes, or discounts for a prior purchase. */
-  Update = 'UPDATE'
-}
+declare const SaleActionType: {
+  /** A purchase or charge. */readonly Order: "ORDER"; /** A removal or return. */
+  readonly Return: "RETURN"; /** An unknown order action. Represents new actions that may be added in future versions. */
+  readonly Unknown: "UNKNOWN"; /** A change to the price, taxes, or discounts for a prior purchase. */
+  readonly Update: "UPDATE";
+};
+type SaleActionType = typeof SaleActionType[keyof typeof SaleActionType];
 /** An auto-generated type for paginating through multiple Sales. */
 type SaleConnection = {
   __typename?: 'SaleConnection'; /** The connection between the node and its parent. Each edge contains a minimum of the edge's cursor and the node. */
@@ -12740,26 +11696,18 @@ type SaleEdge = {
   node: Sale;
 };
 /** The possible line types for a sale record. One of the possible order line types for a sale is an adjustment. Sales adjustments occur when a refund is issued for a line item that is either more or less than the total value of the line item. Examples are restocking fees and goodwill payments. When this happens, Shopify produces a sales agreement with sale records for each line item that is returned or refunded and an additional sale record for the adjustment (for example, a restocking fee). The sales records for the returned or refunded items represent the reversal of the original line item sale value. The additional adjustment sale record represents the difference between the original total value of all line items that were refunded, and the actual amount refunded. */
-declare enum SaleLineType {
-  /** An additional fee. */
-  AdditionalFee = 'ADDITIONAL_FEE',
-  /** A sale adjustment. */
-  Adjustment = 'ADJUSTMENT',
-  /** A duty charge. */
-  Duty = 'DUTY',
-  /** A fee charge. */
-  Fee = 'FEE',
-  /** A gift card. */
-  GiftCard = 'GIFT_CARD',
-  /** A product purchased, returned or exchanged. */
-  Product = 'PRODUCT',
-  /** A shipping cost. */
-  Shipping = 'SHIPPING',
-  /** A tip added by the customer. */
-  Tip = 'TIP',
-  /** An unknown sale line. Represents new types that may be added in future versions. */
-  Unknown = 'UNKNOWN'
-}
+declare const SaleLineType: {
+  /** An additional fee. */readonly AdditionalFee: "ADDITIONAL_FEE"; /** A sale adjustment. */
+  readonly Adjustment: "ADJUSTMENT"; /** A duty charge. */
+  readonly Duty: "DUTY"; /** A fee charge. */
+  readonly Fee: "FEE"; /** A gift card. */
+  readonly GiftCard: "GIFT_CARD"; /** A product purchased, returned or exchanged. */
+  readonly Product: "PRODUCT"; /** A shipping cost. */
+  readonly Shipping: "SHIPPING"; /** A tip added by the customer. */
+  readonly Tip: "TIP"; /** An unknown sale line. Represents new types that may be added in future versions. */
+  readonly Unknown: "UNKNOWN";
+};
+type SaleLineType = typeof SaleLineType[keyof typeof SaleLineType];
 /** The tax allocated to a sale from a single tax line. */
 type SaleTax = {
   __typename?: 'SaleTax'; /** The portion of the total tax amount on the related sale that comes from the associated tax line. */
@@ -12932,14 +11880,12 @@ type SellingPlanAnchor = {
   type: SellingPlanAnchorType;
 };
 /** Represents the anchor type. */
-declare enum SellingPlanAnchorType {
-  /** Which day of the month, between 1-31. */
-  Monthday = 'MONTHDAY',
-  /** Which day of the week, between 1-7. */
-  Weekday = 'WEEKDAY',
-  /** Which days of the month and year, month between 1-12, and day between 1-31. */
-  Yearday = 'YEARDAY'
-}
+declare const SellingPlanAnchorType: {
+  /** Which day of the month, between 1-31. */readonly Monthday: "MONTHDAY"; /** Which day of the week, between 1-7. */
+  readonly Weekday: "WEEKDAY"; /** Which days of the month and year, month between 1-12, and day between 1-31. */
+  readonly Yearday: "YEARDAY";
+};
+type SellingPlanAnchorType = typeof SellingPlanAnchorType[keyof typeof SellingPlanAnchorType];
 /**
  * Represents the billing frequency associated to the selling plan (for example, bill every week, or bill every
  * three months). The selling plan billing policy and associated records (selling plan groups, selling plans, pricing
@@ -12952,16 +11898,13 @@ type SellingPlanBillingPolicy = SellingPlanFixedBillingPolicy | SellingPlanRecur
  *          you must fill out our [request form](https://docs.google.com/forms/d/e/1FAIpQLSeU18Xmw0Q61V8wdH-dfGafFqIBfRchQKUO8WAF3yJTvgyyZQ/viewform),
  *          where we'll review your request for a new purchase option.
  */
-declare enum SellingPlanCategory {
-  /** The selling plan is for anything not in one of the other categories. */
-  Other = 'OTHER',
-  /** The selling plan is for pre-orders. */
-  PreOrder = 'PRE_ORDER',
-  /** The selling plan is for subscriptions. */
-  Subscription = 'SUBSCRIPTION',
-  /** The selling plan is for try before you buy purchases. */
-  TryBeforeYouBuy = 'TRY_BEFORE_YOU_BUY'
-}
+declare const SellingPlanCategory: {
+  /** The selling plan is for anything not in one of the other categories. */readonly Other: "OTHER"; /** The selling plan is for pre-orders. */
+  readonly PreOrder: "PRE_ORDER"; /** The selling plan is for subscriptions. */
+  readonly Subscription: "SUBSCRIPTION"; /** The selling plan is for try before you buy purchases. */
+  readonly TryBeforeYouBuy: "TRY_BEFORE_YOU_BUY";
+};
+type SellingPlanCategory = typeof SellingPlanCategory[keyof typeof SellingPlanCategory];
 /** The amount charged at checkout when the full amount isn't charged at checkout. */
 type SellingPlanCheckoutCharge = {
   __typename?: 'SellingPlanCheckoutCharge'; /** The charge type for the checkout charge. */
@@ -12974,12 +11917,11 @@ type SellingPlanCheckoutChargePercentageValue = {
   percentage: Scalars['Float']['output'];
 };
 /** The checkout charge when the full amount isn't charged at checkout. */
-declare enum SellingPlanCheckoutChargeType {
-  /** The checkout charge is a percentage of the product or variant price. */
-  Percentage = 'PERCENTAGE',
-  /** The checkout charge is a fixed price amount. */
-  Price = 'PRICE'
-}
+declare const SellingPlanCheckoutChargeType: {
+  /** The checkout charge is a percentage of the product or variant price. */readonly Percentage: "PERCENTAGE"; /** The checkout charge is a fixed price amount. */
+  readonly Price: "PRICE";
+};
+type SellingPlanCheckoutChargeType = typeof SellingPlanCheckoutChargeType[keyof typeof SellingPlanCheckoutChargeType];
 /** The portion of the price to be charged at checkout. */
 type SellingPlanCheckoutChargeValue = MoneyV2 | SellingPlanCheckoutChargePercentageValue;
 /** An auto-generated type for paginating through multiple SellingPlans. */
@@ -13030,21 +11972,21 @@ type SellingPlanFixedDeliveryPolicy = {
   preAnchorBehavior: SellingPlanFixedDeliveryPolicyPreAnchorBehavior;
 };
 /** Possible intentions of a Delivery Policy. */
-declare enum SellingPlanFixedDeliveryPolicyIntent {
-  /** A merchant-centric delivery policy. Mark this delivery policy to define when the merchant should start fulfillment. */
-  FulfillmentBegin = 'FULFILLMENT_BEGIN'
-}
+declare const SellingPlanFixedDeliveryPolicyIntent: {
+  /** A merchant-centric delivery policy. Mark this delivery policy to define when the merchant should start fulfillment. */readonly FulfillmentBegin: "FULFILLMENT_BEGIN";
+};
+type SellingPlanFixedDeliveryPolicyIntent = typeof SellingPlanFixedDeliveryPolicyIntent[keyof typeof SellingPlanFixedDeliveryPolicyIntent];
 /** The fulfillment or delivery behavior of the first fulfillment when the orderis placed before the anchor. */
-declare enum SellingPlanFixedDeliveryPolicyPreAnchorBehavior {
-  /** Orders placed can be fulfilled / delivered immediately. Orders placed inside a cutoff can be fulfilled / delivered at the next anchor. */
-  Asap = 'ASAP',
+declare const SellingPlanFixedDeliveryPolicyPreAnchorBehavior: {
+  /** Orders placed can be fulfilled / delivered immediately. Orders placed inside a cutoff can be fulfilled / delivered at the next anchor. */readonly Asap: "ASAP";
   /**
    * Orders placed can be fulfilled / delivered at the next anchor date.
    * Orders placed inside a cutoff will skip the next anchor and can be fulfilled /
    * delivered at the following anchor.
    */
-  Next = 'NEXT'
-}
+  readonly Next: "NEXT";
+};
+type SellingPlanFixedDeliveryPolicyPreAnchorBehavior = typeof SellingPlanFixedDeliveryPolicyPreAnchorBehavior[keyof typeof SellingPlanFixedDeliveryPolicyPreAnchorBehavior];
 /**
  * Represents the pricing policy of a subscription or deferred purchase option selling plan.
  * The selling plan fixed pricing policy works with the billing and delivery policy
@@ -13059,16 +12001,13 @@ type SellingPlanFixedPricingPolicy = SellingPlanPricingPolicyBase & {
   createdAt: Scalars['DateTime']['output'];
 };
 /** Describes what triggers fulfillment. */
-declare enum SellingPlanFulfillmentTrigger {
-  /** Use the anchor values to calculate fulfillment date. */
-  Anchor = 'ANCHOR',
-  /** As soon as possible. */
-  Asap = 'ASAP',
-  /** At an exact time defined by the fulfillment_exact_time field. */
-  ExactTime = 'EXACT_TIME',
-  /** Unknown. Usually to be determined in the future. */
-  Unknown = 'UNKNOWN'
-}
+declare const SellingPlanFulfillmentTrigger: {
+  /** Use the anchor values to calculate fulfillment date. */readonly Anchor: "ANCHOR"; /** As soon as possible. */
+  readonly Asap: "ASAP"; /** At an exact time defined by the fulfillment_exact_time field. */
+  readonly ExactTime: "EXACT_TIME"; /** Unknown. Usually to be determined in the future. */
+  readonly Unknown: "UNKNOWN";
+};
+type SellingPlanFulfillmentTrigger = typeof SellingPlanFulfillmentTrigger[keyof typeof SellingPlanFulfillmentTrigger];
 /**
  * A selling method that defines how products can be sold through purchase options like subscriptions, pre-orders, or try-before-you-buy. Groups one or more [`SellingPlan`](https://shopify.dev/docs/api/admin-graphql/latest/objects/SellingPlan) objects that share the same selling method and options.
  *
@@ -13112,16 +12051,13 @@ type SellingPlanGroupEdge = {
   node: SellingPlanGroup;
 };
 /** Represents valid selling plan interval. */
-declare enum SellingPlanInterval {
-  /** Day interval. */
-  Day = 'DAY',
-  /** Month interval. */
-  Month = 'MONTH',
-  /** Week interval. */
-  Week = 'WEEK',
-  /** Year interval. */
-  Year = 'YEAR'
-}
+declare const SellingPlanInterval: {
+  /** Day interval. */readonly Day: "DAY"; /** Month interval. */
+  readonly Month: "MONTH"; /** Week interval. */
+  readonly Week: "WEEK"; /** Year interval. */
+  readonly Year: "YEAR";
+};
+type SellingPlanInterval = typeof SellingPlanInterval[keyof typeof SellingPlanInterval];
 /** The selling plan inventory policy. */
 type SellingPlanInventoryPolicy = {
   __typename?: 'SellingPlanInventoryPolicy'; /** When to reserve inventory for the order. */
@@ -13136,14 +12072,12 @@ type SellingPlanInventoryPolicy = {
  */
 type SellingPlanPricingPolicy = SellingPlanFixedPricingPolicy | SellingPlanRecurringPricingPolicy;
 /** Represents a selling plan pricing policy adjustment type. */
-declare enum SellingPlanPricingPolicyAdjustmentType {
-  /** Fixed amount off adjustment. */
-  FixedAmount = 'FIXED_AMOUNT',
-  /** Percentage off adjustment. */
-  Percentage = 'PERCENTAGE',
-  /** Price of the policy. */
-  Price = 'PRICE'
-}
+declare const SellingPlanPricingPolicyAdjustmentType: {
+  /** Fixed amount off adjustment. */readonly FixedAmount: "FIXED_AMOUNT"; /** Percentage off adjustment. */
+  readonly Percentage: "PERCENTAGE"; /** Price of the policy. */
+  readonly Price: "PRICE";
+};
+type SellingPlanPricingPolicyAdjustmentType = typeof SellingPlanPricingPolicyAdjustmentType[keyof typeof SellingPlanPricingPolicyAdjustmentType];
 /** Represents a selling plan pricing policy adjustment value type. */
 type SellingPlanPricingPolicyAdjustmentValue = MoneyV2 | SellingPlanPricingPolicyPercentageValue;
 /** Represents selling plan pricing policy common fields. */
@@ -13184,21 +12118,21 @@ type SellingPlanRecurringDeliveryPolicy = {
   preAnchorBehavior: SellingPlanRecurringDeliveryPolicyPreAnchorBehavior;
 };
 /** Whether the delivery policy is merchant or buyer-centric. */
-declare enum SellingPlanRecurringDeliveryPolicyIntent {
-  /** A merchant-centric delivery policy. Mark this delivery policy to define when the merchant should start fulfillment. */
-  FulfillmentBegin = 'FULFILLMENT_BEGIN'
-}
+declare const SellingPlanRecurringDeliveryPolicyIntent: {
+  /** A merchant-centric delivery policy. Mark this delivery policy to define when the merchant should start fulfillment. */readonly FulfillmentBegin: "FULFILLMENT_BEGIN";
+};
+type SellingPlanRecurringDeliveryPolicyIntent = typeof SellingPlanRecurringDeliveryPolicyIntent[keyof typeof SellingPlanRecurringDeliveryPolicyIntent];
 /** The fulfillment or delivery behaviors of the first fulfillment when the orderis placed before the anchor. */
-declare enum SellingPlanRecurringDeliveryPolicyPreAnchorBehavior {
-  /** The orders placed can be fulfilled or delivered immediately. The orders placed inside a cutoff can be fulfilled or delivered at the next anchor. */
-  Asap = 'ASAP',
+declare const SellingPlanRecurringDeliveryPolicyPreAnchorBehavior: {
+  /** The orders placed can be fulfilled or delivered immediately. The orders placed inside a cutoff can be fulfilled or delivered at the next anchor. */readonly Asap: "ASAP";
   /**
    * The orders placed can be fulfilled or delivered at the next anchor date.
    * The orders placed inside a cutoff will skip the next anchor and can be fulfilled or
    * delivered at the following anchor.
    */
-  Next = 'NEXT'
-}
+  readonly Next: "NEXT";
+};
+type SellingPlanRecurringDeliveryPolicyPreAnchorBehavior = typeof SellingPlanRecurringDeliveryPolicyPreAnchorBehavior[keyof typeof SellingPlanRecurringDeliveryPolicyPreAnchorBehavior];
 /** Represents a recurring selling plan pricing policy. It applies after the fixed pricing policy. By using the afterCycle parameter, you can specify the cycle when the recurring pricing policy comes into effect. Recurring pricing policies are not available for deferred purchase options. */
 type SellingPlanRecurringPricingPolicy = SellingPlanPricingPolicyBase & {
   __typename?: 'SellingPlanRecurringPricingPolicy'; /** The price adjustment type. */
@@ -13208,31 +12142,27 @@ type SellingPlanRecurringPricingPolicy = SellingPlanPricingPolicyBase & {
   createdAt: Scalars['DateTime']['output'];
 };
 /** When to capture the payment for the remaining amount due. */
-declare enum SellingPlanRemainingBalanceChargeTrigger {
-  /** At an exact time defined by the remaining_balance_charge_exact_time field. */
-  ExactTime = 'EXACT_TIME',
-  /** When there's no remaining balance to be charged after checkout. */
-  NoRemainingBalance = 'NO_REMAINING_BALANCE',
-  /** When the order is fulfilled. */
-  OnFulfillment = 'ON_FULFILLMENT',
-  /** After the duration defined by the remaining_balance_charge_time_after_checkout field. */
-  TimeAfterCheckout = 'TIME_AFTER_CHECKOUT'
-}
+declare const SellingPlanRemainingBalanceChargeTrigger: {
+  /** At an exact time defined by the remaining_balance_charge_exact_time field. */readonly ExactTime: "EXACT_TIME"; /** When there's no remaining balance to be charged after checkout. */
+  readonly NoRemainingBalance: "NO_REMAINING_BALANCE"; /** When the order is fulfilled. */
+  readonly OnFulfillment: "ON_FULFILLMENT"; /** After the duration defined by the remaining_balance_charge_time_after_checkout field. */
+  readonly TimeAfterCheckout: "TIME_AFTER_CHECKOUT";
+};
+type SellingPlanRemainingBalanceChargeTrigger = typeof SellingPlanRemainingBalanceChargeTrigger[keyof typeof SellingPlanRemainingBalanceChargeTrigger];
 /** When to reserve inventory for a selling plan. */
-declare enum SellingPlanReserve {
-  /** Reserve inventory when order is fulfilled. */
-  OnFulfillment = 'ON_FULFILLMENT',
-  /** Reserve inventory at time of sale. */
-  OnSale = 'ON_SALE'
-}
+declare const SellingPlanReserve: {
+  /** Reserve inventory when order is fulfilled. */readonly OnFulfillment: "ON_FULFILLMENT"; /** Reserve inventory at time of sale. */
+  readonly OnSale: "ON_SALE";
+};
+type SellingPlanReserve = typeof SellingPlanReserve[keyof typeof SellingPlanReserve];
 /**
  * The [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
  * that's used to control how discounts can be combined.
  */
-declare enum ShippingDiscountClass {
-  /** Combined as a shipping discount. */
-  Shipping = 'SHIPPING'
-}
+declare const ShippingDiscountClass: {
+  /** Combined as a shipping discount. */readonly Shipping: "SHIPPING";
+};
+type ShippingDiscountClass = typeof ShippingDiscountClass[keyof typeof ShippingDiscountClass];
 /** The shipping method that customers select for an order. Includes pricing details, carrier information, and any applied discounts or taxes. */
 type ShippingLine = {
   __typename?: 'ShippingLine';
@@ -13611,22 +12541,20 @@ type ShopAlertAction = {
  * Possible branding of a shop.
  * Branding can be used to define the look of a shop including its styling and logo in the Shopify Admin.
  */
-declare enum ShopBranding {
-  /** Shop has Rogers branding. */
-  Rogers = 'ROGERS',
-  /** Shop has Shopify branding. */
-  Shopify = 'SHOPIFY',
-  /** Shop has Shopify Gold branding. */
-  ShopifyGold = 'SHOPIFY_GOLD',
-  /** Shop has Shopify Plus branding. */
-  ShopifyPlus = 'SHOPIFY_PLUS'
-}
+declare const ShopBranding: {
+  /** Shop has Rogers branding. */readonly Rogers: "ROGERS"; /** Shop has Shopify branding. */
+  readonly Shopify: "SHOPIFY"; /** Shop has Shopify Gold branding. */
+  readonly ShopifyGold: "SHOPIFY_GOLD"; /** Shop has Shopify Plus branding. */
+  readonly ShopifyPlus: "SHOPIFY_PLUS";
+};
+type ShopBranding = typeof ShopBranding[keyof typeof ShopBranding];
 /** Represents the shop's customer account requirement preference. */
-declare enum ShopCustomerAccountsSetting {
-  Disabled = 'DISABLED',
-  Optional = 'OPTIONAL',
-  Required = 'REQUIRED'
-}
+declare const ShopCustomerAccountsSetting: {
+  readonly Disabled: "DISABLED";
+  readonly Optional: "OPTIONAL";
+  readonly Required: "REQUIRED";
+};
+type ShopCustomerAccountsSetting = typeof ShopCustomerAccountsSetting[keyof typeof ShopCustomerAccountsSetting];
 /**
  * Represents the feature set available to the shop.
  * Most fields specify whether a feature is enabled for a shop, and some fields return information
@@ -13742,24 +12670,17 @@ type ShopPolicy = HasPublishedTranslations & Node & {
   url: Scalars['URL']['output'];
 };
 /** Available shop policy types. */
-declare enum ShopPolicyType {
-  /** The contact information. */
-  ContactInformation = 'CONTACT_INFORMATION',
-  /** The legal notice. */
-  LegalNotice = 'LEGAL_NOTICE',
-  /** The privacy policy. */
-  PrivacyPolicy = 'PRIVACY_POLICY',
-  /** The refund policy. */
-  RefundPolicy = 'REFUND_POLICY',
-  /** The shipping policy. */
-  ShippingPolicy = 'SHIPPING_POLICY',
-  /** The cancellation policy. */
-  SubscriptionPolicy = 'SUBSCRIPTION_POLICY',
-  /** The terms of sale. */
-  TermsOfSale = 'TERMS_OF_SALE',
-  /** The terms of service. */
-  TermsOfService = 'TERMS_OF_SERVICE'
-}
+declare const ShopPolicyType: {
+  /** The contact information. */readonly ContactInformation: "CONTACT_INFORMATION"; /** The legal notice. */
+  readonly LegalNotice: "LEGAL_NOTICE"; /** The privacy policy. */
+  readonly PrivacyPolicy: "PRIVACY_POLICY"; /** The refund policy. */
+  readonly RefundPolicy: "REFUND_POLICY"; /** The shipping policy. */
+  readonly ShippingPolicy: "SHIPPING_POLICY"; /** The cancellation policy. */
+  readonly SubscriptionPolicy: "SUBSCRIPTION_POLICY"; /** The terms of sale. */
+  readonly TermsOfSale: "TERMS_OF_SALE"; /** The terms of service. */
+  readonly TermsOfService: "TERMS_OF_SERVICE";
+};
+type ShopPolicyType = typeof ShopPolicyType[keyof typeof ShopPolicyType];
 /** Resource limits of a shop. */
 type ShopResourceLimits = {
   __typename?: 'ShopResourceLimits'; /** Maximum number of locations allowed. */
@@ -13885,28 +12806,20 @@ type ShopifyPaymentsBalanceTransactionEdge = {
   node: ShopifyPaymentsBalanceTransaction;
 };
 /** The payout status of the balance transaction. */
-declare enum ShopifyPaymentsBalanceTransactionPayoutStatus {
-  /** The transaction requires action before it can be paid out. */
-  ActionRequired = 'ACTION_REQUIRED',
-  /** The payout has been canceled by Shopify. */
-  Canceled = 'CANCELED',
-  /** The payout has been declined by the bank. */
-  Failed = 'FAILED',
-  /**
-   * The payout has been submitted to the bank.
-   * @deprecated Use `SCHEDULED` instead.
-   */
-  InTransit = 'IN_TRANSIT',
-  /** The payout has been successfully deposited into the bank. */
-  Paid = 'PAID',
-  /** The transaction has not been assigned a payout yet. */
-  Pending = 'PENDING',
+declare const ShopifyPaymentsBalanceTransactionPayoutStatus: {
+  /** The transaction requires action before it can be paid out. */readonly ActionRequired: "ACTION_REQUIRED"; /** The payout has been canceled by Shopify. */
+  readonly Canceled: "CANCELED"; /** The payout has been declined by the bank. */
+  readonly Failed: "FAILED"; /** The payout has been submitted to the bank. */
+  readonly InTransit: "IN_TRANSIT"; /** The payout has been successfully deposited into the bank. */
+  readonly Paid: "PAID"; /** The transaction has not been assigned a payout yet. */
+  readonly Pending: "PENDING";
   /**
    * The payout has been created and had transactions assigned to it, but
    * it has not yet been submitted to the bank.
    */
-  Scheduled = 'SCHEDULED'
-}
+  readonly Scheduled: "SCHEDULED";
+};
+type ShopifyPaymentsBalanceTransactionPayoutStatus = typeof ShopifyPaymentsBalanceTransactionPayoutStatus[keyof typeof ShopifyPaymentsBalanceTransactionPayoutStatus];
 /** A bank account that can receive payouts. */
 type ShopifyPaymentsBankAccount = Node & {
   __typename?: 'ShopifyPaymentsBankAccount'; /** The last digits of the account number (the rest is redacted). */
@@ -13933,16 +12846,13 @@ type ShopifyPaymentsBankAccountEdge = {
   node: ShopifyPaymentsBankAccount;
 };
 /** The bank account status. */
-declare enum ShopifyPaymentsBankAccountStatus {
-  /** A payout to the bank account failed. */
-  Errored = 'ERRORED',
-  /** A bank account that hasn't had any activity and that's not validated. */
-  New = 'NEW',
-  /** It was determined that the bank account exists. */
-  Validated = 'VALIDATED',
-  /** Bank account validation was successful. */
-  Verified = 'VERIFIED'
-}
+declare const ShopifyPaymentsBankAccountStatus: {
+  /** A payout to the bank account failed. */readonly Errored: "ERRORED"; /** A bank account that hasn't had any activity and that's not validated. */
+  readonly New: "NEW"; /** It was determined that the bank account exists. */
+  readonly Validated: "VALIDATED"; /** Bank account validation was successful. */
+  readonly Verified: "VERIFIED";
+};
+type ShopifyPaymentsBankAccountStatus = typeof ShopifyPaymentsBankAccountStatus[keyof typeof ShopifyPaymentsBankAccountStatus];
 /** The charge descriptors for a payments account. */
 type ShopifyPaymentsChargeStatementDescriptor = {
   /** The default charge statement descriptor. */default?: Maybe<Scalars['String']['output']>; /** The prefix of the statement descriptor. */
@@ -14006,22 +12916,16 @@ type ShopifyPaymentsDisputeEvidence = Node & {
   uncategorizedText?: Maybe<Scalars['String']['output']>;
 };
 /** The possible dispute evidence file types. */
-declare enum ShopifyPaymentsDisputeEvidenceFileType {
-  /** Cancellation Policy File. */
-  CancellationPolicyFile = 'CANCELLATION_POLICY_FILE',
-  /** Customer Communication File. */
-  CustomerCommunicationFile = 'CUSTOMER_COMMUNICATION_FILE',
-  /** Refund Policy File. */
-  RefundPolicyFile = 'REFUND_POLICY_FILE',
-  /** Response Summary File. */
-  ResponseSummaryFile = 'RESPONSE_SUMMARY_FILE',
-  /** Service Documentation File. */
-  ServiceDocumentationFile = 'SERVICE_DOCUMENTATION_FILE',
-  /** Shipping Documentation File. */
-  ShippingDocumentationFile = 'SHIPPING_DOCUMENTATION_FILE',
-  /** Uncategorized File. */
-  UncategorizedFile = 'UNCATEGORIZED_FILE'
-}
+declare const ShopifyPaymentsDisputeEvidenceFileType: {
+  /** Cancellation Policy File. */readonly CancellationPolicyFile: "CANCELLATION_POLICY_FILE"; /** Customer Communication File. */
+  readonly CustomerCommunicationFile: "CUSTOMER_COMMUNICATION_FILE"; /** Refund Policy File. */
+  readonly RefundPolicyFile: "REFUND_POLICY_FILE"; /** Response Summary File. */
+  readonly ResponseSummaryFile: "RESPONSE_SUMMARY_FILE"; /** Service Documentation File. */
+  readonly ServiceDocumentationFile: "SERVICE_DOCUMENTATION_FILE"; /** Shipping Documentation File. */
+  readonly ShippingDocumentationFile: "SHIPPING_DOCUMENTATION_FILE"; /** Uncategorized File. */
+  readonly UncategorizedFile: "UNCATEGORIZED_FILE";
+};
+type ShopifyPaymentsDisputeEvidenceFileType = typeof ShopifyPaymentsDisputeEvidenceFileType[keyof typeof ShopifyPaymentsDisputeEvidenceFileType];
 /** The file upload associated with the dispute evidence. */
 type ShopifyPaymentsDisputeFileUpload = Node & {
   __typename?: 'ShopifyPaymentsDisputeFileUpload'; /** The type of the file for the dispute evidence. */
@@ -14041,36 +12945,23 @@ type ShopifyPaymentsDisputeFulfillment = Node & {
   shippingTrackingNumber?: Maybe<Scalars['String']['output']>;
 };
 /** The reason for the dispute provided by the cardholder's bank. */
-declare enum ShopifyPaymentsDisputeReason {
-  /** The customer's bank can't process the charge. */
-  BankCannotProcess = 'BANK_CANNOT_PROCESS',
-  /** The customer claims that the purchased product was returned or the transaction was otherwise canceled, but you haven't yet provided a refund or credit. */
-  CreditNotProcessed = 'CREDIT_NOT_PROCESSED',
-  /** The customer initiated the dispute. Contact the customer for additional details on why the payment was disputed. */
-  CustomerInitiated = 'CUSTOMER_INITIATED',
-  /** The customer's bank can't proceed with the debit since it hasn't been authorized. */
-  DebitNotAuthorized = 'DEBIT_NOT_AUTHORIZED',
-  /** The customer claims they were charged multiple times for the same product or service. */
-  Duplicate = 'DUPLICATE',
-  /** The cardholder claims that they didn’t authorize the payment. */
-  Fraudulent = 'FRAUDULENT',
-  /** The dispute is uncategorized, so you should contact the customer for additional details to find out why the payment was disputed. */
-  General = 'GENERAL',
-  /** The customer account associated with the purchase is incorrect. */
-  IncorrectAccountDetails = 'INCORRECT_ACCOUNT_DETAILS',
-  /** The customer's bank account has insufficient funds. */
-  InsufficientFunds = 'INSUFFICIENT_FUNDS',
-  /** The card issuer believes the disputed transaction doesn't conform to the network rules. These disputes occur when transactions don't meet card network requirements and may incur additional network fees if escalated for resolution. */
-  Noncompliant = 'NONCOMPLIANT',
-  /** The customer claims they did not receive the products or services purchased. */
-  ProductNotReceived = 'PRODUCT_NOT_RECEIVED',
-  /** The product or service was received but was defective, damaged, or not as described. */
-  ProductUnacceptable = 'PRODUCT_UNACCEPTABLE',
-  /** The customer claims that you continued to charge them after a subscription was canceled. */
-  SubscriptionCancelled = 'SUBSCRIPTION_CANCELLED',
-  /** The customer doesn’t recognize the payment appearing on their card statement. */
-  Unrecognized = 'UNRECOGNIZED'
-}
+declare const ShopifyPaymentsDisputeReason: {
+  /** The customer's bank can't process the charge. */readonly BankCannotProcess: "BANK_CANNOT_PROCESS"; /** The customer claims that the purchased product was returned or the transaction was otherwise canceled, but you haven't yet provided a refund or credit. */
+  readonly CreditNotProcessed: "CREDIT_NOT_PROCESSED"; /** The customer initiated the dispute. Contact the customer for additional details on why the payment was disputed. */
+  readonly CustomerInitiated: "CUSTOMER_INITIATED"; /** The customer's bank can't proceed with the debit since it hasn't been authorized. */
+  readonly DebitNotAuthorized: "DEBIT_NOT_AUTHORIZED"; /** The customer claims they were charged multiple times for the same product or service. */
+  readonly Duplicate: "DUPLICATE"; /** The cardholder claims that they didn’t authorize the payment. */
+  readonly Fraudulent: "FRAUDULENT"; /** The dispute is uncategorized, so you should contact the customer for additional details to find out why the payment was disputed. */
+  readonly General: "GENERAL"; /** The customer account associated with the purchase is incorrect. */
+  readonly IncorrectAccountDetails: "INCORRECT_ACCOUNT_DETAILS"; /** The customer's bank account has insufficient funds. */
+  readonly InsufficientFunds: "INSUFFICIENT_FUNDS"; /** The card issuer believes the disputed transaction doesn't conform to the network rules. These disputes occur when transactions don't meet card network requirements and may incur additional network fees if escalated for resolution. */
+  readonly Noncompliant: "NONCOMPLIANT"; /** The customer claims they did not receive the products or services purchased. */
+  readonly ProductNotReceived: "PRODUCT_NOT_RECEIVED"; /** The product or service was received but was defective, damaged, or not as described. */
+  readonly ProductUnacceptable: "PRODUCT_UNACCEPTABLE"; /** The customer claims that you continued to charge them after a subscription was canceled. */
+  readonly SubscriptionCancelled: "SUBSCRIPTION_CANCELLED"; /** The customer doesn’t recognize the payment appearing on their card statement. */
+  readonly Unrecognized: "UNRECOGNIZED";
+};
+type ShopifyPaymentsDisputeReason = typeof ShopifyPaymentsDisputeReason[keyof typeof ShopifyPaymentsDisputeReason];
 /** Details regarding a dispute reason. */
 type ShopifyPaymentsDisputeReasonDetails = {
   __typename?: 'ShopifyPaymentsDisputeReasonDetails'; /** The raw code provided by the payment network. */
@@ -14128,16 +13019,13 @@ type ShopifyPaymentsPayoutEdge = {
   node: ShopifyPaymentsPayout;
 };
 /** The interval at which payouts are sent to the connected bank account. */
-declare enum ShopifyPaymentsPayoutInterval {
-  /** Each business day. */
-  Daily = 'DAILY',
-  /** Payouts will not be automatically made. */
-  Manual = 'MANUAL',
-  /** Each month, on the day of month specified by monthlyAnchor. */
-  Monthly = 'MONTHLY',
-  /** Each week, on the day of week specified by weeklyAnchor. */
-  Weekly = 'WEEKLY'
-}
+declare const ShopifyPaymentsPayoutInterval: {
+  /** Each business day. */readonly Daily: "DAILY"; /** Payouts will not be automatically made. */
+  readonly Manual: "MANUAL"; /** Each month, on the day of month specified by monthlyAnchor. */
+  readonly Monthly: "MONTHLY"; /** Each week, on the day of week specified by weeklyAnchor. */
+  readonly Weekly: "WEEKLY";
+};
+type ShopifyPaymentsPayoutInterval = typeof ShopifyPaymentsPayoutInterval[keyof typeof ShopifyPaymentsPayoutInterval];
 /** The payment schedule for a payments account. */
 type ShopifyPaymentsPayoutSchedule = {
   __typename?: 'ShopifyPaymentsPayoutSchedule'; /** The interval at which payouts are sent to the connected bank account. */
@@ -14159,24 +13047,18 @@ type ShopifyPaymentsPayoutSchedule = {
   weeklyAnchor?: Maybe<DayOfTheWeek>;
 };
 /** The transfer status of the payout. */
-declare enum ShopifyPaymentsPayoutStatus {
-  /** The payout has been canceled by Shopify. */
-  Canceled = 'CANCELED',
-  /** The payout has been declined by the bank. */
-  Failed = 'FAILED',
-  /**
-   * The payout has been submitted to the bank.
-   * @deprecated Use `SCHEDULED` instead.
-   */
-  InTransit = 'IN_TRANSIT',
-  /** The payout has been successfully deposited into the bank. */
-  Paid = 'PAID',
+declare const ShopifyPaymentsPayoutStatus: {
+  /** The payout has been canceled by Shopify. */readonly Canceled: "CANCELED"; /** The payout has been declined by the bank. */
+  readonly Failed: "FAILED"; /** The payout has been submitted to the bank. */
+  readonly InTransit: "IN_TRANSIT"; /** The payout has been successfully deposited into the bank. */
+  readonly Paid: "PAID";
   /**
    * The payout has been created and had transactions assigned to it, but
    * it has not yet been submitted to the bank.
    */
-  Scheduled = 'SCHEDULED'
-}
+  readonly Scheduled: "SCHEDULED";
+};
+type ShopifyPaymentsPayoutStatus = typeof ShopifyPaymentsPayoutStatus[keyof typeof ShopifyPaymentsPayoutStatus];
 /**
  * Breakdown of the total fees and gross of each of the different types of transactions associated
  * with the payout.
@@ -14198,34 +13080,27 @@ type ShopifyPaymentsPayoutSummary = {
   usdcRebateCreditAmount: MoneyV2;
 };
 /** The possible transaction types for a payout. */
-declare enum ShopifyPaymentsPayoutTransactionType {
-  /** The payout is a deposit. */
-  Deposit = 'DEPOSIT',
-  /** The payout is a withdrawal. */
-  Withdrawal = 'WITHDRAWAL'
-}
+declare const ShopifyPaymentsPayoutTransactionType: {
+  /** The payout is a deposit. */readonly Deposit: "DEPOSIT"; /** The payout is a withdrawal. */
+  readonly Withdrawal: "WITHDRAWAL";
+};
+type ShopifyPaymentsPayoutTransactionType = typeof ShopifyPaymentsPayoutTransactionType[keyof typeof ShopifyPaymentsPayoutTransactionType];
 /** Presents all Shopify Payments specific information related to an order refund. */
 type ShopifyPaymentsRefundSet = {
   __typename?: 'ShopifyPaymentsRefundSet'; /** The acquirer reference number (ARN) code generated for Visa/Mastercard transactions. */
   acquirerReferenceNumber?: Maybe<Scalars['String']['output']>;
 };
 /** The possible source types for a balance transaction. */
-declare enum ShopifyPaymentsSourceType {
-  /** The adjustment source type. */
-  Adjustment = 'ADJUSTMENT',
-  /** The adjustment_reversal source type. */
-  AdjustmentReversal = 'ADJUSTMENT_REVERSAL',
-  /** The charge source type. */
-  Charge = 'CHARGE',
-  /** The dispute source type. */
-  Dispute = 'DISPUTE',
-  /** The refund source type. */
-  Refund = 'REFUND',
-  /** The system_adjustment source type. */
-  SystemAdjustment = 'SYSTEM_ADJUSTMENT',
-  /** The transfer source type. */
-  Transfer = 'TRANSFER'
-}
+declare const ShopifyPaymentsSourceType: {
+  /** The adjustment source type. */readonly Adjustment: "ADJUSTMENT"; /** The adjustment_reversal source type. */
+  readonly AdjustmentReversal: "ADJUSTMENT_REVERSAL"; /** The charge source type. */
+  readonly Charge: "CHARGE"; /** The dispute source type. */
+  readonly Dispute: "DISPUTE"; /** The refund source type. */
+  readonly Refund: "REFUND"; /** The system_adjustment source type. */
+  readonly SystemAdjustment: "SYSTEM_ADJUSTMENT"; /** The transfer source type. */
+  readonly Transfer: "TRANSFER";
+};
+type ShopifyPaymentsSourceType = typeof ShopifyPaymentsSourceType[keyof typeof ShopifyPaymentsSourceType];
 /** Presents all Shopify Payments specific information related to an order transaction. */
 type ShopifyPaymentsTransactionSet = {
   __typename?: 'ShopifyPaymentsTransactionSet'; /** Contains all fields related to an extended authorization. */
@@ -14233,246 +13108,133 @@ type ShopifyPaymentsTransactionSet = {
   refundSet?: Maybe<ShopifyPaymentsRefundSet>;
 };
 /** The possible types of transactions. */
-declare enum ShopifyPaymentsTransactionType {
-  /** The ach_bank_failure_debit_fee transaction type. */
-  AchBankFailureDebitFee = 'ACH_BANK_FAILURE_DEBIT_FEE',
-  /** The ach_bank_failure_debit_reversal_fee transaction type. */
-  AchBankFailureDebitReversalFee = 'ACH_BANK_FAILURE_DEBIT_REVERSAL_FEE',
-  /** The adjustment transaction type. */
-  Adjustment = 'ADJUSTMENT',
-  /** The ads_publisher_credit transaction type. */
-  AdsPublisherCredit = 'ADS_PUBLISHER_CREDIT',
-  /** The ads_publisher_credit_reversal transaction type. */
-  AdsPublisherCreditReversal = 'ADS_PUBLISHER_CREDIT_REVERSAL',
-  /** The advance transaction type. */
-  Advance = 'ADVANCE',
-  /** The advance funding transaction type. */
-  AdvanceFunding = 'ADVANCE_FUNDING',
-  /** The anomaly_credit transaction type. */
-  AnomalyCredit = 'ANOMALY_CREDIT',
-  /** The anomaly_credit_reversal transaction type. */
-  AnomalyCreditReversal = 'ANOMALY_CREDIT_REVERSAL',
-  /** The anomaly_debit transaction type. */
-  AnomalyDebit = 'ANOMALY_DEBIT',
-  /** The anomaly_debit_reversal transaction type. */
-  AnomalyDebitReversal = 'ANOMALY_DEBIT_REVERSAL',
-  /** The application_fee_refund transaction type. */
-  ApplicationFeeRefund = 'APPLICATION_FEE_REFUND',
-  /** The balance_transfer_inbound transaction type. */
-  BalanceTransferInbound = 'BALANCE_TRANSFER_INBOUND',
-  /** The balance_transfer_outbound transaction type. */
-  BalanceTransferOutbound = 'BALANCE_TRANSFER_OUTBOUND',
-  /** The billing_debit transaction type. */
-  BillingDebit = 'BILLING_DEBIT',
-  /** The billing_debit_reversal transaction type. */
-  BillingDebitReversal = 'BILLING_DEBIT_REVERSAL',
-  /** The channel_credit transaction type. */
-  ChannelCredit = 'CHANNEL_CREDIT',
-  /** The channel_credit_reversal transaction type. */
-  ChannelCreditReversal = 'CHANNEL_CREDIT_REVERSAL',
-  /** The channel_promotion_credit transaction type. */
-  ChannelPromotionCredit = 'CHANNEL_PROMOTION_CREDIT',
-  /** The channel_promotion_credit_reversal transaction type. */
-  ChannelPromotionCreditReversal = 'CHANNEL_PROMOTION_CREDIT_REVERSAL',
-  /** The channel_transfer_credit transaction type. */
-  ChannelTransferCredit = 'CHANNEL_TRANSFER_CREDIT',
-  /** The channel_transfer_credit_reversal transaction type. */
-  ChannelTransferCreditReversal = 'CHANNEL_TRANSFER_CREDIT_REVERSAL',
-  /** The channel_transfer_debit transaction type. */
-  ChannelTransferDebit = 'CHANNEL_TRANSFER_DEBIT',
-  /** The channel_transfer_debit_reversal transaction type. */
-  ChannelTransferDebitReversal = 'CHANNEL_TRANSFER_DEBIT_REVERSAL',
-  /** The charge transaction type. */
-  Charge = 'CHARGE',
-  /** The chargeback_fee transaction type. */
-  ChargebackFee = 'CHARGEBACK_FEE',
-  /** The chargeback_fee_refund transaction type. */
-  ChargebackFeeRefund = 'CHARGEBACK_FEE_REFUND',
-  /** The chargeback_hold transaction type. */
-  ChargebackHold = 'CHARGEBACK_HOLD',
-  /** The chargeback_hold_release transaction type. */
-  ChargebackHoldRelease = 'CHARGEBACK_HOLD_RELEASE',
-  /** The chargeback_protection_credit transaction type. */
-  ChargebackProtectionCredit = 'CHARGEBACK_PROTECTION_CREDIT',
-  /** The chargeback_protection_credit_reversal transaction type. */
-  ChargebackProtectionCreditReversal = 'CHARGEBACK_PROTECTION_CREDIT_REVERSAL',
-  /** The chargeback_protection_debit transaction type. */
-  ChargebackProtectionDebit = 'CHARGEBACK_PROTECTION_DEBIT',
-  /** The chargeback_protection_debit_reversal transaction type. */
-  ChargebackProtectionDebitReversal = 'CHARGEBACK_PROTECTION_DEBIT_REVERSAL',
-  /** The charge_adjustment transaction type. */
-  ChargeAdjustment = 'CHARGE_ADJUSTMENT',
-  /** The collections_credit transaction type. */
-  CollectionsCredit = 'COLLECTIONS_CREDIT',
-  /** The collections_credit_reversal transaction type. */
-  CollectionsCreditReversal = 'COLLECTIONS_CREDIT_REVERSAL',
-  /** The customs_duty transaction type. */
-  CustomsDuty = 'CUSTOMS_DUTY',
-  /** The customs_duty_adjustment transaction type. */
-  CustomsDutyAdjustment = 'CUSTOMS_DUTY_ADJUSTMENT',
-  /** The dispute_reversal transaction type. */
-  DisputeReversal = 'DISPUTE_REVERSAL',
-  /** The dispute_withdrawal transaction type. */
-  DisputeWithdrawal = 'DISPUTE_WITHDRAWAL',
-  /** The import_tax transaction type. */
-  ImportTax = 'IMPORT_TAX',
-  /** The import_tax_adjustment transaction type. */
-  ImportTaxAdjustment = 'IMPORT_TAX_ADJUSTMENT',
-  /** The tax refund transaction type. */
-  ImportTaxRefund = 'IMPORT_TAX_REFUND',
-  /** The lending_capital_refund transaction type. */
-  LendingCapitalRefund = 'LENDING_CAPITAL_REFUND',
-  /** The lending_capital_refund_reversal transaction type. */
-  LendingCapitalRefundReversal = 'LENDING_CAPITAL_REFUND_REVERSAL',
-  /** The lending_capital_remittance transaction type. */
-  LendingCapitalRemittance = 'LENDING_CAPITAL_REMITTANCE',
-  /** The lending_capital_remittance_reversal transaction type. */
-  LendingCapitalRemittanceReversal = 'LENDING_CAPITAL_REMITTANCE_REVERSAL',
-  /** The lending_credit transaction type. */
-  LendingCredit = 'LENDING_CREDIT',
-  /** The lending_credit_refund transaction type. */
-  LendingCreditRefund = 'LENDING_CREDIT_REFUND',
-  /** The lending_credit_refund_reversal transaction type. */
-  LendingCreditRefundReversal = 'LENDING_CREDIT_REFUND_REVERSAL',
-  /** The lending_credit_remittance transaction type. */
-  LendingCreditRemittance = 'LENDING_CREDIT_REMITTANCE',
-  /** The lending_credit_remittance_reversal transaction type. */
-  LendingCreditRemittanceReversal = 'LENDING_CREDIT_REMITTANCE_REVERSAL',
-  /** The lending_credit_reversal transaction type. */
-  LendingCreditReversal = 'LENDING_CREDIT_REVERSAL',
-  /** The lending_debit transaction type. */
-  LendingDebit = 'LENDING_DEBIT',
-  /** The lending_debit_reversal transaction type. */
-  LendingDebitReversal = 'LENDING_DEBIT_REVERSAL',
-  /** The marketplace_fee_credit transaction type. */
-  MarketplaceFeeCredit = 'MARKETPLACE_FEE_CREDIT',
-  /** The marketplace_fee_credit_reversal transaction type. */
-  MarketplaceFeeCreditReversal = 'MARKETPLACE_FEE_CREDIT_REVERSAL',
-  /** The markets_pro_credit transaction type. */
-  MarketsProCredit = 'MARKETS_PRO_CREDIT',
-  /** The merchant_goodwill_credit transaction type. */
-  MerchantGoodwillCredit = 'MERCHANT_GOODWILL_CREDIT',
-  /** The merchant_goodwill_credit_reversal transaction type. */
-  MerchantGoodwillCreditReversal = 'MERCHANT_GOODWILL_CREDIT_REVERSAL',
-  /** The merchant_to_merchant_credit transaction type. */
-  MerchantToMerchantCredit = 'MERCHANT_TO_MERCHANT_CREDIT',
-  /** The merchant_to_merchant_credit_reversal transaction type. */
-  MerchantToMerchantCreditReversal = 'MERCHANT_TO_MERCHANT_CREDIT_REVERSAL',
-  /** The merchant_to_merchant_debit transaction type. */
-  MerchantToMerchantDebit = 'MERCHANT_TO_MERCHANT_DEBIT',
-  /** The merchant_to_merchant_debit_reversal transaction type. */
-  MerchantToMerchantDebitReversal = 'MERCHANT_TO_MERCHANT_DEBIT_REVERSAL',
-  /** The promotion_credit transaction type. */
-  PromotionCredit = 'PROMOTION_CREDIT',
-  /** The promotion_credit_reversal transaction type. */
-  PromotionCreditReversal = 'PROMOTION_CREDIT_REVERSAL',
-  /** The referral_fee transaction type. */
-  ReferralFee = 'REFERRAL_FEE',
-  /** The referral_fee_tax transaction type. */
-  ReferralFeeTax = 'REFERRAL_FEE_TAX',
-  /** The refund transaction type. */
-  Refund = 'REFUND',
-  /** The refund_adjustment transaction type. */
-  RefundAdjustment = 'REFUND_ADJUSTMENT',
-  /** The refund_failure transaction type. */
-  RefundFailure = 'REFUND_FAILURE',
-  /** The reserved_funds transaction type. */
-  ReservedFunds = 'RESERVED_FUNDS',
-  /** The reserved_funds_reversal transaction type. */
-  ReservedFundsReversal = 'RESERVED_FUNDS_REVERSAL',
-  /** The reserved_funds_withdrawal transaction type. */
-  ReservedFundsWithdrawal = 'RESERVED_FUNDS_WITHDRAWAL',
-  /** The risk_reversal transaction type. */
-  RiskReversal = 'RISK_REVERSAL',
-  /** The risk_withdrawal transaction type. */
-  RiskWithdrawal = 'RISK_WITHDRAWAL',
-  /** The seller_protection_credit transaction type. */
-  SellerProtectionCredit = 'SELLER_PROTECTION_CREDIT',
-  /** The seller_protection_credit_reversal transaction type. */
-  SellerProtectionCreditReversal = 'SELLER_PROTECTION_CREDIT_REVERSAL',
-  /** The shipping_label transaction type. */
-  ShippingLabel = 'SHIPPING_LABEL',
-  /** The shipping_label_adjustment transaction type. */
-  ShippingLabelAdjustment = 'SHIPPING_LABEL_ADJUSTMENT',
-  /** The shipping_label_adjustment_base transaction type. */
-  ShippingLabelAdjustmentBase = 'SHIPPING_LABEL_ADJUSTMENT_BASE',
-  /** The shipping_label_adjustment_surcharge transaction type. */
-  ShippingLabelAdjustmentSurcharge = 'SHIPPING_LABEL_ADJUSTMENT_SURCHARGE',
-  /** The shipping_other_carrier_charge_adjustment transaction type. */
-  ShippingOtherCarrierChargeAdjustment = 'SHIPPING_OTHER_CARRIER_CHARGE_ADJUSTMENT',
-  /** The shipping_return_to_origin_adjustment transaction type. */
-  ShippingReturnToOriginAdjustment = 'SHIPPING_RETURN_TO_ORIGIN_ADJUSTMENT',
-  /** The shopify_collective_credit transaction type. */
-  ShopifyCollectiveCredit = 'SHOPIFY_COLLECTIVE_CREDIT',
-  /** The shopify_collective_credit_reversal transaction type. */
-  ShopifyCollectiveCreditReversal = 'SHOPIFY_COLLECTIVE_CREDIT_REVERSAL',
-  /** The shopify_collective_debit transaction type. */
-  ShopifyCollectiveDebit = 'SHOPIFY_COLLECTIVE_DEBIT',
-  /** The shopify_collective_debit_reversal transaction type. */
-  ShopifyCollectiveDebitReversal = 'SHOPIFY_COLLECTIVE_DEBIT_REVERSAL',
-  /** The shopify_source_credit transaction type. */
-  ShopifySourceCredit = 'SHOPIFY_SOURCE_CREDIT',
-  /** The shopify_source_credit_reversal transaction type. */
-  ShopifySourceCreditReversal = 'SHOPIFY_SOURCE_CREDIT_REVERSAL',
-  /** The shopify_source_debit transaction type. */
-  ShopifySourceDebit = 'SHOPIFY_SOURCE_DEBIT',
-  /** The shopify_source_debit_reversal transaction type. */
-  ShopifySourceDebitReversal = 'SHOPIFY_SOURCE_DEBIT_REVERSAL',
-  /** The shop_cash_billing_debit transaction type. */
-  ShopCashBillingDebit = 'SHOP_CASH_BILLING_DEBIT',
-  /** The shop_cash_billing_debit_reversal transaction type. */
-  ShopCashBillingDebitReversal = 'SHOP_CASH_BILLING_DEBIT_REVERSAL',
-  /** The shop_cash_campaign_billing_credit transaction type. */
-  ShopCashCampaignBillingCredit = 'SHOP_CASH_CAMPAIGN_BILLING_CREDIT',
-  /** The shop_cash_campaign_billing_credit_reversal transaction type. */
-  ShopCashCampaignBillingCreditReversal = 'SHOP_CASH_CAMPAIGN_BILLING_CREDIT_REVERSAL',
-  /** The shop_cash_campaign_billing_debit transaction type. */
-  ShopCashCampaignBillingDebit = 'SHOP_CASH_CAMPAIGN_BILLING_DEBIT',
-  /** The shop_cash_campaign_billing_debit_reversal transaction type. */
-  ShopCashCampaignBillingDebitReversal = 'SHOP_CASH_CAMPAIGN_BILLING_DEBIT_REVERSAL',
-  /** The shop_cash_credit transaction type. */
-  ShopCashCredit = 'SHOP_CASH_CREDIT',
-  /** The shop_cash_credit_reversal transaction type. */
-  ShopCashCreditReversal = 'SHOP_CASH_CREDIT_REVERSAL',
-  /** The shop_cash_refund_debit transaction type. */
-  ShopCashRefundDebit = 'SHOP_CASH_REFUND_DEBIT',
-  /** The shop_cash_refund_debit_reversal transaction type. */
-  ShopCashRefundDebitReversal = 'SHOP_CASH_REFUND_DEBIT_REVERSAL',
-  /** The stripe_fee transaction type. */
-  StripeFee = 'STRIPE_FEE',
-  /** The tax_adjustment_credit transaction type. */
-  TaxAdjustmentCredit = 'TAX_ADJUSTMENT_CREDIT',
-  /** The tax_adjustment_credit_reversal transaction type. */
-  TaxAdjustmentCreditReversal = 'TAX_ADJUSTMENT_CREDIT_REVERSAL',
-  /** The tax_adjustment_debit transaction type. */
-  TaxAdjustmentDebit = 'TAX_ADJUSTMENT_DEBIT',
-  /** The tax_adjustment_debit_reversal transaction type. */
-  TaxAdjustmentDebitReversal = 'TAX_ADJUSTMENT_DEBIT_REVERSAL',
-  /** The transfer transaction type. */
-  Transfer = 'TRANSFER',
-  /** The transfer_cancel transaction type. */
-  TransferCancel = 'TRANSFER_CANCEL',
-  /** The transfer_failure transaction type. */
-  TransferFailure = 'TRANSFER_FAILURE',
-  /** The transfer_refund transaction type. */
-  TransferRefund = 'TRANSFER_REFUND',
-  /** The vat_refund_credit transaction type. */
-  VatRefundCredit = 'VAT_REFUND_CREDIT',
-  /** The vat_refund_credit_reversal transaction type. */
-  VatRefundCreditReversal = 'VAT_REFUND_CREDIT_REVERSAL'
-}
+declare const ShopifyPaymentsTransactionType: {
+  /** The ach_bank_failure_debit_fee transaction type. */readonly AchBankFailureDebitFee: "ACH_BANK_FAILURE_DEBIT_FEE"; /** The ach_bank_failure_debit_reversal_fee transaction type. */
+  readonly AchBankFailureDebitReversalFee: "ACH_BANK_FAILURE_DEBIT_REVERSAL_FEE"; /** The adjustment transaction type. */
+  readonly Adjustment: "ADJUSTMENT"; /** The ads_publisher_credit transaction type. */
+  readonly AdsPublisherCredit: "ADS_PUBLISHER_CREDIT"; /** The ads_publisher_credit_reversal transaction type. */
+  readonly AdsPublisherCreditReversal: "ADS_PUBLISHER_CREDIT_REVERSAL"; /** The advance transaction type. */
+  readonly Advance: "ADVANCE"; /** The advance funding transaction type. */
+  readonly AdvanceFunding: "ADVANCE_FUNDING"; /** The anomaly_credit transaction type. */
+  readonly AnomalyCredit: "ANOMALY_CREDIT"; /** The anomaly_credit_reversal transaction type. */
+  readonly AnomalyCreditReversal: "ANOMALY_CREDIT_REVERSAL"; /** The anomaly_debit transaction type. */
+  readonly AnomalyDebit: "ANOMALY_DEBIT"; /** The anomaly_debit_reversal transaction type. */
+  readonly AnomalyDebitReversal: "ANOMALY_DEBIT_REVERSAL"; /** The application_fee_refund transaction type. */
+  readonly ApplicationFeeRefund: "APPLICATION_FEE_REFUND"; /** The balance_transfer_inbound transaction type. */
+  readonly BalanceTransferInbound: "BALANCE_TRANSFER_INBOUND"; /** The balance_transfer_outbound transaction type. */
+  readonly BalanceTransferOutbound: "BALANCE_TRANSFER_OUTBOUND"; /** The billing_debit transaction type. */
+  readonly BillingDebit: "BILLING_DEBIT"; /** The billing_debit_reversal transaction type. */
+  readonly BillingDebitReversal: "BILLING_DEBIT_REVERSAL"; /** The channel_credit transaction type. */
+  readonly ChannelCredit: "CHANNEL_CREDIT"; /** The channel_credit_reversal transaction type. */
+  readonly ChannelCreditReversal: "CHANNEL_CREDIT_REVERSAL"; /** The channel_promotion_credit transaction type. */
+  readonly ChannelPromotionCredit: "CHANNEL_PROMOTION_CREDIT"; /** The channel_promotion_credit_reversal transaction type. */
+  readonly ChannelPromotionCreditReversal: "CHANNEL_PROMOTION_CREDIT_REVERSAL"; /** The channel_transfer_credit transaction type. */
+  readonly ChannelTransferCredit: "CHANNEL_TRANSFER_CREDIT"; /** The channel_transfer_credit_reversal transaction type. */
+  readonly ChannelTransferCreditReversal: "CHANNEL_TRANSFER_CREDIT_REVERSAL"; /** The channel_transfer_debit transaction type. */
+  readonly ChannelTransferDebit: "CHANNEL_TRANSFER_DEBIT"; /** The channel_transfer_debit_reversal transaction type. */
+  readonly ChannelTransferDebitReversal: "CHANNEL_TRANSFER_DEBIT_REVERSAL"; /** The charge transaction type. */
+  readonly Charge: "CHARGE"; /** The chargeback_fee transaction type. */
+  readonly ChargebackFee: "CHARGEBACK_FEE"; /** The chargeback_fee_refund transaction type. */
+  readonly ChargebackFeeRefund: "CHARGEBACK_FEE_REFUND"; /** The chargeback_hold transaction type. */
+  readonly ChargebackHold: "CHARGEBACK_HOLD"; /** The chargeback_hold_release transaction type. */
+  readonly ChargebackHoldRelease: "CHARGEBACK_HOLD_RELEASE"; /** The chargeback_protection_credit transaction type. */
+  readonly ChargebackProtectionCredit: "CHARGEBACK_PROTECTION_CREDIT"; /** The chargeback_protection_credit_reversal transaction type. */
+  readonly ChargebackProtectionCreditReversal: "CHARGEBACK_PROTECTION_CREDIT_REVERSAL"; /** The chargeback_protection_debit transaction type. */
+  readonly ChargebackProtectionDebit: "CHARGEBACK_PROTECTION_DEBIT"; /** The chargeback_protection_debit_reversal transaction type. */
+  readonly ChargebackProtectionDebitReversal: "CHARGEBACK_PROTECTION_DEBIT_REVERSAL"; /** The charge_adjustment transaction type. */
+  readonly ChargeAdjustment: "CHARGE_ADJUSTMENT"; /** The collections_credit transaction type. */
+  readonly CollectionsCredit: "COLLECTIONS_CREDIT"; /** The collections_credit_reversal transaction type. */
+  readonly CollectionsCreditReversal: "COLLECTIONS_CREDIT_REVERSAL"; /** The customs_duty transaction type. */
+  readonly CustomsDuty: "CUSTOMS_DUTY"; /** The customs_duty_adjustment transaction type. */
+  readonly CustomsDutyAdjustment: "CUSTOMS_DUTY_ADJUSTMENT"; /** The dispute_reversal transaction type. */
+  readonly DisputeReversal: "DISPUTE_REVERSAL"; /** The dispute_withdrawal transaction type. */
+  readonly DisputeWithdrawal: "DISPUTE_WITHDRAWAL"; /** The import_tax transaction type. */
+  readonly ImportTax: "IMPORT_TAX"; /** The import_tax_adjustment transaction type. */
+  readonly ImportTaxAdjustment: "IMPORT_TAX_ADJUSTMENT"; /** The tax refund transaction type. */
+  readonly ImportTaxRefund: "IMPORT_TAX_REFUND"; /** The lending_capital_refund transaction type. */
+  readonly LendingCapitalRefund: "LENDING_CAPITAL_REFUND"; /** The lending_capital_refund_reversal transaction type. */
+  readonly LendingCapitalRefundReversal: "LENDING_CAPITAL_REFUND_REVERSAL"; /** The lending_capital_remittance transaction type. */
+  readonly LendingCapitalRemittance: "LENDING_CAPITAL_REMITTANCE"; /** The lending_capital_remittance_reversal transaction type. */
+  readonly LendingCapitalRemittanceReversal: "LENDING_CAPITAL_REMITTANCE_REVERSAL"; /** The lending_credit transaction type. */
+  readonly LendingCredit: "LENDING_CREDIT"; /** The lending_credit_refund transaction type. */
+  readonly LendingCreditRefund: "LENDING_CREDIT_REFUND"; /** The lending_credit_refund_reversal transaction type. */
+  readonly LendingCreditRefundReversal: "LENDING_CREDIT_REFUND_REVERSAL"; /** The lending_credit_remittance transaction type. */
+  readonly LendingCreditRemittance: "LENDING_CREDIT_REMITTANCE"; /** The lending_credit_remittance_reversal transaction type. */
+  readonly LendingCreditRemittanceReversal: "LENDING_CREDIT_REMITTANCE_REVERSAL"; /** The lending_credit_reversal transaction type. */
+  readonly LendingCreditReversal: "LENDING_CREDIT_REVERSAL"; /** The lending_debit transaction type. */
+  readonly LendingDebit: "LENDING_DEBIT"; /** The lending_debit_reversal transaction type. */
+  readonly LendingDebitReversal: "LENDING_DEBIT_REVERSAL"; /** The marketplace_fee_credit transaction type. */
+  readonly MarketplaceFeeCredit: "MARKETPLACE_FEE_CREDIT"; /** The marketplace_fee_credit_reversal transaction type. */
+  readonly MarketplaceFeeCreditReversal: "MARKETPLACE_FEE_CREDIT_REVERSAL"; /** The markets_pro_credit transaction type. */
+  readonly MarketsProCredit: "MARKETS_PRO_CREDIT"; /** The merchant_goodwill_credit transaction type. */
+  readonly MerchantGoodwillCredit: "MERCHANT_GOODWILL_CREDIT"; /** The merchant_goodwill_credit_reversal transaction type. */
+  readonly MerchantGoodwillCreditReversal: "MERCHANT_GOODWILL_CREDIT_REVERSAL"; /** The merchant_to_merchant_credit transaction type. */
+  readonly MerchantToMerchantCredit: "MERCHANT_TO_MERCHANT_CREDIT"; /** The merchant_to_merchant_credit_reversal transaction type. */
+  readonly MerchantToMerchantCreditReversal: "MERCHANT_TO_MERCHANT_CREDIT_REVERSAL"; /** The merchant_to_merchant_debit transaction type. */
+  readonly MerchantToMerchantDebit: "MERCHANT_TO_MERCHANT_DEBIT"; /** The merchant_to_merchant_debit_reversal transaction type. */
+  readonly MerchantToMerchantDebitReversal: "MERCHANT_TO_MERCHANT_DEBIT_REVERSAL"; /** The promotion_credit transaction type. */
+  readonly PromotionCredit: "PROMOTION_CREDIT"; /** The promotion_credit_reversal transaction type. */
+  readonly PromotionCreditReversal: "PROMOTION_CREDIT_REVERSAL"; /** The referral_fee transaction type. */
+  readonly ReferralFee: "REFERRAL_FEE"; /** The referral_fee_tax transaction type. */
+  readonly ReferralFeeTax: "REFERRAL_FEE_TAX"; /** The refund transaction type. */
+  readonly Refund: "REFUND"; /** The refund_adjustment transaction type. */
+  readonly RefundAdjustment: "REFUND_ADJUSTMENT"; /** The refund_failure transaction type. */
+  readonly RefundFailure: "REFUND_FAILURE"; /** The reserved_funds transaction type. */
+  readonly ReservedFunds: "RESERVED_FUNDS"; /** The reserved_funds_reversal transaction type. */
+  readonly ReservedFundsReversal: "RESERVED_FUNDS_REVERSAL"; /** The reserved_funds_withdrawal transaction type. */
+  readonly ReservedFundsWithdrawal: "RESERVED_FUNDS_WITHDRAWAL"; /** The risk_reversal transaction type. */
+  readonly RiskReversal: "RISK_REVERSAL"; /** The risk_withdrawal transaction type. */
+  readonly RiskWithdrawal: "RISK_WITHDRAWAL"; /** The seller_protection_credit transaction type. */
+  readonly SellerProtectionCredit: "SELLER_PROTECTION_CREDIT"; /** The seller_protection_credit_reversal transaction type. */
+  readonly SellerProtectionCreditReversal: "SELLER_PROTECTION_CREDIT_REVERSAL"; /** The shipping_label transaction type. */
+  readonly ShippingLabel: "SHIPPING_LABEL"; /** The shipping_label_adjustment transaction type. */
+  readonly ShippingLabelAdjustment: "SHIPPING_LABEL_ADJUSTMENT"; /** The shipping_label_adjustment_base transaction type. */
+  readonly ShippingLabelAdjustmentBase: "SHIPPING_LABEL_ADJUSTMENT_BASE"; /** The shipping_label_adjustment_surcharge transaction type. */
+  readonly ShippingLabelAdjustmentSurcharge: "SHIPPING_LABEL_ADJUSTMENT_SURCHARGE"; /** The shipping_other_carrier_charge_adjustment transaction type. */
+  readonly ShippingOtherCarrierChargeAdjustment: "SHIPPING_OTHER_CARRIER_CHARGE_ADJUSTMENT"; /** The shipping_return_to_origin_adjustment transaction type. */
+  readonly ShippingReturnToOriginAdjustment: "SHIPPING_RETURN_TO_ORIGIN_ADJUSTMENT"; /** The shopify_collective_credit transaction type. */
+  readonly ShopifyCollectiveCredit: "SHOPIFY_COLLECTIVE_CREDIT"; /** The shopify_collective_credit_reversal transaction type. */
+  readonly ShopifyCollectiveCreditReversal: "SHOPIFY_COLLECTIVE_CREDIT_REVERSAL"; /** The shopify_collective_debit transaction type. */
+  readonly ShopifyCollectiveDebit: "SHOPIFY_COLLECTIVE_DEBIT"; /** The shopify_collective_debit_reversal transaction type. */
+  readonly ShopifyCollectiveDebitReversal: "SHOPIFY_COLLECTIVE_DEBIT_REVERSAL"; /** The shopify_source_credit transaction type. */
+  readonly ShopifySourceCredit: "SHOPIFY_SOURCE_CREDIT"; /** The shopify_source_credit_reversal transaction type. */
+  readonly ShopifySourceCreditReversal: "SHOPIFY_SOURCE_CREDIT_REVERSAL"; /** The shopify_source_debit transaction type. */
+  readonly ShopifySourceDebit: "SHOPIFY_SOURCE_DEBIT"; /** The shopify_source_debit_reversal transaction type. */
+  readonly ShopifySourceDebitReversal: "SHOPIFY_SOURCE_DEBIT_REVERSAL"; /** The shop_cash_billing_debit transaction type. */
+  readonly ShopCashBillingDebit: "SHOP_CASH_BILLING_DEBIT"; /** The shop_cash_billing_debit_reversal transaction type. */
+  readonly ShopCashBillingDebitReversal: "SHOP_CASH_BILLING_DEBIT_REVERSAL"; /** The shop_cash_campaign_billing_credit transaction type. */
+  readonly ShopCashCampaignBillingCredit: "SHOP_CASH_CAMPAIGN_BILLING_CREDIT"; /** The shop_cash_campaign_billing_credit_reversal transaction type. */
+  readonly ShopCashCampaignBillingCreditReversal: "SHOP_CASH_CAMPAIGN_BILLING_CREDIT_REVERSAL"; /** The shop_cash_campaign_billing_debit transaction type. */
+  readonly ShopCashCampaignBillingDebit: "SHOP_CASH_CAMPAIGN_BILLING_DEBIT"; /** The shop_cash_campaign_billing_debit_reversal transaction type. */
+  readonly ShopCashCampaignBillingDebitReversal: "SHOP_CASH_CAMPAIGN_BILLING_DEBIT_REVERSAL"; /** The shop_cash_credit transaction type. */
+  readonly ShopCashCredit: "SHOP_CASH_CREDIT"; /** The shop_cash_credit_reversal transaction type. */
+  readonly ShopCashCreditReversal: "SHOP_CASH_CREDIT_REVERSAL"; /** The shop_cash_refund_debit transaction type. */
+  readonly ShopCashRefundDebit: "SHOP_CASH_REFUND_DEBIT"; /** The shop_cash_refund_debit_reversal transaction type. */
+  readonly ShopCashRefundDebitReversal: "SHOP_CASH_REFUND_DEBIT_REVERSAL"; /** The stripe_fee transaction type. */
+  readonly StripeFee: "STRIPE_FEE"; /** The tax_adjustment_credit transaction type. */
+  readonly TaxAdjustmentCredit: "TAX_ADJUSTMENT_CREDIT"; /** The tax_adjustment_credit_reversal transaction type. */
+  readonly TaxAdjustmentCreditReversal: "TAX_ADJUSTMENT_CREDIT_REVERSAL"; /** The tax_adjustment_debit transaction type. */
+  readonly TaxAdjustmentDebit: "TAX_ADJUSTMENT_DEBIT"; /** The tax_adjustment_debit_reversal transaction type. */
+  readonly TaxAdjustmentDebitReversal: "TAX_ADJUSTMENT_DEBIT_REVERSAL"; /** The transfer transaction type. */
+  readonly Transfer: "TRANSFER"; /** The transfer_cancel transaction type. */
+  readonly TransferCancel: "TRANSFER_CANCEL"; /** The transfer_failure transaction type. */
+  readonly TransferFailure: "TRANSFER_FAILURE"; /** The transfer_refund transaction type. */
+  readonly TransferRefund: "TRANSFER_REFUND"; /** The vat_refund_credit transaction type. */
+  readonly VatRefundCredit: "VAT_REFUND_CREDIT"; /** The vat_refund_credit_reversal transaction type. */
+  readonly VatRefundCreditReversal: "VAT_REFUND_CREDIT_REVERSAL";
+};
+type ShopifyPaymentsTransactionType = typeof ShopifyPaymentsTransactionType[keyof typeof ShopifyPaymentsTransactionType];
 /** The status of an order's eligibility for protection against fraudulent chargebacks by Shopify Protect. */
-declare enum ShopifyProtectEligibilityStatus {
+declare const ShopifyProtectEligibilityStatus: {
   /**
    * The order is eligible for protection against fraudulent chargebacks.
    * If an order is updated, the order's eligibility may change and protection could be removed.
    */
-  Eligible = 'ELIGIBLE',
-  /** The order isn't eligible for protection against fraudulent chargebacks. */
-  NotEligible = 'NOT_ELIGIBLE',
-  /** The eligibility of the order is pending and has not yet been determined. */
-  Pending = 'PENDING'
-}
+  readonly Eligible: "ELIGIBLE"; /** The order isn't eligible for protection against fraudulent chargebacks. */
+  readonly NotEligible: "NOT_ELIGIBLE"; /** The eligibility of the order is pending and has not yet been determined. */
+  readonly Pending: "PENDING";
+};
+type ShopifyProtectEligibilityStatus = typeof ShopifyProtectEligibilityStatus[keyof typeof ShopifyProtectEligibilityStatus];
 /** The eligibility details of an order's protection against fraudulent chargebacks by Shopify Protect. */
 type ShopifyProtectOrderEligibility = {
   __typename?: 'ShopifyProtectOrderEligibility'; /** The status of whether an order is eligible for protection against fraudulent chargebacks. */
@@ -14485,21 +13247,18 @@ type ShopifyProtectOrderSummary = {
   status: ShopifyProtectStatus;
 };
 /** The status of an order's protection with Shopify Protect. */
-declare enum ShopifyProtectStatus {
+declare const ShopifyProtectStatus: {
   /**
    * The protection for the order is active and eligible for reimbursement against fraudulent chargebacks.
    * If an order is updated, the order's eligibility may change and protection could become inactive.
    */
-  Active = 'ACTIVE',
-  /** The protection for an order isn't active because the order didn't meet eligibility requirements. */
-  Inactive = 'INACTIVE',
-  /** The order received a chargeback but the order wasn't protected because it didn't meet coverage requirements. */
-  NotProtected = 'NOT_PROTECTED',
-  /** The protection for the order is pending and has not yet been determined. */
-  Pending = 'PENDING',
-  /** The order received a fraudulent chargeback and it was protected. */
-  Protected = 'PROTECTED'
-}
+  readonly Active: "ACTIVE"; /** The protection for an order isn't active because the order didn't meet eligibility requirements. */
+  readonly Inactive: "INACTIVE"; /** The order received a chargeback but the order wasn't protected because it didn't meet coverage requirements. */
+  readonly NotProtected: "NOT_PROTECTED"; /** The protection for the order is pending and has not yet been determined. */
+  readonly Pending: "PENDING"; /** The order received a fraudulent chargeback and it was protected. */
+  readonly Protected: "PROTECTED";
+};
+type ShopifyProtectStatus = typeof ShopifyProtectStatus[keyof typeof ShopifyProtectStatus];
 /**
  * A user account that can access the Shopify admin to manage store operations. Includes personal information and account status.
  *
@@ -14536,82 +13295,43 @@ type StaffMemberEdge = {
   node: StaffMember;
 };
 /** Represents access permissions for a staff member. */
-declare enum StaffMemberPermission {
-  /** The staff member can manage and install apps and channels. */
-  Applications = 'APPLICATIONS',
-  /** The staff member can manage and install sales channels. */
-  Channels = 'CHANNELS',
-  /** The staff member can create and edit customers. */
-  CreateAndEditCustomers = 'CREATE_AND_EDIT_CUSTOMERS',
-  /** The staff member can create and edit gift cards. */
-  CreateAndEditGiftCards = 'CREATE_AND_EDIT_GIFT_CARDS',
-  /** The staff member can create and edit markets. */
-  CreateAndEditMarkets = 'CREATE_AND_EDIT_MARKETS',
-  /** The staff member can view customers. */
-  Customers = 'CUSTOMERS',
-  /** The staff member can view the Shopify Home page, which includes sales information and other shop data. */
-  Dashboard = 'DASHBOARD',
-  /** The staff member can deactivate gift cards. */
-  DeactivateGiftCards = 'DEACTIVATE_GIFT_CARDS',
-  /** The staff member can delete customers. */
-  DeleteCustomers = 'DELETE_CUSTOMERS',
-  /** The staff member can delete markets. */
-  DeleteMarkets = 'DELETE_MARKETS',
-  /** The staff member can view, buy, and manage domains. */
-  Domains = 'DOMAINS',
-  /** The staff member can create, update, and delete draft orders. */
-  DraftOrders = 'DRAFT_ORDERS',
-  /** The staff member can update orders. */
-  EditOrders = 'EDIT_ORDERS',
-  /** The staff member can erase customer private data. */
-  EraseCustomerData = 'ERASE_CUSTOMER_DATA',
-  /** The staff member can export customers. */
-  ExportCustomers = 'EXPORT_CUSTOMERS',
-  /** The staff member can export gift cards. */
-  ExportGiftCards = 'EXPORT_GIFT_CARDS',
-  /**
-   * The staff has the same permissions as the [store owner](https://shopify.dev/en/manual/your-account/staff-accounts/staff-permissions#store-owner-permissions) with some exceptions, such as modifying the account billing or deleting staff accounts.
-   * @deprecated Use the list of the staff member's explicit permissions returned in the `StaffMember.permissions.userPermissions` field instead of `full` permission.
-   */
-  Full = 'FULL',
-  /** The staff member can view, create, issue, and export gift cards to a CSV file. */
-  GiftCards = 'GIFT_CARDS',
-  /** The staff member can view and modify links and navigation menus. */
-  Links = 'LINKS',
-  /** The staff member can create, update, and delete locations where inventory is stocked or managed. */
-  Locations = 'LOCATIONS',
-  /** The staff member can view and create discount codes and automatic discounts, and export discounts to a CSV file. */
-  Marketing = 'MARKETING',
-  /** The staff member can view, create, and automate marketing campaigns. */
-  MarketingSection = 'MARKETING_SECTION',
-  /** The staff member can merge customers. */
-  MergeCustomers = 'MERGE_CUSTOMERS',
-  /** The staff member can view, create, update, delete, and cancel orders, and receive order notifications. The staff member can still create draft orders without this permission. */
-  Orders = 'ORDERS',
-  /** The staff member can view the Overview and Live view pages, which include sales information, and other shop and sales channels data. */
-  Overviews = 'OVERVIEWS',
-  /** The staff member can view, create, update, publish, and delete blog posts and pages. */
-  Pages = 'PAGES',
-  /** The staff member can pay for an order by using a vaulted card. */
-  PayOrdersByVaultedCard = 'PAY_ORDERS_BY_VAULTED_CARD',
-  /** The staff member can view the preferences and configuration of a shop. */
-  Preferences = 'PREFERENCES',
-  /** The staff member can view, create, import, and update products, collections, and inventory. */
-  Products = 'PRODUCTS',
-  /** The staff member can view and create all reports, which includes sales information and other shop data. */
-  Reports = 'REPORTS',
-  /** The staff member can request customer private data. */
-  RequestCustomerData = 'REQUEST_CUSTOMER_DATA',
-  /** The staff member can view, update, and publish themes. */
-  Themes = 'THEMES',
-  /**
-   * The staff member can view and create translations.
-   * @deprecated Unused.
-   */
-  Translations = 'TRANSLATIONS',
-  /** The staff member can view markets. */
-  ViewMarkets = 'VIEW_MARKETS'
-}
+declare const StaffMemberPermission: {
+  /** The staff member can manage and install apps and channels. */readonly Applications: "APPLICATIONS"; /** The staff member can manage and install sales channels. */
+  readonly Channels: "CHANNELS"; /** The staff member can create and edit customers. */
+  readonly CreateAndEditCustomers: "CREATE_AND_EDIT_CUSTOMERS"; /** The staff member can create and edit gift cards. */
+  readonly CreateAndEditGiftCards: "CREATE_AND_EDIT_GIFT_CARDS"; /** The staff member can create and edit markets. */
+  readonly CreateAndEditMarkets: "CREATE_AND_EDIT_MARKETS"; /** The staff member can view customers. */
+  readonly Customers: "CUSTOMERS"; /** The staff member can view the Shopify Home page, which includes sales information and other shop data. */
+  readonly Dashboard: "DASHBOARD"; /** The staff member can deactivate gift cards. */
+  readonly DeactivateGiftCards: "DEACTIVATE_GIFT_CARDS"; /** The staff member can delete customers. */
+  readonly DeleteCustomers: "DELETE_CUSTOMERS"; /** The staff member can delete markets. */
+  readonly DeleteMarkets: "DELETE_MARKETS"; /** The staff member can view, buy, and manage domains. */
+  readonly Domains: "DOMAINS"; /** The staff member can create, update, and delete draft orders. */
+  readonly DraftOrders: "DRAFT_ORDERS"; /** The staff member can update orders. */
+  readonly EditOrders: "EDIT_ORDERS"; /** The staff member can erase customer private data. */
+  readonly EraseCustomerData: "ERASE_CUSTOMER_DATA"; /** The staff member can export customers. */
+  readonly ExportCustomers: "EXPORT_CUSTOMERS"; /** The staff member can export gift cards. */
+  readonly ExportGiftCards: "EXPORT_GIFT_CARDS"; /** The staff has the same permissions as the [store owner](https://shopify.dev/en/manual/your-account/staff-accounts/staff-permissions#store-owner-permissions) with some exceptions, such as modifying the account billing or deleting staff accounts. */
+  readonly Full: "FULL"; /** The staff member can view, create, issue, and export gift cards to a CSV file. */
+  readonly GiftCards: "GIFT_CARDS"; /** The staff member can view and modify links and navigation menus. */
+  readonly Links: "LINKS"; /** The staff member can create, update, and delete locations where inventory is stocked or managed. */
+  readonly Locations: "LOCATIONS"; /** The staff member can view and create discount codes and automatic discounts, and export discounts to a CSV file. */
+  readonly Marketing: "MARKETING"; /** The staff member can view, create, and automate marketing campaigns. */
+  readonly MarketingSection: "MARKETING_SECTION"; /** The staff member can merge customers. */
+  readonly MergeCustomers: "MERGE_CUSTOMERS"; /** The staff member can view, create, update, delete, and cancel orders, and receive order notifications. The staff member can still create draft orders without this permission. */
+  readonly Orders: "ORDERS"; /** The staff member can view the Overview and Live view pages, which include sales information, and other shop and sales channels data. */
+  readonly Overviews: "OVERVIEWS"; /** The staff member can view, create, update, publish, and delete blog posts and pages. */
+  readonly Pages: "PAGES"; /** The staff member can pay for an order by using a vaulted card. */
+  readonly PayOrdersByVaultedCard: "PAY_ORDERS_BY_VAULTED_CARD"; /** The staff member can view the preferences and configuration of a shop. */
+  readonly Preferences: "PREFERENCES"; /** The staff member can view, create, import, and update products, collections, and inventory. */
+  readonly Products: "PRODUCTS"; /** The staff member can view and create all reports, which includes sales information and other shop data. */
+  readonly Reports: "REPORTS"; /** The staff member can request customer private data. */
+  readonly RequestCustomerData: "REQUEST_CUSTOMER_DATA"; /** The staff member can view, update, and publish themes. */
+  readonly Themes: "THEMES"; /** The staff member can view and create translations. */
+  readonly Translations: "TRANSLATIONS"; /** The staff member can view markets. */
+  readonly ViewMarkets: "VIEW_MARKETS";
+};
+type StaffMemberPermission = typeof StaffMemberPermission[keyof typeof StaffMemberPermission];
 /** Represents the data used to customize the Shopify admin experience for a logged-in staff member. */
 type StaffMemberPrivateData = {
   __typename?: 'StaffMemberPrivateData'; /** The URL to the staff member's account settings page. */
@@ -14723,22 +13443,16 @@ type StoreCreditAccountTransactionEdge = {
 /** The origin of a store credit account transaction. */
 type StoreCreditAccountTransactionOrigin = OrderTransaction;
 /** The event that caused the store credit account transaction. */
-declare enum StoreCreditSystemEvent {
-  /** An adjustment was made to the store credit account. */
-  Adjustment = 'ADJUSTMENT',
-  /** Store credit was returned when an authorized payment was voided. */
-  OrderCancellation = 'ORDER_CANCELLATION',
-  /** Store credit was used as payment for an order. */
-  OrderPayment = 'ORDER_PAYMENT',
-  /** Store credit was refunded from an order. */
-  OrderRefund = 'ORDER_REFUND',
-  /** A store credit payment was reverted due to another payment method failing. */
-  PaymentFailure = 'PAYMENT_FAILURE',
-  /** A smaller amount of store credit was captured than was originally authorized. */
-  PaymentReturned = 'PAYMENT_RETURNED',
-  /** Tax finalization affected the store credit payment. */
-  TaxFinalization = 'TAX_FINALIZATION'
-}
+declare const StoreCreditSystemEvent: {
+  /** An adjustment was made to the store credit account. */readonly Adjustment: "ADJUSTMENT"; /** Store credit was returned when an authorized payment was voided. */
+  readonly OrderCancellation: "ORDER_CANCELLATION"; /** Store credit was used as payment for an order. */
+  readonly OrderPayment: "ORDER_PAYMENT"; /** Store credit was refunded from an order. */
+  readonly OrderRefund: "ORDER_REFUND"; /** A store credit payment was reverted due to another payment method failing. */
+  readonly PaymentFailure: "PAYMENT_FAILURE"; /** A smaller amount of store credit was captured than was originally authorized. */
+  readonly PaymentReturned: "PAYMENT_RETURNED"; /** Tax finalization affected the store credit payment. */
+  readonly TaxFinalization: "TAX_FINALIZATION";
+};
+type StoreCreditSystemEvent = typeof StoreCreditSystemEvent[keyof typeof StoreCreditSystemEvent];
 /**
  * A token that delegates unauthenticated access scopes to clients that need to access the [Storefront API](https://shopify.dev/docs/api/storefront). Storefront access tokens enable headless storefronts and custom applications to interact with a store on behalf of customers without requiring authentication.
  *
@@ -14858,60 +13572,35 @@ type SubscriptionBillingAttemptEdge = {
  * The possible error codes associated with making billing attempts. The error codes supplement the
  * `error_message` to provide consistent results and help with dunning management.
  */
-declare enum SubscriptionBillingAttemptErrorCode {
-  /** The amount is too small. */
-  AmountTooSmall = 'AMOUNT_TOO_SMALL',
-  /** There was an error during the payment authentication. */
-  AuthenticationError = 'AUTHENTICATION_ERROR',
-  /** Payment method was canceled by buyer. */
-  BuyerCanceledPaymentMethod = 'BUYER_CANCELED_PAYMENT_METHOD',
-  /** Card number was incorrect. */
-  CardNumberIncorrect = 'CARD_NUMBER_INCORRECT',
-  /** Customer is invalid. */
-  CustomerInvalid = 'CUSTOMER_INVALID',
-  /** Customer was not found. */
-  CustomerNotFound = 'CUSTOMER_NOT_FOUND',
-  /** Payment method is expired. */
-  ExpiredPaymentMethod = 'EXPIRED_PAYMENT_METHOD',
-  /** Fraud was suspected. */
-  FraudSuspected = 'FRAUD_SUSPECTED',
-  /** Gift cards must have a price greater than zero. */
-  FreeGiftCardNotAllowed = 'FREE_GIFT_CARD_NOT_ALLOWED',
-  /** Insufficient funds. */
-  InsufficientFunds = 'INSUFFICIENT_FUNDS',
-  /** Not enough inventory found. */
-  InsufficientInventory = 'INSUFFICIENT_INVENTORY',
-  /** The billing agreement ID or the transaction ID for the customer's payment method is invalid. */
-  InvalidCustomerBillingAgreement = 'INVALID_CUSTOMER_BILLING_AGREEMENT',
-  /** Payment method is invalid. Please update or create a new payment method. */
-  InvalidPaymentMethod = 'INVALID_PAYMENT_METHOD',
-  /** The shipping address is either missing or invalid. */
-  InvalidShippingAddress = 'INVALID_SHIPPING_ADDRESS',
-  /** No inventory location found or enabled. */
-  InventoryAllocationsNotFound = 'INVENTORY_ALLOCATIONS_NOT_FOUND',
-  /** A payment has already been made for this invoice. */
-  InvoiceAlreadyPaid = 'INVOICE_ALREADY_PAID',
-  /** Non-test order limit reached. Use a test payment gateway to place another order. */
-  NonTestOrderLimitReached = 'NON_TEST_ORDER_LIMIT_REACHED',
-  /** Payment method was declined by processor. */
-  PaymentMethodDeclined = 'PAYMENT_METHOD_DECLINED',
-  /** Payment method cannot be used with the current payment gateway test mode configuration. */
-  PaymentMethodIncompatibleWithGatewayConfig = 'PAYMENT_METHOD_INCOMPATIBLE_WITH_GATEWAY_CONFIG',
-  /** Payment method was not found. */
-  PaymentMethodNotFound = 'PAYMENT_METHOD_NOT_FOUND',
-  /** Payment provider is not enabled. */
-  PaymentProviderIsNotEnabled = 'PAYMENT_PROVIDER_IS_NOT_ENABLED',
-  /** Paypal Error General. */
-  PaypalErrorGeneral = 'PAYPAL_ERROR_GENERAL',
-  /** Purchase Type is not supported. */
-  PurchaseTypeNotSupported = 'PURCHASE_TYPE_NOT_SUPPORTED',
-  /** Gateway is in test mode and attempted to bill a live payment method. */
-  TestMode = 'TEST_MODE',
-  /** Transient error, try again later. */
-  TransientError = 'TRANSIENT_ERROR',
-  /** There was an unexpected error during the billing attempt. */
-  UnexpectedError = 'UNEXPECTED_ERROR'
-}
+declare const SubscriptionBillingAttemptErrorCode: {
+  /** The amount is too small. */readonly AmountTooSmall: "AMOUNT_TOO_SMALL"; /** There was an error during the payment authentication. */
+  readonly AuthenticationError: "AUTHENTICATION_ERROR"; /** Payment method was canceled by buyer. */
+  readonly BuyerCanceledPaymentMethod: "BUYER_CANCELED_PAYMENT_METHOD"; /** Card number was incorrect. */
+  readonly CardNumberIncorrect: "CARD_NUMBER_INCORRECT"; /** Customer is invalid. */
+  readonly CustomerInvalid: "CUSTOMER_INVALID"; /** Customer was not found. */
+  readonly CustomerNotFound: "CUSTOMER_NOT_FOUND"; /** Payment method is expired. */
+  readonly ExpiredPaymentMethod: "EXPIRED_PAYMENT_METHOD"; /** Fraud was suspected. */
+  readonly FraudSuspected: "FRAUD_SUSPECTED"; /** Gift cards must have a price greater than zero. */
+  readonly FreeGiftCardNotAllowed: "FREE_GIFT_CARD_NOT_ALLOWED"; /** Insufficient funds. */
+  readonly InsufficientFunds: "INSUFFICIENT_FUNDS"; /** Not enough inventory found. */
+  readonly InsufficientInventory: "INSUFFICIENT_INVENTORY"; /** The billing agreement ID or the transaction ID for the customer's payment method is invalid. */
+  readonly InvalidCustomerBillingAgreement: "INVALID_CUSTOMER_BILLING_AGREEMENT"; /** Payment method is invalid. Please update or create a new payment method. */
+  readonly InvalidPaymentMethod: "INVALID_PAYMENT_METHOD"; /** The shipping address is either missing or invalid. */
+  readonly InvalidShippingAddress: "INVALID_SHIPPING_ADDRESS"; /** No inventory location found or enabled. */
+  readonly InventoryAllocationsNotFound: "INVENTORY_ALLOCATIONS_NOT_FOUND"; /** A payment has already been made for this invoice. */
+  readonly InvoiceAlreadyPaid: "INVOICE_ALREADY_PAID"; /** Non-test order limit reached. Use a test payment gateway to place another order. */
+  readonly NonTestOrderLimitReached: "NON_TEST_ORDER_LIMIT_REACHED"; /** Payment method was declined by processor. */
+  readonly PaymentMethodDeclined: "PAYMENT_METHOD_DECLINED"; /** Payment method cannot be used with the current payment gateway test mode configuration. */
+  readonly PaymentMethodIncompatibleWithGatewayConfig: "PAYMENT_METHOD_INCOMPATIBLE_WITH_GATEWAY_CONFIG"; /** Payment method was not found. */
+  readonly PaymentMethodNotFound: "PAYMENT_METHOD_NOT_FOUND"; /** Payment provider is not enabled. */
+  readonly PaymentProviderIsNotEnabled: "PAYMENT_PROVIDER_IS_NOT_ENABLED"; /** Paypal Error General. */
+  readonly PaypalErrorGeneral: "PAYPAL_ERROR_GENERAL"; /** Purchase Type is not supported. */
+  readonly PurchaseTypeNotSupported: "PURCHASE_TYPE_NOT_SUPPORTED"; /** Gateway is in test mode and attempted to bill a live payment method. */
+  readonly TestMode: "TEST_MODE"; /** Transient error, try again later. */
+  readonly TransientError: "TRANSIENT_ERROR"; /** There was an unexpected error during the billing attempt. */
+  readonly UnexpectedError: "UNEXPECTED_ERROR";
+};
+type SubscriptionBillingAttemptErrorCode = typeof SubscriptionBillingAttemptErrorCode[keyof typeof SubscriptionBillingAttemptErrorCode];
 /** An error that prevented a billing attempt. */
 type SubscriptionBillingAttemptProcessingError = {
   /** The code for the error. */code: SubscriptionBillingAttemptErrorCode; /** An explanation of the error. */
@@ -15008,36 +13697,28 @@ type SubscriptionContractEdge = {
   node: SubscriptionContract;
 };
 /** The possible values of the last billing error on a subscription contract. */
-declare enum SubscriptionContractLastBillingErrorType {
-  /** Subscription billing attempt error due to customer error. */
-  CustomerError = 'CUSTOMER_ERROR',
-  /** Subscription billing attempt error due to inventory error. */
-  InventoryError = 'INVENTORY_ERROR',
-  /** All other billing attempt errors. */
-  Other = 'OTHER',
-  /** Subscription billing attempt error due to payment error. */
-  PaymentError = 'PAYMENT_ERROR'
-}
+declare const SubscriptionContractLastBillingErrorType: {
+  /** Subscription billing attempt error due to customer error. */readonly CustomerError: "CUSTOMER_ERROR"; /** Subscription billing attempt error due to inventory error. */
+  readonly InventoryError: "INVENTORY_ERROR"; /** All other billing attempt errors. */
+  readonly Other: "OTHER"; /** Subscription billing attempt error due to payment error. */
+  readonly PaymentError: "PAYMENT_ERROR";
+};
+type SubscriptionContractLastBillingErrorType = typeof SubscriptionContractLastBillingErrorType[keyof typeof SubscriptionContractLastBillingErrorType];
 /** The possible status values of the last payment on a subscription contract. */
-declare enum SubscriptionContractLastPaymentStatus {
-  /** Failed subscription billing attempt. */
-  Failed = 'FAILED',
-  /** Successful subscription billing attempt. */
-  Succeeded = 'SUCCEEDED'
-}
+declare const SubscriptionContractLastPaymentStatus: {
+  /** Failed subscription billing attempt. */readonly Failed: "FAILED"; /** Successful subscription billing attempt. */
+  readonly Succeeded: "SUCCEEDED";
+};
+type SubscriptionContractLastPaymentStatus = typeof SubscriptionContractLastPaymentStatus[keyof typeof SubscriptionContractLastPaymentStatus];
 /** The possible status values of a subscription. */
-declare enum SubscriptionContractSubscriptionStatus {
-  /** The contract is active and continuing per its policies. */
-  Active = 'ACTIVE',
-  /** The contract was ended by an unplanned customer action. */
-  Cancelled = 'CANCELLED',
-  /** The contract has ended per the expected circumstances. All billing and deliverycycles of the subscriptions were executed. */
-  Expired = 'EXPIRED',
-  /** The contract ended because billing failed and no further billing attempts are expected. */
-  Failed = 'FAILED',
-  /** The contract is temporarily paused and is expected to resume in the future. */
-  Paused = 'PAUSED'
-}
+declare const SubscriptionContractSubscriptionStatus: {
+  /** The contract is active and continuing per its policies. */readonly Active: "ACTIVE"; /** The contract was ended by an unplanned customer action. */
+  readonly Cancelled: "CANCELLED"; /** The contract has ended per the expected circumstances. All billing and deliverycycles of the subscriptions were executed. */
+  readonly Expired: "EXPIRED"; /** The contract ended because billing failed and no further billing attempts are expected. */
+  readonly Failed: "FAILED"; /** The contract is temporarily paused and is expected to resume in the future. */
+  readonly Paused: "PAUSED";
+};
+type SubscriptionContractSubscriptionStatus = typeof SubscriptionContractSubscriptionStatus[keyof typeof SubscriptionContractSubscriptionStatus];
 /** Represents a Subscription Line Pricing Cycle Adjustment. */
 type SubscriptionCyclePriceAdjustment = {
   __typename?: 'SubscriptionCyclePriceAdjustment'; /** Price adjustment type. */
@@ -15138,30 +13819,20 @@ type SubscriptionDiscountPercentageValue = {
   percentage: Scalars['Int']['output'];
 };
 /** The reason a discount on a subscription draft was rejected. */
-declare enum SubscriptionDiscountRejectionReason {
-  /** Discount is inactive. */
-  CurrentlyInactive = 'CURRENTLY_INACTIVE',
-  /** Given customer does not qualify for the discount. */
-  CustomerNotEligible = 'CUSTOMER_NOT_ELIGIBLE',
-  /** Customer usage limit has been reached. */
-  CustomerUsageLimitReached = 'CUSTOMER_USAGE_LIMIT_REACHED',
-  /** Purchase type does not qualify for the discount. */
-  IncompatiblePurchaseType = 'INCOMPATIBLE_PURCHASE_TYPE',
-  /** Internal error during discount code validation. */
-  InternalError = 'INTERNAL_ERROR',
-  /** Discount code is not found. */
-  NotFound = 'NOT_FOUND',
-  /** Discount does not apply to any of the given line items. */
-  NoEntitledLineItems = 'NO_ENTITLED_LINE_ITEMS',
-  /** No applicable shipping lines. */
-  NoEntitledShippingLines = 'NO_ENTITLED_SHIPPING_LINES',
-  /** Purchase amount of items does not qualify for the discount. */
-  PurchaseNotInRange = 'PURCHASE_NOT_IN_RANGE',
-  /** Quantity of items does not qualify for the discount. */
-  QuantityNotInRange = 'QUANTITY_NOT_IN_RANGE',
-  /** Discount usage limit has been reached. */
-  UsageLimitReached = 'USAGE_LIMIT_REACHED'
-}
+declare const SubscriptionDiscountRejectionReason: {
+  /** Discount is inactive. */readonly CurrentlyInactive: "CURRENTLY_INACTIVE"; /** Given customer does not qualify for the discount. */
+  readonly CustomerNotEligible: "CUSTOMER_NOT_ELIGIBLE"; /** Customer usage limit has been reached. */
+  readonly CustomerUsageLimitReached: "CUSTOMER_USAGE_LIMIT_REACHED"; /** Purchase type does not qualify for the discount. */
+  readonly IncompatiblePurchaseType: "INCOMPATIBLE_PURCHASE_TYPE"; /** Internal error during discount code validation. */
+  readonly InternalError: "INTERNAL_ERROR"; /** Discount code is not found. */
+  readonly NotFound: "NOT_FOUND"; /** Discount does not apply to any of the given line items. */
+  readonly NoEntitledLineItems: "NO_ENTITLED_LINE_ITEMS"; /** No applicable shipping lines. */
+  readonly NoEntitledShippingLines: "NO_ENTITLED_SHIPPING_LINES"; /** Purchase amount of items does not qualify for the discount. */
+  readonly PurchaseNotInRange: "PURCHASE_NOT_IN_RANGE"; /** Quantity of items does not qualify for the discount. */
+  readonly QuantityNotInRange: "QUANTITY_NOT_IN_RANGE"; /** Discount usage limit has been reached. */
+  readonly UsageLimitReached: "USAGE_LIMIT_REACHED";
+};
+type SubscriptionDiscountRejectionReason = typeof SubscriptionDiscountRejectionReason[keyof typeof SubscriptionDiscountRejectionReason];
 /** The value of the discount and how it will be applied. */
 type SubscriptionDiscountValue = SubscriptionDiscountFixedAmountValue | SubscriptionDiscountPercentageValue;
 /**
@@ -15283,10 +13954,10 @@ type SuggestedOrderTransaction = {
   paymentDetails?: Maybe<PaymentDetails>;
 };
 /** Specifies the kind of the suggested order transaction. */
-declare enum SuggestedOrderTransactionKind {
-  /** A suggested refund transaction for an order. */
-  SuggestedRefund = 'SUGGESTED_REFUND'
-}
+declare const SuggestedOrderTransactionKind: {
+  /** A suggested refund transaction for an order. */readonly SuggestedRefund: "SUGGESTED_REFUND";
+};
+type SuggestedOrderTransactionKind = typeof SuggestedOrderTransactionKind[keyof typeof SuggestedOrderTransactionKind];
 /**
  * A refund amount that Shopify suggests based on the items, duties, and shipping costs that customers return. Provides a breakdown of all monetary values including subtotals, taxes, discounts, and the maximum refundable amount.
  *
@@ -15362,152 +14033,81 @@ type SuggestedReturnRefund = {
   totalTax: MoneyBag;
 };
 /** Available customer tax exemptions. */
-declare enum TaxExemption {
-  /** This customer is exempt from specific taxes for holding a valid COMMERCIAL_FISHERY_EXEMPTION in British Columbia. */
-  CaBcCommercialFisheryExemption = 'CA_BC_COMMERCIAL_FISHERY_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid CONTRACTOR_EXEMPTION in British Columbia. */
-  CaBcContractorExemption = 'CA_BC_CONTRACTOR_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid PRODUCTION_AND_MACHINERY_EXEMPTION in British Columbia. */
-  CaBcProductionAndMachineryExemption = 'CA_BC_PRODUCTION_AND_MACHINERY_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in British Columbia. */
-  CaBcResellerExemption = 'CA_BC_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid SUB_CONTRACTOR_EXEMPTION in British Columbia. */
-  CaBcSubContractorExemption = 'CA_BC_SUB_CONTRACTOR_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid DIPLOMAT_EXEMPTION in Canada. */
-  CaDiplomatExemption = 'CA_DIPLOMAT_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid COMMERCIAL_FISHERY_EXEMPTION in Manitoba. */
-  CaMbCommercialFisheryExemption = 'CA_MB_COMMERCIAL_FISHERY_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid FARMER_EXEMPTION in Manitoba. */
-  CaMbFarmerExemption = 'CA_MB_FARMER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Manitoba. */
-  CaMbResellerExemption = 'CA_MB_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid COMMERCIAL_FISHERY_EXEMPTION in Nova Scotia. */
-  CaNsCommercialFisheryExemption = 'CA_NS_COMMERCIAL_FISHERY_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid FARMER_EXEMPTION in Nova Scotia. */
-  CaNsFarmerExemption = 'CA_NS_FARMER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid PURCHASE_EXEMPTION in Ontario. */
-  CaOnPurchaseExemption = 'CA_ON_PURCHASE_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid COMMERCIAL_FISHERY_EXEMPTION in Prince Edward Island. */
-  CaPeCommercialFisheryExemption = 'CA_PE_COMMERCIAL_FISHERY_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid COMMERCIAL_FISHERY_EXEMPTION in Saskatchewan. */
-  CaSkCommercialFisheryExemption = 'CA_SK_COMMERCIAL_FISHERY_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid CONTRACTOR_EXEMPTION in Saskatchewan. */
-  CaSkContractorExemption = 'CA_SK_CONTRACTOR_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid FARMER_EXEMPTION in Saskatchewan. */
-  CaSkFarmerExemption = 'CA_SK_FARMER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid PRODUCTION_AND_MACHINERY_EXEMPTION in Saskatchewan. */
-  CaSkProductionAndMachineryExemption = 'CA_SK_PRODUCTION_AND_MACHINERY_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Saskatchewan. */
-  CaSkResellerExemption = 'CA_SK_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid SUB_CONTRACTOR_EXEMPTION in Saskatchewan. */
-  CaSkSubContractorExemption = 'CA_SK_SUB_CONTRACTOR_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid STATUS_CARD_EXEMPTION in Canada. */
-  CaStatusCardExemption = 'CA_STATUS_CARD_EXEMPTION',
-  /** This customer is exempt from VAT for purchases within the EU that is shipping from outside of customer's country, as well as purchases from the EU to the UK. */
-  EuReverseChargeExemptionRule = 'EU_REVERSE_CHARGE_EXEMPTION_RULE',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Alaska. */
-  UsAkResellerExemption = 'US_AK_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Alabama. */
-  UsAlResellerExemption = 'US_AL_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Arkansas. */
-  UsArResellerExemption = 'US_AR_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Arizona. */
-  UsAzResellerExemption = 'US_AZ_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in California. */
-  UsCaResellerExemption = 'US_CA_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Colorado. */
-  UsCoResellerExemption = 'US_CO_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Connecticut. */
-  UsCtResellerExemption = 'US_CT_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Washington DC. */
-  UsDcResellerExemption = 'US_DC_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Delaware. */
-  UsDeResellerExemption = 'US_DE_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Florida. */
-  UsFlResellerExemption = 'US_FL_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Georgia. */
-  UsGaResellerExemption = 'US_GA_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Hawaii. */
-  UsHiResellerExemption = 'US_HI_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Iowa. */
-  UsIaResellerExemption = 'US_IA_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Idaho. */
-  UsIdResellerExemption = 'US_ID_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Illinois. */
-  UsIlResellerExemption = 'US_IL_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Indiana. */
-  UsInResellerExemption = 'US_IN_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Kansas. */
-  UsKsResellerExemption = 'US_KS_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Kentucky. */
-  UsKyResellerExemption = 'US_KY_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Louisiana. */
-  UsLaResellerExemption = 'US_LA_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Massachusetts. */
-  UsMaResellerExemption = 'US_MA_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Maryland. */
-  UsMdResellerExemption = 'US_MD_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Maine. */
-  UsMeResellerExemption = 'US_ME_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Michigan. */
-  UsMiResellerExemption = 'US_MI_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Minnesota. */
-  UsMnResellerExemption = 'US_MN_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Missouri. */
-  UsMoResellerExemption = 'US_MO_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Mississippi. */
-  UsMsResellerExemption = 'US_MS_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Montana. */
-  UsMtResellerExemption = 'US_MT_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in North Carolina. */
-  UsNcResellerExemption = 'US_NC_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in North Dakota. */
-  UsNdResellerExemption = 'US_ND_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Nebraska. */
-  UsNeResellerExemption = 'US_NE_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in New Hampshire. */
-  UsNhResellerExemption = 'US_NH_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in New Jersey. */
-  UsNjResellerExemption = 'US_NJ_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in New Mexico. */
-  UsNmResellerExemption = 'US_NM_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Nevada. */
-  UsNvResellerExemption = 'US_NV_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in New York. */
-  UsNyResellerExemption = 'US_NY_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Ohio. */
-  UsOhResellerExemption = 'US_OH_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Oklahoma. */
-  UsOkResellerExemption = 'US_OK_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Oregon. */
-  UsOrResellerExemption = 'US_OR_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Pennsylvania. */
-  UsPaResellerExemption = 'US_PA_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Rhode Island. */
-  UsRiResellerExemption = 'US_RI_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in South Carolina. */
-  UsScResellerExemption = 'US_SC_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in South Dakota. */
-  UsSdResellerExemption = 'US_SD_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Tennessee. */
-  UsTnResellerExemption = 'US_TN_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Texas. */
-  UsTxResellerExemption = 'US_TX_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Utah. */
-  UsUtResellerExemption = 'US_UT_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Virginia. */
-  UsVaResellerExemption = 'US_VA_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Vermont. */
-  UsVtResellerExemption = 'US_VT_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Washington. */
-  UsWaResellerExemption = 'US_WA_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Wisconsin. */
-  UsWiResellerExemption = 'US_WI_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in West Virginia. */
-  UsWvResellerExemption = 'US_WV_RESELLER_EXEMPTION',
-  /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Wyoming. */
-  UsWyResellerExemption = 'US_WY_RESELLER_EXEMPTION'
-}
+declare const TaxExemption: {
+  /** This customer is exempt from specific taxes for holding a valid COMMERCIAL_FISHERY_EXEMPTION in British Columbia. */readonly CaBcCommercialFisheryExemption: "CA_BC_COMMERCIAL_FISHERY_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid CONTRACTOR_EXEMPTION in British Columbia. */
+  readonly CaBcContractorExemption: "CA_BC_CONTRACTOR_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid PRODUCTION_AND_MACHINERY_EXEMPTION in British Columbia. */
+  readonly CaBcProductionAndMachineryExemption: "CA_BC_PRODUCTION_AND_MACHINERY_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in British Columbia. */
+  readonly CaBcResellerExemption: "CA_BC_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid SUB_CONTRACTOR_EXEMPTION in British Columbia. */
+  readonly CaBcSubContractorExemption: "CA_BC_SUB_CONTRACTOR_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid DIPLOMAT_EXEMPTION in Canada. */
+  readonly CaDiplomatExemption: "CA_DIPLOMAT_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid COMMERCIAL_FISHERY_EXEMPTION in Manitoba. */
+  readonly CaMbCommercialFisheryExemption: "CA_MB_COMMERCIAL_FISHERY_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid FARMER_EXEMPTION in Manitoba. */
+  readonly CaMbFarmerExemption: "CA_MB_FARMER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Manitoba. */
+  readonly CaMbResellerExemption: "CA_MB_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid COMMERCIAL_FISHERY_EXEMPTION in Nova Scotia. */
+  readonly CaNsCommercialFisheryExemption: "CA_NS_COMMERCIAL_FISHERY_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid FARMER_EXEMPTION in Nova Scotia. */
+  readonly CaNsFarmerExemption: "CA_NS_FARMER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid PURCHASE_EXEMPTION in Ontario. */
+  readonly CaOnPurchaseExemption: "CA_ON_PURCHASE_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid COMMERCIAL_FISHERY_EXEMPTION in Prince Edward Island. */
+  readonly CaPeCommercialFisheryExemption: "CA_PE_COMMERCIAL_FISHERY_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid COMMERCIAL_FISHERY_EXEMPTION in Saskatchewan. */
+  readonly CaSkCommercialFisheryExemption: "CA_SK_COMMERCIAL_FISHERY_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid CONTRACTOR_EXEMPTION in Saskatchewan. */
+  readonly CaSkContractorExemption: "CA_SK_CONTRACTOR_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid FARMER_EXEMPTION in Saskatchewan. */
+  readonly CaSkFarmerExemption: "CA_SK_FARMER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid PRODUCTION_AND_MACHINERY_EXEMPTION in Saskatchewan. */
+  readonly CaSkProductionAndMachineryExemption: "CA_SK_PRODUCTION_AND_MACHINERY_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Saskatchewan. */
+  readonly CaSkResellerExemption: "CA_SK_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid SUB_CONTRACTOR_EXEMPTION in Saskatchewan. */
+  readonly CaSkSubContractorExemption: "CA_SK_SUB_CONTRACTOR_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid STATUS_CARD_EXEMPTION in Canada. */
+  readonly CaStatusCardExemption: "CA_STATUS_CARD_EXEMPTION"; /** This customer is exempt from VAT for purchases within the EU that is shipping from outside of customer's country, as well as purchases from the EU to the UK. */
+  readonly EuReverseChargeExemptionRule: "EU_REVERSE_CHARGE_EXEMPTION_RULE"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Alaska. */
+  readonly UsAkResellerExemption: "US_AK_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Alabama. */
+  readonly UsAlResellerExemption: "US_AL_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Arkansas. */
+  readonly UsArResellerExemption: "US_AR_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Arizona. */
+  readonly UsAzResellerExemption: "US_AZ_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in California. */
+  readonly UsCaResellerExemption: "US_CA_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Colorado. */
+  readonly UsCoResellerExemption: "US_CO_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Connecticut. */
+  readonly UsCtResellerExemption: "US_CT_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Washington DC. */
+  readonly UsDcResellerExemption: "US_DC_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Delaware. */
+  readonly UsDeResellerExemption: "US_DE_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Florida. */
+  readonly UsFlResellerExemption: "US_FL_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Georgia. */
+  readonly UsGaResellerExemption: "US_GA_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Hawaii. */
+  readonly UsHiResellerExemption: "US_HI_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Iowa. */
+  readonly UsIaResellerExemption: "US_IA_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Idaho. */
+  readonly UsIdResellerExemption: "US_ID_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Illinois. */
+  readonly UsIlResellerExemption: "US_IL_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Indiana. */
+  readonly UsInResellerExemption: "US_IN_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Kansas. */
+  readonly UsKsResellerExemption: "US_KS_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Kentucky. */
+  readonly UsKyResellerExemption: "US_KY_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Louisiana. */
+  readonly UsLaResellerExemption: "US_LA_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Massachusetts. */
+  readonly UsMaResellerExemption: "US_MA_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Maryland. */
+  readonly UsMdResellerExemption: "US_MD_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Maine. */
+  readonly UsMeResellerExemption: "US_ME_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Michigan. */
+  readonly UsMiResellerExemption: "US_MI_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Minnesota. */
+  readonly UsMnResellerExemption: "US_MN_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Missouri. */
+  readonly UsMoResellerExemption: "US_MO_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Mississippi. */
+  readonly UsMsResellerExemption: "US_MS_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Montana. */
+  readonly UsMtResellerExemption: "US_MT_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in North Carolina. */
+  readonly UsNcResellerExemption: "US_NC_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in North Dakota. */
+  readonly UsNdResellerExemption: "US_ND_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Nebraska. */
+  readonly UsNeResellerExemption: "US_NE_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in New Hampshire. */
+  readonly UsNhResellerExemption: "US_NH_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in New Jersey. */
+  readonly UsNjResellerExemption: "US_NJ_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in New Mexico. */
+  readonly UsNmResellerExemption: "US_NM_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Nevada. */
+  readonly UsNvResellerExemption: "US_NV_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in New York. */
+  readonly UsNyResellerExemption: "US_NY_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Ohio. */
+  readonly UsOhResellerExemption: "US_OH_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Oklahoma. */
+  readonly UsOkResellerExemption: "US_OK_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Oregon. */
+  readonly UsOrResellerExemption: "US_OR_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Pennsylvania. */
+  readonly UsPaResellerExemption: "US_PA_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Rhode Island. */
+  readonly UsRiResellerExemption: "US_RI_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in South Carolina. */
+  readonly UsScResellerExemption: "US_SC_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in South Dakota. */
+  readonly UsSdResellerExemption: "US_SD_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Tennessee. */
+  readonly UsTnResellerExemption: "US_TN_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Texas. */
+  readonly UsTxResellerExemption: "US_TX_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Utah. */
+  readonly UsUtResellerExemption: "US_UT_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Virginia. */
+  readonly UsVaResellerExemption: "US_VA_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Vermont. */
+  readonly UsVtResellerExemption: "US_VT_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Washington. */
+  readonly UsWaResellerExemption: "US_WA_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Wisconsin. */
+  readonly UsWiResellerExemption: "US_WI_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in West Virginia. */
+  readonly UsWvResellerExemption: "US_WV_RESELLER_EXEMPTION"; /** This customer is exempt from specific taxes for holding a valid RESELLER_EXEMPTION in Wyoming. */
+  readonly UsWyResellerExemption: "US_WY_RESELLER_EXEMPTION";
+};
+type TaxExemption = typeof TaxExemption[keyof typeof TaxExemption];
 /**
  * A tax applied to a [`LineItem`](https://shopify.dev/docs/api/admin-graphql/latest/objects/LineItem) or [`ShippingLine`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ShippingLine). Includes the tax amount, rate, title, and whether the channel that submitted the tax is liable for remitting it.
  *
@@ -15652,76 +14252,48 @@ type UnitPriceMeasurement = {
   referenceValue: Scalars['Int']['output'];
 };
 /** The accepted types of unit of measurement. */
-declare enum UnitPriceMeasurementMeasuredType {
-  /** Unit of measurements representing areas. */
-  Area = 'AREA',
-  /** Unit of measurements representing counts. */
-  Count = 'COUNT',
-  /** Unit of measurements representing lengths. */
-  Length = 'LENGTH',
-  /** The type of measurement is unknown. Upgrade to the latest version of the API to resolve this type. */
-  Unknown = 'UNKNOWN',
-  /** Unit of measurements representing volumes. */
-  Volume = 'VOLUME',
-  /** Unit of measurements representing weights. */
-  Weight = 'WEIGHT'
-}
+declare const UnitPriceMeasurementMeasuredType: {
+  /** Unit of measurements representing areas. */readonly Area: "AREA"; /** Unit of measurements representing counts. */
+  readonly Count: "COUNT"; /** Unit of measurements representing lengths. */
+  readonly Length: "LENGTH"; /** The type of measurement is unknown. Upgrade to the latest version of the API to resolve this type. */
+  readonly Unknown: "UNKNOWN"; /** Unit of measurements representing volumes. */
+  readonly Volume: "VOLUME"; /** Unit of measurements representing weights. */
+  readonly Weight: "WEIGHT";
+};
+type UnitPriceMeasurementMeasuredType = typeof UnitPriceMeasurementMeasuredType[keyof typeof UnitPriceMeasurementMeasuredType];
 /** The valid units of measurement for a unit price measurement. */
-declare enum UnitPriceMeasurementMeasuredUnit {
-  /** 100 centiliters equals 1 liter. */
-  Cl = 'CL',
-  /** 100 centimeters equals 1 meter. */
-  Cm = 'CM',
-  /** Imperial system unit of volume (U.S. customary unit). */
-  Floz = 'FLOZ',
-  /** 1 foot equals 12 inches. */
-  Ft = 'FT',
-  /** Imperial system unit of area. */
-  Ft2 = 'FT2',
-  /** Metric system unit of weight. */
-  G = 'G',
-  /** 1 gallon equals 128 fluid ounces (U.S. customary unit). */
-  Gal = 'GAL',
-  /** Imperial system unit of length. */
-  In = 'IN',
-  /** 1 item, a unit of count. */
-  Item = 'ITEM',
-  /** 1 kilogram equals 1000 grams. */
-  Kg = 'KG',
-  /** Metric system unit of volume. */
-  L = 'L',
-  /** Imperial system unit of weight. */
-  Lb = 'LB',
-  /** Metric system unit of length. */
-  M = 'M',
-  /** Metric system unit of area. */
-  M2 = 'M2',
-  /** 1 cubic meter equals 1000 liters. */
-  M3 = 'M3',
-  /** 1000 milligrams equals 1 gram. */
-  Mg = 'MG',
-  /** 1000 milliliters equals 1 liter. */
-  Ml = 'ML',
-  /** 1000 millimeters equals 1 meter. */
-  Mm = 'MM',
-  /** 16 ounces equals 1 pound. */
-  Oz = 'OZ',
-  /** 1 pint equals 16 fluid ounces (U.S. customary unit). */
-  Pt = 'PT',
-  /** 1 quart equals 32 fluid ounces (U.S. customary unit). */
-  Qt = 'QT',
-  /** The unit of measurement is unknown. Upgrade to the latest version of the API to resolve this unit. */
-  Unknown = 'UNKNOWN',
-  /** 1 yard equals 36 inches. */
-  Yd = 'YD'
-}
+declare const UnitPriceMeasurementMeasuredUnit: {
+  /** 100 centiliters equals 1 liter. */readonly Cl: "CL"; /** 100 centimeters equals 1 meter. */
+  readonly Cm: "CM"; /** Imperial system unit of volume (U.S. customary unit). */
+  readonly Floz: "FLOZ"; /** 1 foot equals 12 inches. */
+  readonly Ft: "FT"; /** Imperial system unit of area. */
+  readonly Ft2: "FT2"; /** Metric system unit of weight. */
+  readonly G: "G"; /** 1 gallon equals 128 fluid ounces (U.S. customary unit). */
+  readonly Gal: "GAL"; /** Imperial system unit of length. */
+  readonly In: "IN"; /** 1 item, a unit of count. */
+  readonly Item: "ITEM"; /** 1 kilogram equals 1000 grams. */
+  readonly Kg: "KG"; /** Metric system unit of volume. */
+  readonly L: "L"; /** Imperial system unit of weight. */
+  readonly Lb: "LB"; /** Metric system unit of length. */
+  readonly M: "M"; /** Metric system unit of area. */
+  readonly M2: "M2"; /** 1 cubic meter equals 1000 liters. */
+  readonly M3: "M3"; /** 1000 milligrams equals 1 gram. */
+  readonly Mg: "MG"; /** 1000 milliliters equals 1 liter. */
+  readonly Ml: "ML"; /** 1000 millimeters equals 1 meter. */
+  readonly Mm: "MM"; /** 16 ounces equals 1 pound. */
+  readonly Oz: "OZ"; /** 1 pint equals 16 fluid ounces (U.S. customary unit). */
+  readonly Pt: "PT"; /** 1 quart equals 32 fluid ounces (U.S. customary unit). */
+  readonly Qt: "QT"; /** The unit of measurement is unknown. Upgrade to the latest version of the API to resolve this unit. */
+  readonly Unknown: "UNKNOWN"; /** 1 yard equals 36 inches. */
+  readonly Yd: "YD";
+};
+type UnitPriceMeasurementMeasuredUnit = typeof UnitPriceMeasurementMeasuredUnit[keyof typeof UnitPriceMeasurementMeasuredUnit];
 /** Systems of weights and measures. */
-declare enum UnitSystem {
-  /** Imperial system of weights and measures. */
-  ImperialSystem = 'IMPERIAL_SYSTEM',
-  /** Metric system of weights and measures. */
-  MetricSystem = 'METRIC_SYSTEM'
-}
+declare const UnitSystem: {
+  /** Imperial system of weights and measures. */readonly ImperialSystem: "IMPERIAL_SYSTEM"; /** Metric system of weights and measures. */
+  readonly MetricSystem: "METRIC_SYSTEM";
+};
+type UnitSystem = typeof UnitSystem[keyof typeof UnitSystem];
 /** An error in the input of a mutation. Mutations return `UserError` objects to indicate validation failures, such as invalid field values or business logic violations, that prevent the operation from completing. */
 type UserError = DisplayableError & {
   __typename?: 'UserError'; /** The path to the input field that caused the error. */
@@ -15817,16 +14389,13 @@ type Weight = {
   value: Scalars['Float']['output'];
 };
 /** Units of measurement for weight. */
-declare enum WeightUnit {
-  /** Metric system unit of mass. */
-  Grams = 'GRAMS',
-  /** 1 kilogram equals 1000 grams. */
-  Kilograms = 'KILOGRAMS',
-  /** Imperial system unit of mass. */
-  Ounces = 'OUNCES',
-  /** 1 pound equals 16 ounces. */
-  Pounds = 'POUNDS'
-}
+declare const WeightUnit: {
+  /** Metric system unit of mass. */readonly Grams: "GRAMS"; /** 1 kilogram equals 1000 grams. */
+  readonly Kilograms: "KILOGRAMS"; /** Imperial system unit of mass. */
+  readonly Ounces: "OUNCES"; /** 1 pound equals 16 ounces. */
+  readonly Pounds: "POUNDS";
+};
+type WeightUnit = typeof WeightUnit[keyof typeof WeightUnit];
 //#endregion
 //#region src/generated/admin.generated.d.ts
 type GetAssignedFulfillmentOrdersQueryVariables = Exact<{
@@ -16038,4 +14607,4 @@ declare function updateTrackingInfo({
   readonly notifyCustomer?: boolean;
 }): Promise<FulfillmentTrackingInfoPayload>;
 //#endregion
-export { type AssignedFulfillmentOrder, type FulfillmentCreatePayload, type FulfillmentOrderActionPayload, type FulfillmentOrderAssignmentStatus, type FulfillmentOrderDestination, type FulfillmentOrderLineItem, type FulfillmentOrderMerchantRequest, type FulfillmentOrderMerchantRequestKind, type FulfillmentOrderOrder, type FulfillmentTrackingInfo, type FulfillmentTrackingInfoPayload, type OrderLineItem, type OrderShippingAddress, type ShopifyCredentials, type ShopifyUserError, acceptCancellationRequest, acceptFulfillmentRequest, createFulfillment, getAssignedFulfillmentOrders, rejectCancellationRequest, rejectFulfillmentRequest, updateTrackingInfo };
+export { AssignedFulfillmentOrder, FulfillmentCreatePayload, FulfillmentOrderActionPayload, FulfillmentOrderAssignmentStatus, FulfillmentOrderDestination, FulfillmentOrderLineItem, FulfillmentOrderMerchantRequest, FulfillmentOrderMerchantRequestKind, FulfillmentOrderOrder, FulfillmentTrackingInfo, FulfillmentTrackingInfoPayload, OrderLineItem, OrderShippingAddress, ShopifyCredentials, ShopifyUserError, acceptCancellationRequest, acceptFulfillmentRequest, createFulfillment, getAssignedFulfillmentOrders, rejectCancellationRequest, rejectFulfillmentRequest, updateTrackingInfo };

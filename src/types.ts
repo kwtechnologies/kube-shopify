@@ -7,7 +7,7 @@ import type {
   RejectFulfillmentRequestMutation,
   UpdateTrackingInfoMutation,
 } from "./generated/admin.generated";
-import type {
+import {
   FulfillmentOrderAssignmentStatus,
   FulfillmentOrderMerchantRequestKind,
   FulfillmentTrackingInput,

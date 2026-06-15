@@ -7,7 +7,7 @@ export {
   rejectFulfillmentRequest,
   updateTrackingInfo,
 } from "./fulfillment";
-export type {
+export {
   AssignedFulfillmentOrder,
   FulfillmentCreatePayload,
   FulfillmentOrderActionPayload,

@@ -23,7 +23,7 @@
     "@shopify/api-codegen-preset": "^1.2.0",
     "@types/node": "^24.3.0",
     "semver": "^7.7.2",
-    "tsdown": "^0.21.8",
+    "tsdown": "0.21.7",
     "typescript": "^5.9.2",
     "vitest": "^3.2.4"
   }
