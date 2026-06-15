@@ -8,7 +8,6 @@ async function requestShopifyAdmin({ credentials, query, options }) {
 		apiVersion: ADMIN_API_VERSION,
 		accessToken: credentials.accessToken
 	}).request(query, options);
-	if (response.errors) throw new Error(`Shopify API Error: ${JSON.stringify(response.errors)}`);
 	if (!response.data) throw new Error("Shopify API Error: response data is empty");
 	return response.data;
 }

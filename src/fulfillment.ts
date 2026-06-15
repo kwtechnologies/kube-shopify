@@ -223,7 +223,9 @@ export async function getAssignedFulfillmentOrders({
   const data: GetAssignedFulfillmentOrdersQuery = await requestShopifyAdmin({
     credentials,
     query: GET_ASSIGNED_FULFILLMENT_ORDERS,
-    options: { variables: { status, requestKind: merchantRequestKind, locationIds } },
+    options: {
+      variables: { status, requestKind: merchantRequestKind, locationIds },
+    },
   });
   return data.shop.assignedFulfillmentOrders.nodes;
 }

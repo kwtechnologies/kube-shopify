@@ -10,7 +10,9 @@ import type {} from "./generated/admin.generated";
 
 const ADMIN_API_VERSION = "2025-10";
 
-export async function requestShopifyAdmin<Operation extends keyof AdminOperations>({
+export async function requestShopifyAdmin<
+  Operation extends keyof AdminOperations,
+>({
   credentials,
   query,
   options,
@@ -25,9 +27,6 @@ export async function requestShopifyAdmin<Operation extends keyof AdminOperation
     accessToken: credentials.accessToken,
   });
   const response = await client.request(query, options);
-  if (response.errors) {
-    throw new Error(`Shopify API Error: ${JSON.stringify(response.errors)}`);
-  }
   if (!response.data) {
     throw new Error("Shopify API Error: response data is empty");
   }
