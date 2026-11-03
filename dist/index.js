@@ -50,6 +50,15 @@ const GET_ASSIGNED_FULFILLMENT_ORDERS = `#graphql
             }
           }
           order {
+            localizedFields(first: 20) {
+              nodes {
+                key
+                countryCode
+                purpose
+                title
+                value
+              }
+            }
             note
             name
             email

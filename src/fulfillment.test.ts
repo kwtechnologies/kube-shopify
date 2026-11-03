@@ -1,11 +1,16 @@
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, expectTypeOf, it, vi } from "vitest";
 
 import {
   createFulfillment,
   getAssignedFulfillmentOrders,
   updateTrackingInfo,
 } from "./fulfillment";
-import type { ShopifyCredentials } from "./types";
+import type {
+  CountryCode,
+  LocalizedFieldKey,
+  LocalizedFieldPurpose,
+} from "./generated/admin.types";
+import type { FulfillmentOrderOrder, ShopifyCredentials } from "./types";
 
 const request = vi.fn();
 
@@ -23,7 +28,18 @@ describe("fulfillment helpers", () => {
     request.mockReset();
   });
 
-  it("returns raw assigned fulfillment order nodes", async () => {
+  it("selects and returns localized fields on assigned fulfillment orders", async () => {
+    const localizedFields: FulfillmentOrderOrder["localizedFields"] = {
+      nodes: [
+        {
+          key: "SHIPPING_CREDENTIAL_CN",
+          countryCode: "CN",
+          purpose: "SHIPPING",
+          title: "Resident ID number",
+          value: "SYNTHETIC-CN-CREDENTIAL",
+        },
+      ],
+    };
     const expectedOrders = [
       {
         id: "gid://shopify/FulfillmentOrder/1",
@@ -34,6 +50,7 @@ describe("fulfillment helpers", () => {
         lineItems: { nodes: [{ id: "gid://shopify/FulfillmentOrderLineItem/1", sku: "SKU-1", totalQuantity: 2 }] },
         merchantRequests: { nodes: [] },
         order: {
+          localizedFields,
           note: null,
           name: "#1001",
           email: null,
@@ -59,6 +76,18 @@ describe("fulfillment helpers", () => {
       merchantRequestKind: "FULFILLMENT_REQUEST",
     });
     expect(actualOrders).toBe(expectedOrders);
+    expect(actualOrders[0].order.localizedFields).toEqual(localizedFields);
+    expectTypeOf<FulfillmentOrderOrder["localizedFields"]["nodes"][number]>()
+      .toEqualTypeOf<{
+        key: LocalizedFieldKey;
+        countryCode: CountryCode;
+        purpose: LocalizedFieldPurpose;
+        title: string;
+        value: string;
+      }>();
+    expect(request.mock.calls[0][0]).toMatch(
+      /order\s*\{\s*localizedFields\(first:\s*20\)\s*\{\s*nodes\s*\{\s*key\s+countryCode\s+purpose\s+title\s+value\s*\}/,
+    );
     expect(request).toHaveBeenCalledWith(
       expect.stringContaining("countryCode"),
       expect.objectContaining({
