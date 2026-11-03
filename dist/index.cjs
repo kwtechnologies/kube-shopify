@@ -240,11 +240,19 @@ async function rejectCancellationRequest({ credentials, fulfillmentOrderId, mess
 		} }
 	})).fulfillmentOrderRejectCancellationRequest, "fulfillmentOrderRejectCancellationRequest");
 }
-async function createFulfillment({ credentials, fulfillmentOrderId }) {
+async function createFulfillment({ credentials, fulfillmentOrderId, trackingInfo, notifyCustomer }) {
 	return requirePayload((await requestShopifyAdmin({
 		credentials,
 		query: CREATE_FULFILLMENT,
-		options: { variables: { fulfillment: { lineItemsByFulfillmentOrder: [{ fulfillmentOrderId }] } } }
+		options: { variables: { fulfillment: {
+			lineItemsByFulfillmentOrder: [{ fulfillmentOrderId }],
+			...trackingInfo !== void 0 && { trackingInfo: {
+				number: trackingInfo.number,
+				url: trackingInfo.url,
+				company: trackingInfo.company
+			} },
+			...notifyCustomer !== void 0 && { notifyCustomer }
+		} } }
 	})).fulfillmentCreateV2, "fulfillmentCreateV2");
 }
 async function updateTrackingInfo({ credentials, fulfillmentId, trackingInfo, notifyCustomer = true }) {

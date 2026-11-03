@@ -313,9 +313,13 @@ export async function rejectCancellationRequest({
 export async function createFulfillment({
   credentials,
   fulfillmentOrderId,
+  trackingInfo,
+  notifyCustomer,
 }: {
   readonly credentials: ShopifyCredentials;
   readonly fulfillmentOrderId: string;
+  readonly trackingInfo?: FulfillmentTrackingInfo;
+  readonly notifyCustomer?: boolean;
 }): Promise<FulfillmentCreatePayload> {
   const data: CreateFulfillmentMutation = await requestShopifyAdmin({
     credentials,
@@ -324,6 +328,14 @@ export async function createFulfillment({
       variables: {
         fulfillment: {
           lineItemsByFulfillmentOrder: [{ fulfillmentOrderId }],
+          ...(trackingInfo !== undefined && {
+            trackingInfo: {
+              number: trackingInfo.number,
+              url: trackingInfo.url,
+              company: trackingInfo.company,
+            },
+          }),
+          ...(notifyCustomer !== undefined && { notifyCustomer }),
         },
       },
     },
