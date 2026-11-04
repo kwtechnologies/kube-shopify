@@ -5,6 +5,7 @@ import type {
   CreateFulfillmentMutation,
   GetAssignedFulfillmentOrdersQuery,
   GetAssignedFulfillmentOrdersQueryVariables,
+  GetFulfillmentOrderLocalizedFieldsQuery,
   RejectCancellationRequestMutation,
   RejectFulfillmentRequestMutation,
   UpdateTrackingInfoMutation,
@@ -65,6 +66,10 @@ const GET_ASSIGNED_FULFILLMENT_ORDERS = `#graphql
                 title
                 value
               }
+              pageInfo {
+                hasNextPage
+                endCursor
+              }
             }
             note
             name
@@ -99,6 +104,28 @@ const GET_ASSIGNED_FULFILLMENT_ORDERS = `#graphql
             nodes {
               message
             }
+          }
+        }
+      }
+    }
+  }
+` as const;
+
+const GET_FULFILLMENT_ORDER_LOCALIZED_FIELDS = `#graphql
+  query GetFulfillmentOrderLocalizedFields($id: ID!, $after: String!) {
+    fulfillmentOrder(id: $id) {
+      order {
+        localizedFields(first: 20, after: $after) {
+          nodes {
+            key
+            countryCode
+            purpose
+            title
+            value
+          }
+          pageInfo {
+            hasNextPage
+            endCursor
           }
         }
       }
@@ -236,7 +263,36 @@ export async function getAssignedFulfillmentOrders({
       variables: { status, requestKind: merchantRequestKind, locationIds },
     },
   });
-  return data.shop.assignedFulfillmentOrders.nodes;
+  const orders = data.shop.assignedFulfillmentOrders.nodes;
+  for (const fulfillmentOrder of orders) {
+    let fields = fulfillmentOrder.order.localizedFields;
+    const nodes = [...fields.nodes];
+    const seenCursors = new Set<string>();
+    while (fields.pageInfo.hasNextPage) {
+      const after = fields.pageInfo.endCursor;
+      if (!after || seenCursors.has(after)) {
+        throw new Error(
+          "Shopify API Error: localized fields pagination cursor is missing or repeated",
+        );
+      }
+      seenCursors.add(after);
+      const page: GetFulfillmentOrderLocalizedFieldsQuery =
+        await requestShopifyAdmin({
+          credentials,
+          query: GET_FULFILLMENT_ORDER_LOCALIZED_FIELDS,
+          options: {
+            variables: { id: fulfillmentOrder.id, after },
+          },
+        });
+      fields = requirePayload(
+        page.fulfillmentOrder,
+        "GetFulfillmentOrderLocalizedFields",
+      ).order.localizedFields;
+      nodes.push(...fields.nodes);
+    }
+    fulfillmentOrder.order.localizedFields = { ...fields, nodes };
+  }
+  return orders;
 }
 
 export async function acceptFulfillmentRequest({

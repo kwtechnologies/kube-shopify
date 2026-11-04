@@ -58,6 +58,10 @@ const GET_ASSIGNED_FULFILLMENT_ORDERS = `#graphql
                 title
                 value
               }
+              pageInfo {
+                hasNextPage
+                endCursor
+              }
             }
             note
             name
@@ -92,6 +96,27 @@ const GET_ASSIGNED_FULFILLMENT_ORDERS = `#graphql
             nodes {
               message
             }
+          }
+        }
+      }
+    }
+  }
+`;
+const GET_FULFILLMENT_ORDER_LOCALIZED_FIELDS = `#graphql
+  query GetFulfillmentOrderLocalizedFields($id: ID!, $after: String!) {
+    fulfillmentOrder(id: $id) {
+      order {
+        localizedFields(first: 20, after: $after) {
+          nodes {
+            key
+            countryCode
+            purpose
+            title
+            value
+          }
+          pageInfo {
+            hasNextPage
+            endCursor
           }
         }
       }
@@ -199,7 +224,7 @@ function requirePayload(payload, operationName) {
 	return payload;
 }
 async function getAssignedFulfillmentOrders({ credentials, status, merchantRequestKind, locationIds }) {
-	return (await requestShopifyAdmin({
+	const orders = (await requestShopifyAdmin({
 		credentials,
 		query: GET_ASSIGNED_FULFILLMENT_ORDERS,
 		options: { variables: {
@@ -208,6 +233,30 @@ async function getAssignedFulfillmentOrders({ credentials, status, merchantReque
 			locationIds
 		} }
 	})).shop.assignedFulfillmentOrders.nodes;
+	for (const fulfillmentOrder of orders) {
+		let fields = fulfillmentOrder.order.localizedFields;
+		const nodes = [...fields.nodes];
+		const seenCursors = /* @__PURE__ */ new Set();
+		while (fields.pageInfo.hasNextPage) {
+			const after = fields.pageInfo.endCursor;
+			if (!after || seenCursors.has(after)) throw new Error("Shopify API Error: localized fields pagination cursor is missing or repeated");
+			seenCursors.add(after);
+			fields = requirePayload((await requestShopifyAdmin({
+				credentials,
+				query: GET_FULFILLMENT_ORDER_LOCALIZED_FIELDS,
+				options: { variables: {
+					id: fulfillmentOrder.id,
+					after
+				} }
+			})).fulfillmentOrder, "GetFulfillmentOrderLocalizedFields").order.localizedFields;
+			nodes.push(...fields.nodes);
+		}
+		fulfillmentOrder.order.localizedFields = {
+			...fields,
+			nodes
+		};
+	}
+	return orders;
 }
 async function acceptFulfillmentRequest({ credentials, fulfillmentOrderId, message }) {
 	return requirePayload((await requestShopifyAdmin({
