@@ -14593,10 +14593,14 @@ declare function rejectCancellationRequest({
 }): Promise<FulfillmentOrderActionPayload>;
 declare function createFulfillment({
   credentials,
-  fulfillmentOrderId
+  fulfillmentOrderId,
+  trackingInfo,
+  notifyCustomer
 }: {
   readonly credentials: ShopifyCredentials;
   readonly fulfillmentOrderId: string;
+  readonly trackingInfo?: FulfillmentTrackingInfo;
+  readonly notifyCustomer?: boolean;
 }): Promise<FulfillmentCreatePayload>;
 declare function updateTrackingInfo({
   credentials,
