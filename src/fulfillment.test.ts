@@ -23,6 +23,27 @@ const credentials: ShopifyCredentials = {
   shop: "example-shop",
 };
 
+type LocalizedFields = FulfillmentOrderOrder["localizedFields"];
+
+function assignedFieldsResponse(...fields: LocalizedFields[]) {
+  return {
+    data: {
+      shop: {
+        assignedFulfillmentOrders: {
+          nodes: fields.map((localizedFields, index) => ({
+            id: `gid://shopify/FulfillmentOrder/${index + 1}`,
+            order: { localizedFields },
+          })),
+        },
+      },
+    },
+  };
+}
+
+function remainingFieldsResponse(localizedFields: LocalizedFields) {
+  return { data: { fulfillmentOrder: { order: { localizedFields } } } };
+}
+
 describe("fulfillment helpers", () => {
   beforeEach(() => {
     request.mockReset();
@@ -30,6 +51,7 @@ describe("fulfillment helpers", () => {
 
   it("selects and returns localized fields on assigned fulfillment orders", async () => {
     const localizedFields: FulfillmentOrderOrder["localizedFields"] = {
+      pageInfo: { hasNextPage: false, endCursor: null },
       nodes: [
         {
           key: "SHIPPING_CREDENTIAL_CN",
@@ -76,6 +98,7 @@ describe("fulfillment helpers", () => {
       merchantRequestKind: "FULFILLMENT_REQUEST",
     });
     expect(actualOrders).toBe(expectedOrders);
+    expect(request).toHaveBeenCalledTimes(1);
     expect(actualOrders[0].order.localizedFields).toEqual(localizedFields);
     expectTypeOf<FulfillmentOrderOrder["localizedFields"]["nodes"][number]>()
       .toEqualTypeOf<{
@@ -85,6 +108,7 @@ describe("fulfillment helpers", () => {
         title: string;
         value: string;
       }>();
+    expect(request.mock.calls[0][0]).toMatch(/pageInfo\s*\{\s*hasNextPage\s+endCursor\s*\}/);
     expect(request.mock.calls[0][0]).toMatch(
       /order\s*\{\s*localizedFields\(first:\s*20\)\s*\{\s*nodes\s*\{\s*key\s+countryCode\s+purpose\s+title\s+value\s*\}/,
     );
@@ -99,6 +123,201 @@ describe("fulfillment helpers", () => {
       }),
     );
   });
+
+  it("fetches remaining localized-field pages and preserves records in order", async () => {
+    const firstPage: LocalizedFields["nodes"] = Array.from(
+      { length: 20 },
+      (_, index) => ({
+        key: "SHIPPING_CREDENTIAL_CN",
+        countryCode: "CN",
+        purpose: "SHIPPING",
+        title: "Resident ID number",
+        value: ` SYNTHETIC-${index} `,
+      }),
+    );
+    const duplicate = firstPage[0];
+    const otherCountry: LocalizedFields["nodes"][number] = {
+      key: "SHIPPING_CREDENTIAL_BR",
+      countryCode: "BR",
+      purpose: "SHIPPING",
+      title: "Synthetic field <title>",
+      value: " SYNTHETIC-BR ",
+    };
+    request
+      .mockResolvedValueOnce(
+        assignedFieldsResponse({
+          nodes: firstPage,
+          pageInfo: { hasNextPage: true, endCursor: "cursor-20" },
+        }),
+      )
+      .mockResolvedValueOnce(
+        remainingFieldsResponse({
+          nodes: [duplicate],
+          pageInfo: { hasNextPage: true, endCursor: "cursor-21" },
+        }),
+      )
+      .mockResolvedValueOnce(
+        remainingFieldsResponse({
+          nodes: [otherCountry],
+          pageInfo: { hasNextPage: false, endCursor: "cursor-22" },
+        }),
+      );
+
+    const orders = await getAssignedFulfillmentOrders({
+      credentials,
+      status: "FULFILLMENT_REQUESTED",
+      merchantRequestKind: "FULFILLMENT_REQUEST",
+    });
+
+    expect(orders[0].order.localizedFields.nodes).toEqual([
+      ...firstPage,
+      duplicate,
+      otherCountry,
+    ]);
+    expect(orders[0].order.localizedFields.nodes).toHaveLength(22);
+    expect(orders[0].order.localizedFields.pageInfo).toEqual({
+      hasNextPage: false,
+      endCursor: "cursor-22",
+    });
+    expect(request).toHaveBeenCalledTimes(3);
+    expect(
+      request.mock.calls.slice(1).map(([, options]) => options.variables),
+    ).toEqual([
+      { id: "gid://shopify/FulfillmentOrder/1", after: "cursor-20" },
+      { id: "gid://shopify/FulfillmentOrder/1", after: "cursor-21" },
+    ]);
+    expect(request.mock.calls[1][0]).toMatch(
+      /localizedFields\(first: 20, after: \$after\)/,
+    );
+    expect(request.mock.calls[1][0]).not.toMatch(
+      /shippingAddress|lineItems|totalPrice/,
+    );
+  });
+
+  it.each([null, "cursor-20"])(
+    "rejects incomplete pagination with a missing or repeated cursor (%s)",
+    async (endCursor) => {
+      request
+        .mockResolvedValueOnce(
+          assignedFieldsResponse({
+            nodes: [],
+            pageInfo: { hasNextPage: true, endCursor: "cursor-20" },
+          }),
+        )
+        .mockResolvedValueOnce(
+          remainingFieldsResponse({
+            nodes: [],
+            pageInfo: { hasNextPage: true, endCursor },
+          }),
+        )
+        .mockResolvedValueOnce(
+          remainingFieldsResponse({
+            nodes: [],
+            pageInfo: { hasNextPage: false, endCursor: null },
+          }),
+        );
+
+      await expect(
+        getAssignedFulfillmentOrders({
+          credentials,
+          status: "FULFILLMENT_REQUESTED",
+          merchantRequestKind: "FULFILLMENT_REQUEST",
+        }),
+      ).rejects.toThrow(
+        "Shopify API Error: localized fields pagination cursor is missing or repeated",
+      );
+      expect(request).toHaveBeenCalledTimes(2);
+    },
+  );
+
+  it("returns empty localized fields without a follow-up request", async () => {
+    const localizedFields = {
+      nodes: [],
+      pageInfo: { hasNextPage: false, endCursor: null },
+    };
+    request.mockResolvedValueOnce(assignedFieldsResponse(localizedFields));
+
+    const orders = await getAssignedFulfillmentOrders({
+      credentials,
+      status: "FULFILLMENT_REQUESTED",
+      merchantRequestKind: "FULFILLMENT_REQUEST",
+    });
+
+    expect(orders[0].order.localizedFields).toEqual(localizedFields);
+    expect(request).toHaveBeenCalledTimes(1);
+  });
+
+  it("keeps localized-field pagination separate for each fulfillment order", async () => {
+    const field = (value: string): LocalizedFields["nodes"][number] => ({
+      key: "SHIPPING_CREDENTIAL_CN",
+      countryCode: "CN",
+      purpose: "SHIPPING",
+      title: "Synthetic field",
+      value,
+    });
+    request.mockResolvedValueOnce(
+      assignedFieldsResponse(
+        ...[1, 2].map((id) => ({
+          nodes: [field(`SYNTHETIC-${id}-FIRST`)],
+          pageInfo: { hasNextPage: true, endCursor: "same-cursor" },
+        })),
+      ),
+    );
+    for (const id of [1, 2]) {
+      request.mockResolvedValueOnce(
+        remainingFieldsResponse({
+          nodes: [field(`SYNTHETIC-${id}-LAST`)],
+          pageInfo: { hasNextPage: false, endCursor: null },
+        }),
+      );
+    }
+
+    const orders = await getAssignedFulfillmentOrders({
+      credentials,
+      status: "FULFILLMENT_REQUESTED",
+      merchantRequestKind: "FULFILLMENT_REQUEST",
+    });
+
+    expect(
+      orders.map((order) =>
+        order.order.localizedFields.nodes.map((node) => node.value),
+      ),
+    ).toEqual([
+      ["SYNTHETIC-1-FIRST", "SYNTHETIC-1-LAST"],
+      ["SYNTHETIC-2-FIRST", "SYNTHETIC-2-LAST"],
+    ]);
+    expect(
+      request.mock.calls.slice(1).map(([, options]) => options.variables.id),
+    ).toEqual([
+      "gid://shopify/FulfillmentOrder/1",
+      "gid://shopify/FulfillmentOrder/2",
+    ]);
+  });
+
+  it.each([null, undefined])(
+    "rejects a missing continuation payload (%s)",
+    async (fulfillmentOrder) => {
+      request
+        .mockResolvedValueOnce(
+          assignedFieldsResponse({
+            nodes: [],
+            pageInfo: { hasNextPage: true, endCursor: "cursor-20" },
+          }),
+        )
+        .mockResolvedValueOnce({
+          data:
+            fulfillmentOrder === undefined ? undefined : { fulfillmentOrder },
+        });
+
+      await expect(
+        getAssignedFulfillmentOrders({
+          credentials,
+          status: "FULFILLMENT_REQUESTED",
+          merchantRequestKind: "FULFILLMENT_REQUEST",
+        }),
+      ).rejects.toThrow("Shopify API Error:");
+    },
+  );
 
   it("creates fulfillment with a Shopify fulfillment order input", async () => {
     const expectedPayload = {

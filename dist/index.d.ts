@@ -14414,6 +14414,7 @@ type GetAssignedFulfillmentOrdersQuery = {
         order: (Pick<Order, 'note' | 'name' | 'email' | 'phone' | 'totalPrice'> & {
           localizedFields: {
             nodes: Array<Pick<LocalizedField, 'key' | 'countryCode' | 'purpose' | 'title' | 'value'>>;
+            pageInfo: Pick<PageInfo, 'hasNextPage' | 'endCursor'>;
           };
           shippingAddress?: Maybe<Pick<MailingAddress, 'phone' | 'address1' | 'address2' | 'countryCodeV2' | 'city' | 'province' | 'zip' | 'firstName' | 'lastName' | 'country'>>;
           lineItems: {
@@ -14426,6 +14427,20 @@ type GetAssignedFulfillmentOrdersQuery = {
       })>;
     };
   };
+};
+type GetFulfillmentOrderLocalizedFieldsQueryVariables = Exact<{
+  id: Scalars['ID']['input'];
+  after: Scalars['String']['input'];
+}>;
+type GetFulfillmentOrderLocalizedFieldsQuery = {
+  fulfillmentOrder?: Maybe<{
+    order: {
+      localizedFields: {
+        nodes: Array<Pick<LocalizedField, 'key' | 'countryCode' | 'purpose' | 'title' | 'value'>>;
+        pageInfo: Pick<PageInfo, 'hasNextPage' | 'endCursor'>;
+      };
+    };
+  }>;
 };
 type AcceptFulfillmentRequestMutationVariables = Exact<{
   id: Scalars['ID']['input'];
@@ -14488,9 +14503,13 @@ type UpdateTrackingInfoMutation = {
   }>;
 };
 interface GeneratedQueryTypes {
-  "#graphql\n  query GetAssignedFulfillmentOrders(\n    $locationIds: [ID!]\n    $status: FulfillmentOrderAssignmentStatus\n    $requestKind: FulfillmentOrderMerchantRequestKind\n  ) {\n    shop {\n      assignedFulfillmentOrders(\n        first: 50\n        assignmentStatus: $status\n        locationIds: $locationIds\n      ) {\n        nodes {\n          id\n          orderName\n          requestStatus\n          status\n          destination {\n            firstName\n            lastName\n            address1\n            address2\n            city\n            zip\n            province\n            countryCode\n            phone\n            email\n          }\n          lineItems(first: 50) {\n            nodes {\n              id\n              sku\n              totalQuantity\n            }\n          }\n          order {\n            localizedFields(first: 20) {\n              nodes {\n                key\n                countryCode\n                purpose\n                title\n                value\n              }\n            }\n            note\n            name\n            email\n            phone\n            shippingAddress {\n              phone\n              address1\n              address2\n              countryCodeV2\n              city\n              province\n              zip\n              firstName\n              lastName\n              country\n            }\n            totalPrice\n            lineItems(first: 150) {\n              nodes {\n                id\n                sku\n                quantity\n                originalTotal\n                originalUnitPrice\n                discountedTotal\n                discountedUnitPrice\n              }\n            }\n          }\n          merchantRequests(first: 1, kind: $requestKind) {\n            nodes {\n              message\n            }\n          }\n        }\n      }\n    }\n  }\n": {
+  "#graphql\n  query GetAssignedFulfillmentOrders(\n    $locationIds: [ID!]\n    $status: FulfillmentOrderAssignmentStatus\n    $requestKind: FulfillmentOrderMerchantRequestKind\n  ) {\n    shop {\n      assignedFulfillmentOrders(\n        first: 50\n        assignmentStatus: $status\n        locationIds: $locationIds\n      ) {\n        nodes {\n          id\n          orderName\n          requestStatus\n          status\n          destination {\n            firstName\n            lastName\n            address1\n            address2\n            city\n            zip\n            province\n            countryCode\n            phone\n            email\n          }\n          lineItems(first: 50) {\n            nodes {\n              id\n              sku\n              totalQuantity\n            }\n          }\n          order {\n            localizedFields(first: 20) {\n              nodes {\n                key\n                countryCode\n                purpose\n                title\n                value\n              }\n              pageInfo {\n                hasNextPage\n                endCursor\n              }\n            }\n            note\n            name\n            email\n            phone\n            shippingAddress {\n              phone\n              address1\n              address2\n              countryCodeV2\n              city\n              province\n              zip\n              firstName\n              lastName\n              country\n            }\n            totalPrice\n            lineItems(first: 150) {\n              nodes {\n                id\n                sku\n                quantity\n                originalTotal\n                originalUnitPrice\n                discountedTotal\n                discountedUnitPrice\n              }\n            }\n          }\n          merchantRequests(first: 1, kind: $requestKind) {\n            nodes {\n              message\n            }\n          }\n        }\n      }\n    }\n  }\n": {
     return: GetAssignedFulfillmentOrdersQuery;
     variables: GetAssignedFulfillmentOrdersQueryVariables;
+  };
+  "#graphql\n  query GetFulfillmentOrderLocalizedFields($id: ID!, $after: String!) {\n    fulfillmentOrder(id: $id) {\n      order {\n        localizedFields(first: 20, after: $after) {\n          nodes {\n            key\n            countryCode\n            purpose\n            title\n            value\n          }\n          pageInfo {\n            hasNextPage\n            endCursor\n          }\n        }\n      }\n    }\n  }\n": {
+    return: GetFulfillmentOrderLocalizedFieldsQuery;
+    variables: GetFulfillmentOrderLocalizedFieldsQueryVariables;
   };
 }
 interface GeneratedMutationTypes {
